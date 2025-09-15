@@ -16,13 +16,15 @@ const RE_HIDDEN = /^[._]/;
 const caches = {
   files: new Map<string, string[]>(),
   hasHome: new Map<string, boolean>(),
-  hasTop: new Map<string, boolean>()
+  hasTop: new Map<string, boolean>(),
 };
 
 // ユーティリティ関数群
-const htmlEscape = (s: string) => s.replace(/[&<>"']/g, m =>
-  ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m] || m)
-);
+const htmlEscape = (s: string) =>
+  s.replace(
+    /[&<>"']/g,
+    (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m] || m,
+  );
 
 const toUrl = (relPath: string, fileName?: string) => {
   const segments = [relPath, fileName]
@@ -44,8 +46,8 @@ const getFiles = async (dirPath: string): Promise<string[]> => {
   try {
     const entries = await fs.readdir(dirPath, { withFileTypes: true });
     const files = entries
-      .filter(e => e.isFile() && RE_MDX.test(e.name) && !RE_HIDDEN.test(e.name))
-      .map(e => e.name)
+      .filter((e) => e.isFile() && RE_MDX.test(e.name) && !RE_HIDDEN.test(e.name))
+      .map((e) => e.name)
       .sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
 
     caches.files.set(dirPath, files);
@@ -61,8 +63,8 @@ const getDirs = async (dirPath: string): Promise<string[]> => {
   try {
     const entries = await fs.readdir(dirPath, { withFileTypes: true });
     return entries
-      .filter(e => e.isDirectory() && !RE_HIDDEN.test(e.name))
-      .map(e => e.name)
+      .filter((e) => e.isDirectory() && !RE_HIDDEN.test(e.name))
+      .map((e) => e.name)
       .sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
   } catch {
     return [];
@@ -76,7 +78,7 @@ const hasFileType = async (dirPath: string, pattern: RegExp): Promise<boolean> =
 
   try {
     const files = await getFiles(dirPath);
-    const result = files.some(f => pattern.test(f));
+    const result = files.some((f) => pattern.test(f));
     cache.set(dirPath, result);
     return result;
   } catch {
@@ -113,7 +115,7 @@ const buildTree = async (absPath: string, relPath: string): Promise<TreeNode> =>
     relPath,
     children: [],
     hasHome: await hasFileType(absPath, RE_HOME),
-    hasTop: await hasFileType(absPath, RE_TOP)
+    hasTop: await hasFileType(absPath, RE_TOP),
   };
 
   const queue: TreeNode[] = [root];
@@ -122,10 +124,7 @@ const buildTree = async (absPath: string, relPath: string): Promise<TreeNode> =>
     const current = queue.shift();
     if (!current || !current.isDir) continue;
 
-    const [dirs, files] = await Promise.all([
-      getDirs(current.absPath),
-      getFiles(current.absPath)
-    ]);
+    const [dirs, files] = await Promise.all([getDirs(current.absPath), getFiles(current.absPath)]);
 
     current.children = [];
 
@@ -140,7 +139,7 @@ const buildTree = async (absPath: string, relPath: string): Promise<TreeNode> =>
         relPath: childRel,
         children: [],
         hasHome: await hasFileType(childAbs, RE_HOME),
-        hasTop: await hasFileType(childAbs, RE_TOP)
+        hasTop: await hasFileType(childAbs, RE_TOP),
       };
 
       current.children.push(childNode);
@@ -156,7 +155,7 @@ const buildTree = async (absPath: string, relPath: string): Promise<TreeNode> =>
         name: fileName,
         isDir: false,
         absPath: childAbs,
-        relPath: current.relPath
+        relPath: current.relPath,
       });
     }
   }
@@ -165,30 +164,36 @@ const buildTree = async (absPath: string, relPath: string): Promise<TreeNode> =>
 };
 
 // ツリーをHTML文字列に変換
-const renderTree = (node: TreeNode, prefix = '', isLast = true): string[] => {
+const renderTree = (node: TreeNode, prefix = '', isRoot = true, isLast = true): string[] => {
   const lines: string[] = [];
-  const connector = prefix === '' ? '' : (isLast ? '└── ' : '├── ');
+  const connector = isRoot ? '' : isLast ? '└── ' : '├── ';
+  const linePrefix = isRoot ? '' : prefix;
 
   let displayName: string;
   let url: string | undefined;
 
   if (node.isDir) {
-    displayName = prefix === '' && node.hasTop ? 'TOP' : `${node.name}/`;
-    url = node.hasTop ? toUrl('top') :
-          node.hasHome ? toUrl(node.relPath) : undefined;
+    if (isRoot && node.relPath === '') {
+      displayName = 'TOP';
+      url = node.hasTop ? toUrl('top') : undefined;
+    } else {
+      displayName = node.name;
+      url = node.hasHome ? toUrl(node.relPath, 'home') : undefined;
+    }
   } else {
-    displayName = node.name.replace(RE_MDX, '');
-    url = RE_HOME.test(node.name) ? toUrl(node.relPath) :
-          toUrl(node.relPath, displayName);
+    const baseName = node.name.replace(RE_MDX, '');
+    displayName = baseName;
+    url = toUrl(node.relPath, baseName);
   }
 
-  lines.push(`${prefix}${connector}${linkOrText(displayName, url)}`);
+  lines.push(`${linePrefix}${connector}${linkOrText(displayName, url)}`);
 
-  if (node.children) {
-    const nextPrefix = prefix + (prefix === '' ? '' : isLast ? '    ' : '│   ');
-    node.children.forEach((child, idx) => {
-      const childIsLast = idx === (node.children?.length || 0) - 1;
-      lines.push(...renderTree(child, nextPrefix, childIsLast));
+  const children = node.children ?? [];
+  if (children.length > 0) {
+    const nextPrefix = isRoot ? '' : prefix + (isLast ? '    ' : '│   ');
+    children.forEach((child, idx) => {
+      const childIsLast = idx === children.length - 1;
+      lines.push(...renderTree(child, nextPrefix, false, childIsLast));
     });
   }
 
@@ -209,7 +214,7 @@ const collectDirs = (node: TreeNode, predicate: (n: TreeNode) => boolean): strin
     }
 
     if (current.children) {
-      queue.push(...current.children.filter(c => c.isDir));
+      queue.push(...current.children.filter((c) => c.isDir));
     }
   }
 
@@ -217,11 +222,7 @@ const collectDirs = (node: TreeNode, predicate: (n: TreeNode) => boolean): strin
 };
 
 // メイン生成関数
-const generateAllTrees = async (
-  rootDir: string,
-  targetDir = '',
-  sections: string[] = ['all']
-) => {
+const generateAllTrees = async (rootDir: string, targetDir = '', sections: string[] = ['all']) => {
   const { absTarget, relTarget } = buildPaths(rootDir, targetDir);
   const tree = await buildTree(absTarget, relTarget);
   const output: string[] = [];
@@ -231,7 +232,7 @@ const generateAllTrees = async (
   }
 
   if (sections.includes('home')) {
-    const homeDirs = collectDirs(tree, n => n.hasHome || false);
+    const homeDirs = collectDirs(tree, (n) => n.hasHome || false);
     const { absRoot } = buildPaths(rootDir);
 
     for (const homeDir of homeDirs) {
@@ -241,13 +242,13 @@ const generateAllTrees = async (
         `<!-- Tree: home-level @ /${homeDir} -->`,
         '<pre>',
         ...renderTree(homeTree),
-        '</pre>'
+        '</pre>',
       );
     }
   }
 
   if (sections.includes('top')) {
-    const topDirs = collectDirs(tree, n => n.hasTop || false);
+    const topDirs = collectDirs(tree, (n) => n.hasTop || false);
     const { absRoot } = buildPaths(rootDir);
 
     for (const topDir of topDirs) {
@@ -257,7 +258,7 @@ const generateAllTrees = async (
         `<!-- Tree: top-level @ /${topDir} -->`,
         '<pre>',
         ...renderTree(topTree),
-        '</pre>'
+        '</pre>',
       );
     }
   }
@@ -268,15 +269,15 @@ const generateAllTrees = async (
 // CLI実行
 async function main() {
   const { values } = parseArgs({
-    args: Bun.argv.slice(2), // Remove 'bun' and script name
+    args: Bun.argv,
     options: {
       target: { type: 'string', short: 't', default: '' },
       root: { type: 'string', short: 'r', default: CONTENT_ROOT_DIR },
       sections: { type: 'string', short: 's', default: 'all,home,top' },
-      help: { type: 'boolean', short: 'h' }
+      help: { type: 'boolean', short: 'h' },
     },
     strict: true,
-    allowPositionals: false,
+    allowPositionals: true,
   });
 
   if (values.help) {
@@ -291,18 +292,23 @@ Options:
 
   const sections = (values.sections || 'all,home,top')
     .split(',')
-    .map(s => s.trim())
-    .filter(s => ['all', 'home', 'top'].includes(s));
+    .map((s) => s.trim())
+    .filter((s) => ['all', 'home', 'top'].includes(s));
 
   try {
     const output = await generateAllTrees(values.root || CONTENT_ROOT_DIR, values.target, sections);
-    console.log(output);
+
+    // src/scripts/tree-output.htmlに出力
+    const outputPath = path.resolve('src/scripts/tree-output.html');
+    await fs.writeFile(outputPath, output, 'utf8');
+    console.log(`Tree output written to: ${outputPath}`);
   } catch (error) {
     console.error('Error:', error);
     process.exit(1);
   }
 }
 
-if (import.meta.main) {
+// メインスクリプトとして実行された場合に main() を呼び出し
+if (process.argv[1] === import.meta.url.replace('file://', '')) {
   main();
 }
