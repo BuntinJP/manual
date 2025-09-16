@@ -12,8 +12,5 @@ sidebar:
 
 ## SiteTree
 
-<pre>
-<a href="/isync/home/">isync(here)</a>
-├── <a href="/isync/mbsync/">mbsync</a>
-└── <a href="/isync/mbsyncrc.sample/">mbsyncrc.sample</a>
-</pre>
+<!-- TREE_START:/isync -->
+<!-- TREE_END -->

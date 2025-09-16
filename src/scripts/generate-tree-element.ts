@@ -10,6 +10,8 @@ const RE_MDX = /\.(mdx|md)$/i;
 const RE_HOME = /^home\.(mdx|md)$/i;
 const RE_TOP = /^top\.(mdx|md)$/i;
 const RE_HIDDEN = /^[._]/;
+const MARKER_START = /<!--\s*TREE_START:([^>]+)\s*-->/g;
+const MARKER_END = /<!--\s*TREE_END\s*-->/g;
 
 const caches = {
   files: new Map<string, string[]>(),
@@ -208,7 +210,7 @@ const collectDirs = (node: TreeNode, predicate: (n: TreeNode) => boolean): strin
   return [...new Set(result)];
 };
 
-const generateAllTrees = async (rootDir: string, targetDir = '', sections: string[] = ['all']) => {
+const _generateAllTrees = async (rootDir: string, targetDir = '', sections: string[] = ['all']) => {
   const { absTarget, relTarget } = buildPaths(rootDir, targetDir);
   const tree = await buildTree(absTarget, relTarget);
   const output: string[] = [];
@@ -252,13 +254,166 @@ const generateAllTrees = async (rootDir: string, targetDir = '', sections: strin
   return output.join('\n');
 };
 
+const collectAllFiles = async (dirPath: string): Promise<string[]> => {
+  const files: string[] = [];
+
+  try {
+    const entries = await fs.readdir(dirPath, { withFileTypes: true });
+
+    for (const entry of entries) {
+      if (RE_HIDDEN.test(entry.name)) continue;
+      const absEntry = path.join(dirPath, entry.name);
+
+      if (entry.isDirectory()) {
+        files.push(...(await collectAllFiles(absEntry)));
+      } else if (entry.isFile()) {
+        files.push(absEntry);
+      }
+    }
+  } catch {
+    return [];
+  }
+
+  return files;
+};
+
+const normalizeMarkerPath = (markerPath: string) => {
+  const trimmed = markerPath.trim();
+  if (!trimmed || trimmed === '/') return '';
+  return trimmed.replace(/^\/+|\/+$/g, '');
+};
+
+const buildTreeForMarker = async (rootDir: string, marker: string) => {
+  const normalized = normalizeMarkerPath(marker);
+  const { absRoot } = buildPaths(rootDir);
+  const absTarget = path.resolve(absRoot, normalized);
+  const relTargetRaw = path.relative(absRoot, absTarget);
+
+  if (relTargetRaw.startsWith('..') || path.isAbsolute(relTargetRaw)) {
+    throw new Error(`Marker path escapes root: ${marker}`);
+  }
+
+  const relTarget = relTargetRaw.replace(/\\/g, '/');
+
+  try {
+    const stat = await fs.stat(absTarget);
+    if (!stat.isDirectory()) {
+      throw new Error(`Marker path is not a directory: ${marker}`);
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(`Unable to access marker path "${marker}": ${error.message}`);
+    }
+    throw error;
+  }
+
+  const tree = await buildTree(absTarget, relTarget === '.' ? '' : relTarget);
+  const lines = renderTree(tree);
+  return `<pre>\n${lines.join('\n')}\n</pre>`;
+};
+
+type MarkerReplacement = {
+  start: number;
+  end: number;
+  content: string;
+};
+
+const updateTreeMarkersInContent = async (
+  filePath: string,
+  content: string,
+  rootDir: string,
+): Promise<{ updated: string; changed: boolean }> => {
+  const replacements: MarkerReplacement[] = [];
+  const startRegex = new RegExp(MARKER_START.source, 'g');
+  const endRegex = new RegExp(MARKER_END.source, 'g');
+  let match: RegExpExecArray | null;
+
+  while ((match = startRegex.exec(content))) {
+    const startIndex = match.index;
+    const markerPath = match[1];
+    const startMarker = match[0];
+
+    endRegex.lastIndex = startRegex.lastIndex;
+    const endMatch = endRegex.exec(content);
+
+    if (!endMatch) {
+      console.warn(`Missing TREE_END marker for start marker in ${filePath}`);
+      break;
+    }
+
+    const endMarker = endMatch[0];
+    const endIndex = endMatch.index + endMarker.length;
+
+    let replacementSection: string | null = null;
+
+    try {
+      const body = await buildTreeForMarker(rootDir, markerPath);
+      replacementSection = `${startMarker}\n${body}\n${endMarker}`;
+    } catch (error) {
+      console.warn(
+        `Skipping marker in ${filePath}:`,
+        error instanceof Error ? error.message : error,
+      );
+    }
+
+    const existingSection = content.slice(startIndex, endIndex);
+
+    if (replacementSection && existingSection !== replacementSection) {
+      replacements.push({ start: startIndex, end: endIndex, content: replacementSection });
+    }
+
+    startRegex.lastIndex = endIndex;
+  }
+
+  if (replacements.length === 0) {
+    return { updated: content, changed: false };
+  }
+
+  let updated = content;
+  for (const { start, end, content: replacement } of replacements.sort(
+    (a, b) => b.start - a.start,
+  )) {
+    updated = `${updated.slice(0, start)}${replacement}${updated.slice(end)}`;
+  }
+
+  return { updated, changed: true };
+};
+
+const updateTreeMarkers = async () => {
+  const { absRoot } = buildPaths(CONTENT_ROOT_DIR);
+  const files = await collectAllFiles(absRoot);
+  const updatedFiles: string[] = [];
+
+  for (const filePath of files) {
+    let content: string;
+    try {
+      content = await fs.readFile(filePath, 'utf8');
+    } catch {
+      continue;
+    }
+
+    if (!content.includes('TREE_START')) continue;
+
+    const { updated, changed } = await updateTreeMarkersInContent(
+      filePath,
+      content,
+      CONTENT_ROOT_DIR,
+    );
+
+    if (!changed) continue;
+
+    await fs.writeFile(filePath, updated, 'utf8');
+    updatedFiles.push(path.relative(process.cwd(), filePath));
+  }
+
+  return updatedFiles;
+};
+
 async function main() {
   const { values } = parseArgs({
     args: Bun.argv,
     options: {
       target: { type: 'string', short: 't', default: '' },
-      root: { type: 'string', short: 'r', default: CONTENT_ROOT_DIR },
-      sections: { type: 'string', short: 's', default: 'all,home,top' },
       help: { type: 'boolean', short: 'h' },
     },
     strict: true,
@@ -275,21 +430,21 @@ Options:
     return;
   }
 
-  const sections = (values.sections || 'all,home,top')
-    .split(',')
-    .map((s) => s.trim())
-    .filter((s) => ['all', 'home', 'top'].includes(s));
+  // const output = 'output'; //await generateAllTrees(values.root || CONTENT_ROOT_DIR, values.target, sections);
 
-  try {
-    const output = await generateAllTrees(values.root || CONTENT_ROOT_DIR, values.target, sections);
+  // // src/scripts/tree-output.htmlに出力
+  // const outputPath = path.resolve('src/scripts/tree-output.html');
+  // await fs.writeFile(outputPath, output, 'utf8');
+  // console.log(`Tree output written to: ${outputPath}`);
 
-    // src/scripts/tree-output.htmlに出力
-    const outputPath = path.resolve('src/scripts/tree-output.html');
-    await fs.writeFile(outputPath, output, 'utf8');
-    console.log(`Tree output written to: ${outputPath}`);
-  } catch (error) {
-    console.error('Error:', error);
-    process.exit(1);
+  const updatedFiles = await updateTreeMarkers();
+  if (updatedFiles.length > 0) {
+    console.log('Updated tree markers in:');
+    for (const f of updatedFiles) {
+      console.log(`  - ${f}`);
+    }
+  } else {
+    console.log('No tree marker updates needed.');
   }
 }
 
