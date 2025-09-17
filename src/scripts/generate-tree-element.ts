@@ -325,20 +325,19 @@ const updateTreeMarkersInContent = async (
 ): Promise<{ updated: string; changed: boolean }> => {
   const replacements: MarkerReplacement[] = [];
   const startRegex = new RegExp(MARKER_START.source, 'g');
-  const endRegex = new RegExp(MARKER_END.source, 'g');
-  let match: RegExpExecArray | null;
 
-  while ((match = startRegex.exec(content))) {
+  for (const match of content.matchAll(startRegex)) {
     const startIndex = match.index;
     const markerPath = match[1];
     const startMarker = match[0];
 
+    const endRegex = new RegExp(MARKER_END.source, 'g');
     endRegex.lastIndex = startRegex.lastIndex;
     const endMatch = endRegex.exec(content);
 
     if (!endMatch) {
       console.warn(`Missing TREE_END marker for start marker in ${filePath}`);
-      break;
+      continue;
     }
 
     const endMarker = endMatch[0];
