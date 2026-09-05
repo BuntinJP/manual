@@ -10,6 +10,7 @@
 		"start": "bun run dev",
 		"build": "bun run content:render && astro build && bun tools/search/build-index.ts",
 		"preview": "astro preview",
+		"deploy": "bun run build && wrangler deploy --keep-vars",
 		"astro": "astro",
 		"format": "biome format --write .",
 		"lint": "biome lint .",
