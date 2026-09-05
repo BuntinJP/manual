@@ -2,10 +2,13 @@
 	"name": "manual",
 	"type": "module",
 	"version": "1.0.0",
+	"private": true,
+	"packageManager": "bun@1.3.14",
+	"engines": { "node": ">=22.12.0" },
 	"scripts": {
-		"dev": "astro dev",
-		"start": "astro dev",
-		"build": "astro build",
+		"dev": "bun run content:render && astro dev",
+		"start": "bun run dev",
+		"build": "bun run content:render && astro build && bun tools/search/build-index.ts",
 		"preview": "astro preview",
 		"astro": "astro",
 		"format": "biome format --write .",
@@ -13,16 +16,30 @@
 		"lint:fix": "biome lint --write --unsafe .",
 		"check": "biome check .",
 		"check:fix": "biome check --write --unsafe .",
-		"tree": "bun run src/scripts/generate-tree-element.ts && cat src/scripts/tree-output.html"
+		"typecheck": "astro check",
+		"test": "bun test tests/pipeline tests/site",
+		"test:e2e": "playwright test",
+		"content:ingest": "bun tools/manual/cli.ts ingest",
+		"content:parse": "bun tools/manual/cli.ts parse",
+		"content:translate": "bun tools/manual/cli.ts translate",
+		"content:render": "bun tools/manual/cli.ts render",
+		"content:verify": "bun tools/manual/cli.ts verify",
+		"verify": "bun run content:verify && bun run lint && bun run typecheck && bun run test && bun run build"
 	},
 	"dependencies": {
-		"@astrojs/starlight": "0.35.2",
-		"@types/bun": "^1.2.22",
-		"astro": "5.13.5",
-		"sharp": "0.34.3"
+		"@astrojs/starlight": "0.42.0",
+		"@astrojs/markdown-satteri": "^0.4.0",
+		"astro": "7.3.1",
+		"sharp": "0.34.3",
+		"linkedom": "^0.18.12",
+		"zod": "^4.0.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.2.2",
+		"@astrojs/check": "0.9.10",
+		"@types/bun": "^1.3.0",
+		"@playwright/test": "^1.58.0",
+		"typescript": "npm:typescript@6.0.2",
 		"wrangler": "^4.34.0"
 	}
 }

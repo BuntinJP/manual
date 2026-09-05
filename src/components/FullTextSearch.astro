@@ -1,0 +1,140 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<site-search data-manual-search data-base={base}>
+  <button type="button" data-open-modal aria-label="全文検索を開く" aria-haspopup="dialog">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg>
+    <span>全文検索</span><kbd>⌘ K</kbd>
+  </button>
+  <dialog aria-label="日本語マニュアルの全文検索">
+    <div class="search-heading"><h2>全文検索</h2><button type="button" data-close-modal aria-label="検索を閉じる">閉じる <kbd>Esc</kbd></button></div>
+    <label class="sr-only" for="manual-fulltext-query">検索語</label>
+    <input id="manual-fulltext-query" class="pagefind-ui__search-input" type="search" placeholder="例：シンボリックリンク" autocomplete="off" spellcheck="false" maxlength="200" aria-controls="manual-fulltext-results" />
+    <p class="search-status" role="status" aria-live="polite">マニュアル本文から検索できます。</p>
+    <ol id="manual-fulltext-results" class="search-results"></ol>
+  </dialog>
+</site-search>
+
+<script>
+  import { searchSubstringIndex, validateSubstringIndex, type SearchHit, type SubstringIndex } from '../../tools/search/core';
+
+  type PagefindData = { url: string; meta: { title?: string }; plain_excerpt?: string; content?: string };
+  type PagefindAPI = { search: (query: string) => Promise<{ results: { data: () => Promise<PagefindData> }[] }> };
+
+  class ManualFullTextSearch extends HTMLElement {
+    private dispose?: () => void;
+    connectedCallback() {
+      const dialog = this.querySelector('dialog');
+      const input = this.querySelector<HTMLInputElement>('input');
+      const opener = this.querySelector<HTMLButtonElement>('[data-open-modal]');
+      const closer = this.querySelector<HTMLButtonElement>('[data-close-modal]');
+      const status = this.querySelector<HTMLElement>('.search-status');
+      const list = this.querySelector<HTMLOListElement>('.search-results');
+      if (!dialog || !input || !opener || !closer || !status || !list) return;
+      const base = this.dataset.base ?? '/';
+      let request = 0;
+      let timer: ReturnType<typeof setTimeout> | undefined;
+      let composing = false;
+      let pagefind: Promise<PagefindAPI> | undefined;
+      let substring: Promise<SubstringIndex> | undefined;
+      const loadPagefind = () => {
+        pagefind ??= import(/* @vite-ignore */ `${base}pagefind/pagefind.js`) as Promise<PagefindAPI>;
+        return pagefind;
+      };
+      const loadSubstring = () => {
+        substring ??= fetch(`${base}pagefind/manual-substrings.json`).then(async response => {
+          if (!response.ok) throw new Error('Search index is unavailable.');
+          return validateSubstringIndex(await response.json());
+        }).catch(error => { substring = undefined; throw error; });
+        return substring;
+      };
+      const renderResults = (hits: SearchHit[], total: number, fallback: boolean) => {
+        list.replaceChildren();
+        for (const hit of hits) {
+          const url = new URL(hit.url, window.location.origin);
+          if (url.origin !== window.location.origin || !['http:', 'https:'].includes(url.protocol)) continue;
+          const item = document.createElement('li');
+          const link = document.createElement('a');
+          link.className = 'pagefind-ui__result-link';
+          link.href = `${url.pathname}${url.search}${url.hash}`;
+          link.textContent = hit.title;
+          const excerpt = document.createElement('p');
+          excerpt.textContent = hit.excerpt;
+          item.append(link, excerpt); list.append(item);
+        }
+        status.textContent = total ? `${total} 件見つかりました${total > hits.length ? `（先頭 ${hits.length} 件）` : ''}。${fallback ? '入力した文字列を本文から検索しました。' : ''}` : '一致するマニュアルが見つかりませんでした。';
+      };
+      const search = async () => {
+        const current = ++request;
+        const query = input.value.trim();
+        list.replaceChildren();
+        if (!query) { status.textContent = 'マニュアル本文から検索できます。'; return; }
+        status.textContent = '検索中…';
+        try {
+          let primary: Awaited<ReturnType<PagefindAPI['search']>> | undefined;
+          try { primary = await (await loadPagefind()).search(query); } catch { /* The local index also supports preview environments without Pagefind. */ }
+          if (current !== request) return;
+          if (primary?.results.length) {
+            const data = await Promise.all(primary.results.slice(0, 20).map(result => result.data()));
+            if (current !== request) return;
+            renderResults(data.map(item => ({ url: item.url, title: item.meta.title ?? 'マニュアル', excerpt: item.plain_excerpt ?? item.content?.slice(0, 170) ?? '' })), primary.results.length, false);
+          } else {
+            const matches = searchSubstringIndex(await loadSubstring(), query);
+            if (current !== request) return;
+            renderResults(matches.slice(0, 20), matches.length, true);
+          }
+        } catch {
+          if (current === request) status.textContent = '検索データを読み込めませんでした。ページを再読み込みしてお試しください。';
+        }
+      };
+      const schedule = () => {
+        if (timer) clearTimeout(timer);
+        request++;
+        if (!composing) timer = setTimeout(() => { void search(); }, 180);
+      };
+      const open = () => { if (!dialog.open) dialog.showModal(); input.focus(); };
+      const close = () => { dialog.close(); opener.focus(); };
+      const onKey = (event: KeyboardEvent) => {
+        if (event.key === 'Escape' && dialog.open) { event.preventDefault(); close(); return; }
+        if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); open(); }
+      };
+      const onCompositionStart = () => { composing = true; request++; if (timer) clearTimeout(timer); };
+      const onCompositionEnd = () => { composing = false; schedule(); };
+      const onBackdrop = (event: MouseEvent) => {
+        if (event.target !== dialog) return;
+        const bounds = dialog.getBoundingClientRect();
+        if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) close();
+      };
+      opener.addEventListener('click', open); closer.addEventListener('click', close);
+      input.addEventListener('input', schedule); input.addEventListener('compositionstart', onCompositionStart); input.addEventListener('compositionend', onCompositionEnd);
+      document.addEventListener('keydown', onKey); dialog.addEventListener('click', onBackdrop);
+      this.dispose = () => {
+        request++; if (timer) clearTimeout(timer);
+        opener.removeEventListener('click', open); closer.removeEventListener('click', close);
+        input.removeEventListener('input', schedule); input.removeEventListener('compositionstart', onCompositionStart); input.removeEventListener('compositionend', onCompositionEnd);
+        document.removeEventListener('keydown', onKey); dialog.removeEventListener('click', onBackdrop);
+      };
+    }
+    disconnectedCallback() { this.dispose?.(); }
+  }
+  if (!customElements.get('site-search')) customElements.define('site-search', ManualFullTextSearch);
+</script>
+
+<style>
+  site-search { display: block; }
+  [data-open-modal] { display: flex; align-items: center; gap: .5rem; color: #cbd4c5; cursor: pointer; font: inherit; font-size: .8rem; white-space: nowrap; padding: .5rem; }
+  dialog { color: #dfe5da; background: #191e21; border: 1px solid #4b5848; border-radius: .4rem; padding: 1.3rem; width: min(44rem, calc(100vw - 2rem)); max-height: min(80vh, 52rem); margin: 8vh auto auto; overflow-y: auto; box-shadow: 0 1rem 5rem #0008; font-family: inherit; }
+  dialog::backdrop { background: #080b0ed9; }
+  .search-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+  .search-heading h2 { font-size: 1.1rem; margin: 0; }
+  [data-close-modal] { cursor: pointer; color: #aab5a4; font: inherit; font-size: .75rem; padding: .3rem; }
+  kbd { font: inherit; padding: .1rem .3rem; border: 1px solid #596254; border-radius: .2rem; }
+  .pagefind-ui__search-input { width: 100%; box-sizing: border-box; font: inherit; font-size: 1rem; border: 1px solid #5d7253; border-radius: .2rem; background: #111719; color: #f0f2ed; padding: .8rem; }
+  .pagefind-ui__search-input:focus { outline: 2px solid #a6c48f; outline-offset: 2px; }
+  .search-status { color: #a7b59f; font-size: .8rem; margin: 1rem 0; }
+  .search-results { list-style: none; margin: 0; padding: 0; }
+  .search-results :global(li) { padding: 1rem 0; border-top: 1px solid #374036; }
+  .search-results :global(a) { color: #c3deac; font-size: 1rem; font-weight: 700; text-decoration: underline; text-underline-offset: .18em; }
+  .search-results :global(p) { color: #bfc8b9; line-height: 1.8; font-size: .8rem; margin: .6rem 0 0; overflow-wrap: anywhere; }
+  @media (max-width: 50rem) { [data-open-modal] span { display: none; } dialog { padding: 1rem; margin-top: 1rem; max-height: calc(100dvh - 2rem); } }
+</style>

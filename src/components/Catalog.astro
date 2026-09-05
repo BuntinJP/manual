@@ -1,0 +1,94 @@
+---
+import { getCollection } from 'astro:content';
+import manuals from '../data/manual-catalog.json';
+import { searchCatalog, type CatalogEntry } from '../lib/catalog';
+
+const legacy = (await getCollection('docs')).filter(({ id }) => /^(isync|megacmd|wrangler)\//.test(id) && !id.endsWith('/home'));
+const entries: CatalogEntry[] = searchCatalog([
+  ...(manuals as CatalogEntry[]),
+  ...legacy.map(({ id, data }) => {
+    const product = id.split('/')[0] ?? '';
+    return { id, href: `/${id}/`, name: data.title, section: '', provider: product,
+      product, version: '', variant: '', description: data.description ?? '' };
+  }),
+], '');
+const providers = [...new Set(entries.map((entry) => entry.provider))].sort();
+---
+<manual-catalog data-entries={JSON.stringify(entries)}>
+  <form class="catalog-controls" role="search" aria-label="マニュアル一覧を絞り込む" action="/search/">
+    <label class="catalog-query">コマンド・キーワード
+      <input type="search" name="q" placeholder="find、man 1 find、ファイル検索…" autocomplete="off" spellcheck="false" />
+    </label>
+    <label>提供元
+      <select name="provider"><option value="">すべて</option>{providers.map((provider) => <option value={provider}>{provider}</option>)}</select>
+    </label>
+    <button type="submit">検索</button>
+  </form>
+  <p class="catalog-status" role="status" aria-live="polite">{entries.length} 件のマニュアル</p>
+  <ul class="catalog-results">
+    {entries.map((entry) => <li data-id={entry.id}>
+      <div class="catalog-command"><a href={entry.href}>{entry.name}{entry.section && `(${entry.section})`}</a><span>{entry.provider}{entry.version && ` / ${entry.version}`}</span></div>
+      <p>{entry.description}</p>
+    </li>)}
+  </ul>
+  <p class="catalog-empty" hidden>一致するマニュアルがありません。名前を短くするか、提供元を「すべて」にしてください。本文は上部の全文検索から探せます。</p>
+  <noscript>JavaScript が無効な場合は、一覧からマニュアルを選んでください。</noscript>
+</manual-catalog>
+
+<script>
+  import { parseCommandQuery, searchCatalog, type CatalogEntry } from '../lib/catalog';
+  class ManualCatalog extends HTMLElement {
+    connectedCallback() {
+      const entries = JSON.parse(this.dataset.entries ?? '[]') as CatalogEntry[];
+      const form = this.querySelector('form');
+      const input = this.querySelector<HTMLInputElement>('input[name="q"]');
+      const provider = this.querySelector<HTMLSelectElement>('select');
+      const status = this.querySelector<HTMLElement>('[role="status"]');
+      const empty = this.querySelector<HTMLElement>('.catalog-empty');
+      if (!form || !input || !provider || !status || !empty) return;
+      const params = new URLSearchParams(location.search);
+      input.value = params.get('q') ?? '';
+      provider.value = params.get('provider') ?? '';
+      const update = (navigate: boolean) => {
+        const matches = searchCatalog(entries, input.value, provider.value);
+        const ids = new Set(matches.map((entry) => entry.id));
+        this.querySelectorAll<HTMLElement>('[data-id]').forEach((row) => { row.hidden = !ids.has(row.dataset.id ?? ''); });
+        status.textContent = `${matches.length} 件のマニュアル${input.value ? ` / ${input.value}` : ''}`;
+        empty.hidden = matches.length > 0;
+        if (navigate) {
+          const exact = matches.filter((entry) => entry.name.toLowerCase() === parseCommandQuery(input.value).name);
+          if (exact.length === 1) { location.assign(exact[0]!.href); return; }
+          const url = new URL(location.href);
+          url.searchParams.set('q', input.value);
+          if (provider.value) url.searchParams.set('provider', provider.value);
+          else url.searchParams.delete('provider');
+          history.replaceState(null, '', url);
+        }
+      };
+      input.addEventListener('input', () => update(false));
+      provider.addEventListener('change', () => update(false));
+      form.addEventListener('submit', (event) => { event.preventDefault(); update(true); });
+      update(location.pathname === '/search/' && !!params.get('q'));
+    }
+  }
+  customElements.define('manual-catalog', ManualCatalog);
+</script>
+
+<style>
+  manual-catalog { display: block; }
+  .catalog-controls { display: flex; flex-wrap: wrap; gap: 1rem; align-items: end; margin: 1.5rem 0; }
+  .catalog-controls label { font-size: 0.7rem; color: #a4aea0; }
+  .catalog-query { flex: 1; min-width: 12rem; }
+  .catalog-controls :is(input, select) { display: block; width: 100%; background: #191e1a; border: 1px solid #465143; color: #d5d9d3; padding: 0.65rem; margin-top: 0.4rem; font-size: 0.8rem; }
+  .catalog-controls button { color: #c7d8c0; background: #222b21; border: 1px solid #465143; padding: 0.65rem 1rem; cursor: pointer; }
+  .catalog-status { color: #8e9c89; font-size: 0.72rem; margin: 0 0 0.8rem; }
+  .catalog-results { list-style: none; padding: 0; margin: 0; }
+  .catalog-results li { padding: 1rem 0; border-top: 1px solid #2a302c; margin: 0; }
+  .catalog-command { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+  .catalog-command a { font-size: 0.95rem; font-weight: 700; }
+  .catalog-command span { font-size: 0.7rem; color: #8e9c89; }
+  .catalog-results li p { font-size: 0.78rem; margin: 0.3rem 0 0; color: #a4aea0; }
+  .catalog-empty { margin: 2rem 0; }
+  [hidden] { display: none !important; }
+  @media (max-width: 799px) { .catalog-controls input { font-size: 16px; } }
+</style>

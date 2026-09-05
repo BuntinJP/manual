@@ -1,0 +1,22 @@
+---
+const { entry, id } = Astro.locals.starlightRoute;
+const isManual = id.startsWith('manuals/');
+const manual = entry.data.manual;
+const sourceUrl = manual && /^https?:\/\//.test(manual.sourceUrl) ? manual.sourceUrl : undefined;
+---
+<div class="manual-title">
+  <p class="eyebrow">{isManual ? 'COMMAND REFERENCE / 日本語訳' : '日本語コマンドリファレンス'}</p>
+  <h1 id="_top">{entry.data.title}</h1>
+  {!isManual && <p class="page-description">{entry.data.description}</p>}
+  {manual && <div class="manual-edition" data-pagefind-ignore>
+    <span>{manual.provider} / {manual.product} {manual.version}</span>
+    <span>SECTION {manual.section}</span>
+    {sourceUrl && <a href={sourceUrl}>英語の原文 ↗</a>}
+    <details><summary>版情報</summary><dl>
+      <dt>バリエーション</dt><dd>{manual.variant}</dd>
+      <dt>原文形式</dt><dd>{manual.sourceFormat}</dd>
+      <dt>原文 SHA-256</dt><dd><code>{manual.sourceSha256}</code></dd>
+      <dt>翻訳</dt><dd>LLM による日本語訳</dd>
+    </dl></details>
+  </div>}
+</div>
