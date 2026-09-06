@@ -65,7 +65,10 @@ export function extractSearchDocument(html: string, url: string): SearchDocument
   const text = bodies.map(extractText).join('\n').replace(/\s+/g, ' ').trim();
   if (!text) return undefined;
   const title = document.querySelector('h1')?.textContent?.trim() || document.title || url;
-  return { url, title, text };
+  const provider =
+    document.querySelector('[data-manual-provider]')?.getAttribute('data-manual-provider') ||
+    undefined;
+  return { url, title, text, provider };
 }
 
 export async function buildSubstringIndex(outputDirectory: string): Promise<SubstringIndex> {

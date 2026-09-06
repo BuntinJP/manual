@@ -1,13 +1,15 @@
 ---
+import { providerForPage } from '../lib/providers';
 const { entry, id } = Astro.locals.starlightRoute;
 const isManual = id.startsWith('manuals/');
 const manual = entry.data.manual;
+const provider = providerForPage(id, manual?.provider);
 const sourceUrl = manual && /^https?:\/\//.test(manual.sourceUrl) ? manual.sourceUrl : undefined;
 ---
 <div class="manual-title">
   <p class="eyebrow">{isManual ? 'COMMAND REFERENCE / 日本語訳' : '日本語コマンドリファレンス'}</p>
-  <h1 id="_top">{entry.data.title}</h1>
-  {!isManual && <p class="page-description">{entry.data.description}</p>}
+  <h1 id="_top" data-manual-provider={provider} data-pagefind-filter={provider ? `provider:${provider}` : undefined}>{entry.data.title}</h1>
+  {!isManual && id !== 'about' && <p class="page-description">{entry.data.description}</p>}
   {manual && <div class="manual-edition" data-pagefind-ignore>
     <span>{manual.provider} / {manual.product} {manual.version}</span>
     <span>SECTION {manual.section}</span>

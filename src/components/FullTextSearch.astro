@@ -1,4 +1,7 @@
 ---
+import { getCollection } from 'astro:content';
+import { providerForPage, providerLabel } from '../lib/providers';
+const providers = [...new Set((await getCollection('docs')).map(({id, data}) => providerForPage(id, data.manual?.provider)).filter((value): value is string => !!value))].sort();
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 <site-search data-manual-search data-base={base}>
@@ -8,29 +11,41 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   </button>
   <dialog aria-label="日本語マニュアルの全文検索">
     <div class="search-heading"><h2>全文検索</h2><button type="button" data-close-modal aria-label="検索を閉じる">閉じる <kbd>Esc</kbd></button></div>
-    <label class="sr-only" for="manual-fulltext-query">検索語</label>
-    <input id="manual-fulltext-query" class="pagefind-ui__search-input" type="search" placeholder="例：シンボリックリンク" autocomplete="off" spellcheck="false" maxlength="200" aria-controls="manual-fulltext-results" />
+    <div class="search-fields">
+      <div class="search-query">
+        <label class="sr-only" for="manual-fulltext-query">検索語</label>
+        <input id="manual-fulltext-query" class="pagefind-ui__search-input" type="search" placeholder="例：シンボリックリンク" autocomplete="off" spellcheck="false" maxlength="200" aria-controls="manual-fulltext-results" />
+      </div>
+      <label class="provider-filter" for="manual-fulltext-provider">提供元
+        <select id="manual-fulltext-provider" name="provider" aria-controls="manual-fulltext-results">
+          <option value="">すべて</option>
+          {providers.map((provider) => <option value={provider}>{providerLabel(provider)}</option>)}
+        </select>
+      </label>
+    </div>
     <p class="search-status" role="status" aria-live="polite">マニュアル本文から検索できます。</p>
     <ol id="manual-fulltext-results" class="search-results"></ol>
   </dialog>
 </site-search>
 
 <script>
+  import { providerLabel } from '../lib/providers';
   import { searchSubstringIndex, validateSubstringIndex, type SearchHit, type SubstringIndex } from '../../tools/search/core';
 
-  type PagefindData = { url: string; meta: { title?: string }; plain_excerpt?: string; content?: string };
-  type PagefindAPI = { search: (query: string) => Promise<{ results: { data: () => Promise<PagefindData> }[] }> };
+  type PagefindData = { url: string; meta: { title?: string }; filters?: Record<string, string[]>; plain_excerpt?: string; content?: string };
+  type PagefindAPI = { search: (query: string, options: { filters: Record<string, string> }) => Promise<{ results: { data: () => Promise<PagefindData> }[] }> };
 
   class ManualFullTextSearch extends HTMLElement {
     private dispose?: () => void;
     connectedCallback() {
       const dialog = this.querySelector('dialog');
       const input = this.querySelector<HTMLInputElement>('input');
+      const provider = this.querySelector<HTMLSelectElement>('select[name="provider"]');
       const opener = this.querySelector<HTMLButtonElement>('[data-open-modal]');
       const closer = this.querySelector<HTMLButtonElement>('[data-close-modal]');
       const status = this.querySelector<HTMLElement>('.search-status');
       const list = this.querySelector<HTMLOListElement>('.search-results');
-      if (!dialog || !input || !opener || !closer || !status || !list) return;
+      if (!dialog || !input || !provider || !opener || !closer || !status || !list) return;
       const base = this.dataset.base ?? '/';
       let request = 0;
       let timer: ReturnType<typeof setTimeout> | undefined;
@@ -54,32 +69,41 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           const url = new URL(hit.url, window.location.origin);
           if (url.origin !== window.location.origin || !['http:', 'https:'].includes(url.protocol)) continue;
           const item = document.createElement('li');
+          if (hit.provider) item.dataset.provider = hit.provider;
           const link = document.createElement('a');
           link.className = 'pagefind-ui__result-link';
           link.href = `${url.pathname}${url.search}${url.hash}`;
           link.textContent = hit.title;
           const excerpt = document.createElement('p');
           excerpt.textContent = hit.excerpt;
-          item.append(link, excerpt); list.append(item);
+          item.append(link);
+          if (hit.provider) {
+            const label = document.createElement('span');
+            label.className = 'result-provider';
+            label.textContent = providerLabel(hit.provider);
+            item.append(label);
+          }
+          item.append(excerpt); list.append(item);
         }
         status.textContent = total ? `${total} 件見つかりました${total > hits.length ? `（先頭 ${hits.length} 件）` : ''}。${fallback ? '入力した文字列を本文から検索しました。' : ''}` : '一致するマニュアルが見つかりませんでした。';
       };
       const search = async () => {
         const current = ++request;
         const query = input.value.trim();
+        const selectedProvider = provider.value;
         list.replaceChildren();
         if (!query) { status.textContent = 'マニュアル本文から検索できます。'; return; }
         status.textContent = '検索中…';
         try {
           let primary: Awaited<ReturnType<PagefindAPI['search']>> | undefined;
-          try { primary = await (await loadPagefind()).search(query); } catch { /* The local index also supports preview environments without Pagefind. */ }
+          try { primary = await (await loadPagefind()).search(query, { filters: selectedProvider ? { provider: selectedProvider } : {} }); } catch { /* The local index also supports preview environments without Pagefind. */ }
           if (current !== request) return;
           if (primary?.results.length) {
             const data = await Promise.all(primary.results.slice(0, 20).map(result => result.data()));
             if (current !== request) return;
-            renderResults(data.map(item => ({ url: item.url, title: item.meta.title ?? 'マニュアル', excerpt: item.plain_excerpt ?? item.content?.slice(0, 170) ?? '' })), primary.results.length, false);
+            renderResults(data.map(item => ({ url: item.url, title: item.meta.title ?? 'マニュアル', provider: item.filters?.provider?.[0], excerpt: item.plain_excerpt ?? item.content?.slice(0, 170) ?? '' })), primary.results.length, false);
           } else {
-            const matches = searchSubstringIndex(await loadSubstring(), query);
+            const matches = searchSubstringIndex(await loadSubstring(), query, selectedProvider);
             if (current !== request) return;
             renderResults(matches.slice(0, 20), matches.length, true);
           }
@@ -107,11 +131,13 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       };
       opener.addEventListener('click', open); closer.addEventListener('click', close);
       input.addEventListener('input', schedule); input.addEventListener('compositionstart', onCompositionStart); input.addEventListener('compositionend', onCompositionEnd);
+      provider.addEventListener('change', schedule);
       document.addEventListener('keydown', onKey); dialog.addEventListener('click', onBackdrop);
       this.dispose = () => {
         request++; if (timer) clearTimeout(timer);
         opener.removeEventListener('click', open); closer.removeEventListener('click', close);
         input.removeEventListener('input', schedule); input.removeEventListener('compositionstart', onCompositionStart); input.removeEventListener('compositionend', onCompositionEnd);
+        provider.removeEventListener('change', schedule);
         document.removeEventListener('keydown', onKey); dialog.removeEventListener('click', onBackdrop);
       };
     }
@@ -131,6 +157,11 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   kbd { font: inherit; padding: .1rem .3rem; border: 1px solid #596254; border-radius: .2rem; }
   .pagefind-ui__search-input { width: 100%; box-sizing: border-box; font: inherit; font-size: 1rem; border: 1px solid #5d7253; border-radius: .2rem; background: #111719; color: #f0f2ed; padding: .8rem; }
   .pagefind-ui__search-input:focus { outline: 2px solid #a6c48f; outline-offset: 2px; }
+  .search-fields { display: flex; flex-wrap: wrap; align-items: end; gap: .75rem; }
+  .search-query { flex: 1 1 16rem; min-width: 0; }
+  .provider-filter { font-size: .75rem; color: #a7b59f; flex: 0 1 9rem; }
+  .provider-filter select { display: block; width: 100%; margin-top: .3rem; padding: .8rem .5rem; background: #111719; color: #f0f2ed; border: 1px solid #5d7253; font: inherit; }
+  .search-results :global(.result-provider) { margin-left: .75rem; font-size: .75rem; color: #a7b59f; }
   .search-status { color: #a7b59f; font-size: .8rem; margin: 1rem 0; }
   .search-results { list-style: none; margin: 0; padding: 0; }
   .search-results :global(li) { padding: 1rem 0; border-top: 1px solid #374036; }

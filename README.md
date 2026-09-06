@@ -28,6 +28,7 @@ bun run test:e2e
 例えば「この HTML の URL にある find のマニュアルを日本語化して」「この roff を新しい版として追加して」と依頼できます。AI は取得元と版を確認し、取り込み、解析、セグメント翻訳、照合、ページ生成まで実行します。
 
 - [翻訳 CLI の使い方](tools/manual/README.md)
+- [Sol / Terra / Luna で始める翻訳タスク](docs/translation-start.md)
 - [ディレクトリ・データ・表示の構成](docs/architecture.md)
 - [AI の作業案内](AGENTS.md)
 - [公開上の条件に関する参考メモ](docs/rights-notes.md)

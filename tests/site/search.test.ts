@@ -2,8 +2,50 @@ import { expect, test } from 'bun:test';
 import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { providerForPage } from '../../src/lib/providers';
 import { buildSubstringIndex, extractSearchDocument } from '../../tools/search/build-index';
 import { searchSubstringIndex, validateSubstringIndex } from '../../tools/search/core';
+
+test('provider identity covers versioned manuals and existing collections', () => {
+  expect(providerForPage('manuals/any/path', 'freebsd')).toBe('freebsd');
+  expect(providerForPage('manuals/any/path', 'gnu')).toBe('gnu');
+  expect(providerForPage('megacmd/commands/find')).toBe('megacmd');
+  expect(providerForPage('about')).toBeUndefined();
+});
+
+test('fallback filters by provider before returning matches, including no matches', () => {
+  const index = {
+    schemaVersion: 1 as const,
+    documents: [
+      { url: '/bsd/', title: 'find(1)', text: 'シンボリックリンク', provider: 'freebsd' },
+      { url: '/gnu/', title: 'find(1)', text: 'シンボリックリンク', provider: 'gnu' },
+      { url: '/about/', title: 'サイト', text: 'シンボリックリンク' },
+    ],
+  };
+  expect(searchSubstringIndex(index, 'シンボリックリンク', 'gnu').map((hit) => hit.url)).toEqual([
+    '/gnu/',
+  ]);
+  expect(
+    searchSubstringIndex(index, 'シンボリックリンク', 'freebsd').map((hit) => hit.provider),
+  ).toEqual(['freebsd']);
+  expect(searchSubstringIndex(index, 'シンボリックリンク', 'missing')).toEqual([]);
+  expect(searchSubstringIndex(index, 'シンボリックリンク')).toHaveLength(3);
+  expect(validateSubstringIndex(index).documents[0].provider).toBe('freebsd');
+  expect(() =>
+    validateSubstringIndex({
+      schemaVersion: 1,
+      documents: [{ url: '/x/', title: 'x', text: 'x', provider: 12 }],
+    }),
+  ).toThrow();
+});
+
+test('substring index captures the same provider metadata as Pagefind', () => {
+  const doc = extractSearchDocument(
+    '<html><body><main data-pagefind-body><h1 data-manual-provider="freebsd" data-pagefind-filter="provider:freebsd">find(1)</h1><p>検索</p></main></body></html>',
+    '/find/',
+  );
+  expect(doc?.provider).toBe('freebsd');
+});
 
 test('Japanese compound terms match the literal body independently of word segmentation', () => {
   const index = {

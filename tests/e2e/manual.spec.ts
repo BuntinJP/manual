@@ -105,3 +105,42 @@ test('manual is readable with JavaScript disabled', async ({ browser }) => {
   ).toBe('rgb(19, 22, 25)');
   await context.close();
 });
+
+for (const query of ['find', 'シンボリックリンク']) {
+  test(`full-text provider filtering works for ${query}`, async ({ page }) => {
+    await page.goto('/');
+    await page.locator('site-search button[data-open-modal]').click();
+    const input = page.locator('site-search input');
+    const provider = page
+      .getByRole('dialog')
+      .getByRole('combobox', { name: '提供元', exact: true });
+    const results = page.locator('site-search .search-results li');
+    await provider.selectOption('freebsd');
+    await input.fill(query);
+    await expect(results).toHaveCount(1);
+    await expect(results.first()).toHaveAttribute('data-provider', 'freebsd');
+    await expect(results.first().locator('a')).toHaveText('find(1)');
+    await provider.selectOption('megacmd');
+    await expect(results.first()).toHaveAttribute('data-provider', 'megacmd');
+    expect(
+      await results.evaluateAll((items) =>
+        items.every((item) => item.getAttribute('data-provider') === 'megacmd'),
+      ),
+    ).toBe(true);
+    await provider.selectOption('');
+    await expect(results.locator('[href*="/manuals/freebsd/"]')).toHaveCount(1);
+    if (query === 'シンボリックリンク') {
+      await provider.selectOption('isync');
+      await expect(results).toHaveCount(0);
+      await expect(page.locator('site-search .search-status')).toContainText('見つかりません');
+    }
+    await page.setViewportSize({ width: 320, height: 844 });
+    await expect(provider).toBeVisible();
+    expect(
+      await page.locator('site-search dialog').evaluate((el) => el.scrollWidth <= el.clientWidth),
+    ).toBe(true);
+    await page.screenshot({
+      path: `test-results/provider-filter-${query === 'find' ? 'primary' : 'fallback'}.png`,
+    });
+  });
+}
