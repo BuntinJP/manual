@@ -19,6 +19,12 @@ bun run preview
 bun run test:e2e
 ```
 
+公開済みサイトでも同じE2Eを実行できます。指定時はローカルサーバーを起動しません。
+
+```sh
+MANUAL_TEST_BASE_URL=https://manual.buntin.dev bun run test:e2e
+```
+
 `verify` は原文・翻訳整合性、lint、型、単体テスト、サイト生成を検証します。E2E はビルド済みサイトのダーク表示、Cica の文字幅、320px からの表示、版別検索、全文検索、JavaScript 無効時の閲覧を確認します。ローカルではインストール済みの Google Chrome、CI では Playwright Chromium を使用します。
 
 通常のビルドは保存済み原文・解析結果・訳文だけで動作し、ネットワーク、LLM API、API キー、mandoc を必要としません。roff の解析と roff の統合テストにのみ mandoc が必要です（macOS は /usr/bin/mandoc、Linux はディストリビューションの mandoc パッケージ）。

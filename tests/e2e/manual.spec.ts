@@ -79,10 +79,11 @@ test('font preload prevents duplicate fetches and visible font layout shifts on 
 for (const provider of ['apple', 'freebsd']) {
   test(`${provider} HOME lists exactly its published manuals and works without JavaScript`, async ({
     browser,
+    baseURL,
   }) => {
-    const context = await browser.newContext({ javaScriptEnabled: false });
+    const context = await browser.newContext({ javaScriptEnabled: false, baseURL });
     const page = await context.newPage();
-    await page.goto(`http://127.0.0.1:4322${providerHomeHref(provider)}`);
+    await page.goto(providerHomeHref(provider));
     await expect(page.locator('h1')).toHaveText('HOME');
     const expected = (catalog as CatalogEntry[]).filter((entry) => entry.provider === provider);
     const links = page.locator('.sl-markdown-content a[href^="/manuals/"]');
@@ -109,6 +110,7 @@ test('catalog opens with search and manuals while keeping an accessible page nam
   await expect(page.locator('body')).not.toContainText('日本語コマンドリファレンス');
   await expect(page.getByRole('search', { name: 'マニュアル一覧を絞り込む' })).toBeVisible();
   await expect(page.locator('.catalog-results li').first()).toBeVisible();
+  await page.screenshot({ path: 'test-results/catalog-desktop.png' });
   await page.setViewportSize({ width: 320, height: 844 });
   await expect(page.locator('.catalog-controls input')).toBeVisible();
   await page.screenshot({ path: 'test-results/catalog-320.png' });
@@ -194,10 +196,13 @@ test('command search keeps same-name implementations and routes section-qualifie
 
 test('Japanese full-text search works in the built site and loads no third-party services', async ({
   page,
+  baseURL,
 }) => {
+  if (!baseURL) throw new Error('A test base URL is required.');
+  const expectedOrigin = new URL(baseURL).origin;
   const thirdParty: string[] = [];
   page.on('request', (request) => {
-    if (request.url().startsWith('http') && new URL(request.url()).hostname !== '127.0.0.1')
+    if (request.url().startsWith('http') && new URL(request.url()).origin !== expectedOrigin)
       thirdParty.push(request.url());
   });
   await page.goto(find.href);
@@ -212,10 +217,14 @@ test('Japanese full-text search works in the built site and loads no third-party
   await expect(page.locator('site-search dialog')).toBeVisible();
 });
 
-test('manual is readable with JavaScript disabled', async ({ browser }) => {
-  const context = await browser.newContext({ javaScriptEnabled: false, colorScheme: 'light' });
+test('manual is readable with JavaScript disabled', async ({ browser, baseURL }) => {
+  const context = await browser.newContext({
+    javaScriptEnabled: false,
+    colorScheme: 'light',
+    baseURL,
+  });
   const page = await context.newPage();
-  await page.goto(`http://127.0.0.1:4322${find.href}`);
+  await page.goto(find.href);
   await expect(page.locator('h1')).toHaveText('find(1)');
   expect(
     await page.locator('body').evaluate((body) => getComputedStyle(body).backgroundColor),
