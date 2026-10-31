@@ -23,9 +23,11 @@
 		"content:ingest": "bun tools/manual/cli.ts ingest",
 		"content:parse": "bun tools/manual/cli.ts parse",
 		"content:translate": "bun tools/manual/cli.ts translate",
+		"content:queue": "bun tools/manual/queue-cli.ts",
+		"content:queue:verify": "bun tools/manual/queue-cli.ts verify",
 		"content:render": "bun tools/manual/cli.ts render",
 		"content:verify": "bun tools/manual/cli.ts verify",
-		"verify": "bun run content:verify && bun run lint && bun run typecheck && bun run test && bun run build"
+		"verify": "bun run content:verify && bun run content:queue:verify && bun run lint && bun run typecheck && bun run test && bun run build"
 	},
 	"dependencies": {
 		"@astrojs/starlight": "0.42.0",

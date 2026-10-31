@@ -29,6 +29,7 @@ bun run test:e2e
 
 - [翻訳 CLI の使い方](tools/manual/README.md)
 - [Sol / Terra / Luna で始める翻訳タスク](docs/translation-start.md)
+- [翻訳キューへの登録・利用枠リセット前の処理・途中再開](docs/translation-queue.md)
 - [ディレクトリ・データ・表示の構成](docs/architecture.md)
 - [AI の作業案内](AGENTS.md)
 - [公開上の条件に関する参考メモ](docs/rights-notes.md)
@@ -36,6 +37,8 @@ bun run test:e2e
 HTML の URL を指定すれば、roff の場所を探して指定する必要はありません。自動抽出だけで構造を取り切れない資料では、AI が保存原文と照合し、本文領域や IR を調整して同じ翻訳プロセスに流せます。未知の版情報を推測で埋めません。
 
 翻訳ごとの資料は `manuals/<provider>/<product>/<version>/<variant>/<section>/<name>/<sha12>/` にまとまります。同名コマンドでも実装・版・配布差分・原文リビジョンを区別できます。原文のバイト列は保存し、新しい原文を以前の版に上書きしません。
+
+翻訳を後回しにする場合は `bun run content:queue add` で原文と翻訳依頼を保存できます。エージェントは `bun run content:queue next --worker CHAT_ID --max-segments 20` で未処理部分を取り出し、利用枠が少なくなる前に `save` して次回へ渡せます。登録・実行の依頼文は上記の翻訳キュー手順にあります。
 
 ## 収録内容と公開
 
