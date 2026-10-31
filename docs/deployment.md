@@ -71,3 +71,34 @@
 - 公開後: Apple HOME から FreeBSD HOME をクリックして移動し、Cica Regular / Bold の転送量がともに0バイトとなることを確認。フォントの応答ヘッダー `Cache-Control: public, max-age=31536000, immutable` も確認。
 
 提供元の追加と HOME 生成の運用は [構成](architecture.md#提供元と-home) を参照してください。
+
+
+## 2026-11-01 UI整理と翻訳キュー統合後の本番反映
+
+運営者の本番反映指示に基づき、PR #5・#6を統合したmainの成果物を既存Workerへ公開しました。
+
+- 公開URL: <https://manual.buntin.dev/>
+- 公開ソース: `20b5fde9a782965c5355d9fb2c6a2d928df2c636`（main、PR #6のマージコミット）。公開時の作業ツリーはcleanでした。
+- アカウント／Worker: Buntin-Catalina / `manual` / production。独自ドメインの紐付けをAPIで確認しました。
+- 公開コマンド: 検証済みの `dist/` に対して `bunx wrangler deploy --keep-vars`（Wrangler 4.34.0）。
+- 新バージョン: `5288d107-52b9-4a90-a7d5-05b12a929951`。APIの読み戻しで配信割合100%を確認しました。
+- デプロイID: `5f87efae-02a4-451f-bae6-f508835a2798`。
+- 作成時刻: `2026-10-31T17:59:14.33276Z`（2026-11-01 02:59 JST）。
+- 更新前・復旧先: `d1403bd2-36e9-4fb8-afa8-ab527bf04126`。必要時の復旧コマンドは `bunx wrangler rollback d1403bd2-36e9-4fb8-afa8-ab527bf04126 --message 'Restore the previous Manual production version'` です。
+
+### 公開前の検証
+
+- `bun run verify` 成功: 単体39件、型エラー0、lint、原文・キュー整合性、101ページ生成。
+- ローカルE2E 23件、Wrangler dry-run成功。
+- プライバシー検出0件。通常検査のUTF-8対象2,405ファイルに加え、原文保持のためISO-8859-1で保存している2件を同じ非公開設定で追加検査しました。配信対象のテキスト資材119件も確認しました。
+
+### 公開後の検証
+
+- 公開URLに対して既存の全E2E 23件を実行し成功。コマンド検索、日本語全文検索と提供元絞り込み、Apple/FreeBSD HOME、既存macOSマニュアル8件、版・原文リンク・アンカー、常時ダークとCica、320/390/720px、JavaScript無効時の閲覧を確認しました。
+- トップの文書名は「マニュアル一覧」。検索フォームと一覧を表示し、宣伝的な共通肩書きと紹介文が削除されていることを確認しました。
+- 通常HTML 100ページのHTTP 200と、404ページを含むHTML・検索資材・CSS/JS・フォント等126件の配信バイト列が、検証済み `dist/` のSHA-256と一致しました。不一致は0件です。
+- 末尾スラッシュのない版別マニュアルURLはHTTP 307。不存在URL、原文manifestと翻訳キューの保存用パスはHTTP 404でした。
+- 原文・ジョブを管理する作業ツリーで304件すべてがpending、処理中0件・翻訳完了0件であることを読み取り確認しました。公開マニュアルは92件です。
+- 配信照合の全件記録: [2026-11-01-production-readback.json](evidence/2026-11-01-production-readback.json)。
+
+公開URLで同じ検証を再実行する入口は `MANUAL_TEST_BASE_URL=https://manual.buntin.dev bun run test:e2e` です。検証先を指定するとローカルpreviewは起動せず、JavaScript無効のコンテキストも同じ公開先を開きます。この記録は今回の確認範囲を示します。
