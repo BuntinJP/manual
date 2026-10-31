@@ -12,12 +12,22 @@ test('font preload prevents duplicate fetches and visible font layout shifts on 
   page,
 }) => {
   await page.addInitScript(() => {
-    const shifts: number[] = [];
+    const shifts: { value: number; sources: string[] }[] = [];
     Reflect.set(window, 'manualFontShifts', shifts);
     new PerformanceObserver((list) => {
       for (const raw of list.getEntries()) {
-        const entry = raw as PerformanceEntry & { value: number; hadRecentInput: boolean };
-        if (!entry.hadRecentInput) shifts.push(entry.value);
+        const entry = raw as PerformanceEntry & {
+          value: number;
+          hadRecentInput: boolean;
+          sources: { node?: Node }[];
+        };
+        if (!entry.hadRecentInput)
+          shifts.push({
+            value: entry.value,
+            sources: entry.sources.map(
+              ({ node }) => node?.parentElement?.outerHTML.slice(0, 180) ?? '',
+            ),
+          });
       }
     }).observe({ type: 'layout-shift', buffered: true });
   });
@@ -42,7 +52,7 @@ test('font preload prevents duplicate fetches and visible font layout shifts on 
         display: font.display,
         status: font.status,
       })),
-      shifts: Reflect.get(window, 'manualFontShifts') as number[],
+      shifts: Reflect.get(window, 'manualFontShifts') as { value: number; sources: string[] }[],
     }));
     expect(fonts.preload).toHaveLength(2);
     expect(
@@ -55,7 +65,10 @@ test('font preload prevents duplicate fetches and visible font layout shifts on 
       { family: 'Cica', display: 'block', status: 'loaded' },
       { family: 'Cica', display: 'block', status: 'loaded' },
     ]);
-    expect(fonts.shifts.reduce((sum, value) => sum + value, 0)).toBeLessThan(0.01);
+    expect(
+      fonts.shifts.reduce((sum, shift) => sum + shift.value, 0),
+      JSON.stringify({ href, shifts: fonts.shifts }),
+    ).toBeLessThan(0.01);
   }
 });
 
@@ -80,7 +93,9 @@ for (const provider of ['apple', 'freebsd']) {
   });
 }
 
-test('catalog opens with search and manuals while keeping an accessible page name', async ({ page }) => {
+test('catalog opens with search and manuals while keeping an accessible page name', async ({
+  page,
+}) => {
   await page.goto('/');
   await expect(page).toHaveTitle('マニュアル一覧 | manual');
   await expect(page.locator('h1')).toHaveText('マニュアル一覧');
