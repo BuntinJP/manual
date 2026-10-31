@@ -7,6 +7,12 @@ credential, legal review, or publication-permission flag is involved. Rights
 information can be recorded as ordinary notes by the operator; it never decides
 whether generation runs.
 
+For deferred work, `bun run content:queue add` preserves a source and prepares a
+job, and `bun run content:queue next --worker CHAT_ID --max-segments 20` emits one
+bounded agent task. Validated partial responses survive resets via `save`; full
+translation, semantic review and local generation precede `done`. The queue uses
+this pipeline and never invokes a model. See [the queue workflow](../../docs/translation-queue.md).
+
 ## Commands
 
 ```sh
