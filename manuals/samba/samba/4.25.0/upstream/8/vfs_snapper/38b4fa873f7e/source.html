@@ -1,0 +1,54 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>vfs_snapper</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="vfs_snapper.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>vfs_snapper &#8212; 
+		Expose snapshots managed by snapper as shadow-copies
+	</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="literal">vfs objects = snapper</code></p></div></div><div class="refsect1"><a name="id1337"></a><h2>DESCRIPTION</h2><p>This VFS module is part of the
+	<a class="citerefentry" href="samba.8.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(8)</span></a> suite.</p><p>
+		The <code class="literal">vfs_snapper</code> VFS module exposes snapshots
+		managed by snapper for use by Samba. This provides the ability
+		for remote SMB clients to access shadow-copies via Windows
+		Explorer using the "previous versions" dialog.
+	</p><p>
+		Snapshots can also be created and remove remotely, using the
+		File Server Remote VSS Protocol (FSRVP). Snapshot creation and
+		deletion requests are forwarded to snapper via DBus.
+	</p><p>
+		This module is stackable.
+	</p></div><div class="refsect1"><a name="id1338"></a><h2>CONFIGURATION</h2><p>
+		The underlying share path must have a corresponding snapper
+		configuration file. The snapshot directory tree must allow
+		access for relevant users.
+	</p><pre class="programlisting">
+		<em class="parameter"><code>[share]</code></em>
+		<a class="link" href="smb.conf.5.html#VFSOBJECTS" target="_top">vfs objects = snapper</a>
+</pre><p>
+		For remote snapshot creation and deletion, Samba's FSRVP
+		server must be configured in the [global] section:
+	</p><pre class="programlisting">
+		<em class="parameter"><code>[global]</code></em>
+		<a class="link" href="smb.conf.5.html#REGISTRYSHARES" target="_top">registry shares = yes</a>
+		<a class="link" href="smb.conf.5.html#INCLUDE" target="_top">include = registry</a>
+</pre></div><div class="refsect1"><a name="id1339"></a><h2>PERMISSIONS</h2><p>
+		Snapper stores snapshots under a .snapshots subdirectory. This
+		directory must permit traversal for any users wishing to access
+		snapshots via the Windows Explorer previous versions dialog.
+		By default, traversal is forbidden for all non-root users.
+		Additionally, users must be granted permission to list snapshots
+		managed by snapper, via snapper's ALLOW_USERS or ALLOW_GROUPS
+		options. Snapper can grant these users and groups .snapshots
+		traversal access automatically via the SYNC_ACL option.
+	</p><p>
+		Remote snapshot creation and deletion is only permitted by Samba
+		for Active Directory administrators, backup operators, or users
+		explicitly granted SeBackupPrivilege. Snapper must also permit
+		creation and deletion for the appropriate user, via snapper's
+		ALLOW_USERS or ALLOW_GROUPS options.
+	</p><p>
+		The DiskShadow.exe FSRVP client initially authenticates as the
+		Active Directory computer account. This account must therefore
+		be granted the same permissions as the user account issuing the
+		snapshot creation and deletion requests.
+	</p></div><div class="refsect1"><a name="id1340"></a><h2>VERSION</h2><p>
+		This man page is part of version 4.25.0 of the Samba suite.
+	</p></div><div class="refsect1"><a name="id1341"></a><h2>AUTHOR</h2><p>The original Samba software and related utilities
+	were created by Andrew Tridgell. Samba is now developed
+	by the Samba Team as an Open Source project similar
+	to the way the Linux kernel is developed.</p></div></div></body></html>

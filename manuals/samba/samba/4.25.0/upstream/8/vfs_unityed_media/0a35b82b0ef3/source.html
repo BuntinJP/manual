@@ -1,0 +1,30 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>vfs_unityed_media</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="vfs_media_harmony.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>vfs_unityed_media &#8212; Allow multiple Avid clients to share a network drive.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="literal">vfs objects = unityed_media</code></p></div></div><div class="refsect1"><a name="id1337"></a><h2>DESCRIPTION</h2><p>This VFS module is part of the
+	<a class="citerefentry" href="samba.7.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(7)</span></a> suite.</p><p>Unityed Media is related with Media Harmony VFS, the
+	main difference between Unityed Media and Media Harmony is
+	that Unityed Media doesn't need manual refreshing of media
+	directories. Unityed Media handles your media files in a similar
+	way to the way Unity, ISIS, EditShare or another dedicated solution
+	does. Without client-side application and on hardware of your
+	choice.</p><p>This module is stackable.</p></div><div class="refsect1"><a name="id1338"></a><h2>CONFIGURATION</h2><p>If Mac and Windows Avid clients will be accessing the same
+	folder, they should be given separate share definitions, with
+	hidden Mac files vetoed on the Windows share.  See EXAMPLES.</p></div><div class="refsect1"><a name="id1339"></a><h2>OPTIONS</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term">unityed_media:clientid = user | hostname | ip </span></dt><dd><p>Controls what client related identifier is
+	      appended to user specific paths:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">user (default)</code> -
+		use the username.  </p></li><li class="listitem"><p><code class="literal">hostname</code> - use the
+		hostname. Note this will not work with OS X clients as
+		these always send a generic string ("workstation") to
+		the server..</p></li><li class="listitem"><p><code class="literal">ip</code> - use the
+		client's IP address.  NOTE: this is untested and may
+		not work at all.</p></li></ul></div></dd></dl></div></div><div class="refsect1"><a name="id1340"></a><h2>EXAMPLES</h2><p>Enable unityed_media for Mac and Windows clients:</p><pre class="programlisting">
+        <em class="parameter"><code>[avid_mac]</code></em>
+	<a class="link" href="smb.conf.5.html#PATH" target="_top">path = /avid</a>
+	<a class="link" href="smb.conf.5.html#VFSOBJECTS" target="_top">vfs objects = unityed_media</a>
+        <em class="parameter"><code>[avid_win]</code></em>
+	<a class="link" href="smb.conf.5.html#PATH" target="_top">path = /avid</a>
+	<a class="link" href="smb.conf.5.html#VFSOBJECTS" target="_top">vfs objects = unityed_media</a>
+	<a class="link" href="smb.conf.5.html#VETOFILES" target="_top">veto files = /.DS_Store/._@/.Trash@/.Spotlight@/.hidden/.hotfiles@/.vol/</a>
+	<a class="link" href="smb.conf.5.html#DELETEVETOFILES" target="_top">delete veto files = yes</a>
+</pre></div><div class="refsect1"><a name="id1341"></a><h2>VERSION</h2><p>This man page is part of version 4.25.0 of the Samba suite.
+	</p></div><div class="refsect1"><a name="id1342"></a><h2>AUTHOR</h2><p>The original Samba software and related utilities
+	were created by Andrew Tridgell. Samba is now developed
+	by the Samba Team as an Open Source project similar
+	to the way the Linux kernel is developed.</p></div></div></body></html>

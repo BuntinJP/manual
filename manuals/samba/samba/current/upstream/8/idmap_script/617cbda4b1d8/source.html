@@ -1,0 +1,91 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>idmap_script</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="idmap_script.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>idmap_script &#8212; Samba's idmap_script Backend for Winbind</p></div><div class="refsynopsisdiv"><h2>DESCRIPTION</h2><p>
+	The idmap_script plugin is a substitute for the idmap_tdb2
+	backend used by winbindd for storing SID/uid/gid mapping tables
+	in clustered environments with Samba and CTDB. It is a read only
+	backend that uses a script to perform mapping.
+	</p><p>
+	It was developed out of the idmap_tdb2 back end and does not store
+	SID/uid/gid mappings in a TDB, since the winbind_cache tdb will
+	store the mappings once they are provided.
+	</p></div><div class="refsect1"><a name="id1337"></a><h2>IDMAP OPTIONS</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term">range = low - high</span></dt><dd><p>
+			Defines the available matching uid and gid range for which the
+			backend is authoritative.
+		</p></dd><dt><span class="term">script</span></dt><dd><p>
+			This option can be used to configure an external program
+			for performing id mappings.
+		</p></dd></dl></div></div><div class="refsect1"><a name="id1338"></a><h2>IDMAP SCRIPT</h2><p>
+	The script idmap backend supports an external program for performing id mappings
+	through the <code class="filename">${prefix}/etc/smb.conf</code> option <em class="parameter"><code>idmap config * : script</code></em> or
+	its deprecated legacy form <em class="parameter"><code>idmap : script</code></em>.
+	</p><p>
+	The script should accept the following command line options.
+	</p><pre class="programlisting">
+	SIDTOID S-1-xxxx
+	IDTOSID UID xxxx
+	IDTOSID GID xxxx
+	IDTOSID XID xxxx
+</pre><p>
+	And it should return one of the following responses as a single line of
+	text.
+	</p><pre class="programlisting">
+	UID:yyyy
+	GID:yyyy
+	XID:yyyy
+	SID:ssss
+	ERR:yyyy
+</pre><p>
+	XID indicates that the ID returned should be both a UID and a GID.
+	That is, it requests an ID_TYPE_BOTH, but it is ultimately up to
+	the script whether or not it can honor that request. It can choose
+	to return a UID or a GID mapping only.
+	</p></div><div class="refsect1"><a name="id1339"></a><h2>EXAMPLES</h2><p>
+	This example shows how script is used as the default idmap backend
+	using an external program via the script parameter:
+	</p><pre class="programlisting">
+	[global]
+	idmap config * : backend = script
+	idmap config * : range = 1000000-2000000
+	idmap config * : script = /usr/local/samba/bin/idmap_script.sh
+</pre><p>
+	This shows a simple script to partially perform the task:
+	</p><pre class="programlisting">
+	#!/bin/sh
+	#
+	# Uncomment this if you want some logging
+	#echo $@ &gt;&gt; /tmp/idmap.sh.log
+	if [ "$1" == "SIDTOID" ]
+	then
+		# Note. The number returned has to be within the range defined
+		#echo "Sending UID:1000005" &gt;&gt; /tmp/idmap.sh.log
+		echo "UID:1000005"
+		exit 0
+	else
+		#echo "Sending ERR: No idea what to do" &gt;&gt; /tmp/idmap.sh.log
+		echo "ERR: No idea what to do"
+		exit 1
+	fi
+</pre><p>
+	Clearly, this script is not enough, as it should probably use wbinfo
+	to determine if an incoming SID is a user or group SID and then
+	look up the mapping in a table or use some other mechanism for
+	mapping SIDs to UIDs and etc.
+	</p><p>
+	  Please be aware that the script is called with the
+	  _NO_WINBINDD environment variable set to 1. This prevents
+	  recursive calls into winbind from the script both via
+	  explicit calls to wbinfo and via implicit calls via
+	  nss_winbind. For example a call to <code class="literal">ls -l</code>
+	  could trigger such an infinite recursion.
+	</p><p>
+	  It is safe to call <code class="literal">wbinfo -n</code> and
+	  <code class="literal">wbinfo -s</code> from within an idmap script. To
+	  do so, the script must unset the _NO_WINBINDD environment
+	  variable right before the call to <code class="literal">wbinfo</code>
+	  and set it to 1 again right after <code class="literal">wbinfo</code>
+	  has returned to protect against the recursion.
+	</p></div><div class="refsect1"><a name="id1340"></a><h2>AUTHOR</h2><p>
+	The original Samba software and related utilities
+	were created by Andrew Tridgell. Samba is now developed
+	by the Samba Team as an Open Source project similar
+	to the way the Linux kernel is developed.
+	</p></div></div></body></html>

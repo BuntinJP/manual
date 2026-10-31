@@ -1,0 +1,69 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>vfs_ceph</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="vfs_ceph.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>vfs_ceph &#8212; 
+		Utilize features provided by CephFS
+	</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="literal">vfs objects = ceph</code></p></div></div><div class="refsect1"><a name="id1337"></a><h2>DESCRIPTION</h2><p>This VFS module is part of the
+	<a class="citerefentry" href="samba.8.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(8)</span></a> suite.</p><p>
+		The <code class="literal">vfs_ceph</code> VFS module exposes
+		CephFS specific features for use by Samba.
+	</p><p>
+		Ceph is a distributed network file system designed to provide
+		excellent performance, reliability, and scalability. This is a
+		shared library allowing applications to access a Ceph
+		distributed file system via a POSIX-like interface.
+	</p><p>
+		This module can be combined with other modules, but it
+		should be the last module in the <code class="literal">vfs objects</code>
+		list. Modules added to this list to the right of the ceph
+		entry may not have any effect at all.
+	</p><p>
+		<code class="literal">vfs_ceph</code> performs mapping between Windows and
+		POSIX Access Control Lists (ACLs). To ensure correct processing
+		and enforcement of POSIX ACLs, the following Ceph configuration
+		parameters are automatically applied:
+	</p><pre class="programlisting">
+		<code class="literal">client acl type = posix_acl</code>
+		<code class="literal">fuse default permissions = false</code>
+</pre></div><div class="refsect1"><a name="id1338"></a><h2>CONFIGURATION</h2><p>
+		<code class="literal">vfs_ceph</code> requires that the underlying share
+		path is a Ceph filesystem.
+	</p><pre class="programlisting">
+		<em class="parameter"><code>[share]</code></em>
+		<a class="link" href="smb.conf.5.html#VFSOBJECTS" target="_top">vfs objects = ceph</a>
+		<a class="link" href="smb.conf.5.html#PATH" target="_top">path = /non-mounted/cephfs/path</a>
+		<a class="link" href="smb.conf.5.html#KERNELSHAREMODES" target="_top">kernel share modes = no</a>
+</pre><p>
+		Since <code class="literal">vfs_ceph</code> does not require a filesystem
+		mount, the share <code class="literal">path</code> is treated differently:
+		it is interpreted as an absolute path within the Ceph filesystem
+		on the attached Ceph cluster.
+		In a ctdb cluster environment where ctdb manages Samba,
+		<code class="literal">CTDB_SAMBA_SKIP_SHARE_CHECK=yes</code> must be
+		configured to disable local share path checks, otherwise ctdb
+		will not reach a healthy state.
+	</p><p>
+		Note that currently <code class="literal">kernel share modes</code> have
+		to be disabled in a share running with the CephFS vfs module for
+		file serving to work properly.
+	</p></div><div class="refsect1"><a name="id1339"></a><h2>OPTIONS</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term">ceph:config_file = path</span></dt><dd><p>
+			Allows one to define a ceph configfile to use. Empty by default.
+		</p><p>
+			Example: ceph:config_file =
+			/etc/ceph/ceph.conf
+		</p></dd><dt><span class="term">ceph:user_id = name</span></dt><dd><p>
+			Allows one to explicitly set the client ID used for the
+			CephFS mount handle. Empty by default (use the libcephfs
+			client default).
+		</p><p>
+			Example: ceph:user_id = samba
+		</p></dd><dt><span class="term">ceph:filesystem = fs_name</span></dt><dd><p>
+			Allows one to explicitly select the CephFS file system
+			to use when the Ceph cluster supports more than one
+			file system. Empty by default (use the default file system
+			of the Ceph cluster).
+		</p><p>
+			Example: ceph:filesystem = myfs2
+		</p></dd></dl></div></div><div class="refsect1"><a name="id1340"></a><h2>VERSION</h2><p>
+		This man page is part of version 4.25.0 of the Samba suite.
+	</p></div><div class="refsect1"><a name="id1341"></a><h2>AUTHOR</h2><p>The original Samba software and related utilities
+	were created by Andrew Tridgell. Samba is now developed
+	by the Samba Team as an Open Source project similar
+	to the way the Linux kernel is developed.</p></div></div></body></html>

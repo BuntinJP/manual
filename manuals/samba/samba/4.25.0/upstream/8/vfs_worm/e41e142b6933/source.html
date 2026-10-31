@@ -1,0 +1,19 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>vfs_worm</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="vfs_worm.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>vfs_worm &#8212; disallows writes for older file</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="literal">vfs objects = worm</code></p></div></div><div class="refsect1"><a name="id1337"></a><h2>DESCRIPTION</h2><p>This VFS module is part of the
+	<a class="citerefentry" href="samba.7.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(7)</span></a> suite.</p><p>The <code class="literal">vfs_worm</code> module controls the writability
+	of files and folders depending on their change time and a
+	adjustable grace period.</p><p>If the change time of a file or directory is older than
+	the specified grace period, the write access will be denied,
+	independent of further access controls (e.g. by the filesystem).</p><p>In the case that the grace period is not exceed, the worm
+	module will not impact any access controls.</p></div><div class="refsect1"><a name="id1338"></a><h2>OPTIONS</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term">worm:grace_period = SECONDS</span></dt><dd><p>Period in seconds which defines the time how long the
+		write access should be handled by the normal access controls.
+		After this grace period the file or directory becomes read
+		only.</p></dd></dl></div></div><div class="refsect1"><a name="id1339"></a><h2>EXAMPLES</h2><p>Deny the write access to files and folders, which are older
+	than five minutes (300 seconds):</p><pre class="programlisting">
+	<em class="parameter"><code>[wormshare]</code></em>
+	<a class="link" href="smb.conf.5.html#VFSOBJECTS" target="_top">vfs objects = worm</a>
+	<a class="link" href="smb.conf.5.html#WORM:GRACE_PERIOD" target="_top">worm:grace_period = 300</a>
+</pre></div><div class="refsect1"><a name="id1340"></a><h2>VERSION</h2><p>This man page is part of version 4.25.0 of the Samba suite.
+	</p></div><div class="refsect1"><a name="id1341"></a><h2>AUTHOR</h2><p>The original Samba software and related utilities
+	were created by Andrew Tridgell. Samba is now developed
+	by the Samba Team as an Open Source project similar
+	to the way the Linux kernel is developed.</p></div></div></body></html>

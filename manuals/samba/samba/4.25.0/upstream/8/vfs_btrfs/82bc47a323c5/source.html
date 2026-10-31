@@ -1,0 +1,59 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>vfs_btrfs</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="vfs_btrfs.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>vfs_btrfs &#8212; 
+		Utilize features provided by the Btrfs filesystem
+	</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="literal">vfs objects = btrfs</code></p></div></div><div class="refsect1"><a name="id1337"></a><h2>DESCRIPTION</h2><p>This VFS module is part of the
+	<a class="citerefentry" href="samba.8.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(8)</span></a> suite.</p><p>
+		The <code class="literal">vfs_btrfs</code> VFS module exposes Btrfs
+		specific features for use by Samba.
+	</p><p>
+		Btrfs allows for multiple files to share the same on-disk data
+		through the use cloned ranges. When an SMB client issues a
+		request to copy duplicate data (via FSCTL_SRV_COPYCHUNK), this
+		module maps the request to a Btrfs clone range IOCTL, instead
+		of performing reads and writes required by a traditional copy.
+		Doing so saves storage capacity and greatly reduces disk IO.
+	</p><p>
+		This module also exposes Btrfs per-file compression support to
+		SMB clients via the get/set compression fsctls.
+	</p><p>
+		Btrfs snapshots can be manipulated by Samba's FSRVP server.
+		Snapshot manipulation using this module is currently considered
+		experimental, and is therefore disabled by default. The
+		<code class="literal">vfs_snapper</code> module is instead recommended for
+		this purpose.
+	</p><p>
+		This module is stackable.
+	</p></div><div class="refsect1"><a name="id1338"></a><h2>OPTIONS</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term">btrfs: manipulate snapshots = [yes|no]</span></dt><dd><p>
+		When set to <span class="emphasis"><em>yes</em></span>, experimental support for
+		the creation and deletion of snapshots via corresponding Btrfs
+		IOCTLs will be enabled. The default is <span class="emphasis"><em>no</em></span>,
+		which means that such requests are passed through to any
+		underlying VFS module.
+		</p></dd></dl></div></div><div class="refsect1"><a name="id1339"></a><h2>CONFIGURATION</h2><p>
+		<code class="literal">vfs_btrfs</code> requires that the underlying share
+		path is a Btrfs subvolume.
+	</p><pre class="programlisting">
+		<em class="parameter"><code>[share]</code></em>
+		<a class="link" href="smb.conf.5.html#VFSOBJECTS" target="_top">vfs objects = btrfs</a>
+		<a class="link" href="smb.conf.5.html#BTRFS:MANIPULATESNAPSHOTS" target="_top">btrfs: manipulate snapshots = no</a>
+</pre><p>
+		To use the experimental snapshot manipulation functionality
+		provided by this module, it must be explicitly enabled, and
+		Samba's FSRVP server must be running.
+	</p><p>
+		The <code class="literal">vfs_shadow_copy</code> module can be used to
+		expose snapshots created by <code class="literal">vfs_btrfs</code> to
+		Windows Explorer as file / directory "previous versions".
+	</p><pre class="programlisting">
+		<em class="parameter"><code>[global]</code></em>
+		<a class="link" href="smb.conf.5.html#REGISTRYSHARES" target="_top">registry shares = yes</a>
+		<a class="link" href="smb.conf.5.html#INCLUDE" target="_top">include = registry</a>
+
+		<em class="parameter"><code>[share]</code></em>
+		<a class="link" href="smb.conf.5.html#VFSOBJECTS" target="_top">vfs objects = btrfs shadow_copy</a>
+		<a class="link" href="smb.conf.5.html#BTRFS:MANIPULATESNAPSHOTS" target="_top">btrfs: manipulate snapshots = yes</a>
+</pre></div><div class="refsect1"><a name="id1340"></a><h2>VERSION</h2><p>
+		This man page is part of version 4.25.0 of the Samba suite.
+	</p></div><div class="refsect1"><a name="id1341"></a><h2>AUTHOR</h2><p>The original Samba software and related utilities
+	were created by Andrew Tridgell. Samba is now developed
+	by the Samba Team as an Open Source project similar
+	to the way the Linux kernel is developed.</p></div></div></body></html>

@@ -1,0 +1,45 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>samba-log-parser</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="samba-log-parser.1"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>samba-log-parser &#8212; Samba (winbind) trace parser.</p></div>
+options:
+  -h, --help     show this help message and exit
+  --traceid ID   specify the traceid of the trace records
+  --pid PID      specify the pid of winbind client
+  --breakdown    breakdown the traces into per traceid files
+  --merge-by-timestamp   merge logs by timestamp
+  --flow         show the request/sub-request flow traces
+  --flow-compact show the request/sub-request flow traces without dcerpc details
+
+<div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="literal">samba-log-parser</code> {path} [--pid=PID] [--traceid=ID] [--breakdown] [--merge-by-timestamp] [--flow] [--flow-compact] [-h|--help]</p></div></div><div class="refsect1"><a name="id1337"></a><h2>DESCRIPTION</h2><p>This tool is part of the <a class="citerefentry" href="samba.7.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(7)</span></a> suite.</p><p>The <code class="literal">samba-log-parser</code> program parses samba winbind
+	logs.</p></div><div class="refsect1"><a name="id1338"></a><h2>OPTIONS</h2><p>The following options are available to the <code class="literal">samba-log-parser</code> program.
+	</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--pid=PID</span></dt><dd><p>Display traces for winbind client with the matching PID.
+		</p></dd><dt><span class="term">--traceid=ID</span></dt><dd><p>Display traces with matching traceid debug header field.
+		</p></dd><dt><span class="term">--breakdown</span></dt><dd><p>Break down all traces to separate files in the current
+		working directory. For each traceid, three files are created:
+		traceid.full
+		traceid.flow
+		traceid.flowcompact
+		</p></dd><dt><span class="term">--merge-by-timestamp</span></dt><dd><p>Sort the trace lines according to the timestamp.
+		Works with log files without traceid header field as well.
+		</p></dd><dt><span class="term">--flow</span></dt><dd><p>Display the request/sub-request flow.
+		</p></dd><dt><span class="term">--flow-compact</span></dt><dd><p>Display the request/sub-request flow without dcerpc
+		call details.
+		</p></dd></dl></div></div><div class="refsect1"><a name="id1339"></a><h2>EXAMPLES</h2><p>Show the flow traces for trace id
+	<em class="parameter"><code>1234</code></em> from log file log.winbind:
+	</p><pre class="programlisting">
+	# samba-log-parser --traceid 1234 --flow /var/log/samba/log.winbind
+</pre><p>Show the full traces for winbind client with PID
+	<em class="parameter"><code>999999</code></em>
+	sorted using the timestamp for log files found in the samba log directory:
+	</p><pre class="programlisting">
+	# samba-log-parser --pid 999999 --merge-by-timestamp /var/log/samba
+</pre><p>Break down the traces into separate files according to traceid sorted
+	using the timestamp for log files found in the samba log directory:
+	</p><pre class="programlisting">
+	# samba-log-parser --breakdown --merge-by-timestamp /var/log/samba
+</pre><p>Sort traces using the timestamp for log files found in the samba log
+	directory. Traces do not need to contain the traceid header field.
+	</p><pre class="programlisting">
+	# samba-log-parser --merge-by-timestamp /var/log/samba
+</pre></div><div class="refsect1"><a name="id1340"></a><h2>VERSION</h2><p>This man page is part of version 4.25.0 of the Samba suite.</p></div><div class="refsect1"><a name="id1341"></a><h2>AUTHOR</h2><p>The original Samba software and related utilities
+	were created by Andrew Tridgell. Samba is now developed
+	by the Samba Team as an Open Source project similar
+	to the way the Linux kernel is developed.</p></div></div></body></html>

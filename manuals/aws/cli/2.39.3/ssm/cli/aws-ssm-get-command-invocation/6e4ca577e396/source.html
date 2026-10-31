@@ -1,0 +1,520 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Use the AWS CLI 2.39.3 to run the ssm get-command-invocation command." name="description" />
+
+  
+    <title>get-command-invocation &#8212; AWS CLI 2.39.3 Command Reference</title>
+  <link rel="stylesheet" type="text/css" href="../../_static/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../_static/override.css" />
+  <script src="/SdkStatic/sdk-priv.js" async="true"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/guzzle.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="get-connection-status" href="get-connection-status.html" />
+    <link rel="prev" title="get-cloud-connector" href="get-cloud-connector.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-responsive.min.css" />
+  
+   
+
+<link rel="alternate" type="text/markdown" href="get-command-invocation.md" title="Markdown version" />
+  </head><body>
+  <div class="navbar navbar-fixed-top ">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="../../index.html">AWS CLI Command Reference</a>
+        <ul class="nav">
+<li><a class="nav-link" href="../../index.html">Home</a></li>
+<li><a class="nav-link" href="https://docs.aws.amazon.com/cli/latest/userguide/">User Guide</a></li>
+<li><a class="nav-link" href="https://forums.aws.amazon.com/forum.jspa?forumID=150">Forum</a></li>
+<li><a class="nav-link" href="https://github.com/aws/aws-cli">GitHub</a></li>
+        </ul>
+        <div class="pull-right" id="github-stars">
+          <iframe src="https://ghbtns.com/github-btn.html?user=aws&repo=aws-cli&type=watch&count=true&size=small"
+                  allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"  sandbox="allow-scripts"
+                  title="GitHub button showing the number of project stars."></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--REGION_DISCLAIMER_DO_NOT_REMOVE-->
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="get-connection-status.html" title="get-connection-status"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="get-cloud-connector.html" title="get-cloud-connector"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">AWS CLI 2.39.3 Command Reference</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >aws</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">ssm</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">get-command-invocation</a></li> 
+      </ul>
+    </div>
+    <div class="container">
+        
+    <div class="top-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="get-cloud-connector.html" title="previous chapter (use the left arrow)">&larr; get-cloud-connector</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="get-connection-status.html" title="next chapter (use the right arrow)">get-connection-status &rarr;</a></li>
+      </ul>
+    </div>
+  
+        <div class="document clearer">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo left-bar-other">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/logo.png" alt="Amazon Web Services logo" height="63" />
+  </a>
+</p>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">get-command-invocation</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
+<li><a class="reference internal" href="#options">Options</a></li>
+<li><a class="reference internal" href="#global-options">Global Options</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#output">Output</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+<div id="searchbox" style="display: none">
+    <h3>Quick search</h3>
+    <form class="form-search margin-top-1em" action="../../search.html" method="get">
+        <label for="searchbox">Search box</label>
+        <input id="searchbox" type="search" name="q" style="width: 105px" class="input-small search-query" autocomplete="off" />
+        <button type="submit" class="btn btn-small">Search</button>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script src="../../_static/searchbox.js"></script><div class="left-bar-other">
+  <h3>Feedback</h3>
+  <p class="feedback">Did you find this page useful? Do you have a suggestion to improve the documentation? <a href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=AWS%20Command%20Line%20Interface&hidden_guide_name=Reference&topic_url=https%3A%2F%2Fdocs.aws.amazon.com%2Fcli%2Flatest%2Freference/ssm/get-command-invocation.html">Give us feedback</a>.
+    <br />
+    If you would like to suggest an improvement or fix for the AWS CLI, check out our <a href="https://github.com/aws/aws-cli/blob/v2/CONTRIBUTING.rst">contributing guide</a> on GitHub.</p>
+</div><div class="left-bar-other">
+  <h3>User Guide</h3>
+  <p>First time using the AWS CLI? See the
+  <a href="https://docs.aws.amazon.com/cli/latest/userguide/">User Guide</a> for
+  help getting started.</p>
+</div>
+        </div>
+      </div>
+            <div class="body">
+              
+  <p>[ <a class="reference internal" href="../index.html#cli-aws"><span class="std std-ref">aws</span></a> . <a class="reference internal" href="index.html#cli-aws-ssm"><span class="std std-ref">ssm</span></a> ]</p>
+<div class="section" id="get-command-invocation">
+<span id="cli-aws-ssm-get-command-invocation"></span><h1>get-command-invocation<a class="headerlink" href="#get-command-invocation" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
+<p>Returns detailed information about command execution for an invocation or plugin. The Run Command API follows an eventual consistency model, due to the distributed nature of the system supporting the API. This means that the result of an API command you run that affects your resources might not be immediately visible to all subsequent commands you run. You should keep this in mind when you carry out an API command that immediately follows a previous API command.</p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">GetCommandInvocation</span></code> only gives the execution status of a plugin in a document. To get the command execution status on a specific managed node, use  ListCommandInvocations . To get the command execution status across managed nodes, use  ListCommands .</div></blockquote>
+<p>See also: <a class="reference external" href="https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetCommandInvocation">AWS API Documentation</a></p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">get</span><span class="o">-</span><span class="n">command</span><span class="o">-</span><span class="n">invocation</span>
+<span class="o">--</span><span class="n">command</span><span class="o">-</span><span class="nb">id</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
+<span class="o">--</span><span class="n">instance</span><span class="o">-</span><span class="nb">id</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
+<span class="p">[</span><span class="o">--</span><span class="n">plugin</span><span class="o">-</span><span class="n">name</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="n">json</span> <span class="o">|</span> <span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="n">yaml</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">generate</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">skeleton</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">debug</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">verify</span><span class="o">-</span><span class="n">ssl</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">paginate</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">output</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">query</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">profile</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">region</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">version</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">color</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">sign</span><span class="o">-</span><span class="n">request</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">ca</span><span class="o">-</span><span class="n">bundle</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">read</span><span class="o">-</span><span class="n">timeout</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">connect</span><span class="o">-</span><span class="n">timeout</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">binary</span><span class="o">-</span><span class="nb">format</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">pager</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">auto</span><span class="o">-</span><span class="n">prompt</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">auto</span><span class="o">-</span><span class="n">prompt</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">error</span><span class="o">-</span><span class="nb">format</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">--command-id</span></code> (string) [required]</p>
+<blockquote>
+<div><p>(Required) The parent command ID of the invocation plugin.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">36</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">36</span></code></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--instance-id</span></code> (string) [required]</p>
+<blockquote>
+<div><p>(Required) The ID of the managed node targeted by the command. A <em>managed node</em> can be an Amazon Elastic Compute Cloud (Amazon EC2) instance, edge device, and on-premises server or VM in your hybrid environment that is configured for Amazon Web Services Systems Manager.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">(^i-(\w{8}|\w{17})$)|(^mi-\w{17}$)</span></code></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--plugin-name</span></code> (string)</p>
+<blockquote>
+<div><p>The name of the step for which you want detailed results. If the document contains only one step, you can omit the name and details for that step. If the document contains more than one step, you must specify the name of the step for which you want to view details. Be sure to specify the name of the step, not the name of a plugin like <code class="docutils literal notranslate"><span class="pre">aws:RunShellScript</span></code> .</p>
+<p>To find the <code class="docutils literal notranslate"><span class="pre">PluginName</span></code> , check the document content and find the name of the step you want details for. Alternatively, use  ListCommandInvocations with the <code class="docutils literal notranslate"><span class="pre">CommandId</span></code> and <code class="docutils literal notranslate"><span class="pre">Details</span></code> parameters. The <code class="docutils literal notranslate"><span class="pre">PluginName</span></code> is the <code class="docutils literal notranslate"><span class="pre">Name</span></code> attribute of the <code class="docutils literal notranslate"><span class="pre">CommandPlugin</span></code> object in the <code class="docutils literal notranslate"><span class="pre">CommandPlugins</span></code> list.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">4</span></code></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-input-json</span></code> | <code class="docutils literal notranslate"><span class="pre">--cli-input-yaml</span></code> (string)
+Reads arguments from the JSON string provided. The JSON string follows the format provided by <code class="docutils literal notranslate"><span class="pre">--generate-cli-skeleton</span></code>. If other arguments are provided on the command line, those values will override the JSON-provided values. It is not possible to pass arbitrary binary values using a JSON-provided value as the string will be taken literally. This may not be specified along with <code class="docutils literal notranslate"><span class="pre">--cli-input-yaml</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--generate-cli-skeleton</span></code> (string)
+Prints a JSON skeleton to standard output without sending an API request. If provided with no value or the value <code class="docutils literal notranslate"><span class="pre">input</span></code>, prints a sample input JSON that can be used as an argument for <code class="docutils literal notranslate"><span class="pre">--cli-input-json</span></code>. Similarly, if provided <code class="docutils literal notranslate"><span class="pre">yaml-input</span></code> it will print a sample input YAML that can be used with <code class="docutils literal notranslate"><span class="pre">--cli-input-yaml</span></code>. If provided with the value <code class="docutils literal notranslate"><span class="pre">output</span></code>, it validates the command inputs and returns a sample output JSON for that command. The generated JSON skeleton is not stable between versions of the AWS CLI and there are no backwards compatibility guarantees in the JSON skeleton generated.</p>
+</div>
+<div class="section" id="global-options">
+<h2>Global Options<a class="headerlink" href="#global-options" title="Permalink to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">--debug</span></code> (boolean)</p>
+<p>Turn on debug logging.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--endpoint-url</span></code> (string)</p>
+<p>Override command’s default URL with the given URL.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--no-verify-ssl</span></code> (boolean)</p>
+<p>By default, the AWS CLI uses SSL when communicating with AWS services. For each SSL connection, the AWS CLI will verify SSL certificates. This option overrides the default behavior of verifying SSL certificates.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--no-paginate</span></code> (boolean)</p>
+<p>Disable automatic pagination. If automatic pagination is disabled, the AWS CLI will only make one call, for the first page of results.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--output</span></code> (string)</p>
+<p>The formatting style for command output.</p>
+<ul class="simple">
+<li>json</li>
+<li>text</li>
+<li>table</li>
+<li>yaml</li>
+<li>yaml-stream</li>
+<li>off</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">--query</span></code> (string)</p>
+<p>A JMESPath query to use in filtering the response data.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--profile</span></code> (string)</p>
+<p>Use a specific profile from your credential file.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--region</span></code> (string)</p>
+<p>The region to use. Overrides config/env settings.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--version</span></code> (string)</p>
+<p>Display the version of this tool.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--color</span></code> (string)</p>
+<p>Turn on/off color output.</p>
+<ul class="simple">
+<li>on</li>
+<li>off</li>
+<li>auto</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">--no-sign-request</span></code> (boolean)</p>
+<p>Do not sign requests. Credentials will not be loaded if this argument is provided.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--ca-bundle</span></code> (string)</p>
+<p>The CA certificate bundle to use when verifying SSL certificates. Overrides config/env settings.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-read-timeout</span></code> (int)</p>
+<p>The maximum socket read time in seconds. If the value is set to 0, the socket read will be blocking and not timeout. The default value is 60 seconds.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-connect-timeout</span></code> (int)</p>
+<p>The maximum socket connect time in seconds. If the value is set to 0, the socket connect will be blocking and not timeout. The default value is 60 seconds.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-binary-format</span></code> (string)</p>
+<p>The formatting style to be used for binary blobs. The default format is base64. The base64 format expects binary blobs to be provided as a base64 encoded string. The raw-in-base64-out format preserves compatibility with AWS CLI V1 behavior and binary values must be passed literally. When providing contents from a file that map to a binary blob <code class="docutils literal notranslate"><span class="pre">fileb://</span></code> will always be treated as binary and use the file contents directly regardless of the <code class="docutils literal notranslate"><span class="pre">cli-binary-format</span></code> setting. When using <code class="docutils literal notranslate"><span class="pre">file://</span></code> the file contents will need to properly formatted for the configured <code class="docutils literal notranslate"><span class="pre">cli-binary-format</span></code>.</p>
+<ul class="simple">
+<li>base64</li>
+<li>raw-in-base64-out</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">--no-cli-pager</span></code> (boolean)</p>
+<p>Disable cli pager for output.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-auto-prompt</span></code> (boolean)</p>
+<p>Automatically prompt for CLI input parameters.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--no-cli-auto-prompt</span></code> (boolean)</p>
+<p>Disable automatically prompt for CLI input parameters.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-error-format</span></code> (string)</p>
+<p>The formatting style for error output. By default, errors are displayed in enhanced format.</p>
+<ul class="simple">
+<li>legacy</li>
+<li>json</li>
+<li>yaml</li>
+<li>text</li>
+<li>table</li>
+<li>enhanced</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<div class="admonition note">
+<h3 class='admonition-title'>Note</h3><p class="first">To use the following examples, you must have the AWS CLI installed and configured. See the <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html">Getting started guide</a> in the <em>AWS CLI User Guide</em> for more information.</p>
+<p class="last">Unless otherwise stated, all examples have unix-like quotation rules. These examples will need to be adapted to your terminal’s quoting rules. See <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-quoting-strings.html">Using quotation marks with strings</a> in the <em>AWS CLI User Guide</em> .</p>
+</div>
+<p><strong>To display the details of a command invocation</strong></p>
+<p>The following <code class="docutils literal notranslate"><span class="pre">get-command-invocation</span></code> example lists all the invocations of the specified command on the specified instance.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aws</span> <span class="n">ssm</span> <span class="n">get</span><span class="o">-</span><span class="n">command</span><span class="o">-</span><span class="n">invocation</span> \
+    <span class="o">--</span><span class="n">command</span><span class="o">-</span><span class="nb">id</span> <span class="s2">&quot;a1b2c3d4-5678-90ab-cdef-EXAMPLE11111&quot;</span> \
+    <span class="o">--</span><span class="n">instance</span><span class="o">-</span><span class="nb">id</span> <span class="s2">&quot;i-1234567890abcdef0&quot;</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;CommandId&quot;</span><span class="p">:</span> <span class="s2">&quot;a1b2c3d4-5678-90ab-cdef-EXAMPLE11111&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;InstanceId&quot;</span><span class="p">:</span> <span class="s2">&quot;i-1234567890abcdef0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Comment&quot;</span><span class="p">:</span> <span class="s2">&quot;a1b2c3d4-5678-90ab-cdef-EXAMPLE22222:a1b2c3d4-5678-90ab-cdef-EXAMPLE33333&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;DocumentName&quot;</span><span class="p">:</span> <span class="s2">&quot;AWS-UpdateSSMAgent&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;DocumentVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;PluginName&quot;</span><span class="p">:</span> <span class="s2">&quot;aws:updateSsmAgent&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ResponseCode&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;ExecutionStartDateTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-02-19T18:18:03.419Z&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ExecutionElapsedTime&quot;</span><span class="p">:</span> <span class="s2">&quot;PT0.091S&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ExecutionEndDateTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-02-19T18:18:03.419Z&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Status&quot;</span><span class="p">:</span> <span class="s2">&quot;Success&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;StatusDetails&quot;</span><span class="p">:</span> <span class="s2">&quot;Success&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;StandardOutputContent&quot;</span><span class="p">:</span> <span class="s2">&quot;Updating amazon-ssm-agent from 2.3.842.0 to latest</span><span class="se">\n</span><span class="s2">Successfully downloaded https://s3.us-west-2.amazonaws.com/amazon-ssm-us-east-2/ssm-agent-manifest.json</span><span class="se">\n</span><span class="s2">amazon-ssm-agent 2.3.842.0 has already been installed, update skipped</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;StandardOutputUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;StandardErrorContent&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;StandardErrorUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;CloudWatchOutputConfig&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;CloudWatchLogGroupName&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CloudWatchOutputEnabled&quot;</span><span class="p">:</span> <span class="n">false</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For more information, see <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-commands.html">Understanding Command Statuses</a> in the <em>AWS Systems Manager User Guide</em>.</p>
+</div>
+<div class="section" id="output">
+<h2>Output<a class="headerlink" href="#output" title="Permalink to this heading">¶</a></h2>
+<p>CommandId -&gt; (string)</p>
+<blockquote>
+<div><p>The parent command ID of the invocation plugin.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">36</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">36</span></code></li>
+</ul>
+</div></blockquote>
+<p>InstanceId -&gt; (string)</p>
+<blockquote>
+<div><p>The ID of the managed node targeted by the command. A <em>managed node</em> can be an Amazon Elastic Compute Cloud (Amazon EC2) instance, edge device, or on-premises server or VM in your hybrid environment that is configured for Amazon Web Services Systems Manager.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">(^i-(\w{8}|\w{17})$)|(^mi-\w{17}$)</span></code></li>
+</ul>
+</div></blockquote>
+<p>Comment -&gt; (string)</p>
+<blockquote>
+<div><p>The comment text for the command.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>max: <code class="docutils literal notranslate"><span class="pre">100</span></code></li>
+</ul>
+</div></blockquote>
+<p>DocumentName -&gt; (string)</p>
+<blockquote>
+<div><p>The name of the document that was run. For example, <code class="docutils literal notranslate"><span class="pre">AWS-RunShellScript</span></code> .</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^[a-zA-Z0-9_\-.]{3,128}$</span></code></li>
+</ul>
+</div></blockquote>
+<p>DocumentVersion -&gt; (string)</p>
+<blockquote>
+<div><p>The Systems Manager document (SSM document) version used in the request.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">([$]LATEST|[$]DEFAULT|^[1-9][0-9]*$)</span></code></li>
+</ul>
+</div></blockquote>
+<p>PluginName -&gt; (string)</p>
+<blockquote>
+<div><p>The name of the plugin, or <em>step name</em> , for which details are reported. For example, <code class="docutils literal notranslate"><span class="pre">aws:RunShellScript</span></code> is a plugin.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">4</span></code></li>
+</ul>
+</div></blockquote>
+<p>ResponseCode -&gt; (integer)</p>
+<blockquote>
+<div>The error level response code for the plugin script. If the response code is <code class="docutils literal notranslate"><span class="pre">-1</span></code> , then the command hasn’t started running on the managed node, or it wasn’t received by the node.</div></blockquote>
+<p>ExecutionStartDateTime -&gt; (string)</p>
+<blockquote>
+<div><p>The date and time the plugin started running. Date and time are written in ISO 8601 format. For example, June 7, 2017 is represented as 2017-06-7. The following sample Amazon Web Services CLI command uses the <code class="docutils literal notranslate"><span class="pre">InvokedBefore</span></code> filter.</p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">aws</span> <span class="pre">ssm</span> <span class="pre">list-commands</span> <span class="pre">--filters</span> <span class="pre">key=InvokedBefore,value=2017-06-07T00:00:00Z</span></code></div></blockquote>
+<p>If the plugin hasn’t started to run, the string is empty.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^([\-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d(?!:))?)?(\17[0-5]\d([\.,]\d)?)?([zZ]|([\-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$</span></code></li>
+</ul>
+</div></blockquote>
+<p>ExecutionElapsedTime -&gt; (string)</p>
+<blockquote>
+<div><p>Duration since <code class="docutils literal notranslate"><span class="pre">ExecutionStartDateTime</span></code> .</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^([\-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d(?!:))?)?(\17[0-5]\d([\.,]\d)?)?([zZ]|([\-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$</span></code></li>
+</ul>
+</div></blockquote>
+<p>ExecutionEndDateTime -&gt; (string)</p>
+<blockquote>
+<div><p>The date and time the plugin finished running. Date and time are written in ISO 8601 format. For example, June 7, 2017 is represented as 2017-06-7. The following sample Amazon Web Services CLI command uses the <code class="docutils literal notranslate"><span class="pre">InvokedAfter</span></code> filter.</p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">aws</span> <span class="pre">ssm</span> <span class="pre">list-commands</span> <span class="pre">--filters</span> <span class="pre">key=InvokedAfter,value=2017-06-07T00:00:00Z</span></code></div></blockquote>
+<p>If the plugin hasn’t started to run, the string is empty.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^([\-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d(?!:))?)?(\17[0-5]\d([\.,]\d)?)?([zZ]|([\-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$</span></code></li>
+</ul>
+</div></blockquote>
+<p>Status -&gt; (string)</p>
+<blockquote>
+<div><p>The status of this invocation plugin. This status can be different than <code class="docutils literal notranslate"><span class="pre">StatusDetails</span></code> .</p>
+<p>Possible values:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">Pending</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">InProgress</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Delayed</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Success</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Cancelled</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">TimedOut</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Failed</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Cancelling</span></code></li>
+</ul>
+</div></blockquote>
+<p>StatusDetails -&gt; (string)</p>
+<blockquote>
+<div><p>A detailed status of the command execution for an invocation. <code class="docutils literal notranslate"><span class="pre">StatusDetails</span></code> includes more information than <code class="docutils literal notranslate"><span class="pre">Status</span></code> because it includes states resulting from error and concurrency control parameters. <code class="docutils literal notranslate"><span class="pre">StatusDetails</span></code> can show different results than <code class="docutils literal notranslate"><span class="pre">Status</span></code> . For more information about these statuses, see <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-commands.html">Understanding command statuses</a> in the <em>Amazon Web Services Systems Manager User Guide</em> . <code class="docutils literal notranslate"><span class="pre">StatusDetails</span></code> can be one of the following values:</p>
+<ul class="simple">
+<li>Pending: The command hasn’t been sent to the managed node.</li>
+<li>In Progress: The command has been sent to the managed node but hasn’t reached a terminal state.</li>
+<li>Delayed: The system attempted to send the command to the target, but the target wasn’t available. The managed node might not be available because of network issues, because the node was stopped, or for similar reasons. The system will try to send the command again.</li>
+<li>Success: The command or plugin ran successfully. This is a terminal state.</li>
+<li>Delivery Timed Out: The command wasn’t delivered to the managed node before the delivery timeout expired. Delivery timeouts don’t count against the parent command’s <code class="docutils literal notranslate"><span class="pre">MaxErrors</span></code> limit, but they do contribute to whether the parent command status is Success or Incomplete. This is a terminal state.</li>
+<li>Execution Timed Out: The command started to run on the managed node, but the execution wasn’t complete before the timeout expired. Execution timeouts count against the <code class="docutils literal notranslate"><span class="pre">MaxErrors</span></code> limit of the parent command. This is a terminal state.</li>
+<li>Failed: The command wasn’t run successfully on the managed node. For a plugin, this indicates that the result code wasn’t zero. For a command invocation, this indicates that the result code for one or more plugins wasn’t zero. Invocation failures count against the <code class="docutils literal notranslate"><span class="pre">MaxErrors</span></code> limit of the parent command. This is a terminal state.</li>
+<li>Cancelled: The command was terminated before it was completed. This is a terminal state.</li>
+<li>Undeliverable: The command can’t be delivered to the managed node. The node might not exist or might not be responding. Undeliverable invocations don’t count against the parent command’s <code class="docutils literal notranslate"><span class="pre">MaxErrors</span></code> limit and don’t contribute to whether the parent command status is Success or Incomplete. This is a terminal state.</li>
+<li>Terminated: The parent command exceeded its <code class="docutils literal notranslate"><span class="pre">MaxErrors</span></code> limit and subsequent command invocations were canceled by the system. This is a terminal state.</li>
+</ul>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">100</span></code></li>
+</ul>
+</div></blockquote>
+<p>StandardOutputContent -&gt; (string)</p>
+<blockquote>
+<div><p>The first 24,000 characters written by the plugin to <code class="docutils literal notranslate"><span class="pre">stdout</span></code> . If the command hasn’t finished running, if <code class="docutils literal notranslate"><span class="pre">ExecutionStatus</span></code> is neither Succeeded nor Failed, then this string is empty.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>max: <code class="docutils literal notranslate"><span class="pre">24000</span></code></li>
+</ul>
+</div></blockquote>
+<p>StandardOutputUrl -&gt; (string)</p>
+<blockquote>
+<div>The URL for the complete text written by the plugin to <code class="docutils literal notranslate"><span class="pre">stdout</span></code> in Amazon Simple Storage Service (Amazon S3). If an S3 bucket wasn’t specified, then this string is empty.</div></blockquote>
+<p>StandardErrorContent -&gt; (string)</p>
+<blockquote>
+<div><p>The first 8,000 characters written by the plugin to <code class="docutils literal notranslate"><span class="pre">stderr</span></code> . If the command hasn’t finished running, then this string is empty.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>max: <code class="docutils literal notranslate"><span class="pre">8000</span></code></li>
+</ul>
+</div></blockquote>
+<p>StandardErrorUrl -&gt; (string)</p>
+<blockquote>
+<div>The URL for the complete text written by the plugin to <code class="docutils literal notranslate"><span class="pre">stderr</span></code> . If the command hasn’t finished running, then this string is empty.</div></blockquote>
+<p>CloudWatchOutputConfig -&gt; (structure)</p>
+<blockquote>
+<div><p>Amazon CloudWatch Logs information where Systems Manager sent the command output.</p>
+<p>CloudWatchLogGroupName -&gt; (string)</p>
+<blockquote>
+<div><p>The name of the CloudWatch Logs log group where you want to send command output. If you don’t specify a group name, Amazon Web Services Systems Manager automatically creates a log group for you. The log group uses the following naming format:</p>
+<blockquote>
+<div><a href="#id1"><span class="problematic" id="id2">``</span></a>aws/ssm/<em>SystemsManagerDocumentName</em> ``</div></blockquote>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">512</span></code></li>
+</ul>
+</div></blockquote>
+<p>CloudWatchOutputEnabled -&gt; (boolean)</p>
+<blockquote>
+<div>Enables Systems Manager to send command output to CloudWatch Logs.</div></blockquote>
+</div></blockquote>
+</div>
+</div>
+
+
+            </div>
+          <div class="clearfix"></div>
+        </div>
+        
+    <div class="footer-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="get-cloud-connector.html" title="previous chapter (use the left arrow)">&larr; get-cloud-connector</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="get-connection-status.html" title="next chapter (use the right arrow)">get-connection-status &rarr;</a></li>
+      </ul>
+    </div>
+  
+
+    </div>
+  <script type="text/javascript" src="https://media.amazonwebservices.com/js/sitecatalyst/s_code.min.js"></script>
+  <script type="text/javascript" src="../../_static/analytics.js"></script>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="get-connection-status.html" title="get-connection-status"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="get-cloud-connector.html" title="get-cloud-connector"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">AWS CLI 2.39.3 Command Reference</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >aws</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >ssm</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">get-command-invocation</a></li> 
+      </ul>
+    </div>
+  <div class="footer container">
+    &copy; Copyright 2026, Amazon Web Services. Created using <a href="https://www.sphinx-doc.org/">Sphinx</a>.
+  </div>
+
+
+
+  
+    
+  
+  </body>
+</html>

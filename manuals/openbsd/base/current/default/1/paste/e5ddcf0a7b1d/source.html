@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/mandoc.css" type="text/css" media="all">
+  <title>paste(1) - OpenBSD manual pages</title>
+</head>
+<body>
+<header>
+<section>
+<h1><a href="https://www.openbsd.org/">OpenBSD</a> manual page server</h1>
+</section>
+<form role="search" action="/" method="get" autocomplete="off" autocapitalize="none">
+  <fieldset>
+    <legend>Manual Page Search Parameters</legend>
+    <label>Search query:
+      <input type="search" name="query" value="paste" size="40">
+    </label>
+    <button type="submit" name="apropos" value="0">man</button>
+    <button type="submit" name="apropos" value="1">apropos</button>
+    <br/>
+    <select name="sec" aria-label="Manual section">
+      <option value="0">All Sections</option>
+      <option value="1" selected="selected">1 - General Commands</option>
+      <option value="2">2 - System Calls</option>
+      <option value="3">3 - Library Functions</option>
+      <option value="3p">3p - Perl Library</option>
+      <option value="4">4 - Device Drivers</option>
+      <option value="5">5 - File Formats</option>
+      <option value="6">6 - Games</option>
+      <option value="7">7 - Miscellaneous Information</option>
+      <option value="8">8 - System Manager's Manual</option>
+      <option value="9">9 - Kernel Developer's Manual</option>
+    </select>
+    <select name="arch" aria-label="CPU architecture">
+      <option value="default" selected="selected">All Architectures</option>
+      <option>amd64</option>
+      <option>alpha</option>
+      <option>armv7</option>
+      <option>arm64</option>
+      <option>hppa</option>
+      <option>i386</option>
+      <option>landisk</option>
+      <option>loongson</option>
+      <option>luna88k</option>
+      <option>macppc</option>
+      <option>mips64</option>
+      <option>octeon</option>
+      <option>powerpc64</option>
+      <option>riscv64</option>
+      <option>sparc64</option>
+      <option>amiga</option>
+      <option>arc</option>
+      <option>armish</option>
+      <option>arm32</option>
+      <option>atari</option>
+      <option>aviion</option>
+      <option>beagle</option>
+      <option>cats</option>
+      <option>hppa64</option>
+      <option>hp300</option>
+      <option>ia64</option>
+      <option>mac68k</option>
+      <option>mvme68k</option>
+      <option>mvme88k</option>
+      <option>mvmeppc</option>
+      <option>palm</option>
+      <option>pc532</option>
+      <option>pegasos</option>
+      <option>pmax</option>
+      <option>powerpc</option>
+      <option>sgi</option>
+      <option>socppc</option>
+      <option>solbourne</option>
+      <option>sparc</option>
+      <option>sun3</option>
+      <option>vax</option>
+      <option>wgrisc</option>
+      <option>x68k</option>
+      <option>zaurus</option>
+    </select>
+    <select name="manpath" aria-label="Manual path">
+      <option selected="selected">OpenBSD-current</option>
+      <option>OpenBSD-8.0</option>
+      <option>OpenBSD-7.9</option>
+      <option>OpenBSD-7.8</option>
+      <option>OpenBSD-7.7</option>
+      <option>OpenBSD-7.6</option>
+      <option>OpenBSD-7.5</option>
+      <option>OpenBSD-7.4</option>
+      <option>OpenBSD-7.3</option>
+      <option>OpenBSD-7.2</option>
+      <option>OpenBSD-7.1</option>
+      <option>OpenBSD-7.0</option>
+      <option>OpenBSD-6.9</option>
+      <option>OpenBSD-6.8</option>
+      <option>OpenBSD-6.7</option>
+      <option>OpenBSD-6.6</option>
+      <option>OpenBSD-6.5</option>
+      <option>OpenBSD-6.4</option>
+      <option>OpenBSD-6.3</option>
+      <option>OpenBSD-6.2</option>
+      <option>OpenBSD-6.1</option>
+      <option>OpenBSD-6.0</option>
+      <option>OpenBSD-5.9</option>
+      <option>OpenBSD-5.8</option>
+      <option>OpenBSD-5.7</option>
+      <option>OpenBSD-5.6</option>
+      <option>OpenBSD-5.5</option>
+      <option>OpenBSD-5.4</option>
+      <option>OpenBSD-5.3</option>
+      <option>OpenBSD-5.2</option>
+      <option>OpenBSD-5.1</option>
+      <option>OpenBSD-5.0</option>
+      <option>OpenBSD-4.9</option>
+      <option>OpenBSD-4.8</option>
+      <option>OpenBSD-4.7</option>
+      <option>OpenBSD-4.6</option>
+      <option>OpenBSD-4.5</option>
+      <option>OpenBSD-4.4</option>
+      <option>OpenBSD-4.3</option>
+      <option>OpenBSD-4.2</option>
+      <option>OpenBSD-4.1</option>
+      <option>OpenBSD-4.0</option>
+      <option>OpenBSD-3.9</option>
+      <option>OpenBSD-3.8</option>
+      <option>OpenBSD-3.7</option>
+      <option>OpenBSD-3.6</option>
+      <option>OpenBSD-3.5</option>
+      <option>OpenBSD-3.4</option>
+      <option>OpenBSD-3.3</option>
+      <option>OpenBSD-3.2</option>
+      <option>OpenBSD-3.1</option>
+      <option>OpenBSD-3.0</option>
+      <option>OpenBSD-2.9</option>
+      <option>OpenBSD-2.8</option>
+      <option>OpenBSD-2.7</option>
+      <option>OpenBSD-2.6</option>
+      <option>OpenBSD-2.5</option>
+      <option>OpenBSD-2.4</option>
+      <option>OpenBSD-2.3</option>
+      <option>OpenBSD-2.2</option>
+    </select>
+  </fieldset>
+</form>
+</header>
+<hr>
+<div class="head" role="doc-pageheader" aria-label="Manual header
+  line"><span class="head-ltitle">PASTE(1)</span> <span class="head-vol">General
+  Commands Manual</span> <span class="head-rtitle">PASTE(1)</span></div>
+<main class="manual-text">
+<section class="Sh">
+<h2 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h2>
+<p class="Pp"><code class="Nm">paste</code> &#x2014;
+    <span class="Nd" role="doc-subtitle">merge corresponding or subsequent lines
+    of files</span></p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h2>
+<table class="Nm">
+  <tr>
+    <td><code class="Nm">paste</code></td>
+    <td>[<code class="Fl">-s</code>] [<code class="Fl">-d</code>
+      <var class="Ar">list</var>] <var class="Ar">file ...</var></td>
+  </tr>
+</table>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h2>
+<p class="Pp">The <code class="Nm">paste</code> utility concatenates the
+    corresponding lines of the given input files, replacing all but the last
+    file's newline characters with a single tab character, and writes the
+    resulting lines to standard output. If end-of-file is reached on an input
+    file while other input files still contain data, the file is treated as if
+    it were an endless source of empty lines.</p>
+<p class="Pp">The options are as follows:</p>
+<dl class="Bl-tag">
+  <dt id="d"><a class="permalink" href="#d"><code class="Fl">-d</code></a>
+    <var class="Ar">list</var></dt>
+  <dd>Use one or more of the provided characters to replace the newline
+      characters instead of the default tab. The characters in
+      <var class="Ar">list</var> are used circularly, i.e., when
+      <var class="Ar">list</var> is exhausted the first character from
+      <var class="Ar">list</var> is reused. This continues until a line from the
+      last input file (in default operation) or the last line in each file
+      (using the <code class="Fl">-s</code> option) is displayed, at which time
+      <code class="Nm">paste</code> begins selecting characters from the
+      beginning of <var class="Ar">list</var> again.
+    <p class="Pp">The following special characters can also be used in list:</p>
+    <p class="Pp"></p>
+    <dl class="Bl-tag Bl-compact">
+      <dt id="n"><a class="permalink" href="#n"><code class="Li">\n</code></a></dt>
+      <dd>newline character</dd>
+      <dt id="t"><a class="permalink" href="#t"><code class="Li">\t</code></a></dt>
+      <dd>tab character</dd>
+      <dt><code class="Li">\\</code></dt>
+      <dd>backslash character</dd>
+      <dt id="0"><a class="permalink" href="#0"><code class="Li">\0</code></a></dt>
+      <dd>empty string (not a null character)</dd>
+    </dl>
+    <p class="Pp">Any other character preceded by a backslash is equivalent to
+        the character itself.</p>
+  </dd>
+  <dt id="s"><a class="permalink" href="#s"><code class="Fl">-s</code></a></dt>
+  <dd>Concatenate all of the lines of each separate input file in command line
+      order. The newline character of every line except the last line in each
+      input file is replaced with the tab character, unless otherwise specified
+      by the <code class="Fl">-d</code> option.</dd>
+</dl>
+<p class="Pp">If &#x201C;-&#x201D; is specified for one or more of the input
+    files, the standard input is used; standard input is read one line at a
+    time, circularly, for each instance of &#x201C;-&#x201D;.</p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="EXIT_STATUS"><a class="permalink" href="#EXIT_STATUS">EXIT
+  STATUS</a></h2>
+<p class="Pp">The <code class="Nm">paste</code> utility exits&#x00A0;0 on
+    success, and&#x00A0;&gt;0 if an error occurs.</p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h2>
+<p class="Pp">List the files in the current directory in three columns:</p>
+<div class="Bd Pp Bd-indent Li">
+<pre>$ ls | paste - - -
+$ ls | paste -s -d '\t\t\n' -</pre>
+</div>
+<p class="Pp">Combine pairs of lines from <var class="Ar">file</var> into single
+    lines:</p>
+<div class="Bd Pp Bd-indent Li">
+<pre>$ paste - - &lt; file
+$ paste -s -d '\t\n' file</pre>
+</div>
+<p class="Pp">Number the lines in <var class="Ar">file</var>, similar to
+    &#x2018;<code class="Li">cat -n</code>&#x2019;:</p>
+<div class="Bd Pp Bd-indent Li">
+<pre>$ sed = file | paste - -
+$ sed = file | paste -s -d '\t\n' -</pre>
+</div>
+<p class="Pp">Create a colon-separated list of directories named
+    <span class="Pa">bin</span>, suitable for use in the
+    <code class="Ev">PATH</code> environment variable:</p>
+<p class="Pp"></p>
+<div class="Bd Bd-indent"><code class="Li">$ find / -name bin -type d | paste -s
+  -d : -</code></div>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h2>
+<p class="Pp"><a class="Xr" href="/cut.1" aria-label="cut, section
+  1">cut(1)</a></p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="STANDARDS"><a class="permalink" href="#STANDARDS">STANDARDS</a></h2>
+<p class="Pp">The <code class="Nm">paste</code> utility is compliant with the
+    <span class="St">IEEE Std 1003.1-2008 (&#x201C;POSIX.1&#x201D;)</span>
+    specification.</p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="HISTORY"><a class="permalink" href="#HISTORY">HISTORY</a></h2>
+<p class="Pp">A <code class="Nm">paste</code> command first appeared outside
+    Bell Labs in <span class="Ux">Version&#x00A0;7 AT&amp;T UNIX/32V</span> and
+    has been available since <span class="Ux">4.3BSD-Reno</span>.</p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="AUTHORS"><a class="permalink" href="#AUTHORS">AUTHORS</a></h2>
+<p class="Pp">The original Bell Labs version was written by
+    <span class="An">Gottfried W. R. Luderer</span> and the
+    <span class="Ux">BSD</span> version by <span class="An">Adam S.
+    Moskowitz</span>.</p>
+</section>
+</main>
+<div class="foot" role="doc-pagefooter" aria-label="Manual footer
+  line"><span class="foot-left">OpenBSD-current</span>
+  <span class="foot-date">August 4, 2022</span>
+  <span class="foot-right">PASTE(1)</span></div>
+</body>
+</html>

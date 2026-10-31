@@ -88,6 +88,13 @@ into prose, definitions, synopsis, and examples. Original HTML remains untouched
 
 ## Identity and storage
 
+When a non-UTF-8 or RST upstream document needs preparation, preserve its exact
+original bytes as a manifest material with role `original-source`. A locally
+transcoded/rendered `source.html` is the parser input; record the transformation,
+encoding and renderer version in `source-observations.md`. Both the original
+material and parser input are SHA-256 checked. Saved HTML and IR keep subsequent
+parsing, builds and queue work independent of the one-time preparation tools.
+
 ```text
 manuals/{provider}/{product}/{version}/{variant}/{section}/{name}/{sha12}/
   source.roff | source.html       original UTF-8 bytes

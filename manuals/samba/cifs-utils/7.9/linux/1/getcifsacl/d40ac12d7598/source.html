@@ -1,0 +1,64 @@
+<!doctype html><html><head><meta charset="utf-8"><title>getcifsacl</title></head><body><main>
+<section id="getcifsacl">
+<h1>getcifsacl</h1>
+<section id="userspace-helper-to-display-an-acl-in-a-security-descriptor-for-common-internet-file-system-cifs">
+<h2>Userspace helper to display an ACL in a security descriptor for Common Internet File System (CIFS)</h2>
+<dl class="field-list simple">
+<dt>Manual section<span class="colon">:</span></dt>
+<dd><p>1</p>
+</dd>
+</dl>
+<section id="synopsis">
+<h3>SYNOPSIS</h3>
+<blockquote>
+<p>getcifsacl [-v|-r] {file system object}</p>
+</blockquote>
+</section>
+<section id="description">
+<h3>DESCRIPTION</h3>
+<p>This tool is part of the cifs-utils suite.</p>
+<p><span class="docutils literal">getcifsacl</span> is a userspace helper program for the Linux CIFS client
+file system. It is intended to display a security descriptor, including
+DACL and SACL for a file system object.</p>
+<p>This program uses a plugin to handle the mapping of SIDs to user and
+group names. <em>&#64;pluginpath&#64;</em> should be a symlink that points to the
+correct plugin to use.</p>
+<p>Fields of an ACE such as SID, type, flags, and mask are displayed
+separated by /. Numeric values of type, flags, and mask are displayed
+in hexadecimal format.</p>
+</section>
+<section id="options">
+<h3>OPTIONS</h3>
+<dl class="option-list">
+<dt><kbd><span class="option">-v</span></kbd></dt>
+<dd><p>Print version number and exit.</p>
+</dd>
+<dt><kbd><span class="option">-r</span></kbd></dt>
+<dd><p>Display a security descriptor in raw mode. Values such as type and
+flags are displayed in hexadecimal format, a SID is not mapped to a
+name.</p>
+</dd>
+<dt><kbd><span class="option">-R</span></kbd></dt>
+<dd><p>List the ACLs of all files and directories recursively.</p>
+</dd>
+</dl>
+</section>
+<section id="notes">
+<h3>NOTES</h3>
+<p>Kernel support for getcifsacl/setcifsacl utilities was initially
+introduced in the 2.6.37 kernel.</p>
+</section>
+<section id="see-also">
+<h3>SEE ALSO</h3>
+<p>mount.cifs(8), setcifsacl(1)</p>
+</section>
+<section id="author">
+<h3>AUTHOR</h3>
+<p>Shirish Pargaonkar wrote the getcifsacl program.</p>
+<p>The Linux CIFS Mailing list is the preferred place to ask questions
+regarding these programs.</p>
+</section>
+</section>
+</section>
+</main>
+</body></html>

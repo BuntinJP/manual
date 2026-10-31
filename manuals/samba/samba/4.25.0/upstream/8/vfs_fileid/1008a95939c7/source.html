@@ -1,0 +1,121 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>vfs_fileid</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="vfs_fileid.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>vfs_fileid &#8212; Generates file_id structs with unique device id values for
+	cluster setups. It also adds ways to deliberately break lock coherency for specific inodes</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="literal">vfs objects = fileid</code></p></div></div><div class="refsect1"><a name="id1337"></a><h2>DESCRIPTION</h2><p>This VFS module is part of the
+	<a class="citerefentry" href="samba.7.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(7)</span></a>
+	suite.</p><p>Samba uses file_id structs to uniquely identify files
+	for locking purpose. By default the file_id contains the device
+	and inode number returned by the <code class="literal">stat()</code> system call.
+	As the file_id is a unique identifier of a file, it must be the same
+	on all nodes in a cluster setup. This module overloads the
+	<code class="literal">SMB_VFS_FILE_ID_CREATE()</code> operation and
+	generates the device number based on the configured algorithm
+	(see the "fileid:algorithm" option).
+	</p><p>When using the fsname or fsid algorithm a
+	<code class="literal">stat()</code> and <code class="literal">statfs()</code> call is
+	required for all mounted file systems to generate the file_id. If e.g.
+	an NFS file system is unresponsive such a call might block and the smbd
+	process will become unresponsive. Use the "fileid:fstype deny",
+	"fileid:fstype allow", "fileid:mntdir deny", or "fileid:mntdir allow"
+	options to ignore potentially unresponsive file systems.
+	</p></div><div class="refsect1"><a name="id1338"></a><h2>OPTIONS</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term">fileid:algorithm = ALGORITHM</span></dt><dd><p>Available algorithms are <code class="literal">fsname</code>,
+		<code class="literal">fsid</code>, <code class="literal">next_module</code>. The default value is
+		<code class="literal">fsname</code>. As well as the following legacy
+		algorithms: <code class="literal">fsname_nodirs</code>, <code class="literal">fsname_norootdir</code>,
+		<code class="literal">fsname_norootdir_ext</code> and <code class="literal">hostname</code>.
+		</p><p>The <code class="literal">fsname</code> algorithm generates
+		device id by hashing the kernel device name.
+		</p><p>The <code class="literal">fsid</code> algorithm generates
+		the device id from the <code class="literal">f_fsid</code> returned
+		from the <code class="literal">statfs()</code> syscall.
+		</p><p>The <code class="literal">next_module</code> algorithm lets the next vfs module
+		in the module chain generate the id. This is mainly used in combination
+		with the various 'nolock' features the fileid module provides.
+		</p><p>The legacy <code class="literal">hostname</code> algorithm generates unique
+		devid by hashing the hostname and low level device id.
+		It also implies <code class="literal">fileid:nolock_all_inodes=yes</code>.
+		This can be used to deliberately break lock coherency in a cluster
+		and with <code class="literal">fileid:nolock_max_slots</code> also between local processes
+		within a node. NOTE: Do not use this without knowing what you are doing!
+		It breaks SMB semantics and it can lead to data corruption!
+		This implies <code class="literal">fileid:nolock_all_inodes=yes</code>.
+		</p><p>The legacy <code class="literal">fsname_nodirs</code> algorithm is an alias
+		for using the <code class="literal">fsname</code> algorithm together with
+		<code class="literal">fileid:nolock_all_dirs=yes</code>.
+		NOTE: Do not use this without knowing what you are doing!
+		It breaks SMB semantics!
+		See <code class="literal">fileid:nolock_paths</code> for a more fine grained
+		approach.
+		</p><p>The legacy <code class="literal">fsname_norootdir</code> algorithm is an alias
+		for using the <code class="literal">fsname</code> algorithm together with
+		<code class="literal">fileid:nolock_paths= <span class="quote">&#8220;<span class="quote">.</span>&#8221;</span> </code>. It means
+		this can be used to deliberately break lock coherency
+		in a cluster for the root directory of a share.
+		</p><p>The legacy <code class="literal">fsname_norootdir_ext</code> algorithm is an alias
+		for using the <code class="literal">fsname</code> algorithm together with
+		<code class="literal">fileid:nolock_paths= <span class="quote">&#8220;<span class="quote">.</span>&#8221;</span></code> and
+		<code class="literal">fileid:nolock_max_slots = 18446744073709551615</code>.
+		It means this can be used to deliberately break lock coherency
+		completely for the root directory of a share. Even local processes
+		are no longer lock coherent.
+		</p></dd><dt><span class="term">fileid:mapping = ALGORITHM</span></dt><dd><p>This option is the legacy version of the
+		<code class="literal">fileid:algorithm</code> option, which was used in earlier
+		versions of fileid mapping feature in custom Samba 3.0 versions.
+		</p></dd><dt><span class="term">fileid:fstype deny = LIST</span></dt><dd><p>List of file system types to be ignored for file_id
+		generation.
+		</p></dd><dt><span class="term">fileid:fstype allow = LIST</span></dt><dd><p>List of file system types to be allowed for file_id
+		generation. If this option is set, file system types not listed
+		here are ignored.
+		</p></dd><dt><span class="term">fileid:mntdir deny = LIST</span></dt><dd><p>List of file system mount points to be ignored for
+		file_id	generation.
+		</p></dd><dt><span class="term">fileid:mntdir allow = LIST</span></dt><dd><p>List of file system mount points to be allowed for file_id
+		generation. If this option is set, file system mount points
+		not listed here are ignored.
+		</p></dd><dt><span class="term">fileid:nolock_max_slots = NUMBER(1-18446744073709551615)</span></dt><dd><p>This option alters the behavior of the <code class="literal">nolock</code> algorithm
+		in a way that it also breaks the lock coherency between individual processes
+		on the same host. The default is to have just 1 concurrent slot available per host.
+		By increasing the number of slots you can specify how many concurrent processes
+		can work on a given inode without contention, the number should typically be larger
+		than the number of logical cpus, maybe 2 times num_cpus.
+		</p></dd><dt><span class="term">fileid:nolock_all_dirs = BOOL</span></dt><dd><p>This option triggers the use of the fileid nolock behavior
+		for all directory inodes, which can be used to deliberately break
+		the lock coherency for all directories.
+		NOTE: Do not use this without knowing what you are doing!
+		It breaks SMB semantics!
+		See <code class="literal">fileid:nolock_paths</code> for a more fine grained
+		approach.
+		</p></dd><dt><span class="term">fileid:nolock_all_inodes = BOOL</span></dt><dd><p>This option triggers the use of the fileid nolock algorithm
+		for all directoriy inode, which can be used to deliberately break
+		the lock coherency for all directories.
+		NOTE: Do not use this without knowing what you are doing!
+		It breaks SMB semantics and it can lead to data corruption!
+		See <code class="literal">fileid:nolock_paths</code> for a more fine grained
+		approach.
+		</p></dd><dt><span class="term">fileid:nolock_paths = LIST</span></dt><dd><p>This option specifies a path list referring to files and/or directories,
+		which should use fileid nolock algorithm in order to deliberately break
+		the lock coherency for them. The specified paths can be relative to
+		the share root directory or absolute. The names are case sensitive unix pathnames!
+		Note all paths are only evaluated at tree connect time, when the share is being connected, from there on
+		only the related device and inode numbers from the stat() syscall are compared.
+		Non existing paths will generate a log level 0 message.
+		NOTE: This option should be used with care as it breaks SMB semantics!
+		But it may help in situation where a specific (commonly read-only) inode is highly contended.
+		</p></dd><dt><span class="term">fileid:nolockinode = NUMBER</span></dt><dd><p>This legacy option triggers use of the fileid nolock behavior
+		for the configured inode, while ignoring and device id. This can be used to deliberately break
+		lock coherency for the corresponding file or directory in a
+		cluster. Using the <code class="literal">fileid:nolock_paths</code> option is much more flexible and simpler to use.
+		</p></dd></dl></div></div><div class="refsect1"><a name="id1339"></a><h2>EXAMPLES</h2><p>Usage of the <code class="literal">fileid</code> module with the
+	<code class="literal">fsid</code> algorithm:</p><pre class="programlisting">
+        <em class="parameter"><code>[global]</code></em>
+	<a class="link" href="smb.conf.5.html#VFSOBJECTS" target="_top">vfs objects = fileid</a>
+	<a class="link" href="smb.conf.5.html#FILEID:ALGORITHM" target="_top">fileid:algorithm = fsid</a>
+</pre><p>Usage of the <code class="literal">fileid</code> module in order
+	avoid load on heavily contended (most likely read-only) inodes.</p><pre class="programlisting">
+        <em class="parameter"><code>[global]</code></em>
+	<a class="link" href="smb.conf.5.html#VFSOBJECTS" target="_top">vfs objects = fileid</a>
+	<a class="link" href="smb.conf.5.html#FILEID:ALGORITHM" target="_top">fileid:algorithm = next_module</a>
+	<a class="link" href="smb.conf.5.html#FILEID:NOLOCK_PATHS" target="_top">fileid:nolock_paths = . ContendedFolder1 /path/to/contended.exe</a>
+	<a class="link" href="smb.conf.5.html#FILEID:NOLOCK_MAX_SLOTS" target="_top">fileid:nolock_max_slots = 256</a>
+</pre></div><div class="refsect1"><a name="id1340"></a><h2>VERSION</h2><p>This man page is part of version 4.25.0 of the Samba suite.
+	</p></div><div class="refsect1"><a name="id1341"></a><h2>AUTHOR</h2><p>The original Samba software and related utilities
+	were created by Andrew Tridgell. Samba is now developed
+	by the Samba Team as an Open Source project similar
+	to the way the Linux kernel is developed.</p></div></div></body></html>

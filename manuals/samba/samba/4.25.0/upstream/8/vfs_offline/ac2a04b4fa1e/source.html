@@ -1,0 +1,14 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>vfs_offline</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="vfs_offline.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>vfs_offline &#8212; Mark all files as offline</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="literal">vfs objects = offline</code></p></div></div><div class="refsect1"><a name="id1337"></a><h2>DESCRIPTION</h2><p>This VFS module is part of the
+	<a class="citerefentry" href="samba.7.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(7)</span></a> suite.</p><p>The <code class="literal">vfs_offline</code> module marks all files
+	in the share as having the offline DOS attribute.</p><p>Files with the offline DOS attribute are handled differently
+	by the Windows SMB client, as well as by Windows Explorer. In
+	particular, Windows Explorer does not read those files for the sole
+	purpose of drawing a thumbnail, as it normally does. This can
+	improve user experience with some remote file systems.</p></div><div class="refsect1"><a name="id1338"></a><h2>EXAMPLES</h2><p>Mark all files in a share as offline:</p><pre class="programlisting">
+        <em class="parameter"><code>[remote]</code></em>
+	<a class="link" href="smb.conf.5.html#VFSOBJECTS" target="_top">vfs objects = offline</a>
+</pre></div><div class="refsect1"><a name="id1339"></a><h2>VERSION</h2><p>This man page is part of version 4.25.0 of the Samba suite.
+	</p></div><div class="refsect1"><a name="id1340"></a><h2>AUTHOR</h2><p>The original Samba software and related utilities
+	were created by Andrew Tridgell. Samba is now developed
+	by the Samba Team as an Open Source project similar
+	to the way the Linux kernel is developed.</p></div></div></body></html>

@@ -1,0 +1,3628 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "3da7dfe1bf0afdbc94260007d24a5ab44b8529e68cbe71e72fe003023c505b26",
+  "extraction": {
+    "selector": "div.body",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "paragraph",
+      "text": "[ [[p0]] . [[p1]] ]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "aws",
+            "href": "https://docs.aws.amazon.com/cli/latest/reference/index.html#cli-aws"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "ssm",
+            "href": "https://docs.aws.amazon.com/cli/latest/reference/ssm/index.html#cli-aws-ssm"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0002",
+      "kind": "heading",
+      "text": "get-ops-item¶",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "Description¶",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "Get information about an OpsItem by using the ID. You must have permission in Identity and Access Management (IAM) to view information about an OpsItem. For more information, see [[p0]] in the [[p1]]Amazon Web Services Systems Manager User Guide[[p2]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Set up OpsCenter",
+            "href": "https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-setup.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "paragraph",
+      "text": "Operations engineers and IT professionals use Amazon Web Services Systems Manager OpsCenter to view, investigate, and remediate operational issues impacting the performance and health of their Amazon Web Services resources. For more information, see [[p0]] in the [[p1]]Amazon Web Services Systems Manager User Guide[[p2]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Amazon Web Services Systems Manager OpsCenter",
+            "href": "https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "See also: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "AWS API Documentation",
+            "href": "https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetOpsItem"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "heading",
+      "text": "Synopsis¶",
+      "protected": []
+    },
+    {
+      "id": "s0008",
+      "kind": "heading",
+      "text": "Options¶",
+      "protected": []
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "[[p0]] (string) [required]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--ops-item-id"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "The ID of the OpsItem that you want to get.",
+      "protected": []
+    },
+    {
+      "id": "s0011",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "paragraph",
+      "text": "pattern: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "^(oi)-[0-9a-f]{12}$"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--ops-item-arn"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0014",
+      "kind": "paragraph",
+      "text": "The OpsItem Amazon Resource Name (ARN).",
+      "protected": []
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0016",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "20"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "2048"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0018",
+      "kind": "paragraph",
+      "text": "pattern: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "arn:(aws[a-zA-Z-]*)?:ssm:[a-z0-9-\\.]{0,63}:[0-9]{12}:opsitem.*"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "[[p0]] | [[p1]] (string) Reads arguments from the JSON string provided. The JSON string follows the format provided by [[p2]]. If other arguments are provided on the command line, those values will override the JSON-provided values. It is not possible to pass arbitrary binary values using a JSON-provided value as the string will be taken literally. This may not be specified along with [[p3]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-input-json"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-input-yaml"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--generate-cli-skeleton"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-input-yaml"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0020",
+      "kind": "paragraph",
+      "text": "[[p0]] (string) Prints a JSON skeleton to standard output without sending an API request. If provided with no value or the value [[p1]], prints a sample input JSON that can be used as an argument for [[p2]]. Similarly, if provided [[p3]] it will print a sample input YAML that can be used with [[p4]]. If provided with the value [[p5]], it validates the command inputs and returns a sample output JSON for that command. The generated JSON skeleton is not stable between versions of the AWS CLI and there are no backwards compatibility guarantees in the JSON skeleton generated.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--generate-cli-skeleton"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "input"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-input-json"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "yaml-input"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-input-yaml"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "output"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0021",
+      "kind": "heading",
+      "text": "Global Options¶",
+      "protected": []
+    },
+    {
+      "id": "s0022",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debug"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0023",
+      "kind": "paragraph",
+      "text": "Turn on debug logging.",
+      "protected": []
+    },
+    {
+      "id": "s0024",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--endpoint-url"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0025",
+      "kind": "paragraph",
+      "text": "Override command’s default URL with the given URL.",
+      "protected": []
+    },
+    {
+      "id": "s0026",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-verify-ssl"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0027",
+      "kind": "paragraph",
+      "text": "By default, the AWS CLI uses SSL when communicating with AWS services. For each SSL connection, the AWS CLI will verify SSL certificates. This option overrides the default behavior of verifying SSL certificates.",
+      "protected": []
+    },
+    {
+      "id": "s0028",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-paginate"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0029",
+      "kind": "paragraph",
+      "text": "Disable automatic pagination. If automatic pagination is disabled, the AWS CLI will only make one call, for the first page of results.",
+      "protected": []
+    },
+    {
+      "id": "s0030",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--output"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0031",
+      "kind": "paragraph",
+      "text": "The formatting style for command output.",
+      "protected": []
+    },
+    {
+      "id": "s0032",
+      "kind": "paragraph",
+      "text": "json",
+      "protected": []
+    },
+    {
+      "id": "s0033",
+      "kind": "paragraph",
+      "text": "text",
+      "protected": []
+    },
+    {
+      "id": "s0034",
+      "kind": "paragraph",
+      "text": "table",
+      "protected": []
+    },
+    {
+      "id": "s0035",
+      "kind": "paragraph",
+      "text": "yaml",
+      "protected": []
+    },
+    {
+      "id": "s0036",
+      "kind": "paragraph",
+      "text": "yaml-stream",
+      "protected": []
+    },
+    {
+      "id": "s0037",
+      "kind": "paragraph",
+      "text": "off",
+      "protected": []
+    },
+    {
+      "id": "s0038",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--query"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0039",
+      "kind": "paragraph",
+      "text": "A JMESPath query to use in filtering the response data.",
+      "protected": []
+    },
+    {
+      "id": "s0040",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--profile"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0041",
+      "kind": "paragraph",
+      "text": "Use a specific profile from your credential file.",
+      "protected": []
+    },
+    {
+      "id": "s0042",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--region"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0043",
+      "kind": "paragraph",
+      "text": "The region to use. Overrides config/env settings.",
+      "protected": []
+    },
+    {
+      "id": "s0044",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--version"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0045",
+      "kind": "paragraph",
+      "text": "Display the version of this tool.",
+      "protected": []
+    },
+    {
+      "id": "s0046",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--color"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0047",
+      "kind": "paragraph",
+      "text": "Turn on/off color output.",
+      "protected": []
+    },
+    {
+      "id": "s0048",
+      "kind": "paragraph",
+      "text": "on",
+      "protected": []
+    },
+    {
+      "id": "s0049",
+      "kind": "paragraph",
+      "text": "off",
+      "protected": []
+    },
+    {
+      "id": "s0050",
+      "kind": "paragraph",
+      "text": "auto",
+      "protected": []
+    },
+    {
+      "id": "s0051",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-sign-request"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0052",
+      "kind": "paragraph",
+      "text": "Do not sign requests. Credentials will not be loaded if this argument is provided.",
+      "protected": []
+    },
+    {
+      "id": "s0053",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--ca-bundle"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0054",
+      "kind": "paragraph",
+      "text": "The CA certificate bundle to use when verifying SSL certificates. Overrides config/env settings.",
+      "protected": []
+    },
+    {
+      "id": "s0055",
+      "kind": "paragraph",
+      "text": "[[p0]] (int)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-read-timeout"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0056",
+      "kind": "paragraph",
+      "text": "The maximum socket read time in seconds. If the value is set to 0, the socket read will be blocking and not timeout. The default value is 60 seconds.",
+      "protected": []
+    },
+    {
+      "id": "s0057",
+      "kind": "paragraph",
+      "text": "[[p0]] (int)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-connect-timeout"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0058",
+      "kind": "paragraph",
+      "text": "The maximum socket connect time in seconds. If the value is set to 0, the socket connect will be blocking and not timeout. The default value is 60 seconds.",
+      "protected": []
+    },
+    {
+      "id": "s0059",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-binary-format"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0060",
+      "kind": "paragraph",
+      "text": "The formatting style to be used for binary blobs. The default format is base64. The base64 format expects binary blobs to be provided as a base64 encoded string. The raw-in-base64-out format preserves compatibility with AWS CLI V1 behavior and binary values must be passed literally. When providing contents from a file that map to a binary blob [[p0]] will always be treated as binary and use the file contents directly regardless of the [[p1]] setting. When using [[p2]] the file contents will need to properly formatted for the configured [[p3]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "fileb://"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "cli-binary-format"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "file://"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "cli-binary-format"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0061",
+      "kind": "paragraph",
+      "text": "base64",
+      "protected": []
+    },
+    {
+      "id": "s0062",
+      "kind": "paragraph",
+      "text": "raw-in-base64-out",
+      "protected": []
+    },
+    {
+      "id": "s0063",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-cli-pager"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0064",
+      "kind": "paragraph",
+      "text": "Disable cli pager for output.",
+      "protected": []
+    },
+    {
+      "id": "s0065",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-auto-prompt"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0066",
+      "kind": "paragraph",
+      "text": "Automatically prompt for CLI input parameters.",
+      "protected": []
+    },
+    {
+      "id": "s0067",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-cli-auto-prompt"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0068",
+      "kind": "paragraph",
+      "text": "Disable automatically prompt for CLI input parameters.",
+      "protected": []
+    },
+    {
+      "id": "s0069",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-error-format"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0070",
+      "kind": "paragraph",
+      "text": "The formatting style for error output. By default, errors are displayed in enhanced format.",
+      "protected": []
+    },
+    {
+      "id": "s0071",
+      "kind": "paragraph",
+      "text": "legacy",
+      "protected": []
+    },
+    {
+      "id": "s0072",
+      "kind": "paragraph",
+      "text": "json",
+      "protected": []
+    },
+    {
+      "id": "s0073",
+      "kind": "paragraph",
+      "text": "yaml",
+      "protected": []
+    },
+    {
+      "id": "s0074",
+      "kind": "paragraph",
+      "text": "text",
+      "protected": []
+    },
+    {
+      "id": "s0075",
+      "kind": "paragraph",
+      "text": "table",
+      "protected": []
+    },
+    {
+      "id": "s0076",
+      "kind": "paragraph",
+      "text": "enhanced",
+      "protected": []
+    },
+    {
+      "id": "s0077",
+      "kind": "heading",
+      "text": "Examples¶",
+      "protected": []
+    },
+    {
+      "id": "s0078",
+      "kind": "heading",
+      "text": "Note",
+      "protected": []
+    },
+    {
+      "id": "s0079",
+      "kind": "paragraph",
+      "text": "To use the following examples, you must have the AWS CLI installed and configured. See the [[p0]] in the [[p1]]AWS CLI User Guide[[p2]] for more information.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Getting started guide",
+            "href": "https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0080",
+      "kind": "paragraph",
+      "text": "Unless otherwise stated, all examples have unix-like quotation rules. These examples will need to be adapted to your terminal’s quoting rules. See [[p0]] in the [[p1]]AWS CLI User Guide[[p2]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Using quotation marks with strings",
+            "href": "https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-quoting-strings.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0081",
+      "kind": "paragraph",
+      "text": "[[p0]]To view information about an OpsItem[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0082",
+      "kind": "paragraph",
+      "text": "The following [[p0]] example displays details about the specified OpsItem.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "get-ops-item"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0083",
+      "kind": "paragraph",
+      "text": "Output:",
+      "protected": []
+    },
+    {
+      "id": "s0084",
+      "kind": "paragraph",
+      "text": "For more information, see [[p0]] in the [[p1]]AWS Systems Manager User Guide[[p2]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Working with OpsItems",
+            "href": "https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-working-with-OpsItems.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0085",
+      "kind": "heading",
+      "text": "Output¶",
+      "protected": []
+    },
+    {
+      "id": "s0086",
+      "kind": "paragraph",
+      "text": "OpsItem -> (structure)",
+      "protected": []
+    },
+    {
+      "id": "s0087",
+      "kind": "paragraph",
+      "text": "The OpsItem.",
+      "protected": []
+    },
+    {
+      "id": "s0088",
+      "kind": "paragraph",
+      "text": "CreatedBy -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0089",
+      "kind": "paragraph",
+      "text": "The ARN of the Amazon Web Services account that created the OpsItem.",
+      "protected": []
+    },
+    {
+      "id": "s0090",
+      "kind": "paragraph",
+      "text": "OpsItemType -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0091",
+      "kind": "paragraph",
+      "text": "The type of OpsItem. Systems Manager supports the following types of OpsItems:",
+      "protected": []
+    },
+    {
+      "id": "s0092",
+      "kind": "paragraph",
+      "text": "[[p0]] This type of OpsItem is used for default OpsItems created by OpsCenter.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/aws/issue"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0093",
+      "kind": "paragraph",
+      "text": "[[p0]] This type of OpsItem is used by Change Manager for reviewing and approving or rejecting change requests.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/aws/changerequest"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0094",
+      "kind": "paragraph",
+      "text": "[[p0]] This type of OpsItem is used by OpsCenter for aggregating and reporting on duplicate OpsItems.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/aws/insight"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0095",
+      "kind": "paragraph",
+      "text": "CreatedTime -> (timestamp)",
+      "protected": []
+    },
+    {
+      "id": "s0096",
+      "kind": "paragraph",
+      "text": "The date and time the OpsItem was created.",
+      "protected": []
+    },
+    {
+      "id": "s0097",
+      "kind": "paragraph",
+      "text": "Description -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0098",
+      "kind": "paragraph",
+      "text": "The OpsItem description.",
+      "protected": []
+    },
+    {
+      "id": "s0099",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0100",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0101",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "2048"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0102",
+      "kind": "paragraph",
+      "text": "pattern: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "[\\s\\S]*\\S[\\s\\S]*"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0103",
+      "kind": "paragraph",
+      "text": "LastModifiedBy -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0104",
+      "kind": "paragraph",
+      "text": "The ARN of the Amazon Web Services account that last updated the OpsItem.",
+      "protected": []
+    },
+    {
+      "id": "s0105",
+      "kind": "paragraph",
+      "text": "LastModifiedTime -> (timestamp)",
+      "protected": []
+    },
+    {
+      "id": "s0106",
+      "kind": "paragraph",
+      "text": "The date and time the OpsItem was last updated.",
+      "protected": []
+    },
+    {
+      "id": "s0107",
+      "kind": "paragraph",
+      "text": "Notifications -> (list)",
+      "protected": []
+    },
+    {
+      "id": "s0108",
+      "kind": "paragraph",
+      "text": "The Amazon Resource Name (ARN) of an Amazon Simple Notification Service (Amazon SNS) topic where notifications are sent when this OpsItem is edited or changed.",
+      "protected": []
+    },
+    {
+      "id": "s0109",
+      "kind": "paragraph",
+      "text": "(structure)",
+      "protected": []
+    },
+    {
+      "id": "s0110",
+      "kind": "paragraph",
+      "text": "A notification about the OpsItem.",
+      "protected": []
+    },
+    {
+      "id": "s0111",
+      "kind": "paragraph",
+      "text": "Arn -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0112",
+      "kind": "paragraph",
+      "text": "The Amazon Resource Name (ARN) of an Amazon Simple Notification Service (Amazon SNS) topic where notifications are sent when this OpsItem is edited or changed.",
+      "protected": []
+    },
+    {
+      "id": "s0113",
+      "kind": "paragraph",
+      "text": "Priority -> (integer)",
+      "protected": []
+    },
+    {
+      "id": "s0114",
+      "kind": "paragraph",
+      "text": "The importance of this OpsItem in relation to other OpsItems in the system.",
+      "protected": []
+    },
+    {
+      "id": "s0115",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0116",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0117",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "5"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0118",
+      "kind": "paragraph",
+      "text": "RelatedOpsItems -> (list)",
+      "protected": []
+    },
+    {
+      "id": "s0119",
+      "kind": "paragraph",
+      "text": "One or more OpsItems that share something in common with the current OpsItem. For example, related OpsItems can include OpsItems with similar error messages, impacted resources, or statuses for the impacted resource.",
+      "protected": []
+    },
+    {
+      "id": "s0120",
+      "kind": "paragraph",
+      "text": "(structure)",
+      "protected": []
+    },
+    {
+      "id": "s0121",
+      "kind": "paragraph",
+      "text": "An OpsItems that shares something in common with the current OpsItem. For example, related OpsItems can include OpsItems with similar error messages, impacted resources, or statuses for the impacted resource.",
+      "protected": []
+    },
+    {
+      "id": "s0122",
+      "kind": "paragraph",
+      "text": "OpsItemId -> (string) [required]",
+      "protected": []
+    },
+    {
+      "id": "s0123",
+      "kind": "paragraph",
+      "text": "The ID of an OpsItem related to the current OpsItem.",
+      "protected": []
+    },
+    {
+      "id": "s0124",
+      "kind": "paragraph",
+      "text": "Status -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0125",
+      "kind": "paragraph",
+      "text": "The OpsItem status. For more information, see [[p0]] in the [[p1]]Amazon Web Services Systems Manager User Guide[[p2]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Editing OpsItem details",
+            "href": "https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-working-with-OpsItems-editing-details.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0126",
+      "kind": "paragraph",
+      "text": "Possible values:",
+      "protected": []
+    },
+    {
+      "id": "s0127",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0128",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "InProgress"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0129",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Resolved"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0130",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Pending"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0131",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "TimedOut"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0132",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Cancelling"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0133",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Cancelled"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0134",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Failed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0135",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "CompletedWithSuccess"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0136",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "CompletedWithFailure"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0137",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Scheduled"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0138",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "RunbookInProgress"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0139",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "PendingChangeCalendarOverride"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0140",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "ChangeCalendarOverrideApproved"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0141",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "ChangeCalendarOverrideRejected"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0142",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "PendingApproval"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0143",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Approved"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0144",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Revoked"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0145",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Rejected"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0146",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Closed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0147",
+      "kind": "paragraph",
+      "text": "OpsItemId -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0148",
+      "kind": "paragraph",
+      "text": "The ID of the OpsItem.",
+      "protected": []
+    },
+    {
+      "id": "s0149",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0150",
+      "kind": "paragraph",
+      "text": "pattern: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "^(oi)-[0-9a-f]{12}$"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0151",
+      "kind": "paragraph",
+      "text": "Version -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0152",
+      "kind": "paragraph",
+      "text": "The version of this OpsItem. Each time the OpsItem is edited the version number increments by one.",
+      "protected": []
+    },
+    {
+      "id": "s0153",
+      "kind": "paragraph",
+      "text": "Title -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0154",
+      "kind": "paragraph",
+      "text": "A short heading that describes the nature of the OpsItem and the impacted resource.",
+      "protected": []
+    },
+    {
+      "id": "s0155",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0156",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0157",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1024"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0158",
+      "kind": "paragraph",
+      "text": "pattern: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "^(?!\\s*$).+"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0159",
+      "kind": "paragraph",
+      "text": "Source -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0160",
+      "kind": "paragraph",
+      "text": "The origin of the OpsItem, such as Amazon EC2 or Systems Manager. The impacted resource is a subset of source.",
+      "protected": []
+    },
+    {
+      "id": "s0161",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0162",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0163",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "128"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0164",
+      "kind": "paragraph",
+      "text": "pattern: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "^(?!\\s*$).+"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0165",
+      "kind": "paragraph",
+      "text": "OperationalData -> (map)",
+      "protected": []
+    },
+    {
+      "id": "s0166",
+      "kind": "paragraph",
+      "text": "Operational data is custom data that provides useful reference details about the OpsItem. For example, you can specify log files, error strings, license keys, troubleshooting tips, or other relevant data. You enter operational data as key-value pairs. The key has a maximum length of 128 characters. The value has a maximum size of 20 KB.",
+      "protected": []
+    },
+    {
+      "id": "s0167",
+      "kind": "heading",
+      "text": "Warning",
+      "protected": []
+    },
+    {
+      "id": "s0168",
+      "kind": "paragraph",
+      "text": "Operational data keys [[p0]]can’t[[p1]] begin with the following: [[p2]] , [[p3]] , [[p4]] , [[p5]] , [[p6]] , [[p7]] , [[p8]] , [[p9]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "amazon"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "aws"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "amzn"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "ssm"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "/amazon"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "code",
+            "text": "/aws"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "code",
+            "text": "/amzn"
+          }
+        },
+        {
+          "token": "[[p9]]",
+          "inline": {
+            "tag": "code",
+            "text": "/ssm"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0169",
+      "kind": "paragraph",
+      "text": "You can choose to make the data searchable by other users in the account or you can restrict search access. Searchable data means that all users with access to the OpsItem Overview page (as provided by the DescribeOpsItems API operation) can view and search on the specified data. Operational data that isn’t searchable is only viewable by users who have access to the OpsItem (as provided by the GetOpsItem API operation).",
+      "protected": []
+    },
+    {
+      "id": "s0170",
+      "kind": "paragraph",
+      "text": "Use the [[p0]] key in OperationalData to specify a related resource in the request. Use the [[p1]] key in OperationalData to associate an Automation runbook with the OpsItem. To view Amazon Web Services CLI example commands that use these keys, see [[p2]] in the [[p3]]Amazon Web Services Systems Manager User Guide[[p4]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/aws/resources"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "/aws/automations"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "link",
+            "text": "Creating OpsItems manually",
+            "href": "https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-manually-create-OpsItems.html"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0171",
+      "kind": "paragraph",
+      "text": "key -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0172",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0173",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0174",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "128"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0175",
+      "kind": "paragraph",
+      "text": "pattern: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "^(?!\\s*$).+"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0176",
+      "kind": "paragraph",
+      "text": "value -> (structure)",
+      "protected": []
+    },
+    {
+      "id": "s0177",
+      "kind": "paragraph",
+      "text": "An object that defines the value of the key and its type in the OperationalData map.",
+      "protected": []
+    },
+    {
+      "id": "s0178",
+      "kind": "paragraph",
+      "text": "Value -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0179",
+      "kind": "paragraph",
+      "text": "The value of the OperationalData key.",
+      "protected": []
+    },
+    {
+      "id": "s0180",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0181",
+      "kind": "paragraph",
+      "text": "pattern: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "[\\s\\S]*\\S[\\s\\S]*"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0182",
+      "kind": "paragraph",
+      "text": "Type -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0183",
+      "kind": "paragraph",
+      "text": "The type of key-value pair. Valid types include [[p0]] and [[p1]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "SearchableString"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "String"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0184",
+      "kind": "paragraph",
+      "text": "Possible values:",
+      "protected": []
+    },
+    {
+      "id": "s0185",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "SearchableString"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0186",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "String"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0187",
+      "kind": "paragraph",
+      "text": "Category -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0188",
+      "kind": "paragraph",
+      "text": "An OpsItem category. Category options include: Availability, Cost, Performance, Recovery, Security.",
+      "protected": []
+    },
+    {
+      "id": "s0189",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0190",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0191",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "64"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0192",
+      "kind": "paragraph",
+      "text": "pattern: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "^(?!\\s*$).+"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0193",
+      "kind": "paragraph",
+      "text": "Severity -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0194",
+      "kind": "paragraph",
+      "text": "The severity of the OpsItem. Severity options range from 1 to 4.",
+      "protected": []
+    },
+    {
+      "id": "s0195",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0196",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0197",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "64"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0198",
+      "kind": "paragraph",
+      "text": "pattern: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "^(?!\\s*$).+"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0199",
+      "kind": "paragraph",
+      "text": "ActualStartTime -> (timestamp)",
+      "protected": []
+    },
+    {
+      "id": "s0200",
+      "kind": "paragraph",
+      "text": "The time a runbook workflow started. Currently reported only for the OpsItem type [[p0]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/aws/changerequest"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0201",
+      "kind": "paragraph",
+      "text": "ActualEndTime -> (timestamp)",
+      "protected": []
+    },
+    {
+      "id": "s0202",
+      "kind": "paragraph",
+      "text": "The time a runbook workflow ended. Currently reported only for the OpsItem type [[p0]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/aws/changerequest"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0203",
+      "kind": "paragraph",
+      "text": "PlannedStartTime -> (timestamp)",
+      "protected": []
+    },
+    {
+      "id": "s0204",
+      "kind": "paragraph",
+      "text": "The time specified in a change request for a runbook workflow to start. Currently supported only for the OpsItem type [[p0]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/aws/changerequest"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0205",
+      "kind": "paragraph",
+      "text": "PlannedEndTime -> (timestamp)",
+      "protected": []
+    },
+    {
+      "id": "s0206",
+      "kind": "paragraph",
+      "text": "The time specified in a change request for a runbook workflow to end. Currently supported only for the OpsItem type [[p0]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/aws/changerequest"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0207",
+      "kind": "paragraph",
+      "text": "OpsItemArn -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0208",
+      "kind": "paragraph",
+      "text": "The OpsItem Amazon Resource Name (ARN).",
+      "protected": []
+    },
+    {
+      "id": "s0209",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0210",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "20"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0211",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "2048"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0212",
+      "kind": "paragraph",
+      "text": "pattern: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "arn:(aws[a-zA-Z-]*)?:ssm:[a-z0-9-\\.]{0,63}:[0-9]{12}:opsitem.*"
+          }
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "segment": "s0001"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "get-ops-item",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Description",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Synopsis",
+      "segment": "s0007"
+    },
+    {
+      "type": "literal",
+      "text": "  get-ops-item\n--ops-item-id <value>\n[--ops-item-arn <value>]\n[--cli-input-json | --cli-input-yaml]\n[--generate-cli-skeleton <value>]\n[--debug]\n[--endpoint-url <value>]\n[--no-verify-ssl]\n[--no-paginate]\n[--output <value>]\n[--query <value>]\n[--profile <value>]\n[--region <value>]\n[--version <value>]\n[--color <value>]\n[--no-sign-request]\n[--ca-bundle <value>]\n[--cli-read-timeout <value>]\n[--cli-connect-timeout <value>]\n[--cli-binary-format <value>]\n[--no-cli-pager]\n[--cli-auto-prompt]\n[--no-cli-auto-prompt]\n[--cli-error-format <value>]"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Options",
+      "segment": "s0008"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0009"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0010"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0011"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0012"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0013"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0014"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0015"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0016"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0017"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0018"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0019"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0020"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Global-Options",
+      "segment": "s0021"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0022"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0023"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0024"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0025"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0026"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0027"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0028"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0029"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0030"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0031"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0032"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0033"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0034"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0035"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0036"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0037"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0038"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0039"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0040"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0041"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0042"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0043"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0044"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0045"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0046"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0047"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0048"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0049"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0050"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0051"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0052"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0053"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0054"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0055"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0056"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0057"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0058"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0059"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0060"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0061"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0062"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0063"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0064"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0065"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0066"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0067"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0068"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0069"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0070"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0071"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0072"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0073"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0074"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0075"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0076"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Examples",
+      "segment": "s0077"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "Note",
+      "segment": "s0078"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0079"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0080"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0081"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0082"
+    },
+    {
+      "type": "literal",
+      "text": "aws ssm get-ops-item \\\n    --ops-item-id oi-0b725EXAMPLE"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0083"
+    },
+    {
+      "type": "literal",
+      "text": "{\n    \"OpsItem\": {\n        \"CreatedBy\": \"arn:aws:sts::123456789012:assumed-role/OpsItem-CWE-Role/fbf77cbe264a33509569f23e4EXAMPLE\",\n        \"CreatedTime\": \"2019-12-04T15:52:16.793000-08:00\",\n        \"Description\": \"CloudWatch Event Rule SSMOpsItems-EC2-instance-terminated was triggered. Your EC2 instance has terminated. See below for more details.\",\n        \"LastModifiedBy\": \"arn:aws:sts::123456789012:assumed-role/OpsItem-CWE-Role/fbf77cbe264a33509569f23e4EXAMPLE\",\n        \"LastModifiedTime\": \"2019-12-04T15:52:16.793000-08:00\",\n        \"Notifications\": [],\n        \"RelatedOpsItems\": [],\n        \"Status\": \"Open\",\n        \"OpsItemId\": \"oi-0b725EXAMPLE\",\n        \"Title\": \"EC2 instance terminated\",\n        \"Source\": \"EC2\",\n        \"OperationalData\": {\n            \"/aws/automations\": {\n                \"Value\": \"[ { \\\"automationType\\\": \\\"AWS:SSM:Automation\\\", \\\"automationId\\\": \\\"AWS-CreateManagedWindowsInstance\\\" }, { \\\"automationType\\\": \\\"AWS:SSM:Automation\\\", \\\"automationId\\\": \\\"AWS-CreateManagedLinuxInstance\\\" } ]\",\n                \"Type\": \"SearchableString\"\n            },\n            \"/aws/dedup\": {\n                \"Value\": \"{\\\"dedupString\\\":\\\"SSMOpsItems-EC2-instance-terminated\\\"}\",\n                \"Type\": \"SearchableString\"\n            },\n            \"/aws/resources\": {\n                \"Value\": \"[{\\\"arn\\\":\\\"arn:aws:ec2:us-west-2:123456789012:instance/i-05adec7e97EXAMPLE\\\"}]\",\n                \"Type\": \"SearchableString\"\n            },\n            \"event-time\": {\n                \"Value\": \"2019-12-04T23:52:16Z\",\n                \"Type\": \"String\"\n            },\n            \"instance-state\": {\n                \"Value\": \"terminated\",\n                \"Type\": \"String\"\n            }\n        },\n        \"Category\": \"Availability\",\n        \"Severity\": \"4\"\n    }\n}"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0084"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Output",
+      "segment": "s0085"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0086"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0087"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0088"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0089"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0090"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0091"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0092"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0093"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0094"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0095"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0096"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0097"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0098"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0099"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0100"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0101"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0102"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0103"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0104"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0105"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0106"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0107"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0108"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0109"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0110"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0111"
+                },
+                {
+                  "type": "quote",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0112"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0113"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0114"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0115"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0116"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0117"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0118"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0119"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0120"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0121"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0122"
+                },
+                {
+                  "type": "quote",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0123"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0124"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0125"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0126"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0127"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0128"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0129"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0130"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0131"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0132"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0133"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0134"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0135"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0136"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0137"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0138"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0139"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0140"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0141"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0142"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0143"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0144"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0145"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0146"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0147"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0148"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0149"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0150"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0151"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0152"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0153"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0154"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0155"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0156"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0157"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0158"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0159"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0160"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0161"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0162"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0163"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0164"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0165"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0166"
+            },
+            {
+              "type": "heading",
+              "level": 4,
+              "anchor": "Warning",
+              "segment": "s0167"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0168"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0169"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0170"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0171"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0172"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0173"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0174"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0175"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0176"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0177"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0178"
+                },
+                {
+                  "type": "quote",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0179"
+                    },
+                    {
+                      "type": "paragraph",
+                      "segment": "s0180"
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "items": [
+                        [
+                          {
+                            "type": "paragraph",
+                            "segment": "s0181"
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0182"
+                },
+                {
+                  "type": "quote",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0183"
+                    },
+                    {
+                      "type": "paragraph",
+                      "segment": "s0184"
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "items": [
+                        [
+                          {
+                            "type": "paragraph",
+                            "segment": "s0185"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "paragraph",
+                            "segment": "s0186"
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0187"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0188"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0189"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0190"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0191"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0192"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0193"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0194"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0195"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0196"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0197"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0198"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0199"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0200"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0201"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0202"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0203"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0204"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0205"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0206"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0207"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0208"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0209"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0210"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0211"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0212"
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

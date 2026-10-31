@@ -1,0 +1,185 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title></title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><span style="color: red">&lt;ns:Root&gt;
+<div class="refentry"><a name="vfs_gpfs.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>vfs_gpfs &#8212; gpfs specific samba extensions like acls</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="literal">vfs objects = gpfs</code></p></div></div><div class="refsect1"><a name="id1338"></a><h2>DESCRIPTION</h2><p>This VFS module is part of the
+	<a class="citerefentry" href="samba.7.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(7)</span></a> suite.</p><p>The <code class="literal">gpfs</code> VFS module is the home
+	for all gpfs extensions that Samba requires for proper integration
+	with GPFS. It uses the GPL library interfaces provided by GPFS.
+	</p><p>Currently the gpfs vfs module provides extensions in following areas :
+	</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>NFSv4 ACL Interfaces with configurable options for GPFS</p></li><li class="listitem"><p>Kernel oplock support on GPFS</p></li><li class="listitem"><p>Lease support on GPFS</p></li></ul></div><p>
+	</p><p><code class="literal">NOTE:</code> This module follows the posix-acl behaviour
+	and hence allows permission stealing via chown. Samba might allow at a later
+	point in time, to restrict the chown via this module as such restrictions
+	are the responsibility of the underlying filesystem than of Samba.
+	</p><p>This module makes use of the smb.conf parameter
+	<a class="link" href="smb.conf.5.html#ACLMAPFULLCONTROL" target="_top">acl map full control</a>.
+	When set to yes (the default), this parameter will add in the FILE_DELETE_CHILD
+	bit on a returned ACE entry for a file (not a directory) that already
+	contains all file permissions except for FILE_DELETE and FILE_DELETE_CHILD.
+	This can prevent Windows applications that request GENERIC_ALL access
+	from getting ACCESS_DENIED errors when running against a filesystem
+	with NFSv4 compatible ACLs.
+	</p><p>This module is stackable.</p><p>Since Samba 4.0 all options are per share options.</p></div><div class="refsect1"><a name="id1339"></a><h2>OPTIONS</h2><dt><span class="term">nfs4:mode = [ simple | special ]</span></dt><dd><p>
+	Controls substitution of special IDs (OWNER@ and GROUP@) on NFS4 ACLs.
+	The use of mode simple is recommended.
+	In this mode only non inheriting ACL entries for the file owner
+	and group are mapped to special IDs.
+	</p><p>The following MODEs are understood by the module:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">simple(default)</code> - use OWNER@ and GROUP@ special IDs for non inheriting ACEs only.</p></li><li class="listitem"><p><code class="literal">special(deprecated)</code> - use OWNER@ and GROUP@ special IDs in ACEs for all file owner and group ACEs.</p></li></ul></div></dd><dt><span class="term">nfs4:acedup = [dontcare|reject|ignore|merge]</span></dt><dd><p>
+	This parameter configures how Samba handles duplicate ACEs encountered in NFS4 ACLs.
+	They allow creating duplicate ACEs with different bits for same ID, which may confuse the Windows clients.
+	</p><p>Following is the behaviour of Samba for different values :</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">dontcare</code> - copy the ACEs as they come</p></li><li class="listitem"><p><code class="literal">reject (deprecated)</code> - stop operation and exit with error on ACL set op</p></li><li class="listitem"><p><code class="literal">ignore (deprecated)</code> - don't include the second matching ACE</p></li><li class="listitem"><p><code class="literal">merge (default)</code> - bitwise OR the 2 ace.flag fields and 2 ace.mask fields of the 2 duplicate ACEs into 1 ACE</p></li></ul></div></dd><dt><span class="term">nfs4:chown = [yes|no]</span></dt><dd><p>This parameter allows enabling or disabling the chown supported
+	by the underlying filesystem. This parameter should be enabled with
+	care as it might leave your system insecure.</p><p>Some filesystems allow chown as a) giving b) stealing. It is the latter
+	that is considered a risk.</p><p>Following is the behaviour of Samba for different values : </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">yes</code> - Enable chown if as supported by the under filesystem</p></li><li class="listitem"><p><code class="literal">no (default)</code> - Disable chown</p></li></ul></div></dd><div class="variablelist"><dl class="variablelist"><dt><span class="term">gpfs:sharemodes = [ yes | no ]</span></dt><dd><p>
+		Enable/Disable cross node sharemode handling for GPFS.
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+		<code class="literal">yes(default)</code> - propagate sharemodes across all GPFS nodes.
+		</p></li><li class="listitem"><p>
+		<code class="literal">no</code> - do not propagate sharemodes across all GPFS nodes.
+		This should only be used if the GPFS file system is
+		exclusively exported by Samba. Access by local unix application or
+		NFS exports could lead to corrupted files.
+		</p></li></ul></div></dd><dt><span class="term">gpfs:leases = [ yes | no ]</span></dt><dd><p>
+		Enable/Disable cross node leases (oplocks) for GPFS.
+		You should also set the <code class="literal">oplocks</code> and <code class="literal">kernel oplocks</code>
+		options to the same value.
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+		<code class="literal">yes(default)</code> - propagate leases across all GPFS nodes.
+		</p></li><li class="listitem"><p>
+		<code class="literal">no</code> - do not propagate leases across all GPFS nodes.
+		This should only be used if the GPFS file system is
+		exclusively exported by Samba. Access by local unix application or
+		NFS exports could lead to corrupted files.
+		</p></li></ul></div></dd><dt><span class="term">gpfs:hsm = [ yes | no ]</span></dt><dd><p>
+		Enable/Disable announcing if this FS has HSM enabled.
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+		<code class="literal">no(default)</code> - Do not announce HSM.
+		</p></li><li class="listitem"><p>
+		<code class="literal">yes</code> - Announce HSM.
+		</p></li></ul></div></dd><dt><span class="term">gpfs:recalls = [ yes | no ]</span></dt><dd><p> When this option is set to no, an attempt to
+		open an offline file will be rejected with access
+		denied.  This helps preventing recall storms triggered
+		by careless applications like Finder and
+		Explorer.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">yes(default)</code> - Open
+		files that are offline. This will recall the files
+		from HSM.</p></li><li class="listitem"><p><code class="literal">no</code> - Reject access
+		to offline files with access denied. This will prevent
+		recalls of files from HSM. Using this setting also
+		requires gpfs:hsm to be set to yes.</p></li></ul></div></dd><dt><span class="term">gpfs:getrealfilename = [ yes | no ]</span></dt><dd><p>
+		Enable/Disable usage of the <code class="literal">gpfs_get_realfilename_path()</code> function.
+		This improves the casesensitive wildcard file name access.
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+		<code class="literal">yes(default)</code> - use <code class="literal">gpfs_get_realfilename_path()</code>.
+		</p></li><li class="listitem"><p>
+		<code class="literal">no</code> - do not use <code class="literal">gpfs_get_realfilename_path()</code>.
+		It seems that <code class="literal">gpfs_get_realfilename_path()</code> doesn't work on AIX.
+		</p></li></ul></div></dd><dt><span class="term">gpfs:winattr = [ yes | no ]</span></dt><dd><p>
+		Enable/Disable usage of the windows attributes in GPFS.
+		GPFS is able to store windows file attributes e.g. HIDDEN,
+		READONLY, SYSTEM and others natively. That means Samba doesn't
+		need to map them to permission bits or extended attributes.
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+		<code class="literal">no(default)</code> - do not use GPFS windows attributes.
+		</p></li><li class="listitem"><p>
+		<code class="literal">yes</code> - use GPFS windows attributes.
+		</p></li></ul></div></dd><dt><span class="term">gpfs:acl = [ yes | no ]</span></dt><dd><p>
+		This option lets Samba use or ignore GPFS ACLs.
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+		<code class="literal">yes(default)</code> - use GPFS ACLs.
+		</p></li><li class="listitem"><p>
+		<code class="literal">no</code> - do not use GPFS ACLs and pass everything
+		to the next SMB_VFS module.
+		</p></li></ul></div></dd><dt><span class="term">gpfs:check_fstype = [ yes | no ]</span></dt><dd><p>
+		Check for a mounted GPFS file system on access to a SMB share.
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+		<code class="literal">yes(default)</code> - Check that the SMB share path
+		is on a GPFS file system. Share access will be denied when a
+		different file system is found.
+		</p></li><li class="listitem"><p>
+		<code class="literal">no</code> - skip check for GPFS file system on SMB
+		share path.
+		</p></li></ul></div></dd><dt><span class="term">gpfs:dfreequota = [ yes | no ]</span></dt><dd><p>
+		Adjust reporting of the size and free space of a share
+		according to quotas. If this setting is "yes", a
+		request for size and free space will also evaluate the
+		user quota of the user requesting the data and the
+		group quota of the primary group of the user. Fileset
+		quotas are not queried, since GPFS already provides
+		the option --dfreequota to reflect the fileset quota
+		in the free space query. Please use that option to
+		include fileset quotas in the reported disk space.
+		</p><p>
+		If any of the soft or hard quota limits has been
+		reached, the free space will be reported as 0. If a
+		quota is in place, but the limits have not been
+		reached, the free space will be reported according to
+		the space left in the quota. If more than one quota
+		applies the free space will be reported as the smallest
+		space left in those quotas. The size of the share
+		will be reported according to the quota usage. If more
+		than one quota applies, the smallest size will be
+		reported for the share size according to these quotas.
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+		<code class="literal">yes</code> - include the quotas
+		when reporting the share size and free space
+		</p></li><li class="listitem"><p>
+		<code class="literal">no(default)</code> - do not include quotas,
+		simply report the size and free space of the file system
+		</p></li></ul></div></dd><dt><span class="term">gpfs:settimes = [ yes | no ]</span></dt><dd><p>
+		Use the gpfs_set_times API when changing the
+		timestamps of a file or directory. If the GPFS API is
+		not available the old method of using utime and the
+		GPFS winattr call will be used instead.
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+		<code class="literal">yes(default)</code> - Use gpfs_set_times.
+		Fall back to utime and winattr when it is not available.
+		</p></li><li class="listitem"><p>
+		<code class="literal">no</code> - Do not use gpfs_set_times.
+		</p></li></ul></div></dd><dt><span class="term">gpfs:clamp_invalid_times = [ yes | no ]</span></dt><dd><p>
+		GPFS stores timestamps using 32-bit unsigned integers for the
+		seconds component. When using gpfs:settimes = yes, this module
+		validates times that clients attempt to set are within the
+		supported GPFS range between 0 and UINT32_MAX. If a timestamp is
+		outside of this range, the client request is rejected. To cope
+		with clients setting eg temporary timestamps outside the valid
+		range, this parameter can be used to clamp the client timestamp
+		to the allowed range. Times before Thu Jan 1 12:00:00 AM UTC
+		1970 (the UNIX epock) are then set to Thu Jan 1 12:00:00 AM UTC
+		1970, times after Sun Feb 7 06:28:15 AM UTC 2106 will be set to
+		Sun Feb 7 06:28:15 AM UTC 2106.
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+		<code class="literal">no(default)</code> - Fail request with invalid time.
+		</p></li><li class="listitem"><p>
+		<code class="literal">yes</code> - clamp invalid times to 0 or UINT32_MAX.
+		</p></li></ul></div></dd><dt><span class="term">gpfs:syncio = [yes|no]</span></dt><dd><p>This parameter makes Samba open all files with O_SYNC.
+		  This triggers optimizations in GPFS for workloads that
+		  heavily share files.</p><p>Following is the behaviour of Samba for different
+		  values:
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">yes</code> - Open files with O_SYNC
+		</p></li><li class="listitem"><p><code class="literal">no (default)</code> - Open files as
+		    normal Samba would do
+		</p></li></ul></div></dd></dl></div></div><div class="refsect1"><a name="id1340"></a><h2>EXAMPLES</h2><p>A GPFS mount can be exported via Samba as follows :</p><pre class="programlisting">
+        <em class="parameter"><code>[samba_gpfs_share]</code></em>
+	<a class="link" href="smb.conf.5.html#VFSOBJECTS" target="_top">vfs objects = gpfs</a>
+	<a class="link" href="smb.conf.5.html#PATH" target="_top">path = /test/gpfs_mount</a>
+	<a class="link" href="smb.conf.5.html#NFS4:MODE" target="_top">nfs4: mode = special</a>
+	<a class="link" href="smb.conf.5.html#NFS4:ACEDUP" target="_top">nfs4: acedup = merge</a>
+</pre></div><div class="refsect1"><a name="id1341"></a><h2>CAVEATS</h2><p>
+	Depending on the version of gpfs, the <code class="literal">libgpfs_gpl</code>
+	library or the <code class="literal">libgpfs</code> library is needed at
+	runtime by the <code class="literal">gpfs</code> VFS module:
+	Starting with gpfs 3.2.1 PTF8, the complete <code class="literal">libgpfs</code>
+	is available as open source and <code class="literal">libgpfs_gpl</code> does no
+	longer exist. With earlier versions of gpfs, only the
+	<code class="literal">libgpfs_gpl</code> library was open source and could be
+	used at run time.
+	</p><p>
+	At build time, only the header file <code class="literal">gpfs_gpl.h</code>
+	is required, which is a symlink to <code class="literal">gpfs.h</code> in
+	gpfs versions newer than 3.2.1 PTF8.
+	</p></div><div class="refsect1"><a name="id1342"></a><h2>VERSION</h2><p>This man page is part of version 4.25.0 of the Samba suite.
+	</p></div><div class="refsect1"><a name="id1343"></a><h2>AUTHOR</h2><p>The original Samba software and related utilities
+	were created by Andrew Tridgell. Samba is now developed
+	by the Samba Team as an Open Source project similar
+	to the way the Linux kernel is developed.</p><p>The GPFS VFS module was created with contributions from
+	Volker Lendecke and the developers at IBM.
+	</p><p> This manpage was created by the IBM FSCC team </p></div></div>
+&lt;/ns:Root&gt;</span></body></html>

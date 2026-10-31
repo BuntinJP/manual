@@ -1,0 +1,980 @@
+<!doctype html><html><head><meta charset="utf-8"><title>mount.cifs</title></head><body><main>
+<section id="mount-cifs-mount-smb3">
+<h1>mount.cifs, mount.smb3</h1>
+<section id="mount-using-the-common-internet-file-system-cifs">
+<h2>mount using the Common Internet File System (CIFS)</h2>
+<dl class="field-list simple">
+<dt>Manual section<span class="colon">:</span></dt>
+<dd><p>8</p>
+</dd>
+</dl>
+<section id="synopsis">
+<h3>SYNOPSIS</h3>
+<blockquote>
+<p>mount.cifs {service} {mount-point} [-o options]</p>
+</blockquote>
+<p>This tool is part of the cifs-utils suite.</p>
+<p><span class="docutils literal">mount.cifs</span> mounts a CIFS or SMB3 filesystem from Linux. It is
+usually invoked indirectly by the mount(8) command when using the &quot;-t cifs&quot;
+option. This command only works in Linux, and the kernel must support
+the cifs filesystem. The SMB3 protocol is the successor to the CIFS (SMB)
+protocol and is supported by most Windows servers, Azure (cloud storage),
+Macs and many other commercial servers and Network Attached Storage
+appliances as well as by the popular Open Source server Samba.</p>
+<p><span class="docutils literal">mount.smb3</span> mounts only SMB3 filesystem. It is usually invoked
+indirectly by the mount(8) command when using the &quot;-t smb3&quot; option.
+The <span class="docutils literal">smb3</span> filesystem type was added in kernel-4.18 and above.
+It works in a similar fashion as mount.cifs except it passes filesystem
+type as smb3.</p>
+<p>The mount.cifs utility attaches the UNC name (exported network
+resource) specified as service (using <span class="docutils literal">//server/share</span> syntax, where
+&quot;server&quot; is the server name or IP address and &quot;share&quot; is the name of
+the share) to the local directory mount-point.</p>
+<p>Options to mount.cifs are specified as a comma-separated list of
+<span class="docutils literal">key=value</span> pairs. It is possible to send options other than those
+listed here, assuming that the cifs filesystem kernel module
+(<span class="docutils literal">cifs.ko</span>) supports them. Unrecognized cifs mount options passed to
+the cifs vfs kernel code will be logged to the kernel log.</p>
+<p><span class="docutils literal">mount.cifs</span> causes the cifs vfs to launch a thread named
+cifsd. After mounting it keeps running until the mounted resource is
+unmounted (usually via the <span class="docutils literal">umount</span> utility).</p>
+<p><span class="docutils literal">mount.cifs <span class="pre">-V</span></span> command displays the version of cifs mount helper.</p>
+<p><span class="docutils literal">modinfo cifs</span> command displays the version of cifs module.</p>
+</section>
+<section id="options">
+<h3>OPTIONS</h3>
+<dl>
+<dt>username=arg|user=arg</dt>
+<dd><p>specifies the username to connect as. If this is not
+given, then the environment variable USER is used.</p>
+<p>Users must use the discrete <span class="docutils literal">password=</span> and <span class="docutils literal">domain=</span> options to
+specify relevant values. Including these in the <span class="docutils literal">username=</span> option
+is no longer supported.</p>
+<p>While some versions of the cifs kernel module accept <span class="docutils literal">user=</span> as an
+abbreviation for this option, its use can confuse the standard mount
+program into thinking that this is a non-superuser mount. It is
+therefore recommended to use the full <span class="docutils literal">username=</span> option name.</p>
+</dd>
+<dt>password=arg|pass=arg</dt>
+<dd><p>specifies the CIFS password. If this option is not given then the
+environment variable PASSWD is used. If the password is not specified
+directly or indirectly via an argument to mount, mount.cifs will
+prompt for a password, unless the guest option is specified.</p>
+<p>Note that a password which contains the delimiter character (i.e. a
+comma ',') will fail to be parsed correctly on the command
+line. However, the same password defined in the PASSWD environment
+variable or via a credentials file or entered at the password prompt
+will be read correctly.</p>
+</dd>
+<dt>password2=arg|pass2=arg</dt>
+<dd><p>specifies an alternate password to help with password rotation. If
+this option is not given, then the environment variable PASSWD2 is used.
+If password2 is not specified directly or indirectly via an argument
+to mount, mount.cifs will NOT prompt for password2.</p>
+<p>Note that a password2 which contains the delimiter character (i.e. a
+comma ',') will fail to be parsed correctly on the command
+line. However, the same password2 defined in the PASSWD2 environment
+variable or via a credentials file (see below) will be read correctly.</p>
+</dd>
+<dt>credentials=filename|cred=filename</dt>
+<dd><p>specifies a file that contains a username and/or password and
+optionally an alternate password and/or the name of the workgroup.
+The format of the file is:</p>
+<pre class="literal-block">username=value
+password=value
+password2=value
+domain=value</pre>
+<p>This is preferred over having passwords in plaintext in a shared file,
+such as <em>/etc/fstab</em> . Be sure to protect any credentials file
+properly.</p>
+</dd>
+<dt>uid=arg</dt>
+<dd><p>sets the uid that will own all files or directories on the mounted
+filesystem when the server does not provide ownership information. It
+may be specified as either a username or a numeric uid. When not
+specified, the default is uid 0. The mount.cifs helper must be at
+version 1.10 or higher to support specifying the uid in non-numeric
+form. See the section on <a class="reference internal" href="#file-and-directory-ownership-and-permissions">FILE AND DIRECTORY OWNERSHIP AND PERMISSIONS</a>
+below for more information.</p>
+</dd>
+<dt>forceuid</dt>
+<dd><p>instructs the client to ignore any uid provided by the server for
+files and directories and to always assign the owner to be the value
+of the uid= option. See the section on
+<a class="reference internal" href="#file-and-directory-ownership-and-permissions">FILE AND DIRECTORY OWNERSHIP AND PERMISSIONS</a> below for more information.</p>
+</dd>
+<dt>cruid=arg</dt>
+<dd><p>sets the uid of the owner of the credentials cache. This is primarily
+useful with <span class="docutils literal">sec=krb5</span>. The default is the real uid of the process
+performing the mount. Setting this parameter directs the upcall to
+look for a credentials cache owned by that user.</p>
+</dd>
+<dt>gid=arg</dt>
+<dd><p>sets the gid that will own all files or directories on the mounted
+filesystem when the server does not provide ownership information. It
+may be specified as either a groupname or a numeric gid. When not
+specified, the default is gid 0. The mount.cifs helper must be at
+version 1.10 or higher to support specifying the gid in non-numeric
+form. See the section on <a class="reference internal" href="#file-and-directory-ownership-and-permissions">FILE AND DIRECTORY OWNERSHIP AND PERMISSIONS</a>
+below for more information.</p>
+</dd>
+<dt>forcegid</dt>
+<dd><p>instructs the client to ignore any gid provided by the server for
+files and directories and to always assign the owner to be the value
+of the gid= option. See the section on <a class="reference internal" href="#file-and-directory-ownership-and-permissions">FILE AND DIRECTORY OWNERSHIP
+AND PERMISSIONS</a> below for more information.</p>
+</dd>
+<dt>idsfromsid</dt>
+<dd><p>Extract uid/gid from special SID instead of mapping it. See the
+section on <a class="reference internal" href="#file-and-directory-ownership-and-permissions">FILE AND DIRECTORY OWNERSHIP AND PERMISSIONS</a> below for
+more information.</p>
+</dd>
+<dt>port=arg</dt>
+<dd><p>sets the port number on which the client will attempt to contact the
+CIFS server. If this value is specified, look for an existing
+connection with this port, and use that if one exists. If one doesn't
+exist, try to create a new connection on that port. If that connection
+fails, return an error. If this value isn't specified, look for an
+existing connection on port 445 or 139. If no such connection exists,
+try to connect on port 445 first and then port 139 if that
+fails. Return an error if both fail.</p>
+</dd>
+<dt>netbiosname=arg</dt>
+<dd><p>When mounting to servers via port 139, specifies the RFC1001 source
+name to use to represent the client netbios machine during the netbios
+session initialization.</p>
+</dd>
+<dt>servern=arg</dt>
+<dd><p>Similar to <span class="docutils literal">netbiosname</span> except it specifies the netbios name of
+the server instead of the client. Although rarely needed for mounting
+to newer servers, this option is needed for mounting to some older
+servers (such as OS/2 or Windows 98 and Windows ME) since when
+connecting over port 139 they, unlike most newer servers, do not
+support a default server name. A server name can be up to 15
+characters long and is usually uppercased.</p>
+</dd>
+<dt>file_mode=arg</dt>
+<dd><p>If the server does not support the CIFS Unix extensions this overrides
+the default file mode.</p>
+</dd>
+<dt>dir_mode=arg</dt>
+<dd><p>If the server does not support the CIFS Unix extensions this overrides
+the default mode for directories.</p>
+</dd>
+<dt>ip=arg|addr=arg</dt>
+<dd><p>sets the destination IP address. This option is set automatically if
+the server name portion of the requested UNC name can be resolved so
+rarely needs to be specified by the user.</p>
+</dd>
+<dt>domain=arg|dom=arg|workgroup=arg</dt>
+<dd><p>Sets the domain (workgroup) of the user. If no domains are given,
+the empty domain will be used. Use <span class="docutils literal">domainauto</span> to automatically
+guess the domain of the server you are connecting to.</p>
+</dd>
+<dt>domainauto</dt>
+<dd><p>When using NTLM authentication and not providing a domain via
+<span class="docutils literal">domain</span>, guess the domain from the server NTLM challenge.
+This behavior used to be the default on kernels older than 2.6.36.</p>
+</dd>
+<dt>guest</dt>
+<dd><p>don't prompt for a password.</p>
+</dd>
+<dt>iocharset</dt>
+<dd><p>Charset used to convert local path names to and from Unicode. Unicode
+is used by default for network path names if the server supports
+it. If <span class="docutils literal">iocharset</span> is not specified then the <span class="docutils literal">nls_default</span> specified
+during the local client kernel build will be used. If server does not
+support Unicode, this parameter is unused.</p>
+</dd>
+<dt>ro</dt>
+<dd><p>mount read-only.</p>
+</dd>
+<dt>rw</dt>
+<dd><p>mount read-write.</p>
+</dd>
+<dt>setuids</dt>
+<dd><p>If the CIFS Unix extensions are negotiated with the server the client
+will attempt to set the effective uid and gid of the local process on
+newly created files, directories, and devices (create, mkdir,
+mknod). If the CIFS Unix Extensions are not negotiated, for newly
+created files and directories instead of using the default uid and gid
+specified on the the mount, cache the new file's uid and gid locally
+which means that the uid for the file can change when the inode is
+reloaded (or the user remounts the share).</p>
+</dd>
+<dt>nosetuids</dt>
+<dd><p>The client will not attempt to set the uid and gid on on newly created
+files, directories, and devices (create, mkdir, mknod) which will
+result in the server setting the uid and gid to the default (usually
+the server uid of the user who mounted the share). Letting the server
+(rather than the client) set the uid and gid is the default. If the
+CIFS Unix Extensions are not negotiated then the uid and gid for new
+files will appear to be the uid (gid) of the mounter or the uid (gid)
+parameter specified on the mount.</p>
+</dd>
+<dt>perm</dt>
+<dd><p>Client does permission checks (vfs_permission check of uid and gid of
+the file against the mode and desired operation), Note that this is in
+addition to the normal ACL check on the target machine done by the
+server software. Client permission checking is enabled by default.</p>
+</dd>
+<dt>noperm</dt>
+<dd><p>Client does not do permission checks. This can expose files on this
+mount to access by other users on the local client system. It is
+typically only needed when the server supports the CIFS Unix
+Extensions but the UIDs/GIDs on the client and server system do not
+match closely enough to allow access by the user doing the mount. Note
+that this does not affect the normal ACL check on the target machine
+done by the server software (of the server ACL against the user name
+provided at mount time).</p>
+</dd>
+<dt>dynperm</dt>
+<dd><p>Instructs the server to maintain ownership and permissions in memory
+that can't be stored on the server. This information can disappear
+at any time (whenever the inode is flushed from the cache), so while
+this may help make some applications work, it's behavior is somewhat
+unreliable. See the section below on <a class="reference internal" href="#file-and-directory-ownership-and-permissions">FILE AND DIRECTORY OWNERSHIP
+AND PERMISSIONS</a> for more information.</p>
+</dd>
+<dt>cache=arg</dt>
+<dd><p>Cache mode. See the section below on <a class="reference internal" href="#cache-coherency">CACHE COHERENCY</a> for
+details. Allowed values are:</p>
+<ul class="simple">
+<li><p><span class="docutils literal">none</span> - do not cache file data at all</p></li>
+<li><p><span class="docutils literal">strict</span> - follow the CIFS/SMB2 protocol strictly</p></li>
+<li><p><span class="docutils literal">loose</span> - allow loose caching semantics</p></li>
+</ul>
+<p>The default in kernels prior to 3.7 was <span class="docutils literal">loose</span>. As of kernel 3.7 the
+default is <span class="docutils literal">strict</span>.</p>
+</dd>
+<dt>nostrictsync</dt>
+<dd><p>Do not ask the server to flush on fsync().
+Some servers perform non-buffered writes by default in which case
+flushing is redundant. In workloads where a client is performing a
+lot of small write + fsync combinations and where network latency is
+much higher than the server latency, this brings a 2x performance
+improvement.
+This option is also a good candidate in scenarios where we want
+performance over consistency.</p>
+</dd>
+<dt>handlecache</dt>
+<dd><p>(default) In SMB2 and above, the client often has to open the root
+of the share (empty path) in various places during mount, path
+revalidation and the statfs(2) system call. This option cuts
+redundant round trip traffic (opens and closes) by simply keeping
+the directory handle for the root around once opened.</p>
+</dd>
+<dt>nohandlecache</dt>
+<dd><p>Disable caching of the share root directory handle.</p>
+</dd>
+<dt>max_cached_dirs=arg</dt>
+<dd><p>The maximum number of cached directories per share. Directories are cached locally
+when a lease is granted by the server, which improves performance by reducing network
+traffic.</p>
+<p>By default, <span class="docutils literal">max_cached_dirs</span> is set to 16 and can hold values between 0
+and a maximum value of 2^32 - 1.</p>
+</dd>
+<dt>handletimeout=arg</dt>
+<dd><p>The time (in milliseconds) for which the server should reserve the handle after
+a failover waiting for the client to reconnect.  When mounting with
+resilienthandles or persistenthandles mount option, or when their use is
+requested by the server (continuous availability shares) then this parameter
+overrides the server default handle timeout (which for most servers is 120 seconds).</p>
+</dd>
+<dt>rwpidforward</dt>
+<dd><p>Forward pid of a process who opened a file to any read or write
+operation on that file. This prevent applications like wine(1) from
+failing on read and write if we use mandatory brlock style.</p>
+</dd>
+<dt>mapchars</dt>
+<dd><p>Translate six of the seven reserved characters (not backslash, but
+including the colon, question mark, pipe, asterisk, greater than and
+less than characters) to the remap range (above 0xF000), which also
+allows the CIFS client to recognize files created with such characters
+by Windows's Services for Unix. This can also be useful when mounting to
+most versions of Samba (which also forbids creating and opening files
+whose names contain any of these seven characters). This has no effect
+if the server does not support Unicode on the wire. Please note that
+the files created with <span class="docutils literal">mapchars</span> mount option may not be accessible
+if the share is mounted without that option.</p>
+</dd>
+<dt>nomapchars</dt>
+<dd><p>(default) Do not translate any of these seven characters.</p>
+</dd>
+<dt>mapposix</dt>
+<dd><p>Translate reserved characters similarly to <span class="docutils literal">mapchars</span> but use the
+mapping from Microsoft &quot;Services For Mac&quot;. This additionally remaps the
+double quote and a trailing period or space.</p>
+</dd>
+<dt>intr</dt>
+<dd><p>currently unimplemented.</p>
+</dd>
+<dt>nointr</dt>
+<dd><p>(default) currently unimplemented.</p>
+</dd>
+<dt>hard</dt>
+<dd><p>The program accessing a file on the cifs mounted file system will hang
+when the server crashes.</p>
+</dd>
+<dt>soft</dt>
+<dd><p>(default) The program accessing a file on the cifs mounted file system
+will not hang when the server crashes and will return errors to the
+user application.</p>
+</dd>
+<dt>noacl</dt>
+<dd><p>Do not allow POSIX ACL operations even if server would support them.</p>
+<p>The CIFS client can get and set POSIX ACLs (getfacl, setfacl) to
+Samba servers version 3.0.10 and later. Setting POSIX ACLs requires
+enabling both <span class="docutils literal">CONFIG_CIFS_XATTR</span> and then <span class="docutils literal">CONFIG_CIFS_POSIX</span>
+support in the CIFS configuration options when building the cifs
+module. POSIX ACL support can be disabled on a per mount basis by
+specifying <span class="docutils literal">noacl</span> on mount.</p>
+</dd>
+<dt>cifsacl</dt>
+<dd><p>This option is used to map CIFS/NTFS ACLs to/from Linux permission
+bits, map SIDs to/from UIDs and GIDs, and get and set Security
+Descriptors.</p>
+<p>See section on <a class="reference internal" href="#cifs-ntfs-acl-sid-uid-gid-mapping-security-descriptors">CIFS/NTFS ACL, SID/UID/GID MAPPING, SECURITY DESCRIPTORS</a>
+for more information.</p>
+</dd>
+<dt>backupuid=arg</dt>
+<dd><p>File access by this user shall be done with the backup intent flag
+set. Either a name or an id must be provided as an argument, there are
+no default values.</p>
+<p>See section <a class="reference internal" href="#accessing-files-with-backup-intent">ACCESSING FILES WITH BACKUP INTENT</a> for more details.</p>
+</dd>
+<dt>backupgid=arg</dt>
+<dd><p>File access by users who are members of this group shall be done with
+the backup intent flag set. Either a name or an id must be provided as
+an argument, there are no default values.</p>
+<p>See section <a class="reference internal" href="#accessing-files-with-backup-intent">ACCESSING FILES WITH BACKUP INTENT</a> for more details.</p>
+</dd>
+<dt>nocase</dt>
+<dd><p>Request case insensitive path name matching (case sensitive is the default if the
+server supports it).</p>
+</dd>
+<dt>ignorecase</dt>
+<dd><p>Synonym for <span class="docutils literal">nocase</span>.</p>
+</dd>
+<dt>sec=arg</dt>
+<dd><p>Security mode. Allowed values are:</p>
+<ul class="simple">
+<li><p><span class="docutils literal">none</span> - attempt to connection as a null user (no name)</p></li>
+<li><p><span class="docutils literal">krb5</span> - Use Kerberos version 5 authentication</p></li>
+<li><p><span class="docutils literal">krb5i</span> - Use Kerberos authentication and forcibly enable packet signing</p></li>
+<li><p><span class="docutils literal">ntlm</span> - Use NTLM password hashing</p></li>
+<li><p><span class="docutils literal">ntlmi</span> - Use NTLM password hashing and force packet signing</p></li>
+<li><p><span class="docutils literal">ntlmv2</span> - Use NTLMv2 password hashing</p></li>
+<li><p><span class="docutils literal">ntlmv2i</span> - Use NTLMv2 password hashing and force packet signing</p></li>
+<li><p><span class="docutils literal">ntlmssp</span> - Use NTLMv2 password hashing encapsulated in Raw NTLMSSP message</p></li>
+<li><p><span class="docutils literal">ntlmsspi</span> - Use NTLMv2 password hashing encapsulated in Raw NTLMSSP message, and force packet signing</p></li>
+</ul>
+<p>The default in mainline kernel versions prior to v3.8 was
+<span class="docutils literal">sec=ntlm</span>. In v3.8, the default was changed to <span class="docutils literal">sec=ntlmssp</span>.</p>
+<p>If the server requires signing during protocol negotiation, then it
+may be enabled automatically. Packet signing may also be enabled
+automatically if it's enabled in <em>/proc/fs/cifs/SecurityFlags</em>.</p>
+</dd>
+<dt>seal</dt>
+<dd><p>Request encryption at the SMB layer. The encryption algorithm used
+is AES-128-CCM. Requires SMB3 or above (see <span class="docutils literal">vers</span>).</p>
+</dd>
+<dt>esize=arg</dt>
+<dd><p>The minimum size (in bytes) of an encrypted read response at which the
+client will offload decryption to a separate worker thread. This will work
+when the number of in-flight requests are greater than 1.</p>
+<p>Decryption of large encrypted read responses can be computationally expensive
+and, when multiple reads are in flight, offloading the work can improve
+performance.</p>
+<p>The default is <span class="docutils literal">esize=0</span>, which means that all encrypted read responses are
+decrypted without offload and can be set up to the maximum buffer size, which
+can range from 8192 to 130048 bytes, and defaults to 16384 bytes.</p>
+</dd>
+<dt>rdma</dt>
+<dd><p>Connect directly to the server using SMB Direct via a RDMA
+adapter. Requires SMB3 or above (see <span class="docutils literal">vers</span>).</p>
+</dd>
+<dt>resilienthandles</dt>
+<dd><p>Enable resilient handles. If the server supports it, keep opened
+files across reconnections. Requires SMB2.1 (see <span class="docutils literal">vers</span>).</p>
+</dd>
+<dt>noresilienthandles</dt>
+<dd><p>(default) Disable resilient handles.</p>
+</dd>
+<dt>persistenthandles</dt>
+<dd><p>Enable persistent handles. If the server supports it, keep opened
+files across reconnections. Persistent handles are also valid across
+servers in a cluster and have stronger guarantees than resilient
+handles. Requires SMB3 or above (see <span class="docutils literal">vers</span>).</p>
+</dd>
+<dt>nopersistenthandles</dt>
+<dd><p>(default) Disable persistent handles.</p>
+</dd>
+<dt>snapshot=time</dt>
+<dd><p>Mount a specific snapshot of the remote share. <span class="docutils literal">time</span> must be a
+positive integer identifying the snapshot requested (in 100-nanosecond
+units that have elapsed since January 1, 1601, or alternatively it can
+be specified in GMT format e.g. &#64;GMT-2019.03.27-20.52.19). Supported
+in the Linux kernel starting from v4.19.</p>
+</dd>
+<dt>nobrl</dt>
+<dd><p>Do not send byte range lock requests to the server. This is necessary
+for certain applications that break with cifs style mandatory byte
+range locks (and most cifs servers do not yet support requesting
+advisory byte range locks).</p>
+</dd>
+<dt>forcemandatorylock</dt>
+<dd><p>Do not use POSIX locks even when available via unix
+extensions. Always use cifs style mandatory locks.</p>
+</dd>
+<dt>locallease</dt>
+<dd><p>Check cached leases locally instead of querying the server.</p>
+</dd>
+<dt>nolease</dt>
+<dd><p>Do not request lease/oplock when openning a file on the server. This turns
+off local caching of IO, byte-range lock and read metadata operations
+(see <span class="docutils literal">actimeo</span> for more details about metadata caching). Requires SMB2
+and above (see <span class="docutils literal">vers</span>).</p>
+</dd>
+<dt>sfu</dt>
+<dd><p>When the CIFS or SMB3 Unix Extensions are not negotiated, attempt to create
+device files and fifos in a format compatible with Services for Unix
+(SFU). In addition retrieve bits 10-12 of the mode via the
+<span class="docutils literal">SETFILEBITS</span> extended attribute (as SFU does). In the future the
+bottom 9 bits of the mode mode also will be emulated using queries of
+the security descriptor (ACL). [NB: requires version 1.39 or later of
+the CIFS VFS. To recognize symlinks and be able to create symlinks in
+an SFU interoperable form requires version 1.40 or later of the CIFS
+VFS kernel module.</p>
+</dd>
+<dt>mfsymlinks</dt>
+<dd><p>Enable support for Minshall+French symlinks (see
+<a class="reference external" href="http://wiki.samba.org/index.php/UNIX_Extensions#Minshall.2BFrench_symlinks">http://wiki.samba.org/index.php/UNIX_Extensions#Minshall.2BFrench_symlinks</a>). This
+option is ignored when specified together with the <span class="docutils literal">sfu</span>
+option. Minshall+French symlinks are used even if the server supports
+the CIFS Unix Extensions.</p>
+</dd>
+<dt>echo_interval=n</dt>
+<dd><p>sets the interval at which echo requests are sent to the server on an
+idling connection. This setting also affects the time required for a
+connection to an unresponsive server to timeout. Here n is the echo
+interval in seconds. The reconnection happens at three times the
+value of the echo_interval set for an unresponsive server.
+If this option is not given then the default value of 60 seconds is used.
+The minimum tunable value is 1 second and maximum can go up to 600 seconds.</p>
+</dd>
+<dt>serverino</dt>
+<dd><p>Use inode numbers (unique persistent file identifiers) returned by the
+server instead of automatically generating temporary inode numbers on
+the client. Although server inode numbers make it easier to spot
+hardlinked files (as they will have the same inode numbers) and inode
+numbers may be persistent (which is useful for some software), the
+server does not guarantee that the inode numbers are unique if
+multiple server side mounts are exported under a single share (since
+inode numbers on the servers might not be unique if multiple
+filesystems are mounted under the same shared higher level
+directory). Note that not all servers support returning server inode
+numbers, although those that support the CIFS Unix Extensions, and
+Windows 2000 and later servers typically do support this (although not
+necessarily on every local server filesystem). Parameter has no effect
+if the server lacks support for returning inode numbers or
+equivalent. This behavior is enabled by default.</p>
+</dd>
+<dt>noserverino</dt>
+<dd><p>Client generates inode numbers itself rather than using the actual
+ones from the server.</p>
+<p>See section <a class="reference internal" href="#inode-numbers">INODE NUMBERS</a> for more information.</p>
+</dd>
+<dt>posix|unix|linux</dt>
+<dd><p>(default) Enable Unix Extensions for this mount. Requires CIFS
+(vers=1.0) or SMB3.1.1 (vers=3.1.1) and a server supporting them.</p>
+</dd>
+<dt>noposix|nounix|nolinux</dt>
+<dd><p>Disable the Unix Extensions for this mount. This can be useful in
+order to turn off multiple settings at once. This includes POSIX acls,
+POSIX locks, POSIX paths, symlink support and retrieving
+uids/gids/mode from the server. This can also be useful to work around
+a bug in a server that supports Unix Extensions.</p>
+<p>See section <a class="reference internal" href="#inode-numbers">INODE NUMBERS</a> for more information.</p>
+</dd>
+<dt>nouser_xattr</dt>
+<dd><p>Do not allow getfattr/setfattr to get/set xattrs, even if server would
+support it otherwise. The default is for xattr support to be enabled.</p>
+</dd>
+<dt>nodfs</dt>
+<dd><p>Do not follow Distributed FileSystem referrals. IO on a file not
+stored on the server will fail instead of connecting to the target
+server transparently.</p>
+</dd>
+<dt>noautotune</dt>
+<dd><p>Use fixed size for kernel recv/send socket buffers.</p>
+</dd>
+<dt>nosharesock</dt>
+<dd><p>Do not try to reuse sockets if the system is already connected to
+the server via an existing mount point. This will make the client
+always make a new connection to the server no matter what he is
+already connected to. This can be useful in simulating multiple
+clients connecting to the same server, as each mount point
+will use a different TCP socket.</p>
+</dd>
+<dt>noblocksend</dt>
+<dd><p>Send data on the socket using non blocking operations (MSG_DONTWAIT flag).</p>
+</dd>
+<dt>rsize=bytes</dt>
+<dd><p>Maximum amount of data that the kernel will request in a read request
+in bytes. Maximum size that servers will accept is typically 8MB for SMB3
+or later dialects. Default requested during mount is 4MB. Prior to the 4.20
+kernel the default requested was 1MB. Prior to the SMB2.1 dialect the
+maximum was usually 64K.</p>
+</dd>
+<dt>wsize=bytes</dt>
+<dd><p>Maximum amount of data that the kernel will send in a write request in
+bytes. Maximum size that servers will accept is typically 8MB for SMB3
+or later dialects. Default requested during mount is 4MB. Prior to the 4.20
+kernel the default requested was 1MB. Prior to the SMB2.1 dialect the
+maximum was usually 64K.</p>
+</dd>
+<dt>bsize=bytes</dt>
+<dd><p>Override the default blocksize (1MB) reported on SMB3 files (requires
+kernel version of 5.1 or later). Prior to kernel version 5.1, the
+blocksize was always reported as 16K instead of 1MB (and was not
+configurable) which can hurt the performance of tools like cp and scp
+(especially for uncached I/O) which decide on the read and write size
+to use for file copies based on the inode blocksize. bsize may not be
+less than 16K or greater than 16M.</p>
+</dd>
+<dt>max_credits=n</dt>
+<dd><p>Maximum credits the SMB2 client can have. Default is 32000. Must be
+set to a number between 20 and 60000.</p>
+</dd>
+<dt>fsc</dt>
+<dd><p>Enable local disk caching using FS-Cache for CIFS. This option could
+be useful to improve performance on a slow link, heavily loaded server
+and/or network where reading from the disk is faster than reading from
+the server (over the network). This could also impact the scalability
+positively as the number of calls to the server are reduced. But, be
+warned that local caching is not suitable for all workloads, for e.g.,
+read-once type workloads. So, you need to consider carefully the
+situation/workload before using this option. Currently, local disk
+caching is enabled for CIFS files opened as read-only.</p>
+<p><strong>NOTE</strong>: This feature is available only in the recent kernels that
+have been built with the kernel config option
+<span class="docutils literal">CONFIG_CIFS_FSCACHE</span>. You also need to have <span class="docutils literal">cachefilesd</span>
+daemon installed and running to make the cache operational.</p>
+</dd>
+<dt>multiuser</dt>
+<dd><p>Map user accesses to individual credentials when accessing the
+server. By default, CIFS mounts only use a single set of user
+credentials (the mount credentials) when accessing a share. With this
+option, the client instead creates a new session with the server using
+the user's credentials whenever a new user accesses the mount.
+Further accesses by that user will also use those credentials. Because
+the kernel cannot prompt for passwords, multiuser mounts are limited
+to mounts using <span class="docutils literal">sec=</span> options that don't require passwords.</p>
+<p>With this change, it's feasible for the server to handle permissions
+enforcement, so this option also implies <span class="docutils literal">noperm</span> . Furthermore, when
+unix extensions aren't in use and the administrator has not overridden
+ownership using the <span class="docutils literal">uid=</span> or <span class="docutils literal">gid=</span> options, ownership of files is
+presented as the current user accessing the share.</p>
+</dd>
+<dt>actimeo=arg</dt>
+<dd><p>The time (in seconds) that the CIFS client caches attributes of a file or
+directory before it requests attribute information from a server. During this
+period the changes that occur on the server remain undetected until the client
+checks the server again.</p>
+<p>By default, the attribute cache timeout is set to 1 second. This means
+more frequent on-the-wire calls to the server to check whether
+attributes have changed which could impact performance. With this
+option users can make a tradeoff between performance and cache
+metadata correctness, depending on workload needs. Shorter timeouts
+mean better cache coherency, but frequent increased number of calls to
+the server. Longer timeouts mean a reduced number of calls to the
+server but looser cache coherency. The <span class="docutils literal">actimeo</span> value is a positive
+integer that can hold values between 0 and a maximum value of 2^30 *
+HZ (frequency of timer interrupt) setting. Setting it to 0 disables
+caching.</p>
+</dd>
+<dt>acregmax=arg</dt>
+<dd><p>The maximum time (in seconds) that the CIFS client caches attributes of a
+regular file before it requests fresh attribute information from a server.
+If this option is not specified, then acregmax value will be set to <span class="docutils literal">actimeo</span>
+value, see <span class="docutils literal">actimeo</span> for more details.</p>
+</dd>
+<dt>acdirmax=arg</dt>
+<dd><p>The maximum time (in seconds) that the CIFS client caches attributes of a
+directory before it requests fresh attribute information from a server.
+If this option is not specified, then acdirmax value will be set to <span class="docutils literal">actimeo</span>
+value, see <span class="docutils literal">actimeo</span> for more details.</p>
+</dd>
+<dt>upcall_target=arg</dt>
+<dd><p>Determines the namespace in which upcalls from the SMB filesystem should be handled.
+Allowed values are:
+- <span class="docutils literal">mount</span> - Resolve upcalls to the host namespace.
+- <span class="docutils literal">app</span> - Resolve upcalls in the namespace of the calling thread (application).
+Default value is <span class="docutils literal">app</span>.
+This option is useful in environments like Kubernetes, where the mount
+may be performed by a driver pod on behalf of an application running
+in a separate container. It ensures that Kerberos credentials and other
+user-specific data are accessed in the correct namespace.
+By specifying <span class="docutils literal">app</span>, upcalls can be resolved in the application's namespace,
+ensuring the correct credentials are used. <span class="docutils literal">mount</span> allows resolution in the
+host namespace, which may be necessary when credentials or configurations
+are managed outside the container.</p>
+</dd>
+<dt>multichannel</dt>
+<dd><p>This option enables multichannel feature. Multichannel is an SMB3 protocol
+feature that allows client to establish multiple transport connections to an
+SMB server and bind them into a single authenticated SMB session. This feature
+enhances fault tolerance and increases throughput by distributing traffic
+across several connections. With this mount option default is to use two
+channels if the server supports multichannel. The <span class="docutils literal">max_channels</span> parameter
+can be specified if you desire to use more than two channels.</p>
+</dd>
+<dt>max_channels=arg</dt>
+<dd><p>This option is applicable while using <span class="docutils literal">multichannel</span> feature. max_channels
+option allows the user to specify the number of transport connections that
+should be establised between client and server up to a limit of 16. Using
+this option implicitly enables the <span class="docutils literal">multichannel</span> feature.
+If max_channels option not specified, <span class="docutils literal">multichannel</span> feature defaults to
+using 2 connections.</p>
+</dd>
+<dt>closetimeo=arg</dt>
+<dd><p>The maximum time (in seconds) that the CIFS client defers sending the final
+SMB3 close when the client has a handle lease on the file.</p>
+<p>By default, <span class="docutils literal">closetimeo</span> is set to 1 second and can hold values between 0
+and a maximum value of 2^30 * HZ.</p>
+</dd>
+<dt>noposixpaths</dt>
+<dd><p>If unix extensions are enabled on a share, then the client will
+typically allow filenames to include any character besides '/' in a
+pathname component, and will use forward slashes as a pathname
+delimiter. This option prevents the client from attempting to
+negotiate the use of posix-style pathnames to the server.</p>
+</dd>
+<dt>posixpaths</dt>
+<dd><p>Inverse of <span class="docutils literal">noposixpaths</span> .</p>
+</dd>
+<dt>compress</dt>
+<dd><p><strong>EXPERIMENTAL FEATURE</strong> Enables over-the-wire message compression for
+SMB 3.1.1 or higher mounts. Mount fails when compress is on and <span class="docutils literal">vers</span> is
+set to a version lower than 3.1.1.</p>
+</dd>
+<dt>vers=arg</dt>
+<dd><p>SMB protocol version. Allowed values are:</p>
+<ul class="simple">
+<li><p>1.0 - The classic CIFS/SMBv1 protocol.</p></li>
+<li><p>2.0 - The SMBv2.002 protocol. This was initially introduced in
+Windows Vista Service Pack 1, and Windows Server 2008. Note that
+the initial release version of Windows Vista spoke a slightly
+different dialect (2.000) that is not supported.</p></li>
+<li><p>2.1 - The SMBv2.1 protocol that was introduced in Microsoft Windows 7 and Windows Server 2008R2.</p></li>
+<li><p>3.0 - The SMBv3.0 protocol that was introduced in Microsoft Windows 8 and Windows Server 2012.</p></li>
+<li><p>3.02 or 3.0.2 - The SMBv3.0.2 protocol that was introduced in Microsoft Windows 8.1 and Windows Server 2012R2.</p></li>
+<li><p>3.1.1 or 3.11 - The SMBv3.1.1 protocol that was introduced in Microsoft Windows 10 and Windows Server 2016.</p></li>
+<li><p>3 - The SMBv3.0 protocol version and above.</p></li>
+<li><p>default - Tries to negotiate the highest SMB2+ version supported by both the client and server.</p></li>
+</ul>
+<p>If no dialect is specified on mount vers=default is used.
+To check <span class="docutils literal">Dialect</span> refer to /proc/fs/cifs/DebugData</p>
+<p>Note too that while this option governs the protocol version used, not
+all features of each version are available.</p>
+<p>The default since v4.13.5 is for the client and server to negotiate
+the highest possible version greater than or equal to <span class="docutils literal">2.1</span>. In
+kernels prior to v4.13, the default was <span class="docutils literal">1.0</span>. For kernels
+between v4.13 and v4.13.5 the default is <span class="docutils literal">3.0</span>.</p>
+</dd>
+<dt>sloppy</dt>
+<dd><p>Allows the system to ignore any unrecognized mount options that follow this
+option instead of failing to mount altogether.</p>
+</dd>
+</dl>
+<dl class="option-list">
+<dt><kbd><span class="option">--verbose</span></kbd></dt>
+<dd><p>Print additional debugging information for the mount. Note that this
+parameter must be specified before the <span class="docutils literal"><span class="pre">-o</span></span> . For example:</p>
+<pre class="literal-block">mount -t cifs //server/share /mnt --verbose -o user=username</pre>
+</dd>
+</dl>
+</section>
+<section id="service-formatting-and-delimiters">
+<h3>SERVICE FORMATTING AND DELIMITERS</h3>
+<p>It's generally preferred to use forward slashes (/) as a delimiter in
+service names. They are considered to be the &quot;universal delimiter&quot;
+since they are generally not allowed to be embedded within path
+components on Windows machines and the client can convert them to
+backslashes (\) unconditionally. Conversely, backslash characters are
+allowed by POSIX to be part of a path component, and can't be
+automatically converted in the same way.</p>
+<p><span class="docutils literal">mount.cifs</span> will attempt to convert backslashes to forward slashes
+where it's able to do so, but it cannot do so in any path component
+following the sharename.</p>
+</section>
+<section id="inode-numbers">
+<h3>INODE NUMBERS</h3>
+<p>When Unix Extensions are enabled, we use the actual inode number
+provided by the server in response to the POSIX calls as an inode
+number.</p>
+<p>When Unix Extensions are disabled and <span class="docutils literal">serverino</span> mount option is
+enabled there is no way to get the server inode number. The client
+typically maps the server-assigned <span class="docutils literal">UniqueID</span> onto an inode number.</p>
+<p>Note that the <span class="docutils literal">UniqueID</span> is a different value from the server inode
+number. The <span class="docutils literal">UniqueID</span> value is unique over the scope of the entire
+server and is often greater than 2 power 32. This value often makes
+programs that are not compiled with LFS (Large File Support), to
+trigger a glibc <span class="docutils literal">EOVERFLOW</span> error as this won't fit in the target
+structure field. It is strongly recommended to compile your programs
+with LFS support (i.e. with <span class="docutils literal"><span class="pre">-D_FILE_OFFSET_BITS=64</span></span>) to prevent this
+problem. You can also use <span class="docutils literal">noserverino</span> mount option to generate
+inode numbers smaller than 2 power 32 on the client. But you may not
+be able to detect hardlinks properly.</p>
+</section>
+<section id="cache-coherency">
+<h3>CACHE COHERENCY</h3>
+<p>With a network filesystem such as CIFS or NFS, the client must contend
+with the fact that activity on other clients or the server could
+change the contents or attributes of a file without the client being
+aware of it. One way to deal with such a problem is to mandate that
+all file accesses go to the server directly. This is performance
+prohibitive however, so most protocols have some mechanism to allow
+the client to cache data locally.</p>
+<p>The CIFS protocol mandates (in effect) that the client should not
+cache file data unless it holds an opportunistic lock (aka oplock) or
+a lease. Both of these entities allow the client to guarantee certain
+types of exclusive access to a file so that it can access its contents
+without needing to continually interact with the server. The server
+will call back the client when it needs to revoke either of them and
+allow the client a certain amount of time to flush any cached data.</p>
+<p>The cifs client uses the kernel's pagecache to cache file data. Any
+I/O that's done through the pagecache is generally page-aligned. This
+can be problematic when combined with byte-range locks as Windows'
+locking is mandatory and can block reads and writes from occurring.</p>
+<p><span class="docutils literal">cache=none</span> means that the client never utilizes the cache for
+normal reads and writes. It always accesses the server directly to
+satisfy a read or write request.</p>
+<p><span class="docutils literal">cache=strict</span> means that the client will attempt to follow the
+CIFS/SMB2 protocol strictly. That is, the cache is only trusted when
+the client holds an oplock. When the client does not hold an oplock,
+then the client bypasses the cache and accesses the server directly to
+satisfy a read or write request. By doing this, the client avoids
+problems with byte range locks. Additionally, byte range locks are
+cached on the client when it holds an oplock and are &quot;pushed&quot; to the
+server when that oplock is recalled.</p>
+<p><span class="docutils literal">cache=loose</span> allows the client to use looser protocol semantics
+which can sometimes provide better performance at the expense of cache
+coherency. File access always involves the pagecache. When an oplock
+or lease is not held, then the client will attempt to flush the cache
+soon after a write to a file. Note that that flush does not
+necessarily occur before a write system call returns.</p>
+<p>In the case of a read without holding an oplock, the client will
+attempt to periodically check the attributes of the file in order to
+ascertain whether it has changed and the cache might no longer be
+valid. This mechanism is much like the one that NFSv2/3 use for cache
+coherency, but it particularly problematic with CIFS. Windows is
+quite &quot;lazy&quot; with respect to updating the <span class="docutils literal">LastWriteTime</span> field that
+the client uses to verify this. The effect is that <span class="docutils literal">cache=loose</span> can
+cause data corruption when multiple readers and writers are working on
+the same files.</p>
+<p>Because of this, when multiple clients are accessing the same set of
+files, then <span class="docutils literal">cache=strict</span> is recommended. That helps eliminate
+problems with cache coherency by following the CIFS/SMB2 protocols
+more strictly.</p>
+<p>Note too that no matter what caching model is used, the client will
+always use the pagecache to handle mmap'ed files. Writes to mmap'ed
+files are only guaranteed to be flushed to the server when msync() is
+called, or on close().</p>
+<p>The default in kernels prior to 3.7 was <span class="docutils literal">loose</span>. As of 3.7, the
+default is <span class="docutils literal">strict</span>.</p>
+</section>
+<section id="cifs-ntfs-acl-sid-uid-gid-mapping-security-descriptors">
+<h3>CIFS/NTFS ACL, SID/UID/GID MAPPING, SECURITY DESCRIPTORS</h3>
+<p>This option is used to work with file objects which posses Security
+Descriptors and CIFS/NTFS ACL instead of UID, GID, file permission
+bits, and POSIX ACL as user authentication model. This is the most
+common authentication model for CIFS servers and is the one used by
+Windows.</p>
+<p>Support for this requires cifs kernel module built with both
+<span class="docutils literal">CONFIG_CIFS_XATTR</span> and <span class="docutils literal">CONFIG_CIFS_ACL</span> options enabled.  Since
+Linux 5.3, <span class="docutils literal">CONFIG_CIFS_ACL</span> option no longer exists as CIFS/NTFS
+ACL support is always built into cifs kernel module.</p>
+<p>Most distribution kernels will already have those options enabled by
+default, but you can still check if they are enabled with:</p>
+<pre class="literal-block">cat /lib/modules/$(uname -r)/build/.config</pre>
+<p>Alternatively, if kernel is configured with <span class="docutils literal">CONFIG_IKCONFIG_PROC</span>:</p>
+<pre class="literal-block">zcat /proc/config.gz</pre>
+<p>A CIFS/NTFS ACL is mapped to file permission bits using an algorithm
+specified in the following Microsoft TechNet document:</p>
+<p><a class="reference external" href="http://technet.microsoft.com/en-us/library/bb463216.aspx">http://technet.microsoft.com/en-us/library/bb463216.aspx</a></p>
+<p>In order to map SIDs to/from UIDs and GIDs, the following is required:</p>
+<ul class="simple">
+<li><p>a kernel upcall to the <span class="docutils literal">cifs.idmap</span> utility set up via request-key.conf(5)</p></li>
+<li><p>winbind or sssd support configured via nsswitch.conf(5)</p></li>
+</ul>
+<p>Please refer to the respective manpages of cifs.idmap(8), winbindd(8)
+and sssd(8) for more information.</p>
+<p>Security descriptors for a file object can be retrieved and set
+directly using extended attribute named <span class="docutils literal">system.cifs_acl</span>. The
+security descriptors presented via this interface are &quot;raw&quot; blobs of
+data and need a userspace utility to either parse and format or to
+assemble it such as getcifsacl(1) and setcifsacl(1)
+respectively.</p>
+<p>Some of the things to consider while using this mount option:</p>
+<ul class="simple">
+<li><p>There may be an increased latency when handling metadata due to
+additional requests to get and set security descriptors.</p></li>
+<li><p>The mapping between a CIFS/NTFS ACL and POSIX file permission bits
+is imperfect and some ACL information may be lost in the
+translation.</p></li>
+<li><p>If either upcall to cifs.idmap is not setup correctly or winbind or
+sssd is not configured and running, ID mapping will fail. In that
+case uid and gid will default to either to those values of the share
+or to the values of uid and/or gid mount options if specified.</p></li>
+</ul>
+</section>
+<section id="accessing-files-with-backup-intent">
+<h3>ACCESSING FILES WITH BACKUP INTENT</h3>
+<p>For an user on the server, desired access to a file is determined by
+the permissions and rights associated with that file. This is
+typically accomplished using ownership and ACL. For a user who does
+not have access rights to a file, it is still possible to access that
+file for a specific or a targeted purpose by granting special rights.
+One of the specific purposes is to access a file with the intent to
+either backup or restore i.e. backup intent. The right to access a
+file with the backup intent can typically be granted by making that
+user a part of the built-in group <em>Backup Operators</em>. Thus, when
+this user attempts to open a file with the backup intent, open request
+is sent by setting the bit <span class="docutils literal">FILE_OPEN_FOR_BACKUP_INTENT</span> as one of
+the <span class="docutils literal">CreateOptions</span>.</p>
+<p>As an example, on a Windows server, a user named <em>testuser</em>, cannot open
+this file with such a security descriptor:</p>
+<pre class="literal-block">REVISION:0x1
+CONTROL:0x9404
+OWNER:Administrator
+GROUP:Domain Users
+ACL:Administrator:ALLOWED/0x0/FULL</pre>
+<p>But the user <em>testuser</em>, if it becomes part of the <em>Backup Operators</em>
+group, can open the file with the backup intent.</p>
+<p>Any user on the client side who can authenticate as such a user on the
+server, can access the files with the backup intent. But it is
+desirable and preferable for security reasons amongst many, to
+restrict this special right.</p>
+<p>The mount option <span class="docutils literal">backupuid</span> is used to restrict this special right
+to a user which is specified by either a name or an id. The mount
+option <span class="docutils literal">backupgid</span> is used to restrict this special right to the
+users in a group which is specified by either a name or an id. Only
+users matching either backupuid or backupgid shall attempt to access
+files with backup intent. These two mount options can be used
+together.</p>
+</section>
+<section id="file-and-directory-ownership-and-permissions">
+<h3>FILE AND DIRECTORY OWNERSHIP AND PERMISSIONS</h3>
+<p>The core CIFS protocol does not provide unix ownership information or
+mode for files and directories. Because of this, files and directories
+will generally appear to be owned by whatever values the <span class="docutils literal">uid=</span> or
+<span class="docutils literal">gid=</span> options are set, and will have permissions set to the default
+<span class="docutils literal">file_mode</span> and <span class="docutils literal">dir_mode</span> for the mount. Attempting to change these
+values via chmod/chown will return success but have no effect.</p>
+<p>When the client and server negotiate unix extensions, files and
+directories will be assigned the uid, gid, and mode provided by the
+server. Because CIFS mounts are generally single-user, and the same
+credentials are used no matter what user accesses the mount, newly
+created files and directories will generally be given ownership
+corresponding to whatever credentials were used to mount the share.</p>
+<p>If the uid's and gid's being used do not match on the client and
+server, the <span class="docutils literal">forceuid</span> and <span class="docutils literal">forcegid</span> options may be helpful. Note
+however, that there is no corresponding option to override the
+mode. Permissions assigned to a file when <span class="docutils literal">forceuid</span> or <span class="docutils literal">forcegid</span>
+are in effect may not reflect the the real permissions.</p>
+<p>When unix extensions are not negotiated, it's also possible to emulate
+them locally on the server using the <span class="docutils literal">dynperm</span> mount option. When
+this mount option is in effect, newly created files and directories
+will receive what appear to be proper permissions. These permissions
+are not stored on the server however and can disappear at any time in
+the future (subject to the whims of the kernel flushing out the inode
+cache). In general, this mount option is discouraged.</p>
+<p>It's also possible to override permission checking on the client
+altogether via the <span class="docutils literal">noperm</span> option. Server-side permission checks
+cannot be overridden. The permission checks done by the server will
+always correspond to the credentials used to mount the share, and not
+necessarily to the user who is accessing the share.</p>
+</section>
+<section id="environment-variables">
+<h3>ENVIRONMENT VARIABLES</h3>
+<p>The variable <span class="docutils literal">USER</span> may contain the username of the person to be used
+to authenticate to the server. The variable can be used to set both
+username and password by using the format <span class="docutils literal">username%password</span>.</p>
+<p>The variables <span class="docutils literal">PASSWD</span> and <span class="docutils literal">PASSWD2</span> may contain the password and the
+alternate password of the person using the client, respectively.</p>
+<p>The variables <span class="docutils literal">PASSWD_FILE</span> and <span class="docutils literal">PASSWD2_FILE</span> may contain the
+pathname of the file to read password or password2 from, respectively.
+A single line of input is read and used as the password in each case.</p>
+</section>
+<section id="notes">
+<h3>NOTES</h3>
+<p>This command may be used only by root, unless installed setuid, in
+which case the noexec and nosuid mount flags are enabled. When
+installed as a setuid program, the program follows the conventions set
+forth by the mount program for user mounts, with the added restriction
+that users must be able to chdir() into the mountpoint prior to the
+mount in order to be able to mount onto it.</p>
+<p>Some samba client tools like smbclient(8) honour client-side
+configuration parameters present in <em>smb.conf</em>. Unlike those client
+tools, <span class="docutils literal">mount.cifs</span> ignores <em>smb.conf</em> completely.</p>
+</section>
+<section id="configuration">
+<h3>CONFIGURATION</h3>
+<p>The primary mechanism for making configuration changes and for reading
+debug information for the cifs vfs is via the Linux /proc
+filesystem. In the directory <em>/proc/fs/cifs</em> are various
+configuration files and pseudo files which can display debug information
+and performance statistics. There are additional startup options such as
+maximum buffer size and number of buffers which only may be set when the
+kernel cifs vfs (cifs.ko module) is loaded. These can be seen by
+running the <span class="docutils literal">modinfo</span> utility against the file cifs.ko which will
+list the options that may be passed to cifs during module installation
+(device driver load). For more information see the kernel file
+<em>fs/cifs/README</em>. When configuring dynamic tracing (trace-cmd)
+note that the list of SMB3 events which can be enabled can be seen at:
+<em>/sys/kernel/debug/tracing/events/cifs/</em>.</p>
+</section>
+<section id="security">
+<h3>SECURITY</h3>
+<p>The use of SMB2.1 or later (including the latest dialect SMB3.1.1)
+is recommended for improved security and SMB1 is no longer requested
+by default at mount time. Old dialects such as CIFS (SMB1, ie vers=1.0)
+have much weaker security. Use of CIFS (SMB1) can be disabled by
+modprobe cifs disable_legacy_dialects=y.</p>
+</section>
+<section id="bugs">
+<h3>BUGS</h3>
+<p>Mounting using the CIFS URL specification is currently not supported.</p>
+<p>The credentials file does not handle usernames or passwords with
+leading space.</p>
+<p>Note that the typical response to a bug report is a suggestion to try
+the latest version first. So please try doing that first, and always
+include which versions you use of relevant software when reporting
+bugs (minimum: mount.cifs (try <span class="docutils literal">mount.cifs <span class="pre">-V</span></span>), kernel (see
+<em>/proc/version</em>) and server type you are trying to contact.</p>
+</section>
+<section id="version">
+<h3>VERSION</h3>
+<p>This man page is correct for version 2.18 of the cifs vfs filesystem
+(roughly Linux kernel 5.0).</p>
+</section>
+<section id="see-also">
+<h3>SEE ALSO</h3>
+<p>cifs.upcall(8), getcifsacl(1), setcifsacl(1)</p>
+<p><em>Documentation/filesystems/cifs.txt</em> and <em>fs/cifs/README</em> in the
+Linux kernel source tree may contain additional options and
+information.</p>
+</section>
+<section id="author">
+<h3>AUTHOR</h3>
+<p>Steve French</p>
+<p>The maintainer of the Linux CIFS VFS is Paulo Alcantara. The maintainer of the
+cifs-utils suite of user space tools is Pavel Shilovsky. The Linux CIFS Mailing
+list is the preferred place to ask questions regarding these programs.</p>
+</section>
+</section>
+</section>
+</main>
+</body></html>

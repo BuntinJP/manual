@@ -1,0 +1,136 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>vfs_aio_ratelimit</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="vfs_aio_ratelimit.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>vfs_aio_ratelimit &#8212; Implement async-I/O rate-limiting for Samba with cluster-wide coordination</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="literal">vfs objects = aio_ratelimit</code></p></div></div><div class="refsect1"><a name="id1337"></a><h2>DESCRIPTION</h2><p>This VFS module is part of the
+	<a class="citerefentry" href="samba.7.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(7)</span></a> suite.</p><p>The <code class="literal">aio_ratelimit</code> VFS module enables run-time
+	rate-limiting on specific shares by enforcing upper limit on async I/O
+	operations. An administrator may define this limit as operations
+	per-second or bytes-per-second. When one of those limits is exceeded,
+	a delay value (in microseconds) is calculated based on current I/O load
+	and injected to async I/O operations, yielding an implicit throughput
+	ceiling.
+	</p><p>
+	A configurable burst allowance is supported via a burst multiplier,
+	allowing short-term bursts above the steady-state rate while still
+	enforcing a long-term ceiling. Rate-limiter state is periodically
+	persisted to a local TDB, allowing limits to be enforced consistently
+	across client reconnects and smbd restarts.
+	</p><p>
+	<span class="bold"><strong>Cluster Support:</strong></span>
+	When clustering is enabled in Samba, cluster-wide rate limiting is
+	automatically enabled by default. Each share's configured rate limit
+	applies to that share across the entire cluster. Limits for different
+	shares are tracked and enforced independently of one another.
+	</p><p>
+	This module operates only on asynchronous VFS READ/WRITE operations.
+	</p><p>This module is stackable.</p></div><div class="refsect1"><a name="id1338"></a><h2>CONFIGURATION</h2><p>Straight forward use:</p><pre class="programlisting">
+	<em class="parameter"><code>[share]</code></em>
+	<a class="link" href="smb.conf.5.html#PATH" target="_top">path = /path/to/share</a>
+	<a class="link" href="smb.conf.5.html#VFSOBJECTS" target="_top">vfs objects = aio_ratelimit</a>
+</pre><p>Cluster deployment example (cluster-wide limits):</p><pre class="programlisting">
+	<em class="parameter"><code>[global]</code></em>
+	<a class="link" href="smb.conf.5.html#CLUSTERING" target="_top">clustering = yes</a>
+
+	<em class="parameter"><code>[shared-storage]</code></em>
+	<a class="link" href="smb.conf.5.html#PATH" target="_top">path = /mnt/shared</a>
+	<a class="link" href="smb.conf.5.html#VFSOBJECTS" target="_top">vfs objects = aio_ratelimit</a>
+	<a class="link" href="smb.conf.5.html#AIO_RATELIMIT:READ_IOPS_LIMIT" target="_top">aio_ratelimit:read_iops_limit = 10000</a>
+	<a class="link" href="smb.conf.5.html#AIO_RATELIMIT:WRITE_BW_LIMIT" target="_top">aio_ratelimit:write_bw_limit = 1G</a>
+</pre><p>The 10000 IOPS and 1G bandwidth limits apply to the entire cluster.</p><p>Cluster deployment with per-node limits:</p><pre class="programlisting">
+	<em class="parameter"><code>[global]</code></em>
+	<a class="link" href="smb.conf.5.html#CLUSTERING" target="_top">clustering = yes</a>
+
+	<em class="parameter"><code>[shared-storage]</code></em>
+	<a class="link" href="smb.conf.5.html#PATH" target="_top">path = /mnt/shared</a>
+	<a class="link" href="smb.conf.5.html#VFSOBJECTS" target="_top">vfs objects = aio_ratelimit</a>
+	<a class="link" href="smb.conf.5.html#AIO_RATELIMIT:READ_IOPS_LIMIT" target="_top">aio_ratelimit:read_iops_limit = 10000</a>
+</pre><p>Each node independently enforces the 10000 IOPS limit.</p></div><div class="refsect1"><a name="id1339"></a><h2>OPTIONS</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term">aio_ratelimit:read_iops_limit = count</span></dt><dd><p>
+			Upper limit of READ operations-per-second before
+			injecting delays. Zero value implies no limit.
+		</p><p>
+			In cluster mode, this is the <span class="emphasis"><em>global limit</em></span>
+			enforced across all nodes. The limit is automatically distributed
+			equally among all active smbd processes performing I/O
+			on this share.
+		</p><p>Default: 0, Max: 1000000</p><p>Example: aio_ratelimit:read_iops_limit = 1000</p></dd><dt><span class="term">aio_ratelimit:read_bw_limit = count</span></dt><dd><p>
+			Upper limit of READ bandwidth (bytes-per-second) before
+			injecting delays. Zero value implies no limit.
+			Supports size suffixes (K, M, G, T).
+		</p><p>
+			In cluster mode, this is the <span class="emphasis"><em>global limit</em></span>
+			enforced across all nodes. The limit is automatically distributed
+			equally among all active smbd processes performing I/O
+			on this share.
+		</p><p>Default: 0, Max: 1T</p><p>Example: aio_ratelimit:read_bw_limit = 2M</p></dd><dt><span class="term">aio_ratelimit:read_burst_mult = value</span></dt><dd><p>
+			Burst multiplier for READ operations, expressed in
+			tenths (e.g., 15 = 1.5x). Defines the token bucket
+			capacity as a multiple of the rate limit, allowing
+			short-term bursts above the steady-state rate.
+		</p><p>Default: 15 (1.5x), Max: 100 (10x)</p><p>Example: aio_ratelimit:read_burst_mult = 20</p></dd><dt><span class="term">aio_ratelimit:write_iops_limit = count</span></dt><dd><p>
+			Upper limit of WRITE operations-per-second before
+			injecting delays. Zero value implies no limit.
+		</p><p>
+			In cluster mode, this is the <span class="emphasis"><em>global limit</em></span>
+			enforced across all nodes. The limit is automatically distributed
+			equally among all active smbd processes performing I/O
+			on this share.
+		</p><p>Default: 0, Max: 1000000</p><p>Example: aio_ratelimit:write_iops_limit = 1000</p></dd><dt><span class="term">aio_ratelimit:write_bw_limit = count</span></dt><dd><p>
+			Upper limit of WRITE bandwidth (bytes-per-second)
+			before injecting delays. Zero value implies no limit.
+			Supports size suffixes (K, M, G, T).
+		</p><p>
+			In cluster mode, this is the <span class="emphasis"><em>global limit</em></span>
+			enforced across all nodes. The limit is automatically distributed
+			equally among all active smbd processes performing I/O
+			on this share.
+		</p><p>Default: 0, Max: 1T</p><p>Example: aio_ratelimit:write_bw_limit = 1M</p></dd><dt><span class="term">aio_ratelimit:write_burst_mult = value</span></dt><dd><p>
+			Burst multiplier for WRITE operations, expressed in
+			tenths (e.g., 15 = 1.5x). Defines the token bucket
+			capacity as a multiple of the rate limit, allowing
+			short-term bursts above the steady-state rate.
+		</p><p>Default: 15 (1.5x), Max: 100 (10x)</p><p>Example: aio_ratelimit:write_burst_mult = 15</p></dd></dl></div></div><div class="refsect1"><a name="id1340"></a><h2>CLUSTER BEHAVIOR</h2><p>
+	When Samba clustering is enabled, cluster-wide rate limiting is
+	automatically enabled by default. The configured limits apply to the
+	<span class="emphasis"><em>entire cluster</em></span>, not individual nodes. This requires
+	the <code class="literal">ratelimitd</code> daemon, which must be enabled at build
+	time with <code class="literal">--with-ratelimitd</code>.
+	</p><pre class="programlisting">
+	<em class="parameter"><code>[share]</code></em>
+	<a class="link" href="smb.conf.5.html#AIO_RATELIMIT:READ_IOPS_LIMIT" target="_top">aio_ratelimit:read_iops_limit = 1000</a>
+</pre><p>
+	With cluster mode enabled (default when clustering is active),
+	the module automatically distributes bandwidth among active connections
+	on that share.
+	For example, with a 1000 IOPS limit:
+	</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>4 active connections → Each gets ~250 IOPS</p></li><li class="listitem"><p>10 active connections → Each gets ~100 IOPS</p></li><li class="listitem"><p>Total cluster throughput: Always limited to 1000 IOPS</p></li></ul></div><p>
+	The distribution happens automatically as connections are established
+	and closed.
+	</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+		Nodes with more active connections will naturally use more of the
+		total bandwidth. This ensures fair per-connection allocation across
+		the cluster.
+		</p></div></div><div class="refsect1"><a name="id1341"></a><h2>BURST BEHAVIOR</h2><p>
+	The <code class="literal">read_burst_mult</code> and <code class="literal">write_burst_mult</code>
+	parameters control the maximum burst capacity of the rate limiter relative to
+	the configured rate limits. The effective burst capacity is calculated as:
+	<span class="emphasis"><em>rate_limit * (burst_mult / 10)</em></span>.
+	</p><p>
+	For example, with <code class="literal">read_iops_limit = 1000</code> and
+	<code class="literal">read_burst_mult = 15</code>, the burst capacity is
+	1000 * 1.5 = 1500 IOPS.
+	</p><p>
+	This allows short-term I/O bursts above the steady-state rate while
+	still enforcing the configured long-term limit.
+	</p><p>
+	The appropriate burst multiplier depends on workload characteristics.
+	Workloads with larger or more variable asynchronous I/O requests may
+	require a higher burst value to avoid premature throttling, while
+	smaller or latency-sensitive workloads may benefit from lower values.
+	</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+	The <code class="literal">read_burst_mult</code> and <code class="literal">write_burst_mult</code>
+	parameters do not change the long-term average throughput, which remains limited
+	by <code class="literal">read_iops_limit</code>/<code class="literal">read_bw_limit</code> and
+	<code class="literal">write_iops_limit</code>/<code class="literal">write_bw_limit</code> respectively.
+	Higher burst values only affect initial acceleration and recovery from idle periods.
+	</p></div></div><div class="refsect1"><a name="id1342"></a><h2>VERSION</h2><p>This man page is part of version 4.25.0 of the Samba suite.
+	</p></div><div class="refsect1"><a name="id1343"></a><h2>AUTHOR</h2><p>The original Samba software and related utilities
+	were created by Andrew Tridgell. Samba is now developed
+	by the Samba Team as an Open Source project similar
+	to the way the Linux kernel is developed.</p></div></div></body></html>

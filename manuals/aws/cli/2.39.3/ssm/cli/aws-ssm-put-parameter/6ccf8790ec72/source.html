@@ -1,0 +1,614 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Use the AWS CLI 2.39.3 to run the ssm put-parameter command." name="description" />
+
+  
+    <title>put-parameter &#8212; AWS CLI 2.39.3 Command Reference</title>
+  <link rel="stylesheet" type="text/css" href="../../_static/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../_static/override.css" />
+  <script src="/SdkStatic/sdk-priv.js" async="true"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/guzzle.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="put-resource-policy" href="put-resource-policy.html" />
+    <link rel="prev" title="put-inventory" href="put-inventory.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-responsive.min.css" />
+  
+   
+
+<link rel="alternate" type="text/markdown" href="put-parameter.md" title="Markdown version" />
+  </head><body>
+  <div class="navbar navbar-fixed-top ">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="../../index.html">AWS CLI Command Reference</a>
+        <ul class="nav">
+<li><a class="nav-link" href="../../index.html">Home</a></li>
+<li><a class="nav-link" href="https://docs.aws.amazon.com/cli/latest/userguide/">User Guide</a></li>
+<li><a class="nav-link" href="https://forums.aws.amazon.com/forum.jspa?forumID=150">Forum</a></li>
+<li><a class="nav-link" href="https://github.com/aws/aws-cli">GitHub</a></li>
+        </ul>
+        <div class="pull-right" id="github-stars">
+          <iframe src="https://ghbtns.com/github-btn.html?user=aws&repo=aws-cli&type=watch&count=true&size=small"
+                  allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"  sandbox="allow-scripts"
+                  title="GitHub button showing the number of project stars."></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--REGION_DISCLAIMER_DO_NOT_REMOVE-->
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="put-resource-policy.html" title="put-resource-policy"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="put-inventory.html" title="put-inventory"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">AWS CLI 2.39.3 Command Reference</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >aws</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">ssm</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">put-parameter</a></li> 
+      </ul>
+    </div>
+    <div class="container">
+        
+    <div class="top-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="put-inventory.html" title="previous chapter (use the left arrow)">&larr; put-inventory</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="put-resource-policy.html" title="next chapter (use the right arrow)">put-resource-policy &rarr;</a></li>
+      </ul>
+    </div>
+  
+        <div class="document clearer">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo left-bar-other">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/logo.png" alt="Amazon Web Services logo" height="63" />
+  </a>
+</p>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">put-parameter</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
+<li><a class="reference internal" href="#options">Options</a></li>
+<li><a class="reference internal" href="#global-options">Global Options</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#output">Output</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+<div id="searchbox" style="display: none">
+    <h3>Quick search</h3>
+    <form class="form-search margin-top-1em" action="../../search.html" method="get">
+        <label for="searchbox">Search box</label>
+        <input id="searchbox" type="search" name="q" style="width: 105px" class="input-small search-query" autocomplete="off" />
+        <button type="submit" class="btn btn-small">Search</button>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script src="../../_static/searchbox.js"></script><div class="left-bar-other">
+  <h3>Feedback</h3>
+  <p class="feedback">Did you find this page useful? Do you have a suggestion to improve the documentation? <a href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=AWS%20Command%20Line%20Interface&hidden_guide_name=Reference&topic_url=https%3A%2F%2Fdocs.aws.amazon.com%2Fcli%2Flatest%2Freference/ssm/put-parameter.html">Give us feedback</a>.
+    <br />
+    If you would like to suggest an improvement or fix for the AWS CLI, check out our <a href="https://github.com/aws/aws-cli/blob/v2/CONTRIBUTING.rst">contributing guide</a> on GitHub.</p>
+</div><div class="left-bar-other">
+  <h3>User Guide</h3>
+  <p>First time using the AWS CLI? See the
+  <a href="https://docs.aws.amazon.com/cli/latest/userguide/">User Guide</a> for
+  help getting started.</p>
+</div>
+        </div>
+      </div>
+            <div class="body">
+              
+  <p>[ <a class="reference internal" href="../index.html#cli-aws"><span class="std std-ref">aws</span></a> . <a class="reference internal" href="index.html#cli-aws-ssm"><span class="std std-ref">ssm</span></a> ]</p>
+<div class="section" id="put-parameter">
+<span id="cli-aws-ssm-put-parameter"></span><h1>put-parameter<a class="headerlink" href="#put-parameter" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
+<p>Create or update a parameter in Parameter Store.</p>
+<div class="admonition note">
+<h3 class='admonition-title'>Note</h3><p class="first">Parameter Store throughput defines the number of API transactions per second (TPS) that Systems Manager can process. This applies to <code class="docutils literal notranslate"><span class="pre">GetParameter</span></code> , <code class="docutils literal notranslate"><span class="pre">GetParameters</span></code> , and <code class="docutils literal notranslate"><span class="pre">PutParameter</span></code> API calls for your Amazon Web Services account and Amazon Web Services Region. By default, Parameter Store is configured with a standard throughput quota suitable for low- to moderate-volume workloads. Applications that retrieve configuration data infrequently or operate at smaller scale can use this default setting without additional cost.</p>
+<p class="last">For higher-volume workloads, you can enable higher throughput. This increases the maximum number of supported transactions per second for your account and Region. Increased throughput supports applications and workloads that need concurrent access to multiple parameters. If you experience <code class="docutils literal notranslate"><span class="pre">ThrottlingException:</span> <span class="pre">Rate</span> <span class="pre">exceeded</span></code> errors, enable higher throughput. For more information, see <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-throughput.html">Changing Parameter Store throughput</a> .</p>
+</div>
+<p>See also: <a class="reference external" href="https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/PutParameter">AWS API Documentation</a></p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">put</span><span class="o">-</span><span class="n">parameter</span>
+<span class="o">--</span><span class="n">name</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
+<span class="p">[</span><span class="o">--</span><span class="n">description</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="o">--</span><span class="n">value</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
+<span class="p">[</span><span class="o">--</span><span class="nb">type</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">key</span><span class="o">-</span><span class="nb">id</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">overwrite</span> <span class="o">|</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">overwrite</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">allowed</span><span class="o">-</span><span class="n">pattern</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">tags</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">tier</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">policies</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="nb">type</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="n">json</span> <span class="o">|</span> <span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="n">yaml</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">generate</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">skeleton</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">debug</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">verify</span><span class="o">-</span><span class="n">ssl</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">paginate</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">output</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">query</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">profile</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">region</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">version</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">color</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">sign</span><span class="o">-</span><span class="n">request</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">ca</span><span class="o">-</span><span class="n">bundle</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">read</span><span class="o">-</span><span class="n">timeout</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">connect</span><span class="o">-</span><span class="n">timeout</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">binary</span><span class="o">-</span><span class="nb">format</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">pager</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">auto</span><span class="o">-</span><span class="n">prompt</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">auto</span><span class="o">-</span><span class="n">prompt</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">error</span><span class="o">-</span><span class="nb">format</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">--name</span></code> (string) [required]</p>
+<blockquote>
+<div><p>The fully qualified name of the parameter that you want to create or update.</p>
+<div class="admonition note">
+<h3 class='admonition-title'>Note</h3>You can’t enter the Amazon Resource Name (ARN) for a parameter, only the parameter name itself.</div>
+<p>The fully qualified name includes the complete hierarchy of the parameter path and name. For parameters in a hierarchy, you must include a leading forward slash character (/) when you create or reference a parameter. For example: <code class="docutils literal notranslate"><span class="pre">/Dev/DBServer/MySQL/db-string13</span></code></p>
+<p>Naming Constraints:</p>
+<ul class="simple">
+<li>Parameter names are case sensitive.</li>
+<li>A parameter name must be unique within an Amazon Web Services Region</li>
+<li>A parameter name can’t be prefixed with “<code class="docutils literal notranslate"><span class="pre">aws</span></code> “ or “<code class="docutils literal notranslate"><span class="pre">ssm</span></code> “ (case-insensitive).</li>
+<li>Parameter names can include only the following symbols and letters: <code class="docutils literal notranslate"><span class="pre">a-zA-Z0-9_.-</span></code>   In addition, the slash character ( / ) is used to delineate hierarchies in parameter names. For example: <code class="docutils literal notranslate"><span class="pre">/Dev/Production/East/Project-ABC/MyParameter</span></code></li>
+<li>Parameter names can’t contain spaces. The service removes any spaces specified for the beginning or end of a parameter name. If the specified name for a parameter contains spaces between characters, the request fails with a <code class="docutils literal notranslate"><span class="pre">ValidationException</span></code> error.</li>
+<li>Parameter hierarchies are limited to a maximum depth of fifteen levels.</li>
+</ul>
+<p>For additional information about valid values for parameter names, see <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-create.html">Creating Systems Manager parameters</a> in the <em>Amazon Web Services Systems Manager User Guide</em> .</p>
+<div class="admonition note">
+<h3 class='admonition-title'>Note</h3><p class="first">The reported maximum length of 2048 characters for a parameter name includes 1037 characters that are reserved for internal use by Systems Manager. The maximum length for a parameter name that you specify is 1011 characters.</p>
+<p class="last">This count of 1011 characters includes the characters in the ARN that precede the name you specify. This ARN length will vary depending on your partition and Region. For example, the following 45 characters count toward the 1011 character maximum for a parameter created in the US East (Ohio) Region: <code class="docutils literal notranslate"><span class="pre">arn:aws:ssm:us-east-2:111122223333:parameter/</span></code> .</p>
+</div>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">2048</span></code></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--description</span></code> (string)</p>
+<blockquote>
+<div><p>Information about the parameter that you want to add to the system. Optional but recommended.</p>
+<div class="admonition warning">
+<h3 class='admonition-title'>Warning</h3>Don’t enter personally identifiable information in this field.</div>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">1024</span></code></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--value</span></code> (string) [required]</p>
+<blockquote>
+<div><p>The parameter value that you want to add to the system. Standard parameters have a value limit of 4 KB. Advanced parameters have a value limit of 8 KB.</p>
+<div class="admonition note">
+<h3 class='admonition-title'>Note</h3>Parameters can’t be referenced or nested in the values of other parameters. You can’t include values wrapped in double brackets <code class="docutils literal notranslate"><span class="pre">{{}}</span></code> or <code class="docutils literal notranslate"><span class="pre">{{ssm:*parameter-name*</span> <span class="pre">}}</span></code> in a parameter value.</div>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--type</span></code> (string)</p>
+<blockquote>
+<div><p>The type of parameter that you want to create.</p>
+<div class="admonition note">
+<h3 class='admonition-title'>Note</h3><code class="docutils literal notranslate"><span class="pre">SecureString</span></code> isn’t currently supported for CloudFormation templates.</div>
+<p>Items in a <code class="docutils literal notranslate"><span class="pre">StringList</span></code> must be separated by a comma (,). You can’t use other punctuation or special character to escape items in the list. If you have a parameter value that requires a comma, then use the <code class="docutils literal notranslate"><span class="pre">String</span></code> data type.</p>
+<div class="admonition warning">
+<h3 class='admonition-title'>Warning</h3>Specifying a parameter type isn’t required when updating a parameter. You must specify a parameter type when creating a parameter.</div>
+<p>Possible values:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">String</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">StringList</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">SecureString</span></code></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--key-id</span></code> (string)</p>
+<blockquote>
+<div><p>The Key Management Service (KMS) ID that you want to use to encrypt a parameter. Use a custom key for better security. Required for parameters that use the <code class="docutils literal notranslate"><span class="pre">SecureString</span></code> data type.</p>
+<p>If you don’t specify a key ID, the system uses the default key associated with your Amazon Web Services account, which is not as secure as using a custom key.</p>
+<ul class="simple">
+<li>To use a custom KMS key, choose the <code class="docutils literal notranslate"><span class="pre">SecureString</span></code> data type with the <code class="docutils literal notranslate"><span class="pre">Key</span> <span class="pre">ID</span></code> parameter.</li>
+</ul>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">256</span></code></li>
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^([a-zA-Z0-9:/_-]+)$</span></code></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--overwrite</span></code> | <code class="docutils literal notranslate"><span class="pre">--no-overwrite</span></code> (boolean)</p>
+<blockquote>
+<div>Overwrite an existing parameter. The default value is <code class="docutils literal notranslate"><span class="pre">false</span></code> .</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--allowed-pattern</span></code> (string)</p>
+<blockquote>
+<div><p>A regular expression used to validate the parameter value. For example, for String types with values restricted to numbers, you can specify the following: AllowedPattern=^d+$</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">1024</span></code></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--tags</span></code> (list)</p>
+<blockquote>
+<div><p>Optional metadata that you assign to a resource. Tags enable you to categorize a resource in different ways, such as by purpose, owner, or environment. For example, you might want to tag a Systems Manager parameter to identify the type of resource to which it applies, the environment, or the type of configuration data referenced by the parameter. In this case, you could specify the following key-value pairs:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">Key=Resource,Value=S3bucket</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Key=OS,Value=Windows</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Key=ParameterType,Value=LicenseKey</span></code></li>
+</ul>
+<div class="admonition note">
+<h3 class='admonition-title'>Note</h3>To add tags to an existing Systems Manager parameter, use the  AddTagsToResource operation.</div>
+<p>Constraints:</p>
+<ul class="simple">
+<li>max: <code class="docutils literal notranslate"><span class="pre">1000</span></code></li>
+</ul>
+<p>(structure)</p>
+<blockquote>
+<div><p>Metadata that you assign to your Amazon Web Services resources. Tags enable you to categorize your resources in different ways, for example, by purpose, owner, or environment. In Amazon Web Services Systems Manager, you can apply tags to Systems Manager documents (SSM documents), managed nodes, maintenance windows, parameters, patch baselines, OpsItems, and OpsMetadata.</p>
+<p>Key -&gt; (string) [required]</p>
+<blockquote>
+<div><p>The name of the tag.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">128</span></code></li>
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^([\p{L}\p{Z}\p{N}_.:/=+\-&#64;]*)$</span></code></li>
+</ul>
+</div></blockquote>
+<p>Value -&gt; (string) [required]</p>
+<blockquote>
+<div><p>The value of the tag.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">256</span></code></li>
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^([\p{L}\p{Z}\p{N}_.:/=+\-&#64;]*)$</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>Shorthand Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Key</span><span class="o">=</span><span class="n">string</span><span class="p">,</span><span class="n">Value</span><span class="o">=</span><span class="n">string</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>JSON Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;Key&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Value&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+  <span class="p">}</span>
+  <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--tier</span></code> (string)</p>
+<blockquote>
+<div><p>The parameter tier to assign to a parameter.</p>
+<p>Parameter Store offers a standard tier and an advanced tier for parameters. Standard parameters have a content size limit of 4 KB and can’t be configured to use parameter policies. You can create a maximum of 10,000 standard parameters for each Region in an Amazon Web Services account. Standard parameters are offered at no additional cost.</p>
+<p>Advanced parameters have a content size limit of 8 KB and can be configured to use parameter policies. You can create a maximum of 100,000 advanced parameters for each Region in an Amazon Web Services account. Advanced parameters incur a charge. For more information, see <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html">Managing parameter tiers</a> in the <em>Amazon Web Services Systems Manager User Guide</em> .</p>
+<p>You can change a standard parameter to an advanced parameter any time. But you can’t revert an advanced parameter to a standard parameter. Reverting an advanced parameter to a standard parameter would result in data loss because the system would truncate the size of the parameter from 8 KB to 4 KB. Reverting would also remove any policies attached to the parameter. Lastly, advanced parameters use a different form of encryption than standard parameters.</p>
+<p>If you no longer need an advanced parameter, or if you no longer want to incur charges for an advanced parameter, you must delete it and recreate it as a new standard parameter.</p>
+<blockquote>
+<div><strong>Using the Default Tier Configuration</strong></div></blockquote>
+<p>In <code class="docutils literal notranslate"><span class="pre">PutParameter</span></code> requests, you can specify the tier to create the parameter in. Whenever you specify a tier in the request, Parameter Store creates or updates the parameter according to that request. However, if you don’t specify a tier in a request, Parameter Store assigns the tier based on the current Parameter Store default tier configuration.</p>
+<p>The default tier when you begin using Parameter Store is the standard-parameter tier. If you use the advanced-parameter tier, you can specify one of the following as the default:</p>
+<ul class="simple">
+<li><strong>Advanced</strong> : With this option, Parameter Store evaluates all requests as advanced parameters.</li>
+<li><strong>Intelligent-Tiering</strong> : With this option, Parameter Store evaluates each request to determine if the parameter is standard or advanced.  If the request doesn’t include any options that require an advanced parameter, the parameter is created in the standard-parameter tier. If one or more options requiring an advanced parameter are included in the request, Parameter Store create a parameter in the advanced-parameter tier. This approach helps control your parameter-related costs by always creating standard parameters unless an advanced parameter is necessary.</li>
+</ul>
+<p>Options that require an advanced parameter include the following:</p>
+<ul class="simple">
+<li>The content size of the parameter is more than 4 KB.</li>
+<li>The parameter uses a parameter policy.</li>
+<li>More than 10,000 parameters already exist in your Amazon Web Services account in the current Amazon Web Services Region.</li>
+</ul>
+<p>For more information about configuring the default tier option, see <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html#ps-default-tier">Specifying a default parameter tier</a> in the <em>Amazon Web Services Systems Manager User Guide</em> .</p>
+<p>Possible values:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">Standard</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Advanced</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Intelligent-Tiering</span></code></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--policies</span></code> (string)</p>
+<blockquote>
+<div><p>One or more policies to apply to a parameter. This operation takes a JSON array. Parameter Store, a tool in Amazon Web Services Systems Manager supports the following policy types:</p>
+<p>Expiration: This policy deletes the parameter after it expires. When you create the policy, you specify the expiration date. You can update the expiration date and time by updating the policy. Updating the <em>parameter</em> doesn’t affect the expiration date and time. When the expiration time is reached, Parameter Store deletes the parameter.</p>
+<p>ExpirationNotification: This policy initiates an event in Amazon CloudWatch Events that notifies you about the expiration. By using this policy, you can receive notification before or after the expiration time is reached, in units of days or hours.</p>
+<p>NoChangeNotification: This policy initiates a CloudWatch Events event if a parameter hasn’t been modified for a specified period of time. This policy type is useful when, for example, a secret needs to be changed within a period of time, but it hasn’t been changed.</p>
+<p>All existing policies are preserved until you send new policies or an empty policy. For more information about parameter policies, see <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-policies.html">Assigning parameter policies</a> .</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">4096</span></code></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--data-type</span></code> (string)</p>
+<blockquote>
+<div><p>The data type for a <code class="docutils literal notranslate"><span class="pre">String</span></code> parameter. Supported data types include plain text and Amazon Machine Image (AMI) IDs.</p>
+<blockquote>
+<div><strong>The following data type values are supported.</strong></div></blockquote>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">text</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">aws:ec2:image</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">aws:ssm:integration</span></code></li>
+</ul>
+<p>When you create a <code class="docutils literal notranslate"><span class="pre">String</span></code> parameter and specify <code class="docutils literal notranslate"><span class="pre">aws:ec2:image</span></code> , Amazon Web Services Systems Manager validates the parameter value is in the required format, such as <code class="docutils literal notranslate"><span class="pre">ami-12345abcdeEXAMPLE</span></code> , and that the specified AMI is available in your Amazon Web Services account.</p>
+<div class="admonition note">
+<h3 class='admonition-title'>Note</h3>If the action is successful, the service sends back an HTTP 200 response which indicates a successful <code class="docutils literal notranslate"><span class="pre">PutParameter</span></code> call for all cases except for data type <code class="docutils literal notranslate"><span class="pre">aws:ec2:image</span></code> . If you call <code class="docutils literal notranslate"><span class="pre">PutParameter</span></code> with <code class="docutils literal notranslate"><span class="pre">aws:ec2:image</span></code> data type, a successful HTTP 200 response does not guarantee that your parameter was successfully created or updated. The <code class="docutils literal notranslate"><span class="pre">aws:ec2:image</span></code> value is validated asynchronously, and the <code class="docutils literal notranslate"><span class="pre">PutParameter</span></code> call returns before the validation is complete. If you submit an invalid AMI value, the PutParameter operation will return success, but the asynchronous validation will fail and the parameter will not be created or updated. To monitor whether your <code class="docutils literal notranslate"><span class="pre">aws:ec2:image</span></code> parameters are created successfully, see <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-cwe.html">Setting up notifications or trigger actions based on Parameter Store events</a> . For more information about AMI format validation , see <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html">Native parameter support for Amazon Machine Image IDs</a> .</div>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">128</span></code></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-input-json</span></code> | <code class="docutils literal notranslate"><span class="pre">--cli-input-yaml</span></code> (string)
+Reads arguments from the JSON string provided. The JSON string follows the format provided by <code class="docutils literal notranslate"><span class="pre">--generate-cli-skeleton</span></code>. If other arguments are provided on the command line, those values will override the JSON-provided values. It is not possible to pass arbitrary binary values using a JSON-provided value as the string will be taken literally. This may not be specified along with <code class="docutils literal notranslate"><span class="pre">--cli-input-yaml</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--generate-cli-skeleton</span></code> (string)
+Prints a JSON skeleton to standard output without sending an API request. If provided with no value or the value <code class="docutils literal notranslate"><span class="pre">input</span></code>, prints a sample input JSON that can be used as an argument for <code class="docutils literal notranslate"><span class="pre">--cli-input-json</span></code>. Similarly, if provided <code class="docutils literal notranslate"><span class="pre">yaml-input</span></code> it will print a sample input YAML that can be used with <code class="docutils literal notranslate"><span class="pre">--cli-input-yaml</span></code>. If provided with the value <code class="docutils literal notranslate"><span class="pre">output</span></code>, it validates the command inputs and returns a sample output JSON for that command. The generated JSON skeleton is not stable between versions of the AWS CLI and there are no backwards compatibility guarantees in the JSON skeleton generated.</p>
+</div>
+<div class="section" id="global-options">
+<h2>Global Options<a class="headerlink" href="#global-options" title="Permalink to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">--debug</span></code> (boolean)</p>
+<p>Turn on debug logging.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--endpoint-url</span></code> (string)</p>
+<p>Override command’s default URL with the given URL.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--no-verify-ssl</span></code> (boolean)</p>
+<p>By default, the AWS CLI uses SSL when communicating with AWS services. For each SSL connection, the AWS CLI will verify SSL certificates. This option overrides the default behavior of verifying SSL certificates.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--no-paginate</span></code> (boolean)</p>
+<p>Disable automatic pagination. If automatic pagination is disabled, the AWS CLI will only make one call, for the first page of results.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--output</span></code> (string)</p>
+<p>The formatting style for command output.</p>
+<ul class="simple">
+<li>json</li>
+<li>text</li>
+<li>table</li>
+<li>yaml</li>
+<li>yaml-stream</li>
+<li>off</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">--query</span></code> (string)</p>
+<p>A JMESPath query to use in filtering the response data.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--profile</span></code> (string)</p>
+<p>Use a specific profile from your credential file.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--region</span></code> (string)</p>
+<p>The region to use. Overrides config/env settings.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--version</span></code> (string)</p>
+<p>Display the version of this tool.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--color</span></code> (string)</p>
+<p>Turn on/off color output.</p>
+<ul class="simple">
+<li>on</li>
+<li>off</li>
+<li>auto</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">--no-sign-request</span></code> (boolean)</p>
+<p>Do not sign requests. Credentials will not be loaded if this argument is provided.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--ca-bundle</span></code> (string)</p>
+<p>The CA certificate bundle to use when verifying SSL certificates. Overrides config/env settings.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-read-timeout</span></code> (int)</p>
+<p>The maximum socket read time in seconds. If the value is set to 0, the socket read will be blocking and not timeout. The default value is 60 seconds.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-connect-timeout</span></code> (int)</p>
+<p>The maximum socket connect time in seconds. If the value is set to 0, the socket connect will be blocking and not timeout. The default value is 60 seconds.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-binary-format</span></code> (string)</p>
+<p>The formatting style to be used for binary blobs. The default format is base64. The base64 format expects binary blobs to be provided as a base64 encoded string. The raw-in-base64-out format preserves compatibility with AWS CLI V1 behavior and binary values must be passed literally. When providing contents from a file that map to a binary blob <code class="docutils literal notranslate"><span class="pre">fileb://</span></code> will always be treated as binary and use the file contents directly regardless of the <code class="docutils literal notranslate"><span class="pre">cli-binary-format</span></code> setting. When using <code class="docutils literal notranslate"><span class="pre">file://</span></code> the file contents will need to properly formatted for the configured <code class="docutils literal notranslate"><span class="pre">cli-binary-format</span></code>.</p>
+<ul class="simple">
+<li>base64</li>
+<li>raw-in-base64-out</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">--no-cli-pager</span></code> (boolean)</p>
+<p>Disable cli pager for output.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-auto-prompt</span></code> (boolean)</p>
+<p>Automatically prompt for CLI input parameters.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--no-cli-auto-prompt</span></code> (boolean)</p>
+<p>Disable automatically prompt for CLI input parameters.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-error-format</span></code> (string)</p>
+<p>The formatting style for error output. By default, errors are displayed in enhanced format.</p>
+<ul class="simple">
+<li>legacy</li>
+<li>json</li>
+<li>yaml</li>
+<li>text</li>
+<li>table</li>
+<li>enhanced</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<div class="admonition note">
+<h3 class='admonition-title'>Note</h3><p class="first">To use the following examples, you must have the AWS CLI installed and configured. See the <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html">Getting started guide</a> in the <em>AWS CLI User Guide</em> for more information.</p>
+<p class="last">Unless otherwise stated, all examples have unix-like quotation rules. These examples will need to be adapted to your terminal’s quoting rules. See <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-quoting-strings.html">Using quotation marks with strings</a> in the <em>AWS CLI User Guide</em> .</p>
+</div>
+<p><strong>Example 1: To change a parameter value</strong></p>
+<p>The following <code class="docutils literal notranslate"><span class="pre">put-parameter</span></code> example changes the value of the specified parameter.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aws</span> <span class="n">ssm</span> <span class="n">put</span><span class="o">-</span><span class="n">parameter</span> \
+    <span class="o">--</span><span class="n">name</span> <span class="s2">&quot;MyStringParameter&quot;</span> \
+    <span class="o">--</span><span class="nb">type</span> <span class="s2">&quot;String&quot;</span> \
+    <span class="o">--</span><span class="n">value</span> <span class="s2">&quot;Vici&quot;</span> \
+    <span class="o">--</span><span class="n">overwrite</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Version&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;Tier&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For more information, see <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/param-create-cli.html">Create a Systems Manager parameter (AWS CLI)</a>, <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html">Managing parameter tiers</a>, and <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-policies.html">Working with parameter policies</a> in the <em>AWS Systems Manager User Guide</em>.</p>
+<p><strong>Example 2: To create an advanced parameter</strong></p>
+<p>The following <code class="docutils literal notranslate"><span class="pre">put-parameter</span></code> example creates an advanced parameter.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aws</span> <span class="n">ssm</span> <span class="n">put</span><span class="o">-</span><span class="n">parameter</span> \
+    <span class="o">--</span><span class="n">name</span> <span class="s2">&quot;MyAdvancedParameter&quot;</span> \
+    <span class="o">--</span><span class="n">description</span> <span class="s2">&quot;This is an advanced parameter&quot;</span> \
+    <span class="o">--</span><span class="n">value</span> <span class="s2">&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat [truncated]&quot;</span> \
+    <span class="o">--</span><span class="nb">type</span> <span class="s2">&quot;String&quot;</span> \
+    <span class="o">--</span><span class="n">tier</span> <span class="n">Advanced</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Version&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;Tier&quot;</span><span class="p">:</span> <span class="s2">&quot;Advanced&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For more information, see <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/param-create-cli.html">Create a Systems Manager parameter (AWS CLI)</a>, <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html">Managing parameter tiers</a>, and <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-policies.html">Working with parameter policies</a> in the <em>AWS Systems Manager User Guide</em>.</p>
+<p><strong>Example 3: To convert a standard parameter to an advanced parameter</strong></p>
+<p>The following <code class="docutils literal notranslate"><span class="pre">put-parameter</span></code> example converts an existing standard parameter into an advanced parameter.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aws</span> <span class="n">ssm</span> <span class="n">put</span><span class="o">-</span><span class="n">parameter</span> \
+    <span class="o">--</span><span class="n">name</span> <span class="s2">&quot;MyConvertedParameter&quot;</span> \
+    <span class="o">--</span><span class="n">value</span> <span class="s2">&quot;abc123&quot;</span> \
+    <span class="o">--</span><span class="nb">type</span> <span class="s2">&quot;String&quot;</span> \
+    <span class="o">--</span><span class="n">tier</span> <span class="n">Advanced</span> \
+    <span class="o">--</span><span class="n">overwrite</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Version&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;Tier&quot;</span><span class="p">:</span> <span class="s2">&quot;Advanced&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For more information, see <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/param-create-cli.html">Create a Systems Manager parameter (AWS CLI)</a>, <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html">Managing parameter tiers</a>, and <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-policies.html">Working with parameter policies</a> in the <em>AWS Systems Manager User Guide</em>.</p>
+<p><strong>Example 4: To create a parameter with a policy attached</strong></p>
+<p>The following <code class="docutils literal notranslate"><span class="pre">put-parameter</span></code> example creates an advanced parameter with a parameter policy attached.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aws</span> <span class="n">ssm</span> <span class="n">put</span><span class="o">-</span><span class="n">parameter</span> \
+    <span class="o">--</span><span class="n">name</span> <span class="s2">&quot;/Finance/Payroll/q2accesskey&quot;</span> \
+    <span class="o">--</span><span class="n">value</span> <span class="s2">&quot;P@sSwW)rd&quot;</span> \
+    <span class="o">--</span><span class="nb">type</span> <span class="s2">&quot;SecureString&quot;</span> \
+    <span class="o">--</span><span class="n">tier</span> <span class="n">Advanced</span> \
+    <span class="o">--</span><span class="n">policies</span> <span class="s2">&quot;[{</span><span class="se">\&quot;</span><span class="s2">Type</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">Expiration</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">Version</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">1.0</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">Attributes</span><span class="se">\&quot;</span><span class="s2">:{</span><span class="se">\&quot;</span><span class="s2">Timestamp</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">2020-06-30T00:00:00.000Z</span><span class="se">\&quot;</span><span class="s2">}},{</span><span class="se">\&quot;</span><span class="s2">Type</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">ExpirationNotification</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">Version</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">1.0</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">Attributes</span><span class="se">\&quot;</span><span class="s2">:{</span><span class="se">\&quot;</span><span class="s2">Before</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">5</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">Unit</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">Days</span><span class="se">\&quot;</span><span class="s2">}},{</span><span class="se">\&quot;</span><span class="s2">Type</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">NoChangeNotification</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">Version</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">1.0</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">Attributes</span><span class="se">\&quot;</span><span class="s2">:{</span><span class="se">\&quot;</span><span class="s2">After</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">60</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">Unit</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">Days</span><span class="se">\&quot;</span><span class="s2">}}]&quot;</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Version&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;Tier&quot;</span><span class="p">:</span> <span class="s2">&quot;Advanced&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For more information, see <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/param-create-cli.html">Create a Systems Manager parameter (AWS CLI)</a>, <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html">Managing parameter tiers</a>, and <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-policies.html">Working with parameter policies</a> in the <em>AWS Systems Manager User Guide</em>.</p>
+<p><strong>Example 5: To add a policy to an existing parameter</strong></p>
+<p>The following <code class="docutils literal notranslate"><span class="pre">put-parameter</span></code> example attaches a policy to an existing advanced parameter.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aws</span> <span class="n">ssm</span> <span class="n">put</span><span class="o">-</span><span class="n">parameter</span> \
+    <span class="o">--</span><span class="n">name</span> <span class="s2">&quot;/Finance/Payroll/q2accesskey&quot;</span> \
+    <span class="o">--</span><span class="n">value</span> <span class="s2">&quot;N3wP@sSwW)rd&quot;</span> \
+    <span class="o">--</span><span class="nb">type</span> <span class="s2">&quot;SecureString&quot;</span> \
+    <span class="o">--</span><span class="n">tier</span> <span class="n">Advanced</span> \
+    <span class="o">--</span><span class="n">policies</span> <span class="s2">&quot;[{</span><span class="se">\&quot;</span><span class="s2">Type</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">Expiration</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">Version</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">1.0</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">Attributes</span><span class="se">\&quot;</span><span class="s2">:{</span><span class="se">\&quot;</span><span class="s2">Timestamp</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">2020-06-30T00:00:00.000Z</span><span class="se">\&quot;</span><span class="s2">}},{</span><span class="se">\&quot;</span><span class="s2">Type</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">ExpirationNotification</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">Version</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">1.0</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">Attributes</span><span class="se">\&quot;</span><span class="s2">:{</span><span class="se">\&quot;</span><span class="s2">Before</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">5</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">Unit</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">Days</span><span class="se">\&quot;</span><span class="s2">}},{</span><span class="se">\&quot;</span><span class="s2">Type</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">NoChangeNotification</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">Version</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">1.0</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">Attributes</span><span class="se">\&quot;</span><span class="s2">:{</span><span class="se">\&quot;</span><span class="s2">After</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">60</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">Unit</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">Days</span><span class="se">\&quot;</span><span class="s2">}}]&quot;</span> \
+    <span class="o">--</span><span class="n">overwrite</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Version&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;Tier&quot;</span><span class="p">:</span> <span class="s2">&quot;Advanced&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For more information, see <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/param-create-cli.html">Create a Systems Manager parameter (AWS CLI)</a>, <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html">Managing parameter tiers</a>, and <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-policies.html">Working with parameter policies</a> in the <em>AWS Systems Manager User Guide</em>.</p>
+</div>
+<div class="section" id="output">
+<h2>Output<a class="headerlink" href="#output" title="Permalink to this heading">¶</a></h2>
+<p>Version -&gt; (long)</p>
+<blockquote>
+<div>The new version number of a parameter. If you edit a parameter value, Parameter Store automatically creates a new version and assigns this new version a unique ID. You can reference a parameter version ID in API operations or in Systems Manager documents (SSM documents). By default, if you don’t specify a specific version, the system returns the latest parameter value when a parameter is called.</div></blockquote>
+<p>Tier -&gt; (string)</p>
+<blockquote>
+<div><p>The tier assigned to the parameter.</p>
+<p>Possible values:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">Standard</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Advanced</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Intelligent-Tiering</span></code></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+            </div>
+          <div class="clearfix"></div>
+        </div>
+        
+    <div class="footer-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="put-inventory.html" title="previous chapter (use the left arrow)">&larr; put-inventory</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="put-resource-policy.html" title="next chapter (use the right arrow)">put-resource-policy &rarr;</a></li>
+      </ul>
+    </div>
+  
+
+    </div>
+  <script type="text/javascript" src="https://media.amazonwebservices.com/js/sitecatalyst/s_code.min.js"></script>
+  <script type="text/javascript" src="../../_static/analytics.js"></script>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="put-resource-policy.html" title="put-resource-policy"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="put-inventory.html" title="put-inventory"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">AWS CLI 2.39.3 Command Reference</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >aws</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >ssm</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">put-parameter</a></li> 
+      </ul>
+    </div>
+  <div class="footer container">
+    &copy; Copyright 2026, Amazon Web Services. Created using <a href="https://www.sphinx-doc.org/">Sphinx</a>.
+  </div>
+
+
+
+  
+    
+  
+  </body>
+</html>

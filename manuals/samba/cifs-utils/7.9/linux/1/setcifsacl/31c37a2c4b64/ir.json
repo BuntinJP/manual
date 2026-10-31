@@ -1,0 +1,1177 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "31c37a2c4b6413ae114f7ad35dae878913820961283e9ab61a3a1f28aae2e5c9",
+  "extraction": {
+    "selector": "body",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "setcifsacl",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "heading",
+      "text": "Userspace helper to alter components of a security descriptor for Common Internet File System (CIFS)",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "term",
+      "text": "Manual section:",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "1",
+      "protected": []
+    },
+    {
+      "id": "s0005",
+      "kind": "heading",
+      "text": "SYNOPSIS",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "setcifsacl [[[p0]]|[[p1]]|[[p2]]|[[p3]]|[[p4]]|[[p5]]|[[p6]]|[[p7]]|[[p8]]] \"{one or more ACEs or a SID}\" {file system object}",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-v"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-U"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "-a"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-A"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "-D"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "-M"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "-S"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "code",
+            "text": "-o"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "code",
+            "text": "-g"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0008",
+      "kind": "paragraph",
+      "text": "This tool is part of the cifs-utils suite.",
+      "protected": []
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "setcifsacl is a userspace helper program for the Linux CIFS client file system. It is intended to alter an ACL or set owner/group SID of a security descriptor for a file system object. Whether a security descriptor to be set is applied or not is determined by the CIFS/SMB server.",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "This program uses a plugin to handle the mapping of user and group names to SIDs. [[p0]]@pluginpath@[[p1]] should be a symlink that points to the correct plugin to use.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0011",
+      "kind": "heading",
+      "text": "OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-h"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "Print usage message and exit.",
+      "protected": []
+    },
+    {
+      "id": "s0014",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-v"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "Print version number and exit.",
+      "protected": []
+    },
+    {
+      "id": "s0016",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-U"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "Apply ACE editing actions ([[p0]], [[p1]], [[p2]], [[p3]]) to SACL (aUdit ACL). The actions are appliend to DACL if [[p4]] is not specified.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-a"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-D"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "-M"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-S"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "-U"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0018",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-a"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "Add one or more ACEs to an ACL of a security descriptor. An ACE is added even if the same ACE exists in the ACL.",
+      "protected": []
+    },
+    {
+      "id": "s0020",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-A"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0021",
+      "kind": "paragraph",
+      "text": "Add one or more ACEs to the ACL of a security descriptor, while maintaining the preferred order of the ACEs. The preferred order of ACEs are described in the following documentation: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "https://docs.microsoft.com/en-us/windows/win32/secauthz/order-of-aces-in-a-dacl",
+            "href": "https://docs.microsoft.com/en-us/windows/win32/secauthz/order-of-aces-in-a-dacl"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0022",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-D"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0023",
+      "kind": "paragraph",
+      "text": "Delete one or more ACEs from an ACL of a security descriptor. Entire ACE has to match in an existing ACL for the listed ACEs to be deleted.",
+      "protected": []
+    },
+    {
+      "id": "s0024",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-M"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0025",
+      "kind": "paragraph",
+      "text": "Modify one or more ACEs from an ACL of a security descriptor. SID and type are used to match for existing ACEs to be modified with the list of ACEs specified.",
+      "protected": []
+    },
+    {
+      "id": "s0026",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-S"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0027",
+      "kind": "paragraph",
+      "text": "Set an ACL of security descriptor with the list of ACEs Existing ACL is replaced entirely with the specified ACEs.",
+      "protected": []
+    },
+    {
+      "id": "s0028",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-o"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0029",
+      "kind": "paragraph",
+      "text": "Set owner SID to one specified as a command line argument.",
+      "protected": []
+    },
+    {
+      "id": "s0030",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-g"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0031",
+      "kind": "paragraph",
+      "text": "Set group SID to one specified as a command line argument.",
+      "protected": []
+    },
+    {
+      "id": "s0032",
+      "kind": "paragraph",
+      "text": "The owner/group SID can be specified as a name or a raw SID value. Every ACE entry starts with \"ACL:\" One or more ACEs are specified within double quotes. Multiple ACEs are separated by a comma.",
+      "protected": []
+    },
+    {
+      "id": "s0033",
+      "kind": "paragraph",
+      "text": "Following fields of a DACL ACE can be modified with possible values:",
+      "protected": []
+    },
+    {
+      "id": "s0034",
+      "kind": "paragraph",
+      "text": "SID - Either a name or a raw SID value.",
+      "protected": []
+    },
+    {
+      "id": "s0035",
+      "kind": "paragraph",
+      "text": "type - ALLOWED (0x0), DENIED (0x1), OBJECT_ALLOWED (0x5), OBJECT_DENIED (0x6)",
+      "protected": []
+    },
+    {
+      "id": "s0036",
+      "kind": "paragraph",
+      "text": "flags - OBJECT_INHERIT_FLAG (OI or 0x1), CONTAINER_INHERIT_FLAG (CI or 0x2), NO_PROPAGATE_INHERIT_FLAG (NI or 0x4), INHERIT_ONLY_FLAG (IO or 0x8), INHERITED_ACE_FLAG (IA or 0x10) or a combination/OR of these values.",
+      "protected": []
+    },
+    {
+      "id": "s0037",
+      "kind": "paragraph",
+      "text": "mask - Either one of FULL, CHANGE, READ, a combination of R W X D P O, or a hex value.",
+      "protected": []
+    },
+    {
+      "id": "s0038",
+      "kind": "paragraph",
+      "text": "Following fields of a SACL ACE can be modified with possible values:",
+      "protected": []
+    },
+    {
+      "id": "s0039",
+      "kind": "paragraph",
+      "text": "SID - Either a name or a raw SID value.",
+      "protected": []
+    },
+    {
+      "id": "s0040",
+      "kind": "paragraph",
+      "text": "type - AUDIT (0x2), AUDIT_OBJECT (0x7), AUDIT_CALLBACK (0xD), AUDIT_CALLBACK_OBJECT (0xF), MANDATORY_LABEL (0x11), RESOURCE_ATTRIBUTE (0x12), SCOPED_POLICY_ID (0x13)",
+      "protected": []
+    },
+    {
+      "id": "s0041",
+      "kind": "paragraph",
+      "text": "flags - SUCCESSFULL_ACCESS (SA or 0x40), FAILED_ACCESS (FA or 0x80)",
+      "protected": []
+    },
+    {
+      "id": "s0042",
+      "kind": "paragraph",
+      "text": "mask - Either one of FULL, CHANGE, READ, a combination of R W X D P O, or a hex value.",
+      "protected": []
+    },
+    {
+      "id": "s0043",
+      "kind": "heading",
+      "text": "EXAMPLES",
+      "protected": []
+    },
+    {
+      "id": "s0044",
+      "kind": "heading",
+      "text": "Add an ACE",
+      "protected": []
+    },
+    {
+      "id": "s0045",
+      "kind": "paragraph",
+      "text": "setcifsacl [[p0]] \"ACL:CIFSTESTDOM\\user2:DENIED/0x1/D\" <file_name>",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-a"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0046",
+      "kind": "paragraph",
+      "text": "setcifsacl [[p0]] \"ACL:CIFSTESTDOM\\user1:ALLOWED/OI|CI|NI/D\" <file_name>",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-a"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0047",
+      "kind": "paragraph",
+      "text": "setcifsacl [[p0]] [[p1]] \"ACL:CIFSTESTDOM\\user1:AUDIT/SA/D\" <file_name>",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-U"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-a"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0048",
+      "kind": "heading",
+      "text": "Add an ACE and reorder ACL",
+      "protected": []
+    },
+    {
+      "id": "s0049",
+      "kind": "paragraph",
+      "text": "setcifsacl [[p0]] \"ACL:CIFSTESTDOMuser3:ALLOWED/OI/FULL\" <file_name> setcifsacl [[p1]] \"ACL:CIFSTESTDOMuser2:DENIED/0x1/D\" <file_name> setcifsacl [[p2]] \"ACL:CIFSTESTDOMuser1:ALLOWED/OI|CI|NI/D\" <file_name>",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-A"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-A"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "-A"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0050",
+      "kind": "paragraph",
+      "text": "After setting above mentioned ACEs, below is output of getcifsacl: ACL:CIFSTESTDOMuser2:DENIED/0x1/D ACL:CIFSTESTDOMuser3:ALLOWED/OI/FULL ACL:CIFSTESTDOMuser1:ALLOWED/OI|CI|NI/D",
+      "protected": []
+    },
+    {
+      "id": "s0051",
+      "kind": "heading",
+      "text": "Delete an ACE",
+      "protected": []
+    },
+    {
+      "id": "s0052",
+      "kind": "paragraph",
+      "text": "setcifsacl [[p0]] \"ACL:S-1-1-0:0x1/OI/0x1201ff\" <file_name>",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-D"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0053",
+      "kind": "paragraph",
+      "text": "setcifsacl [[p0]] [[p1]] \"ACL:S-1-1-0:0x2/FA/0xf01ff\" <file_name>",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-U"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-D"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0054",
+      "kind": "heading",
+      "text": "Modify an ACE",
+      "protected": []
+    },
+    {
+      "id": "s0055",
+      "kind": "paragraph",
+      "text": "setcifsacl [[p0]] \"ACL:CIFSTESTDOM\\user1:ALLOWED/0x1f/CHANGE\" <file_name>",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-M"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0056",
+      "kind": "paragraph",
+      "text": "setcifsacl [[p0]] [[p1]] \"ACL:CIFSTESTDOM\\user1:AUDIT_OBJECT/SA/CHANGE\" <file_name>",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-U"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-M"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0057",
+      "kind": "heading",
+      "text": "Set an ACL",
+      "protected": []
+    },
+    {
+      "id": "s0058",
+      "kind": "paragraph",
+      "text": "setcifsacl [[p0]] \"ACL:CIFSTESTDOM\\Administrator:0x0/0x0/FULL,ACL:CIFSTESTDOM\\user2:0x0/0x0/FULL\" <file_name>",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-S"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0059",
+      "kind": "paragraph",
+      "text": "setcifsacl [[p0]] [[p1]] \"ACL:CIFSTESTDOM\\Administrator:AUDIT/SA/FULL,ACL:CIFSTESTDOM\\user2:0x7/0x80/FULL\" <file_name>",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-U"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-S"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0060",
+      "kind": "heading",
+      "text": "Set owner SID",
+      "protected": []
+    },
+    {
+      "id": "s0061",
+      "kind": "paragraph",
+      "text": "setcifsacl [[p0]] \"S-1-5-21-3338130290-3403600371-1423429424-2102\" <file_name>",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-o"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0062",
+      "kind": "heading",
+      "text": "Set group SID",
+      "protected": []
+    },
+    {
+      "id": "s0063",
+      "kind": "paragraph",
+      "text": "setcifsacl [[p0]] \"Administrators@BUILTIN\" <file_name>",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-g"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0064",
+      "kind": "heading",
+      "text": "NOTES",
+      "protected": []
+    },
+    {
+      "id": "s0065",
+      "kind": "paragraph",
+      "text": "Kernel support for getcifsacl/setcifsacl utilities was initially introduced in the 2.6.37 kernel.",
+      "protected": []
+    },
+    {
+      "id": "s0066",
+      "kind": "heading",
+      "text": "SEE ALSO",
+      "protected": []
+    },
+    {
+      "id": "s0067",
+      "kind": "paragraph",
+      "text": "mount.cifs(8), getcifsacl(1)",
+      "protected": []
+    },
+    {
+      "id": "s0068",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0069",
+      "kind": "paragraph",
+      "text": "Shirish Pargaonkar wrote the setcifsacl program.",
+      "protected": []
+    },
+    {
+      "id": "s0070",
+      "kind": "paragraph",
+      "text": "The Linux CIFS Mailing list is the preferred place to ask questions regarding these programs.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "setcifsacl",
+      "segment": "s0001"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Userspace-helper-to-alter-components-of-a-security-descriptor-for-Common-Internet-File-System--CIFS",
+      "segment": "s0002"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0003",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0004"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "SYNOPSIS",
+      "segment": "s0005"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0006"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "DESCRIPTION",
+      "segment": "s0007"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0008"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0009"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0010"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "OPTIONS",
+      "segment": "s0011"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0012",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0013"
+            }
+          ]
+        },
+        {
+          "term": "s0014",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0015"
+            }
+          ]
+        },
+        {
+          "term": "s0016",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0017"
+            }
+          ]
+        },
+        {
+          "term": "s0018",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0019"
+            }
+          ]
+        },
+        {
+          "term": "s0020",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0021"
+            }
+          ]
+        },
+        {
+          "term": "s0022",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0023"
+            }
+          ]
+        },
+        {
+          "term": "s0024",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0025"
+            }
+          ]
+        },
+        {
+          "term": "s0026",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0027"
+            }
+          ]
+        },
+        {
+          "term": "s0028",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0029"
+            }
+          ]
+        },
+        {
+          "term": "s0030",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0031"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0032"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0033"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0034"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0035"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0036"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0037"
+                  }
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0038"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0039"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0040"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0041"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0042"
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "EXAMPLES",
+      "segment": "s0043"
+    },
+    {
+      "type": "heading",
+      "level": 5,
+      "anchor": "Add-an-ACE",
+      "segment": "s0044"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0045"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0046"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0047"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 5,
+      "anchor": "Add-an-ACE-and-reorder-ACL",
+      "segment": "s0048"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0049"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0050"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 5,
+      "anchor": "Delete-an-ACE",
+      "segment": "s0051"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0052"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0053"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 5,
+      "anchor": "Modify-an-ACE",
+      "segment": "s0054"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0055"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0056"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 5,
+      "anchor": "Set-an-ACL",
+      "segment": "s0057"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0058"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0059"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 5,
+      "anchor": "Set-owner-SID",
+      "segment": "s0060"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0061"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 5,
+      "anchor": "Set-group-SID",
+      "segment": "s0062"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0063"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "NOTES",
+      "segment": "s0064"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0065"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "SEE-ALSO",
+      "segment": "s0066"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0067"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "AUTHOR",
+      "segment": "s0068"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0069"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0070"
+    }
+  ]
+}

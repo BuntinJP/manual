@@ -71,7 +71,7 @@ export const manifestSchema = z
       .array(
         z
           .object({
-            role: z.enum(['release-manifest', 'upstream-candidate', 'license']),
+            role: z.enum(['release-manifest', 'upstream-candidate', 'license', 'original-source']),
             path: z.string(),
             sha256: sha,
             origin: z.string(),

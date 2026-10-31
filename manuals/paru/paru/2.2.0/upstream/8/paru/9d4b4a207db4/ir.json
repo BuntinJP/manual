@@ -1,0 +1,7024 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "9d4b4a207db42500e8b8fb9f7115de60a88723970177ab85fdbe0cbdc5325833",
+  "extraction": {
+    "selector": ".manual-text",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "NAME",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "paru - AUR helper and pacman wrapper",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "SYNOPSIS",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]] <operation> [options] [targets]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "paru"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "paragraph",
+      "text": "[[p0]] <search terms>",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "paru"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "paru"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0008",
+      "kind": "paragraph",
+      "text": "Paru is an AUR helper written in Rust and based on the design of yay. It aims to be your standard pacman wrapping AUR helper with minimal interaction.",
+      "protected": []
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "Paru is a tool to easily build and install packages from the AUR, along with their dependencies. Paru also expands many of pacman's options making them AUR aware.",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "This manpage only covers options unique to paru. For other options see [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "pacman(8)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0011",
+      "kind": "heading",
+      "text": "PARU OPERATIONS",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-P"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--show"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "Printing related options.",
+      "protected": []
+    },
+    {
+      "id": "s0014",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-G"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--getpkgbuild"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "Downloads PKGBUILDs from the ABS or AUR. The ABS can only be used for Arch Linux repositories.",
+      "protected": []
+    },
+    {
+      "id": "s0016",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-B"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--build"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "Build PKGBUILDs on disk. Targets are directories directly containing a PKGBUILD.",
+      "protected": []
+    },
+    {
+      "id": "s0018",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-L"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--repoctl"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "List local repos.",
+      "protected": []
+    },
+    {
+      "id": "s0020",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-C"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--chrootctl"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0021",
+      "kind": "paragraph",
+      "text": "Interactive shell to the chroot.",
+      "protected": []
+    },
+    {
+      "id": "s0022",
+      "kind": "paragraph",
+      "text": "If no arguments are provided 'paru [[p0]]' will be performed.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Syu"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0023",
+      "kind": "heading",
+      "text": "EXTENDED PACMAN OPERATIONS",
+      "protected": []
+    },
+    {
+      "id": "s0024",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]], [[p3]], [[p4]], [[p5]], [[p6]], [[p7]], [[p8]] [[p9]][[p10]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-R"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "-S"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Si"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Sl"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Ss"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Su"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Sc"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Qu"
+          }
+        },
+        {
+          "token": "[[p9]]",
+          "inline": {
+            "tag": "code",
+            "text": "-T"
+          }
+        },
+        {
+          "token": "[[p10]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0025",
+      "kind": "paragraph",
+      "text": "These operations are extended to support both AUR and repo packages.",
+      "protected": []
+    },
+    {
+      "id": "s0026",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "-R"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0027",
+      "kind": "paragraph",
+      "text": "Paru will also remove cached data about devel packages.",
+      "protected": []
+    },
+    {
+      "id": "s0028",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "-Sc"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0029",
+      "kind": "paragraph",
+      "text": "Paru will also clean cached AUR packages and any untracked files in the cache. Cleaning untracked files will wipe any downloaded sources or built packages but will keep already downloaded VCS sources. [[p0]] or [[p1]] can be passed to delete the entire package instead of just cleaning it.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-d"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--delete"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0030",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "-Ss"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0031",
+      "kind": "paragraph",
+      "text": "The AUR can be searched using regex but it must be explicitly requested using [[p0]]/[[p1]]. Regex search will only search package names and not descriptions regardless of SearchBy.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-x"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--regex"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0032",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "-Sss"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0033",
+      "kind": "paragraph",
+      "text": "Paru will also output a verbose search result when passing two",
+      "protected": []
+    },
+    {
+      "id": "s0034",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]], [[p3]], [[p4]], [[p5]], [[p6]][[p7]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-S"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Si"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Sl"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Ss"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Su"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Qu"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0035",
+      "kind": "paragraph",
+      "text": "Paru will also handle AUR packages for these operations.",
+      "protected": []
+    },
+    {
+      "id": "s0036",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "-Ta"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0037",
+      "kind": "paragraph",
+      "text": "Will filter a list of packages to ones that appear in the AUR.",
+      "protected": []
+    },
+    {
+      "id": "s0038",
+      "kind": "heading",
+      "text": "NO OPERATION",
+      "protected": []
+    },
+    {
+      "id": "s0039",
+      "kind": "term",
+      "text": "[[p0]]<NO OPTION>[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0040",
+      "kind": "paragraph",
+      "text": "Interactive search and install. Displays a list of packages matching the search terms and prompts the user on which packages to install.",
+      "protected": []
+    },
+    {
+      "id": "s0041",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--gendb"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0042",
+      "kind": "paragraph",
+      "text": "Generate the development package database. This tracks the latest commit for each development package, so when there is a new commit paru will know to update. This is done per package whenever a package is synced. This option should only be used when migrating to paru from another AUR helper.",
+      "protected": []
+    },
+    {
+      "id": "s0043",
+      "kind": "paragraph",
+      "text": "This also causes paru to assume all current development packages are up to date. Updates will then be detected on the next commit.",
+      "protected": []
+    },
+    {
+      "id": "s0044",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-c"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--clean"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0045",
+      "kind": "paragraph",
+      "text": "Remove unneeded dependencies.",
+      "protected": []
+    },
+    {
+      "id": "s0046",
+      "kind": "paragraph",
+      "text": "Make and check dependencies are considered for foreign packages. Pass this twice to ignore these. Pass [[p0]] to ignore optional dependencies.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-o"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0047",
+      "kind": "heading",
+      "text": "SHOW OPTIONS (APPLY TO [[p0]] AND [[p1]])",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-P"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--SHOW"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0048",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-c"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--complete"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0049",
+      "kind": "paragraph",
+      "text": "Print a list of all AUR and repo packages. This allows shell completion and is not intended to be used directly by the user.",
+      "protected": []
+    },
+    {
+      "id": "s0050",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-s"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--stats"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0051",
+      "kind": "paragraph",
+      "text": "Displays information about installed packages and system health. If there are orphaned, or out-of-date packages, or packages that no longer exist on the AUR; warnings will be displayed.",
+      "protected": []
+    },
+    {
+      "id": "s0052",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-w"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--news"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0053",
+      "kind": "paragraph",
+      "text": "Print new news from the Arch Linux homepage. News is considered new if it is newer than the build date of all native packages. Pass this twice to show all available news.",
+      "protected": []
+    },
+    {
+      "id": "s0054",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-o"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--order"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0055",
+      "kind": "paragraph",
+      "text": "Print buildorder for targets.",
+      "protected": []
+    },
+    {
+      "id": "s0056",
+      "kind": "paragraph",
+      "text": "This option outputs information about how to build a package and its dependencies. Each line of output specifies an action to perform or information to take into consideration.",
+      "protected": []
+    },
+    {
+      "id": "s0057",
+      "kind": "paragraph",
+      "text": "Each line of output will be in one of the following formats:",
+      "protected": []
+    },
+    {
+      "id": "s0058",
+      "kind": "paragraph",
+      "text": "[[p0]]MISSING <DEP> [WANTED BY]...[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0059",
+      "kind": "paragraph",
+      "text": "A dependency could not be found.",
+      "protected": []
+    },
+    {
+      "id": "s0060",
+      "kind": "paragraph",
+      "text": "<DEP> is the dependency that could not be found and [WANTED BY] is the current dependency stack. The dependency stack will be empty if the package that could not be found was a target.",
+      "protected": []
+    },
+    {
+      "id": "s0061",
+      "kind": "paragraph",
+      "text": "Paru will exit 1 if any packages are missing.",
+      "protected": []
+    },
+    {
+      "id": "s0062",
+      "kind": "paragraph",
+      "text": "[[p0]]CONFLICT LOCAL|INNER <PKG> <CONFLICTING PKG> [CONFLICT][[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0063",
+      "kind": "paragraph",
+      "text": "There was a package conflict.",
+      "protected": []
+    },
+    {
+      "id": "s0064",
+      "kind": "paragraph",
+      "text": "The second arg will be LOCAL if the conflict is with an installed package and INNER if two of the to be installed packages conflict. <PKG> and <CONFLICTING PKG> are the packages in conflict and [CONFLICT] will be the conflict string if it is different from <CONFLICTING PKG>.",
+      "protected": []
+    },
+    {
+      "id": "s0065",
+      "kind": "paragraph",
+      "text": "[[p0]]INSTALL TARGET|DEP|MAKE <DB> <NAME>[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0066",
+      "kind": "paragraph",
+      "text": "Install a package from the pacman repos.",
+      "protected": []
+    },
+    {
+      "id": "s0067",
+      "kind": "paragraph",
+      "text": "The first arg will be TARGET if the package is a target, DEP if a dependency, or MAKE if the package is a build time dependency. <DB> is the name of the database the package belongs to and <NAME> is the name of the package.",
+      "protected": []
+    },
+    {
+      "id": "s0068",
+      "kind": "paragraph",
+      "text": "[[p0]]AUR TARGET|DEP|MAKE <BASE> <NAMES>...[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0069",
+      "kind": "paragraph",
+      "text": "Build a package from the AUR.",
+      "protected": []
+    },
+    {
+      "id": "s0070",
+      "kind": "paragraph",
+      "text": "The first arg will be TARGET if the package is a target, DEP if a dependency, or MAKE if the package is a build time dependency. <BASE> is the pkgbase of the package and <NAMES> are the names of the packages belonging to the pkgbase.",
+      "protected": []
+    },
+    {
+      "id": "s0071",
+      "kind": "paragraph",
+      "text": "More options may be added in the future.",
+      "protected": []
+    },
+    {
+      "id": "s0072",
+      "kind": "heading",
+      "text": "GETPKGBUILD OPTIONS (APPLY TO [[p0]] AND [[p1]])",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-G"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--GETPKGBUILD"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0073",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-p"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--print"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0074",
+      "kind": "paragraph",
+      "text": "Prints the PKGBUILD to the terminal instead of downloading it.",
+      "protected": []
+    },
+    {
+      "id": "s0075",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-c"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--comments"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0076",
+      "kind": "paragraph",
+      "text": "Print the AUR comments from the PKGBUILD's AUR page.",
+      "protected": []
+    },
+    {
+      "id": "s0077",
+      "kind": "paragraph",
+      "text": "Pass twice to get all comments instead of the first page.",
+      "protected": []
+    },
+    {
+      "id": "s0078",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-s"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--ssh"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0079",
+      "kind": "paragraph",
+      "text": "Clone the AUR package using SSH (e.g.: a read-write remote).",
+      "protected": []
+    },
+    {
+      "id": "s0080",
+      "kind": "heading",
+      "text": "REPOCTL OPTIONS (APPLY TO [[p0]] AND [[p1]])",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-L"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--REPOCTL"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0081",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-l"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--list"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0082",
+      "kind": "paragraph",
+      "text": "List packages in local repos",
+      "protected": []
+    },
+    {
+      "id": "s0083",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-c"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--clean"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0084",
+      "kind": "paragraph",
+      "text": "Remove packages that are not currently installed from repos.",
+      "protected": []
+    },
+    {
+      "id": "s0085",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-d"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--delete"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0086",
+      "kind": "paragraph",
+      "text": "Remove a package from the local repo. Pass this twice to also uninstall the package.",
+      "protected": []
+    },
+    {
+      "id": "s0087",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-y"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--refresh"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0088",
+      "kind": "paragraph",
+      "text": "Refresh local repos.",
+      "protected": []
+    },
+    {
+      "id": "s0089",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-q"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--quiet"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0090",
+      "kind": "paragraph",
+      "text": "Show less information.",
+      "protected": []
+    },
+    {
+      "id": "s0091",
+      "kind": "heading",
+      "text": "CHROOTCTL OPTIONS (APPLY TO [[p0]] AND [[p1]])",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-C"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--CHROOTCTL"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0092",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-i"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--install"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0093",
+      "kind": "paragraph",
+      "text": "Install a package into the chroot.",
+      "protected": []
+    },
+    {
+      "id": "s0094",
+      "kind": "paragraph",
+      "text": "[[p0]] can also be specified and will be forwarded to pacman.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--noconfirm"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0095",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-u"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--sysupgrade"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0096",
+      "kind": "paragraph",
+      "text": "Upgrade the chroot.",
+      "protected": []
+    },
+    {
+      "id": "s0097",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-p"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--print"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0098",
+      "kind": "paragraph",
+      "text": "Print path to currently configured chroot.",
+      "protected": []
+    },
+    {
+      "id": "s0099",
+      "kind": "heading",
+      "text": "BUILD OPTIONS (APPLY TO [[p0]] AND [[p1]])",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-B"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--BUILD"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0100",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-i"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--install"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0101",
+      "kind": "paragraph",
+      "text": "Also install the package once built.",
+      "protected": []
+    },
+    {
+      "id": "s0102",
+      "kind": "heading",
+      "text": "NEW OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0103",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--repo"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0104",
+      "kind": "paragraph",
+      "text": "Assume all targets are from the repositories. Additionally, actions such as sysupgrade will only act on repository packages.",
+      "protected": []
+    },
+    {
+      "id": "s0105",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-a"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--aur"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0106",
+      "kind": "paragraph",
+      "text": "Assume all targets are from the AUR. Additionally, actions such as sysupgrade will only act on AUR packages.",
+      "protected": []
+    },
+    {
+      "id": "s0107",
+      "kind": "paragraph",
+      "text": "Note that dependency resolution will still include repository packages.",
+      "protected": []
+    },
+    {
+      "id": "s0108",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--pkgbuilds"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0109",
+      "kind": "paragraph",
+      "text": "Assume all targets are from the PKGBUILD repositories. Additionally, actions such as sysupgrade will only act on AUR packages.",
+      "protected": []
+    },
+    {
+      "id": "s0110",
+      "kind": "paragraph",
+      "text": "Note that dependency resolution will still include repositoryi and AUR packages.",
+      "protected": []
+    },
+    {
+      "id": "s0111",
+      "kind": "term",
+      "text": "[[p0]][[p1]] = aur|repo|pkgbuilds[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--mode"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0112",
+      "kind": "paragraph",
+      "text": "Select what kinds of packages paru should act on. Multiple modes can be selected by separating them with a comma.",
+      "protected": []
+    },
+    {
+      "id": "s0113",
+      "kind": "paragraph",
+      "text": "Additionally, a, r and p may be used as short hand for aur, repo and pkgbuilds respectively. Short form modes can also be combined without a comma. E.g. [[p0]] or [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--mode=ar"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--mode=arp"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0114",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--interactive"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0115",
+      "kind": "paragraph",
+      "text": "Enable interactive package selection for [[p0]], [[p1]], [[p2]] and [[p3]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-S"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-R"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Ss"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Qs"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0116",
+      "kind": "paragraph",
+      "text": "For [[p0]]/[[p1]] this allows you to pick which packages to install/remove from a list.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-S"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-R"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0117",
+      "kind": "paragraph",
+      "text": "[[p0]] paru <foo>[[p1]] is an alias to [[p2]]paru [[p3]] [[p4]] <foo>[[p5]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-S"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "--interactive"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0118",
+      "kind": "paragraph",
+      "text": "For [[p0]]/[[p1]] this allows you to interactively pick packages from the sync/local repos respectively. This is intended to be chained with other package tools so paru can handle the menu work while the other tool in the pipeline just gets the packages.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Ss"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Qs"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0119",
+      "kind": "paragraph",
+      "text": "For example:",
+      "protected": []
+    },
+    {
+      "id": "s0120",
+      "kind": "paragraph",
+      "text": "[[p0]] paru [[p1]] [[p2]] ruby | paru [[p3]] -[[p4]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Ssaq"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--interactive"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Gc"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0121",
+      "kind": "paragraph",
+      "text": "will show AUR packages containing the term ruby, give the user an interactive menu to pick packages, then pipeline those packages into [[p0]] and display the comments.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Gc"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0122",
+      "kind": "paragraph",
+      "text": "Would allow a user to interactively choose what files to list.",
+      "protected": []
+    },
+    {
+      "id": "s0123",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--aururl"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0124",
+      "kind": "paragraph",
+      "text": "Set an alternative AUR URL.",
+      "protected": []
+    },
+    {
+      "id": "s0125",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--aurrpcurl"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0126",
+      "kind": "paragraph",
+      "text": "Set an alternative URL for the AUR /rpc endpoint.",
+      "protected": []
+    },
+    {
+      "id": "s0127",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <dir>[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--clonedir"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0128",
+      "kind": "paragraph",
+      "text": "Directory used to download and run PKGBUILDs.",
+      "protected": []
+    },
+    {
+      "id": "s0129",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <command>[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--makepkg"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0130",
+      "kind": "paragraph",
+      "text": "The command to use for [[p0]] calls. This can be a command in [[p1]] or an absolute path to the file.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "makepkg"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "PATH"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0131",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <file>[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--makepkgconf"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0132",
+      "kind": "paragraph",
+      "text": "Specifies a [[p0]] file to use in the chroot environment. The file can only be an absolute path to the file.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "makepkg.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0133",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <command>[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--pacman"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0134",
+      "kind": "paragraph",
+      "text": "The command to use for [[p0]] calls. This can be a command in [[p1]] or an absolute path to the file.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "pacman"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "PATH"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0135",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <command>[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--pacman-conf"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0136",
+      "kind": "paragraph",
+      "text": "The command to use for [[p0]] calls. This can be a command in [[p1]] or an absolute path to the file.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "pacman-conf"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "PATH"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0137",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <command>[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--git"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0138",
+      "kind": "paragraph",
+      "text": "The command to use for [[p0]] calls. This can be a command in [[p1]] or an absolute path to the file.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "git"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "PATH"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0139",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <flags>[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--gitflags"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0140",
+      "kind": "paragraph",
+      "text": "Passes arguments to git. These flags get passed to every instance where git is called by paru. Arguments are split on whitespace before being passed to git. Multiple arguments may be passed by supplying a space separated list that is quoted by the shell.",
+      "protected": []
+    },
+    {
+      "id": "s0141",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <command>[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--gpg"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0142",
+      "kind": "paragraph",
+      "text": "The command to use for [[p0]] calls. This can be a command in [[p1]] or an absolute path to the file.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "gpg"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "PATH"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0143",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <flags>[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--gpgflags"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0144",
+      "kind": "paragraph",
+      "text": "Passes arguments to gpg. These flags get passed to every instance where gpg is called by paru. Arguments are split on whitespace before being passed to gpg. Multiple arguments may be passed by supplying a space separated list that is quoted by the shell.",
+      "protected": []
+    },
+    {
+      "id": "s0145",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <command>[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--fm"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0146",
+      "kind": "paragraph",
+      "text": "This enables fm review mode, where PKGBUILD review is done using the file manager specified by command.",
+      "protected": []
+    },
+    {
+      "id": "s0147",
+      "kind": "paragraph",
+      "text": "This allows the PKGBUILDs and related files to be edited. Changes won't persist unless committed.",
+      "protected": []
+    },
+    {
+      "id": "s0148",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <flags>[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--fmflags"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0149",
+      "kind": "paragraph",
+      "text": "Passes arguments to file manager. These flags get passed to every instance where file manager is called by paru. Arguments are split on whitespace before being passed to the file manager. Multiple arguments may be passed by supplying a space separated list that is quoted by the shell.",
+      "protected": []
+    },
+    {
+      "id": "s0150",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <command>[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--asp"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0151",
+      "kind": "paragraph",
+      "text": "The command to use for [[p0]] calls. This can be a command in [[p1]] or an absolute path to the file.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "asp"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "PATH"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0152",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <flags>[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--mflags"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0153",
+      "kind": "paragraph",
+      "text": "Passes arguments to makepkg. These flags get passed to every instance where makepkg is called by paru. Arguments are split on whitespace before being passed to makepkg. Multiple arguments may be passed by supplying a space separated list that is quoted by the shell.",
+      "protected": []
+    },
+    {
+      "id": "s0154",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <command>[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--bat"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0155",
+      "kind": "paragraph",
+      "text": "The command to use for [[p0]] calls. This can be a command in [[p1]] or an absolute path to the file.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "bat"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "PATH"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0156",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <flags>[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--batflags"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0157",
+      "kind": "paragraph",
+      "text": "Passes arguments to bat. These flags get passed to every instance where bat is called by paru. Arguments are split on whitespace before being passed to bat. Multiple arguments may be passed by supplying a space separated list that is quoted by the shell.",
+      "protected": []
+    },
+    {
+      "id": "s0158",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <command>[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--sudo"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0159",
+      "kind": "paragraph",
+      "text": "The command to use for [[p0]] calls. This can be a command in [[p1]] or an absolute path to the file. The [[p2]] option is not guaranteed to work with a custom [[p3]] command.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "sudo"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "PATH"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--sudoloop"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "strong",
+            "text": "sudo"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0160",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <flags>[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--sudoflags"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0161",
+      "kind": "paragraph",
+      "text": "Passes arguments to sudo. These flags get passed to every instance where sudo is called by paru. Arguments are split on whitespace before being passed to sudo. Multiple arguments may be passed by supplying a space separated list that is quoted by the shell.",
+      "protected": []
+    },
+    {
+      "id": "s0162",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <flags>[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--chrootflags"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0163",
+      "kind": "paragraph",
+      "text": "Passes arguments to makechrootpkg. These flags get passed to every instance where makechrootpkg is called by paru. Arguments are split on whitespace before being passed to makechrootpkg. Multiple arguments may be passed by supplying a space separated list that is quoted by the shell.",
+      "protected": []
+    },
+    {
+      "id": "s0164",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <package>[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--chrootpkgs"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0165",
+      "kind": "paragraph",
+      "text": "Installs package into the chroot before building. Multiple packages can be specified by separating them with a comma.",
+      "protected": []
+    },
+    {
+      "id": "s0166",
+      "kind": "paragraph",
+      "text": "Useful when PKGBUILDs don't declare needed dependencies.",
+      "protected": []
+    },
+    {
+      "id": "s0167",
+      "kind": "paragraph",
+      "text": "Note that this is only a temp fix and only applies to this one build. You should ideally patch the package yourself or report the problem to the maintainer.",
+      "protected": []
+    },
+    {
+      "id": "s0168",
+      "kind": "paragraph",
+      "text": "If you want to permanently add a package to the chroot use [[p0]]paru [[p1]] package[[p2]] to install packages into the root chroot, or use [[p3]] to specify packages that should be installed when the chroot is created.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Ci"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "--rootchrootpkgs"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0169",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <packages>[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--rootchrootpkgs"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0170",
+      "kind": "paragraph",
+      "text": "Comma-separated list of packages to install when creating the root chroot.",
+      "protected": []
+    },
+    {
+      "id": "s0171",
+      "kind": "paragraph",
+      "text": "Defaults to \"base-devel\" if not specified.",
+      "protected": []
+    },
+    {
+      "id": "s0172",
+      "kind": "paragraph",
+      "text": "Unlike [[p0]] (which installs packages temporarily before each build), [[p1]] packages become part of the root chroot and persist across all builds.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--chrootpkgs"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--rootchrootpkgs"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0173",
+      "kind": "paragraph",
+      "text": "This only affects chroot creation. To apply changes to an existing chroot, you must delete and recreate it.",
+      "protected": []
+    },
+    {
+      "id": "s0174",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <days>[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--completioninterval"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0175",
+      "kind": "paragraph",
+      "text": "Time in days to refresh the completion cache. Setting this to 0 will cause the cache to be refreshed every time, while setting this to -1 will cause the cache to never be refreshed. Defaults to 7.",
+      "protected": []
+    },
+    {
+      "id": "s0176",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <duration>[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--minimumreleaseage"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0177",
+      "kind": "paragraph",
+      "text": "Refuse to install or upgrade AUR packages modified more recently than this, and hide them from AUR search results. The duration is an integer with an optional unit suffix (s, m, h, d, w); a bare number means days. Applies to dependencies too; devel packages are exempt. See [[p0]] in paru.conf(5).",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "MinimumReleaseAge"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0178",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--nominimumreleaseage"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0179",
+      "kind": "paragraph",
+      "text": "Disable the minimum release age check for this run.",
+      "protected": []
+    },
+    {
+      "id": "s0180",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <packages>[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--minimumreleaseageexclude"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0181",
+      "kind": "paragraph",
+      "text": "Packages exempt from the minimum release age check. Accepts glob patterns.",
+      "protected": []
+    },
+    {
+      "id": "s0182",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <votes|popularity|id|baseid|name|base|submitted|modified>[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--sortby"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0183",
+      "kind": "paragraph",
+      "text": "Sort AUR results by a specific field during search. Defaults to votes.",
+      "protected": []
+    },
+    {
+      "id": "s0184",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <name|name-desc|maintainer|depends|checkdepends|makedepends|optdepends>[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--searchby"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0185",
+      "kind": "paragraph",
+      "text": "Search for AUR packages by querying the specified field. Defaults to name-desc.",
+      "protected": []
+    },
+    {
+      "id": "s0186",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--skipreview"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0187",
+      "kind": "paragraph",
+      "text": "Skip the review process.",
+      "protected": []
+    },
+    {
+      "id": "s0188",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--review"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0189",
+      "kind": "paragraph",
+      "text": "Don't skip the review process.",
+      "protected": []
+    },
+    {
+      "id": "s0190",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--upgrademenu"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0191",
+      "kind": "paragraph",
+      "text": "Show a detailed list of updates in a similar format to pacman's VerbosePkgLists option. (See [[p0]] Upgrades can be skipped using numbers, number ranges, or repo names.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "pacman.conf(5))."
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0192",
+      "kind": "paragraph",
+      "text": "[[p0]]: It is not recommended to skip updates from the repositories as this can lead to partial upgrades. This feature is intended to easily skip AUR updates on the fly that may be broken or have a long compile time. Ultimately it is up to the user what upgrades they skip.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "Warning"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0193",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--noupgrademenu"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0194",
+      "kind": "paragraph",
+      "text": "Do not show the upgrade menu.",
+      "protected": []
+    },
+    {
+      "id": "s0195",
+      "kind": "term",
+      "text": "[[p0]][[p1]] [yes|no|ask][[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--removemake"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0196",
+      "kind": "paragraph",
+      "text": "Remove makedepends after installing packages. If set to ask, a menu will appear during builds allowing an option to be chosen then. Defaults to yes when specified without an option.",
+      "protected": []
+    },
+    {
+      "id": "s0197",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--noremovemake"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0198",
+      "kind": "paragraph",
+      "text": "Don't remove makedepends after installing packages.",
+      "protected": []
+    },
+    {
+      "id": "s0199",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--topdown"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0200",
+      "kind": "paragraph",
+      "text": "Print search results from top to bottom. Repo packages will print first.",
+      "protected": []
+    },
+    {
+      "id": "s0201",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--bottomup"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0202",
+      "kind": "paragraph",
+      "text": "Print search results from bottom to top. AUR packages will print first.",
+      "protected": []
+    },
+    {
+      "id": "s0203",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--auto"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0204",
+      "kind": "paragraph",
+      "text": "Use bottom-up ordering in interactive package selection menus and top-down ordering for ordinary search and list output. This is the default.",
+      "protected": []
+    },
+    {
+      "id": "s0205",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <limit>[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--limit"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0206",
+      "kind": "paragraph",
+      "text": "Limit the number of packages returned in a search to the given amount. Defaults to 0 (no limit). This applies separately to repo and AUR packages.",
+      "protected": []
+    },
+    {
+      "id": "s0207",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-x"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--regex"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0208",
+      "kind": "paragraph",
+      "text": "Enable regex for aur search.",
+      "protected": []
+    },
+    {
+      "id": "s0209",
+      "kind": "paragraph",
+      "text": "The regex will only be matched against pkgnames and not pkgdescs as you would usually expect.",
+      "protected": []
+    },
+    {
+      "id": "s0210",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--nocheck"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0211",
+      "kind": "paragraph",
+      "text": "Don't resolve checkdepends or run the check function.",
+      "protected": []
+    },
+    {
+      "id": "s0212",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--installdebug"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0213",
+      "kind": "paragraph",
+      "text": "Also install debug packages when a package provides them.",
+      "protected": []
+    },
+    {
+      "id": "s0214",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--noinstalldebug"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0215",
+      "kind": "paragraph",
+      "text": "Don't install debug packages when a package provides them.",
+      "protected": []
+    },
+    {
+      "id": "s0216",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--devel"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0217",
+      "kind": "paragraph",
+      "text": "During sysupgrade also check AUR development packages for updates. Currently only Git packages are supported.",
+      "protected": []
+    },
+    {
+      "id": "s0218",
+      "kind": "paragraph",
+      "text": "Devel checking is done using [[p0]]git ls-remote[[p1]]. The newest commit hash is compared against the hash at install time. This allows devel updates to be checked almost instantly and not require the original PKGBUILD to be downloaded.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0219",
+      "kind": "paragraph",
+      "text": "The slower pacaur-like devel checks can be implemented manually by piping a list of packages into paru (see [[p0]]).",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "examples"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0220",
+      "kind": "paragraph",
+      "text": "Some packages track git sources whose HEAD moves often without changing the resulting package version. These will appear as devel updates on every run even when rebuilding produces an identical package. See [[p0]] and [[p1]] in [[p2]](5) to opt such packages or sources out of devel checking.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "IgnoreDevel"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "IgnoreDevelSource"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "strong",
+            "text": "paru.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0221",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--ignoredevel"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0222",
+      "kind": "paragraph",
+      "text": "Like [[p0]] but for devel upgrades. Packages matching this will not be tried for a devel update but may still be upgraded if the pkgver changes.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--ignore"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0223",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--nodevel"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0224",
+      "kind": "paragraph",
+      "text": "Do not check for development packages updates during sysupgrade.",
+      "protected": []
+    },
+    {
+      "id": "s0225",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--develsuffixes"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0226",
+      "kind": "paragraph",
+      "text": "Suffixes that paru will use to decide if a package is a devel package. Used when determining if a pkgver bump is used when the [[p0]] option is set.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--needed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0227",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--cleanafter"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0228",
+      "kind": "paragraph",
+      "text": "Remove untracked files after installation.",
+      "protected": []
+    },
+    {
+      "id": "s0229",
+      "kind": "paragraph",
+      "text": "Untracked files are removed with the exception of directories. This allows VCS packages to easily pull an update instead of having to reclone the entire repo.",
+      "protected": []
+    },
+    {
+      "id": "s0230",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--nocleanafter"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0231",
+      "kind": "paragraph",
+      "text": "Do not remove package sources after successful install.",
+      "protected": []
+    },
+    {
+      "id": "s0232",
+      "kind": "term",
+      "text": "[[p0]][[p1]] [yes|no|all][[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--redownload"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0233",
+      "kind": "paragraph",
+      "text": "Always download PKGBUILDs of targets even when a copy is available in cache. If all is specified, then PKGBUILDs will be downloaded for all packages, not just targets. Defaults to yes when specified.",
+      "protected": []
+    },
+    {
+      "id": "s0234",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--noredownload"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0235",
+      "kind": "paragraph",
+      "text": "When downloading PKGBUILDs, if the PKGBUILD is found in cache and is equal or newer than the AUR's version use that instead of downloading a new one.",
+      "protected": []
+    },
+    {
+      "id": "s0236",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--provides"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0237",
+      "kind": "paragraph",
+      "text": "Look for matching providers when searching for AUR packages. When multiple providers are found a menu will appear prompting you to pick one. This increases dependency resolve time although this should not be noticeable.",
+      "protected": []
+    },
+    {
+      "id": "s0238",
+      "kind": "paragraph",
+      "text": "By default only targets and missing packages will be searched for providers. Specifying all will enable this for all packages.",
+      "protected": []
+    },
+    {
+      "id": "s0239",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--noprovides"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0240",
+      "kind": "paragraph",
+      "text": "Do not look for matching providers when searching for AUR packages. Paru will never show its provider menu but pacman will still show its provider menu for repo packages.",
+      "protected": []
+    },
+    {
+      "id": "s0241",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--pgpfetch"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0242",
+      "kind": "paragraph",
+      "text": "Prompt to import unknown PGP keys from the [[p0]] field of each PKGBUILD.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "validpgpkeys"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0243",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--nopgpfetch"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0244",
+      "kind": "paragraph",
+      "text": "Do not prompt to import unknown PGP keys. This is likely to cause a build failure unless using options such as [[p0]] or a customized gpg config.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--skippgpcheck"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0245",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--newsonupgrade"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0246",
+      "kind": "paragraph",
+      "text": "Print new news during sysupgrade.",
+      "protected": []
+    },
+    {
+      "id": "s0247",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--useask"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0248",
+      "kind": "paragraph",
+      "text": "Use pacman's [[p0]] flag to automatically confirm package conflicts. Paru lists conflicts ahead of time. It is possible that paru does not detect a conflict, causing a package to be removed without the user's confirmation. However, this is very unlikely.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--ask"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0249",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--nouseask"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0250",
+      "kind": "paragraph",
+      "text": "Manually resolve package conflicts during the install. Packages which do not conflict will not need to be confined manually.",
+      "protected": []
+    },
+    {
+      "id": "s0251",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--savechanges"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0252",
+      "kind": "paragraph",
+      "text": "Commit changes to pkgbuilds made during review.",
+      "protected": []
+    },
+    {
+      "id": "s0253",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--nosavechanges"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0254",
+      "kind": "paragraph",
+      "text": "Don't commit changes to pkgbuilds made during review.",
+      "protected": []
+    },
+    {
+      "id": "s0255",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--failfast"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0256",
+      "kind": "paragraph",
+      "text": "Exit as soon as any AUR packages fail to build.",
+      "protected": []
+    },
+    {
+      "id": "s0257",
+      "kind": "paragraph",
+      "text": "By default Paru will continue and try to build other AUR packages.",
+      "protected": []
+    },
+    {
+      "id": "s0258",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--nofailfast"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0259",
+      "kind": "paragraph",
+      "text": "Don't exit as soon as any AUR packages fail to build.",
+      "protected": []
+    },
+    {
+      "id": "s0260",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--keepsrc"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0261",
+      "kind": "paragraph",
+      "text": "Keep src/ and pkg/ directories after building packages.",
+      "protected": []
+    },
+    {
+      "id": "s0262",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--nokeepsrc"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0263",
+      "kind": "paragraph",
+      "text": "Don't keep src/ and pkg/ directories after building packages.",
+      "protected": []
+    },
+    {
+      "id": "s0264",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--combinedupgrade"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0265",
+      "kind": "paragraph",
+      "text": "During sysupgrade, paru will first perform a refresh, then show its combined menu of repo and AUR packages that will be upgraded. Then after reviewing the PKGBUILDs, the repo and AUR upgrade will start with no need for manual intervention.",
+      "protected": []
+    },
+    {
+      "id": "s0266",
+      "kind": "paragraph",
+      "text": "If paru exits for any reason after the refresh without upgrading, it will be the user's responsibility to either resolve the reason paru exited or run a sysupgrade through pacman directly.",
+      "protected": []
+    },
+    {
+      "id": "s0267",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--nocombinedupgrade"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0268",
+      "kind": "paragraph",
+      "text": "During sysupgrade, pacman [[p0]] will be called, then the AUR upgrade will start. This means the upgrade menu and PKGBUILD review will be performed after the sysupgrade has finished.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Syu"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0269",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--batchinstall"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0270",
+      "kind": "paragraph",
+      "text": "When building and installing AUR packages instead of installing each package after building, queue each package for install. Then once either all packages are built or a package in the build queue is needed as a dependency to build another package, install all the packages in the install queue.",
+      "protected": []
+    },
+    {
+      "id": "s0271",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--nobatchinstall"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0272",
+      "kind": "paragraph",
+      "text": "Always install AUR packages immediately after building them.",
+      "protected": []
+    },
+    {
+      "id": "s0273",
+      "kind": "term",
+      "text": "[[p0]][[p1]] [yes|no|all|tree][[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--rebuild"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0274",
+      "kind": "paragraph",
+      "text": "Always build target packages even when a copy is available in cache. If all is selected then all packages are rebuilt, not only targets. If tree is selected then the whole dependency tree is rebuilt, including already satisfied dependencies. Defaults to no.",
+      "protected": []
+    },
+    {
+      "id": "s0275",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--norebuild"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0276",
+      "kind": "paragraph",
+      "text": "When building packages if the package is found in cache and is an equal version to the one wanted skip the package build and use the existing package.",
+      "protected": []
+    },
+    {
+      "id": "s0277",
+      "kind": "term",
+      "text": "[[p0]][[p1]] [= args...][[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--sudoloop"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0278",
+      "kind": "paragraph",
+      "text": "Periodically call sudo in the background to prevent it from timing out during long builds.",
+      "protected": []
+    },
+    {
+      "id": "s0279",
+      "kind": "paragraph",
+      "text": "Optionally args can be passed to choose how to loop the command. This may be useful for doas where looping is done differently.",
+      "protected": []
+    },
+    {
+      "id": "s0280",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--nosudoloop"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0281",
+      "kind": "paragraph",
+      "text": "Do not loop sudo calls in the background.",
+      "protected": []
+    },
+    {
+      "id": "s0282",
+      "kind": "term",
+      "text": "[[p0]][[p1]] [= Repos...][[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--localrepo"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0283",
+      "kind": "paragraph",
+      "text": "Use a local repo to build and upgrade AUR packages.",
+      "protected": []
+    },
+    {
+      "id": "s0284",
+      "kind": "paragraph",
+      "text": "Paru will act on packages in the enabled repos instead of foreign packages. The repo must already be declared in pacman.conf but does not have to already exist on disk.",
+      "protected": []
+    },
+    {
+      "id": "s0285",
+      "kind": "paragraph",
+      "text": "Optionally a list of repos to use can be passed. By default paru will consider all local repos, building new packages into the first listed repo and upgrading the packages in other enabled repos.",
+      "protected": []
+    },
+    {
+      "id": "s0286",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--nolocalrepo"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0287",
+      "kind": "paragraph",
+      "text": "Do not build into a local repo.",
+      "protected": []
+    },
+    {
+      "id": "s0288",
+      "kind": "term",
+      "text": "[[p0]][[p1]] [= /path/to/chroot][[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--chroot"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0289",
+      "kind": "paragraph",
+      "text": "Build packages in a chroot. This requires the LocalRepo option to be enabled. Optionally a directory may be passed to specify where to create the chroot.",
+      "protected": []
+    },
+    {
+      "id": "s0290",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--nochroot"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0291",
+      "kind": "paragraph",
+      "text": "Don't build packages in a chroot.",
+      "protected": []
+    },
+    {
+      "id": "s0292",
+      "kind": "term",
+      "text": "[[p0]][[p1]] [= key][[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--sign"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0293",
+      "kind": "paragraph",
+      "text": "Sign packages with gpg. Optionally indicate which key to sign with.",
+      "protected": []
+    },
+    {
+      "id": "s0294",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--nosign"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0295",
+      "kind": "paragraph",
+      "text": "Don't sign package with gpg.",
+      "protected": []
+    },
+    {
+      "id": "s0296",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--keeprepocache"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0297",
+      "kind": "paragraph",
+      "text": "Normally upon AUR packages getting updated the old versions will be removed from the local repo. This option disables that behavior, keeping the both all versions and only updating the DB.",
+      "protected": []
+    },
+    {
+      "id": "s0298",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--nokeeprepocache"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0299",
+      "kind": "paragraph",
+      "text": "Don't keep old packages.",
+      "protected": []
+    },
+    {
+      "id": "s0300",
+      "kind": "term",
+      "text": "[[p0]][[p1]] [= key][[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--signdb"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0301",
+      "kind": "paragraph",
+      "text": "Sign databases with gpg. Optionally indicate which key to sign with.",
+      "protected": []
+    },
+    {
+      "id": "s0302",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--nosigndb"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0303",
+      "kind": "paragraph",
+      "text": "Don't sign databases with gpg.",
+      "protected": []
+    },
+    {
+      "id": "s0304",
+      "kind": "heading",
+      "text": "EXAMPLES",
+      "protected": []
+    },
+    {
+      "id": "s0305",
+      "kind": "term",
+      "text": "paru [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "foo"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0306",
+      "kind": "paragraph",
+      "text": "Search and install from the repos and the [[p0]] using interactive search and install.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "AUR"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0307",
+      "kind": "term",
+      "text": "paru [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Syu"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0308",
+      "kind": "paragraph",
+      "text": "Update package list and upgrade all currently installed repo and [[p0]] packages.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "AUR"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0309",
+      "kind": "term",
+      "text": "paru [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Sua"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0310",
+      "kind": "paragraph",
+      "text": "Update all currently installed [[p0]] packages.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "AUR"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0311",
+      "kind": "term",
+      "text": "paru [[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-S"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "foo"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0312",
+      "kind": "paragraph",
+      "text": "Installs package [[p0]] from the repos or the [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "foo"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "AUR"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0313",
+      "kind": "term",
+      "text": "paru [[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Ss"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "foo"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0314",
+      "kind": "paragraph",
+      "text": "Searches for package [[p0]] on the repos or the [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "foo"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "AUR"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0315",
+      "kind": "term",
+      "text": "paru [[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Si"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "foo"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0316",
+      "kind": "paragraph",
+      "text": "Gets information about package [[p0]] from the repos or the [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "foo"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "AUR"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0317",
+      "kind": "term",
+      "text": "paru [[p0]] [[p1]] [[p2]] \"[[p3]] [[p4]]\"",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-S"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "foo"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--mflags"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "--skipchecksums"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "--skippgpcheck"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0318",
+      "kind": "paragraph",
+      "text": "Installs [[p0]] while skipping checksums and PGP checks.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "foo"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0319",
+      "kind": "term",
+      "text": "paru [[p0]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-B"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0320",
+      "kind": "paragraph",
+      "text": "Build PKGBUILD in current directory.",
+      "protected": []
+    },
+    {
+      "id": "s0321",
+      "kind": "term",
+      "text": "pacman [[p0]] | grep [[p1]] '-(cvs|svn|git|hg|bzr|darcs)$' | paru [[p2]] - | paru [[p3]] [[p4]] -",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Qmq"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Ee"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Ta"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-S"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "--needed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0322",
+      "kind": "paragraph",
+      "text": "pacaur-like devel check.",
+      "protected": []
+    },
+    {
+      "id": "s0323",
+      "kind": "heading",
+      "text": "ENVIRONMENT VARIABLES",
+      "protected": []
+    },
+    {
+      "id": "s0324",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "AURDEST"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0325",
+      "kind": "paragraph",
+      "text": "Can be set to configure the build directory.",
+      "protected": []
+    },
+    {
+      "id": "s0326",
+      "kind": "paragraph",
+      "text": "Overridden by [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--clonedir"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0327",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "PARU_CONF"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0328",
+      "kind": "paragraph",
+      "text": "Overrides where paru will look for its config file.",
+      "protected": []
+    },
+    {
+      "id": "s0329",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "PARU_PAGER"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0330",
+      "kind": "paragraph",
+      "text": "The pager paru will use for file review. Has higher priority than PAGER but lower priority than paru.conf.",
+      "protected": []
+    },
+    {
+      "id": "s0331",
+      "kind": "heading",
+      "text": "FILES",
+      "protected": []
+    },
+    {
+      "id": "s0332",
+      "kind": "term",
+      "text": "[[p0]]CONFIG DIRECTORY[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0333",
+      "kind": "paragraph",
+      "text": "The config directory is [[p0]]. If [[p1]] is unset, the config directory will fall back to [[p2]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "$XDG_CONFIG_HOME/paru/"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "$XDG_CONFIG_HOME"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "$HOME/.config/paru"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0334",
+      "kind": "paragraph",
+      "text": "[[p0]] is used to store all of paru's config options. See [[p1]](5) for more about this file.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "paru.conf"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "paru.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0335",
+      "kind": "term",
+      "text": "[[p0]]CACHE DIRECTORY[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0336",
+      "kind": "paragraph",
+      "text": "The cache directory is [[p0]]. If [[p1]] is unset, the cache directory will fall back to [[p2]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "$XDG_CACHE_HOME/paru/"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "$XDG_CACHE_HOME"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "$HOME/.cache/paru"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0337",
+      "kind": "paragraph",
+      "text": "[[p0]] holds a list of of all AUR packages for shell completion. By default the completion files are refreshed every 7 days.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "packages.aur"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0338",
+      "kind": "term",
+      "text": "[[p0]]STATE DIRECTORY[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0339",
+      "kind": "paragraph",
+      "text": "The state directory is [[p0]]. If [[p1]] is unset, the state directory will fall back to [[p2]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "$XDG_STATE_HOME/paru/"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "$XDG_STATE_HOME"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "$HOME/.local/state/paru"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0340",
+      "kind": "paragraph",
+      "text": "[[p0]] tracks VCS packages and the latest commit of each source. If any of these commits change the package will be upgraded during a devel update.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "devel.json"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0341",
+      "kind": "term",
+      "text": "[[p0]]BUILD DIRECTORY[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0342",
+      "kind": "paragraph",
+      "text": "Unless otherwise set this should be the same as [[p0]]CACHE DIRECTORY[[p1]]. This directory is used to store downloaded AUR Packages as well as any source files and built packages from those packages.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0343",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "PACMAN.CONF"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0344",
+      "kind": "paragraph",
+      "text": "Paru uses pacman's config file to set certain pacman options either through alpm.rs or paru itself. Options inherited include most libalpm options and pacman options.",
+      "protected": []
+    },
+    {
+      "id": "s0345",
+      "kind": "paragraph",
+      "text": "Notably: [[p0]], [[p1]] and [[p2]] options are used.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "Databases"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "Color"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "strong",
+            "text": "*Path/*Dir"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0346",
+      "kind": "heading",
+      "text": "SEE ALSO",
+      "protected": []
+    },
+    {
+      "id": "s0347",
+      "kind": "paragraph",
+      "text": "[[p0]](5), [[p1]](8), [[p2]](5), [[p3]](5), [[p4]](8), [[p5]](5)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "paru.conf"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "makepkg"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "strong",
+            "text": "makepkg.conf"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "strong",
+            "text": "PKGBUILD"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "strong",
+            "text": "pacman"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "strong",
+            "text": "pacman.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0348",
+      "kind": "paragraph",
+      "text": "See the arch wiki at https://wiki.archlinux.org/index.php/Arch_User_Repository for more info on the [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "AUR"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0349",
+      "kind": "heading",
+      "text": "BUGS",
+      "protected": []
+    },
+    {
+      "id": "s0350",
+      "kind": "paragraph",
+      "text": "Please report bugs to our GitHub page [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "https://github.com/Morganamilo/paru"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0351",
+      "kind": "heading",
+      "text": "AUTHORS",
+      "protected": []
+    },
+    {
+      "id": "s0352",
+      "kind": "paragraph",
+      "text": "Morgan <morganamilo@archlinux.org>",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "NAME",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "SYNOPSIS",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0007"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0008"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0009"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0010"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "PARU_OPERATIONS",
+      "segment": "s0011"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0012",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0013"
+            }
+          ]
+        },
+        {
+          "term": "s0014",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0015"
+            }
+          ]
+        },
+        {
+          "term": "s0016",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0017"
+            }
+          ]
+        },
+        {
+          "term": "s0018",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0019"
+            }
+          ]
+        },
+        {
+          "term": "s0020",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0021"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0022"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "EXTENDED_PACMAN_OPERATIONS",
+      "segment": "s0023"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0024",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0025"
+            }
+          ]
+        },
+        {
+          "term": "s0026",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0027"
+            }
+          ]
+        },
+        {
+          "term": "s0028",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0029"
+            }
+          ]
+        },
+        {
+          "term": "s0030",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0031"
+            }
+          ]
+        },
+        {
+          "term": "s0032",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0033"
+            }
+          ]
+        },
+        {
+          "term": "s0034",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0035"
+            }
+          ]
+        },
+        {
+          "term": "s0036",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0037"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "NO_OPERATION",
+      "segment": "s0038"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0039",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0040"
+            }
+          ]
+        },
+        {
+          "term": "s0041",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0042"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0043"
+            }
+          ]
+        },
+        {
+          "term": "s0044",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0045"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0046"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "SHOW_OPTIONS_-APPLY_TO_-P_AND_--SHOW",
+      "segment": "s0047"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0048",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0049"
+            }
+          ]
+        },
+        {
+          "term": "s0050",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0051"
+            }
+          ]
+        },
+        {
+          "term": "s0052",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0053"
+            }
+          ]
+        },
+        {
+          "term": "s0054",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0055"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0056"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0057"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0058"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0059"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0060"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0061"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0062"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0063"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0064"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0065"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0066"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0067"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0068"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0069"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0070"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0071"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "GETPKGBUILD_OPTIONS_-APPLY_TO_-G_AND_--GETPKGBUILD",
+      "segment": "s0072"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0073",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0074"
+            }
+          ]
+        },
+        {
+          "term": "s0075",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0076"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0077"
+            }
+          ]
+        },
+        {
+          "term": "s0078",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0079"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "REPOCTL_OPTIONS_-APPLY_TO_-L_AND_--REPOCTL",
+      "segment": "s0080"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0081",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0082"
+            }
+          ]
+        },
+        {
+          "term": "s0083",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0084"
+            }
+          ]
+        },
+        {
+          "term": "s0085",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0086"
+            }
+          ]
+        },
+        {
+          "term": "s0087",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0088"
+            }
+          ]
+        },
+        {
+          "term": "s0089",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0090"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "CHROOTCTL_OPTIONS_-APPLY_TO_-C_AND_--CHROOTCTL",
+      "segment": "s0091"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0092",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0093"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0094"
+            }
+          ]
+        },
+        {
+          "term": "s0095",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0096"
+            }
+          ]
+        },
+        {
+          "term": "s0097",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0098"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "BUILD_OPTIONS_-APPLY_TO_-B_AND_--BUILD",
+      "segment": "s0099"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0100",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0101"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "NEW_OPTIONS",
+      "segment": "s0102"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0103",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0104"
+            }
+          ]
+        },
+        {
+          "term": "s0105",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0106"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0107"
+            }
+          ]
+        },
+        {
+          "term": "s0108",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0109"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0110"
+            }
+          ]
+        },
+        {
+          "term": "s0111",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0112"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0113"
+            }
+          ]
+        },
+        {
+          "term": "s0114",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0115"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0116"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0117"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0118"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0119"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0120"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0121"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0122"
+            }
+          ]
+        },
+        {
+          "term": "s0123",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0124"
+            }
+          ]
+        },
+        {
+          "term": "s0125",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0126"
+            }
+          ]
+        },
+        {
+          "term": "s0127",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0128"
+            }
+          ]
+        },
+        {
+          "term": "s0129",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0130"
+            }
+          ]
+        },
+        {
+          "term": "s0131",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0132"
+            }
+          ]
+        },
+        {
+          "term": "s0133",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0134"
+            }
+          ]
+        },
+        {
+          "term": "s0135",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0136"
+            }
+          ]
+        },
+        {
+          "term": "s0137",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0138"
+            }
+          ]
+        },
+        {
+          "term": "s0139",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0140"
+            }
+          ]
+        },
+        {
+          "term": "s0141",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0142"
+            }
+          ]
+        },
+        {
+          "term": "s0143",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0144"
+            }
+          ]
+        },
+        {
+          "term": "s0145",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0146"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0147"
+            }
+          ]
+        },
+        {
+          "term": "s0148",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0149"
+            }
+          ]
+        },
+        {
+          "term": "s0150",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0151"
+            }
+          ]
+        },
+        {
+          "term": "s0152",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0153"
+            }
+          ]
+        },
+        {
+          "term": "s0154",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0155"
+            }
+          ]
+        },
+        {
+          "term": "s0156",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0157"
+            }
+          ]
+        },
+        {
+          "term": "s0158",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0159"
+            }
+          ]
+        },
+        {
+          "term": "s0160",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0161"
+            }
+          ]
+        },
+        {
+          "term": "s0162",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0163"
+            }
+          ]
+        },
+        {
+          "term": "s0164",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0165"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0166"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0167"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0168"
+            }
+          ]
+        },
+        {
+          "term": "s0169",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0170"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0171"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0172"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0173"
+            }
+          ]
+        },
+        {
+          "term": "s0174",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0175"
+            }
+          ]
+        },
+        {
+          "term": "s0176",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0177"
+            }
+          ]
+        },
+        {
+          "term": "s0178",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0179"
+            }
+          ]
+        },
+        {
+          "term": "s0180",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0181"
+            }
+          ]
+        },
+        {
+          "term": "s0182",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0183"
+            }
+          ]
+        },
+        {
+          "term": "s0184",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0185"
+            }
+          ]
+        },
+        {
+          "term": "s0186",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0187"
+            }
+          ]
+        },
+        {
+          "term": "s0188",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0189"
+            }
+          ]
+        },
+        {
+          "term": "s0190",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0191"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0192"
+            }
+          ]
+        },
+        {
+          "term": "s0193",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0194"
+            }
+          ]
+        },
+        {
+          "term": "s0195",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0196"
+            }
+          ]
+        },
+        {
+          "term": "s0197",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0198"
+            }
+          ]
+        },
+        {
+          "term": "s0199",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0200"
+            }
+          ]
+        },
+        {
+          "term": "s0201",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0202"
+            }
+          ]
+        },
+        {
+          "term": "s0203",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0204"
+            }
+          ]
+        },
+        {
+          "term": "s0205",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0206"
+            }
+          ]
+        },
+        {
+          "term": "s0207",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0208"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0209"
+            }
+          ]
+        },
+        {
+          "term": "s0210",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0211"
+            }
+          ]
+        },
+        {
+          "term": "s0212",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0213"
+            }
+          ]
+        },
+        {
+          "term": "s0214",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0215"
+            }
+          ]
+        },
+        {
+          "term": "s0216",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0217"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0218"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0219"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0220"
+            }
+          ]
+        },
+        {
+          "term": "s0221",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0222"
+            }
+          ]
+        },
+        {
+          "term": "s0223",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0224"
+            }
+          ]
+        },
+        {
+          "term": "s0225",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0226"
+            }
+          ]
+        },
+        {
+          "term": "s0227",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0228"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0229"
+            }
+          ]
+        },
+        {
+          "term": "s0230",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0231"
+            }
+          ]
+        },
+        {
+          "term": "s0232",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0233"
+            }
+          ]
+        },
+        {
+          "term": "s0234",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0235"
+            }
+          ]
+        },
+        {
+          "term": "s0236",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0237"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0238"
+            }
+          ]
+        },
+        {
+          "term": "s0239",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0240"
+            }
+          ]
+        },
+        {
+          "term": "s0241",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0242"
+            }
+          ]
+        },
+        {
+          "term": "s0243",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0244"
+            }
+          ]
+        },
+        {
+          "term": "s0245",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0246"
+            }
+          ]
+        },
+        {
+          "term": "s0247",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0248"
+            }
+          ]
+        },
+        {
+          "term": "s0249",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0250"
+            }
+          ]
+        },
+        {
+          "term": "s0251",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0252"
+            }
+          ]
+        },
+        {
+          "term": "s0253",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0254"
+            }
+          ]
+        },
+        {
+          "term": "s0255",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0256"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0257"
+            }
+          ]
+        },
+        {
+          "term": "s0258",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0259"
+            }
+          ]
+        },
+        {
+          "term": "s0260",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0261"
+            }
+          ]
+        },
+        {
+          "term": "s0262",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0263"
+            }
+          ]
+        },
+        {
+          "term": "s0264",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0265"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0266"
+            }
+          ]
+        },
+        {
+          "term": "s0267",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0268"
+            }
+          ]
+        },
+        {
+          "term": "s0269",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0270"
+            }
+          ]
+        },
+        {
+          "term": "s0271",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0272"
+            }
+          ]
+        },
+        {
+          "term": "s0273",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0274"
+            }
+          ]
+        },
+        {
+          "term": "s0275",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0276"
+            }
+          ]
+        },
+        {
+          "term": "s0277",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0278"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0279"
+            }
+          ]
+        },
+        {
+          "term": "s0280",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0281"
+            }
+          ]
+        },
+        {
+          "term": "s0282",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0283"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0284"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0285"
+            }
+          ]
+        },
+        {
+          "term": "s0286",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0287"
+            }
+          ]
+        },
+        {
+          "term": "s0288",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0289"
+            }
+          ]
+        },
+        {
+          "term": "s0290",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0291"
+            }
+          ]
+        },
+        {
+          "term": "s0292",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0293"
+            }
+          ]
+        },
+        {
+          "term": "s0294",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0295"
+            }
+          ]
+        },
+        {
+          "term": "s0296",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0297"
+            }
+          ]
+        },
+        {
+          "term": "s0298",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0299"
+            }
+          ]
+        },
+        {
+          "term": "s0300",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0301"
+            }
+          ]
+        },
+        {
+          "term": "s0302",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0303"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "EXAMPLES",
+      "segment": "s0304"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0305",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0306"
+            }
+          ]
+        },
+        {
+          "term": "s0307",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0308"
+            }
+          ]
+        },
+        {
+          "term": "s0309",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0310"
+            }
+          ]
+        },
+        {
+          "term": "s0311",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0312"
+            }
+          ]
+        },
+        {
+          "term": "s0313",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0314"
+            }
+          ]
+        },
+        {
+          "term": "s0315",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0316"
+            }
+          ]
+        },
+        {
+          "term": "s0317",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0318"
+            }
+          ]
+        },
+        {
+          "term": "s0319",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0320"
+            }
+          ]
+        },
+        {
+          "term": "s0321",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0322"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "ENVIRONMENT_VARIABLES",
+      "segment": "s0323"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0324",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0325"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0326"
+            }
+          ]
+        },
+        {
+          "term": "s0327",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0328"
+            }
+          ]
+        },
+        {
+          "term": "s0329",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0330"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "FILES",
+      "segment": "s0331"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0332",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0333"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0334"
+            }
+          ]
+        },
+        {
+          "term": "s0335",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0336"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0337"
+            }
+          ]
+        },
+        {
+          "term": "s0338",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0339"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0340"
+            }
+          ]
+        },
+        {
+          "term": "s0341",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0342"
+            }
+          ]
+        },
+        {
+          "term": "s0343",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0344"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0345"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "SEE_ALSO",
+      "segment": "s0346"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0347"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0348"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "BUGS",
+      "segment": "s0349"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0350"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "AUTHORS",
+      "segment": "s0351"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0352"
+    }
+  ]
+}

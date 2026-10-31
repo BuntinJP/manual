@@ -31,6 +31,7 @@ bun run test:e2e
 - [翻訳タスクの開始手順](docs/translation-start.md)
 - [スクリプト・Composer・GPTを工程別に使う翻訳運用](docs/translation-routing.md)
 - [翻訳キューへの登録・利用枠リセット前の処理・途中再開](docs/translation-queue.md)
+- [2026-11-01 の翻訳対象取り込み](docs/translation-intake-2026-11-01.md)
 - [ディレクトリ・データ・表示の構成](docs/architecture.md)
 - [提供元の管理・HOME の自動生成](docs/architecture.md#提供元と-home)
 - [Apple macOS 26.6.2 の取得・照合記録](docs/apple-macos-26.6.2.md)

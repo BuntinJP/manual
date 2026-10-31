@@ -1,0 +1,47 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>vfs_acl_tdb</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="vfs_acl_tdb.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>vfs_acl_tdb &#8212; Save NTFS-ACLs in a tdb file</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="literal">vfs objects = acl_tdb</code></p></div></div><div class="refsect1"><a name="id1337"></a><h2>DESCRIPTION</h2><p>This VFS module is part of the
+	<a class="citerefentry" href="samba.7.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(7)</span></a> suite.</p><p>The <code class="literal">vfs_acl_tdb</code> VFS module stores
+	NTFS Access Control Lists (ACLs) in a tdb file.
+	This enables the full mapping of Windows ACLs on Samba
+	servers.
+	</p><p>
+	The ACL settings are stored in
+	<code class="filename">$LOCKDIR/file_ntacls.tdb</code>.
+	</p><p>
+	This module forces the following parameters:
+	</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>inherit acls = true</p></li><li class="listitem"><p>dos filemode = true</p></li><li class="listitem"><p>force unknown acl user = true</p></li></ul></div><p>
+	</p><p>This module is stackable.</p></div><div class="refsect1"><a name="id1338"></a><h2>OPTIONS</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term">acl_tdb:ignore system acls = [yes|no]</span></dt><dd><p>
+		When set to <span class="emphasis"><em>yes</em></span>, a best effort mapping
+		from/to the POSIX ACL layer will <span class="emphasis"><em>not</em></span> be
+		done by this module. The default is <span class="emphasis"><em>no</em></span>,
+		which means that Samba keeps setting and evaluating both the
+		system ACLs and the NT ACLs. This is better if you need your
+		system ACLs be set for local or NFS file access, too. If you only
+		access the data via Samba you might set this to yes to achieve
+		better NT ACL compatibility.
+		</p><p>
+		If <span class="emphasis"><em>acl_tdb:ignore system acls</em></span>
+		is set to <span class="emphasis"><em>yes</em></span>, the following
+		additional settings will be enforced:
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>create mask = 0666</p></li><li class="listitem"><p>directory mask = 0777</p></li><li class="listitem"><p>map archive = no</p></li><li class="listitem"><p>map hidden = no</p></li><li class="listitem"><p>map readonly = no</p></li><li class="listitem"><p>map system = no</p></li><li class="listitem"><p>store dos attributes = yes</p></li></ul></div><p>
+		</p></dd><dt><span class="term">acl_tdb:default acl style = [posix|windows|everyone]</span></dt><dd><p>
+		This parameter determines the type of ACL that is synthesized in
+		case a file or directory lacks an
+		<span class="emphasis"><em>security.NTACL</em></span> xattr.
+		</p><p>
+		When set to <span class="emphasis"><em>posix</em></span>, an ACL will be
+		synthesized based on the POSIX mode permissions for user, group
+		and others, with an additional ACE for <span class="emphasis"><em>NT
+		Authority\SYSTEM</em></span> will full rights.
+		</p><p>
+		When set to <span class="emphasis"><em>windows</em></span>, an ACL is synthesized
+		the same way Windows does it, only including permissions for the
+		owner and <span class="emphasis"><em>NT Authority\SYSTEM</em></span>.
+		</p><p>
+		When set to <span class="emphasis"><em>everyone</em></span>, an ACL is synthesized
+		giving full permissions to everyone (S-1-1-0).
+		</p><p>
+		The default for this option is <span class="emphasis"><em>posix</em></span>.
+		</p></dd></dl></div></div><div class="refsect1"><a name="id1339"></a><h2>AUTHOR</h2><p>The original Samba software and related utilities
+	were created by Andrew Tridgell. Samba is now developed
+	by the Samba Team as an Open Source project similar
+	to the way the Linux kernel is developed.</p></div></div></body></html>

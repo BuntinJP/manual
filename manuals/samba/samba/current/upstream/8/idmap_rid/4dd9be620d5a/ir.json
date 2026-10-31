@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "4dd9be620d5a0108f4367b434def6f6cb6d1acce22ac93069bb20ee5eb5f3859",
+  "extraction": {
+    "selector": ".refentry",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "Name",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "idmap_rid — Samba's idmap_rid Backend for Winbind",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "The idmap_rid backend provides a way to use an algorithmic mapping scheme to map UIDs/GIDs and SIDs. No database is required in this case as the mapping is deterministic.",
+      "protected": []
+    },
+    {
+      "id": "s0005",
+      "kind": "paragraph",
+      "text": "Currently, there should to be an explicit idmap configuration for each domain that should use the idmap_rid backend, using disjoint ranges.",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "NOTE: The idmap_rid backend can NOT be used as the default backend. One usually needs to define a writeable default idmap range, using a backend like [[p0]][[p1]][[p2]] or [[p3]][[p4]][[p5]] that can create unix ids, in order to be able to map the BUILTIN sids and other domains, and also in order to be able to create group mappings. See the example below.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "tdb"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "ldap"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "heading",
+      "text": "IDMAP OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0008",
+      "kind": "term",
+      "text": "range = low - high",
+      "protected": []
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "Defines the available matching uid and gid range for which the backend is authoritative. Note that the range acts as a filter. If algorithmically determined UID or GID fall outside the range, they are ignored and the corresponding map is discarded. It is intended as a way to avoid accidental UID/GID overlaps between local and remotely defined IDs.",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "term",
+      "text": "base_rid = INTEGER",
+      "protected": []
+    },
+    {
+      "id": "s0011",
+      "kind": "paragraph",
+      "text": "Defines the base integer used to build SIDs out of a UID or a GID, and to rebase the UID or GID to be obtained from a SID. This means SIDs with a RID less than the base rid are filtered. The default is not to restrict the allowed rids at all, i.e. a base_rid value of 0.",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "paragraph",
+      "text": "Use of this parameter is deprecated.",
+      "protected": []
+    },
+    {
+      "id": "s0013",
+      "kind": "heading",
+      "text": "THE MAPPING FORMULAS",
+      "protected": []
+    },
+    {
+      "id": "s0014",
+      "kind": "paragraph",
+      "text": "The Unix ID for a RID is calculated this way:",
+      "protected": []
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "Correspondingly, the formula for calculating the RID for a given Unix ID is this:",
+      "protected": []
+    },
+    {
+      "id": "s0016",
+      "kind": "heading",
+      "text": "EXAMPLES",
+      "protected": []
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "This example shows how to configure two domains with idmap_rid, the principal domain and a trusted domain, leaving the default id mapping scheme at tdb. The example also demonstrates the use of the base_rid parameter for the trusted domain.",
+      "protected": []
+    },
+    {
+      "id": "s0018",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "The original Samba software and related utilities were created by Andrew Tridgell. Samba is now developed by the Samba Team as an Open Source project similar to the way the Linux kernel is developed.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Name",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "IDMAP-OPTIONS",
+      "segment": "s0007"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0008",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0009"
+            }
+          ]
+        },
+        {
+          "term": "s0010",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0011"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0012"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "THE-MAPPING-FORMULAS",
+      "segment": "s0013"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0014"
+    },
+    {
+      "type": "literal",
+      "text": "\t\t\tID = RID - BASE_RID + LOW_RANGE_ID."
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0015"
+    },
+    {
+      "type": "literal",
+      "text": "\t\t\tRID = ID + BASE_RID - LOW_RANGE_ID."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "EXAMPLES",
+      "segment": "s0016"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0017"
+    },
+    {
+      "type": "literal",
+      "text": "\t[global]\n\tsecurity = domain\n\tworkgroup = MAIN\n\n\tidmap config * : backend        = tdb\n\tidmap config * : range          = 1000000-1999999\n\n\tidmap config MAIN : backend     = rid\n\tidmap config MAIN : range       = 10000 - 49999\n\n\tidmap config TRUSTED : backend  = rid\n\tidmap config TRUSTED : range    = 50000 - 99999\n\tidmap config TRUSTED : base_rid = 500000"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "AUTHOR",
+      "segment": "s0018"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0019"
+    }
+  ]
+}

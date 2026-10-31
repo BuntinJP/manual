@@ -1,0 +1,103 @@
+<!doctype html><html><head><meta charset="utf-8"><title>smbinfo</title></head><body><main>
+<section id="smbinfo">
+<h1>smbinfo</h1>
+<section id="userspace-helper-to-display-smb-specific-file-information-for-the-linux-smb-client-file-system-cifs">
+<h2>Userspace helper to display SMB-specific file information for the Linux SMB client file system (CIFS)</h2>
+<dl class="field-list simple">
+<dt>Manual section<span class="colon">:</span></dt>
+<dd><p>1</p>
+</dd>
+</dl>
+<section id="synopsis">
+<h3>SYNOPSIS</h3>
+<blockquote>
+<p>smbinfo [-v] [-h] [-V] {command} {file system object}</p>
+</blockquote>
+</section>
+<section id="description">
+<h3>DESCRIPTION</h3>
+<p>This tool is part of the cifs-utils suite.</p>
+<p><cite>smbinfo</cite> is a userspace helper program for the Linux SMB
+client file system (CIFS). It is intended to display SMB-specific file
+informations such as Security Descriptors and Quota.</p>
+<p>This tool works by making an CIFS_QUERY_INFO IOCTL call to the Linux
+SMB client which in turn issues a SMB Query Info request and returns
+the result. This differs from <cite>getcifsacl</cite> which uses extended file
+attributes.</p>
+</section>
+<section id="options">
+<h3>OPTIONS</h3>
+<dl class="option-list">
+<dt><kbd><span class="option">-v</span></kbd></dt>
+<dd><p>Print version number and exit.</p>
+</dd>
+<dt><kbd><span class="option">-V</span></kbd></dt>
+<dd><p>Verbose output.</p>
+</dd>
+<dt><kbd><span class="option">-h</span></kbd></dt>
+<dd><p>Print help explaining the command line options.</p>
+</dd>
+</dl>
+</section>
+<section id="command">
+<h3>COMMAND</h3>
+<p><cite>fileaccessinfo</cite>: Prints the FileAccessInformation class</p>
+<p><cite>filealigninfo</cite>: Prints the FileAlignmentInformation class</p>
+<p><cite>fileallinfo</cite>: Prints the FileAllInformation class</p>
+<p><cite>filealternatenameinfo</cite>: Prints the FileAlternateNameInformation class</p>
+<p><cite>filebasicinfo</cite>: Prints the FileBasicInformation class</p>
+<p><cite>fileeainfo</cite>: Prints the FileEaInformation class</p>
+<p><cite>filefsfullsizeinfo</cite>: Prints the FileFsFullSizeInformation class</p>
+<p><cite>fileinternalinfo</cite>: Prints the FileInternalInformation class</p>
+<p><cite>filemodeinfo</cite>: Prints the FileModeInformation class</p>
+<p><cite>filenormalizednameinfo</cite>: Prints the FileNormalizedNameInformation class</p>
+<p><cite>filepositioninfo</cite>: Prints the FilePositionInformation class</p>
+<p><cite>filestandardinfo</cite>: Prints the FileStandardInformation class</p>
+<p><cite>filestreaminfo</cite>: Prints the FileStreamInformation class</p>
+<p><cite>filecompressioninfo</cite>: Prints the FileCompressionInformation class</p>
+<p><cite>fsctl-getobjid</cite>: Prints the ObjectID</p>
+<p><cite>getcompression</cite>: Prints the compression setting for the file.</p>
+<p><cite>setcompression -c &lt;no|default|lznt1&gt;</cite>: Sets the compression setting for the file.</p>
+<p><cite>list-snapshots</cite>: Lists the previous versions of the volume that backs this file</p>
+<p><cite>quota</cite>: Print the quota for the volume in the form
+- SID Length
+- Change Time
+- Quota Used
+- Quota Threshold
+- Quota Limit
+- SID</p>
+<p><cite>secdesc</cite>: Print the security descriptor in the form
+- Revision
+- Control
+- Owner SID
+- Group SID
+- ACL
+- File types
+- File flags</p>
+<p><cite>keys</cite>: Dump session id, encryption keys and decryption keys so that
+the SMB3 traffic of this mount can be decryped e.g. via wireshark
+(requires root).</p>
+<p><cite>gettconinfo</cite>: Prints both the TCON Id and Session Id for a cifs file.</p>
+<p><cite>notify</cite>: Query a directory for change notifications.</p>
+</section>
+<section id="notes">
+<h3>NOTES</h3>
+<p>Kernel support for smbinfo utilities requires the CIFS_QUERY_INFO
+IOCTL which was initially introduced in the 4.20 kernel and is only
+implemented for mount points using SMB2 or above (see mount.cifs(8)
+<cite>vers</cite> option).</p>
+</section>
+<section id="see-also">
+<h3>SEE ALSO</h3>
+<p>mount.cifs(8), getcifsacl(1)</p>
+</section>
+<section id="author">
+<h3>AUTHOR</h3>
+<p>Ronnie Sahlberg wrote the smbinfo program.</p>
+<p>The Linux CIFS Mailing list is the preferred place to ask questions
+regarding these programs.</p>
+</section>
+</section>
+</section>
+</main>
+</body></html>

@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "067aa98c00b71d12a076820b35efbc7e480df90f7346d182eb1f2309a1d5cce4",
+  "extraction": {
+    "selector": ".refentry",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "Name",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "idmap_hash — DO NOT USE THIS BACKEND",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "DO NOT USE THIS PLUGIN The idmap_hash plugin implements a hashing algorithm used to map SIDs for domain users and groups to 31-bit uids and gids, respectively. This plugin also implements the nss_info API and can be used to support a local name mapping files if enabled via the \"winbind normalize names\" and \"winbind nss info\" parameters in [[p0]]. The module divides the range into subranges for each domain that is being handled by the idmap config. The module needs the complete UID and GID range to be able to map all SIDs. The lowest value for the range should be the smallest ID available in the system. This is normally 1000. The highest ID should be set to 2147483647. A smaller range will lead to issues because of the hashing algorithm used. The overall range to map all SIDs is 0 - 2147483647. Any range smaller than 0 - 2147483647 will filter some SIDs. As we can normally only start with 1000, we are not able to map 1000 SIDs. This already can lead to issues. The smaller the range the less SIDs can be mapped. We do not recommend to use this plugin. It will be removed in a future release of Samba.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "heading",
+      "text": "IDMAP OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "term",
+      "text": "name_map",
+      "protected": []
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "Specifies the absolute path to the name mapping file used by the nss_info API. Entries in the file are of the form \"[[p0]][[p1]][[p2]] = [[p3]][[p4]][[p5]]\". Mapping of both user and group names is supported.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "unix name"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "qualified domain name"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "heading",
+      "text": "EXAMPLES",
+      "protected": []
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "The following example utilizes the idmap_hash plugin for the idmap and nss_info information.",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0011",
+      "kind": "paragraph",
+      "text": "The original Samba software and related utilities were created by Andrew Tridgell. Samba is now developed by the Samba Team as an Open Source project similar to the way the Linux kernel is developed.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Name",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "IDMAP-OPTIONS",
+      "segment": "s0005"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0006",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0007"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "EXAMPLES",
+      "segment": "s0008"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0009"
+    },
+    {
+      "type": "literal",
+      "text": "\t[global]\n\tidmap config * : backend = hash\n\tidmap config * : range = 1000-2147483647\n\n\twinbind nss info = hash\n\twinbind normalize names = yes\n\tidmap_hash:name_map = /etc/samba/name_map.cfg"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "AUTHOR",
+      "segment": "s0010"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0011"
+    }
+  ]
+}

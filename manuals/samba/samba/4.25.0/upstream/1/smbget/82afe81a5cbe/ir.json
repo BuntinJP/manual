@@ -1,0 +1,1659 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "82afe81a5cbe91d33d265f191f49e565800f2de26b03cacab7452d0f6aaca263",
+  "extraction": {
+    "selector": ".refentry",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "Name",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "smbget — wget-like utility for download files over SMB",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "Synopsis",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]] [[[p1]], [[p2]]] [[[p3]], [[p4]]] [[[p5]]] [[[p6]], [[p7]]] [[[p8]], [[p9]]] [[[p10]], [[p11]]] [[[p12]], [[p13]]] [[[p14]], [[p15]]] [[[p16]]] [[[p17]], [[p18]]] [[[p19]], [[p20]]] [[[p21]]=INT] [-?|[[p22]]] [[[p23]]] [[[p24]]|[[p25]]=DEBUGLEVEL] [[[p26]]] [[[p27]]|[[p28]]=CONFIGFILE] [[[p29]]=name=value] [[[p30]]|[[p31]]=LOGFILEBASE] [[[p32]]] [[[p33]]] [[[p34]]|[[p35]]=NAME-RESOLVE-ORDER] [[[p36]]|[[p37]]=SOCKETOPTIONS] [[[p38]]|[[p39]]=MAXPROTOCOL] [[[p40]]|[[p41]]=NETBIOSNAME] [[[p42]]=SCOPE] [[[p43]]|[[p44]]=WORKGROUP] [[[p45]]=REALM] [[[p46]]|[[p47]]=[DOMAIN/]USERNAME%[PASSWORD]] [[[p48]]|[[p49]]] [[[p50]]=STRING] [[[p51]]] [[[p52]]|[[p53]]=FILE] [[[p54]]|[[p55]]] [[[p56]]=DN] [[[p57]]=desired|required|off] [[[p58]]=CCACHE] [[[p59]]] [[[p60]]=sign|encrypt|off] [[[p61]]|[[p62]]] {smb://host/share/path/to/file} [smb://url2/] [...]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "smbget"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-a"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--guest"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-r"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "--resume"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "--recursive"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "-D"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "code",
+            "text": "--dots"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "code",
+            "text": "-o"
+          }
+        },
+        {
+          "token": "[[p9]]",
+          "inline": {
+            "tag": "code",
+            "text": "--outputfile"
+          }
+        },
+        {
+          "token": "[[p10]]",
+          "inline": {
+            "tag": "code",
+            "text": "-q"
+          }
+        },
+        {
+          "token": "[[p11]]",
+          "inline": {
+            "tag": "code",
+            "text": "--quiet"
+          }
+        },
+        {
+          "token": "[[p12]]",
+          "inline": {
+            "tag": "code",
+            "text": "-v"
+          }
+        },
+        {
+          "token": "[[p13]]",
+          "inline": {
+            "tag": "code",
+            "text": "--verbose"
+          }
+        },
+        {
+          "token": "[[p14]]",
+          "inline": {
+            "tag": "code",
+            "text": "-b"
+          }
+        },
+        {
+          "token": "[[p15]]",
+          "inline": {
+            "tag": "code",
+            "text": "--blocksize"
+          }
+        },
+        {
+          "token": "[[p16]]",
+          "inline": {
+            "tag": "code",
+            "text": "--stdout"
+          }
+        },
+        {
+          "token": "[[p17]]",
+          "inline": {
+            "tag": "code",
+            "text": "-u"
+          }
+        },
+        {
+          "token": "[[p18]]",
+          "inline": {
+            "tag": "code",
+            "text": "--update"
+          }
+        },
+        {
+          "token": "[[p19]]",
+          "inline": {
+            "tag": "code",
+            "text": "-e"
+          }
+        },
+        {
+          "token": "[[p20]]",
+          "inline": {
+            "tag": "code",
+            "text": "--encrypt"
+          }
+        },
+        {
+          "token": "[[p21]]",
+          "inline": {
+            "tag": "code",
+            "text": "--limit-rate"
+          }
+        },
+        {
+          "token": "[[p22]]",
+          "inline": {
+            "tag": "code",
+            "text": "--help"
+          }
+        },
+        {
+          "token": "[[p23]]",
+          "inline": {
+            "tag": "code",
+            "text": "--usage"
+          }
+        },
+        {
+          "token": "[[p24]]",
+          "inline": {
+            "tag": "code",
+            "text": "-d"
+          }
+        },
+        {
+          "token": "[[p25]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debuglevel"
+          }
+        },
+        {
+          "token": "[[p26]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debug-stdout"
+          }
+        },
+        {
+          "token": "[[p27]]",
+          "inline": {
+            "tag": "code",
+            "text": "-s"
+          }
+        },
+        {
+          "token": "[[p28]]",
+          "inline": {
+            "tag": "code",
+            "text": "--configfile"
+          }
+        },
+        {
+          "token": "[[p29]]",
+          "inline": {
+            "tag": "code",
+            "text": "--option"
+          }
+        },
+        {
+          "token": "[[p30]]",
+          "inline": {
+            "tag": "code",
+            "text": "-l"
+          }
+        },
+        {
+          "token": "[[p31]]",
+          "inline": {
+            "tag": "code",
+            "text": "--log-basename"
+          }
+        },
+        {
+          "token": "[[p32]]",
+          "inline": {
+            "tag": "code",
+            "text": "--leak-report"
+          }
+        },
+        {
+          "token": "[[p33]]",
+          "inline": {
+            "tag": "code",
+            "text": "--leak-report-full"
+          }
+        },
+        {
+          "token": "[[p34]]",
+          "inline": {
+            "tag": "code",
+            "text": "-R"
+          }
+        },
+        {
+          "token": "[[p35]]",
+          "inline": {
+            "tag": "code",
+            "text": "--name-resolve"
+          }
+        },
+        {
+          "token": "[[p36]]",
+          "inline": {
+            "tag": "code",
+            "text": "-O"
+          }
+        },
+        {
+          "token": "[[p37]]",
+          "inline": {
+            "tag": "code",
+            "text": "--socket-options"
+          }
+        },
+        {
+          "token": "[[p38]]",
+          "inline": {
+            "tag": "code",
+            "text": "-m"
+          }
+        },
+        {
+          "token": "[[p39]]",
+          "inline": {
+            "tag": "code",
+            "text": "--max-protocol"
+          }
+        },
+        {
+          "token": "[[p40]]",
+          "inline": {
+            "tag": "code",
+            "text": "-n"
+          }
+        },
+        {
+          "token": "[[p41]]",
+          "inline": {
+            "tag": "code",
+            "text": "--netbiosname"
+          }
+        },
+        {
+          "token": "[[p42]]",
+          "inline": {
+            "tag": "code",
+            "text": "--netbios-scope"
+          }
+        },
+        {
+          "token": "[[p43]]",
+          "inline": {
+            "tag": "code",
+            "text": "-W"
+          }
+        },
+        {
+          "token": "[[p44]]",
+          "inline": {
+            "tag": "code",
+            "text": "--workgroup"
+          }
+        },
+        {
+          "token": "[[p45]]",
+          "inline": {
+            "tag": "code",
+            "text": "--realm"
+          }
+        },
+        {
+          "token": "[[p46]]",
+          "inline": {
+            "tag": "code",
+            "text": "-U"
+          }
+        },
+        {
+          "token": "[[p47]]",
+          "inline": {
+            "tag": "code",
+            "text": "--user"
+          }
+        },
+        {
+          "token": "[[p48]]",
+          "inline": {
+            "tag": "code",
+            "text": "-N"
+          }
+        },
+        {
+          "token": "[[p49]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-pass"
+          }
+        },
+        {
+          "token": "[[p50]]",
+          "inline": {
+            "tag": "code",
+            "text": "--password"
+          }
+        },
+        {
+          "token": "[[p51]]",
+          "inline": {
+            "tag": "code",
+            "text": "--pw-nt-hash"
+          }
+        },
+        {
+          "token": "[[p52]]",
+          "inline": {
+            "tag": "code",
+            "text": "-A"
+          }
+        },
+        {
+          "token": "[[p53]]",
+          "inline": {
+            "tag": "code",
+            "text": "--authentication-file"
+          }
+        },
+        {
+          "token": "[[p54]]",
+          "inline": {
+            "tag": "code",
+            "text": "-P"
+          }
+        },
+        {
+          "token": "[[p55]]",
+          "inline": {
+            "tag": "code",
+            "text": "--machine-pass"
+          }
+        },
+        {
+          "token": "[[p56]]",
+          "inline": {
+            "tag": "code",
+            "text": "--simple-bind-dn"
+          }
+        },
+        {
+          "token": "[[p57]]",
+          "inline": {
+            "tag": "code",
+            "text": "--use-kerberos"
+          }
+        },
+        {
+          "token": "[[p58]]",
+          "inline": {
+            "tag": "code",
+            "text": "--use-krb5-ccache"
+          }
+        },
+        {
+          "token": "[[p59]]",
+          "inline": {
+            "tag": "code",
+            "text": "--use-winbind-ccache"
+          }
+        },
+        {
+          "token": "[[p60]]",
+          "inline": {
+            "tag": "code",
+            "text": "--client-protection"
+          }
+        },
+        {
+          "token": "[[p61]]",
+          "inline": {
+            "tag": "code",
+            "text": "-V"
+          }
+        },
+        {
+          "token": "[[p62]]",
+          "inline": {
+            "tag": "code",
+            "text": "--version"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "This tool is part of the [[p0]] suite.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "samba(7)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/samba.7.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "smbget is a simple utility with wget-like semantics, that can download files from SMB servers. You can specify the files you would like to download on the command-line.",
+      "protected": []
+    },
+    {
+      "id": "s0008",
+      "kind": "paragraph",
+      "text": "The files should be in the smb-URL standard, e.g. use smb://host/share/file for the UNC path [[p0]]\\\\\\\\HOST\\\\SHARE\\\\file[[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0009",
+      "kind": "heading",
+      "text": "OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "[[p0]], [[p1]]Work as user guest[[p2]], [[p3]]Automatically resume aborted files[[p4]]Recursively download files[[p5]], [[p6]]Show dots as progress indication[[p7]], [[p8]]Write the file that is being downloaded to the specified file. Can not be used together with [[p9]] or [[p10]].[[p11]]Write the file that is being downloaded to standard output. Can not be used together with [[p12]] or [[p13]], [[p14]].[[p15]], [[p16]]Be quiet[[p17]], [[p18]]Be verbose[[p19]], [[p20]]Number of bytes to download in a block. Defaults to 64000.[[p21]], [[p22]]Download only when remote file is newer than local file or local file is missing.[[p23]], [[p24]]Enable SMB encryption.[[p25]]=INTLimit download rate by this many KB/s.-?|[[p26]]Print a summary of command line options. [[p27]]Display brief usage message. [[p28]]|[[p29]]=level [[p30]][[p31]][[p32]] is an integer from 0 to 10. The default value if this parameter is not specified is 1 for client applications. The higher this value, the more detail will be logged to the log files about the activities of the server. At level 0, only critical errors and serious warnings will be logged. Level 1 is a reasonable level for day-to-day running - it generates a small amount of information about operations carried out. Levels above 1 will generate considerable amounts of log data, and should only be used when investigating a problem. Levels above 3 are designed for use only by developers and generate HUGE amounts of log data, most of which is extremely cryptic. Note that specifying this parameter here will override the [[p33]] parameter in the [[p34]] file. [[p35]] This will redirect debug output to STDOUT. By default all clients are logging to STDERR. [[p36]]=<configuration file> The file specified contains the configuration details required by the client. The information in this file can be general for client and server or only provide client specific like options such as [[p37]]. See [[p38]] for more information. The default configuration file name is determined at compile time. [[p39]]=<name>=<value> Set the [[p40]] option \"<name>\" to value \"<value>\" from the command line. This overrides compiled-in defaults and options read from the configuration file. If a name or a value includes a space, wrap whole [[p41]]=name=value into quotes. [[p42]]|[[p43]]=logdirectory Base directory name for log/debug files. The extension [[p44]] will be appended (e.g. log.smbclient, log.smbd, etc...). The log file is never removed by the client. [[p45]] Enable talloc leak reporting on exit. [[p46]] Enable full talloc leak reporting on exit. [[p47]]|[[p48]] Prints the program version number. [[p49]]|[[p50]]=NAME-RESOLVE-ORDER This option is used to determine what naming services and in what order to resolve host names to IP addresses. The option takes a space-separated string of different name resolution options. The best is to wrap the whole [[p51]]=NAME-RESOLVE-ORDER into quotes. The options are: \"lmhosts\", \"host\", \"wins\" and \"bcast\". They cause names to be resolved as follows: [[p52]]: Lookup an IP address in the Samba lmhosts file. If the line in lmhosts has no name type attached to the NetBIOS name (see the [[p53]] for details) then any name type matches for lookup. [[p54]]: Do a standard host name to IP address resolution, using the system [[p55]], NIS, or DNS lookups. This method of name resolution is operating system dependent, for instance on IRIX or Solaris this may be controlled by the [[p56]] file). Note that this method is only used if the NetBIOS name type being queried is the 0x20 (server) name type, otherwise it is ignored. [[p57]]: Query a name with the IP address listed in the [[p58]][[p59]][[p60]] parameter. If no WINS server has been specified this method will be ignored. [[p61]]: Do a broadcast on each of the known local interfaces listed in the [[p62]][[p63]][[p64]] parameter. This is the least reliable of the name resolution methods as it depends on the target host being on a locally connected subnet. If this parameter is not set then the name resolve order defined in the [[p65]] file parameter ([[p66]]) will be used. The default order is lmhosts, host, wins, bcast. Without this parameter or any entry in the [[p67]] parameter of the [[p68]] file, the name resolution methods will be attempted in this order. [[p69]]|[[p70]]=SOCKETOPTIONS TCP socket options to set on the client socket. See the socket options parameter in the [[p71]] manual page for the list of valid options. [[p72]]|[[p73]]=MAXPROTOCOL The value of the parameter (a string) is the highest protocol level that will be supported by the client. Note that specifying this parameter here will override the [[p74]] parameter in the [[p75]] file. [[p76]]|[[p77]]=NETBIOSNAME This option allows you to override the NetBIOS name that Samba uses for itself. This is identical to setting the [[p78]] parameter in the [[p79]] file. However, a command line setting will take precedence over settings in [[p80]]. [[p81]]=SCOPE This specifies a NetBIOS scope that [[p82]] will use to communicate with when generating NetBIOS names. For details on the use of NetBIOS scopes, see rfc1001.txt and rfc1002.txt. NetBIOS scopes are [[p83]]very[[p84]] rarely used, only set this parameter if you are the system administrator in charge of all the NetBIOS systems you communicate with. [[p85]]|[[p86]]=WORKGROUP Set the SMB domain of the username. This overrides the default domain which is the domain defined in smb.conf. If the domain specified is the same as the servers NetBIOS name, it causes the client to log on using the servers local SAM (as opposed to the Domain SAM). Note that specifying this parameter here will override the [[p87]] parameter in the [[p88]] file. [[p89]]|[[p90]]=REALM Set the realm for the domain. Note that specifying this parameter here will override the [[p91]] parameter in the [[p92]] file. [[p93]]|[[p94]]=[DOMAIN\\]USERNAME[[[p95]]ASSWORD] Sets the SMB username or username and password. If [[p96]]ASSWORD is not specified, the user will be prompted. The client will first check the [[p97]] environment variable (which is also permitted to also contain the password separated by a %), then the [[p98]] variable (which is not permitted to contain a password) and if either exists, the value is used. If these environmental variables are not found, the username found in a Kerberos Credentials cache may be used. A third option is to use a credentials file which contains the plaintext of the username and password. This option is mainly provided for scripts where the admin does not wish to pass the credentials on the command line or via environment variables. If this method is used, make certain that the permissions on the file restrict access from unwanted users. See the [[p99]][[p100]][[p101]] for more details. Be cautious about including passwords in scripts or passing user-supplied values onto the command line. For security it is better to let the Samba client tool ask for the password if needed, or obtain the password once with [[p102]]. While Samba will attempt to scrub the password from the process title (as seen in ps), this is after startup and so is subject to a race. [[p103]]|[[p104]] If specified, this parameter suppresses the normal password prompt from the client to the user. This is useful when accessing a service that does not require a password. Unless a password is specified on the command line or this parameter is specified, the client will request a password. If a password is specified on the command line and this option is also defined the password on the command line will be silently ignored and no password will be used. [[p105]] Specify the password on the commandline. Be cautious about including passwords in scripts or passing user-supplied values onto the command line. For security it is better to let the Samba client tool ask for the password if needed, or obtain the password once with [[p106]]. If [[p107]] is not specified, the tool will check the [[p108]] environment variable, followed by [[p109]] which is expected to contain an open file descriptor (FD) number. Finally it will check [[p110]] (containing a file path to be opened). The file should only contain the password. Make certain that the permissions on the file restrict access from unwanted users! While Samba will attempt to scrub the password from the process title (as seen in ps), this is after startup and so is subject to a race. [[p111]] The supplied password is the NT hash. [[p112]]|[[p113]]=filename This option allows you to specify a file from which to read the username and password used in the connection. The format of the file is: username = <value> password = <value> domain = <value> Make certain that the permissions on the file restrict access from unwanted users! [[p114]]|[[p115]] Use stored machine account password. [[p116]]=DN DN to use for a simple bind. [[p117]]=desired|required|off This parameter determines whether Samba client tools will try to authenticate using Kerberos. For Kerberos authentication you should use DNS names instead of IP addresses when connecting to a service. By default Samba client tools will try to use the default Kerberos credential cache (ccache). In case the ccache does not exist or [[p118]]|[[p119]] option was specified, clients will ask to enter a password and will obtain a Kerberos ticket (kinit) for you. If you want to use an alternative Kerberos credentical cache, use the [[p120]] option. Note that specifying this parameter here will override the [[p121]] parameter in the [[p122]] file. [[p123]]=CCACHE Specifies the credential cache location for Kerberos authentication. This will enforce [[p124]]=required. [[p125]] Try to use the credential cache by winbind. [[p126]]=sign|encrypt|off Sets the connection protection the client tool should use. Note that specifying this parameter here will override the [[p127]] parameter in the [[p128]] file. In case you need more fine grained control you can use: [[p129]], [[p130]], [[p131]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-a"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--guest"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "-r"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "--resume"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "--recursive"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "-D"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "--dots"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "code",
+            "text": "-o"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "code",
+            "text": "--outputfile"
+          }
+        },
+        {
+          "token": "[[p9]]",
+          "inline": {
+            "tag": "code",
+            "text": "--recursive"
+          }
+        },
+        {
+          "token": "[[p10]]",
+          "inline": {
+            "tag": "code",
+            "text": "--stdout"
+          }
+        },
+        {
+          "token": "[[p11]]",
+          "inline": {
+            "tag": "code",
+            "text": "--stdout"
+          }
+        },
+        {
+          "token": "[[p12]]",
+          "inline": {
+            "tag": "code",
+            "text": "--recursive"
+          }
+        },
+        {
+          "token": "[[p13]]",
+          "inline": {
+            "tag": "code",
+            "text": "-o"
+          }
+        },
+        {
+          "token": "[[p14]]",
+          "inline": {
+            "tag": "code",
+            "text": "--outputfile"
+          }
+        },
+        {
+          "token": "[[p15]]",
+          "inline": {
+            "tag": "code",
+            "text": "-q"
+          }
+        },
+        {
+          "token": "[[p16]]",
+          "inline": {
+            "tag": "code",
+            "text": "--quiet"
+          }
+        },
+        {
+          "token": "[[p17]]",
+          "inline": {
+            "tag": "code",
+            "text": "-v"
+          }
+        },
+        {
+          "token": "[[p18]]",
+          "inline": {
+            "tag": "code",
+            "text": "--verbose"
+          }
+        },
+        {
+          "token": "[[p19]]",
+          "inline": {
+            "tag": "code",
+            "text": "-b"
+          }
+        },
+        {
+          "token": "[[p20]]",
+          "inline": {
+            "tag": "code",
+            "text": "--blocksize"
+          }
+        },
+        {
+          "token": "[[p21]]",
+          "inline": {
+            "tag": "code",
+            "text": "-u"
+          }
+        },
+        {
+          "token": "[[p22]]",
+          "inline": {
+            "tag": "code",
+            "text": "--update"
+          }
+        },
+        {
+          "token": "[[p23]]",
+          "inline": {
+            "tag": "code",
+            "text": "-e"
+          }
+        },
+        {
+          "token": "[[p24]]",
+          "inline": {
+            "tag": "code",
+            "text": "--encrypt"
+          }
+        },
+        {
+          "token": "[[p25]]",
+          "inline": {
+            "tag": "code",
+            "text": "--limit-rate"
+          }
+        },
+        {
+          "token": "[[p26]]",
+          "inline": {
+            "tag": "code",
+            "text": "--help"
+          }
+        },
+        {
+          "token": "[[p27]]",
+          "inline": {
+            "tag": "code",
+            "text": "--usage"
+          }
+        },
+        {
+          "token": "[[p28]]",
+          "inline": {
+            "tag": "code",
+            "text": "-d"
+          }
+        },
+        {
+          "token": "[[p29]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debuglevel"
+          }
+        },
+        {
+          "token": "[[p30]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p31]]",
+          "inline": {
+            "tag": "code",
+            "text": "level"
+          }
+        },
+        {
+          "token": "[[p32]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p33]]",
+          "inline": {
+            "tag": "link",
+            "text": "log level",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#LOGLEVEL"
+          }
+        },
+        {
+          "token": "[[p34]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        },
+        {
+          "token": "[[p35]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debug-stdout"
+          }
+        },
+        {
+          "token": "[[p36]]",
+          "inline": {
+            "tag": "code",
+            "text": "--configfile"
+          }
+        },
+        {
+          "token": "[[p37]]",
+          "inline": {
+            "tag": "link",
+            "text": "client smb encrypt",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#CLIENTSMBENCRYPT"
+          }
+        },
+        {
+          "token": "[[p38]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        },
+        {
+          "token": "[[p39]]",
+          "inline": {
+            "tag": "code",
+            "text": "--option"
+          }
+        },
+        {
+          "token": "[[p40]]",
+          "inline": {
+            "tag": "link",
+            "text": "smb.conf(5)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+          }
+        },
+        {
+          "token": "[[p41]]",
+          "inline": {
+            "tag": "code",
+            "text": "--option"
+          }
+        },
+        {
+          "token": "[[p42]]",
+          "inline": {
+            "tag": "code",
+            "text": "-l"
+          }
+        },
+        {
+          "token": "[[p43]]",
+          "inline": {
+            "tag": "code",
+            "text": "--log-basename"
+          }
+        },
+        {
+          "token": "[[p44]]",
+          "inline": {
+            "tag": "code",
+            "text": "\".progname\""
+          }
+        },
+        {
+          "token": "[[p45]]",
+          "inline": {
+            "tag": "code",
+            "text": "--leak-report"
+          }
+        },
+        {
+          "token": "[[p46]]",
+          "inline": {
+            "tag": "code",
+            "text": "--leak-report-full"
+          }
+        },
+        {
+          "token": "[[p47]]",
+          "inline": {
+            "tag": "code",
+            "text": "-V"
+          }
+        },
+        {
+          "token": "[[p48]]",
+          "inline": {
+            "tag": "code",
+            "text": "--version"
+          }
+        },
+        {
+          "token": "[[p49]]",
+          "inline": {
+            "tag": "code",
+            "text": "-R"
+          }
+        },
+        {
+          "token": "[[p50]]",
+          "inline": {
+            "tag": "code",
+            "text": "--name-resolve"
+          }
+        },
+        {
+          "token": "[[p51]]",
+          "inline": {
+            "tag": "code",
+            "text": "--name-resolve"
+          }
+        },
+        {
+          "token": "[[p52]]",
+          "inline": {
+            "tag": "code",
+            "text": "lmhosts"
+          }
+        },
+        {
+          "token": "[[p53]]",
+          "inline": {
+            "tag": "link",
+            "text": "lmhosts(5)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/lmhosts.5.html"
+          }
+        },
+        {
+          "token": "[[p54]]",
+          "inline": {
+            "tag": "code",
+            "text": "host"
+          }
+        },
+        {
+          "token": "[[p55]]",
+          "inline": {
+            "tag": "code",
+            "text": "/etc/hosts"
+          }
+        },
+        {
+          "token": "[[p56]]",
+          "inline": {
+            "tag": "code",
+            "text": "/etc/nsswitch.conf"
+          }
+        },
+        {
+          "token": "[[p57]]",
+          "inline": {
+            "tag": "code",
+            "text": "wins"
+          }
+        },
+        {
+          "token": "[[p58]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p59]]",
+          "inline": {
+            "tag": "code",
+            "text": "wins server"
+          }
+        },
+        {
+          "token": "[[p60]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p61]]",
+          "inline": {
+            "tag": "code",
+            "text": "bcast"
+          }
+        },
+        {
+          "token": "[[p62]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p63]]",
+          "inline": {
+            "tag": "code",
+            "text": "interfaces"
+          }
+        },
+        {
+          "token": "[[p64]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p65]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        },
+        {
+          "token": "[[p66]]",
+          "inline": {
+            "tag": "link",
+            "text": "name resolve order",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#NAMERESOLVEORDER"
+          }
+        },
+        {
+          "token": "[[p67]]",
+          "inline": {
+            "tag": "link",
+            "text": "name resolve order",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#NAMERESOLVEORDER"
+          }
+        },
+        {
+          "token": "[[p68]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        },
+        {
+          "token": "[[p69]]",
+          "inline": {
+            "tag": "code",
+            "text": "-O"
+          }
+        },
+        {
+          "token": "[[p70]]",
+          "inline": {
+            "tag": "code",
+            "text": "--socket-options"
+          }
+        },
+        {
+          "token": "[[p71]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        },
+        {
+          "token": "[[p72]]",
+          "inline": {
+            "tag": "code",
+            "text": "-m"
+          }
+        },
+        {
+          "token": "[[p73]]",
+          "inline": {
+            "tag": "code",
+            "text": "--max-protocol"
+          }
+        },
+        {
+          "token": "[[p74]]",
+          "inline": {
+            "tag": "link",
+            "text": "client max protocol",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#CLIENTMAXPROTOCOL"
+          }
+        },
+        {
+          "token": "[[p75]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        },
+        {
+          "token": "[[p76]]",
+          "inline": {
+            "tag": "code",
+            "text": "-n"
+          }
+        },
+        {
+          "token": "[[p77]]",
+          "inline": {
+            "tag": "code",
+            "text": "--netbiosname"
+          }
+        },
+        {
+          "token": "[[p78]]",
+          "inline": {
+            "tag": "link",
+            "text": "netbios name",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#NETBIOSNAME"
+          }
+        },
+        {
+          "token": "[[p79]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        },
+        {
+          "token": "[[p80]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        },
+        {
+          "token": "[[p81]]",
+          "inline": {
+            "tag": "code",
+            "text": "--netbios-scope"
+          }
+        },
+        {
+          "token": "[[p82]]",
+          "inline": {
+            "tag": "code",
+            "text": "nmblookup"
+          }
+        },
+        {
+          "token": "[[p83]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p84]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p85]]",
+          "inline": {
+            "tag": "code",
+            "text": "-W"
+          }
+        },
+        {
+          "token": "[[p86]]",
+          "inline": {
+            "tag": "code",
+            "text": "--workgroup"
+          }
+        },
+        {
+          "token": "[[p87]]",
+          "inline": {
+            "tag": "link",
+            "text": "workgroup",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#WORKGROUP"
+          }
+        },
+        {
+          "token": "[[p88]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        },
+        {
+          "token": "[[p89]]",
+          "inline": {
+            "tag": "code",
+            "text": "-r"
+          }
+        },
+        {
+          "token": "[[p90]]",
+          "inline": {
+            "tag": "code",
+            "text": "--realm"
+          }
+        },
+        {
+          "token": "[[p91]]",
+          "inline": {
+            "tag": "link",
+            "text": "realm",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#REALM"
+          }
+        },
+        {
+          "token": "[[p92]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        },
+        {
+          "token": "[[p93]]",
+          "inline": {
+            "tag": "code",
+            "text": "-U"
+          }
+        },
+        {
+          "token": "[[p94]]",
+          "inline": {
+            "tag": "code",
+            "text": "--user"
+          }
+        },
+        {
+          "token": "[[p95]]",
+          "inline": {
+            "tag": "code",
+            "text": "%P"
+          }
+        },
+        {
+          "token": "[[p96]]",
+          "inline": {
+            "tag": "code",
+            "text": "%P"
+          }
+        },
+        {
+          "token": "[[p97]]",
+          "inline": {
+            "tag": "code",
+            "text": "USER"
+          }
+        },
+        {
+          "token": "[[p98]]",
+          "inline": {
+            "tag": "code",
+            "text": "LOGNAME"
+          }
+        },
+        {
+          "token": "[[p99]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p100]]",
+          "inline": {
+            "tag": "code",
+            "text": "-A"
+          }
+        },
+        {
+          "token": "[[p101]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p102]]",
+          "inline": {
+            "tag": "code",
+            "text": "kinit"
+          }
+        },
+        {
+          "token": "[[p103]]",
+          "inline": {
+            "tag": "code",
+            "text": "-N"
+          }
+        },
+        {
+          "token": "[[p104]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-pass"
+          }
+        },
+        {
+          "token": "[[p105]]",
+          "inline": {
+            "tag": "code",
+            "text": "--password"
+          }
+        },
+        {
+          "token": "[[p106]]",
+          "inline": {
+            "tag": "code",
+            "text": "kinit"
+          }
+        },
+        {
+          "token": "[[p107]]",
+          "inline": {
+            "tag": "code",
+            "text": "--password"
+          }
+        },
+        {
+          "token": "[[p108]]",
+          "inline": {
+            "tag": "code",
+            "text": "PASSWD"
+          }
+        },
+        {
+          "token": "[[p109]]",
+          "inline": {
+            "tag": "code",
+            "text": "PASSWD_FD"
+          }
+        },
+        {
+          "token": "[[p110]]",
+          "inline": {
+            "tag": "code",
+            "text": "PASSWD_FILE"
+          }
+        },
+        {
+          "token": "[[p111]]",
+          "inline": {
+            "tag": "code",
+            "text": "--pw-nt-hash"
+          }
+        },
+        {
+          "token": "[[p112]]",
+          "inline": {
+            "tag": "code",
+            "text": "-A"
+          }
+        },
+        {
+          "token": "[[p113]]",
+          "inline": {
+            "tag": "code",
+            "text": "--authentication-file"
+          }
+        },
+        {
+          "token": "[[p114]]",
+          "inline": {
+            "tag": "code",
+            "text": "-P"
+          }
+        },
+        {
+          "token": "[[p115]]",
+          "inline": {
+            "tag": "code",
+            "text": "--machine-pass"
+          }
+        },
+        {
+          "token": "[[p116]]",
+          "inline": {
+            "tag": "code",
+            "text": "--simple-bind-dn"
+          }
+        },
+        {
+          "token": "[[p117]]",
+          "inline": {
+            "tag": "code",
+            "text": "--use-kerberos"
+          }
+        },
+        {
+          "token": "[[p118]]",
+          "inline": {
+            "tag": "code",
+            "text": "-U"
+          }
+        },
+        {
+          "token": "[[p119]]",
+          "inline": {
+            "tag": "code",
+            "text": "--user"
+          }
+        },
+        {
+          "token": "[[p120]]",
+          "inline": {
+            "tag": "code",
+            "text": "--use-krb5-ccache"
+          }
+        },
+        {
+          "token": "[[p121]]",
+          "inline": {
+            "tag": "link",
+            "text": "client use kerberos",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#CLIENTUSEKERBEROS"
+          }
+        },
+        {
+          "token": "[[p122]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        },
+        {
+          "token": "[[p123]]",
+          "inline": {
+            "tag": "code",
+            "text": "--use-krb5-ccache"
+          }
+        },
+        {
+          "token": "[[p124]]",
+          "inline": {
+            "tag": "code",
+            "text": "--use-kerberos"
+          }
+        },
+        {
+          "token": "[[p125]]",
+          "inline": {
+            "tag": "code",
+            "text": "--use-winbind-ccache"
+          }
+        },
+        {
+          "token": "[[p126]]",
+          "inline": {
+            "tag": "code",
+            "text": "--client-protection"
+          }
+        },
+        {
+          "token": "[[p127]]",
+          "inline": {
+            "tag": "link",
+            "text": "client protection",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#CLIENTPROTECTION"
+          }
+        },
+        {
+          "token": "[[p128]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        },
+        {
+          "token": "[[p129]]",
+          "inline": {
+            "tag": "code",
+            "text": "--option=clientsmbencrypt=OPTION"
+          }
+        },
+        {
+          "token": "[[p130]]",
+          "inline": {
+            "tag": "code",
+            "text": "--option=clientipcsigning=OPTION"
+          }
+        },
+        {
+          "token": "[[p131]]",
+          "inline": {
+            "tag": "code",
+            "text": "--option=clientsigning=OPTION"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0011",
+      "kind": "heading",
+      "text": "SMB URLS",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "paragraph",
+      "text": "SMB URL's should be specified in the following format:",
+      "protected": []
+    },
+    {
+      "id": "s0013",
+      "kind": "heading",
+      "text": "EXAMPLES",
+      "protected": []
+    },
+    {
+      "id": "s0014",
+      "kind": "heading",
+      "text": "BUGS",
+      "protected": []
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "Permission denied is returned in some cases where the cause of the error is unknown (such as an illegally formatted smb:// url or trying to get a directory without [[p0]] turned on).",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--recursive"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0016",
+      "kind": "heading",
+      "text": "VERSION",
+      "protected": []
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "This man page is part of version 4.25.0 of the Samba suite.",
+      "protected": []
+    },
+    {
+      "id": "s0018",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "The original Samba software and related utilities were created by Andrew Tridgell. Samba is now developed by the Samba Team as an Open Source project similar to the way the Linux kernel is developed.",
+      "protected": []
+    },
+    {
+      "id": "s0020",
+      "kind": "paragraph",
+      "text": "The smbget manpage was written by Jelmer Vernooij.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Name",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Synopsis",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0008"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "OPTIONS",
+      "segment": "s0009"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0010"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "SMB-URLS",
+      "segment": "s0011"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0012"
+    },
+    {
+      "type": "literal",
+      "text": "smb://[[[domain;]user[:password@]]server[/share[/path[/file]]]]"
+    },
+    {
+      "type": "literal",
+      "text": "smb:// means all the workgroups"
+    },
+    {
+      "type": "literal",
+      "text": "smb://name/ means, if name is a workgroup, all the servers in this workgroup, or if name is a server, all the shares on this server."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "EXAMPLES",
+      "segment": "s0013"
+    },
+    {
+      "type": "literal",
+      "text": "# Recursively download 'src' directory\nsmbget --recursive smb://rhonwyn/jelmer/src\n# Download FreeBSD ISO and enable resuming\nsmbget --resume smb://rhonwyn/isos/FreeBSD5.1.iso\n# Recursively download all ISOs\nsmbget --recursive --resume smb://rhonwyn/isos\n# Backup my data on rhonwyn\nsmbget --recursive --resume smb://rhonwyn/"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "BUGS",
+      "segment": "s0014"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0015"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "VERSION",
+      "segment": "s0016"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0017"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "AUTHOR",
+      "segment": "s0018"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0019"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0020"
+    }
+  ]
+}

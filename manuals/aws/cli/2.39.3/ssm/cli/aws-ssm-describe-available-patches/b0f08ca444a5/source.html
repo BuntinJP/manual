@@ -1,0 +1,581 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Use the AWS CLI 2.39.3 to run the ssm describe-available-patches command." name="description" />
+
+  
+    <title>describe-available-patches &#8212; AWS CLI 2.39.3 Command Reference</title>
+  <link rel="stylesheet" type="text/css" href="../../_static/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../_static/override.css" />
+  <script src="/SdkStatic/sdk-priv.js" async="true"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/guzzle.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="describe-document" href="describe-document.html" />
+    <link rel="prev" title="describe-automation-step-executions" href="describe-automation-step-executions.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-responsive.min.css" />
+  
+   
+
+<link rel="alternate" type="text/markdown" href="describe-available-patches.md" title="Markdown version" />
+  </head><body>
+  <div class="navbar navbar-fixed-top ">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="../../index.html">AWS CLI Command Reference</a>
+        <ul class="nav">
+<li><a class="nav-link" href="../../index.html">Home</a></li>
+<li><a class="nav-link" href="https://docs.aws.amazon.com/cli/latest/userguide/">User Guide</a></li>
+<li><a class="nav-link" href="https://forums.aws.amazon.com/forum.jspa?forumID=150">Forum</a></li>
+<li><a class="nav-link" href="https://github.com/aws/aws-cli">GitHub</a></li>
+        </ul>
+        <div class="pull-right" id="github-stars">
+          <iframe src="https://ghbtns.com/github-btn.html?user=aws&repo=aws-cli&type=watch&count=true&size=small"
+                  allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"  sandbox="allow-scripts"
+                  title="GitHub button showing the number of project stars."></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--REGION_DISCLAIMER_DO_NOT_REMOVE-->
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="describe-document.html" title="describe-document"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="describe-automation-step-executions.html" title="describe-automation-step-executions"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">AWS CLI 2.39.3 Command Reference</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >aws</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">ssm</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">describe-available-patches</a></li> 
+      </ul>
+    </div>
+    <div class="container">
+        
+    <div class="top-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="describe-automation-step-executions.html" title="previous chapter (use the left arrow)">&larr; describe-automation-step-executions</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="describe-document.html" title="next chapter (use the right arrow)">describe-document &rarr;</a></li>
+      </ul>
+    </div>
+  
+        <div class="document clearer">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo left-bar-other">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/logo.png" alt="Amazon Web Services logo" height="63" />
+  </a>
+</p>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">describe-available-patches</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
+<li><a class="reference internal" href="#options">Options</a></li>
+<li><a class="reference internal" href="#global-options">Global Options</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#output">Output</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+<div id="searchbox" style="display: none">
+    <h3>Quick search</h3>
+    <form class="form-search margin-top-1em" action="../../search.html" method="get">
+        <label for="searchbox">Search box</label>
+        <input id="searchbox" type="search" name="q" style="width: 105px" class="input-small search-query" autocomplete="off" />
+        <button type="submit" class="btn btn-small">Search</button>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script src="../../_static/searchbox.js"></script><div class="left-bar-other">
+  <h3>Feedback</h3>
+  <p class="feedback">Did you find this page useful? Do you have a suggestion to improve the documentation? <a href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=AWS%20Command%20Line%20Interface&hidden_guide_name=Reference&topic_url=https%3A%2F%2Fdocs.aws.amazon.com%2Fcli%2Flatest%2Freference/ssm/describe-available-patches.html">Give us feedback</a>.
+    <br />
+    If you would like to suggest an improvement or fix for the AWS CLI, check out our <a href="https://github.com/aws/aws-cli/blob/v2/CONTRIBUTING.rst">contributing guide</a> on GitHub.</p>
+</div><div class="left-bar-other">
+  <h3>User Guide</h3>
+  <p>First time using the AWS CLI? See the
+  <a href="https://docs.aws.amazon.com/cli/latest/userguide/">User Guide</a> for
+  help getting started.</p>
+</div>
+        </div>
+      </div>
+            <div class="body">
+              
+  <p>[ <a class="reference internal" href="../index.html#cli-aws"><span class="std std-ref">aws</span></a> . <a class="reference internal" href="index.html#cli-aws-ssm"><span class="std std-ref">ssm</span></a> ]</p>
+<div class="section" id="describe-available-patches">
+<span id="cli-aws-ssm-describe-available-patches"></span><h1>describe-available-patches<a class="headerlink" href="#describe-available-patches" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
+<p>Lists all patches eligible to be included in a patch baseline.</p>
+<div class="admonition note">
+<h3 class='admonition-title'>Note</h3>Currently, <code class="docutils literal notranslate"><span class="pre">DescribeAvailablePatches</span></code> supports only the Amazon Linux 1, Amazon Linux 2, and Windows Server operating systems.</div>
+<p>See also: <a class="reference external" href="https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeAvailablePatches">AWS API Documentation</a></p>
+<p><code class="docutils literal notranslate"><span class="pre">describe-available-patches</span></code> is a paginated operation. Multiple API calls may be issued in order to retrieve the entire data set of results. You can disable pagination by providing the <code class="docutils literal notranslate"><span class="pre">--no-paginate</span></code> argument.
+When using <code class="docutils literal notranslate"><span class="pre">--output</span> <span class="pre">text</span></code> and the <code class="docutils literal notranslate"><span class="pre">--query</span></code> argument on a paginated response, the <code class="docutils literal notranslate"><span class="pre">--query</span></code> argument must extract data from the results of the following query expressions: <code class="docutils literal notranslate"><span class="pre">Patches</span></code></p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">describe</span><span class="o">-</span><span class="n">available</span><span class="o">-</span><span class="n">patches</span>
+<span class="p">[</span><span class="o">--</span><span class="n">filters</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">starting</span><span class="o">-</span><span class="n">token</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">page</span><span class="o">-</span><span class="n">size</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="nb">max</span><span class="o">-</span><span class="n">items</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="n">json</span> <span class="o">|</span> <span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="n">yaml</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">generate</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">skeleton</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">debug</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">verify</span><span class="o">-</span><span class="n">ssl</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">paginate</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">output</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">query</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">profile</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">region</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">version</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">color</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">sign</span><span class="o">-</span><span class="n">request</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">ca</span><span class="o">-</span><span class="n">bundle</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">read</span><span class="o">-</span><span class="n">timeout</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">connect</span><span class="o">-</span><span class="n">timeout</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">binary</span><span class="o">-</span><span class="nb">format</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">pager</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">auto</span><span class="o">-</span><span class="n">prompt</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">auto</span><span class="o">-</span><span class="n">prompt</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">error</span><span class="o">-</span><span class="nb">format</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">--filters</span></code> (list)</p>
+<blockquote>
+<div><p>Each element in the array is a structure containing a key-value pair.</p>
+<blockquote>
+<div><strong>Windows Server</strong></div></blockquote>
+<p>Supported keys for Windows Server managed node patches include the following:</p>
+<ul class="simple">
+<li><a href="#id1"><span class="problematic" id="id2">**</span></a><code class="docutils literal notranslate"><span class="pre">PATCH_SET</span></code> **   Sample values: <code class="docutils literal notranslate"><span class="pre">OS</span></code> | <code class="docutils literal notranslate"><span class="pre">APPLICATION</span></code></li>
+<li><a href="#id3"><span class="problematic" id="id4">**</span></a><code class="docutils literal notranslate"><span class="pre">PRODUCT</span></code> **   Sample values: <code class="docutils literal notranslate"><span class="pre">WindowsServer2012</span></code> | <code class="docutils literal notranslate"><span class="pre">Office</span> <span class="pre">2010</span></code> | <code class="docutils literal notranslate"><span class="pre">MicrosoftDefenderAntivirus</span></code></li>
+<li><a href="#id5"><span class="problematic" id="id6">**</span></a><code class="docutils literal notranslate"><span class="pre">PRODUCT_FAMILY</span></code> **   Sample values: <code class="docutils literal notranslate"><span class="pre">Windows</span></code> | <code class="docutils literal notranslate"><span class="pre">Office</span></code></li>
+<li><a href="#id7"><span class="problematic" id="id8">**</span></a><code class="docutils literal notranslate"><span class="pre">MSRC_SEVERITY</span></code> **   Sample values: <code class="docutils literal notranslate"><span class="pre">ServicePacks</span></code> | <code class="docutils literal notranslate"><span class="pre">Important</span></code> | <code class="docutils literal notranslate"><span class="pre">Moderate</span></code></li>
+<li><a href="#id9"><span class="problematic" id="id10">**</span></a><code class="docutils literal notranslate"><span class="pre">CLASSIFICATION</span></code> **   Sample values: <code class="docutils literal notranslate"><span class="pre">ServicePacks</span></code> | <code class="docutils literal notranslate"><span class="pre">SecurityUpdates</span></code> | <code class="docutils literal notranslate"><span class="pre">DefinitionUpdates</span></code></li>
+<li><a href="#id11"><span class="problematic" id="id12">**</span></a><code class="docutils literal notranslate"><span class="pre">PATCH_ID</span></code> **   Sample values: <code class="docutils literal notranslate"><span class="pre">KB123456</span></code> | <code class="docutils literal notranslate"><span class="pre">KB4516046</span></code></li>
+</ul>
+<blockquote>
+<div><strong>Linux</strong></div></blockquote>
+<div class="admonition warning">
+<h3 class='admonition-title'>Warning</h3><p class="first">When specifying filters for Linux patches, you must specify a key-pair for <code class="docutils literal notranslate"><span class="pre">PRODUCT</span></code> . For example, using the Command Line Interface (CLI), the following command fails:</p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">aws</span> <span class="pre">ssm</span> <span class="pre">describe-available-patches</span> <span class="pre">--filters</span> <span class="pre">Key=CVE_ID,Values=CVE-2018-3615</span></code></div></blockquote>
+<p>However, the following command succeeds:</p>
+<blockquote class="last">
+<div><code class="docutils literal notranslate"><span class="pre">aws</span> <span class="pre">ssm</span> <span class="pre">describe-available-patches</span> <span class="pre">--filters</span> <span class="pre">Key=PRODUCT,Values=AmazonLinux2018.03</span> <span class="pre">Key=CVE_ID,Values=CVE-2018-3615</span></code></div></blockquote>
+</div>
+<p>Supported keys for Linux managed node patches include the following:</p>
+<ul class="simple">
+<li><a href="#id13"><span class="problematic" id="id14">**</span></a><code class="docutils literal notranslate"><span class="pre">PRODUCT</span></code> **   Sample values: <code class="docutils literal notranslate"><span class="pre">AmazonLinux2018.03</span></code> | <code class="docutils literal notranslate"><span class="pre">AmazonLinux2.0</span></code></li>
+<li><a href="#id15"><span class="problematic" id="id16">**</span></a><code class="docutils literal notranslate"><span class="pre">NAME</span></code> **   Sample values: <code class="docutils literal notranslate"><span class="pre">kernel-headers</span></code> | <code class="docutils literal notranslate"><span class="pre">samba-python</span></code> | <code class="docutils literal notranslate"><span class="pre">php</span></code></li>
+<li><a href="#id17"><span class="problematic" id="id18">**</span></a><code class="docutils literal notranslate"><span class="pre">SEVERITY</span></code> **   Sample values: <code class="docutils literal notranslate"><span class="pre">Critical</span></code> | <code class="docutils literal notranslate"><span class="pre">Important</span></code> | <code class="docutils literal notranslate"><span class="pre">Medium</span></code> | <code class="docutils literal notranslate"><span class="pre">Low</span></code></li>
+<li><a href="#id19"><span class="problematic" id="id20">**</span></a><code class="docutils literal notranslate"><span class="pre">EPOCH</span></code> **   Sample values: <code class="docutils literal notranslate"><span class="pre">0</span></code> | <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li><a href="#id21"><span class="problematic" id="id22">**</span></a><code class="docutils literal notranslate"><span class="pre">VERSION</span></code> **   Sample values: <code class="docutils literal notranslate"><span class="pre">78.6.1</span></code> | <code class="docutils literal notranslate"><span class="pre">4.10.16</span></code></li>
+<li><a href="#id23"><span class="problematic" id="id24">**</span></a><code class="docutils literal notranslate"><span class="pre">RELEASE</span></code> **   Sample values: <code class="docutils literal notranslate"><span class="pre">9.56.amzn1</span></code> | <code class="docutils literal notranslate"><span class="pre">1.amzn2</span></code></li>
+<li><a href="#id25"><span class="problematic" id="id26">**</span></a><code class="docutils literal notranslate"><span class="pre">ARCH</span></code> **   Sample values: <code class="docutils literal notranslate"><span class="pre">i686</span></code> | <code class="docutils literal notranslate"><span class="pre">x86_64</span></code></li>
+<li><a href="#id27"><span class="problematic" id="id28">**</span></a><code class="docutils literal notranslate"><span class="pre">REPOSITORY</span></code> **   Sample values: <code class="docutils literal notranslate"><span class="pre">Core</span></code> | <code class="docutils literal notranslate"><span class="pre">Updates</span></code></li>
+<li><a href="#id29"><span class="problematic" id="id30">**</span></a><code class="docutils literal notranslate"><span class="pre">ADVISORY_ID</span></code> **   Sample values: <code class="docutils literal notranslate"><span class="pre">ALAS-2018-1058</span></code> | <code class="docutils literal notranslate"><span class="pre">ALAS2-2021-1594</span></code></li>
+<li><a href="#id31"><span class="problematic" id="id32">**</span></a><code class="docutils literal notranslate"><span class="pre">CVE_ID</span></code> **   Sample values: <code class="docutils literal notranslate"><span class="pre">CVE-2018-3615</span></code> | <code class="docutils literal notranslate"><span class="pre">CVE-2020-1472</span></code></li>
+<li><a href="#id33"><span class="problematic" id="id34">**</span></a><code class="docutils literal notranslate"><span class="pre">BUGZILLA_ID</span></code> **   Sample values: <code class="docutils literal notranslate"><span class="pre">1463241</span></code></li>
+</ul>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">5</span></code></li>
+</ul>
+<p>(structure)</p>
+<blockquote>
+<div><p>Defines a filter used in Patch Manager APIs. Supported filter keys depend on the API operation that includes the filter. Patch Manager API operations that use <code class="docutils literal notranslate"><span class="pre">PatchOrchestratorFilter</span></code> include the following:</p>
+<ul class="simple">
+<li>DescribeAvailablePatches</li>
+<li>DescribeInstancePatches</li>
+<li>DescribePatchBaselines</li>
+<li>DescribePatchGroups</li>
+</ul>
+<p>Key -&gt; (string)</p>
+<blockquote>
+<div><p>The key for the filter.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">128</span></code></li>
+</ul>
+</div></blockquote>
+<p>Values -&gt; (list)</p>
+<blockquote>
+<div><p>The value for the filter.</p>
+<p>(string)</p>
+<blockquote>
+<div><p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">256</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>Shorthand Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Key</span><span class="o">=</span><span class="n">string</span><span class="p">,</span><span class="n">Values</span><span class="o">=</span><span class="n">string</span><span class="p">,</span><span class="n">string</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>JSON Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;Key&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+  <span class="p">}</span>
+  <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--starting-token</span></code> (string)</p>
+<blockquote>
+<div><p>A token to specify where to start paginating. This is the <code class="docutils literal notranslate"><span class="pre">NextToken</span></code> from a previously truncated response.</p>
+<p>For usage examples, see <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/pagination.html">Pagination</a> in the <em>AWS Command Line Interface User Guide</em> .</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--page-size</span></code> (integer)</p>
+<blockquote>
+<div><p>The size of each page to get in the AWS service call. This does not affect the number of items returned in the command’s output. Setting a smaller page size results in more calls to the AWS service, retrieving fewer items in each call. This can help prevent the AWS service calls from timing out.</p>
+<p>For usage examples, see <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/pagination.html">Pagination</a> in the <em>AWS Command Line Interface User Guide</em> .</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">100</span></code></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--max-items</span></code> (integer)</p>
+<blockquote>
+<div><p>The total number of items to return in the command’s output. If the total number of items available is more than the value specified, a <code class="docutils literal notranslate"><span class="pre">NextToken</span></code> is provided in the command’s output. To resume pagination, provide the <code class="docutils literal notranslate"><span class="pre">NextToken</span></code> value in the <code class="docutils literal notranslate"><span class="pre">starting-token</span></code> argument of a subsequent command. <strong>Do not</strong> use the <code class="docutils literal notranslate"><span class="pre">NextToken</span></code> response element directly outside of the AWS CLI.</p>
+<p>For usage examples, see <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/pagination.html">Pagination</a> in the <em>AWS Command Line Interface User Guide</em> .</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-input-json</span></code> | <code class="docutils literal notranslate"><span class="pre">--cli-input-yaml</span></code> (string)
+Reads arguments from the JSON string provided. The JSON string follows the format provided by <code class="docutils literal notranslate"><span class="pre">--generate-cli-skeleton</span></code>. If other arguments are provided on the command line, those values will override the JSON-provided values. It is not possible to pass arbitrary binary values using a JSON-provided value as the string will be taken literally. This may not be specified along with <code class="docutils literal notranslate"><span class="pre">--cli-input-yaml</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--generate-cli-skeleton</span></code> (string)
+Prints a JSON skeleton to standard output without sending an API request. If provided with no value or the value <code class="docutils literal notranslate"><span class="pre">input</span></code>, prints a sample input JSON that can be used as an argument for <code class="docutils literal notranslate"><span class="pre">--cli-input-json</span></code>. Similarly, if provided <code class="docutils literal notranslate"><span class="pre">yaml-input</span></code> it will print a sample input YAML that can be used with <code class="docutils literal notranslate"><span class="pre">--cli-input-yaml</span></code>. If provided with the value <code class="docutils literal notranslate"><span class="pre">output</span></code>, it validates the command inputs and returns a sample output JSON for that command. The generated JSON skeleton is not stable between versions of the AWS CLI and there are no backwards compatibility guarantees in the JSON skeleton generated.</p>
+</div>
+<div class="section" id="global-options">
+<h2>Global Options<a class="headerlink" href="#global-options" title="Permalink to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">--debug</span></code> (boolean)</p>
+<p>Turn on debug logging.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--endpoint-url</span></code> (string)</p>
+<p>Override command’s default URL with the given URL.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--no-verify-ssl</span></code> (boolean)</p>
+<p>By default, the AWS CLI uses SSL when communicating with AWS services. For each SSL connection, the AWS CLI will verify SSL certificates. This option overrides the default behavior of verifying SSL certificates.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--no-paginate</span></code> (boolean)</p>
+<p>Disable automatic pagination. If automatic pagination is disabled, the AWS CLI will only make one call, for the first page of results.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--output</span></code> (string)</p>
+<p>The formatting style for command output.</p>
+<ul class="simple">
+<li>json</li>
+<li>text</li>
+<li>table</li>
+<li>yaml</li>
+<li>yaml-stream</li>
+<li>off</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">--query</span></code> (string)</p>
+<p>A JMESPath query to use in filtering the response data.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--profile</span></code> (string)</p>
+<p>Use a specific profile from your credential file.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--region</span></code> (string)</p>
+<p>The region to use. Overrides config/env settings.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--version</span></code> (string)</p>
+<p>Display the version of this tool.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--color</span></code> (string)</p>
+<p>Turn on/off color output.</p>
+<ul class="simple">
+<li>on</li>
+<li>off</li>
+<li>auto</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">--no-sign-request</span></code> (boolean)</p>
+<p>Do not sign requests. Credentials will not be loaded if this argument is provided.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--ca-bundle</span></code> (string)</p>
+<p>The CA certificate bundle to use when verifying SSL certificates. Overrides config/env settings.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-read-timeout</span></code> (int)</p>
+<p>The maximum socket read time in seconds. If the value is set to 0, the socket read will be blocking and not timeout. The default value is 60 seconds.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-connect-timeout</span></code> (int)</p>
+<p>The maximum socket connect time in seconds. If the value is set to 0, the socket connect will be blocking and not timeout. The default value is 60 seconds.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-binary-format</span></code> (string)</p>
+<p>The formatting style to be used for binary blobs. The default format is base64. The base64 format expects binary blobs to be provided as a base64 encoded string. The raw-in-base64-out format preserves compatibility with AWS CLI V1 behavior and binary values must be passed literally. When providing contents from a file that map to a binary blob <code class="docutils literal notranslate"><span class="pre">fileb://</span></code> will always be treated as binary and use the file contents directly regardless of the <code class="docutils literal notranslate"><span class="pre">cli-binary-format</span></code> setting. When using <code class="docutils literal notranslate"><span class="pre">file://</span></code> the file contents will need to properly formatted for the configured <code class="docutils literal notranslate"><span class="pre">cli-binary-format</span></code>.</p>
+<ul class="simple">
+<li>base64</li>
+<li>raw-in-base64-out</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">--no-cli-pager</span></code> (boolean)</p>
+<p>Disable cli pager for output.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-auto-prompt</span></code> (boolean)</p>
+<p>Automatically prompt for CLI input parameters.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--no-cli-auto-prompt</span></code> (boolean)</p>
+<p>Disable automatically prompt for CLI input parameters.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-error-format</span></code> (string)</p>
+<p>The formatting style for error output. By default, errors are displayed in enhanced format.</p>
+<ul class="simple">
+<li>legacy</li>
+<li>json</li>
+<li>yaml</li>
+<li>text</li>
+<li>table</li>
+<li>enhanced</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<div class="admonition note">
+<h3 class='admonition-title'>Note</h3><p class="first">To use the following examples, you must have the AWS CLI installed and configured. See the <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html">Getting started guide</a> in the <em>AWS CLI User Guide</em> for more information.</p>
+<p class="last">Unless otherwise stated, all examples have unix-like quotation rules. These examples will need to be adapted to your terminal’s quoting rules. See <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-quoting-strings.html">Using quotation marks with strings</a> in the <em>AWS CLI User Guide</em> .</p>
+</div>
+<p><strong>Example 1: To get available patches</strong></p>
+<p>The following <code class="docutils literal notranslate"><span class="pre">describe-available-patches</span></code> example retrieves details about all available patches for Windows Server 2019 that have a MSRC severity of Critical.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aws</span> <span class="n">ssm</span> <span class="n">describe</span><span class="o">-</span><span class="n">available</span><span class="o">-</span><span class="n">patches</span> \
+    <span class="o">--</span><span class="n">filters</span> <span class="s2">&quot;Key=PRODUCT,Values=WindowsServer2019&quot;</span> <span class="s2">&quot;Key=MSRC_SEVERITY,Values=Critical&quot;</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Patches&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;a1b2c3d4-5678-90ab-cdef-EXAMPLE11111&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ReleaseDate&quot;</span><span class="p">:</span> <span class="mf">1544047205.0</span><span class="p">,</span>
+            <span class="s2">&quot;Title&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-11 Update for Windows Server 2019 for x64-based Systems (KB4470788)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Install this update to resolve issues in Windows. For a complete listing of the issues that are included in this update, see the associated Microsoft Knowledge Base article for more information. After you install this item, you may have to restart your computer.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ContentUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;https://support.microsoft.com/en-us/kb/4470788&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Vendor&quot;</span><span class="p">:</span> <span class="s2">&quot;Microsoft&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ProductFamily&quot;</span><span class="p">:</span> <span class="s2">&quot;Windows&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Product&quot;</span><span class="p">:</span> <span class="s2">&quot;WindowsServer2019&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Classification&quot;</span><span class="p">:</span> <span class="s2">&quot;SecurityUpdates&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;MsrcSeverity&quot;</span><span class="p">:</span> <span class="s2">&quot;Critical&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;KbNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;KB4470788&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;MsrcNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Language&quot;</span><span class="p">:</span> <span class="s2">&quot;All&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;a1b2c3d4-5678-90ab-cdef-EXAMPLE22222&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ReleaseDate&quot;</span><span class="p">:</span> <span class="mf">1549994410.0</span><span class="p">,</span>
+            <span class="s2">&quot;Title&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-02 Security Update for Adobe Flash Player for Windows Server 2019 for x64-based Systems (KB4487038)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;A security issue has been identified in a Microsoft software product that could affect your system. You can help protect your system by installing this update from Microsoft. For a complete listing of the issues that are included in this update, see the associated Microsoft Knowledge Base article. After you install this update, you may have to restart your system.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ContentUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;https://support.microsoft.com/en-us/kb/4487038&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Vendor&quot;</span><span class="p">:</span> <span class="s2">&quot;Microsoft&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ProductFamily&quot;</span><span class="p">:</span> <span class="s2">&quot;Windows&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Product&quot;</span><span class="p">:</span> <span class="s2">&quot;WindowsServer2019&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Classification&quot;</span><span class="p">:</span> <span class="s2">&quot;SecurityUpdates&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;MsrcSeverity&quot;</span><span class="p">:</span> <span class="s2">&quot;Critical&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;KbNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;KB4487038&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;MsrcNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Language&quot;</span><span class="p">:</span> <span class="s2">&quot;All&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example 2: To get details of a specific patch</strong></p>
+<p>The following <code class="docutils literal notranslate"><span class="pre">describe-available-patches</span></code> example retrieves details about the specified patch.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aws</span> <span class="n">ssm</span> <span class="n">describe</span><span class="o">-</span><span class="n">available</span><span class="o">-</span><span class="n">patches</span> \
+    <span class="o">--</span><span class="n">filters</span> <span class="s2">&quot;Key=PATCH_ID,Values=KB4480979&quot;</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Patches&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;a1b2c3d4-5678-90ab-cdef-EXAMPLE33333&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ReleaseDate&quot;</span><span class="p">:</span> <span class="mf">1546970408.0</span><span class="p">,</span>
+            <span class="s2">&quot;Title&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-01 Security Update for Adobe Flash Player for Windows Server 2016 for x64-based Systems (KB4480979)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;A security issue has been identified in a Microsoft software product that could affect your system. You can help protect your system by installing this update from Microsoft. For a complete listing of the issues that are included in this update, see the associated Microsoft Knowledge Base article. After you install this update, you may have to restart your system.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ContentUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;https://support.microsoft.com/en-us/kb/4480979&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Vendor&quot;</span><span class="p">:</span> <span class="s2">&quot;Microsoft&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ProductFamily&quot;</span><span class="p">:</span> <span class="s2">&quot;Windows&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Product&quot;</span><span class="p">:</span> <span class="s2">&quot;WindowsServer2016&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Classification&quot;</span><span class="p">:</span> <span class="s2">&quot;SecurityUpdates&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;MsrcSeverity&quot;</span><span class="p">:</span> <span class="s2">&quot;Critical&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;KbNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;KB4480979&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;MsrcNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Language&quot;</span><span class="p">:</span> <span class="s2">&quot;All&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For more information, see <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-how-it-works.html">How Patch Manager Operations Work</a> in the <em>AWS Systems Manager User Guide</em>.</p>
+</div>
+<div class="section" id="output">
+<h2>Output<a class="headerlink" href="#output" title="Permalink to this heading">¶</a></h2>
+<p>Patches -&gt; (list)</p>
+<blockquote>
+<div><p>An array of patches. Each entry in the array is a patch structure.</p>
+<p>(structure)</p>
+<blockquote>
+<div><p>Represents metadata about a patch.</p>
+<p>Id -&gt; (string)</p>
+<blockquote>
+<div><p>The ID of the patch. Applies to Windows patches only.</p>
+<div class="admonition note">
+<h3 class='admonition-title'>Note</h3>This ID isn’t the same as the Microsoft Knowledge Base ID.</div>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">100</span></code></li>
+</ul>
+</div></blockquote>
+<p>ReleaseDate -&gt; (timestamp)</p>
+<blockquote>
+<div>The date the patch was released.</div></blockquote>
+<p>Title -&gt; (string)</p>
+<blockquote>
+<div>The title of the patch.</div></blockquote>
+<p>Description -&gt; (string)</p>
+<blockquote>
+<div>The description of the patch.</div></blockquote>
+<p>ContentUrl -&gt; (string)</p>
+<blockquote>
+<div>The URL where more information can be obtained about the patch.</div></blockquote>
+<p>Vendor -&gt; (string)</p>
+<blockquote>
+<div>The name of the vendor providing the patch.</div></blockquote>
+<p>ProductFamily -&gt; (string)</p>
+<blockquote>
+<div>The product family the patch is applicable for. For example, <code class="docutils literal notranslate"><span class="pre">Windows</span></code> or <code class="docutils literal notranslate"><span class="pre">Amazon</span> <span class="pre">Linux</span> <span class="pre">2</span></code> .</div></blockquote>
+<p>Product -&gt; (string)</p>
+<blockquote>
+<div>The specific product the patch is applicable for. For example, <code class="docutils literal notranslate"><span class="pre">WindowsServer2016</span></code> or <code class="docutils literal notranslate"><span class="pre">AmazonLinux2018.03</span></code> .</div></blockquote>
+<p>Classification -&gt; (string)</p>
+<blockquote>
+<div>The classification of the patch. For example, <code class="docutils literal notranslate"><span class="pre">SecurityUpdates</span></code> , <code class="docutils literal notranslate"><span class="pre">Updates</span></code> , or <code class="docutils literal notranslate"><span class="pre">CriticalUpdates</span></code> .</div></blockquote>
+<p>MsrcSeverity -&gt; (string)</p>
+<blockquote>
+<div>The severity of the patch, such as <code class="docutils literal notranslate"><span class="pre">Critical</span></code> , <code class="docutils literal notranslate"><span class="pre">Important</span></code> , or <code class="docutils literal notranslate"><span class="pre">Moderate</span></code> . Applies to Windows patches only.</div></blockquote>
+<p>KbNumber -&gt; (string)</p>
+<blockquote>
+<div>The Microsoft Knowledge Base ID of the patch. Applies to Windows patches only.</div></blockquote>
+<p>MsrcNumber -&gt; (string)</p>
+<blockquote>
+<div>The ID of the Microsoft Security Response Center (MSRC) bulletin the patch is related to. For example, <code class="docutils literal notranslate"><span class="pre">MS14-045</span></code> . Applies to Windows patches only.</div></blockquote>
+<p>Language -&gt; (string)</p>
+<blockquote>
+<div>The language of the patch if it’s language-specific.</div></blockquote>
+<p>AdvisoryIds -&gt; (list)</p>
+<blockquote>
+<div><p>The Advisory ID of the patch. For example, <code class="docutils literal notranslate"><span class="pre">RHSA-2020:3779</span></code> . Applies to Linux-based managed nodes only.</p>
+<p>(string)</p>
+</div></blockquote>
+<p>BugzillaIds -&gt; (list)</p>
+<blockquote>
+<div><p>The Bugzilla ID of the patch. For example, <code class="docutils literal notranslate"><span class="pre">1600646</span></code> . Applies to Linux-based managed nodes only.</p>
+<p>(string)</p>
+</div></blockquote>
+<p>CVEIds -&gt; (list)</p>
+<blockquote>
+<div><p>The Common Vulnerabilities and Exposures (CVE) ID of the patch. For example, <code class="docutils literal notranslate"><span class="pre">CVE-2011-3192</span></code> . Applies to Linux-based managed nodes only.</p>
+<p>(string)</p>
+</div></blockquote>
+<p>Name -&gt; (string)</p>
+<blockquote>
+<div>The name of the patch. Applies to Linux-based managed nodes only.</div></blockquote>
+<p>Epoch -&gt; (integer)</p>
+<blockquote>
+<div>The epoch of the patch. For example in <code class="docutils literal notranslate"><span class="pre">pkg-example-EE-20180914-2.2.amzn1.noarch</span></code> , the epoch value is <code class="docutils literal notranslate"><span class="pre">20180914-2</span></code> . Applies to Linux-based managed nodes only.</div></blockquote>
+<p>Version -&gt; (string)</p>
+<blockquote>
+<div>The version number of the patch. For example, in <code class="docutils literal notranslate"><span class="pre">example-pkg-1.710.10-2.7.abcd.x86_64</span></code> , the version number is indicated by <code class="docutils literal notranslate"><span class="pre">-1</span></code> . Applies to Linux-based managed nodes only.</div></blockquote>
+<p>Release -&gt; (string)</p>
+<blockquote>
+<div>The particular release of a patch. For example, in <code class="docutils literal notranslate"><span class="pre">pkg-example-EE-20180914-2.2.amzn1.noarch</span></code> , the release is <code class="docutils literal notranslate"><span class="pre">2.amaz1</span></code> . Applies to Linux-based managed nodes only.</div></blockquote>
+<p>Arch -&gt; (string)</p>
+<blockquote>
+<div>The architecture of the patch. For example, in <code class="docutils literal notranslate"><span class="pre">example-pkg-0.710.10-2.7.abcd.x86_64</span></code> , the architecture is indicated by <code class="docutils literal notranslate"><span class="pre">x86_64</span></code> . Applies to Linux-based managed nodes only.</div></blockquote>
+<p>Severity -&gt; (string)</p>
+<blockquote>
+<div>The severity level of the patch. For example, <code class="docutils literal notranslate"><span class="pre">CRITICAL</span></code> or <code class="docutils literal notranslate"><span class="pre">MODERATE</span></code> .</div></blockquote>
+<p>Repository -&gt; (string)</p>
+<blockquote>
+<div>The source patch repository for the operating system and version, such as <code class="docutils literal notranslate"><span class="pre">trusty-security</span></code> for Ubuntu Server 14.04 LTE and <code class="docutils literal notranslate"><span class="pre">focal-security</span></code> for Ubuntu Server 20.04 LTE. Applies to Linux-based managed nodes only.</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>NextToken -&gt; (string)</p>
+<blockquote>
+<div>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</div></blockquote>
+</div>
+</div>
+
+
+            </div>
+          <div class="clearfix"></div>
+        </div>
+        
+    <div class="footer-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="describe-automation-step-executions.html" title="previous chapter (use the left arrow)">&larr; describe-automation-step-executions</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="describe-document.html" title="next chapter (use the right arrow)">describe-document &rarr;</a></li>
+      </ul>
+    </div>
+  
+
+    </div>
+  <script type="text/javascript" src="https://media.amazonwebservices.com/js/sitecatalyst/s_code.min.js"></script>
+  <script type="text/javascript" src="../../_static/analytics.js"></script>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="describe-document.html" title="describe-document"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="describe-automation-step-executions.html" title="describe-automation-step-executions"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">AWS CLI 2.39.3 Command Reference</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >aws</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >ssm</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">describe-available-patches</a></li> 
+      </ul>
+    </div>
+  <div class="footer container">
+    &copy; Copyright 2026, Amazon Web Services. Created using <a href="https://www.sphinx-doc.org/">Sphinx</a>.
+  </div>
+
+
+
+  
+    
+  
+  </body>
+</html>

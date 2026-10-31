@@ -1,0 +1,888 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Use the AWS CLI 2.39.3 to run the ssm list-association-versions command." name="description" />
+
+  
+    <title>list-association-versions &#8212; AWS CLI 2.39.3 Command Reference</title>
+  <link rel="stylesheet" type="text/css" href="../../_static/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../_static/override.css" />
+  <script src="/SdkStatic/sdk-priv.js" async="true"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/guzzle.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="list-associations" href="list-associations.html" />
+    <link rel="prev" title="label-parameter-version" href="label-parameter-version.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-responsive.min.css" />
+  
+   
+
+<link rel="alternate" type="text/markdown" href="list-association-versions.md" title="Markdown version" />
+  </head><body>
+  <div class="navbar navbar-fixed-top ">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="../../index.html">AWS CLI Command Reference</a>
+        <ul class="nav">
+<li><a class="nav-link" href="../../index.html">Home</a></li>
+<li><a class="nav-link" href="https://docs.aws.amazon.com/cli/latest/userguide/">User Guide</a></li>
+<li><a class="nav-link" href="https://forums.aws.amazon.com/forum.jspa?forumID=150">Forum</a></li>
+<li><a class="nav-link" href="https://github.com/aws/aws-cli">GitHub</a></li>
+        </ul>
+        <div class="pull-right" id="github-stars">
+          <iframe src="https://ghbtns.com/github-btn.html?user=aws&repo=aws-cli&type=watch&count=true&size=small"
+                  allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"  sandbox="allow-scripts"
+                  title="GitHub button showing the number of project stars."></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--REGION_DISCLAIMER_DO_NOT_REMOVE-->
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="list-associations.html" title="list-associations"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="label-parameter-version.html" title="label-parameter-version"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">AWS CLI 2.39.3 Command Reference</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >aws</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">ssm</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">list-association-versions</a></li> 
+      </ul>
+    </div>
+    <div class="container">
+        
+    <div class="top-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="label-parameter-version.html" title="previous chapter (use the left arrow)">&larr; label-parameter-version</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="list-associations.html" title="next chapter (use the right arrow)">list-associations &rarr;</a></li>
+      </ul>
+    </div>
+  
+        <div class="document clearer">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo left-bar-other">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/logo.png" alt="Amazon Web Services logo" height="63" />
+  </a>
+</p>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">list-association-versions</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
+<li><a class="reference internal" href="#options">Options</a></li>
+<li><a class="reference internal" href="#global-options">Global Options</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#output">Output</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+<div id="searchbox" style="display: none">
+    <h3>Quick search</h3>
+    <form class="form-search margin-top-1em" action="../../search.html" method="get">
+        <label for="searchbox">Search box</label>
+        <input id="searchbox" type="search" name="q" style="width: 105px" class="input-small search-query" autocomplete="off" />
+        <button type="submit" class="btn btn-small">Search</button>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script src="../../_static/searchbox.js"></script><div class="left-bar-other">
+  <h3>Feedback</h3>
+  <p class="feedback">Did you find this page useful? Do you have a suggestion to improve the documentation? <a href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=AWS%20Command%20Line%20Interface&hidden_guide_name=Reference&topic_url=https%3A%2F%2Fdocs.aws.amazon.com%2Fcli%2Flatest%2Freference/ssm/list-association-versions.html">Give us feedback</a>.
+    <br />
+    If you would like to suggest an improvement or fix for the AWS CLI, check out our <a href="https://github.com/aws/aws-cli/blob/v2/CONTRIBUTING.rst">contributing guide</a> on GitHub.</p>
+</div><div class="left-bar-other">
+  <h3>User Guide</h3>
+  <p>First time using the AWS CLI? See the
+  <a href="https://docs.aws.amazon.com/cli/latest/userguide/">User Guide</a> for
+  help getting started.</p>
+</div>
+        </div>
+      </div>
+            <div class="body">
+              
+  <p>[ <a class="reference internal" href="../index.html#cli-aws"><span class="std std-ref">aws</span></a> . <a class="reference internal" href="index.html#cli-aws-ssm"><span class="std std-ref">ssm</span></a> ]</p>
+<div class="section" id="list-association-versions">
+<span id="cli-aws-ssm-list-association-versions"></span><h1>list-association-versions<a class="headerlink" href="#list-association-versions" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
+<p>Retrieves all versions of an association for a specific association ID.</p>
+<p>See also: <a class="reference external" href="https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/ListAssociationVersions">AWS API Documentation</a></p>
+<p><code class="docutils literal notranslate"><span class="pre">list-association-versions</span></code> is a paginated operation. Multiple API calls may be issued in order to retrieve the entire data set of results. You can disable pagination by providing the <code class="docutils literal notranslate"><span class="pre">--no-paginate</span></code> argument.
+When using <code class="docutils literal notranslate"><span class="pre">--output</span> <span class="pre">text</span></code> and the <code class="docutils literal notranslate"><span class="pre">--query</span></code> argument on a paginated response, the <code class="docutils literal notranslate"><span class="pre">--query</span></code> argument must extract data from the results of the following query expressions: <code class="docutils literal notranslate"><span class="pre">AssociationVersions</span></code></p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="nb">list</span><span class="o">-</span><span class="n">association</span><span class="o">-</span><span class="n">versions</span>
+<span class="o">--</span><span class="n">association</span><span class="o">-</span><span class="nb">id</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
+<span class="p">[</span><span class="o">--</span><span class="n">starting</span><span class="o">-</span><span class="n">token</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">page</span><span class="o">-</span><span class="n">size</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="nb">max</span><span class="o">-</span><span class="n">items</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="n">json</span> <span class="o">|</span> <span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="n">yaml</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">generate</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">skeleton</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">debug</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">verify</span><span class="o">-</span><span class="n">ssl</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">paginate</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">output</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">query</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">profile</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">region</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">version</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">color</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">sign</span><span class="o">-</span><span class="n">request</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">ca</span><span class="o">-</span><span class="n">bundle</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">read</span><span class="o">-</span><span class="n">timeout</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">connect</span><span class="o">-</span><span class="n">timeout</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">binary</span><span class="o">-</span><span class="nb">format</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">pager</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">auto</span><span class="o">-</span><span class="n">prompt</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">auto</span><span class="o">-</span><span class="n">prompt</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">error</span><span class="o">-</span><span class="nb">format</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">--association-id</span></code> (string) [required]</p>
+<blockquote>
+<div><p>The association ID for which you want to view all versions.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}</span></code></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--starting-token</span></code> (string)</p>
+<blockquote>
+<div><p>A token to specify where to start paginating. This is the <code class="docutils literal notranslate"><span class="pre">NextToken</span></code> from a previously truncated response.</p>
+<p>For usage examples, see <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/pagination.html">Pagination</a> in the <em>AWS Command Line Interface User Guide</em> .</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--page-size</span></code> (integer)</p>
+<blockquote>
+<div><p>The size of each page to get in the AWS service call. This does not affect the number of items returned in the command’s output. Setting a smaller page size results in more calls to the AWS service, retrieving fewer items in each call. This can help prevent the AWS service calls from timing out.</p>
+<p>For usage examples, see <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/pagination.html">Pagination</a> in the <em>AWS Command Line Interface User Guide</em> .</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">50</span></code></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--max-items</span></code> (integer)</p>
+<blockquote>
+<div><p>The total number of items to return in the command’s output. If the total number of items available is more than the value specified, a <code class="docutils literal notranslate"><span class="pre">NextToken</span></code> is provided in the command’s output. To resume pagination, provide the <code class="docutils literal notranslate"><span class="pre">NextToken</span></code> value in the <code class="docutils literal notranslate"><span class="pre">starting-token</span></code> argument of a subsequent command. <strong>Do not</strong> use the <code class="docutils literal notranslate"><span class="pre">NextToken</span></code> response element directly outside of the AWS CLI.</p>
+<p>For usage examples, see <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/pagination.html">Pagination</a> in the <em>AWS Command Line Interface User Guide</em> .</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-input-json</span></code> | <code class="docutils literal notranslate"><span class="pre">--cli-input-yaml</span></code> (string)
+Reads arguments from the JSON string provided. The JSON string follows the format provided by <code class="docutils literal notranslate"><span class="pre">--generate-cli-skeleton</span></code>. If other arguments are provided on the command line, those values will override the JSON-provided values. It is not possible to pass arbitrary binary values using a JSON-provided value as the string will be taken literally. This may not be specified along with <code class="docutils literal notranslate"><span class="pre">--cli-input-yaml</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--generate-cli-skeleton</span></code> (string)
+Prints a JSON skeleton to standard output without sending an API request. If provided with no value or the value <code class="docutils literal notranslate"><span class="pre">input</span></code>, prints a sample input JSON that can be used as an argument for <code class="docutils literal notranslate"><span class="pre">--cli-input-json</span></code>. Similarly, if provided <code class="docutils literal notranslate"><span class="pre">yaml-input</span></code> it will print a sample input YAML that can be used with <code class="docutils literal notranslate"><span class="pre">--cli-input-yaml</span></code>. If provided with the value <code class="docutils literal notranslate"><span class="pre">output</span></code>, it validates the command inputs and returns a sample output JSON for that command. The generated JSON skeleton is not stable between versions of the AWS CLI and there are no backwards compatibility guarantees in the JSON skeleton generated.</p>
+</div>
+<div class="section" id="global-options">
+<h2>Global Options<a class="headerlink" href="#global-options" title="Permalink to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">--debug</span></code> (boolean)</p>
+<p>Turn on debug logging.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--endpoint-url</span></code> (string)</p>
+<p>Override command’s default URL with the given URL.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--no-verify-ssl</span></code> (boolean)</p>
+<p>By default, the AWS CLI uses SSL when communicating with AWS services. For each SSL connection, the AWS CLI will verify SSL certificates. This option overrides the default behavior of verifying SSL certificates.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--no-paginate</span></code> (boolean)</p>
+<p>Disable automatic pagination. If automatic pagination is disabled, the AWS CLI will only make one call, for the first page of results.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--output</span></code> (string)</p>
+<p>The formatting style for command output.</p>
+<ul class="simple">
+<li>json</li>
+<li>text</li>
+<li>table</li>
+<li>yaml</li>
+<li>yaml-stream</li>
+<li>off</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">--query</span></code> (string)</p>
+<p>A JMESPath query to use in filtering the response data.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--profile</span></code> (string)</p>
+<p>Use a specific profile from your credential file.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--region</span></code> (string)</p>
+<p>The region to use. Overrides config/env settings.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--version</span></code> (string)</p>
+<p>Display the version of this tool.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--color</span></code> (string)</p>
+<p>Turn on/off color output.</p>
+<ul class="simple">
+<li>on</li>
+<li>off</li>
+<li>auto</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">--no-sign-request</span></code> (boolean)</p>
+<p>Do not sign requests. Credentials will not be loaded if this argument is provided.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--ca-bundle</span></code> (string)</p>
+<p>The CA certificate bundle to use when verifying SSL certificates. Overrides config/env settings.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-read-timeout</span></code> (int)</p>
+<p>The maximum socket read time in seconds. If the value is set to 0, the socket read will be blocking and not timeout. The default value is 60 seconds.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-connect-timeout</span></code> (int)</p>
+<p>The maximum socket connect time in seconds. If the value is set to 0, the socket connect will be blocking and not timeout. The default value is 60 seconds.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-binary-format</span></code> (string)</p>
+<p>The formatting style to be used for binary blobs. The default format is base64. The base64 format expects binary blobs to be provided as a base64 encoded string. The raw-in-base64-out format preserves compatibility with AWS CLI V1 behavior and binary values must be passed literally. When providing contents from a file that map to a binary blob <code class="docutils literal notranslate"><span class="pre">fileb://</span></code> will always be treated as binary and use the file contents directly regardless of the <code class="docutils literal notranslate"><span class="pre">cli-binary-format</span></code> setting. When using <code class="docutils literal notranslate"><span class="pre">file://</span></code> the file contents will need to properly formatted for the configured <code class="docutils literal notranslate"><span class="pre">cli-binary-format</span></code>.</p>
+<ul class="simple">
+<li>base64</li>
+<li>raw-in-base64-out</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">--no-cli-pager</span></code> (boolean)</p>
+<p>Disable cli pager for output.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-auto-prompt</span></code> (boolean)</p>
+<p>Automatically prompt for CLI input parameters.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--no-cli-auto-prompt</span></code> (boolean)</p>
+<p>Disable automatically prompt for CLI input parameters.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-error-format</span></code> (string)</p>
+<p>The formatting style for error output. By default, errors are displayed in enhanced format.</p>
+<ul class="simple">
+<li>legacy</li>
+<li>json</li>
+<li>yaml</li>
+<li>text</li>
+<li>table</li>
+<li>enhanced</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<div class="admonition note">
+<h3 class='admonition-title'>Note</h3><p class="first">To use the following examples, you must have the AWS CLI installed and configured. See the <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html">Getting started guide</a> in the <em>AWS CLI User Guide</em> for more information.</p>
+<p class="last">Unless otherwise stated, all examples have unix-like quotation rules. These examples will need to be adapted to your terminal’s quoting rules. See <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-quoting-strings.html">Using quotation marks with strings</a> in the <em>AWS CLI User Guide</em> .</p>
+</div>
+<p><strong>To list all versions of an association for a specific association ID</strong></p>
+<p>The following <code class="docutils literal notranslate"><span class="pre">list-association-versions</span></code> example lists all versions of the specified associations.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aws</span> <span class="n">ssm</span> <span class="nb">list</span><span class="o">-</span><span class="n">association</span><span class="o">-</span><span class="n">versions</span> \
+    <span class="o">--</span><span class="n">association</span><span class="o">-</span><span class="nb">id</span> <span class="s2">&quot;a1b2c3d4-5678-90ab-cdef-EXAMPLE11111&quot;</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;AssociationVersions&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;AssociationId&quot;</span><span class="p">:</span> <span class="s2">&quot;a1b2c3d4-5678-90ab-cdef-EXAMPLE11111&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;AssociationVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;CreatedDate&quot;</span><span class="p">:</span> <span class="mf">1550505536.726</span><span class="p">,</span>
+            <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;AWS-UpdateSSMAgent&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;allowDowngrade&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;false&quot;</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;&quot;</span>
+                <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;Targets&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;Key&quot;</span><span class="p">:</span> <span class="s2">&quot;InstanceIds&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Values&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="s2">&quot;i-1234567890abcdef0&quot;</span>
+                    <span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;ScheduleExpression&quot;</span><span class="p">:</span> <span class="s2">&quot;cron(0 00 12 ? * SUN *)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;AssociationName&quot;</span><span class="p">:</span> <span class="s2">&quot;UpdateSSMAgent&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For more information, see <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/state-manager-associations.html">Working with associations in Systems Manager</a> in the <em>AWS Systems Manager User Guide</em>.</p>
+</div>
+<div class="section" id="output">
+<h2>Output<a class="headerlink" href="#output" title="Permalink to this heading">¶</a></h2>
+<p>AssociationVersions -&gt; (list)</p>
+<blockquote>
+<div><p>Information about all versions of the association for the specified association ID.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+</ul>
+<p>(structure)</p>
+<blockquote>
+<div><p>Information about the association version.</p>
+<p>AssociationId -&gt; (string)</p>
+<blockquote>
+<div><p>The ID created by the system when the association was created.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}</span></code></li>
+</ul>
+</div></blockquote>
+<p>AssociationVersion -&gt; (string)</p>
+<blockquote>
+<div><p>The association version.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^(([$]LATEST)|([1-9][0-9]*))$</span></code></li>
+</ul>
+</div></blockquote>
+<p>CreatedDate -&gt; (timestamp)</p>
+<blockquote>
+<div>The date the association version was created.</div></blockquote>
+<p>Name -&gt; (string)</p>
+<blockquote>
+<div><p>The name specified when the association was created.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^[a-zA-Z0-9_\-.:/]{3,128}$</span></code></li>
+</ul>
+</div></blockquote>
+<p>DocumentVersion -&gt; (string)</p>
+<blockquote>
+<div><p>The version of an Amazon Web Services Systems Manager document (SSM document) used when the association version was created.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">([$]LATEST|[$]DEFAULT|^[1-9][0-9]*$)</span></code></li>
+</ul>
+</div></blockquote>
+<p>Parameters -&gt; (map)</p>
+<blockquote>
+<div><p>Parameters specified when the association version was created.</p>
+<p>key -&gt; (string)</p>
+<p>value -&gt; (list)</p>
+<blockquote>
+<div>(string)</div></blockquote>
+</div></blockquote>
+<p>Targets -&gt; (list)</p>
+<blockquote>
+<div><p>The targets specified for the association when the association version was created.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">5</span></code></li>
+</ul>
+<p>(structure)</p>
+<blockquote>
+<div><p>An array of search criteria that targets managed nodes using a key-value pair that you specify.</p>
+<div class="admonition note">
+<h3 class='admonition-title'>Note</h3>One or more targets must be specified for maintenance window Run Command-type tasks. Depending on the task, targets are optional for other maintenance window task types (Automation, Lambda, and Step Functions). For more information about running tasks that don’t specify targets, see <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html">Registering maintenance window tasks without targets</a> in the <em>Amazon Web Services Systems Manager User Guide</em> .</div>
+<p>Supported formats include the following.</p>
+<blockquote>
+<div><strong>For all Systems Manager tools:</strong></div></blockquote>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">Key=tag-key,Values=tag-value-1,tag-value-2</span></code></li>
+</ul>
+<blockquote>
+<div><strong>For Automation and Change Manager:</strong></div></blockquote>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">Key=tag:tag-key,Values=tag-value</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Key=ResourceGroup,Values=resource-group-name</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Key=ParameterValues,Values=value-1,value-2,value-3</span></code></li>
+<li>To target all instances in the Amazon Web Services Region:<ul>
+<li><code class="docutils literal notranslate"><span class="pre">Key=AWS::EC2::Instance,Values=*</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Key=InstanceIds,Values=*</span></code></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<div><strong>For Run Command and Maintenance Windows:</strong></div></blockquote>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">Key=InstanceIds,Values=instance-id-1,instance-id-2,instance-id-3</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Key=tag:tag-key,Values=tag-value-1,tag-value-2</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Key=resource-groups:Name,Values=resource-group-name</span></code></li>
+<li>Additionally, Maintenance Windows support targeting resource types:<ul>
+<li><code class="docutils literal notranslate"><span class="pre">Key=resource-groups:ResourceTypeFilters,Values=resource-type-1,resource-type-2</span></code></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<div><strong>For State Manager:</strong></div></blockquote>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">Key=InstanceIds,Values=instance-id-1,instance-id-2,instance-id-3</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Key=tag:tag-key,Values=tag-value-1,tag-value-2</span></code></li>
+<li>To target all instances in the Amazon Web Services Region:<ul>
+<li><code class="docutils literal notranslate"><span class="pre">Key=InstanceIds,Values=*</span></code></li>
+</ul>
+</li>
+</ul>
+<p>For more information about how to send commands that target managed nodes using <code class="docutils literal notranslate"><span class="pre">Key,Value</span></code> parameters, see <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-targeting">Targeting multiple managed nodes</a> in the <em>Amazon Web Services Systems Manager User Guide</em> .</p>
+<p>Key -&gt; (string)</p>
+<blockquote>
+<div><p>User-defined criteria for sending commands that target managed nodes that meet the criteria.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">163</span></code></li>
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^[\p{L}\p{Z}\p{N}_.:/=\-&#64;]*$|resource-groups:ResourceTypeFilters|resource-groups:Name</span></code></li>
+</ul>
+</div></blockquote>
+<p>Values -&gt; (list)</p>
+<blockquote>
+<div><p>User-defined criteria that maps to <code class="docutils literal notranslate"><span class="pre">Key</span></code> . For example, if you specified <code class="docutils literal notranslate"><span class="pre">tag:ServerRole</span></code> , you could specify <code class="docutils literal notranslate"><span class="pre">value:WebServer</span></code> to run a command on instances that include EC2 tags of <code class="docutils literal notranslate"><span class="pre">ServerRole,WebServer</span></code> .</p>
+<p>Depending on the type of target, the maximum number of values for a key might be lower than the global maximum of 50.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">50</span></code></li>
+</ul>
+<p>(string)</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>ScheduleExpression -&gt; (string)</p>
+<blockquote>
+<div><p>The cron or rate schedule specified for the association when the association version was created.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">256</span></code></li>
+</ul>
+</div></blockquote>
+<p>OutputLocation -&gt; (structure)</p>
+<blockquote>
+<div><p>The location in Amazon S3 specified for the association when the association version was created.</p>
+<p>S3Location -&gt; (structure)</p>
+<blockquote>
+<div><p>An S3 bucket where you want to store the results of this request.</p>
+<p>OutputS3Region -&gt; (string)</p>
+<blockquote>
+<div><p>The Amazon Web Services Region of the S3 bucket.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">3</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">20</span></code></li>
+</ul>
+</div></blockquote>
+<p>OutputS3BucketName -&gt; (string)</p>
+<blockquote>
+<div><p>The name of the S3 bucket.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">3</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">63</span></code></li>
+</ul>
+</div></blockquote>
+<p>OutputS3KeyPrefix -&gt; (string)</p>
+<blockquote>
+<div><p>The S3 bucket subfolder.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>max: <code class="docutils literal notranslate"><span class="pre">500</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>AssociationName -&gt; (string)</p>
+<blockquote>
+<div><p>The name specified for the association version when the association version was created.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^[a-zA-Z0-9_\-.]{3,128}$</span></code></li>
+</ul>
+</div></blockquote>
+<p>MaxErrors -&gt; (string)</p>
+<blockquote>
+<div><p>The number of errors that are allowed before the system stops sending requests to run the association on additional targets. You can specify either an absolute number of errors, for example 10, or a percentage of the target set, for example 10%. If you specify 3, for example, the system stops sending requests when the fourth error is received. If you specify 0, then the system stops sending requests after the first error is returned. If you run an association on 50 managed nodes and set <code class="docutils literal notranslate"><span class="pre">MaxError</span></code> to 10%, then the system stops sending the request when the sixth error is received.</p>
+<p>Executions that are already running an association when <code class="docutils literal notranslate"><span class="pre">MaxErrors</span></code> is reached are allowed to complete, but some of these executions may fail as well. If you need to ensure that there won’t be more than max-errors failed executions, set <code class="docutils literal notranslate"><span class="pre">MaxConcurrency</span></code> to 1 so that executions proceed one at a time.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">7</span></code></li>
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^([1-9][0-9]*|[0]|[1-9][0-9]%|[0-9]%|100%)$</span></code></li>
+</ul>
+</div></blockquote>
+<p>MaxConcurrency -&gt; (string)</p>
+<blockquote>
+<div><p>The maximum number of targets allowed to run the association at the same time. You can specify a number, for example 10, or a percentage of the target set, for example 10%. The default value is 100%, which means all targets run the association at the same time.</p>
+<p>If a new managed node starts and attempts to run an association while Systems Manager is running <code class="docutils literal notranslate"><span class="pre">MaxConcurrency</span></code> associations, the association is allowed to run. During the next association interval, the new managed node will process its association within the limit specified for <code class="docutils literal notranslate"><span class="pre">MaxConcurrency</span></code> .</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">7</span></code></li>
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^([1-9][0-9]*|[1-9][0-9]%|[1-9]%|100%)$</span></code></li>
+</ul>
+</div></blockquote>
+<p>ComplianceSeverity -&gt; (string)</p>
+<blockquote>
+<div><p>The severity level that is assigned to the association.</p>
+<p>Possible values:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">CRITICAL</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">HIGH</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">MEDIUM</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">LOW</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">UNSPECIFIED</span></code></li>
+</ul>
+</div></blockquote>
+<p>SyncCompliance -&gt; (string)</p>
+<blockquote>
+<div><p>The mode for generating association compliance. You can specify <code class="docutils literal notranslate"><span class="pre">AUTO</span></code> or <code class="docutils literal notranslate"><span class="pre">MANUAL</span></code> . In <code class="docutils literal notranslate"><span class="pre">AUTO</span></code> mode, the system uses the status of the association execution to determine the compliance status. If the association execution runs successfully, then the association is <code class="docutils literal notranslate"><span class="pre">COMPLIANT</span></code> . If the association execution doesn’t run successfully, the association is <code class="docutils literal notranslate"><span class="pre">NON-COMPLIANT</span></code> .</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">MANUAL</span></code> mode, you must specify the <code class="docutils literal notranslate"><span class="pre">AssociationId</span></code> as a parameter for the  PutComplianceItems API operation. In this case, compliance data isn’t managed by State Manager, a tool in Amazon Web Services Systems Manager. It is managed by your direct call to the  PutComplianceItems API operation.</p>
+<p>By default, all associations use <code class="docutils literal notranslate"><span class="pre">AUTO</span></code> mode.</p>
+<p>Possible values:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">AUTO</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">MANUAL</span></code></li>
+</ul>
+</div></blockquote>
+<p>ApplyOnlyAtCronInterval -&gt; (boolean)</p>
+<blockquote>
+<div>By default, when you create new associations, the system runs it immediately after it is created and then according to the schedule you specified. Specify this option if you don’t want an association to run immediately after you create it. This parameter isn’t supported for rate expressions.</div></blockquote>
+<p>CalendarNames -&gt; (list)</p>
+<blockquote>
+<div><p>The names or Amazon Resource Names (ARNs) of the Change Calendar type documents your associations are gated under. The associations for this version only run when that Change Calendar is open. For more information, see <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar">Amazon Web Services Systems Manager Change Calendar</a> in the <em>Amazon Web Services Systems Manager User Guide</em> .</p>
+<p>(string)</p>
+</div></blockquote>
+<p>TargetLocations -&gt; (list)</p>
+<blockquote>
+<div><p>The combination of Amazon Web Services Regions and Amazon Web Services accounts where you wanted to run the association when this association version was created.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">100</span></code></li>
+</ul>
+<p>(structure)</p>
+<blockquote>
+<div><p>The combination of Amazon Web Services Regions and Amazon Web Services accounts targeted by the current Automation execution.</p>
+<p>Accounts -&gt; (list)</p>
+<blockquote>
+<div><p>The Amazon Web Services accounts targeted by the current Automation execution.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">50</span></code></li>
+</ul>
+<p>(string)</p>
+</div></blockquote>
+<p>Regions -&gt; (list)</p>
+<blockquote>
+<div><p>The Amazon Web Services Regions targeted by the current Automation execution.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">50</span></code></li>
+</ul>
+<p>(string)</p>
+</div></blockquote>
+<p>TargetLocationMaxConcurrency -&gt; (string)</p>
+<blockquote>
+<div><p>The maximum number of Amazon Web Services Regions and Amazon Web Services accounts allowed to run the Automation concurrently. <code class="docutils literal notranslate"><span class="pre">TargetLocationMaxConcurrency</span></code> has a default value of 1.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">7</span></code></li>
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^([1-9][0-9]*|[1-9][0-9]%|[1-9]%|100%)$</span></code></li>
+</ul>
+</div></blockquote>
+<p>TargetLocationMaxErrors -&gt; (string)</p>
+<blockquote>
+<div><p>The maximum number of errors allowed before the system stops queueing additional Automation executions for the currently running Automation. <code class="docutils literal notranslate"><span class="pre">TargetLocationMaxErrors</span></code> has a default value of 0.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">7</span></code></li>
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^([1-9][0-9]*|[0]|[1-9][0-9]%|[0-9]%|100%)$</span></code></li>
+</ul>
+</div></blockquote>
+<p>ExecutionRoleName -&gt; (string)</p>
+<blockquote>
+<div><p>The Automation execution role used by the currently running Automation. If not specified, the default value is <code class="docutils literal notranslate"><span class="pre">AWS-SystemsManager-AutomationExecutionRole</span></code> .</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">64</span></code></li>
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">[\w+=,.&#64;/-]+</span></code></li>
+</ul>
+</div></blockquote>
+<p>TargetLocationAlarmConfiguration -&gt; (structure)</p>
+<blockquote>
+<div><p>The details for the CloudWatch alarm you want to apply to an automation or command.</p>
+<p>IgnorePollAlarmFailure -&gt; (boolean)</p>
+<blockquote>
+<div>When this value is <em>true</em> , your automation or command continues to run in cases where we can’t retrieve alarm status information from CloudWatch. In cases where we successfully retrieve an alarm status of OK or INSUFFICIENT_DATA, the automation or command continues to run, regardless of this value. Default is <em>false</em> .</div></blockquote>
+<p>Alarms -&gt; (list) [required]</p>
+<blockquote>
+<div><p>The name of the CloudWatch alarm specified in the configuration.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+</ul>
+<p>(structure)</p>
+<blockquote>
+<div><p>A CloudWatch alarm you apply to an automation or command.</p>
+<p>Name -&gt; (string) [required]</p>
+<blockquote>
+<div><p>The name of your CloudWatch alarm.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">255</span></code></li>
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^(?!\s*$).+</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>IncludeChildOrganizationUnits -&gt; (boolean)</p>
+<blockquote>
+<div>Indicates whether to include child organizational units (OUs) that are children of the targeted OUs. The default is <code class="docutils literal notranslate"><span class="pre">false</span></code> .</div></blockquote>
+<p>ExcludeAccounts -&gt; (list)</p>
+<blockquote>
+<div><p>Amazon Web Services accounts or organizational units to exclude as expanded targets.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">5000</span></code></li>
+</ul>
+<p>(string)</p>
+<blockquote>
+<div><p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">6</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">68</span></code></li>
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^((ou-[a-z0-9]{4,32}-[a-z0-9]{8,32})|(\d{12}))$</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p>Targets -&gt; (list)</p>
+<blockquote>
+<div><p>A list of key-value mappings to target resources. If you specify values for this data type, you must also specify a value for <code class="docutils literal notranslate"><span class="pre">TargetParameterName</span></code> .</p>
+<p>This <code class="docutils literal notranslate"><span class="pre">Targets</span></code> parameter takes precedence over the <code class="docutils literal notranslate"><span class="pre">StartAutomationExecution:Targets</span></code> parameter if both are supplied.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+</ul>
+<p>(structure)</p>
+<blockquote>
+<div><p>An array of search criteria that targets managed nodes using a key-value pair that you specify.</p>
+<div class="admonition note">
+<h3 class='admonition-title'>Note</h3>One or more targets must be specified for maintenance window Run Command-type tasks. Depending on the task, targets are optional for other maintenance window task types (Automation, Lambda, and Step Functions). For more information about running tasks that don’t specify targets, see <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html">Registering maintenance window tasks without targets</a> in the <em>Amazon Web Services Systems Manager User Guide</em> .</div>
+<p>Supported formats include the following.</p>
+<blockquote>
+<div><strong>For all Systems Manager tools:</strong></div></blockquote>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">Key=tag-key,Values=tag-value-1,tag-value-2</span></code></li>
+</ul>
+<blockquote>
+<div><strong>For Automation and Change Manager:</strong></div></blockquote>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">Key=tag:tag-key,Values=tag-value</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Key=ResourceGroup,Values=resource-group-name</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Key=ParameterValues,Values=value-1,value-2,value-3</span></code></li>
+<li>To target all instances in the Amazon Web Services Region:<ul>
+<li><code class="docutils literal notranslate"><span class="pre">Key=AWS::EC2::Instance,Values=*</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Key=InstanceIds,Values=*</span></code></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<div><strong>For Run Command and Maintenance Windows:</strong></div></blockquote>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">Key=InstanceIds,Values=instance-id-1,instance-id-2,instance-id-3</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Key=tag:tag-key,Values=tag-value-1,tag-value-2</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Key=resource-groups:Name,Values=resource-group-name</span></code></li>
+<li>Additionally, Maintenance Windows support targeting resource types:<ul>
+<li><code class="docutils literal notranslate"><span class="pre">Key=resource-groups:ResourceTypeFilters,Values=resource-type-1,resource-type-2</span></code></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<div><strong>For State Manager:</strong></div></blockquote>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">Key=InstanceIds,Values=instance-id-1,instance-id-2,instance-id-3</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Key=tag:tag-key,Values=tag-value-1,tag-value-2</span></code></li>
+<li>To target all instances in the Amazon Web Services Region:<ul>
+<li><code class="docutils literal notranslate"><span class="pre">Key=InstanceIds,Values=*</span></code></li>
+</ul>
+</li>
+</ul>
+<p>For more information about how to send commands that target managed nodes using <code class="docutils literal notranslate"><span class="pre">Key,Value</span></code> parameters, see <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-targeting">Targeting multiple managed nodes</a> in the <em>Amazon Web Services Systems Manager User Guide</em> .</p>
+<p>Key -&gt; (string)</p>
+<blockquote>
+<div><p>User-defined criteria for sending commands that target managed nodes that meet the criteria.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">163</span></code></li>
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^[\p{L}\p{Z}\p{N}_.:/=\-&#64;]*$|resource-groups:ResourceTypeFilters|resource-groups:Name</span></code></li>
+</ul>
+</div></blockquote>
+<p>Values -&gt; (list)</p>
+<blockquote>
+<div><p>User-defined criteria that maps to <code class="docutils literal notranslate"><span class="pre">Key</span></code> . For example, if you specified <code class="docutils literal notranslate"><span class="pre">tag:ServerRole</span></code> , you could specify <code class="docutils literal notranslate"><span class="pre">value:WebServer</span></code> to run a command on instances that include EC2 tags of <code class="docutils literal notranslate"><span class="pre">ServerRole,WebServer</span></code> .</p>
+<p>Depending on the type of target, the maximum number of values for a key might be lower than the global maximum of 50.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">50</span></code></li>
+</ul>
+<p>(string)</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>TargetsMaxConcurrency -&gt; (string)</p>
+<blockquote>
+<div><p>The maximum number of targets allowed to run this task in parallel. This <code class="docutils literal notranslate"><span class="pre">TargetsMaxConcurrency</span></code> takes precedence over the <code class="docutils literal notranslate"><span class="pre">StartAutomationExecution:MaxConcurrency</span></code> parameter if both are supplied.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">7</span></code></li>
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^([1-9][0-9]*|[1-9][0-9]%|[1-9]%|100%)$</span></code></li>
+</ul>
+</div></blockquote>
+<p>TargetsMaxErrors -&gt; (string)</p>
+<blockquote>
+<div><p>The maximum number of errors that are allowed before the system stops running the automation on additional targets. This <code class="docutils literal notranslate"><span class="pre">TargetsMaxErrors</span></code> parameter takes precedence over the <code class="docutils literal notranslate"><span class="pre">StartAutomationExecution:MaxErrors</span></code> parameter if both are supplied.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">7</span></code></li>
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^([1-9][0-9]*|[0]|[1-9][0-9]%|[0-9]%|100%)$</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>ScheduleOffset -&gt; (integer)</p>
+<blockquote>
+<div><p>Number of days to wait after the scheduled day to run an association.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">6</span></code></li>
+</ul>
+</div></blockquote>
+<p>Duration -&gt; (integer)</p>
+<blockquote>
+<div><p>The number of hours that an association can run on specified targets. After the resulting cutoff time passes, associations that are currently running are cancelled, and no pending executions are started on remaining targets.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">24</span></code></li>
+</ul>
+</div></blockquote>
+<p>TargetMaps -&gt; (list)</p>
+<blockquote>
+<div><p>A key-value mapping of document parameters to target resources. Both Targets and TargetMaps can’t be specified together.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">300</span></code></li>
+</ul>
+<p>(map)</p>
+<blockquote>
+<div><p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">20</span></code></li>
+</ul>
+<p>key -&gt; (string)</p>
+<blockquote>
+<div><p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">50</span></code></li>
+</ul>
+</div></blockquote>
+<p>value -&gt; (list)</p>
+<blockquote>
+<div><p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">25</span></code></li>
+</ul>
+<p>(string)</p>
+<blockquote>
+<div><p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">50</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>AssociationDispatchAssumeRole -&gt; (string)</p>
+<blockquote>
+<div><p>A role used by association to take actions on your behalf. State Manager will assume this role and call required APIs when dispatching configurations to nodes. If not specified, <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html">service-linked role for Systems Manager</a> will be used by default.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">512</span></code></li>
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>NextToken -&gt; (string)</p>
+<blockquote>
+<div>The token for the next set of items to return. Use this token to get the next set of results.</div></blockquote>
+</div>
+</div>
+
+
+            </div>
+          <div class="clearfix"></div>
+        </div>
+        
+    <div class="footer-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="label-parameter-version.html" title="previous chapter (use the left arrow)">&larr; label-parameter-version</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="list-associations.html" title="next chapter (use the right arrow)">list-associations &rarr;</a></li>
+      </ul>
+    </div>
+  
+
+    </div>
+  <script type="text/javascript" src="https://media.amazonwebservices.com/js/sitecatalyst/s_code.min.js"></script>
+  <script type="text/javascript" src="../../_static/analytics.js"></script>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="list-associations.html" title="list-associations"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="label-parameter-version.html" title="label-parameter-version"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">AWS CLI 2.39.3 Command Reference</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >aws</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >ssm</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">list-association-versions</a></li> 
+      </ul>
+    </div>
+  <div class="footer container">
+    &copy; Copyright 2026, Amazon Web Services. Created using <a href="https://www.sphinx-doc.org/">Sphinx</a>.
+  </div>
+
+
+
+  
+    
+  
+  </body>
+</html>

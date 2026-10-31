@@ -1,0 +1,1193 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>samba-tool</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="samba-tool.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>samba-tool &#8212; Main Samba administration tool.
+	</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="literal">samba-tool</code> [-h] [-W myworkgroup] [-U user] [-d debuglevel] [-V]</p></div></div><div class="refsect1"><a name="id1337"></a><h2>DESCRIPTION</h2><p>This tool is part of the <a class="citerefentry" href="samba.7.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(7)</span></a> suite.</p></div><div class="refsect1"><a name="id1338"></a><h2>OPTIONS</h2><p>
+	  Samba-tool consists of many sub-commands, each of which have
+	  their own set of options. The options listed in this section
+	  are common across several sub-commands.
+	</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-h|--help</span></dt><dd><p>
+	Show a help message and exit.
+	</p></dd><dt><span class="term">-r|--realm=REALM</span></dt><dd><p>
+			Set the realm for the domain.
+		</p><p>
+			Note that specifying this parameter here will override
+			the <a class="link" href="smb.conf.5.html#REALM" target="_top">realm</a> parameter in the
+			<code class="filename">${prefix}/etc/smb.conf</code> file.
+		</p></dd><dt><span class="term">--simple-bind-dn=DN</span></dt><dd><p>
+			DN to use for a simple bind.
+		</p></dd><dt><span class="term">--password</span></dt><dd><p>
+			Specify the password on the commandline.
+		</p><p> Be cautious about including passwords in
+			scripts or passing user-supplied values onto
+			the command line. For security it is better to
+			let the Samba client tool ask for the password
+			if needed, or obtain the password once with
+			<code class="literal">kinit</code>.
+		</p><p> If --password is not specified,
+		       the tool will check the <code class="envar">PASSWD</code>
+		       environment variable, followed by <code class="envar">PASSWD_FD</code>
+		       which is expected to contain an open
+		       file descriptor (FD) number.
+		</p><p>
+		       Finally it will check <code class="envar">PASSWD_FILE</code> (containing
+		       a file path to be opened). The file should only
+		       contain the password. Make certain that the
+		       permissions on the file restrict
+		       access from unwanted users!
+		</p><p>
+			While Samba will attempt to scrub the password
+			from the process title (as seen in ps), this
+			is after startup and so is subject to a race.
+		</p></dd><dt><span class="term">-U|--user=[DOMAIN\]USERNAME[%PASSWORD]</span></dt><dd><p>
+			Sets the SMB username or username and password.
+		</p><p>
+			If %PASSWORD is not specified, the user will be
+			prompted. The client will first check the
+			<code class="envar">USER</code> environment variable
+			(which is also permitted to also contain the
+			password separated by a %), then the
+			<code class="envar">LOGNAME</code> variable (which is not
+			permitted to contain a password) and if either exists,
+			the value is used. If these environmental
+			variables are not found, the username
+			found in a Kerberos Credentials cache may be used.
+		</p><p>
+			A third option is to use a credentials file which
+			contains the plaintext of the username and password.
+			This option is mainly provided for scripts where the
+			admin does not wish to pass the credentials on the
+			command line or via environment variables. If this
+			method is used, make certain that the permissions on
+			the file restrict access from unwanted users.  See the
+			<em class="parameter"><code>-A</code></em> for more details.
+		</p><p>
+			Be cautious about including passwords in scripts
+			or passing user-supplied values onto the command line. For
+			security it is better to let the Samba client tool ask for the
+			password if needed, or obtain the password once with <code class="literal">kinit</code>.
+		</p><p>
+			While Samba will attempt to scrub the password
+			from the process title (as seen in ps), this
+			is after startup and so is subject to a race.
+		</p></dd><dt><span class="term">-W|--workgroup=WORKGROUP</span></dt><dd><p>
+			Set the SMB domain of the username.   This overrides
+			the default domain which is the domain defined in
+			smb.conf.  If the domain specified is the same as the
+			servers NetBIOS name, it causes the client to log on
+			using the servers local SAM (as opposed to the Domain
+			SAM).
+		</p><p>
+			Note that specifying this parameter here will override
+			the <a class="link" href="smb.conf.5.html#WORKGROUP" target="_top">workgroup</a> parameter in the
+			<code class="filename">${prefix}/etc/smb.conf</code> file.
+		</p></dd><dt><span class="term">-N|--no-pass</span></dt><dd><p>
+			If specified, this parameter suppresses the normal
+			password prompt from the client to the user. This is
+			useful when accessing a service that does not require a
+			password.
+		</p><p>
+			Unless a password is specified on the command line or
+			this parameter is specified, the client will request a
+			password.
+		</p><p>
+			If a password is specified on the command line and this
+			option is also defined the password on the command line
+			will be silently ignored and no password will be
+			used.
+		</p></dd><dt><span class="term">--use-kerberos=desired|required|off</span></dt><dd><p>
+			This parameter determines whether Samba client tools
+			will try to authenticate using Kerberos. For Kerberos
+			authentication you should use DNS names instead of IP
+			addresses when connecting to a service.
+
+			By default Samba client tools will try to use the
+			default Kerberos credential cache (ccache).
+			In case the ccache does not exist or -U|--user option
+			was specified, clients will ask to enter a password and
+			will obtain a Kerberos ticket (kinit) for you.
+
+			If you want to use an alternative Kerberos credentical
+			cache, use the --use-krb5-ccache option.
+		</p><p>
+			Note that specifying this parameter here will override
+			the <a class="link" href="smb.conf.5.html#CLIENTUSEKERBEROS" target="_top">client use kerberos</a>
+			parameter in the <code class="filename">${prefix}/etc/smb.conf</code> file.
+		</p></dd><dt><span class="term">--use-krb5-ccache=CCACHE</span></dt><dd><p>
+			Specifies the credential cache location for Kerberos
+			authentication.
+		</p><p>
+			This will enforce --use-kerberos=required.
+		</p></dd><dt><span class="term">-A|--authentication-file=filename</span></dt><dd><p>
+			This option allows you to specify a file from which to
+			read the username and password used in the connection.
+			The format of the file is:
+		</p><p>
+			</p><pre class="programlisting">
+				username = &lt;value&gt;
+				password = &lt;value&gt;
+				domain   = &lt;value&gt;
+			</pre><p>
+		</p><p>
+			Make certain that the permissions on the file restrict
+			access from unwanted users!
+		</p></dd><dt><span class="term">-H URL, --URL=URL</span></dt><dd><p>LDB URL for database or target server.</p><p>The URL can either be a plain file path, or use one
+	    of the schemes listed here. If a plain path is used, it is
+	    treated as if 'tdb://' was used.
+	    </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">tdb://PATH</span></dt><dd><p>
+		    PATH is the location of a TDB database.
+		  </p></dd><dt><span class="term">mdb://PATH</span></dt><dd><p>
+		    PATH is the location of an LMDB database.
+		  </p></dd><dt><span class="term">ldb://PATH</span></dt><dd><p>
+		    PATH is the location of an LDB database, in either
+		    LMDB or TDB format. The formats will be tried one
+		    after another until one succeeds or all fail. It
+		    is safe to use this if you don't know the format
+		    of the file.
+		  </p></dd><dt><span class="term">ldap://HOSTNAME, ldaps://HOSTNAME</span></dt><dd><p>
+		    The LDB backend is the named ldap server. ldaps:// wraps the connection in TLS.
+		  </p></dd><dt><span class="term">ldapi://SOCKET</span></dt><dd><p>
+		    The backend server is a local ldap server using a unix domain socket.
+		  </p></dd></dl></div><p>
+	    </p></dd><dt><span class="term">--color=always|never|auto</span></dt><dd><p>use colour if available (default: auto)</p></dd><dt><span class="term">--ipaddress=IPADDRESS</span></dt><dd><p>
+	IP address of the server
+	</p></dd><dt><span class="term">-s FILE, --configfile=FILE</span></dt><dd><p>Use this smb.conf configuration file.</p></dd><dt><span class="term">--color=always|never|auto</span></dt><dd><p>
+	    Indicate whether samba-tool should use ANSI colour codes
+	    in its output. If 'auto' (the default), samba-tool will
+	    use colour when its output is directed toward a terminal,
+	    unless the NO_COLOR environment variable is set and
+	    non-empty.
+	  </p><p>
+            The values 'yes' and 'force' are accepted as synonyms for
+            'always'; 'no' and 'none' for 'never'; and 'tty' and
+            'if-tty' for 'auto'.
+          </p><p>
+	    Note that asking for colour doesn't mean samba-tool will
+	    necessarily be very colourful. Many commands are very
+	    monochrome, particularly when successful.
+	</p></dd><dt><span class="term">-V, --version</span></dt><dd><p>Display the version number and exit.</p></dd><dt><span class="term">-d|--debuglevel=level</span></dt><dd><p>
+			<em class="replaceable"><code>level</code></em> is an integer from 0
+			to 10. The default value if this parameter is not
+			specified is 1 for client applications.
+		</p><p>
+			The higher this value, the more detail will be logged
+			to the log files about the activities of the server. At
+			level 0, only critical errors and serious warnings will
+			be logged. Level 1 is a reasonable level for day-to-day
+			running - it generates a small amount of information
+			about operations carried out.
+		</p><p>
+			Levels above 1 will generate considerable amounts of
+			log data, and should only be used when investigating a
+			problem. Levels above 3 are designed for use only by
+			developers and generate HUGE amounts of log data, most
+			of which is extremely cryptic.
+			</p><p>
+			Note that specifying this parameter here will override
+			the <a class="link" href="smb.conf.5.html#LOGLEVEL" target="_top">log level</a> parameter in the
+			<code class="filename">${prefix}/etc/smb.conf</code> file.
+		</p></dd><dt><span class="term">--debug-stdout</span></dt><dd><p>
+			This will redirect debug output to STDOUT. By default
+			all clients are logging to STDERR.
+		</p></dd></dl></div></div><div class="refsect1"><a name="id1339"></a><h2>COMMANDS</h2><div class="refsect2"><a name="id1340"></a><h3>computer</h3><p>Manage computer accounts.</p></div><div class="refsect3"><a name="id1341"></a><h4>computer add <em class="replaceable"><code>computername</code></em> [options]</h4><p>Add a new computer to the Active Directory Domain.</p><p>The new computer name specified on the command is the
+	sAMAccountName, with or without the trailing dollar sign.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--computerou=COMPUTEROU</span></dt><dd><p>
+	DN of alternative location (with or without domainDN counterpart) to
+	default CN=Computers in which new computer object will be created.
+	E.g. 'OU=OUname'.
+	</p></dd><dt><span class="term">--description=DESCRIPTION</span></dt><dd><p>
+	The new computer's description.
+	</p></dd><dt><span class="term">--ip-address=IP_ADDRESS_LIST</span></dt><dd><p>
+	IPv4 address for the computer's A record, or IPv6 address for AAAA record,
+	can be provided multiple times.
+	</p></dd><dt><span class="term">--service-principal-name=SERVICE_PRINCIPAL_NAME_LIST</span></dt><dd><p>
+	Computer's Service Principal Name, can be provided multiple times.
+	</p></dd><dt><span class="term">--prepare-oldjoin</span></dt><dd><p>
+	Prepare enabled machine account for oldjoin mechanism.
+	</p></dd></dl></div></div><div class="refsect3"><a name="id1342"></a><h4>computer create <em class="replaceable"><code>computername</code></em> [options]</h4><p>Add a new computer. This is a synonym for the
+	<code class="literal">samba-tool computer add</code> command and is available
+	for compatibility reasons only. Please use
+	<code class="literal">samba-tool computer add</code> instead.</p></div><div class="refsect3"><a name="id1343"></a><h4>computer delete <em class="replaceable"><code>computername</code></em> [options]</h4><p>Delete an existing computer account.</p><p>The computer name specified on the command is the
+	sAMAccountName, with or without the trailing dollar sign.</p></div><div class="refsect3"><a name="id1344"></a><h4>computer edit <em class="replaceable"><code>computername</code></em></h4><p>Edit a computer AD object.</p><p>The computer name specified on the command is the
+	sAMAccountName, with or without the trailing dollar sign.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--editor=EDITOR</span></dt><dd><p>
+	Specifies the editor to use instead of the system default, or 'vi' if no
+	system default is set.
+	</p></dd></dl></div></div><div class="refsect3"><a name="id1345"></a><h4>computer list</h4><p>List all computers.</p></div><div class="refsect3"><a name="id1346"></a><h4>computer move <em class="replaceable"><code>computername</code></em> <em class="replaceable"><code>new_parent_dn</code></em> [options]</h4><p>This command moves a computer account into the specified
+	organizational unit or container.</p><p>The computername specified on the command is the
+	sAMAccountName, with or without the trailing dollar sign.</p><p>The name of the organizational unit or container can be
+	specified as a full DN or without the domainDN component.</p></div><div class="refsect3"><a name="id1347"></a><h4>computer show <em class="replaceable"><code>computername</code></em> [options]</h4><p>Display a computer AD object.</p><p>The computer name specified on the command is the
+	sAMAccountName, with or without the trailing dollar sign.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--attributes=USER_ATTRS</span></dt><dd><p>
+	Comma separated list of attributes, which will be printed.
+	</p></dd></dl></div></div><div class="refsect2"><a name="id1348"></a><h3>computer keytrust</h3><p>Manage Key Credential Links for a computer.</p><p>This can populate, describe or delete  msDS-KeyCredentialLink attributes.</p></div><div class="refsect3"><a name="id1349"></a><h4>computer keytrust add <em class="replaceable"><code>computername</code></em>  <em class="replaceable"><code>public-key-or-certificate</code></em>[options]</h4><p>Add a key-credential-link, which is a linked attribute that holds a public key in a binary field.
+</p><p>
+  The second argument is a filename that should refer to a 2048 bit RSA key (or a certificate containing that key) in PEM or DER format. By default the encoding format will be detected automatically, but you can attempt to override this with <code class="constant">--encoding</code> option. Other types of public key are not supported, though the <code class="constant">--force</code> option can be used to add a non-2048 bit key.
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--link-target=DN</span></dt><dd><p>link to this DN (default: the computer's DN)</p></dd><dt><span class="term">--encoding=ENCODING</span></dt><dd><p>Key format, either <code class="constant">pem</code>,  <code class="constant">der</code>, or  <code class="constant">auto</code>. The default is <code class="constant">auto</code>, which is likely to detect the correct format in all circumstances.</p></dd><dt><span class="term">--force</span></dt><dd><p>proceed with operations that seems ill-fated</p></dd></dl></div></div><div class="refsect3"><a name="id1350"></a><h4>computer keytrust delete <em class="replaceable"><code>computername</code></em> [options]</h4><p>Delete a key-credential-link.
+</p><p>The link to be deleted can be selected in a number of ways. <code class="constant">--all</code> will delete all key credential links for the computer (often there will only be one). The  <code class="constant">--link-target</code> option selects a key credential link based on the DN targeted by the link. The <code class="constant">--fingerprint</code> option selects a link to delete based on the key fingerprint. This is the SHA256 of the DER-encoded  key material, expressed as hex-pairs separated by colons. See <code class="constant">computer keytrust view</code> to get a list of links and their fingerprints.
+</p><p>If more than one of <code class="constant">--link-target</code>, <code class="constant">--fingerprint</code>, and <code class="constant">--all</code> are used, links matched by any of them will be deleted.
+</p><p>The <code class="constant">--dry-run</code> option will prevent links from being deleted, and instead indicate what would happen if it was omitted.
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--link-target=DN</span></dt><dd><p>Delete this key credential link (a DN)</p></dd><dt><span class="term">--fingerprint=HH:HH:..</span></dt><dd><p>Delete the key credential link with this key fingerprint</p></dd><dt><span class="term">--all</span></dt><dd><p>Delete all key credential links</p></dd><dt><span class="term">-n, --dry-run</span></dt><dd><p>Do nothing but print what would happen</p></dd></dl></div></div><div class="refsect3"><a name="id1351"></a><h4>computer keytrust view <em class="replaceable"><code>computername</code></em> [options]</h4><p>View a computer's key credential links. This can be used to find a link's fingerprint and target DN for <span style="color: red">&lt;title&gt;computer keytrust delete&lt;/title&gt;</span>.
+
+The <code class="constant">--verbose</code> includes more, probably useless, information.
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-h, --help</span></dt><dd><p>show this help message and exit</p></dd><dt><span class="term">-v, --verbose</span></dt><dd><p>Be verbose</p></dd></dl></div></div><div class="refsect3"><a name="id1352"></a><h4>computer generate-csr <em class="replaceable"><code>computername</code></em>
+	<em class="replaceable"><code>subject_name</code></em>
+	<em class="replaceable"><code>private_key_filename</code></em>
+	<em class="replaceable"><code>output_filename</code></em> [options]</h4><p>Generate a PEM‐encoded Certificate Signing Request for a computer.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--private-key-encoding</span></dt><dd><p>Specify which encoding the private key uses. Default is 'auto'.</p></dd><dt><span class="term">--private-key-pass</span></dt><dd><p>Provide a password to decrypt the private key.</p></dd></dl></div></div><div class="refsect2"><a name="id1353"></a><h3>contact</h3><p>Manage contacts.</p></div><div class="refsect3"><a name="id1354"></a><h4>contact add [<em class="replaceable"><code>contactname</code></em>] [options]</h4><p>Add a new contact to the Active Directory Domain.</p><p>The name of the new contact can be specified by the first
+	argument 'contactname' or the --given-name, --initial and --surname
+	arguments. If no 'contactname' is given, contact's name will be made
+	up of the given arguments by combining the given-name, initials and
+	surname. Each argument is optional. A dot ('.') will be appended to
+	the initials automatically.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--ou=OU</span></dt><dd><p>
+	DN of alternative location (with or without domainDN counterpart) in
+	which the new contact will be created.
+	E.g. 'OU=OUname'.
+	Default is the domain base.
+	</p></dd><dt><span class="term">--description=DESCRIPTION</span></dt><dd><p>
+	The new contact's description.
+	</p></dd><dt><span class="term">--surname=SURNAME</span></dt><dd><p>
+	Contact's surname.
+	</p></dd><dt><span class="term">--given-name=GIVEN_NAME</span></dt><dd><p>
+	Contact's given name.
+	</p></dd><dt><span class="term">--initials=INITIALS</span></dt><dd><p>
+	Contact's initials.
+	</p></dd><dt><span class="term">--display-name=DISPLAY_NAME</span></dt><dd><p>
+	Contact's display name.
+	</p></dd><dt><span class="term">--job-title=JOB_TITLE</span></dt><dd><p>
+	Contact's job title.
+	</p></dd><dt><span class="term">--department=DEPARTMENT</span></dt><dd><p>
+	Contact's department.
+	</p></dd><dt><span class="term">--company=COMPANY</span></dt><dd><p>
+	Contact's company.
+	</p></dd><dt><span class="term">--mail-address=MAIL_ADDRESS</span></dt><dd><p>
+	Contact's email address.
+	</p></dd><dt><span class="term">--internet-address=INTERNET_ADDRESS</span></dt><dd><p>
+	Contact's home page.
+	</p></dd><dt><span class="term">--telephone-number=TELEPHONE_NUMBER</span></dt><dd><p>
+	Contact's phone number.
+	</p></dd><dt><span class="term">--mobile-number=MOBILE_NUMBER</span></dt><dd><p>
+	Contact's mobile phone number.
+	</p></dd><dt><span class="term">--physical-delivery-office=PHYSICAL_DELIVERY_OFFICE</span></dt><dd><p>
+	Contact's office location.
+	</p></dd></dl></div></div><div class="refsect3"><a name="id1355"></a><h4>contact create [<em class="replaceable"><code>contactname</code></em>] [options]</h4><p>Add a new contact. This is a synonym for the
+	<code class="literal">samba-tool contact add</code> command and is available
+	for compatibility reasons only. Please use
+	<code class="literal">samba-tool contact add</code> instead.</p></div><div class="refsect3"><a name="id1356"></a><h4>contact delete <em class="replaceable"><code>contactname</code></em> [options]</h4><p>Delete an existing contact.</p><p>The contactname specified on the command is the common name or the
+        distinguished name of the contact object. The distinguished name of the
+        contact can be specified with or without the domainDN component.</p></div><div class="refsect3"><a name="id1357"></a><h4>contact edit <em class="replaceable"><code>contactname</code></em></h4><p>Modify a contact AD object.</p><p>The contactname specified on the command is the common name or the
+        distinguished name of the contact object. The distinguished name of the
+        contact can be specified with or without the domainDN component.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--editor=EDITOR</span></dt><dd><p>
+	Specifies the editor to use instead of the system default, or 'vi' if no
+	system default is set.
+	</p></dd></dl></div></div><div class="refsect3"><a name="id1358"></a><h4>contact list [options]</h4><p>List all contacts.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--full-dn</span></dt><dd><p>
+	Display contact's full DN instead of the name.
+	</p></dd></dl></div></div><div class="refsect3"><a name="id1359"></a><h4>contact move <em class="replaceable"><code>contactname</code></em> <em class="replaceable"><code>new_parent_dn</code></em> [options]</h4><p>This command moves a contact into the specified organizational
+	unit or container.</p><p>The contactname specified on the command is the common name or the
+        distinguished name of the contact object. The distinguished name of the
+        contact can be specified with or without the domainDN component.</p></div><div class="refsect3"><a name="id1360"></a><h4>contact show <em class="replaceable"><code>contactname</code></em> [options]</h4><p>Display a contact AD object.</p><p>The contactname specified on the command is the common name or the
+        distinguished name of the contact object. The distinguished name of the
+        contact can be specified with or without the domainDN component.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--attributes=CONTACT_ATTRS</span></dt><dd><p>
+	Comma separated list of attributes, which will be printed.
+	</p></dd></dl></div></div><div class="refsect3"><a name="id1361"></a><h4>contact rename <em class="replaceable"><code>contactname</code></em> [options]</h4><p>Rename a contact and related attributes.</p><p>This command allows to set the contact's name related attributes. The contact's
+	CN will be renamed automatically.
+	The contact's new CN will be made up by combining the given-name, initials
+	and surname. A dot ('.') will be appended to the initials automatically,
+	if required.
+	Use the --force-new-cn option to specify the new CN manually and --reset-cn
+	to reset this change.</p><p>Use an empty attribute value to remove the specified attribute.</p><p>The contact name specified on the command is the CN.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--surname=SURNAME</span></dt><dd><p>
+	New surname.
+	</p></dd><dt><span class="term">--given-name=GIVEN_NAME</span></dt><dd><p>
+	New given name.
+	</p></dd><dt><span class="term">--initials=INITIALS</span></dt><dd><p>
+	New initials.
+	</p></dd><dt><span class="term">--force-new-cn=NEW_CN</span></dt><dd><p>
+	Specify a new CN (RDN) instead of using a combination
+	of the given name, initials and surname.
+	</p></dd><dt><span class="term">--reset-cn</span></dt><dd><p>
+	Set the CN to the default combination of given name,
+	initials and surname.
+	</p></dd><dt><span class="term">--display-name=DISPLAY_NAME</span></dt><dd><p>
+	New display name.
+	</p></dd><dt><span class="term">--mail-address=MAIL_ADDRESS</span></dt><dd><p>
+	New email address.
+	</p></dd></dl></div></div><div class="refsect2"><a name="id1362"></a><h3>dbcheck</h3><p>Check the local AD database for errors.</p></div><div class="refsect2"><a name="id1363"></a><h3>delegation</h3><p>Manage Delegations.</p></div><div class="refsect3"><a name="id1364"></a><h4>delegation add-principal <em class="replaceable"><code>accountname</code></em> <em class="replaceable"><code>principal</code></em> [options]</h4><p>Add a principal to msDS-AllowedToActOnBehalfOfOtherIdentity that may delegate to an account.
+	</p></div><div class="refsect3"><a name="id1365"></a><h4>delegation del-principal <em class="replaceable"><code>accountname</code></em> <em class="replaceable"><code>principal</code></em> [options]</h4><p>Delete a principal from msDS-AllowedToActOnBehalfOfOtherIdentity so that it may no longer delegate to an account.
+	</p></div><div class="refsect3"><a name="id1366"></a><h4>delegation add-service <em class="replaceable"><code>accountname</code></em> <em class="replaceable"><code>principal</code></em> [options]</h4><p>Add a service principal as msDS-AllowedToDelegateTo.</p></div><div class="refsect3"><a name="id1367"></a><h4>delegation del-service <em class="replaceable"><code>accountname</code></em> <em class="replaceable"><code>principal</code></em> [options]</h4><p>Delete a service principal as msDS-AllowedToDelegateTo.</p></div><div class="refsect3"><a name="id1368"></a><h4>delegation for-any-protocol <em class="replaceable"><code>accountname</code></em> [(on|off)] [options]</h4><p>Set/unset UF_TRUSTED_TO_AUTHENTICATE_FOR_DELEGATION (S4U2Proxy)
+	for an account.</p></div><div class="refsect3"><a name="id1369"></a><h4>delegation for-any-service <em class="replaceable"><code>accountname</code></em> [(on|off)] [options]</h4><p>Set/unset UF_TRUSTED_FOR_DELEGATION for an account.</p></div><div class="refsect3"><a name="id1370"></a><h4>delegation show <em class="replaceable"><code>accountname</code></em> [options]	</h4><p>Show the delegation setting of an account.</p></div><div class="refsect2"><a name="id1371"></a><h3>dns</h3><p>Manage Domain Name Service (DNS).</p></div><div class="refsect3"><a name="id1372"></a><h4>dns add <em class="replaceable"><code>server</code></em> <em class="replaceable"><code>zone</code></em> <em class="replaceable"><code>name</code></em> <em class="replaceable"><code>A|AAAA|PTR|CNAME|NS|MX|SRV|TXT</code></em> <em class="replaceable"><code>data</code></em></h4><p>Add a DNS record.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--allow-existing</span></dt><dd><p> Do not treat an existing record of this name
+	and type as an error. This has no functional change (the new
+	DNS record is not added) but the message and samba-tool
+	return code will not indicate error. </p></dd></dl></div></div><div class="refsect3"><a name="id1373"></a><h4>dns cleanup <em class="replaceable"><code>server</code></em> <em class="replaceable"><code>name</code></em> </h4><p>Clean up DNS records for a host, so that DNS queries no
+	longer return results. Usually this works by marking the
+	records as deleted in the database.</p><p>
+	  Example: <code class="constant">samba-tool dns cleanup dc1 computer.samdom.test.site</code>
+	</p></div><div class="refsect3"><a name="id1374"></a><h4>dns delete <em class="replaceable"><code>server</code></em> <em class="replaceable"><code>zone</code></em> <em class="replaceable"><code>name</code></em> <em class="replaceable"><code>A|AAAA|PTR|CNAME|NS|MX|SRV|TXT</code></em> <em class="replaceable"><code>data</code></em></h4><p>Delete a DNS record.</p></div><div class="refsect3"><a name="id1375"></a><h4>dns query <em class="replaceable"><code>server</code></em> <em class="replaceable"><code>zone</code></em> <em class="replaceable"><code>name</code></em> <em class="replaceable"><code>A|AAAA|PTR|CNAME|NS|MX|SRV|TXT|ALL</code></em> [options] <em class="replaceable"><code>data</code></em></h4><p>Query a name.</p></div><div class="refsect3"><a name="id1376"></a><h4>dns roothints <em class="replaceable"><code>server</code></em> [<em class="replaceable"><code>name</code></em>] [options]</h4><p>Query root hints.</p></div><div class="refsect3"><a name="id1377"></a><h4>dns serverinfo <em class="replaceable"><code>server</code></em> [options]</h4><p>Query server information.</p></div><div class="refsect3"><a name="id1378"></a><h4>dns update <em class="replaceable"><code>server</code></em> <em class="replaceable"><code>zone</code></em> <em class="replaceable"><code>name</code></em> <em class="replaceable"><code>A|AAAA|PTR|CNAME|NS|MX|SRV|TXT</code></em> <em class="replaceable"><code>olddata</code></em> <em class="replaceable"><code>newdata</code></em></h4><p>Update a DNS record.</p></div><div class="refsect3"><a name="id1379"></a><h4>dns zonecreate <em class="replaceable"><code>server</code></em> <em class="replaceable"><code>zone</code></em> [options]</h4><p>Create a zone.</p></div><div class="refsect3"><a name="id1380"></a><h4>dns zonedelete <em class="replaceable"><code>server</code></em> <em class="replaceable"><code>zone</code></em> [options]</h4><p>Delete a zone.</p></div><div class="refsect3"><a name="id1381"></a><h4>dns zoneinfo <em class="replaceable"><code>server</code></em> <em class="replaceable"><code>zone</code></em> [options]</h4><p>Query zone information.</p></div><div class="refsect3"><a name="id1382"></a><h4>dns zonelist <em class="replaceable"><code>server</code></em> [options]</h4><p>List zones.</p></div><div class="refsect3"><a name="id1383"></a><h4>dns zoneoptions <em class="replaceable"><code>server</code></em> <em class="replaceable"><code>zone</code></em> [options]</h4><p>Manipulate aging options. This is useful in zones using dynamic DNS.</p><p>There are options to change records from static to
+	dynamic based on regular expressions or age, which is useful
+	in some cases where the values got mixed up in old versions of
+	Samba.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-n, --dry-run</span></dt><dd><p> Do not actually change
+			anything, but show what would happen.</p></dd><dt><span class="term">--client-version=w2k|dotnet|longhorn</span></dt><dd><p> Windows client protocol
+			version. The default is
+			<code class="constant">longhorn</code>, which is
+			probably what you want.</p></dd><dt><span class="term">--mark-old-records-static=YYYY-MM-DD</span></dt><dd><p> Mark records older than the
+			specified date as static.</p></dd><dt><span class="term">--mark-records-static-regex=REGEXP</span></dt><dd><p> Mark records that match the
+			given perl-compatible regular expression as
+			static.</p></dd><dt><span class="term">--mark-records-dynamic-regex=REGEXP</span></dt><dd><p> Mark records that match the
+			given perl-compatible regular expression as
+			dynamic.</p></dd><dt><span class="term">--aging=0|1</span></dt><dd><p>--aging=1 to enable aging for this zone.</p><p>--aging=0 to disable aging for this zone.</p></dd><dt><span class="term">--norefreshinterval=HOURS</span></dt><dd><p>avoid further refreshes for
+			this long after a dynamic update. Set to zero
+			to use the default.</p></dd><dt><span class="term">--refreshinterval=HOURS</span></dt><dd><p>Dynamic refresh interval in hours (0: use default)</p></dd><dt><span class="term"></span></dt><dd><p></p></dd></dl></div></div><div class="refsect2"><a name="id1384"></a><h3>domain</h3><p>Manage Domain.</p></div><div class="refsect3"><a name="id1385"></a><h4>domain backup</h4><p>Create or restore a backup of the domain.</p></div><div class="refsect3"><a name="id1386"></a><h4>domain backup offline</h4><p>Backup (with proper locking) local domain directories into a tar file.</p></div><div class="refsect3"><a name="id1387"></a><h4>domain backup online</h4><p>Copy a running DC's current DB into a backup tar file.</p></div><div class="refsect3"><a name="id1388"></a><h4>domain backup rename</h4><p>Copy a running DC's DB to backup file, renaming the domain in the process.</p></div><div class="refsect3"><a name="id1389"></a><h4>domain backup restore</h4><p>Restore the domain's DB from a backup-file.</p></div><div class="refsect2"><a name="id1390"></a><h3>domain auth policy</h3><p>Manage authentication policies.</p></div><div class="refsect3"><a name="id1391"></a><h4>domain auth policy list</h4><p>List authentication policies on the domain.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--json</span></dt><dd><p>
+				View authentication policies as JSON instead of a list.
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1392"></a><h4>domain auth policy view</h4><p>View an authentication policy on the domain.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Name of the authentication policy to view (required).
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1393"></a><h4>domain auth policy create</h4><p>Create authentication policies on the domain.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Name of the authentication policy (required).
+			</p></dd><dt><span class="term">--description</span></dt><dd><p>
+				Optional description for the authentication policy.
+			</p></dd><dt><span class="term">--protect</span></dt><dd><p>
+					Protect authentication policy from accidental deletion.
+				</p><p>
+					Cannot be used together with --unprotect.
+				</p></dd><dt><span class="term">--unprotect</span></dt><dd><p>
+					Unprotect authentication policy from accidental deletion.
+				</p><p>
+					Cannot be used together with --protect.
+				</p></dd><dt><span class="term">--audit</span></dt><dd><p>
+					Only audit authentication policy.
+				</p><p>
+					Cannot be used together with --enforce.
+				</p></dd><dt><span class="term">--enforce</span></dt><dd><p>
+					Enforce authentication policy.
+				</p><p>
+					Cannot be used together with --audit.
+				</p></dd><dt><span class="term">--strong-ntlm-policy</span></dt><dd><p>
+					Strong NTLM Policy (Disabled, Optional, Required).
+				</p></dd><dt><span class="term">--user-tgt-lifetime-mins</span></dt><dd><p>
+					Ticket-Granting-Ticket lifetime for user accounts.
+				</p></dd><dt><span class="term">--user-allow-ntlm-auth</span></dt><dd><p>
+					Allow <code class="constant">NTLM</code> and <code class="constant">
+					Interactive NETLOGON SamLogon</code>
+					authentication despite the
+					fact that
+					<code class="constant">allowed-to-authenticate-from</code>
+					is in use, which would
+					otherwise restrict the user to selected devices.
+				</p></dd><dt><span class="term">--user-allowed-to-authenticate-from</span></dt><dd><p>
+					Conditions a device must meet
+					for users covered by this
+					policy to be allowed to
+					authenticate.  While this is a
+					restriction on the device,
+					any conditional ACE rules are
+					expressed as if the device was
+					a user.
+				</p><p>
+					Must be a valid SDDL string
+					without reference to Device
+					keywords.
+				</p><p>
+					Example: <code class="constant">O:SYG:SYD:(XA;OICI;CR;;;WD;(Member_of {SID(AU)}))</code>
+				</p></dd><dt><span class="term">--user-allowed-to-authenticate-to=SDDL</span></dt><dd><p>
+					This policy, applying to a
+					user account that is offering
+					a service, eg a web server
+					with a user account, restricts
+					which accounts may access it.
+				</p><p>
+					Must be a valid SDDL string.
+					The SDDL can reference both
+					bare (user) and Device conditions.
+				</p><p>
+					SDDL Example: <code class="constant">O:SYG:SYD:(XA;OICI;CR;;;WD;(Member_of {SID(AO)}))</code>
+				</p></dd><dt><span class="term">--service-tgt-lifetime-mins</span></dt><dd><p>
+					Ticket-Granting-Ticket lifetime for service accounts.
+				</p></dd><dt><span class="term">--service-allow-ntlm-auth</span></dt><dd><p>
+					Allow NTLM network authentication when service
+					is restricted to selected devices.
+				</p></dd><dt><span class="term">--service-allowed-to-authenticate-from</span></dt><dd><p>
+					Conditions a device must meet
+					for service accounts covered
+					by this policy to be allowed
+					to authenticate.  While this
+					is a restriction on the
+					device, any conditional ACE
+					rules are expressed as if the
+					device was a user.
+				</p><p>
+					Must be a valid SDDL string
+					without reference to Device
+					keywords.
+				</p><p>
+					SDDL Example: <code class="constant">O:SYG:SYD:(XA;OICI;CR;;;WD;(Member_of {SID(AU)}))</code>
+				</p></dd><dt><span class="term">--service-allowed-to-authenticate-to=SDDL</span></dt><dd><p>
+					This policy, applying to a
+					service account (eg a Managed
+					Service Account, Group Managed
+					Service Account), restricts
+					which accounts may access it.
+				</p><p>
+					Must be a valid SDDL string.
+					The SDDL can reference both
+					bare (user) and Device conditions.
+				</p><p>
+					SDDL Example: <code class="constant">O:SYG:SYD:(XA;OICI;CR;;;WD;(Member_of {SID(AO)}))</code>
+				</p></dd><dt><span class="term">--computer-tgt-lifetime-mins</span></dt><dd><p>
+					Ticket-Granting-Ticket lifetime for computer accounts.
+				</p></dd><dt><span class="term">--computer-allowed-to-authenticate-to=SDDL</span></dt><dd><p>
+					This policy, applying to a
+					computer account (eg a server
+					or workstation), restricts
+					which accounts may access it.
+				</p><p>
+					Must be a valid SDDL string.
+					The SDDL can reference both
+					bare (user) and Device conditions.
+				</p><p>
+					SDDL Example: <code class="constant">O:SYG:SYD:(XA;OICI;CR;;;WD;(Member_of {SID(AO)}))</code>
+				</p></dd></dl></div></div><div class="refsect3"><a name="id1394"></a><h4>domain auth policy modify</h4><p>Modify authentication policies on the domain.  The same
+	options apply as for <code class="constant">domain auth policy create</code>.</p></div><div class="refsect3"><a name="id1395"></a><h4>domain auth policy delete</h4><p>Delete authentication policies on the domain.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Name of authentication policy to delete (required).
+			</p></dd><dt><span class="term">--force</span></dt><dd><p>
+				Force authentication policy delete even if it is protected.
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1396"></a><h4>domain auth policy user-allowed-to-authenticate-from set</h4><p>Set the user-allowed-to-authenticate-from property by scenario.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Name of authentication policy.
+			</p></dd><dt><span class="term">--by-group=GROUP</span></dt><dd><p>
+				User is allowed to
+				authenticate, if the device they
+				authenticate from is assigned
+				and granted membership of a
+				given <code class="constant">GROUP</code>.
+			</p></dd><dt><span class="term">--silo=SILO</span></dt><dd><p>
+				User is allowed to
+				authenticate, if the device they
+				authenticate from is assigned
+				and granted membership of a
+				given <code class="constant">SILO</code>.
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1397"></a><h4>domain auth policy user-allowed-to-authenticate-to set</h4><p>Set the user-allowed-to-authenticate-to property by scenario.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Name of authentication policy.
+			</p></dd><dt><span class="term">--group=GROUP</span></dt><dd><p>
+				The user account, offering a
+				network service, covered by
+				this policy, will only be allowed
+				access from other accounts
+				that are members of the given
+				<code class="constant">GROUP</code>.
+			</p></dd><dt><span class="term">--silo=SILO</span></dt><dd><p>
+				The user account, offering a
+				network service, covered by
+				this policy, will only be
+				allowed access from other accounts
+				that are assigned to,
+				granted membership of (and
+				meet any authentication
+				conditions of) the given <code class="constant">SILO</code>.
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1398"></a><h4>domain auth policy service-allowed-to-authenticate-from set</h4><p>Set the service-allowed-to-authenticate-from property by scenario.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Name of authentication policy.
+			</p></dd><dt><span class="term">--group=GROUP</span></dt><dd><p>
+				The service account (eg a Managed
+				Service Account, Group Managed
+				Service Account) is allowed to
+				authenticate, if the device it
+				authenticates from is a member
+				of the given <code class="constant">GROUP</code>.
+			</p></dd><dt><span class="term">--silo=SILO</span></dt><dd><p>
+				The service account (eg a Managed
+				Service Account, Group Managed
+				Service Account) is allowed to
+				authenticate, if the device it
+				authenticates from is assigned
+				and granted membership of a
+				given <code class="constant">SILO</code>.
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1399"></a><h4>domain auth policy service-allowed-to-authenticate-to set</h4><p>Set the service-allowed-to-authenticate-to property by scenario.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Name of authentication policy.
+			</p></dd><dt><span class="term">--group=GROUP</span></dt><dd><p>
+				The service account (eg a Managed
+				Service Account, Group Managed
+				Service Account), will only be
+				allowed access by other accounts
+				that are members of the given
+				<code class="constant">GROUP</code>.
+			</p></dd><dt><span class="term">--silo=SILO</span></dt><dd><p>
+				The service account (eg a
+				Managed Service Account, Group
+				Managed Service Account), will
+				only be allowed access by other
+				accounts that are assigned
+				to, granted membership of (and
+				meet any authentication
+				conditions of) the given <code class="constant">SILO</code>.
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1400"></a><h4>domain auth policy computer-allowed-to-authenticate-to set</h4><p>Set the computer-allowed-to-authenticate-to property by scenario.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Name of authentication policy.
+			</p></dd><dt><span class="term">--group=GROUP</span></dt><dd><p>
+				The computer account (eg a server
+				or workstation), will only be
+				allowed access by other accounts
+				that are members of the given
+				<code class="constant">GROUP</code>.
+			</p></dd><dt><span class="term">--silo=SILO</span></dt><dd><p>
+				The computer account (eg a
+				server or workstation), will
+				only be allowed access by
+				other accounts that are
+				assigned to, granted
+				membership of (and meet any
+				authentication conditions of)
+				the given <code class="constant">SILO</code>.
+			</p></dd></dl></div></div><div class="refsect2"><a name="id1401"></a><h3>domain auth silo</h3><p>Manage authentication silos.</p></div><div class="refsect3"><a name="id1402"></a><h4>domain auth silo list</h4><p>List authentication silos on the domain.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--json</span></dt><dd><p>
+				View authentication silos as JSON instead of a list.
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1403"></a><h4>domain auth silo view</h4><p>View an authentication silo on the domain.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Name of the authentication silo to view (required).
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1404"></a><h4>domain auth silo create</h4><p>Create authentication silos on the domain.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Name of the authentication silo (required).
+			</p></dd><dt><span class="term">--description</span></dt><dd><p>
+				Optional description for the authentication silo.
+			</p></dd><dt><span class="term">--user-authentication-policy</span></dt><dd><p>
+				User account authentication policy.
+			</p></dd><dt><span class="term">--service-authentication-policy</span></dt><dd><p>
+				Managed service account authentication policy.
+			</p></dd><dt><span class="term">--computer-authentication-policy</span></dt><dd><p>
+				Computer authentication policy.
+			</p></dd><dt><span class="term">--protect</span></dt><dd><p>
+					Protect authentication silo from accidental deletion.
+				</p><p>
+					Cannot be used together with --unprotect.
+				</p></dd><dt><span class="term">--unprotect</span></dt><dd><p>
+					Unprotect authentication silo from accidental deletion.
+				</p><p>
+					Cannot be used together with --protect.
+				</p></dd><dt><span class="term">--audit</span></dt><dd><p>
+					Only audit silo policies.
+				</p><p>
+					Cannot be used together with --enforce.
+				</p></dd><dt><span class="term">--enforce</span></dt><dd><p>
+					Enforce silo policies.
+				</p><p>
+					Cannot be used together with --audit.
+				</p></dd></dl></div></div><div class="refsect3"><a name="id1405"></a><h4>domain auth silo modify</h4><p>Modify authentication silos on the domain.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Name of the authentication silo (required).
+			</p></dd><dt><span class="term">--description</span></dt><dd><p>
+				Optional description for the authentication silo.
+			</p></dd><dt><span class="term">--user-authentication-policy</span></dt><dd><p>
+				User account authentication policy.
+			</p></dd><dt><span class="term">--service-authentication-policy</span></dt><dd><p>
+				Managed service account authentication policy.
+			</p></dd><dt><span class="term">--computer-authentication-policy</span></dt><dd><p>
+				Computer authentication policy.
+			</p></dd><dt><span class="term">--protect</span></dt><dd><p>
+					Protect authentication silo from accidental deletion.
+				</p><p>
+					Cannot be used together with --unprotect.
+				</p></dd><dt><span class="term">--unprotect</span></dt><dd><p>
+					Unprotect authentication silo from accidental deletion.
+				</p><p>
+					Cannot be used together with --protect.
+				</p></dd><dt><span class="term">--audit</span></dt><dd><p>
+					Only audit silo policies.
+				</p><p>
+					Cannot be used together with --enforce.
+				</p></dd><dt><span class="term">--enforce</span></dt><dd><p>
+					Enforce silo policies.
+				</p><p>
+					Cannot be used together with --audit.
+				</p></dd></dl></div></div><div class="refsect3"><a name="id1406"></a><h4>domain auth silo delete</h4><p>Delete authentication silos on the domain.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Name of authentication silo to delete (required).
+			</p></dd><dt><span class="term">--force</span></dt><dd><p>
+				Force authentication silo delete even if it is protected.
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1407"></a><h4>domain auth silo member grant</h4><p>Grant a member access to an authentication silo.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Name of authentication silo (required).
+			</p></dd><dt><span class="term">--member</span></dt><dd><p>
+				Member to grant access to the silo (DN or account name).
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1408"></a><h4>domain auth silo member list</h4><p>List members in an authentication silo.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Name of authentication silo (required).
+			</p></dd><dt><span class="term">--json</span></dt><dd><p>
+				View members as JSON instead of a list.
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1409"></a><h4>domain auth silo member revoke</h4><p>Revoke a member from an authentication silo.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Name of authentication silo (required).
+			</p></dd><dt><span class="term">--member</span></dt><dd><p>
+				Member to revoke from the silo (DN or account name).
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1410"></a><h4>domain claim claim-type list</h4><p>List claim types on the domain.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--json</span></dt><dd><p>
+				View claim types as JSON instead of a list.
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1411"></a><h4>domain claim claim-type view</h4><p>View a single claim type on the domain.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Display name of claim type to view (required).
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1412"></a><h4>domain claim claim-type create</h4><p>Create claim types on the domain.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--attribute</span></dt><dd><p>
+				Attribute of claim type to create (required).
+			</p></dd><dt><span class="term">--class</span></dt><dd><p>
+					Object classes to set claim type to.
+				</p><p>
+					Example: --class=user --class=computer
+				</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Optional display name or use attribute name.
+			</p></dd><dt><span class="term">--description</span></dt><dd><p>
+				Optional description or use from attribute.
+			</p></dd><dt><span class="term">--enable</span></dt><dd><p>
+					Enable claim type.
+				</p><p>
+					Cannot be used together with --disable.
+				</p></dd><dt><span class="term">--disable</span></dt><dd><p>
+					Disable claim type.
+				</p><p>
+					Cannot be used together with --enable.
+				</p></dd><dt><span class="term">--protect</span></dt><dd><p>
+					Protect claim type from accidental deletion.
+				</p><p>
+					Cannot be used together with --unprotect.
+				</p></dd><dt><span class="term">--unprotect</span></dt><dd><p>
+					Unprotect claim type from accidental deletion.
+				</p><p>
+					Cannot be used together with --protect.
+				</p></dd></dl></div></div><div class="refsect3"><a name="id1413"></a><h4>domain claim claim-type modify</h4><p>Modify claim types on the domain.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Display name of claim type to modify (required).
+			</p></dd><dt><span class="term">--class</span></dt><dd><p>
+					Object classes to set claim type to.
+				</p><p>
+					Example: --class=user --class=computer
+				</p></dd><dt><span class="term">--description</span></dt><dd><p>
+				Set the claim type description.
+			</p></dd><dt><span class="term">--enable</span></dt><dd><p>
+					Enable claim type.
+				</p><p>
+					Cannot be used together with --disable.
+				</p></dd><dt><span class="term">--disable</span></dt><dd><p>
+					Disable claim type.
+				</p><p>
+					Cannot be used together with --enable.
+				</p></dd><dt><span class="term">--protect</span></dt><dd><p>
+					Protect claim type from accidental deletion.
+				</p><p>
+					Cannot be used together with --unprotect.
+				</p></dd><dt><span class="term">--unprotect</span></dt><dd><p>
+					Unprotect claim type from accidental deletion.
+				</p><p>
+					Cannot be used together with --protect.
+				</p></dd></dl></div></div><div class="refsect3"><a name="id1414"></a><h4>domain claim claim-type delete</h4><p>Delete claim types on the domain.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Display name of claim type to delete (required).
+			</p></dd><dt><span class="term">--force</span></dt><dd><p>
+				Force claim type delete even if it is protected.
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1415"></a><h4>domain claim value-type list</h4><p>List claim value types on the domain.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--json</span></dt><dd><p>
+				View claim value types as JSON instead of a list.
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1416"></a><h4>domain claim value-type view</h4><p>View a single claim value type on the domain.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Display name of claim value type to view (required).
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1417"></a><h4>domain classicupgrade [options] <em class="replaceable"><code>classic_smb_conf</code></em></h4><p>Upgrade from Samba classic (NT4-like) database to Samba AD DC
+	database.</p></div><div class="refsect3"><a name="id1418"></a><h4>domain dcpromo <em class="replaceable"><code>dnsdomain</code></em> [DC|RODC] [options]</h4><p>Promote an existing domain member or NT4 PDC to an AD DC.</p></div><div class="refsect3"><a name="id1419"></a><h4>domain demote</h4><p>Demote ourselves from the role of domain controller.</p></div><div class="refsect3"><a name="id1420"></a><h4>domain exportkeytab <em class="replaceable"><code>keytab</code></em> [options]</h4><p>Dumps Kerberos keys of the domain into a keytab.</p></div><div class="refsect3"><a name="id1421"></a><h4>domain functionalprep [options]</h4><p>Prepare a domain for functional level upgrade. If <code class="constant">--functional-level</code> is not used, the latest supported version is used (currently 2016).</p><p>
+	  There are two aspects to this preparation, relating to the forest and the domain. By default both are run.
+	  If either of <code class="constant">--forest-prep</code> or <code class="constant">--domain-prep</code> are used, only the corresponding preparation is made.
+	  If both arguments are used together, all preparation is done, just as when neither is used.
+	</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--functional-level [2008_R2|2012|2012_R2|2016]</span></dt><dd><p>
+			  The functional level to prepare for. The default is 2016.
+			</p></dd><dt><span class="term">--forest-prep</span></dt><dd><p>
+				Run forest preparation only (unless --domain-prep is also used).
+			</p></dd><dt><span class="term">--domain-prep</span></dt><dd><p>
+				Run domain preparation only (unless --forest-prep is also used).
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1422"></a><h4>domain info <em class="replaceable"><code>ip_address</code></em> [options]</h4><p>Print basic info about a domain and the specified DC.
+</p></div><div class="refsect3"><a name="id1423"></a><h4>domain join <em class="replaceable"><code>dnsdomain</code></em> [DC|RODC|MEMBER|SUBDOMAIN] [options]</h4><p>Join a domain as either member or backup domain controller.</p></div><div class="refsect3"><a name="id1424"></a><h4>domain kds root-key</h4><p>Manage Key Distribution Service root keys.</p></div><div class="refsect3"><a name="id1425"></a><h4>domain kds root-key create [options]</h4><p>Create KDS root keys</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--use-start-time=["now"|iso8601 or LDIF time string]</span></dt><dd><p> The key will be valid from
+			this time. </p><p> Valid time format are
+			the string "now", the LDIF format
+			<code class="constant">YYYYmmddHHMMSS.0Z</code>, or the
+			ISO format <code class="constant">YYYY-mm-dd[*HH[:MM[:SS[.fff[fff]]]][+HH:MM[:SS[.ffffff]]]]</code>
+			where the '*' can be any character, and the optional last
+			'[+HH:MM[:SS[.ffffff]]]' is a timezone offset (e.g. '+00:00' for
+			UTC).
+		      </p></dd><dt><span class="term">--json</span></dt><dd><p>
+				Output results in JSON format.
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1426"></a><h4>domain kds root-key delete --name={GUID}</h4><p>Delete the named KDS root key. Use <code class="constant">samba-tool domain kds root-key list</code> to find the name of the key.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name=NAME</span></dt><dd><p> The name of the key to delete. It will be a GUID.
+		      </p></dd><dt><span class="term">-v, --verbose</span></dt><dd><p>
+				Print all attributes (except secret ones, unless --show secrets is used).
+			</p></dd><dt><span class="term">--json</span></dt><dd><p>
+				Output results in JSON format.
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1427"></a><h4>domain kds root-key list [options]</h4><p>List KDS root keys. The newest keys are listed first.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--show-secrets</span></dt><dd><p> Print secret or potentially
+			sensitive attributes, namely msKds-RootKeyData
+			and msKds-SecretAgreementParam.
+		      </p></dd><dt><span class="term">-v, --verbose</span></dt><dd><p>
+				Print more attributes (but not secret ones, unless --show secrets is also used).
+			</p></dd><dt><span class="term">--json</span></dt><dd><p>
+				Output results in JSON format.
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1428"></a><h4>domain kds root-key view [options]</h4><p>View a KDS root key. The default output is similar to
+	that of <code class="constant">samba-tool domain kds root-key list
+	--verbose</code>, but with only one key show. The key can
+	be selected by using <code class="constant">--latest</code> for the
+	most recent key, or <code class="constant">--name</code> to select a key
+	by name.
+	</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--latest</span></dt><dd><p> View the most recent root key.
+		      </p></dd><dt><span class="term">--name=NAME</span></dt><dd><p> The name of the key to view. It will be a GUID.
+		      </p></dd><dt><span class="term">-v, --verbose</span></dt><dd><p> Print all attributes (except
+			secret ones, unless --show secrets is used).
+			This includes attributes that are only useful
+			for LDB bookkeeping. </p></dd><dt><span class="term">--json</span></dt><dd><p>
+				Output results in JSON format.
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1429"></a><h4>domain leave [options]</h4><p>Run on a domain member, this will cause it to leave the domain.</p><p>To remove a domain server from the domain, you first need <code class="constant">samba-tool domain demote</code>.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--keep-account</span></dt><dd><p>
+				Disable the machine account instead of deleting it.
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1430"></a><h4>domain level <em class="replaceable"><code>show|raise</code></em> <em class="replaceable"><code>options</code></em> [options]</h4><p>Show/raise domain and forest function levels.</p></div><div class="refsect3"><a name="id1431"></a><h4>domain passwordsettings set <em class="replaceable"><code>options</code></em> [options]</h4><p>Set password settings, including complexity
+	requirements, lockout policy, history length, minimum password
+	length, and minimum and maximum password age on a Samba AD DC
+	server.</p><p>Use against a Windows DC is possible, but group policy will override it.
+	</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H URL, --URL=URL</span></dt><dd><p>LDB URL for database or target server</p></dd><dt><span class="term">-q, --quiet</span></dt><dd><p>Be quiet</p></dd><dt><span class="term">--complexity=COMPLEXITY</span></dt><dd><p>The password complexity (on | off | default). Default is 'on'</p></dd><dt><span class="term">--store-plaintext=STORE_PLAINTEXT</span></dt><dd><p>Store plaintext passwords where account have 'store passwords with reversible encryption' set (on | off | default). Default is 'off'</p></dd><dt><span class="term">--history-length=HISTORY_LENGTH</span></dt><dd><p>The password history length (<em class="replaceable"><code>integer</code></em> | default).  Default is 24.</p></dd><dt><span class="term">--min-pwd-length=MIN_PWD_LENGTH</span></dt><dd><p>The minimum password length (<em class="replaceable"><code>integer</code></em> | default).  Default is 7.</p></dd><dt><span class="term">--min-pwd-age=MIN_PWD_AGE</span></dt><dd><p>The minimum password age (<em class="replaceable"><code>number of days</code></em> | default).  Default is 1.</p></dd><dt><span class="term">--max-pwd-age=MAX_PWD_AGE</span></dt><dd><p>The maximum password age (<em class="replaceable"><code>number of days</code></em> | default).  Default is 43.</p></dd><dt><span class="term">--account-lockout-duration=ACCOUNT_LOCKOUT_DURATION</span></dt><dd><p>The length of time an account is locked out after exceeding the limit on bad password attempts (<em class="replaceable"><code>number of minutes</code></em> | default).  Default is 30 mins.</p></dd><dt><span class="term">--account-lockout-threshold=ACCOUNT_LOCKOUT_THRESHOLD</span></dt><dd><p>The number of bad password attempts allowed before locking out the account (<em class="replaceable"><code>integer</code></em> | default).  Default is 0 (never lock out).</p></dd><dt><span class="term">--reset-account-lockout-after=RESET_ACCOUNT_LOCKOUT_AFTER</span></dt><dd><p>After this time is elapsed, the recorded number of attempts restarts from zero (<em class="replaceable"><code>integer</code></em> | default).  Default is 30.</p></dd></dl></div></div><div class="refsect3"><a name="id1432"></a><h4>domain passwordsettings show <em class="replaceable"><code>options</code></em> [options]</h4><p>Display current password settings for the domain.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H URL, --URL=URL</span></dt><dd><p>LDB URL for database or target server</p></dd></dl></div></div><div class="refsect3"><a name="id1433"></a><h4>domain passwordsettings pso</h4><p>Manage fine-grained Password Settings Objects (PSOs).</p></div><div class="refsect3"><a name="id1434"></a><h4>domain passwordsettings pso apply <em class="replaceable"><code>pso-name</code></em> <em class="replaceable"><code>user-or-group-name</code></em> [options]</h4><p>Applies a PSO's password policy to a user or group.</p></div><div class="refsect3"><a name="id1435"></a><h4>domain passwordsettings pso create <em class="replaceable"><code>pso-name</code></em> <em class="replaceable"><code>precedence</code></em> [options]</h4><p>Creates a new Password Settings Object (PSO).</p></div><div class="refsect3"><a name="id1436"></a><h4>domain passwordsettings pso delete <em class="replaceable"><code>pso-name</code></em> [options]</h4><p>Deletes a Password Settings Object (PSO).</p></div><div class="refsect3"><a name="id1437"></a><h4>domain passwordsettings pso list [options]</h4><p>Lists all Password Settings Objects (PSOs).</p></div><div class="refsect3"><a name="id1438"></a><h4>domain passwordsettings pso set <em class="replaceable"><code>pso-name</code></em> [options]</h4><p>Modifies a Password Settings Object (PSO).</p></div><div class="refsect3"><a name="id1439"></a><h4>domain passwordsettings pso show <em class="replaceable"><code>user-name</code></em> [options]</h4><p>Displays a Password Settings Object (PSO).</p></div><div class="refsect3"><a name="id1440"></a><h4>domain passwordsettings pso show-user <em class="replaceable"><code>pso-name</code></em> [options]</h4><p>Displays the Password Settings that apply to a user.</p></div><div class="refsect3"><a name="id1441"></a><h4>domain passwordsettings pso unapply <em class="replaceable"><code>pso-name</code></em> <em class="replaceable"><code>user-or-group-name</code></em> [options]</h4><p>Updates a PSO to no longer apply to a user or group.</p></div><div class="refsect3"><a name="id1442"></a><h4>domain provision</h4><p>Promote an existing domain member or NT4 PDC to an AD DC.</p></div><div class="refsect3"><a name="id1443"></a><h4>domain schemaupgrade [options]</h4><p>Upgrade the schema.
+	</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--schema [2012|2012_R2|2016|2019]</span></dt><dd><p>
+			  Upgrade to this Windows schema level. The default is 2019.
+			</p></dd><dt><span class="term">--ldf-file</span></dt><dd><p> Apply the schema changes in
+			this LDIF file, rather than updating to a
+			standard schema level. </p></dd><dt><span class="term">--base-dir</span></dt><dd><p>
+			  Specify an alternate location to find schema LDIF files.
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1444"></a><h4>domain tombstones expunge NC [NC [...]] [options]</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H URL, --URL=URL</span></dt><dd><p>LDB URL for database or target server</p></dd><dt><span class="term">--current-time=YYYY-MM-DD</span></dt><dd><p>The current time to evaluate the tombstone lifetime from, expressed as YYYY-MM-DD</p></dd><dt><span class="term">--tombstone-lifetime=DAYS</span></dt><dd><p>Number of days a tombstone should be preserved for</p></dd></dl></div></div><div class="refsect3"><a name="id1445"></a><h4>domain trust</h4><p>Domain and forest trust management.</p></div><div class="refsect3"><a name="id1446"></a><h4>domain trust create <em class="replaceable"><code>DOMAIN</code></em> <em class="replaceable"><code>options</code></em> [options]</h4><p>Create a domain or forest trust.</p></div><div class="refsect3"><a name="id1447"></a><h4>domain trust modify <em class="replaceable"><code>DOMAIN</code></em> <em class="replaceable"><code>options</code></em> [options]</h4><p>Modify a domain or forest trust.</p></div><div class="refsect3"><a name="id1448"></a><h4>domain trust delete <em class="replaceable"><code>DOMAIN</code></em> <em class="replaceable"><code>options</code></em> [options]</h4><p>Delete a domain trust.</p></div><div class="refsect3"><a name="id1449"></a><h4>domain trust list <em class="replaceable"><code>options</code></em> [options]</h4><p>List domain trusts.</p></div><div class="refsect3"><a name="id1450"></a><h4>domain trust namespaces [<em class="replaceable"><code>DOMAIN</code></em>] <em class="replaceable"><code>options</code></em> [options]</h4><p>Manage forest trust namespaces.</p></div><div class="refsect3"><a name="id1451"></a><h4>domain trust show <em class="replaceable"><code>DOMAIN</code></em> <em class="replaceable"><code>options</code></em> [options]</h4><p>Show trusted domain details.</p></div><div class="refsect3"><a name="id1452"></a><h4>domain trust validate <em class="replaceable"><code>DOMAIN</code></em> <em class="replaceable"><code>options</code></em> [options]</h4><p>Validate a domain trust.</p></div><div class="refsect2"><a name="id1453"></a><h3>drs</h3><p>Manage Directory Replication Services (DRS).</p></div><div class="refsect3"><a name="id1454"></a><h4>drs bind</h4><p>Show DRS capabilities of a server.</p></div><div class="refsect3"><a name="id1455"></a><h4>drs clone-dc-database <em class="replaceable"><code>dnsdomain</code></em>
+  --targetdir=<em class="replaceable"><code>DIR</code></em> [options]</h4><p>Replicate an initial clone of domain, but DO NOT JOIN it.
+	</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--server=DC</span></dt><dd><p>Clone this DC.</p></dd><dt><span class="term">--targetdir=TARGETDIR</span></dt><dd><p>where to store provision (required).</p></dd><dt><span class="term">-q, --quiet</span></dt><dd><p>Be quiet.</p></dd><dt><span class="term">--include-secrets</span></dt><dd><p>Also replicate secret values.</p></dd><dt><span class="term">--backend-store=BACKENDSTORE</span></dt><dd><p>Specify the database backend to be used
+	    (default is tdb).</p></dd><dt><span class="term">--backend-store-size=SIZE</span></dt><dd><p>Specify the size of the backend database,
+	    currentlyonly supported by lmdb backends (default is 8
+	    GB).</p></dd></dl></div></div><div class="refsect3"><a name="id1456"></a><h4>drs uptodateness [options]</h4><p>Show uptodateness status.
+	</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H URL, --URL=URL</span></dt><dd><p>LDB URL for database or target server</p></dd><dt><span class="term">-p PARTITION, --partition=PARTITION</span></dt><dd><p>restrict to this partition</p></dd><dt><span class="term">--json</span></dt><dd><p>Print data in json format</p></dd><dt><span class="term">--maximum</span></dt><dd><p>Print maximum out-of-date-ness only</p></dd><dt><span class="term">--median</span></dt><dd><p>Print median out-of-date-ness only</p></dd><dt><span class="term">--full</span></dt><dd><p>Print full out-of-date-ness data</p></dd></dl></div></div><div class="refsect3"><a name="id1457"></a><h4>drs kcc</h4><p>Trigger knowledge consistency center run.</p></div><div class="refsect3"><a name="id1458"></a><h4>drs options</h4><p>Query or change <em class="replaceable"><code>options</code></em> for NTDS Settings
+	object of a domain controller.</p></div><div class="refsect3"><a name="id1459"></a><h4>drs replicate <em class="replaceable"><code>destination_DC</code></em> <em class="replaceable"><code>source_DC</code></em> <em class="replaceable"><code>NC</code></em> [options]</h4><p>Replicate a naming context between two DCs.</p></div><div class="refsect3"><a name="id1460"></a><h4>drs showrepl</h4><p>Show replication status. The [--json] option results in JSON output, and
+	with the  [--summary] option produces
+	very little output when the replication status seems healthy.
+	</p></div><div class="refsect2"><a name="id1461"></a><h3>dsacl</h3><p>Administer DS ACLs</p></div><div class="refsect3"><a name="id1462"></a><h4>dsacl delete</h4><p>Delete an access list entry on a directory object.</p></div><div class="refsect3"><a name="id1463"></a><h4>dsacl get</h4><p>Print access list on a directory object.</p></div><div class="refsect3"><a name="id1464"></a><h4>dsacl set</h4><p>Modify access list on a directory object.</p></div><div class="refsect2"><a name="id1465"></a><h3>forest</h3><p>Manage Forest configuration.</p></div><div class="refsect3"><a name="id1466"></a><h4>forest directory_service</h4><p>Manage directory_service behaviour for the forest.</p></div><div class="refsect3"><a name="id1467"></a><h4>forest directory_service dsheuristics <em class="replaceable"><code>VALUE</code></em></h4><p>Modify dsheuristics directory_service configuration for the forest.</p></div><div class="refsect3"><a name="id1468"></a><h4>forest directory_service show</h4><p>Show current directory_service configuration for the forest.</p></div><div class="refsect2"><a name="id1469"></a><h3>fsmo</h3><p>Manage Flexible Single Master Operations (FSMO).</p></div><div class="refsect3"><a name="id1470"></a><h4>fsmo seize [options]</h4><p>Seize the role.</p></div><div class="refsect3"><a name="id1471"></a><h4>fsmo show</h4><p>Show the roles.</p></div><div class="refsect3"><a name="id1472"></a><h4>fsmo transfer [options]</h4><p>Transfer the role.</p></div><div class="refsect2"><a name="id1473"></a><h3>gpo</h3><p>Manage Group Policy Objects (GPO).</p></div><div class="refsect3"><a name="id1474"></a><h4>gpo aclcheck [options]</h4><p>Create an empty GPO.</p><p>Check all GPOs have matching LDAP and DS ACLs.
+	</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H URL, --URL=URL</span></dt><dd><p>LDB URL for database or target server</p></dd></dl></div></div><div class="refsect3"><a name="id1475"></a><h4>gpo admxload [options]</h4><p>Loads samba admx files to sysvol
+	</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H URL, --URL=URL</span></dt><dd><p>LDB URL for database or target server</p></dd><dt><span class="term">--admx-dir=ADMX_DIR</span></dt><dd><p>Directory where admx templates are stored</p></dd></dl></div></div><div class="refsect3"><a name="id1476"></a><h4>gpo backup <em class="replaceable"><code>gpo</code></em>[options]</h4><p>Backup a GPO.
+	</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H H</span></dt><dd><p>LDB URL for database or target server</p></dd><dt><span class="term">--tmpdir=TMPDIR</span></dt><dd><p>Temporary directory for copying policy files</p></dd><dt><span class="term">--generalize</span></dt><dd><p>Generalize XML entities to restore</p></dd><dt><span class="term">--entities=ENT_FILE</span></dt><dd><p>File to export defining XML entities for the restore</p></dd></dl></div></div><div class="refsect3"><a name="id1477"></a><h4>gpo create <em class="replaceable"><code>displayname</code></em> [options]</h4><p>Create an empty GPO.</p></div><div class="refsect3"><a name="id1478"></a><h4>gpo cse list </h4><p>List the registered Client Side Extensions (CSEs) on the current host.</p></div><div class="refsect3"><a name="id1479"></a><h4>gpo cse register <em class="replaceable"><code>cse_file</code></em> <em class="replaceable"><code>cse_name</code></em> [options]</h4><p>Register a Client Side Extension (CSE) on the current host.</p><p>
+This command takes a CSE filename as an argument, and registers it for
+applying policy on the current host. This is not necessary for CSEs which
+are distributed with the current version of Samba, but is useful for installing
+experimental CSEs or custom built CSEs.
+</p><p>
+The <em class="replaceable"><code>cse_file</code></em> argument MUST be a permanent
+location for the CSE. The register command does not copy the file to
+some other directory. The samba-gpupdate command will execute the CSE
+from the exact location specified from this command.
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--machine</span></dt><dd><p>Whether to register the CSE as Machine policy</p></dd><dt><span class="term">--user</span></dt><dd><p>Whether to register the CSE as User policy</p></dd></dl></div></div><div class="refsect3"><a name="id1480"></a><h4>gpo cse unregister <em class="replaceable"><code>GUID</code></em></h4><p>Unregister a Client Side Extension (CSE) from the current host.</p><p>
+This command takes a unique GUID as an argument (representing a registered
+CSE), and unregisters it for applying policy on the current host. Use the
+`samba-tool gpo cse list` command to determine the unique GUIDs of CSEs.
+</p></div><div class="refsect3"><a name="id1481"></a><h4>gpo del <em class="replaceable"><code>gpo</code></em> [options]</h4><p>Delete GPO.</p></div><div class="refsect3"><a name="id1482"></a><h4>gpo dellink <em class="replaceable"><code>container_dn</code></em> <em class="replaceable"><code>gpo</code></em> [options]</h4><p>Delete GPO link from a container.</p></div><div class="refsect3"><a name="id1483"></a><h4>gpo fetch <em class="replaceable"><code>gpo</code></em> [options]</h4><p>Download a GPO.</p></div><div class="refsect3"><a name="id1484"></a><h4>gpo getinheritance <em class="replaceable"><code>container_dn</code></em> [options]</h4><p>Get inheritance flag for a container.</p></div><div class="refsect3"><a name="id1485"></a><h4>gpo getlink <em class="replaceable"><code>container_dn</code></em> [options]</h4><p>List GPO Links for a container.</p></div><div class="refsect3"><a name="id1486"></a><h4>gpo list <em class="replaceable"><code>username</code></em> [options]</h4><p>List GPOs for an account.</p></div><div class="refsect3"><a name="id1487"></a><h4>gpo listall</h4><p>List all GPOs.</p></div><div class="refsect3"><a name="id1488"></a><h4>gpo listcontainers <em class="replaceable"><code>gpo</code></em> [options]</h4><p>List all linked containers for a GPO.</p></div><div class="refsect3"><a name="id1489"></a><h4>gpo load <em class="replaceable"><code>gpo</code></em> [options]</h4><p>Load policies onto a GPO.</p><p>
+Reads json from standard input until EOF, unless a json formatted
+file is provided via --content.
+</p><p>
+    Example json_input:
+    </p><pre class="programlisting">
+[
+    {
+        "keyname": "Software\Policies\Mozilla\Firefox\Homepage",
+        "valuename": "StartPage",
+        "class": "USER",
+        "type": "REG_SZ",
+        "data": "homepage"
+    },
+    {
+        "keyname": "Software\Policies\Mozilla\Firefox\Homepage",
+        "valuename": "URL",
+        "class": "USER",
+        "type": "REG_SZ",
+        "data": "google.com"
+    },
+    {
+        "keyname": "Software\Microsoft\Internet Explorer\Toolbar",
+        "valuename": "IEToolbar",
+        "class": "USER",
+        "type": "REG_BINARY",
+        "data": [0]
+    },
+    {
+        "keyname": "Software\Policies\Microsoft\InputPersonalization",
+        "valuename": "RestrictImplicitTextCollection",
+        "class": "USER",
+        "type": "REG_DWORD",
+        "data": 1
+    }
+    ]
+    </pre><p>
+  </p><p>
+Valid class attributes: MACHINE|USER|BOTH
+Data arrays are interpreted as bytes.
+    </p><p>
+The --machine-ext-name and --user-ext-name options are multi-value inputs
+which respectively set the gPCMachineExtensionNames and gPCUserExtensionNames
+ldap attributes on the GPO. These attributes must be set to the correct GUID
+names for Windows Group Policy to work correctly. These GUIDs represent
+the client side extensions to apply on the machine. Linux Group Policy does
+not enforce this constraint.
+{35378EAC-683F-11D2-A89A-00C04FBBCFA2} is provided by default, which
+enables most Registry policies.
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H H</span></dt><dd><p>LDB URL for database or target server</p></dd><dt><span class="term">--content=CONTENT</span></dt><dd><p>JSON file of policy inputs</p></dd><dt><span class="term">--machine-ext-name=MACHINE_EXTS</span></dt><dd><p>A machine extension name to add to gPCMachineExtensionNames</p></dd><dt><span class="term">--user-ext-name=USER_EXTS</span></dt><dd><p>A user extension name to add to gPCUserExtensionNames</p></dd><dt><span class="term">--replace</span></dt><dd><p>Replace the existing Group Policies, rather than merging</p></dd></dl></div></div><div class="refsect3"><a name="id1490"></a><h4>gpo manage security list <em class="replaceable"><code>gpo</code></em> [options]</h4><p>List Samba Security Group Policy from the sysvol.</p><p>This command lists security settings from the sysvol that will
+	be applied to winbind clients. These settings only apply to the
+	AD DC.</p><p>
+	Example:
+	</p><pre class="programlisting">samba-tool gpo manage security list {31B2F340-016D-11D2-945F-00C04FB984F9}</pre><p>
+      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H URL, --URL=URL</span></dt><dd><p>LDB URL for database or target server</p></dd></dl></div></div><div class="refsect3"><a name="id1491"></a><h4>gpo manage security set <em class="replaceable"><code>gpo</code></em> [options]</h4><p>Set Samba Security Group Policy to the sysvol.</p><p>This command sets a security setting to the sysvol for
+	applying to winbind clients. Not providing a value will unset
+	the policy. These settings only apply to the AD DC.</p><p>Example:
+	</p><pre class="programlisting">samba-tool gpo manage security set {31B2F340-016D-11D2-945F-00C04FB984F9} MaxTicketAge 10</pre><p>
+	</p><p>
+	  Possible policies:
+	  </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">MaxTicketAge</span></dt><dd><p>Maximum lifetime for user ticket (hours).</p></dd><dt><span class="term">MaxServiceAge</span></dt><dd><p>Maximum lifetime for service ticket in minutes.
+              Defined in minutes</p></dd><dt><span class="term">MaxRenewAge</span></dt><dd><p>Maximum lifetime for user ticket renewal, in minutes.
+              </p></dd><dt><span class="term">MinimumPasswordAge</span></dt><dd><p>Minimum password age, in days.
+              </p></dd><dt><span class="term">MaximumPasswordAge</span></dt><dd><p>Maximum password age, in days.</p></dd><dt><span class="term">MinimumPasswordLength</span></dt><dd><p>Minimum password length, in characters.
+	      </p></dd><dt><span class="term">PasswordComplexity</span></dt><dd><p>Password must meet complexity requirements.
+              1 is Enabled, 0 is Disabled.</p></dd></dl></div><p>
+	</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H URL, --URL=URL</span></dt><dd><p>LDB URL for database or target server</p></dd></dl></div><p>List Samba Security Group Policy from the sysvol.</p><p>This command lists security settings from the sysvol that will
+	be applied to winbind clients. These settings only apply to the
+	AD DC.</p><p>
+	Example:
+	</p><pre class="programlisting">samba-tool gpo manage security list {31B2F340-016D-11D2-945F-00C04FB984F9}</pre><p>
+      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H URL, --URL=URL</span></dt><dd><p>LDB URL for database or target server</p></dd></dl></div></div><div class="refsect3"><a name="id1492"></a><h4>gpo manage smb_conf list</h4><p>List smb.conf settings from the sysvol that will be applied to winbind clients.</p><p>
+    Example:
+    </p><pre class="programlisting">samba-tool gpo manage smb_conf list {31B2F340-016D-11D2-945F-00C04FB984F9}</pre><p>
+  </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H URL, --URL=URL</span></dt><dd><p>LDB URL for database or target server</p></dd></dl></div></div><div class="refsect3"><a name="id1493"></a><h4>gpo manage smb_conf set <em class="replaceable"><code>gpo</code></em> <em class="replaceable"><code>[value]</code></em> [options]</h4><p>Set or unset an smb.conf setting to the sysvol for applying to winbind clients.
+</p><p>If a value is provided, that is the smb.conf value used; if no value is provided, the policy is removed.
+</p><p>
+    Example:
+    </p><pre class="programlisting">samba-tool gpo manage smb_conf set {31B2F340-016D-11D2-945F-00C04FB984F9} 'apply gpo policies' yes</pre><p>
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H URL, --URL=URL</span></dt><dd><p>LDB URL for database or target server</p></dd></dl></div></div><div class="refsect3"><a name="id1494"></a><h4>gpo setinheritance <em class="replaceable"><code>container_dn</code></em> <em class="replaceable"><code>block|inherit</code></em> [options]</h4><p>Set inheritance flag on a container.</p></div><div class="refsect3"><a name="id1495"></a><h4>gpo setlink <em class="replaceable"><code>container_dn</code></em> <em class="replaceable"><code>gpo</code></em> [options]</h4><p>Add or Update a GPO link to a container.</p></div><div class="refsect3"><a name="id1496"></a><h4>gpo remove<em class="replaceable"><code>gpo</code></em> [options]</h4><p>Show information for a GPO.</p><p>Remove policies from a GPO.</p><p>
+Reads json from standard input until EOF, unless a json formatted
+file is provided via --content.
+</p><p>
+</p><pre class="programlisting">
+Example json_input:
+[
+    {
+        "keyname": "Software\Policies\Mozilla\Firefox\Homepage",
+        "valuename": "StartPage",
+        "class": "USER",
+    },
+    {
+        "keyname": "Software\Policies\Mozilla\Firefox\Homepage",
+        "valuename": "URL",
+        "class": "USER",
+    },
+    {
+        "keyname": "Software\Microsoft\Internet Explorer\Toolbar",
+        "valuename": "IEToolbar",
+        "class": "USER"
+    },
+    {
+        "keyname": "Software\Policies\Microsoft\InputPersonalization",
+        "valuename": "RestrictImplicitTextCollection",
+        "class": "USER"
+    }
+]
+</pre><p>
+
+Valid class attributes: MACHINE|USER|BOTH
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H H</span></dt><dd><p>LDB URL for database or target server</p></dd><dt><span class="term">--content=CONTENT</span></dt><dd><p>JSON file of policy inputs</p></dd><dt><span class="term">--machine-ext-name=MACHINE_EXTS</span></dt><dd><p>A machine extension name to remove from gPCMachineExtensionNames</p></dd><dt><span class="term">--user-ext-name=USER_EXTS</span></dt><dd><p>A user extension name to remove from gPCUserExtensionNames</p></dd><dt><span class="term">--color=always|never|auto</span></dt><dd><p>use colour if available (default: auto)</p></dd></dl></div></div><div class="refsect3"><a name="id1497"></a><h4>gpo restore <em class="replaceable"><code>displayname</code></em> <em class="replaceable"><code>backup location</code></em> [options]</h4><p>Restore a GPO to a new container.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H H</span></dt><dd><p>LDB URL for database or target server</p></dd><dt><span class="term">--tmpdir=TMPDIR</span></dt><dd><p>Temporary directory for copying policy files</p></dd><dt><span class="term">--entities=ENTITIES</span></dt><dd><p>File defining XML entities to insert into DOCTYPE header</p></dd><dt><span class="term">--restore-metadata</span></dt><dd><p>Keep the old GPT.INI file and associated version number</p></dd></dl></div></div><div class="refsect3"><a name="id1498"></a><h4>gpo show <em class="replaceable"><code>gpo</code></em> [options]</h4><p>Show information for a GPO.</p></div><div class="refsect3"><a name="id1499"></a><h4>gpo manage symlink list</h4><p>List VGP Symbolic Link Group Policy from the sysvol</p></div><div class="refsect3"><a name="id1500"></a><h4>gpo manage symlink add</h4><p>Adds a VGP Symbolic Link Group Policy to the sysvol</p></div><div class="refsect3"><a name="id1501"></a><h4>gpo manage symlink remove</h4><p>Removes a VGP Symbolic Link Group Policy from the sysvol</p></div><div class="refsect3"><a name="id1502"></a><h4>gpo manage files list</h4><p>List VGP Files Group Policy from the sysvol</p></div><div class="refsect3"><a name="id1503"></a><h4>gpo manage files add</h4><p>Add VGP Files Group Policy to the sysvol</p></div><div class="refsect3"><a name="id1504"></a><h4>gpo manage files remove</h4><p>Remove VGP Files Group Policy from the sysvol</p></div><div class="refsect3"><a name="id1505"></a><h4>gpo manage openssh list</h4><p>List VGP OpenSSH Group Policy from the sysvol</p></div><div class="refsect3"><a name="id1506"></a><h4>gpo manage openssh set</h4><p>Sets a VGP OpenSSH Group Policy to the sysvol</p></div><div class="refsect3"><a name="id1507"></a><h4>gpo manage sudoers add</h4><p>Adds a Samba Sudoers Group Policy to the sysvol.</p></div><div class="refsect3"><a name="id1508"></a><h4>gpo manage sudoers list</h4><p>List Samba Sudoers Group Policy from the sysvol.</p></div><div class="refsect3"><a name="id1509"></a><h4>gpo manage sudoers remove</h4><p>Removes a Samba Sudoers Group Policy from the sysvol.</p></div><div class="refsect3"><a name="id1510"></a><h4>gpo manage scripts startup list</h4><p>List VGP Startup Script Group Policy from the sysvol</p></div><div class="refsect3"><a name="id1511"></a><h4>gpo manage scripts startup add</h4><p>Adds VGP Startup Script Group Policy to the sysvol</p></div><div class="refsect3"><a name="id1512"></a><h4>gpo manage scripts startup remove</h4><p>Removes VGP Startup Script Group Policy from the sysvol</p></div><div class="refsect3"><a name="id1513"></a><h4>gpo manage motd list</h4><p>List VGP MOTD Group Policy from the sysvol.</p></div><div class="refsect3"><a name="id1514"></a><h4>gpo manage motd set</h4><p>Sets a VGP MOTD Group Policy to the sysvol</p></div><div class="refsect3"><a name="id1515"></a><h4>gpo manage issue list</h4><p>List VGP Issue Group Policy from the sysvol.</p></div><div class="refsect3"><a name="id1516"></a><h4>gpo manage issue set</h4><p>Sets a VGP Issue Group Policy to the sysvol</p></div><div class="refsect3"><a name="id1517"></a><h4>gpo manage access add</h4><p>Adds a VGP Host Access Group Policy to the sysvol</p></div><div class="refsect3"><a name="id1518"></a><h4>gpo manage access list</h4><p>List VGP Host Access Group Policy from the sysvol</p></div><div class="refsect3"><a name="id1519"></a><h4>gpo manage access remove</h4><p>Remove a VGP Host Access Group Policy from the sysvol</p></div><div class="refsect2"><a name="id1520"></a><h3>group</h3><p>Manage groups.</p></div><div class="refsect3"><a name="id1521"></a><h4>group add <em class="replaceable"><code>groupname</code></em> [options]</h4><p>Create a new AD group.</p></div><div class="refsect3"><a name="id1522"></a><h4>group create <em class="replaceable"><code>groupname</code></em> [options]</h4><p>Add a new AD group. This is a synonym for the
+	<code class="literal">samba-tool group add</code> command and is available
+	for compatibility reasons only. Please use
+	<code class="literal">samba-tool group add</code> instead.</p></div><div class="refsect3"><a name="id1523"></a><h4>group addmembers <em class="replaceable"><code>groupname</code></em> <em class="replaceable"><code>members</code></em> [options]</h4><p>Add members to an AD group.</p></div><div class="refsect3"><a name="id1524"></a><h4>group addunixattrs <em class="replaceable"><code>groupname</code></em> <em class="replaceable"><code>gidnumber</code></em> [options]</h4><p> Add RFC2307 Unix attributes to a group account in the Active
+Directory domain.
+The groupname specified on the command is the sAMaccountName.</p><p>Unix (RFC2307) attributes will be added to the group account.</p><p>Add 'idmap_ldb:use rfc2307 = Yes' to smb.conf to use these attributes for UID/GID mapping.</p><p>The command may be run from the root userid or another authorized userid.
+The -H or --URL= option can be used to execute the command against a
+remote server.</p><p>
+Example1:
+</p><pre class="programlisting">samba-tool group addunixattrs Group1 10000</pre><p>
+</p><p>
+Example1 shows how to add RFC2307 attributes to a domain enabled group
+account.
+</p><p>
+The groups Unix ID will be set to '10000', provided this ID isn't already
+in use.
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H URL, --URL=URL</span></dt><dd><p>LDB URL for database or target server</p></dd></dl></div></div><div class="refsect3"><a name="id1525"></a><h4>group delete <em class="replaceable"><code>groupname</code></em> [options]</h4><p>Delete an AD group.</p></div><div class="refsect3"><a name="id1526"></a><h4>group edit <em class="replaceable"><code>groupname</code></em></h4><p>Edit a group AD object.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--editor=EDITOR</span></dt><dd><p>
+	Specifies the editor to use instead of the system default, or 'vi' if no
+	system default is set.
+	</p></dd></dl></div></div><div class="refsect3"><a name="id1527"></a><h4>group list</h4><p>List all groups.</p></div><div class="refsect3"><a name="id1528"></a><h4>group listmembers <em class="replaceable"><code>groupname</code></em> [options]</h4><p>List all members of the specified AD group.</p><p>By default the sAMAccountNames are listed. If no sAMAccountName
+	is available, the CN will be used instead.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--full-dn</span></dt><dd><p>
+	List the distinguished names instead of the sAMAccountNames.
+	</p></dd><dt><span class="term">--hide-expired</span></dt><dd><p>
+	Do not list expired group members.
+	</p></dd><dt><span class="term">--hide-disabled</span></dt><dd><p>
+	Do not list disabled group members.
+	</p></dd></dl></div></div><div class="refsect3"><a name="id1529"></a><h4>group move <em class="replaceable"><code>groupname</code></em> <em class="replaceable"><code>new_parent_dn</code></em> [options]</h4><p>This command moves a group into the specified organizational unit
+	or container.</p><p>The groupname specified on the command is the sAMAccountName.
+	</p><p>The name of the organizational unit or container can be
+	specified as a full DN or without the domainDN component.</p><p></p></div><div class="refsect3"><a name="id1530"></a><h4>group removemembers <em class="replaceable"><code>groupname</code></em> <em class="replaceable"><code>members</code></em> [options]</h4><p>Remove members from the specified AD group.</p></div><div class="refsect3"><a name="id1531"></a><h4>group show <em class="replaceable"><code>groupname</code></em> [options]</h4><p>Show group object and it's attributes.</p></div><div class="refsect3"><a name="id1532"></a><h4>group stats [options]</h4><p>Show statistics for overall groups and group memberships.</p></div><div class="refsect3"><a name="id1533"></a><h4>group rename <em class="replaceable"><code>groupname</code></em> [options]</h4><p>Rename a group and related attributes.</p><p>This command allows to set the group's name related attributes. The
+	group's CN will be renamed automatically.
+	The group's CN will be the sAMAccountName.
+	Use the --force-new-cn option to specify the new CN manually and the
+	--reset-cn to reset this change.</p><p>Use an empty attribute value to remove the specified attribute.</p><p>The groupname specified on the command is the sAMAccountName.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--force-new-cn=NEW_CN</span></dt><dd><p>
+	Specify a new CN (RDN) instead of using the sAMAccountName.
+	</p></dd><dt><span class="term">--reset-cn</span></dt><dd><p>
+	Set the CN to the sAMAccountName.
+	</p></dd><dt><span class="term">--mail-address=MAIL_ADDRESS</span></dt><dd><p>
+	New mail address
+	</p></dd><dt><span class="term">--samaccountname=SAMACCOUNTNAME</span></dt><dd><p>
+	New account name (sAMAccountName/logon name)
+	</p></dd></dl></div></div><div class="refsect2"><a name="id1534"></a><h3>ldapcmp <em class="replaceable"><code>URL1</code></em> <em class="replaceable"><code>URL2</code></em> <em class="replaceable"><code>domain|configuration|schema|dnsdomain|dnsforest</code></em> [options] </h3><p>Compare two LDAP databases.</p></div><div class="refsect2"><a name="id1535"></a><h3>ntacl</h3><p>Manage NT ACLs.</p></div><div class="refsect3"><a name="id1536"></a><h4>ntacl changedomsid <em class="replaceable"><code>original-domain-SID</code></em> <em class="replaceable"><code>new-domain-SID</code></em> <em class="replaceable"><code>file</code></em> [options]</h4><p>Change the domain SID for ACLs.
+	Can be used to change all entries in acl_xattr when the machine's SID
+	has accidentally changed or the data set has been copied
+	to another machine either via backup/restore or rsync.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--use-ntvfs</span></dt><dd><p>
+	Set the ACLs directly to the TDB or xattr. The POSIX permissions will
+	NOT be changed, only the NT ACL will be stored.
+	</p></dd><dt><span class="term">--service=SERVICE</span></dt><dd><p>
+	Specify the name of the smb.conf service to use. This option is
+	required in combination with the --use-s3fs option.
+	</p></dd><dt><span class="term">--use-s3fs</span></dt><dd><p>
+	Set the ACLs for use with the default s3fs file server via the VFS
+	layer. This option requires a smb.conf service, specified by the
+	--service=SERVICE option.
+	</p></dd><dt><span class="term">--xattr-backend=[native|tdb]</span></dt><dd><p>
+	Specify the xattr backend type (native fs or tdb).
+	</p></dd><dt><span class="term">--eadb-file=EADB_FILE</span></dt><dd><p>
+	Name of the tdb file where attributes are stored.
+	</p></dd><dt><span class="term">--recursive</span></dt><dd><p>
+	Set the ACLs for directories and their contents recursively.
+	</p></dd><dt><span class="term">--follow-symlinks</span></dt><dd><p>
+	Follow symlinks when --recursive is specified.
+	</p></dd><dt><span class="term">--verbose</span></dt><dd><p>
+	Verbosely list files and ACLs which are being processed.
+	</p></dd></dl></div></div><div class="refsect3"><a name="id1537"></a><h4>ntacl getdosinfo <em class="replaceable"><code>file</code></em> [options]</h4><p>Get DOS info of a file from xattr.</p></div><div class="refsect3"><a name="id1538"></a><h4>ntacl get <em class="replaceable"><code>file</code></em> [options]</h4><p>Get ACLs on a file.</p></div><div class="refsect3"><a name="id1539"></a><h4>ntacl set <em class="replaceable"><code>acl</code></em> <em class="replaceable"><code>file</code></em> [options]</h4><p>Set ACLs on a file.</p></div><div class="refsect3"><a name="id1540"></a><h4>ntacl sysvolcheck</h4><p>Check sysvol ACLs match defaults (including correct ACLs on GPOs).</p></div><div class="refsect3"><a name="id1541"></a><h4>ntacl sysvolreset</h4><p>Reset sysvol ACLs to defaults (including correct ACLs on GPOs).</p></div><div class="refsect2"><a name="id1542"></a><h3>ou</h3><p>Manage organizational units (OUs).</p></div><div class="refsect3"><a name="id1543"></a><h4>ou add <em class="replaceable"><code>ou_dn</code></em> [options]</h4><p>Add a new organizational unit.</p><p>The name of the organizational unit can be specified as a full DN
+	or without the domainDN component.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--description=DESCRIPTION</span></dt><dd><p>
+	Specify OU's description.
+	</p></dd></dl></div></div><div class="refsect3"><a name="id1544"></a><h4>ou create <em class="replaceable"><code>ou_dn</code></em> [options]</h4><p>Add a new organizational unit. This is a synonym for the
+	<code class="literal">samba-tool ou add</code> command and is available
+	for compatibility reasons only. Please use
+	<code class="literal">samba-tool ou add</code> instead.</p></div><div class="refsect3"><a name="id1545"></a><h4>ou delete <em class="replaceable"><code>ou_dn</code></em> [options]</h4><p>Delete an organizational unit.</p><p>The name of the organizational unit can be specified as a full DN
+	or without the domainDN component.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--force-subtree-delete</span></dt><dd><p>
+	Delete organizational unit and all children recursively.
+	</p></dd></dl></div></div><div class="refsect3"><a name="id1546"></a><h4>ou list [options]</h4><p>List all organizational units.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--full-dn</span></dt><dd><p>
+	Display DNs including the base DN.
+	</p></dd></dl></div></div><div class="refsect3"><a name="id1547"></a><h4>ou listobjects <em class="replaceable"><code>ou_dn</code></em> [options]</h4><p>List all objects in an organizational unit.</p><p>The name of the organizational unit can be specified as a full DN
+	or without the domainDN component.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--full-dn</span></dt><dd><p>
+	Display DNs including the base DN.
+	</p></dd><dt><span class="term">-r|--recursive</span></dt><dd><p>
+	List objects recursively.
+	</p></dd></dl></div></div><div class="refsect3"><a name="id1548"></a><h4>ou move <em class="replaceable"><code>old_ou_dn</code></em> <em class="replaceable"><code>new_parent_dn</code></em> [options]</h4><p>Move an organizational unit.</p><p>The name of the organizational units can be specified as a full DN
+	or without the domainDN component.</p></div><div class="refsect3"><a name="id1549"></a><h4>ou rename <em class="replaceable"><code>old_ou_dn</code></em> <em class="replaceable"><code>new_ou_dn</code></em> [options]</h4><p>Rename an organizational unit.</p><p>The name of the organizational units can be specified as a full DN
+	or without the domainDN component.</p></div><div class="refsect2"><a name="id1550"></a><h3>processes</h3><p>List samba server processes.</p><p>If no processes are show, but Samba is running, it is
+	possible that samba-tool has not found the correct smb.conf,
+	and the use of -s/--configfile is required.
+	</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--name=NAME</span></dt><dd><p>
+	Show processes associated with the given name.
+	</p></dd><dt><span class="term">--pid=PID</span></dt><dd><p>
+	  Show names associated with the PID.
+	</p></dd></dl></div></div><div class="refsect2"><a name="id1551"></a><h3>rodc</h3><p>Manage Read-Only Domain Controller (RODC).</p></div><div class="refsect3"><a name="id1552"></a><h4>rodc preload <em class="replaceable"><code>SID</code></em>|<em class="replaceable"><code>DN</code></em>|<em class="replaceable"><code>accountname</code></em> [options]</h4><p>Preload one account for an RODC.</p></div><div class="refsect2"><a name="id1553"></a><h3>schema</h3><p>Manage and query schema.</p></div><div class="refsect3"><a name="id1554"></a><h4>schema attribute modify <em class="replaceable"><code>attribute</code></em> [options]</h4><p>Modify the behaviour of an attribute in schema.</p></div><div class="refsect3"><a name="id1555"></a><h4>schema attribute show <em class="replaceable"><code>attribute</code></em> [options]</h4><p>Display an attribute schema definition.</p></div><div class="refsect3"><a name="id1556"></a><h4>schema attribute show_oc <em class="replaceable"><code>attribute</code></em> [options]</h4><p>Show objectclasses that MAY or MUST contain this attribute.</p></div><div class="refsect3"><a name="id1557"></a><h4>schema objectclass show <em class="replaceable"><code>objectclass</code></em> [options]</h4><p>Display an objectclass schema definition.</p></div><div class="refsect2"><a name="id1558"></a><h3>service-account</h3><p>Service account management.</p></div><div class="refsect3"><a name="id1559"></a><h4>service-account list</h4><p>List service accounts on the domain.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--json</span></dt><dd><p>
+				View service accounts as JSON instead of a list.
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1560"></a><h4>service-account view</h4><p>View a single service account on the domain.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Account name of service account to view (required).
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1561"></a><h4>service-account create</h4><p>Create a new service account on the domain.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Account name of service account (required).
+			</p></dd><dt><span class="term">--dns-host-name</span></dt><dd><p>
+				DNS hostname of this service account (required).
+			</p></dd><dt><span class="term">--group-msa-membership</span></dt><dd><p>
+				Optional Group MSA Membership SDDL.
+			</p></dd><dt><span class="term">--managed-password-interval</span></dt><dd><p>
+				Managed password refresh interval in days.
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1562"></a><h4>service-account modify</h4><p>Modify an existing service account on the domain.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Account name of service account (required).
+			</p></dd><dt><span class="term">--dns-host-name</span></dt><dd><p>
+				Update DNS hostname of this service account.
+			</p></dd><dt><span class="term">--group-msa-membership</span></dt><dd><p>
+				Update Group MSA Membership SDDL.
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1563"></a><h4>service-account delete</h4><p>Delete a service accounts on the domain.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Account name of service account to delete.
+			</p></dd></dl></div></div><div class="refsect2"><a name="id1564"></a><h3>service-account group-msa-membership</h3><p>Service account Group MSA Membership management.</p></div><div class="refsect3"><a name="id1565"></a><h4>service-account group-msa-membership show</h4><p>Display Group MSA Membership for a service account.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Account name of service account (required).
+			</p></dd><dt><span class="term">--json</span></dt><dd><p>
+				Return as JSON instead of a list.
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1566"></a><h4>service-account group-msa-membership add</h4><p>Add a principal to Group MSA Membership for a service account.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Account name of service account (required).
+			</p></dd><dt><span class="term">--principal</span></dt><dd><p>
+				Name, DN or SID of principal to add.
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1567"></a><h4>service-account group-msa-membership remove</h4><p>Remove a principal from Group MSA Membership for a service account.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd><dt><span class="term">--name</span></dt><dd><p>
+				Account name of service account (required).
+			</p></dd><dt><span class="term">--principal</span></dt><dd><p>
+				Name, DN or SID of principal to remove.
+			</p></dd></dl></div></div><div class="refsect2"><a name="id1568"></a><h3>shell</h3><p>Opens an interactive Samba Python shell.</p></div><div class="refsect3"><a name="id1569"></a><h4>shell [options]</h4><p>Opens an interactive Python shell for Samba ldb connection.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H, --URL</span></dt><dd><p>
+				LDB URL for database or target server.
+			</p></dd></dl></div></div><div class="refsect2"><a name="id1570"></a><h3>sites</h3><p>Manage sites.</p></div><div class="refsect3"><a name="id1571"></a><h4>sites list [options]</h4><p>List sites.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--json</span></dt><dd><p>
+				Output as JSON instead of a list
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1572"></a><h4>sites view <em class="replaceable"><code>site</code></em> [options]</h4><p>View site details.</p></div><div class="refsect3"><a name="id1573"></a><h4>sites create <em class="replaceable"><code>site</code></em> [options]</h4><p>Create a new site.</p></div><div class="refsect3"><a name="id1574"></a><h4>sites remove <em class="replaceable"><code>site</code></em> [options]</h4><p>Delete an existing site.</p></div><div class="refsect3"><a name="id1575"></a><h4>sites subnet list <em class="replaceable"><code>site</code></em> [options]</h4><p>List subnets for a site.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--json</span></dt><dd><p>
+				Output as JSON instead of a list
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1576"></a><h4>sites subnet view <em class="replaceable"><code>subnet</code></em> [options]</h4><p>View subnet details.</p></div><div class="refsect3"><a name="id1577"></a><h4>sites subnet create <em class="replaceable"><code>subnet</code></em> <em class="replaceable"><code>site-of-subnet</code></em> [options]</h4><p>Create a new subnet.</p></div><div class="refsect3"><a name="id1578"></a><h4>sites subnet remove <em class="replaceable"><code>subnet</code></em> [options]</h4><p>Delete an existing subnet.</p></div><div class="refsect3"><a name="id1579"></a><h4>sites subnet set-site <em class="replaceable"><code>subnet</code></em> <em class="replaceable"><code>site-of-subnet</code></em> [options]</h4><p>Assign a subnet to a site.</p></div><div class="refsect2"><a name="id1580"></a><h3>spn</h3><p>Manage Service Principal Names (SPN).</p></div><div class="refsect3"><a name="id1581"></a><h4>spn add <em class="replaceable"><code>name</code></em> <em class="replaceable"><code>user</code></em> [options]</h4><p>Create a new SPN.</p></div><div class="refsect3"><a name="id1582"></a><h4>spn delete <em class="replaceable"><code>name</code></em> [<em class="replaceable"><code>user</code></em>] [options]</h4><p>Delete an existing SPN.</p></div><div class="refsect3"><a name="id1583"></a><h4>spn list <em class="replaceable"><code>user</code></em> [options]</h4><p>List SPNs of a given user.</p></div><div class="refsect2"><a name="id1584"></a><h3>testparm</h3><p>Check the syntax of the configuration file.</p></div><div class="refsect2"><a name="id1585"></a><h3>time</h3><p>Retrieve the time on a server.</p></div><div class="refsect2"><a name="id1586"></a><h3>user</h3><p>Manage users.</p></div><div class="refsect3"><a name="id1587"></a><h4>user add <em class="replaceable"><code>username</code></em> [<em class="replaceable"><code>password</code></em>]</h4><p>Add a new user to the Active Directory Domain.</p></div><div class="refsect3"><a name="id1588"></a><h4>user addunixattrs <em class="replaceable"><code>username</code></em> <em class="replaceable"><code>uid-number</code></em> [options]</h4><p>Add RFC2307 attributes to a user.</p><p>This command adds Unix attributes to a user account in the Active
+	Directory domain.</p><p>The username specified on the command is the sAMaccountName.</p><p>You must supply a unique uid.</p><p>Unix (RFC2307) attributes will be added to the user account.</p><p>If you supply a group id with '--gid-number', this will be used for the
+	users Unix 'gidNumber' attribute.</p><p>If '--gid-number' is not supplied, the users Unix gidNumber will be set to the
+	one found in 'Domain Users', this means Domain Users must have a gidNumber
+	attribute.</p><p>If '--unix-home' is not supplied, the users Unix home directory will be
+	set to /home/DOMAIN/username.</p><p>If '--login-shell' is not supplied, the users Unix login shell will be
+	set to '/bin/sh'</p><p>If ---gecos' is not supplied, the users Unix gecos field will be set to the
+	user's 'CN' attribute.</p><p>Add 'idmap_ldb:use rfc2307 = Yes' to the smb.conf on DCs to use these
+	attributes for UID/GID mapping.</p><p>The command may be run from the root userid or another authorised userid.
+	The -H or --URL= option can be used to execute the command against a
+	remote server.</p><p>Example1:
+	</p><pre class="programlisting">samba-tool user addunixattrs User1 10001</pre><p>
+
+
+	Example1 shows how to add RFC2307 attributes to a domain enabled user
+	account, Domain Users will be set as the users gidNumber.</p><p>The users Unix ID will be set to '10001', provided this ID isn't already
+in use.</p><p>Example2:
+	</p><pre class="programlisting">samba-tool user addunixattrs User2 10002 --gid-number=10001 --unix-home=/home/User2</pre><p>
+      </p><p>Example2 shows how to add RFC2307 attributes to a domain enabled user
+account.</p><p>The users Unix ID will be set to '10002', provided this ID isn't already
+in use.</p><p>The users gidNumber attribute will be set to '10001'</p><p>The users Unix home directory will be set to '/home/user2'</p><p>Example3:
+	</p><pre class="programlisting">samba-tool user addunixattrs User3 10003 --gid-number=10001 --login-shell=/bin/false --gecos='User3 test'</pre><p>
+      </p><p>Example3 shows how to add RFC2307 attributes to a domain enabled user
+	account.</p><p>The users Unix ID will be set to '10003', provided this
+	ID isn't already in use. The users gidNumber attribute will be
+	set to '10001'. The users Unix login shell will be set to
+	'/bin/false'. The users gecos field will be set to 'User3
+	test'.
+      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H URL, --URL=URL</span></dt><dd><p>LDB URL for database or target server</p></dd><dt><span class="term">--gid-number=GROUP_ID</span></dt><dd><p>User's Unix/RFC2307 GID</p></dd><dt><span class="term">--unix-home=DIR</span></dt><dd><p>User's Unix/RFC2307 home directory</p></dd><dt><span class="term">--login-shell=SHELL</span></dt><dd><p>User's Unix/RFC2307 login shell</p></dd><dt><span class="term">--gecos=GECOS</span></dt><dd><p>User's Unix/RFC2307 GECOS field</p></dd><dt><span class="term">--uid=USER_ID</span></dt><dd><p>User's Unix/RFC2307 user id</p></dd></dl></div></div><div class="refsect3"><a name="id1589"></a><h4>user create <em class="replaceable"><code>username</code></em> [<em class="replaceable"><code>password</code></em>]</h4><p>Add a new user. This is a synonym for the
+	<code class="literal">samba-tool user add</code> command and is available
+	for compatibility reasons only. Please use
+	<code class="literal">samba-tool user add</code> instead.</p></div><div class="refsect3"><a name="id1590"></a><h4>user delete <em class="replaceable"><code>username</code></em> [options]</h4><p>Delete an existing user account.</p></div><div class="refsect3"><a name="id1591"></a><h4>user disable <em class="replaceable"><code>username</code></em></h4><p>Disable a user account.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--remove-supplemental-groups</span></dt><dd><p>
+	Remove user from all groups, but keep the primary group.
+	</p></dd></dl></div></div><div class="refsect3"><a name="id1592"></a><h4>user edit <em class="replaceable"><code>username</code></em></h4><p>Edit a user account AD object.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--editor=EDITOR</span></dt><dd><p>
+	Specifies the editor to use instead of the system default, or 'vi' if no
+	system default is set.
+	</p></dd></dl></div></div><div class="refsect3"><a name="id1593"></a><h4>user enable <em class="replaceable"><code>username</code></em></h4><p>Enable a user account.</p></div><div class="refsect3"><a name="id1594"></a><h4>user list</h4><p>List all users.</p><p>By default the user's sAMAccountNames are listed.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--full-dn</span></dt><dd><p>
+	List user's distinguished names instead of the sAMAccountNames.
+	</p></dd><dt><span class="term">-b BASE_DN|--base-dn=BASE_DN</span></dt><dd><p>
+	Specify base DN to use. Only users under the specified base DN will be
+	listed.
+	</p></dd><dt><span class="term">--hide-expired</span></dt><dd><p>
+	Do not list expired user accounts.
+	</p></dd><dt><span class="term">--hide-disabled</span></dt><dd><p>
+	Do not list disabled user accounts.
+	</p></dd><dt><span class="term">--locked-only</span></dt><dd><p>
+	Only list locked user accounts.
+	</p></dd></dl></div></div><div class="refsect3"><a name="id1595"></a><h4>user setprimarygroup <em class="replaceable"><code>username</code></em> <em class="replaceable"><code>primarygroupname</code></em></h4><p>Set the primary group a user account.</p></div><div class="refsect3"><a name="id1596"></a><h4>user getgroups <em class="replaceable"><code>username</code></em></h4><p>Get the direct group memberships of a user account.</p></div><div class="refsect3"><a name="id1597"></a><h4>user show <em class="replaceable"><code>username</code></em> [options]</h4><p>Display a user AD object.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--attributes=USER_ATTRS</span></dt><dd><p>
+	Comma separated list of attributes, which will be printed.
+	</p></dd></dl></div></div><div class="refsect3"><a name="id1598"></a><h4>user move <em class="replaceable"><code>username</code></em> <em class="replaceable"><code>new_parent_dn</code></em> [options]</h4><p>This command moves a user account into the specified
+	organizational unit or container.</p><p>The username specified on the command is the
+	sAMAccountName.</p><p>The name of the organizational unit or container can be
+	specified as a full DN or without the domainDN component.</p></div><div class="refsect3"><a name="id1599"></a><h4>user password [options]</h4><p>Change password for a user account (the one provided in
+	authentication).</p></div><div class="refsect3"><a name="id1600"></a><h4>user rename <em class="replaceable"><code>username</code></em> [options]</h4><p>Rename a user and related attributes.</p><p>This command allows to set the user's name related attributes. The user's
+	CN will be renamed automatically.
+	The user's new CN will be made up by combining the given-name, initials
+	and surname. A dot ('.') will be appended to the initials automatically,
+	if required.
+	Use the --force-new-cn option to specify the new CN manually and --reset-cn
+	to reset this change.</p><p>Use an empty attribute value to remove the specified attribute.</p><p>The username specified on the command is the sAMAccountName.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--surname=SURNAME</span></dt><dd><p>
+	New surname
+	</p></dd><dt><span class="term">--given-name=GIVEN_NAME</span></dt><dd><p>
+	New given name
+	</p></dd><dt><span class="term">--initials=INITIALS</span></dt><dd><p>
+	New initials
+	</p></dd><dt><span class="term">--force-new-cn=NEW_CN</span></dt><dd><p>
+	Specify a new CN (RDN) instead of using a combination
+	of the given name, initials and surname.
+	</p></dd><dt><span class="term">--reset-cn</span></dt><dd><p>
+	Set the CN to the default combination of given name,
+	initials and surname.
+	</p></dd><dt><span class="term">--display-name=DISPLAY_NAME</span></dt><dd><p>
+	New display name
+	</p></dd><dt><span class="term">--mail-address=MAIL_ADDRESS</span></dt><dd><p>
+	New email address
+	</p></dd><dt><span class="term">--samaccountname=SAMACCOUNTNAME</span></dt><dd><p>
+	New account name (sAMAccountName/logon name)
+	</p></dd><dt><span class="term">--upn=UPN</span></dt><dd><p>
+	New user principal name
+	</p></dd></dl></div></div><div class="refsect3"><a name="id1601"></a><h4>user sensitive <em class="replaceable"><code>accountname</code></em> [show|on|off] [options]</h4><p>Set/unset or show UF_NOT_DELEGATED for an account.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-H URL, --URL=URL</span></dt><dd><p>LDB URL for database or target server</p></dd></dl></div></div><div class="refsect3"><a name="id1602"></a><h4>user setexpiry <em class="replaceable"><code>username</code></em> [options]</h4><p>Set the expiration of a user account.</p></div><div class="refsect3"><a name="id1603"></a><h4>user setpassword <em class="replaceable"><code>username</code></em> [options]</h4><p>Sets or resets the password of a user account.</p></div><div class="refsect3"><a name="id1604"></a><h4>user unlock <em class="replaceable"><code>username</code></em> [options]</h4><p>This command unlocks a user account in the Active Directory
+	domain.</p></div><div class="refsect3"><a name="id1605"></a><h4>user getpassword <em class="replaceable"><code>username</code></em> [options]</h4><p>Gets the password of a user account.</p></div><div class="refsect3"><a name="id1606"></a><h4>user get-kerberos-ticket <em class="replaceable"><code>username</code></em> [options]</h4><p>Gets a Kerberos Ticket Granting Ticket as the account.</p></div><div class="refsect3"><a name="id1607"></a><h4>user syncpasswords <em class="replaceable"><code>--cache-ldb-initialize</code></em> [options]</h4><p>Syncs the passwords of all user accounts, using an optional script.</p><p>Note that this command should run on a single domain controller only
+	(typically the PDC-emulator).</p></div><div class="refsect3"><a name="id1608"></a><h4>user auth policy assign <em class="replaceable"><code>username</code></em> [options]</h4><p>Set assigned authentication policy for user.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--policy</span></dt><dd><p>
+				Name of authentication policy to assign or leave empty to remove.
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1609"></a><h4>user auth policy remove <em class="replaceable"><code>username</code></em></h4><p>Remove assigned authentication policy from user.</p></div><div class="refsect3"><a name="id1610"></a><h4>user auth policy view <em class="replaceable"><code>username</code></em></h4><p>View the assigned authentication policy for user.</p></div><div class="refsect3"><a name="id1611"></a><h4>user auth silo assign <em class="replaceable"><code>username</code></em> [options]</h4><p>Set assigned authentication silo for user.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--silo</span></dt><dd><p>
+				Name of authentication silo to assign or leave empty to remove.
+			</p></dd></dl></div></div><div class="refsect3"><a name="id1612"></a><h4>user auth silo remove <em class="replaceable"><code>username</code></em></h4><p>Remove assigned authentication silo from user.</p></div><div class="refsect3"><a name="id1613"></a><h4>user auth silo view <em class="replaceable"><code>username</code></em></h4><p>View the assigned authentication silo for user.</p></div><div class="refsect2"><a name="id1614"></a><h3>user keytrust</h3><p>Manage Key Credential Links for a user.</p><p>This can populate, describe or delete  msDS-KeyCredentialLink attributes.</p></div><div class="refsect3"><a name="id1615"></a><h4>user keytrust add <em class="replaceable"><code>username</code></em>  <em class="replaceable"><code>public-key-or-certificate</code></em>[options]</h4><p>Add a key-credential-link, which is a linked attribute that holds a public key in a binary field.
+</p><p>
+  The second argument is a filename that should refer to a 2048 bit RSA key (or a certificate containing that key) in PEM or DER format. By default the encoding format will be detected automatically, but you can attempt to override this with <code class="constant">--encoding</code> option. Other types of public key are not supported, though the <code class="constant">--force</code> option can be used to add a non-2048 bit key.
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--link-target=DN</span></dt><dd><p>link to this DN (default: the user's DN)</p></dd><dt><span class="term">--encoding=ENCODING</span></dt><dd><p>Key format, either <code class="constant">pem</code>,  <code class="constant">der</code>, or  <code class="constant">auto</code>. The default is  <code class="constant">auto</code>, which is likely to detect the correct format in all circumstances.</p></dd><dt><span class="term">--force</span></dt><dd><p>proceed with operations that seems ill-fated</p></dd></dl></div></div><div class="refsect3"><a name="id1616"></a><h4>user keytrust delete <em class="replaceable"><code>username</code></em> [options]</h4><p>Delete a key-credential-link.
+</p><p>The link to be deleted can be selected in a number of ways. <code class="constant">--all</code> will delete all key credential links for the user (often there will only be one). The  <code class="constant">--link-target</code> option selects a key credential link based on the DN targeted by the link. The <code class="constant">--fingerprint</code> option selects a link to delete based on the key fingerprint. This is the SHA256 of the DER-encoded  key material, expressed as hex-pairs separated by colons. See <code class="constant">user keytrust view</code> to get a list of links and their fingerprints.
+</p><p>If more than one of <code class="constant">--link-target</code>, <code class="constant">--fingerprint</code>, and <code class="constant">--all</code> are used, links matched by any of them will be deleted.
+</p><p>The <code class="constant">--dry-run</code> option will prevent links from being deleted, and instead indicate what would happen if it was omitted.
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--link-target=DN</span></dt><dd><p>Delete this key credential link (a DN)</p></dd><dt><span class="term">--fingerprint=HH:HH:..</span></dt><dd><p>Delete the key credential link with this key fingerprint</p></dd><dt><span class="term">--all</span></dt><dd><p>Delete all key credential links</p></dd><dt><span class="term">-n, --dry-run</span></dt><dd><p>Do nothing but print what would happen</p></dd></dl></div></div><div class="refsect3"><a name="id1617"></a><h4>user keytrust view <em class="replaceable"><code>username</code></em> [options]</h4><p>View a user's key credential links. This can be used to find a link's fingerprint and target DN for <span style="color: red">&lt;title&gt;user keytrust delete&lt;/title&gt;</span>.
+
+The <code class="constant">--verbose</code> includes more, probably useless, information.
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-h, --help</span></dt><dd><p>show this help message and exit</p></dd><dt><span class="term">-v, --verbose</span></dt><dd><p>Be verbose</p></dd></dl></div></div><div class="refsect3"><a name="id1618"></a><h4>user generate-csr <em class="replaceable"><code>username</code></em>
+	<em class="replaceable"><code>subject_name</code></em>
+	<em class="replaceable"><code>private_key_filename</code></em>
+	<em class="replaceable"><code>output_filename</code></em> [options]</h4><p>Generate a PEM‐encoded Certificate Signing Request for a user.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--private-key-encoding</span></dt><dd><p>Specify which encoding the private key uses. Default is 'auto'.</p></dd><dt><span class="term">--private-key-pass</span></dt><dd><p>Provide a password to decrypt the private key.</p></dd></dl></div></div><div class="refsect2"><a name="id1619"></a><h3>vampire [options] <em class="replaceable"><code>domain</code></em></h3><p>Join and synchronise a remote AD domain to the local server.
+	Please note that <code class="literal">samba-tool vampire</code> is deprecated,
+	please use <code class="literal">samba-tool domain join</code> instead.</p></div><div class="refsect2"><a name="id1620"></a><h3>visualize [options] <em class="replaceable"><code>subcommand</code></em></h3><p>Produce graphical representations of Samba network state.
+	To work out what is happening in a replication graph, it is sometimes
+	helpful to use visualisations.</p><p>
+	There are two subcommands, two graphical modes, and (roughly) two modes
+	of operation with respect to the location of authority.</p><div class="refsect3"><a name="id1621"></a><h4>MODES OF OPERATION</h4><dt><span class="term">samba-tool visualize ntdsconn</span></dt><dd><p>Looks at NTDS connections.
+                </p></dd><dt><span class="term">samba-tool visualize reps</span></dt><dd><p>Looks at repsTo and repsFrom objects.
+		</p></dd><dt><span class="term">samba-tool visualize uptodateness</span></dt><dd><p>Looks at replication lag as shown by the
+                uptodateness vectors.
+		</p></dd></div><div class="refsect3"><a name="id1622"></a><h4>GRAPHICAL MODES</h4><dt><span class="term">--distance</span></dt><dd><p>Distances between DCs are shown in a matrix in
+		 the terminal.
+                </p></dd><dt><span class="term">--dot</span></dt><dd><p>Generate Graphviz dot output (for
+                ntdsconn and reps modes). When viewed using dot or
+                xdot, this shows the network as a graph with DCs as
+                vertices and connections edges. Certain types of
+                degenerate edges are shown in different colours or
+                line-styles. </p></dd><dt><span class="term">--xdot</span></dt><dd><p>Generate Graphviz dot output as with
+                [--dot] and attempt to view it
+                immediately using <code class="literal">/usr/bin/xdot</code>.
+                </p></dd></div><dt><span class="term">-r</span></dt><dd><p>Normally,
+		<code class="literal">samba-tool</code> talks to one database;
+		with the  [-r] option attempts
+		are made to contact all the DCs known to the first
+		database. This is necessary for <code class="literal">samba-tool
+		visualize uptodateness</code> and for
+		<code class="literal">samba-tool visualize reps</code> because
+		the repsFrom/To objects are not replicated, and it can
+		reveal replication issues in other modes.
+		</p></dd></div><div class="refsect2"><a name="id1623"></a><h3>help</h3><p>Gives usage information.</p></div></div><div class="refsect1"><a name="id1624"></a><h2>VERSION</h2><p>This man page is complete for version 4.25.0 of the Samba
+	suite.</p></div><div class="refsect1"><a name="id1625"></a><h2>AUTHOR</h2><p>The original Samba software and related utilities
+	were created by Andrew Tridgell. Samba is now developed
+	by the Samba Team as an Open Source project similar
+	to the way the Linux kernel is developed.</p></div></div></body></html>

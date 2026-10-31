@@ -1,0 +1,323 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "2d51b7caee052d3a4244064f4ae72518c0b599ea585bd3f6df9bf1096699780a",
+  "extraction": {
+    "selector": "body",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "pam_cifscreds",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "heading",
+      "text": "PAM module to manage NTLM credentials in kernel keyring",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "term",
+      "text": "Manual section:",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "8",
+      "protected": []
+    },
+    {
+      "id": "s0005",
+      "kind": "heading",
+      "text": "SYNOPSIS",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "Edit the PAM configuration files for the systems that you want to automatically register NTLM credentials for, e.g. [[p0]]/etc/pam.d/login[[p1]], and modify as follows:",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "Change DOMAIN to the name of you Windows domain, or use host= as described below.",
+      "protected": []
+    },
+    {
+      "id": "s0008",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "The pam_cifscreds PAM module is a tool for automatically adding credentials (username and password) for the purpose of establishing sessions in multiuser mounts.",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "When a cifs filesystem is mounted with the \"multiuser\" option, and does not use krb5 authentication, it needs to be able to get the credentials for each user from somewhere. The pam_cifscreds module can be used to provide these credentials to the kernel automatically at login.",
+      "protected": []
+    },
+    {
+      "id": "s0011",
+      "kind": "paragraph",
+      "text": "In the session section of the PAM configuration file, the module can either an NT domain name or a list of hostname or addresses.",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "heading",
+      "text": "OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "pam_cifscreds supports a couple options which can be set in the PAM configuration files. You must have one (and only one) of domain= or host=.",
+      "protected": []
+    },
+    {
+      "id": "s0014",
+      "kind": "term",
+      "text": "debug",
+      "protected": []
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "Turns on some extra debug logging.",
+      "protected": []
+    },
+    {
+      "id": "s0016",
+      "kind": "term",
+      "text": "domain=<NT domain name>",
+      "protected": []
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "Credentials will be added for the specified NT domain name.",
+      "protected": []
+    },
+    {
+      "id": "s0018",
+      "kind": "term",
+      "text": "host=<hostname or IP address>[,...]",
+      "protected": []
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "Credentials will be added for the specified hostnames or IP addresses.",
+      "protected": []
+    },
+    {
+      "id": "s0020",
+      "kind": "heading",
+      "text": "NOTES",
+      "protected": []
+    },
+    {
+      "id": "s0021",
+      "kind": "paragraph",
+      "text": "The pam_cifscreds PAM module requires a kernel built with support for the login key type. That key type was added in v3.3 in mainline Linux kernels.",
+      "protected": []
+    },
+    {
+      "id": "s0022",
+      "kind": "paragraph",
+      "text": "Since pam_cifscreds adds keys to the session keyring, it is highly recommended that one use pam_keyinit to ensure that a session keyring is established at login time.",
+      "protected": []
+    },
+    {
+      "id": "s0023",
+      "kind": "heading",
+      "text": "SEE ALSO",
+      "protected": []
+    },
+    {
+      "id": "s0024",
+      "kind": "paragraph",
+      "text": "cifscreds(1), pam_keyinit(8)",
+      "protected": []
+    },
+    {
+      "id": "s0025",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0026",
+      "kind": "paragraph",
+      "text": "The pam_cifscreds PAM module was developed by Orion Poplawski <orion@nwra.com>.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "pam_cifscreds",
+      "segment": "s0001"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "PAM-module-to-manage-NTLM-credentials-in-kernel-keyring",
+      "segment": "s0002"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0003",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0004"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "SYNOPSIS",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "literal",
+      "text": "    ...\n    auth       substack     system-auth\n+++ auth       optional     pam_cifscreds.so\n    auth       include      postlogin\n    ...\n\n    ...\n    session    include      system-auth\n+++ session    optional     pam_cifscreds.so domain=DOMAIN\n    session    include      postlogin\n    ..."
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "DESCRIPTION",
+      "segment": "s0008"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0009"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0010"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0011"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "OPTIONS",
+      "segment": "s0012"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0013"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0014",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0015"
+            }
+          ]
+        },
+        {
+          "term": "s0016",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0017"
+            }
+          ]
+        },
+        {
+          "term": "s0018",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0019"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "NOTES",
+      "segment": "s0020"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0021"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0022"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "SEE-ALSO",
+      "segment": "s0023"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0024"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "AUTHOR",
+      "segment": "s0025"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0026"
+    }
+  ]
+}

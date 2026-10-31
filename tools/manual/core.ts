@@ -130,7 +130,7 @@ export async function ingest(
     selector?: string;
     provenance?: Manifest['provenance'];
     materials?: {
-      role: 'release-manifest' | 'upstream-candidate' | 'license';
+      role: 'release-manifest' | 'upstream-candidate' | 'license' | 'original-source';
       path: string;
       bytes: Uint8Array;
       origin: string;
