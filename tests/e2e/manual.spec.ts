@@ -19,13 +19,17 @@ test('font preload prevents duplicate fetches and visible font layout shifts on 
         const entry = raw as PerformanceEntry & {
           value: number;
           hadRecentInput: boolean;
-          sources: { node?: Node }[];
+          sources: { node?: Node; previousRect: DOMRectReadOnly; currentRect: DOMRectReadOnly }[];
         };
         if (!entry.hadRecentInput)
           shifts.push({
             value: entry.value,
-            sources: entry.sources.map(
-              ({ node }) => node?.parentElement?.outerHTML.slice(0, 180) ?? '',
+            sources: entry.sources.map(({ node, previousRect, currentRect }) =>
+              JSON.stringify({
+                node: node instanceof Element ? node.outerHTML.slice(0, 180) : '',
+                previousRect,
+                currentRect,
+              }),
             ),
           });
       }
