@@ -7,6 +7,24 @@ const find = (catalog as CatalogEntry[]).find(
 );
 if (!find) throw new Error('The FreeBSD find sample must be generated before browser tests.');
 
+test('catalog opens with search and manuals while keeping an accessible page name', async ({ page }) => {
+  await page.goto('/');
+  await expect(page).toHaveTitle('マニュアル一覧 | manual');
+  await expect(page.locator('h1')).toHaveText('マニュアル一覧');
+  await expect(page.locator('h1')).toHaveClass('sr-only');
+  await expect(page.locator('.eyebrow, .page-description')).toHaveCount(0);
+  await expect(page.locator('body')).not.toContainText('コマンドの使い方を、日本語で。');
+  await expect(page.locator('body')).not.toContainText('日本語コマンドリファレンス');
+  await expect(page.getByRole('search', { name: 'マニュアル一覧を絞り込む' })).toBeVisible();
+  await expect(page.locator('.catalog-results li').first()).toBeVisible();
+  await page.setViewportSize({ width: 320, height: 844 });
+  await expect(page.locator('.catalog-controls input')).toBeVisible();
+  await page.screenshot({ path: 'test-results/catalog-320.png' });
+  await page.goto(find.href);
+  await expect(page.locator('h1')).not.toHaveClass('sr-only');
+  await expect(page.locator('.eyebrow, .page-description')).toHaveCount(0);
+});
+
 test('manual has dark Cica typography, edition metadata, structural headings and stable anchors', async ({
   page,
 }) => {
