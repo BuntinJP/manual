@@ -55,3 +55,19 @@
 - [swift(1)](https://manual.buntin.dev/manuals/apple/macos/26.6.2/25g83/1/swift/28bbf6a0c380/): `788910553b83aeeb8683f2aece81e7ea19fd50c2b5f9af39d6e78b40e9db15da`
 - [tar(1)](https://manual.buntin.dev/manuals/apple/macos/26.6.2/25g83/1/tar/e7e0f61433da/): `061b361898f884d2cdfa723fbdaba62d3c1b1b51d28d09baec18bcb3ce4164b7`
 - [tclsh(1)](https://manual.buntin.dev/manuals/apple/macos/26.6.2/25g83/1/tclsh/198e1ed330b7/): `b364ae78579c9063739cbda61664dd3c03b8f2f1f5774c3e605250ccd6dcbb9e`
+
+## 2026-11-01 フォントの表示安定化と提供元 HOME
+
+ページ遷移時の文字のぶれを修正し、Apple / FreeBSD の HOME と提供元の共通定義を、既存 Worker `manual` へ反映しました。
+
+- 公開ソース: 作業ツリー `manual-font-navigation`、ブランチ `codex/manual-font-navigation`、コミット `ecf82bc`。先行する Apple 収録分のスナップショット `bb89a33` を基底とし、元の未コミット作業ツリーは変更していません。
+- 公開コマンド: 検証済みの `dist/` に対し `bunx wrangler deploy --keep-vars`。
+- 新バージョン: `d1403bd2-36e9-4fb8-afa8-ab527bf04126`（配信割合100%を再取得して確認）。
+- デプロイID: `96375732-5c70-4fef-bf86-34cdcf03b493`。
+- 作成時刻: 2026-10-31T16:33:11.527912Z（2026-11-01 01:33 JST）。
+- 更新前・復旧先のバージョン: `ce902c58-fe9c-455d-bdcb-406f1c7cd4b2`。
+- 公開前: `bun run verify` 成功（28テスト、型エラー0、101ページ生成）、E2E 22件成功、Wrangler dry-run 成功。300ms のフォント遅延でも、文字の表示によるレイアウトシフトが規定値未満となることを検証。
+- 公開後: 実ブラウザーでトップ・検索・4つの HOME・全10件の版別マニュアルを取得し、計16ページの HTTP 200 とローカル成果物との SHA-256 一致を確認。
+- 公開後: Apple HOME から FreeBSD HOME をクリックして移動し、Cica Regular / Bold の転送量がともに0バイトとなることを確認。フォントの応答ヘッダー `Cache-Control: public, max-age=31536000, immutable` も確認。
+
+提供元の追加と HOME 生成の運用は [構成](architecture.md#提供元と-home) を参照してください。
