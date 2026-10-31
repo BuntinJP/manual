@@ -3,12 +3,13 @@ import starlight from '@astrojs/starlight';
 import { defineConfig } from 'astro/config';
 import catalog from './src/data/manual-catalog.json';
 import type { CatalogEntry } from './src/lib/catalog';
+import { providerLabel } from './src/lib/providers';
 
 const manuals = catalog as CatalogEntry[];
 const manualGroups = [...new Set(manuals.map((entry) => entry.provider))]
   .sort()
   .map((provider) => ({
-    label: provider,
+    label: providerLabel(provider),
     items: manuals
       .filter((entry) => entry.provider === provider)
       .map((entry) => ({

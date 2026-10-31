@@ -66,16 +66,51 @@ export function safeHref(raw: string, origin: string): string | undefined {
 
 export async function roffToHtml(source: string): Promise<{ html: string; diagnostics: string }> {
   // mandoc supports .so inclusion. Reject requests even inside conditional/macro bodies,
-  // and reject control-character changes that could disguise a later request.
-  if (
-    /(?:^|[ \t])['.][ \t]*(?:so|mso|sy|pso|pi|open|opena|write|writem|cf|nx|cc|c2|do)(?:[ \t\r\n]|$)/m.test(
-      source,
-    )
-  ) {
+  // including requests hidden behind a changed control character. A bounded .cc pair
+  // used to print literal leading dots is safe when the resulting stream has no such request.
+  const unsafe = new Set([
+    'so',
+    'mso',
+    'sy',
+    'pso',
+    'pi',
+    'open',
+    'opena',
+    'write',
+    'writem',
+    'cf',
+    'nx',
+    'c2',
+    'do',
+  ]);
+  let control = '.';
+  for (const line of source.split(/\r?\n/)) {
+    const change = line.match(
+      new RegExp(
+        `^[ \\t]*${control.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}cc(?:[ \\t]+([^\\s]))?[ \\t]*$`,
+      ),
+    );
+    const markers = [...new Set([control, '.', "'"])].map((value) =>
+      value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'),
+    );
+    const requests = new RegExp(`(?:^|[ \\t])(?:${markers.join('|')})[ \\t]*([A-Za-z0-9]+)`, 'g');
+    for (const match of line.matchAll(requests)) {
+      const request = match[1].toLowerCase();
+      if (request === 'cc' && !change)
+        throw new Error(
+          'External roff inclusion, file access, shell and control-character requests are unsupported. Supply a self-contained source.',
+        );
+      if (unsafe.has(request))
+        throw new Error(
+          'External roff inclusion, file access, shell and control-character requests are unsupported. Supply a self-contained source.',
+        );
+    }
+    if (change) control = change[1] ?? '.';
+  }
+  if (control !== '.')
     throw new Error(
       'External roff inclusion, file access, shell and control-character requests are unsupported. Supply a self-contained source.',
     );
-  }
   const cwd = await mkdtemp(join(tmpdir(), 'manual-mandoc-'));
   try {
     const proc = Bun.spawn(['/usr/bin/mandoc', '-Thtml'], {

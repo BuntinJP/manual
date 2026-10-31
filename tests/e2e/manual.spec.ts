@@ -67,9 +67,16 @@ test('command search keeps same-name implementations and routes section-qualifie
   page,
 }) => {
   await page.goto('/search/?q=find');
-  await expect(page.locator('.catalog-results li:visible')).toHaveCount(2);
-  await expect(page.locator('.catalog-results li:visible')).toContainText(['freebsd', 'megacmd']);
+  await expect(page.locator('.catalog-results li:visible')).toHaveCount(3);
+  await expect(page.locator('.catalog-results li:visible')).toContainText([
+    'Apple',
+    'FreeBSD',
+    'MEGAcmd',
+  ]);
   await page.goto('/search/?q=man%201%20find');
+  await expect(page.locator('.catalog-results li:visible')).toHaveCount(2);
+  await expect(page.locator('.catalog-results li:visible')).toContainText(['Apple', 'FreeBSD']);
+  await page.goto('/search/?q=man%201%20find&provider=freebsd');
   await expect(page).toHaveURL(new RegExp(find.href.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
   await page.goto('/search/?q=not-a-real-command');
   await expect(page.locator('.catalog-empty')).toBeVisible();
@@ -144,3 +151,64 @@ for (const query of ['find', 'シンボリックリンク']) {
     });
   });
 }
+
+const appleManuals = (catalog as CatalogEntry[]).filter((entry) => entry.provider === 'apple');
+
+test('Apple collection contains exactly the eight requested commands', async ({ page }) => {
+  expect(appleManuals.map((entry) => entry.name).sort()).toEqual(
+    ['find', 'osascript', 'osacompile', 'launchctl', 'tclsh', 'tar', 'swift', 'sqlite3'].sort(),
+  );
+  await page.goto('/search/?provider=apple');
+  await expect(page.locator('.catalog-results li:visible')).toHaveCount(8);
+  await page.goto('/search/?q=man%201%20find&provider=apple');
+  await expect(page.locator('h1')).toHaveText('find(1)');
+  await expect(page.locator('.manual-edition')).toContainText('Apple');
+});
+
+for (const manual of appleManuals) {
+  test(`Apple ${manual.name} renders Japanese with edition metadata and valid anchors`, async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto(manual.href);
+    await expect(page.locator('h1')).toHaveText(`${manual.name}(${manual.section})`);
+    await expect(page.locator('.manual-edition')).toContainText(manual.version);
+    const body = page.locator('.sl-markdown-content');
+    await expect(body).toContainText(/[ぁ-んァ-ヶ一-龠]/);
+    await expect(body).not.toContainText(/\[\[p\d+\]\]/);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+    expect(
+      await page.locator('starlight-toc a').evaluateAll((links) =>
+        links.every((a) => {
+          const href = a.getAttribute('href');
+          return (
+            !href?.startsWith('#') ||
+            document.getElementById(decodeURIComponent(href.slice(1))) !== null
+          );
+        }),
+      ),
+    ).toBe(true);
+    if (manual.name === 'find' || manual.name === 'tar') {
+      await page.screenshot({ path: `test-results/apple-${manual.name}-mobile.png` });
+    }
+  });
+}
+
+test('Japanese full-text search can restrict results to Apple', async ({ page }) => {
+  await page.goto('/');
+  await page.locator('site-search button[data-open-modal]').click();
+  await page
+    .getByRole('dialog')
+    .getByRole('combobox', { name: '提供元', exact: true })
+    .selectOption('apple');
+  await page.locator('site-search input').fill('シンボリックリンク');
+  const results = page.locator('site-search .search-results li');
+  await expect(results.first()).toBeVisible();
+  expect(
+    await results.evaluateAll((items) =>
+      items.every((item) => item.getAttribute('data-provider') === 'apple'),
+    ),
+  ).toBe(true);
+});

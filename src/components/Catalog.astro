@@ -1,17 +1,32 @@
 ---
 import { getCollection } from 'astro:content';
 import manuals from '../data/manual-catalog.json';
-import { searchCatalog, type CatalogEntry } from '../lib/catalog';
+import { type CatalogEntry, searchCatalog } from '../lib/catalog';
+import { providerLabel } from '../lib/providers';
 
-const legacy = (await getCollection('docs')).filter(({ id }) => /^(isync|megacmd|wrangler)\//.test(id) && !id.endsWith('/home'));
-const entries: CatalogEntry[] = searchCatalog([
-  ...(manuals as CatalogEntry[]),
-  ...legacy.map(({ id, data }) => {
-    const product = id.split('/')[0] ?? '';
-    return { id, href: `/${id}/`, name: data.title, section: '', provider: product,
-      product, version: '', variant: '', description: data.description ?? '' };
-  }),
-], '');
+const legacy = (await getCollection('docs')).filter(
+  ({ id }) => /^(isync|megacmd|wrangler)\//.test(id) && !id.endsWith('/home'),
+);
+const entries: CatalogEntry[] = searchCatalog(
+  [
+    ...(manuals as CatalogEntry[]),
+    ...legacy.map(({ id, data }) => {
+      const product = id.split('/')[0] ?? '';
+      return {
+        id,
+        href: `/${id}/`,
+        name: data.title,
+        section: '',
+        provider: product,
+        product,
+        version: '',
+        variant: '',
+        description: data.description ?? '',
+      };
+    }),
+  ],
+  '',
+);
 const providers = [...new Set(entries.map((entry) => entry.provider))].sort();
 ---
 <manual-catalog data-entries={JSON.stringify(entries)}>
@@ -20,14 +35,14 @@ const providers = [...new Set(entries.map((entry) => entry.provider))].sort();
       <input type="search" name="q" placeholder="find、man 1 find、ファイル検索…" autocomplete="off" spellcheck="false" />
     </label>
     <label>提供元
-      <select name="provider"><option value="">すべて</option>{providers.map((provider) => <option value={provider}>{provider}</option>)}</select>
+      <select name="provider"><option value="">すべて</option>{providers.map((provider) => <option value={provider}>{providerLabel(provider)}</option>)}</select>
     </label>
     <button type="submit">検索</button>
   </form>
   <p class="catalog-status" role="status" aria-live="polite">{entries.length} 件のマニュアル</p>
   <ul class="catalog-results">
     {entries.map((entry) => <li data-id={entry.id}>
-      <div class="catalog-command"><a href={entry.href}>{entry.name}{entry.section && `(${entry.section})`}</a><span>{entry.provider}{entry.version && ` / ${entry.version}`}</span></div>
+      <div class="catalog-command"><a href={entry.href}>{entry.name}{entry.section && `(${entry.section})`}</a><span>{providerLabel(entry.provider)}{entry.version && ` / ${entry.version}`}</span></div>
       <p>{entry.description}</p>
     </li>)}
   </ul>

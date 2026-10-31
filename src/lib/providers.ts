@@ -10,6 +10,7 @@ export function providerLabel(provider: string): string {
   const labels: Record<string, string> = {
     freebsd: 'FreeBSD',
     gnu: 'GNU',
+    apple: 'Apple',
     isync: 'isync',
     megacmd: 'MEGAcmd',
     wrangler: 'Wrangler',

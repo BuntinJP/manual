@@ -16,6 +16,10 @@ manuals/
     rendered/ja.md                  決定的に生成したページ
   gnu/findutils/4.10.0/upstream/1/find/<sha12>/
     ...                             別実装の取り込み例（未収録）
+  apple/macos/26.6.2/25g83/1/find/<sha12>/
+    source.roff                     Apple OSS と実機で一致した原文
+    provenance/                     固定した Apple の公開版情報
+    licenses/                       公開元に独立ファイルがある場合の許諾表示
 tools/manual/                       取り込み・解析・翻訳の受け渡し・生成
 src/content/docs/manuals/            サイト向けの生成 Markdown
 src/data/manual-catalog.json         版別の検索・ナビゲーション情報
@@ -24,6 +28,8 @@ public/fonts/cica/                  Cica、同梱通知、取得・変換記録
 ```
 
 識別子は `提供元 / 製品 / 版 / バリエーション / manセクション / 名前 / 原文ハッシュ先頭12桁` です。名前だけではまとめません。版が変わった場合も、同じ版の原文が変更された場合も、以前の原文と日本語訳を残します。短縮ハッシュが衝突した場合は完全な SHA-256 の比較で検出します。
+
+Apple の経路では `version` を検証対象の安定版 macOS、`variant` をビルド番号にします。Apple Open Source の `distribution-macOS` が示す公開版、個別構成要素のタグとコミット、実機のOS版、実際のmanページが同じ事実とは限らないため、`manifest.json` の `provenance` で分離します。画面にも対象OS・構成要素・原文種別・Apple OSS公開版を表示します。
 
 提供元や版の識別子は小文字 ASCII の slug とし、大文字小文字や空白の表記違いを統一します。`variant` はアーキテクチャ、配布パッチ、manpath など、同じ版で内容が変わる条件を表します。識別子の根拠や原文で確認できなかった情報は各ディレクトリのメモに残せます。
 

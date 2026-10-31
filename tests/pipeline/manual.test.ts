@@ -174,6 +174,17 @@ describe('semantic import and literal preservation', () => {
       text: 'demo -q "a b"',
     });
   });
+  test('allows bounded control-character changes used for literal dots but still rejects hidden requests', async () => {
+    const safe = '.TH DEMO 1\n.nf\n.cc |\n.mode list\n|cc .\n.fi\n';
+    expect((await roffToHtml(safe)).html).toContain('.mode list');
+    for (const unsafe of [
+      '.cc |\n|so definitely-not-a-file\n',
+      '.if 1 .cc |\n|so definitely-not-a-file\n|cc .\n',
+      "'cc |\n|so definitely-not-a-file\n|cc .\n",
+      '.cc |\nliteral text\n',
+    ])
+      await expect(roffToHtml(unsafe)).rejects.toThrow('unsupported');
+  });
 });
 
 describe('translation integrity and safe rendering', () => {
@@ -264,4 +275,25 @@ test('complete local ingest -> parse -> request -> accept -> deterministic rende
   await expect(readFile(pagePath, 'utf8')).rejects.toThrow();
   await writeFile(join(leaf, 'source.html'), 'tampered');
   await expect(verifyManual(project, leaf)).rejects.toThrow('SHA-256');
+});
+
+test('supporting provenance and license bytes are hash-verified', async () => {
+  const project = await root();
+  const leaf = await ingest(project, {
+    identity,
+    format: 'roff',
+    bytes: new TextEncoder().encode('.TH DEMO 1\n.SH NAME\ndemo \\- sample\n'),
+    origin: 'https://example.org/demo.1',
+    materials: [
+      {
+        role: 'license',
+        path: 'licenses/COPYING',
+        bytes: new TextEncoder().encode('license text\n'),
+        origin: 'https://example.org/COPYING',
+      },
+    ],
+  });
+  expect((await verifyManual(project, leaf)).stage).toBe('source');
+  await writeFile(join(leaf, 'licenses', 'COPYING'), 'changed');
+  await expect(verifyManual(project, leaf)).rejects.toThrow('supporting material SHA-256');
 });

@@ -260,6 +260,23 @@ starlight-toc h2 {
 .sl-markdown-content dd > p {
   margin-left: 0;
 }
+.sl-markdown-content .manual-source {
+  margin: 0 0 2rem;
+  padding: 0.75rem 1rem;
+  border-block: 1px solid #30382f;
+  color: #aeb8aa;
+  font-size: 0.78rem;
+}
+.sl-markdown-content .manual-source dl {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 0.25rem 1rem;
+  margin: 0;
+}
+.sl-markdown-content .manual-source dt,
+.sl-markdown-content .manual-source dd {
+  margin: 0;
+}
 .sl-markdown-content .manual-indent-deep {
   margin-left: 3rem;
 }

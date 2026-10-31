@@ -1,0 +1,819 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "1c0ec408575316d5c299aadfaa5faf562c95ffbf9c9fe89104db6f4c0ad3c131",
+  "extraction": {
+    "selector": ".manual-text",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "NAME",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "[[p0]] — compile AppleScripts and other OSA language scripts",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "osacompile"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "SYNOPSIS",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "osacompile"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "paragraph",
+      "text": "[[[p0]] [[p1]]] [[[p2]] [[p3]]] [[[p4]] [[p5]]] [[[p6]]] [[[p7]] [[p8]]] [[[p9]] [[p10]]] [[[p11]] [[p12]]] [[[p13]]] [[[p14]]] [[[p15]]] [[[p16]]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-l"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "language"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "-e"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "em",
+            "text": "command"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "-o"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "em",
+            "text": "name"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "-d"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "code",
+            "text": "-r"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "em",
+            "text": "type:id"
+          }
+        },
+        {
+          "token": "[[p9]]",
+          "inline": {
+            "tag": "code",
+            "text": "-t"
+          }
+        },
+        {
+          "token": "[[p10]]",
+          "inline": {
+            "tag": "em",
+            "text": "type"
+          }
+        },
+        {
+          "token": "[[p11]]",
+          "inline": {
+            "tag": "code",
+            "text": "-c"
+          }
+        },
+        {
+          "token": "[[p12]]",
+          "inline": {
+            "tag": "em",
+            "text": "creator"
+          }
+        },
+        {
+          "token": "[[p13]]",
+          "inline": {
+            "tag": "code",
+            "text": "-x"
+          }
+        },
+        {
+          "token": "[[p14]]",
+          "inline": {
+            "tag": "code",
+            "text": "-s"
+          }
+        },
+        {
+          "token": "[[p15]]",
+          "inline": {
+            "tag": "code",
+            "text": "-u"
+          }
+        },
+        {
+          "token": "[[p16]]",
+          "inline": {
+            "tag": "em",
+            "text": "file ..."
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0006",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "[[p0]] compiles the given files, or standard input if none are listed, into a single output script. Files may be plain text or other compiled scripts. The options are as follows:",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "osacompile"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-l"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "language"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "Override the language for any plain text files. Normally, plain text files are compiled as AppleScript.",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-e"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "command"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0011",
+      "kind": "paragraph",
+      "text": "Enter one line of a script. Script commands given via [[p0]] are prepended to the normal source, if any. Multiple [[p1]] options may be given to build up a multi-line script. Because most scripts use characters that are special to many shell programs (e.g., AppleScript uses single and double quote marks, “(”, “)”, and “*”), the command will have to be correctly quoted and escaped to get it past the shell intact.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-e"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-e"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0012",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-o"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "name"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "Place the output in the file [[p0]]. If [[p1]] is not specified, the resulting script is placed in the file “a.scpt”. The value of [[p2]] partly determines the output file format; see below.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "name"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-o"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "-o"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0014",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-x"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "Save the resulting script as execute-only.",
+      "protected": []
+    },
+    {
+      "id": "s0016",
+      "kind": "paragraph",
+      "text": "The following options are only relevant when creating a new bundled applet or droplet:",
+      "protected": []
+    },
+    {
+      "id": "s0017",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-s"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0018",
+      "kind": "paragraph",
+      "text": "Stay-open applet.",
+      "protected": []
+    },
+    {
+      "id": "s0019",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-u"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0020",
+      "kind": "paragraph",
+      "text": "Use startup screen.",
+      "protected": []
+    },
+    {
+      "id": "s0021",
+      "kind": "paragraph",
+      "text": "The following options control the packaging of the output file. You should only need them for compatibility with classic Mac OS or for custom file formats.",
+      "protected": []
+    },
+    {
+      "id": "s0022",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-d"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0023",
+      "kind": "paragraph",
+      "text": "Place the resulting script in the data fork of the output file. This is the default.",
+      "protected": []
+    },
+    {
+      "id": "s0024",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-r"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "type:id"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0025",
+      "kind": "paragraph",
+      "text": "Place the resulting script in the resource fork of the output file, in the specified resource.",
+      "protected": []
+    },
+    {
+      "id": "s0026",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-t"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "type"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0027",
+      "kind": "paragraph",
+      "text": "Set the output file type to [[p0]], where [[p1]] is a four-character code. If this option is not specified, the creator code will not be set.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "type"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "type"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0028",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-c"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "creator"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0029",
+      "kind": "paragraph",
+      "text": "Set the output file creator to [[p0]], where [[p1]] is a four-character code. If this option is not specified, the creator code will not be set.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "creator"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "creator"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0030",
+      "kind": "paragraph",
+      "text": "If no options are specified, [[p0]] produces a Mac OS X format script file: data fork only, with no type or creator code.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "osacompile"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0031",
+      "kind": "paragraph",
+      "text": "If the [[p0]] option is specified and the file does not already exist, [[p1]] uses the filename extension to determine what type of file to create. If the filename ends with “.app”, it creates a bundled applet or droplet. If the filename ends with “.scptd”, it creates a bundled compiled script. Otherwise, it creates a flat file with the script data placed according to the values of the [[p2]] and [[p3]] options.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-o"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "osacompile"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "-d"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-r"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0032",
+      "kind": "heading",
+      "text": "EXAMPLES",
+      "protected": []
+    },
+    {
+      "id": "s0033",
+      "kind": "paragraph",
+      "text": "To produce a script compatible with classic Mac OS:",
+      "protected": []
+    },
+    {
+      "id": "s0034",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "osacompile -r scpt:128 -t osas -c ToyS example.applescript"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0035",
+      "kind": "heading",
+      "text": "SEE ALSO",
+      "protected": []
+    },
+    {
+      "id": "s0036",
+      "kind": "paragraph",
+      "text": "[[p0]], [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "osascript(1)"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "osalang(1)"
+          }
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "NAME",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "SYNOPSIS",
+      "segment": "s0003"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0004"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0005"
+            }
+          ]
+        ]
+      ],
+      "headers": [
+        [
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "DESCRIPTION",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0008",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0009"
+            }
+          ]
+        },
+        {
+          "term": "s0010",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0011"
+            }
+          ]
+        },
+        {
+          "term": "s0012",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0013"
+            }
+          ]
+        },
+        {
+          "term": "s0014",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0015"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0016"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0017",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0018"
+            }
+          ]
+        },
+        {
+          "term": "s0019",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0020"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0021"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0022",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0023"
+            }
+          ]
+        },
+        {
+          "term": "s0024",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0025"
+            }
+          ]
+        },
+        {
+          "term": "s0026",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0027"
+            }
+          ]
+        },
+        {
+          "term": "s0028",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0029"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0030"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0031"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "EXAMPLES",
+      "segment": "s0032"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0033"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0034"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "SEE_ALSO",
+      "segment": "s0035"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0036"
+    }
+  ]
+}

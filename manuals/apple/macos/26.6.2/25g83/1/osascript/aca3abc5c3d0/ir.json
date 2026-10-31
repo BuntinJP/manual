@@ -1,0 +1,892 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "aca3abc5c3d0641ea7dd33d2d1604b9de2fa7400d0f42433faaaaa72879397da",
+  "extraction": {
+    "selector": ".manual-text",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "NAME",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "[[p0]] — execute OSA scripts (AppleScript, JavaScript, etc.)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "osascript"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "SYNOPSIS",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "osascript"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "paragraph",
+      "text": "[[[p0]] [[p1]]] [[[p2]]] [[[p3]] [[p4]]] [[[p5]] [[p6]] | [[p7]]] [[[p8]]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-l"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "language"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "-i"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-s"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "em",
+            "text": "flags"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "-e"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "em",
+            "text": "statement"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "em",
+            "text": "programfile"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "em",
+            "text": "argument ..."
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0006",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "[[p0]] executes the given OSA script, which may be plain text or a compiled script ([[p1]]) created by Script Editor or [[p2]]. By default, [[p3]] treats plain text as AppleScript, but you can change this using the [[p4]] option. To get a list of the OSA languages installed on your system, use [[p5]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "osascript"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": ".scpt"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "osacompile(1)"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "osascript"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "-l"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "osalang(1)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "paragraph",
+      "text": "[[p0]] will look for the script in one of the following three places:",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "osascript"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "Specified line by line using [[p0]] switches on the command line.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-e"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "Contained in the file specified by the first filename on the command line. This file may be plain text or a compiled script.",
+      "protected": []
+    },
+    {
+      "id": "s0011",
+      "kind": "paragraph",
+      "text": "Passed in using standard input. This works only if there are no filename arguments; to pass arguments to a STDIN-read script, you must explicitly specify “-” for the script name.",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "paragraph",
+      "text": "Any arguments following the script will be passed as a list of strings to the direct parameter of the “run” handler. For example, in AppleScript:",
+      "protected": []
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "The options are as follows:",
+      "protected": []
+    },
+    {
+      "id": "s0014",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-e"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "statement"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "Enter one line of a script. If [[p0]] is given, [[p1]] will not look for a filename in the argument list. Multiple [[p2]] options may be given to build up a multi-line script. Because most scripts use characters that are special to many shell programs (for example, AppleScript uses single and double quote marks, “(”, “)”, and “*”), the statement will have to be correctly quoted and escaped to get it past the shell intact.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-e"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "osascript"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "-e"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0016",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-i"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "Interactive mode: [[p0]] will prompt for one line at a time, and print the result, if applicable, after each line. Any script supplied as a command argument using [[p1]] or [[p2]] will be loaded, but not executed, before starting the interactive prompt.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "osascript"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-e"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "programfile"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0018",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-l"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "language"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "Override the language for any plain text files. Normally, plain text files are compiled as AppleScript.",
+      "protected": []
+    },
+    {
+      "id": "s0020",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-s"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "flags"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0021",
+      "kind": "paragraph",
+      "text": "Modify the output style. The [[p0]] argument is a string consisting of any of the modifier characters [[p1]], [[p2]], [[p3]], and [[p4]]. Multiple modifiers can be concatenated in the same string, and multiple [[p5]] options can be specified. The modifiers come in exclusive pairs; if conflicting modifiers are specified, the last one takes precedence. The meanings of the modifier characters are as follows:",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "flags"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "e"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "h"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "o"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "s"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "-s"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0022",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "h"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0023",
+      "kind": "paragraph",
+      "text": "Print values in human-readable form (default).",
+      "protected": []
+    },
+    {
+      "id": "s0024",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "s"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0025",
+      "kind": "paragraph",
+      "text": "Print values in recompilable source form.",
+      "protected": []
+    },
+    {
+      "id": "s0026",
+      "kind": "paragraph",
+      "text": "[[p0]] normally prints its results in human-readable form: strings do not have quotes around them, characters are not escaped, braces for lists and records are omitted, etc. This is generally more useful, but can introduce ambiguities. For example, the lists ‘[[p1]]’ and ‘[[p2]]’ would both be displayed as ‘[[p3]]’. To see the results in an unambiguous form that could be recompiled into the same value, use the [[p4]] modifier.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "osascript"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "{\"foo\", \"bar\"}"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "{{\"foo\", {\"bar\"}}}"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "foo, bar"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "s"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0027",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "e"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0028",
+      "kind": "paragraph",
+      "text": "Print script errors to stderr (default).",
+      "protected": []
+    },
+    {
+      "id": "s0029",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "o"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0030",
+      "kind": "paragraph",
+      "text": "Print script errors to stdout.",
+      "protected": []
+    },
+    {
+      "id": "s0031",
+      "kind": "paragraph",
+      "text": "[[p0]] normally prints script errors to stderr, so downstream clients only see valid results. When running automated tests, however, using the [[p1]] modifier lets you distinguish script errors, which you care about matching, from other diagnostic output, which you don't.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "osascript"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "o"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0032",
+      "kind": "heading",
+      "text": "SEE ALSO",
+      "protected": []
+    },
+    {
+      "id": "s0033",
+      "kind": "paragraph",
+      "text": "[[p0]], [[p1]], [[p2]]AppleScript Language Guide[[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "osacompile(1)"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "osalang(1)"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0034",
+      "kind": "heading",
+      "text": "HISTORY",
+      "protected": []
+    },
+    {
+      "id": "s0035",
+      "kind": "paragraph",
+      "text": "[[p0]] in Mac OS X 10.0 would translate ‘\\r’ characters in the output to ‘\\n’ and provided [[p1]] and [[p2]] modifiers for the [[p3]] option to change this. [[p4]] now always leaves the output alone; pipe through [[p5]] if necessary.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "osascript"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "c"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "r"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-s"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "osascript"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "tr(1)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0036",
+      "kind": "paragraph",
+      "text": "Prior to Mac OS X 10.4, [[p0]] did not allow passing arguments to the script.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "osascript"
+          }
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "NAME",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "SYNOPSIS",
+      "segment": "s0003"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0004"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0005"
+            }
+          ]
+        ]
+      ],
+      "headers": [
+        [
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "DESCRIPTION",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0008"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0009"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0010"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0011"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0012"
+    },
+    {
+      "type": "literal",
+      "text": "a.scpt:\non run argv\n    return \"hello, \" & item 1 of argv & \".\"\nend run\n\n% osascript a.scpt world\nhello, world."
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0013"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0014",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0015"
+            }
+          ]
+        },
+        {
+          "term": "s0016",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0017"
+            }
+          ]
+        },
+        {
+          "term": "s0018",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0019"
+            }
+          ]
+        },
+        {
+          "term": "s0020",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0021"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "definition",
+                    "entries": [
+                      {
+                        "term": "s0022",
+                        "body": [
+                          {
+                            "type": "paragraph",
+                            "segment": "s0023"
+                          }
+                        ]
+                      },
+                      {
+                        "term": "s0024",
+                        "body": [
+                          {
+                            "type": "paragraph",
+                            "segment": "s0025"
+                          },
+                          {
+                            "type": "paragraph",
+                            "segment": "s0026"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                [
+                  {
+                    "type": "definition",
+                    "entries": [
+                      {
+                        "term": "s0027",
+                        "body": [
+                          {
+                            "type": "paragraph",
+                            "segment": "s0028"
+                          }
+                        ]
+                      },
+                      {
+                        "term": "s0029",
+                        "body": [
+                          {
+                            "type": "paragraph",
+                            "segment": "s0030"
+                          },
+                          {
+                            "type": "paragraph",
+                            "segment": "s0031"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "SEE_ALSO",
+      "segment": "s0032"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0033"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "HISTORY",
+      "segment": "s0034"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0035"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0036"
+    }
+  ]
+}

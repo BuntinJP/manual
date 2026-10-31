@@ -18,12 +18,44 @@ bun run content:ingest --url 'https://example.org/manual.html' --format html \
   --provider example --product tools --version 2.0 \
   --variant default --section 1 --name find
 
+bun run content:apple-macos --commands find,tar
+
 bun run content:parse --manual manuals/PROVIDER/PRODUCT/VERSION/VARIANT/SECTION/NAME/SHA12
 bun run content:translate --manual manuals/PROVIDER/PRODUCT/VERSION/VARIANT/SECTION/NAME/SHA12
 bun run content:translate --manual manuals/PROVIDER/PRODUCT/VERSION/VARIANT/SECTION/NAME/SHA12 --accept /path/translated.json
 bun run content:verify
 bun run content:render
 ```
+
+### Apple macOS snapshot route
+
+`content:apple-macos` imports only the comma-separated commands explicitly supplied
+with `--commands`. The current snapshot accepts `find`, `osascript`, `osacompile`,
+`launchctl`, `tclsh`, `tar`, `swift`, and `sqlite3`; it has no implicit "all" mode.
+The route is pinned to macOS 26.6.2 build 25G83, the Apple Developer release record
+dated 2026-08-17, and Apple Open Source's separately published macOS 26.0
+`release.json` at commit `4e290a9b9d3723c65d2a606223d41eb90ecdbf99`. It fails
+if the host version, build, installed-manual hash, release manifest hash, GitHub
+source hash, or retained license hash differs from the recorded snapshot.
+
+For each selected command, the importer checks the installed manual for the pinned
+system. When it is byte-identical to a file in a component named by Apple's pinned
+release manifest, the immutable GitHub URL is the source (`find` from
+`shell_cmds-326` and `tar` from `libarchive-158` in this snapshot). Otherwise, the
+installed system or Command Line Tools manual is the source. A related Apple Open
+Source candidate and its license are retained under `provenance/` and `licenses/`
+when available. The older public `launchctl` source is not labeled as current,
+Swift's installed Command Line Tools manual is not labeled as a macOS base-system
+or upstream Swift manual, and the macOS 26.0 open-source publication is not
+relabeled as macOS 26.6.2.
+
+This snapshot is intentionally not an automatic "latest macOS" claim. To update
+it, verify Apple's current stable release and build, inspect the matching official
+Apple Open Source release manifest, resolve component tags to commits, compare
+every selected installed manual byte-for-byte, record exact tool versions, update
+all expected SHA-256 values, and run the pipeline checks before changing the pin.
+Commands not listed in the snapshot require an explicit source decision rather
+than silent omission or reuse of an old public manual.
 
 Use `--origin URL` with a downloaded local file to retain its web provenance.
 Use `--selector '#content'` on ingest when automatic HTML extraction selects the
@@ -38,6 +70,8 @@ into prose, definitions, synopsis, and examples. Original HTML remains untouched
 manuals/{provider}/{product}/{version}/{variant}/{section}/{name}/{sha12}/
   source.roff | source.html       original UTF-8 bytes
   manifest.json                  explicit identity, full SHA-256, origin, acquisition time
+  provenance/                    pinned release manifest and non-current source candidates
+  licenses/                      preserved upstream license files, when published
   ir.json                        parsed semantic blocks and protected inline content
   parser/mandoc.html             roff renderer output, when applicable
   parser/diagnostics.txt          mandoc diagnostics, when applicable
@@ -58,6 +92,8 @@ under the same identity leaves existing translations intact.
 
 `manifest.json` has `schemaVersion: 1`, `identity`, `source` with
 `sha256`, `format`, `origin`, `retrievedAt`, and `extraction` with optional `selector`.
+Apple snapshots also carry structured `provenance` and hashed `materials`; verification
+reads those files back and checks their hashes.
 No identity is inferred from a URL query alone; record what the document reports.
 
 ## AI handoff

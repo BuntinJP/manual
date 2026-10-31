@@ -1,5 +1,6 @@
 #!/usr/bin/env bun
 import { relative, resolve } from 'node:path';
+import { acquireAppleMacosManuals, parseAppleManualNames } from './apple-macos';
 import {
   acceptTranslation,
   discoverManuals,
@@ -15,6 +16,7 @@ const help = `Manual translation pipeline (offline after ingest)
   ingest --file SOURCE | --url URL --format roff|html
     --provider NAME --product NAME --version VERSION --variant VARIANT --section SECTION --name NAME
     [--origin URL] [--selector CSS]
+  apple-macos --commands find,osascript,...
   parse --manual manuals/.../HASH
   translate --manual manuals/.../HASH [--accept translated.json]
   render
@@ -62,11 +64,19 @@ async function main() {
     translate: ['manual', 'accept'],
     render: [],
     verify: ['manual'],
+    'apple-macos': ['commands'],
   };
   if (!allowed[command]) throw new Error(`Unknown command ${command}`);
   for (const key of Object.keys(flags))
     if (!allowed[command].includes(key)) throw new Error(`Unknown flag --${key} for ${command}`);
-  if (command === 'ingest') {
+  if (command === 'apple-macos') {
+    const results = await acquireAppleMacosManuals(
+      root,
+      parseAppleManualNames(required('commands')),
+    );
+    for (const result of results)
+      console.log(`${result.name}\t${relative(root, result.path)}\t${result.sourceKind}`);
+  } else if (command === 'ingest') {
     const identity = Object.fromEntries(
       ['provider', 'product', 'version', 'variant', 'section', 'name'].map((key) => [
         key,

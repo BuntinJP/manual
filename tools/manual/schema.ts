@@ -12,6 +12,7 @@ export const identitySchema = z
   .strict();
 export type Identity = z.infer<typeof identitySchema>;
 const sha = z.string().regex(/^[a-f0-9]{64}$/);
+const gitSha = z.string().regex(/^[a-f0-9]{40}$/);
 export const manifestSchema = z
   .object({
     schemaVersion: z.literal(1),
@@ -25,6 +26,59 @@ export const manifestSchema = z
       })
       .strict(),
     extraction: z.object({ selector: z.string().optional() }).strict(),
+    provenance: z
+      .object({
+        sourceKind: z.enum([
+          'upstream',
+          'apple-oss-github-exact',
+          'installed-apple-manual',
+          'installed-apple-developer-tools-manual',
+        ]),
+        platform: z
+          .object({
+            name: z.literal('macOS'),
+            version: z.string(),
+            build: z.string(),
+            releasedAt: z.string(),
+            releaseUrl: z.string(),
+          })
+          .strict(),
+        component: z
+          .object({
+            name: z.string(),
+            version: z.string(),
+          })
+          .strict(),
+        installedPath: z.string(),
+        resolvedInstalledPath: z.string(),
+        appleOpenSource: z
+          .object({
+            distributionRelease: z.string(),
+            distributionCommit: gitSha,
+            project: z.string().optional(),
+            tag: z.string().optional(),
+            commit: gitSha.optional(),
+            path: z.string().optional(),
+            exactInstalledBytes: z.boolean().optional(),
+            availability: z.string(),
+          })
+          .strict(),
+        notes: z.array(z.string()),
+      })
+      .strict()
+      .optional(),
+    materials: z
+      .array(
+        z
+          .object({
+            role: z.enum(['release-manifest', 'upstream-candidate', 'license']),
+            path: z.string(),
+            sha256: sha,
+            origin: z.string(),
+          })
+          .strict(),
+      )
+      .optional(),
   })
   .strict();
 export type Manifest = z.infer<typeof manifestSchema>;

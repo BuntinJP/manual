@@ -26,3 +26,32 @@
 - 確認したブラウザ操作で JavaScript エラー、リクエスト失敗、第三者ホストへのリクエストがないこと。
 
 この記録は公開時の確認範囲を示します。継続監視や GitHub Actions の実行結果を示すものではありません。
+
+## 2026-09-06 macOS日本語マニュアル8件の本番反映
+
+運営者の「日本語翻訳したものを、本番に適用してサイトに公開して」という指示に基づき、
+`manual-japanese-manual` 作業ツリーで `bun run deploy` を実行しました。
+
+- 公開先: https://manual.buntin.dev/search/?provider=apple
+- 対象: macOS 26.6.2（25G83）の find / osascript / osacompile / launchctl / tclsh / tar / swift / sqlite3
+- 新バージョン: `ce902c58-fe9c-455d-bdcb-406f1c7cd4b2`（配信割合100%を再取得して確認）
+- デプロイID: `c4c0de1d-dca3-4aed-ac18-f6804b7f76db`
+- 作成時刻: 2026-09-06T12:48:21.120963Z
+- 更新前のバージョン: `2e8b76ca-c751-443a-9486-935c2dd44783`
+- 公開コマンド: `bun run deploy`（ビルド後 `wrangler deploy --keep-vars`）
+- 公開元: 当該タスクの未コミット変更を含む作業ツリー。Gitのmain反映やpushを示す記録ではありません。
+- 公開前: `bun run verify`成功（26テスト、型検査エラー0、99ページ生成）、E2E 19件成功。
+- 公開後: 全8件のHTTPS/HTTP 200と、配信HTMLのSHA-256がローカル成果物と一致することを確認。
+- 実ブラウザ: 幅390pxで8ページの日本語表示・横はみ出しなし、Apple一覧8件、find(1)のApple/FreeBSD選択、Appleへの直接検索、日本語全文検索のApple絞り込みを確認。ページ実行エラー0件。
+- 不存在マニュアルURLのHTTP 404を確認。
+
+配信HTMLの照合記録:
+
+- [find(1)](https://manual.buntin.dev/manuals/apple/macos/26.6.2/25g83/1/find/72de98371bba/): `2e897ded8b95b7611fff286bdd23386b76c01670b55fe877ee3d7e25c622bbd5`
+- [launchctl(1)](https://manual.buntin.dev/manuals/apple/macos/26.6.2/25g83/1/launchctl/cf8752dd8eb8/): `5eafd2bed0115afcba51e07f2287d0f3fbb9cd4cf248ad02439480a71ad9fbfd`
+- [osacompile(1)](https://manual.buntin.dev/manuals/apple/macos/26.6.2/25g83/1/osacompile/1c0ec4085753/): `ab9be461a2680a4fe3300669813ae323242138c16de212e82e687509ea567b2b`
+- [osascript(1)](https://manual.buntin.dev/manuals/apple/macos/26.6.2/25g83/1/osascript/aca3abc5c3d0/): `b0617dd01d730b871f780181b8700cb3f8932beabcd1e1ad72303e0a95c62d7b`
+- [sqlite3(1)](https://manual.buntin.dev/manuals/apple/macos/26.6.2/25g83/1/sqlite3/d6c2da942220/): `38a3d9387d6d70044fb1abdb86602b78e8b30b57cc10dad9b7bbf3599202e59b`
+- [swift(1)](https://manual.buntin.dev/manuals/apple/macos/26.6.2/25g83/1/swift/28bbf6a0c380/): `788910553b83aeeb8683f2aece81e7ea19fd50c2b5f9af39d6e78b40e9db15da`
+- [tar(1)](https://manual.buntin.dev/manuals/apple/macos/26.6.2/25g83/1/tar/e7e0f61433da/): `061b361898f884d2cdfa723fbdaba62d3c1b1b51d28d09baec18bcb3ce4164b7`
+- [tclsh(1)](https://manual.buntin.dev/manuals/apple/macos/26.6.2/25g83/1/tclsh/198e1ed330b7/): `b364ae78579c9063739cbda61664dd3c03b8f2f1f5774c3e605250ccd6dcbb9e`
