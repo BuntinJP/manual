@@ -1,6 +1,6 @@
 ---
 title: mbsync
-description: A reference page in my new Starlight docs site.
+description: メールボックスを同期する mbsync のマニュアル。
 ---
 
 ```
