@@ -7,6 +7,22 @@ credential, legal review, or publication-permission flag is involved. Rights
 information can be recorded as ordinary notes by the operator; it never decides
 whether generation runs.
 
+## Provider registry and HOME pages
+
+`src/data/manual-providers.json` owns the stable provider ID, display label,
+description, and any existing unversioned content directory. Apple, FreeBSD,
+isync, and MEGAcmd are all provider groups; `product`, release, variant, and man
+section remain separate identity fields. Use the same ID in source manifests,
+navigation, command search, and full-text search.
+
+Register a new source group here before publishing its first translation. GNU
+and OpenBSD are already registered. `content:render` generates
+`src/content/docs/<provider>/home.md` from accepted translations, grouped by
+product/release/variant. The sidebar links HOME first. Registered sources without
+translations remain absent from HOME generation and navigation/search choices.
+The existing isync/MEGAcmd HOME files remain authored content; generated HOME
+files are never substitutes for source manifests or translation artifacts.
+
 ## Commands
 
 ```sh

@@ -31,6 +31,7 @@ bun run test:e2e
 - [翻訳タスクの開始手順](docs/translation-start.md)
 - [スクリプト・Composer・GPTを工程別に使う翻訳運用](docs/translation-routing.md)
 - [ディレクトリ・データ・表示の構成](docs/architecture.md)
+- [提供元の管理・HOME の自動生成](docs/architecture.md#提供元と-home)
 - [Apple macOS 26.6.2 の取得・照合記録](docs/apple-macos-26.6.2.md)
 - [AI の作業案内](AGENTS.md)
 - [公開上の条件に関する参考メモ](docs/rights-notes.md)

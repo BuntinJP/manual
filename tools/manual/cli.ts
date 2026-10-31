@@ -10,6 +10,7 @@ import {
   renderAll,
   verifyManual,
 } from './core';
+import { renderProviderHomes } from './provider-homes';
 import type { Identity } from './schema';
 
 const help = `Manual translation pipeline (offline after ingest)
@@ -110,9 +111,11 @@ async function main() {
         `${relative(root, resolve(root, path))}/translation/request.ja.json (${result.segments.length} segments)`,
       );
     }
-  } else if (command === 'render')
-    console.log(`Rendered ${(await renderAll(root)).length} Japanese manuals.`);
-  else {
+  } else if (command === 'render') {
+    const entries = await renderAll(root);
+    await renderProviderHomes(root, entries);
+    console.log(`Rendered ${entries.length} Japanese manuals and provider HOME pages.`);
+  } else {
     const paths = flags.manual ? [flags.manual] : await discoverManuals(root);
     for (const path of paths) console.log(JSON.stringify(await verifyManual(root, path)));
   }

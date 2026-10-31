@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
-import { providerForPage, providerLabel } from '../lib/providers';
-const providers = [...new Set((await getCollection('docs')).map(({id, data}) => providerForPage(id, data.manual?.provider)).filter((value): value is string => !!value))].sort();
+import { activeProviders, providerForPage } from '../lib/providers';
+const providers = activeProviders((await getCollection('docs')).map(({id, data}) => providerForPage(id, data.manual?.provider)).filter((value): value is string => !!value));
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 <site-search data-manual-search data-base={base}>
@@ -19,7 +19,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       <label class="provider-filter" for="manual-fulltext-provider">提供元
         <select id="manual-fulltext-provider" name="provider" aria-controls="manual-fulltext-results">
           <option value="">すべて</option>
-          {providers.map((provider) => <option value={provider}>{providerLabel(provider)}</option>)}
+          {providers.map((provider) => <option value={provider.id}>{provider.label}</option>)}
         </select>
       </label>
     </div>

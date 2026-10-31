@@ -2,10 +2,10 @@
 import { getCollection } from 'astro:content';
 import manuals from '../data/manual-catalog.json';
 import { type CatalogEntry, searchCatalog } from '../lib/catalog';
-import { providerLabel } from '../lib/providers';
+import { activeProviders, providerForPage, providerLabel } from '../lib/providers';
 
 const legacy = (await getCollection('docs')).filter(
-  ({ id }) => /^(isync|megacmd|wrangler)\//.test(id) && !id.endsWith('/home'),
+  ({ id, data }) => !data.manual && !!providerForPage(id) && !id.endsWith('/home'),
 );
 const entries: CatalogEntry[] = searchCatalog(
   [
@@ -17,7 +17,7 @@ const entries: CatalogEntry[] = searchCatalog(
         href: `/${id}/`,
         name: data.title,
         section: '',
-        provider: product,
+        provider: providerForPage(id) ?? product,
         product,
         version: '',
         variant: '',
@@ -27,7 +27,7 @@ const entries: CatalogEntry[] = searchCatalog(
   ],
   '',
 );
-const providers = [...new Set(entries.map((entry) => entry.provider))].sort();
+const providers = activeProviders(entries.map((entry) => entry.provider));
 ---
 <manual-catalog data-entries={JSON.stringify(entries)}>
   <form class="catalog-controls" role="search" aria-label="マニュアル一覧を絞り込む" action="/search/">
@@ -35,7 +35,7 @@ const providers = [...new Set(entries.map((entry) => entry.provider))].sort();
       <input type="search" name="q" placeholder="find、man 1 find、ファイル検索…" autocomplete="off" spellcheck="false" />
     </label>
     <label>提供元
-      <select name="provider"><option value="">すべて</option>{providers.map((provider) => <option value={provider}>{providerLabel(provider)}</option>)}</select>
+      <select name="provider"><option value="">すべて</option>{providers.map((provider) => <option value={provider.id}>{provider.label}</option>)}</select>
     </label>
     <button type="submit">検索</button>
   </form>

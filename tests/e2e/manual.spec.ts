@@ -1,11 +1,84 @@
 import { expect, test } from '@playwright/test';
 import catalog from '../../src/data/manual-catalog.json' with { type: 'json' };
 import type { CatalogEntry } from '../../src/lib/catalog';
+import { providerHomeHref } from '../../src/lib/providers';
 
 const find = (catalog as CatalogEntry[]).find(
   (entry) => entry.provider === 'freebsd' && entry.name === 'find',
 );
 if (!find) throw new Error('The FreeBSD find sample must be generated before browser tests.');
+
+test('font preload prevents duplicate fetches and visible font layout shifts on navigation', async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    const shifts: number[] = [];
+    Reflect.set(window, 'manualFontShifts', shifts);
+    new PerformanceObserver((list) => {
+      for (const raw of list.getEntries()) {
+        const entry = raw as PerformanceEntry & { value: number; hadRecentInput: boolean };
+        if (!entry.hadRecentInput) shifts.push(entry.value);
+      }
+    }).observe({ type: 'layout-shift', buffered: true });
+  });
+  const requests: string[] = [];
+  page.on('request', (request) => {
+    if (request.resourceType() === 'font') requests.push(request.url());
+  });
+  await page.route('**/fonts/cica/*.woff2*', async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, 300));
+    await route.continue();
+  });
+  for (const href of [providerHomeHref('apple'), find.href]) {
+    requests.length = 0;
+    await page.goto(href);
+    await page.evaluate(() => document.fonts.ready);
+    const fonts = await page.evaluate(() => ({
+      preload: [
+        ...document.querySelectorAll<HTMLLinkElement>('link[rel="preload"][as="font"]'),
+      ].map((link) => ({ href: link.href, crossorigin: link.crossOrigin })),
+      faces: [...document.fonts].map((font) => ({
+        family: font.family,
+        display: font.display,
+        status: font.status,
+      })),
+      shifts: Reflect.get(window, 'manualFontShifts') as number[],
+    }));
+    expect(fonts.preload).toHaveLength(2);
+    expect(
+      fonts.preload.every(
+        (font) => font.crossorigin === 'anonymous' && /\?v=[a-f0-9]{12}$/.test(font.href),
+      ),
+    ).toBe(true);
+    expect(requests.sort()).toEqual(fonts.preload.map((font) => font.href).sort());
+    expect(fonts.faces).toEqual([
+      { family: 'Cica', display: 'block', status: 'loaded' },
+      { family: 'Cica', display: 'block', status: 'loaded' },
+    ]);
+    expect(fonts.shifts.reduce((sum, value) => sum + value, 0)).toBeLessThan(0.01);
+  }
+});
+
+for (const provider of ['apple', 'freebsd']) {
+  test(`${provider} HOME lists exactly its published manuals and works without JavaScript`, async ({
+    browser,
+  }) => {
+    const context = await browser.newContext({ javaScriptEnabled: false });
+    const page = await context.newPage();
+    await page.goto(`http://127.0.0.1:4322${providerHomeHref(provider)}`);
+    await expect(page.locator('h1')).toHaveText('HOME');
+    const expected = (catalog as CatalogEntry[]).filter((entry) => entry.provider === provider);
+    const links = page.locator('.sl-markdown-content a[href^="/manuals/"]');
+    expect(
+      await links.evaluateAll((items) => items.map((item) => item.getAttribute('href')).sort()),
+    ).toEqual(expected.map((entry) => entry.href).sort());
+    await expect(
+      page.locator('nav[aria-label="メイン"] a[href="' + providerHomeHref(provider) + '"]'),
+    ).toHaveText('HOME');
+    await expect(page.locator('nav[aria-label="メイン"]')).not.toContainText('OpenBSD');
+    await context.close();
+  });
+}
 
 test('manual has dark Cica typography, edition metadata, structural headings and stable anchors', async ({
   page,
