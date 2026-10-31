@@ -283,6 +283,12 @@ starlight-toc h2 {
 .sidebar-content a {
   border-radius: 0;
 }
+.sidebar-content a[href^="/manuals/"] {
+  /* Reserve one row before Cica loads, even when fallback glyphs are wider. */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .sidebar-content a[aria-current="page"] {
   color: #c7d8c0;
   background: #20271f;
