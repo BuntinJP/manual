@@ -1,0 +1,23 @@
+---
+import { providerForPage, providerLabel } from '../lib/providers';
+
+const { entry, id } = Astro.locals.starlightRoute;
+const isCatalog = id === '' || id === 'index' || id === 'search';
+const manual = entry.data.manual;
+const provider = providerForPage(id, manual?.provider);
+const sourceUrl = manual && /^https?:\/\//.test(manual.sourceUrl) ? manual.sourceUrl : undefined;
+---
+<div class="manual-title">
+  <h1 id="_top" class:list={{ 'sr-only': isCatalog }} data-manual-provider={provider} data-pagefind-filter={provider ? `provider:${provider}` : undefined}>{entry.data.title}</h1>
+  {manual && <div class="manual-edition" data-pagefind-ignore>
+    <span>{providerLabel(manual.provider)} / {manual.product} {manual.version}</span>
+    <span>SECTION {manual.section}</span>
+    {sourceUrl && <a href={sourceUrl}>英語の原文 ↗</a>}
+    <details><summary>版情報</summary><dl>
+      <dt>バリエーション</dt><dd>{manual.variant}</dd>
+      <dt>原文形式</dt><dd>{manual.sourceFormat}</dd>
+      <dt>原文 SHA-256</dt><dd><code>{manual.sourceSha256}</code></dd>
+      <dt>翻訳</dt><dd>LLM による日本語訳</dd>
+    </dl></details>
+  </div>}
+</div>

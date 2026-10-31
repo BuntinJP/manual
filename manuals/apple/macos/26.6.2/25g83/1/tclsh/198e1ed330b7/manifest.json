@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "identity": {
+    "provider": "apple",
+    "product": "macos",
+    "version": "26.6.2",
+    "variant": "25g83",
+    "section": "1",
+    "name": "tclsh"
+  },
+  "source": {
+    "sha256": "198e1ed330b79b5958d96ecff53816fcbda3fa617b644d1fbd22322c0cec6786",
+    "format": "roff",
+    "origin": "installed:/usr/share/man/man1/tclsh.1tcl",
+    "retrievedAt": "2026-09-06T09:51:23.061Z"
+  },
+  "extraction": {},
+  "provenance": {
+    "sourceKind": "installed-apple-manual",
+    "platform": {
+      "name": "macOS",
+      "version": "26.6.2",
+      "build": "25G83",
+      "releasedAt": "2026-08-17",
+      "releaseUrl": "https://developer.apple.com/news/releases/?id=08172026j"
+    },
+    "component": {
+      "name": "Tcl",
+      "version": "8.5.9"
+    },
+    "installedPath": "/usr/share/man/man1/tclsh.1tcl",
+    "resolvedInstalledPath": "/usr/share/man/man1/tclsh8.5.1tcl",
+    "appleOpenSource": {
+      "distributionRelease": "macOS 26.0",
+      "distributionCommit": "4e290a9b9d3723c65d2a606223d41eb90ecdbf99",
+      "project": "tcl",
+      "tag": "tcl-149",
+      "commit": "2f1630a601bb1b1312035fe6279c89950e5a0a7c",
+      "path": "tcl/tcl/doc/tclsh.1",
+      "exactInstalledBytes": false,
+      "availability": "The pinned Apple Open Source source is retained as related material; the installed manual is the macOS 26.6.2 source."
+    },
+    "notes": [
+      "macOS 26.6.2 and the Apple Open Source macOS 26.0 publication are separate version facts.",
+      "The GitHub candidate is not labeled as the current installed manual."
+    ]
+  },
+  "materials": [
+    {
+      "role": "release-manifest",
+      "path": "provenance/distribution-release.json",
+      "sha256": "8d1e504492c4ac0f071a6dd8187f5cb98f60b3e3ca17be769e31310fa4497232",
+      "origin": "https://raw.githubusercontent.com/apple-oss-distributions/distribution-macOS/4e290a9b9d3723c65d2a606223d41eb90ecdbf99/release.json"
+    },
+    {
+      "role": "upstream-candidate",
+      "path": "provenance/apple-oss-source.roff",
+      "sha256": "d63f0514a4947a7135ba88885cbb35bfc4782df4032e7ea1dc79cc86caf11143",
+      "origin": "https://raw.githubusercontent.com/apple-oss-distributions/tcl/2f1630a601bb1b1312035fe6279c89950e5a0a7c/tcl/tcl/doc/tclsh.1"
+    },
+    {
+      "role": "license",
+      "path": "licenses/license.terms",
+      "sha256": "69da730bc55e01b735e71493993f716f8fad7978c8880024f8ed6138f2683a1f",
+      "origin": "https://raw.githubusercontent.com/apple-oss-distributions/tcl/2f1630a601bb1b1312035fe6279c89950e5a0a7c/tcl/tcl/license.terms"
+    }
+  ]
+}

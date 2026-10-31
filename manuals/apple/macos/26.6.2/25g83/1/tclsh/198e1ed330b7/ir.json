@@ -1,0 +1,768 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "198e1ed330b79b5958d96ecff53816fcbda3fa617b644d1fbd22322c0cec6786",
+  "extraction": {
+    "selector": ".manual-text",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "NAME",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "tclsh - Simple shell containing Tcl interpreter",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "SYNOPSIS",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]] ?[[p1]] [[p2]]? ?[[p3]]fileName arg arg ...[[p4]]?",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tclsh"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-encoding"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "name"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "[[p0]] is a shell-like application that reads Tcl commands from its standard input or from a file and evaluates them. If invoked with no arguments then it runs interactively, reading Tcl commands from standard input and printing command results and error messages to standard output. It runs until the [[p1]] command is invoked or until it reaches end-of-file on its standard input. If there exists a file [[p2]] (or [[p3]] on the Windows platforms) in the home directory of the user, interactive [[p4]] evaluates the file as a Tcl script just before reading the first command from standard input.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "Tclsh"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "exit"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "strong",
+            "text": ".tclshrc"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tclshrc.tcl"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tclsh"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "heading",
+      "text": "SCRIPT FILES",
+      "protected": []
+    },
+    {
+      "id": "s0008",
+      "kind": "paragraph",
+      "text": "If [[p0]] is invoked with arguments then the first few arguments specify the name of a script file, and, optionally, the encoding of the text data stored in that script file. Any additional arguments are made available to the script as variables (see below). Instead of reading commands from standard input [[p1]] will read Tcl commands from the named file; [[p2]] will exit when it reaches the end of the file. The end of the file may be marked either by the physical end of the medium, or by the character, “\\032” (“\\u001a”, control-Z). If this character is present in the file, the [[p3]] application will read text up to but not including the character. An application that requires this character in the file may safely encode it as “\\032”, “\\x1a”, or “\\u001a”; or may generate it by use of commands such as [[p4]] or [[p5]]. There is no automatic evaluation of [[p6]] when the name of a script file is presented on the [[p7]] command line, but the script file can always [[p8]] it if desired.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tclsh"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tclsh"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tclsh"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tclsh"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "strong",
+            "text": "format"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "strong",
+            "text": "binary"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "strong",
+            "text": ".tclshrc"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tclsh"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "strong",
+            "text": "source"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "If you create a Tcl script in a file whose first line is",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "then you can invoke the script file directly from your shell if you mark the file as executable. This assumes that [[p0]] has been installed in the default location in /usr/bin; if it is installed somewhere else then you will have to modify the above line to match. Many UNIX systems do not allow the [[p1]] line to exceed about 30 characters in length, so be sure that the [[p2]] executable can be accessed with a short file name.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tclsh"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "#!"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tclsh"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0011",
+      "kind": "paragraph",
+      "text": "An even better approach is to start your script files with the following three lines:",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "paragraph",
+      "text": "This approach has three advantages over the approach in the previous paragraph. First, the location of the [[p0]] binary does not have to be hard-wired into the script: it can be anywhere in your shell search path. Second, it gets around the 30-character file name limit in the previous approach. Third, this approach will work even if [[p1]] is itself a shell script (this is done on some systems in order to handle multiple architectures or operating systems: the [[p2]] script selects one of several binaries to run). The three lines cause both [[p3]] and [[p4]] to process the script, but the [[p5]] is only executed by [[p6]]. [[p7]] processes the script first; it treats the second line as a comment and executes the third line. The [[p8]] statement cause the shell to stop processing and instead to start up [[p9]] to reprocess the entire script. When [[p10]] starts up, it treats all three lines as comments, since the backslash at the end of the second line causes the third line to be treated as part of the comment on the second line.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tclsh"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tclsh"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tclsh"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "strong",
+            "text": "sh"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tclsh"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "strong",
+            "text": "exec"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "strong",
+            "text": "sh"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "strong",
+            "text": "sh"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "strong",
+            "text": "exec"
+          }
+        },
+        {
+          "token": "[[p9]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tclsh"
+          }
+        },
+        {
+          "token": "[[p10]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tclsh"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "You should note that it is also common practice to install tclsh with its version number as part of the name. This has the advantage of allowing multiple versions of Tcl to exist on the same system at once, but also the disadvantage of making it harder to write scripts that start up uniformly across different versions of Tcl.",
+      "protected": []
+    },
+    {
+      "id": "s0014",
+      "kind": "heading",
+      "text": "VARIABLES",
+      "protected": []
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "[[p0]] sets the following Tcl variables:",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "Tclsh"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0016",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "argc"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "Contains a count of the number of [[p0]] arguments (0 if none), not including the name of the script file.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "arg"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0018",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "argv"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "Contains a Tcl list whose elements are the [[p0]] arguments, in order, or an empty string if there are no [[p1]] arguments.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "arg"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "arg"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0020",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "argv0"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0021",
+      "kind": "paragraph",
+      "text": "Contains [[p0]] if it was specified. Otherwise, contains the name by which [[p1]] was invoked.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "fileName"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tclsh"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0022",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tcl_interactive"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0023",
+      "kind": "paragraph",
+      "text": "Contains 1 if [[p0]] is running interactively (no [[p1]] was specified and standard input is a terminal-like device), 0 otherwise.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tclsh"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "fileName"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0024",
+      "kind": "heading",
+      "text": "PROMPTS",
+      "protected": []
+    },
+    {
+      "id": "s0025",
+      "kind": "paragraph",
+      "text": "When [[p0]] is invoked interactively it normally prompts for each command with “[[p1]]”. You can change the prompt by setting the variables [[p2]] and [[p3]]. If variable [[p4]] exists then it must consist of a Tcl script to output a prompt; instead of outputting a prompt [[p5]] will evaluate the script in [[p6]]. The variable [[p7]] is used in a similar way when a newline is typed but the current command is not yet complete; if [[p8]] is not set then no prompt is output for incomplete commands.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tclsh"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "%"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tcl_prompt1"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tcl_prompt2"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tcl_prompt1"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tclsh"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tcl_prompt1"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tcl_prompt2"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "strong",
+            "text": "tcl_prompt2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0026",
+      "kind": "heading",
+      "text": "STANDARD CHANNELS",
+      "protected": []
+    },
+    {
+      "id": "s0027",
+      "kind": "paragraph",
+      "text": "See [[p0]] for more explanations.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "Tcl_StandardChannels"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0028",
+      "kind": "heading",
+      "text": "SEE ALSO",
+      "protected": []
+    },
+    {
+      "id": "s0029",
+      "kind": "paragraph",
+      "text": "encoding(n), fconfigure(n), tclvars(n)",
+      "protected": []
+    },
+    {
+      "id": "s0030",
+      "kind": "heading",
+      "text": "KEYWORDS",
+      "protected": []
+    },
+    {
+      "id": "s0031",
+      "kind": "paragraph",
+      "text": "argument, interpreter, prompt, script file, shell",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "literal",
+      "text": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "NAME",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "SYNOPSIS",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "literal",
+      "text": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "DESCRIPTION",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "SCRIPT_FILES",
+      "segment": "s0007"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0008"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0009"
+    },
+    {
+      "type": "literal",
+      "text": "#!/usr/bin/tclsh"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0010"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0011"
+    },
+    {
+      "type": "literal",
+      "text": "#!/bin/sh\n# the next line restarts using tclsh \\\nexec tclsh \"$0\" \"$@\""
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0012"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0013"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "VARIABLES",
+      "segment": "s0014"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0015"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0016",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0017"
+            }
+          ]
+        },
+        {
+          "term": "s0018",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0019"
+            }
+          ]
+        },
+        {
+          "term": "s0020",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0021"
+            }
+          ]
+        },
+        {
+          "term": "s0022",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0023"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "PROMPTS",
+      "segment": "s0024"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0025"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "STANDARD_CHANNELS",
+      "segment": "s0026"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0027"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "SEE_ALSO",
+      "segment": "s0028"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0029"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "KEYWORDS",
+      "segment": "s0030"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0031"
+    }
+  ]
+}

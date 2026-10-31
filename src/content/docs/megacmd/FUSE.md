@@ -39,7 +39,7 @@ MEGAcmd はマウントポイントで作業する際にファイルを置くた
 $ fuse-add /local/path/to/fuse/mountpoint /cloud/dir
 ```
 
-マウントを作成すると、MEGAcmd はそれを有効化しようとします。失敗した場合はマウントは無効のまま残ります。利用可能なすべてのオプションや引数については [`fuse-add`](commands/fuse-add.md) を参照してください。
+マウントを作成すると、MEGAcmd はそれを有効化しようとします。失敗した場合はマウントは無効のまま残ります。利用可能なすべてのオプションや引数については [`fuse-add`](/megacmd/commands/fuse-add/) を参照してください。
 
 マウントには管理時に参照するための関連付けられた名前が付きます。この名前は一意でなければなりません。作成時に `--name=custom_name` 引数でカスタム名を指定できます。ローカルパスでマウントを参照することもできますが、これは必ずしも一意ではありません。複数のマウントが同じローカルパスを共有する場合は、区別するために名前を使う必要があります。
 
@@ -53,7 +53,7 @@ NAME LOCAL_PATH                     REMOTE_PATH PERSISTENT ENABLED
 dir /local/path/to/fuse/mountpoint  /cloud/dir  YES        YES
 ```
 
-特定のマウントの詳細を表示するには `fuse-show <NAME|LOCAL_PATH>` を使います。利用可能なすべてのオプションや引数については [`fuse-show`](commands/fuse-show.md) を参照してください。
+特定のマウントの詳細を表示するには `fuse-show <NAME|LOCAL_PATH>` を使います。利用可能なすべてのオプションや引数については [`fuse-show`](/megacmd/commands/fuse-show/) を参照してください。
 
 ### マウントの有効化・無効化
 
@@ -71,7 +71,7 @@ $ fuse-enable <NAME|LOCAL_PATH>
 $ fuse-disable <NAME|LOCAL_PATH>
 ```
 
-注意: 無効化されたマウントも存在し、`fuse-show` で表示されます。詳細は [`fuse-enable`](commands/fuse-enable.md) と [`fuse-disable`](commands/fuse-disable.md) を参照してください。
+注意: 無効化されたマウントも存在し、`fuse-show` で表示されます。詳細は [`fuse-enable`](/megacmd/commands/fuse-enable/) と [`fuse-disable`](/megacmd/commands/fuse-disable/) を参照してください。
 
 ### 設定の調整
 
@@ -89,7 +89,7 @@ Showing details of mount "dir"
   Read-only:          NO
 ```
 
-これらのフラグを設定するには [`fuse-config`](commands/fuse-config.md) コマンドを使います。例えばマウントを読み取り専用にするには以下のようにします:
+これらのフラグを設定するには [`fuse-config`](/megacmd/commands/fuse-config/) コマンドを使います。例えばマウントを読み取り専用にするには以下のようにします:
 
 ```
 $ fuse-config --read-only=yes dir

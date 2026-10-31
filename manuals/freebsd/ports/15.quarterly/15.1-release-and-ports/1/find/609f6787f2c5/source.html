@@ -1,0 +1,1617 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head><title>find</title>
+<meta http-equiv='content-type' content='text/html; charset=iso-8859-1' />
+<meta name='robots' content='nofollow' />
+    <link rel="stylesheet" media="screen"
+    href="https://www.FreeBSD.org/layout/css/fixed.css" type="text/css"
+    title="Normal Text" />
+    <link rel="alternate stylesheet" media="screen"
+    href="https://www.FreeBSD.org/layout/css/fixed_large.css" type="text/css"
+    title="Large Text" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/favicon.ico" type="image/x-icon" />
+
+
+
+<meta name="robots" content="nofollow" />
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://www.freebsd.org/opensearch/man.xml" title="FreeBSD Man" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://www.freebsd.org/opensearch/man-freebsd-release-ports.xml" title="FreeBSD Man+P" />
+
+<style type="text/css">
+span.footer_links { font-size: small; }
+span.space { font-size: xx-small; }
+form#man > input, form#man > button { font-size: large; }
+form#man > input[name='query'] { text-align: center; }
+p#section_links, div#footer { max-width: 50em; }
+hr { margin-left: 0em; max-width: 50em; }
+a:link  { text-decoration:none; }
+a:hover { text-decoration:underline; }
+
+@media only screen and (max-height: 640px), (max-width: 760px) {
+  /* hide logo color top */
+  body { background: #fff !important; } 
+
+  /* hide menu top */
+  div#header, div#menu { display: none !important; }
+  // div#content { padding-top: 4.9em; }
+  span.spaces { display: none; }
+
+  /* larger search form */
+  form#man > input, button { font-size: 200%; }
+  form#man > button { font-size: 200%; }
+  form#man > input[name='query'] { width: 12em; }
+  form#man > select { font-size: 140%; }
+}
+</style>
+
+</head>
+<body>
+
+    <div id="containerwrap">
+      <div id="container">
+        <span class="txtoffscreen"><a href="#content"
+        title="Skip site navigation" accesskey="1">Skip site
+        navigation</a> (1)</span><span class="txtoffscreen"><a
+        href="#content" title="Skip section navigation"
+        accesskey="2">Skip section navigation</a> (2)</span>
+
+        <div id="headercontainer">
+          <div id="header">
+            <h2 class="blockhide">Header And Logo</h2>
+
+            <div id="headerlogoleft">
+              <a href="https://www.FreeBSD.org" title="FreeBSD"><img
+              src="https://www.FreeBSD.org/layout/images/banner-red.png" width="457"
+              height="75" alt="FreeBSD" /></a>
+            </div>
+
+            <div id="headerlogoright">
+              <h2 class="blockhide">Peripheral Links</h2>
+
+	      <div class="frontdonateroundbox">
+		<div class="frontdonatetop">
+		  <div>
+		    <b style="display: none;">.</b>
+		  </div>
+		</div>
+		<div class="frontdonatecontent">
+		  <a href="https://www.FreeBSDFoundation.org/donate/">Donate to FreeBSD</a>
+		</div>
+		<div class="frontdonatebot">
+		  <div>
+		    <b style="display: none;">.</b>
+		  </div>
+		</div>
+	      </div>
+
+              <div id="search">
+		<form method="get" id="search-form" action="https://duckduckgo.com/">
+		  <h2 class="blockhide"><label for="words">Search</label></h2>
+		  <input type="hidden" name="sites" value="FreeBSD.org" />
+		  <input type="hidden" name="ka" value="v" />
+		  <input type="hidden" name="kt" value="v" />
+		  <input type="hidden" name="kh" value="1" />
+		  <input type="hidden" name="kj" value="r2" />
+		  <input id="words" name="q" type="text" size="20"
+                    autocapitalize="none"
+		    maxlength="255"
+		    onfocus="if( this.value==this.defaultValue ) this.value='';"
+		    value="Search" />
+		  <span>&nbsp;</span>
+		  <input id="submit" name="submit" type="submit" value="Search" />
+		</form>
+              </div>
+            </div>
+          </div>
+
+          <h2 class="blockhide">Site Navigation</h2>
+
+	  <div id="menu">
+	    <ul class="first">
+	      <li><a href="https://www.FreeBSD.org/">Home</a></li>
+	    </ul>
+	    <ul>
+	      <li><a href="https://www.FreeBSD.org/about/">About</a>
+		<ul>
+		  <li><a href="https://www.FreeBSD.org/projects/newbies/">Introduction</a></li>
+		  <li><a href="https://www.FreeBSD.org/features/">Features</a></li>
+		  <li><a href="https://www.FreeBSD.org/advocacy/">Advocacy</a></li>
+		  <li><a href="https://www.FreeBSD.org/marketing/">Marketing</a></li>
+		</ul>
+	      </li>
+	    </ul>
+	    <ul>
+	      <li><a href="https://www.FreeBSD.org/where/">Get FreeBSD</a>
+		<ul>
+		  <li><a href="https://www.FreeBSD.org/releases/">Release Information</a></li>
+		  <li><a href="https://www.FreeBSD.org/releng/">Release Engineering</a></li>
+		</ul>
+	      </li>
+	    </ul>
+	    <ul>
+	      <li><a href="https://www.FreeBSD.org/docs/">Documentation</a>
+		<ul>
+		  <li><a href="https://docs.freebsd.org/en/books/faq/">FAQ</a></li>
+		  <li><a href="https://docs.freebsd.org/en/books/handbook/">Handbook</a></li>
+		  <li><a href="https://docs.freebsd.org/en/books/porters-handbook/">Porter's Handbook</a></li>
+		  <li><a href="https://docs.freebsd.org/en//books/developers-handbook/">Developer's Handbook</a></li>
+		  <li><a href="https://www.FreeBSD.org/cgi/man.cgi">Manual Pages</a></li>
+		  <li><a href="https://docs.freebsd.org/en/books/fdp-primer/">Documentation Project Primer</a></li>
+		  <li><a href="https://www.FreeBSD.org/docs/books/">All Books and Articles</a></li>
+		</ul>
+	      </li>
+	    </ul>
+	    <ul>
+	      <li><a href="https://www.FreeBSD.org/community.html">Community</a>
+		<ul>
+		  <li><a href="https://www.FreeBSD.org/community/mailinglists.html">Mailing Lists</a></li>
+		  <li><a href="https://forums.FreeBSD.org">Forums</a></li>
+		  <li><a href="https://www.FreeBSD.org/usergroups.html">User Groups</a></li>
+		  <li><a href="https://www.FreeBSD.org/events/events.html">Events</a></li>
+		</ul>
+	      </li>
+	    </ul>
+	    <ul>
+	      <li><a href="https://www.FreeBSD.org/projects/index.html">Developers</a>
+		<ul>
+		  <li><a href="https://www.FreeBSD.org/projects/ideas/ideas.html">Project Ideas</a></li>
+		  <li><a href="https://cgit.FreeBSD.org">GIT Repository</a></li>
+		</ul>
+	      </li>
+	    </ul>
+	    <ul>
+	      <li><a href="https://www.FreeBSD.org/support.html">Support</a>
+		<ul>
+		  <li><a href="https://www.FreeBSD.org/commercial/commercial.html">Vendors</a></li>
+		  <li><a href="https://security.FreeBSD.org/">Security Information</a></li>
+		  <li><a href="https://bugs.freebsd.org/search/">Bug Reports</a></li>
+		  <li><a href="https://www.FreeBSD.org/support.html">Submit Bug-report</a></li>
+		</ul>
+	      </li>
+	    </ul>
+	    <ul>
+	      <li><a href="https://www.freebsdfoundation.org/">Foundation</a>
+		<ul>
+		  <li><a href="https://www.freebsdfoundation.org/donate/">Donate</a></li>
+		</ul>
+	      </li>
+	    </ul>
+	  </div> <!-- MENU -->
+        </div>
+
+	<div id="content">
+
+<br/>
+<h1>FreeBSD Manual Pages</h1>
+
+<form id="man" method="get" action="/cgi/man.cgi">
+<!-- Manual Page or Keyword Search: -->
+<span class="spaces">&nbsp;&nbsp;</span>
+<input type="text" id="query" value="find" name="query" size="36" autocapitalize="none"  />
+<button type="submit" name="apropos" value="0">man</button>
+<button type="submit" name="apropos" value="1">apropos</button>
+<br/>
+<span class="space">&nbsp;</span><br/>
+<span class="spaces">&nbsp;&nbsp;</span>
+<select name="sektion">
+<option selected="selected" value="0">All Sections</option>
+<option value="1">1 - General Commands</option>
+<option value="2">2 - System Calls</option>
+<option value="3">3 - Subroutines</option>
+<option value="4">4 - Special Files</option>
+<option value="5">5 - File Formats</option>
+<option value="6">6 - Games</option>
+<option value="7">7 - Macros and Conventions</option>
+<option value="8">8 - Maintenance Commands</option>
+<option value="9">9 - Kernel Interface</option>
+<option value="n">n - New Commands</option>
+</select>
+<select name="manpath">
+<option value="FreeBSD 16.0-CURRENT">FreeBSD 16.0-CURRENT</option>
+<option value="FreeBSD 15.1-RELEASE">FreeBSD 15.1-RELEASE</option>
+<option value="FreeBSD 15.1-RELEASE and Ports">FreeBSD 15.1-RELEASE and Ports</option>
+<option selected="selected" value="FreeBSD 15.1-RELEASE and Ports.quarterly">FreeBSD 15.1-RELEASE and Ports.quarterly</option>
+<option value="FreeBSD 15.1-STABLE">FreeBSD 15.1-STABLE</option>
+<option value="FreeBSD 15.0-RELEASE">FreeBSD 15.0-RELEASE</option>
+<option value="FreeBSD 15.0-RELEASE and Ports">FreeBSD 15.0-RELEASE and Ports</option>
+<option value="FreeBSD 14.5-RELEASE">FreeBSD 14.5-RELEASE</option>
+<option value="FreeBSD 14.5-RELEASE and Ports">FreeBSD 14.5-RELEASE and Ports</option>
+<option value="FreeBSD 14.5-STABLE">FreeBSD 14.5-STABLE</option>
+<option value="FreeBSD 14.4-RELEASE">FreeBSD 14.4-RELEASE</option>
+<option value="FreeBSD 14.4-RELEASE and Ports">FreeBSD 14.4-RELEASE and Ports</option>
+<option value="FreeBSD 14.3-RELEASE">FreeBSD 14.3-RELEASE</option>
+<option value="FreeBSD 14.3-RELEASE and Ports">FreeBSD 14.3-RELEASE and Ports</option>
+<option value="FreeBSD 14.2-RELEASE">FreeBSD 14.2-RELEASE</option>
+<option value="FreeBSD 14.2-RELEASE and Ports">FreeBSD 14.2-RELEASE and Ports</option>
+<option value="FreeBSD 14.1-RELEASE">FreeBSD 14.1-RELEASE</option>
+<option value="FreeBSD 14.1-RELEASE and Ports">FreeBSD 14.1-RELEASE and Ports</option>
+<option value="FreeBSD 14.0-RELEASE">FreeBSD 14.0-RELEASE</option>
+<option value="FreeBSD 14.0-RELEASE and Ports">FreeBSD 14.0-RELEASE and Ports</option>
+<option value="FreeBSD 13.5-RELEASE">FreeBSD 13.5-RELEASE</option>
+<option value="FreeBSD 13.5-RELEASE and Ports">FreeBSD 13.5-RELEASE and Ports</option>
+<option value="FreeBSD 13.4-RELEASE">FreeBSD 13.4-RELEASE</option>
+<option value="FreeBSD 13.4-RELEASE and Ports">FreeBSD 13.4-RELEASE and Ports</option>
+<option value="FreeBSD 13.3-RELEASE">FreeBSD 13.3-RELEASE</option>
+<option value="FreeBSD 13.3-RELEASE and Ports">FreeBSD 13.3-RELEASE and Ports</option>
+<option value="FreeBSD 13.2-RELEASE">FreeBSD 13.2-RELEASE</option>
+<option value="FreeBSD 13.2-RELEASE and Ports">FreeBSD 13.2-RELEASE and Ports</option>
+<option value="FreeBSD 13.1-RELEASE">FreeBSD 13.1-RELEASE</option>
+<option value="FreeBSD 13.1-RELEASE and Ports">FreeBSD 13.1-RELEASE and Ports</option>
+<option value="FreeBSD 13.0-RELEASE">FreeBSD 13.0-RELEASE</option>
+<option value="FreeBSD 13.0-RELEASE and Ports">FreeBSD 13.0-RELEASE and Ports</option>
+<option value="FreeBSD 12.4-RELEASE">FreeBSD 12.4-RELEASE</option>
+<option value="FreeBSD 12.4-RELEASE and Ports">FreeBSD 12.4-RELEASE and Ports</option>
+<option value="FreeBSD 12.3-RELEASE">FreeBSD 12.3-RELEASE</option>
+<option value="FreeBSD 12.3-RELEASE and Ports">FreeBSD 12.3-RELEASE and Ports</option>
+<option value="FreeBSD 12.2-RELEASE">FreeBSD 12.2-RELEASE</option>
+<option value="FreeBSD 12.2-RELEASE and Ports">FreeBSD 12.2-RELEASE and Ports</option>
+<option value="FreeBSD 12.1-RELEASE">FreeBSD 12.1-RELEASE</option>
+<option value="FreeBSD 12.1-RELEASE and Ports">FreeBSD 12.1-RELEASE and Ports</option>
+<option value="FreeBSD 12.0-RELEASE">FreeBSD 12.0-RELEASE</option>
+<option value="FreeBSD 12.0-RELEASE and Ports">FreeBSD 12.0-RELEASE and Ports</option>
+<option value="FreeBSD 11.4-RELEASE">FreeBSD 11.4-RELEASE</option>
+<option value="FreeBSD 11.4-RELEASE and Ports">FreeBSD 11.4-RELEASE and Ports</option>
+<option value="FreeBSD 11.3-RELEASE">FreeBSD 11.3-RELEASE</option>
+<option value="FreeBSD 11.3-RELEASE and Ports">FreeBSD 11.3-RELEASE and Ports</option>
+<option value="FreeBSD 11.2-RELEASE">FreeBSD 11.2-RELEASE</option>
+<option value="FreeBSD 11.2-RELEASE and Ports">FreeBSD 11.2-RELEASE and Ports</option>
+<option value="FreeBSD 11.1-RELEASE">FreeBSD 11.1-RELEASE</option>
+<option value="FreeBSD 11.1-RELEASE and Ports">FreeBSD 11.1-RELEASE and Ports</option>
+<option value="FreeBSD 11.0-RELEASE">FreeBSD 11.0-RELEASE</option>
+<option value="FreeBSD 11.0-RELEASE and Ports">FreeBSD 11.0-RELEASE and Ports</option>
+<option value="FreeBSD 10.4-RELEASE">FreeBSD 10.4-RELEASE</option>
+<option value="FreeBSD 10.4-RELEASE and Ports">FreeBSD 10.4-RELEASE and Ports</option>
+<option value="FreeBSD 10.3-RELEASE">FreeBSD 10.3-RELEASE</option>
+<option value="FreeBSD 10.3-RELEASE and Ports">FreeBSD 10.3-RELEASE and Ports</option>
+<option value="FreeBSD 10.2-RELEASE">FreeBSD 10.2-RELEASE</option>
+<option value="FreeBSD 10.2-RELEASE and Ports">FreeBSD 10.2-RELEASE and Ports</option>
+<option value="FreeBSD 10.1-RELEASE">FreeBSD 10.1-RELEASE</option>
+<option value="FreeBSD 10.1-RELEASE and Ports">FreeBSD 10.1-RELEASE and Ports</option>
+<option value="FreeBSD 10.0-RELEASE">FreeBSD 10.0-RELEASE</option>
+<option value="FreeBSD 10.0-RELEASE and Ports">FreeBSD 10.0-RELEASE and Ports</option>
+<option value="FreeBSD 9.3-RELEASE">FreeBSD 9.3-RELEASE</option>
+<option value="FreeBSD 9.3-RELEASE and Ports">FreeBSD 9.3-RELEASE and Ports</option>
+<option value="FreeBSD 9.2-RELEASE">FreeBSD 9.2-RELEASE</option>
+<option value="FreeBSD 9.2-RELEASE and Ports">FreeBSD 9.2-RELEASE and Ports</option>
+<option value="FreeBSD 9.1-RELEASE">FreeBSD 9.1-RELEASE</option>
+<option value="FreeBSD 9.1-RELEASE and Ports">FreeBSD 9.1-RELEASE and Ports</option>
+<option value="FreeBSD 9.0-RELEASE">FreeBSD 9.0-RELEASE</option>
+<option value="FreeBSD 9.0-RELEASE and Ports">FreeBSD 9.0-RELEASE and Ports</option>
+<option value="FreeBSD 8.4-RELEASE">FreeBSD 8.4-RELEASE</option>
+<option value="FreeBSD 8.4-RELEASE and Ports">FreeBSD 8.4-RELEASE and Ports</option>
+<option value="FreeBSD 8.3-RELEASE">FreeBSD 8.3-RELEASE</option>
+<option value="FreeBSD 8.3-RELEASE and Ports">FreeBSD 8.3-RELEASE and Ports</option>
+<option value="FreeBSD 8.2-RELEASE">FreeBSD 8.2-RELEASE</option>
+<option value="FreeBSD 8.2-RELEASE and Ports">FreeBSD 8.2-RELEASE and Ports</option>
+<option value="FreeBSD 8.1-RELEASE">FreeBSD 8.1-RELEASE</option>
+<option value="FreeBSD 8.1-RELEASE and Ports">FreeBSD 8.1-RELEASE and Ports</option>
+<option value="FreeBSD 8.0-RELEASE">FreeBSD 8.0-RELEASE</option>
+<option value="FreeBSD 8.0-RELEASE and Ports">FreeBSD 8.0-RELEASE and Ports</option>
+<option value="FreeBSD 7.4-RELEASE">FreeBSD 7.4-RELEASE</option>
+<option value="FreeBSD 7.4-RELEASE and Ports">FreeBSD 7.4-RELEASE and Ports</option>
+<option value="FreeBSD 7.3-RELEASE">FreeBSD 7.3-RELEASE</option>
+<option value="FreeBSD 7.3-RELEASE and Ports">FreeBSD 7.3-RELEASE and Ports</option>
+<option value="FreeBSD 7.2-RELEASE">FreeBSD 7.2-RELEASE</option>
+<option value="FreeBSD 7.2-RELEASE and Ports">FreeBSD 7.2-RELEASE and Ports</option>
+<option value="FreeBSD 7.1-RELEASE">FreeBSD 7.1-RELEASE</option>
+<option value="FreeBSD 7.1-RELEASE and Ports">FreeBSD 7.1-RELEASE and Ports</option>
+<option value="FreeBSD 7.0-RELEASE">FreeBSD 7.0-RELEASE</option>
+<option value="FreeBSD 6.4-RELEASE">FreeBSD 6.4-RELEASE</option>
+<option value="FreeBSD 6.4-RELEASE and Ports">FreeBSD 6.4-RELEASE and Ports</option>
+<option value="FreeBSD 6.3-RELEASE">FreeBSD 6.3-RELEASE</option>
+<option value="FreeBSD 6.3-RELEASE and Ports">FreeBSD 6.3-RELEASE and Ports</option>
+<option value="FreeBSD 6.2-RELEASE">FreeBSD 6.2-RELEASE</option>
+<option value="FreeBSD 6.1-RELEASE">FreeBSD 6.1-RELEASE</option>
+<option value="FreeBSD 6.0-RELEASE">FreeBSD 6.0-RELEASE</option>
+<option value="FreeBSD 6.0-RELEASE and Ports">FreeBSD 6.0-RELEASE and Ports</option>
+<option value="FreeBSD 5.5-RELEASE">FreeBSD 5.5-RELEASE</option>
+<option value="FreeBSD 5.5-RELEASE and Ports">FreeBSD 5.5-RELEASE and Ports</option>
+<option value="FreeBSD 5.4-RELEASE">FreeBSD 5.4-RELEASE</option>
+<option value="FreeBSD 5.4-RELEASE and Ports">FreeBSD 5.4-RELEASE and Ports</option>
+<option value="FreeBSD 5.3-RELEASE">FreeBSD 5.3-RELEASE</option>
+<option value="FreeBSD 5.3-RELEASE and Ports">FreeBSD 5.3-RELEASE and Ports</option>
+<option value="FreeBSD 5.2.1-RELEASE">FreeBSD 5.2.1-RELEASE</option>
+<option value="FreeBSD 5.2.1-RELEASE and Ports">FreeBSD 5.2.1-RELEASE and Ports</option>
+<option value="FreeBSD 5.2-RELEASE">FreeBSD 5.2-RELEASE</option>
+<option value="FreeBSD 5.2-RELEASE and Ports">FreeBSD 5.2-RELEASE and Ports</option>
+<option value="FreeBSD 5.1-RELEASE">FreeBSD 5.1-RELEASE</option>
+<option value="FreeBSD 5.0-RELEASE">FreeBSD 5.0-RELEASE</option>
+<option value="FreeBSD 4.11-RELEASE">FreeBSD 4.11-RELEASE</option>
+<option value="FreeBSD 4.11-RELEASE and Ports">FreeBSD 4.11-RELEASE and Ports</option>
+<option value="FreeBSD 4.10-RELEASE">FreeBSD 4.10-RELEASE</option>
+<option value="FreeBSD 4.10-RELEASE and Ports">FreeBSD 4.10-RELEASE and Ports</option>
+<option value="FreeBSD 4.9-RELEASE">FreeBSD 4.9-RELEASE</option>
+<option value="FreeBSD 4.9-RELEASE and Ports">FreeBSD 4.9-RELEASE and Ports</option>
+<option value="FreeBSD 4.8-RELEASE">FreeBSD 4.8-RELEASE</option>
+<option value="FreeBSD 4.8-RELEASE and Ports">FreeBSD 4.8-RELEASE and Ports</option>
+<option value="FreeBSD 4.7-RELEASE">FreeBSD 4.7-RELEASE</option>
+<option value="FreeBSD 4.6.2-RELEASE">FreeBSD 4.6.2-RELEASE</option>
+<option value="FreeBSD 4.6.2-RELEASE and Ports">FreeBSD 4.6.2-RELEASE and Ports</option>
+<option value="FreeBSD 4.6-RELEASE">FreeBSD 4.6-RELEASE</option>
+<option value="FreeBSD 4.6-RELEASE and Ports">FreeBSD 4.6-RELEASE and Ports</option>
+<option value="FreeBSD 4.5-RELEASE">FreeBSD 4.5-RELEASE</option>
+<option value="FreeBSD 4.5-RELEASE and Ports">FreeBSD 4.5-RELEASE and Ports</option>
+<option value="FreeBSD 4.4-RELEASE">FreeBSD 4.4-RELEASE</option>
+<option value="FreeBSD 4.3-RELEASE">FreeBSD 4.3-RELEASE</option>
+<option value="FreeBSD 4.3-RELEASE and Ports">FreeBSD 4.3-RELEASE and Ports</option>
+<option value="FreeBSD 4.2-RELEASE">FreeBSD 4.2-RELEASE</option>
+<option value="FreeBSD 4.2-RELEASE and Ports">FreeBSD 4.2-RELEASE and Ports</option>
+<option value="FreeBSD 4.1.1-RELEASE">FreeBSD 4.1.1-RELEASE</option>
+<option value="FreeBSD 4.1.1-RELEASE and Ports">FreeBSD 4.1.1-RELEASE and Ports</option>
+<option value="FreeBSD 4.1-RELEASE">FreeBSD 4.1-RELEASE</option>
+<option value="FreeBSD 4.0-RELEASE">FreeBSD 4.0-RELEASE</option>
+<option value="FreeBSD 3.5.1-RELEASE">FreeBSD 3.5.1-RELEASE</option>
+<option value="FreeBSD 3.5.1-RELEASE and Ports">FreeBSD 3.5.1-RELEASE and Ports</option>
+<option value="FreeBSD 3.5-RELEASE and Ports">FreeBSD 3.5-RELEASE and Ports</option>
+<option value="FreeBSD 3.4-RELEASE">FreeBSD 3.4-RELEASE</option>
+<option value="FreeBSD 3.4-RELEASE and Ports">FreeBSD 3.4-RELEASE and Ports</option>
+<option value="FreeBSD 3.3-RELEASE">FreeBSD 3.3-RELEASE</option>
+<option value="FreeBSD 3.2-RELEASE">FreeBSD 3.2-RELEASE</option>
+<option value="FreeBSD 3.1-RELEASE">FreeBSD 3.1-RELEASE</option>
+<option value="FreeBSD 3.0-RELEASE">FreeBSD 3.0-RELEASE</option>
+<option value="FreeBSD 2.2.8-RELEASE">FreeBSD 2.2.8-RELEASE</option>
+<option value="FreeBSD 2.2.8-RELEASE and Ports">FreeBSD 2.2.8-RELEASE and Ports</option>
+<option value="FreeBSD 2.2.7-RELEASE">FreeBSD 2.2.7-RELEASE</option>
+<option value="FreeBSD 2.2.6-RELEASE">FreeBSD 2.2.6-RELEASE</option>
+<option value="FreeBSD 2.2.5-RELEASE">FreeBSD 2.2.5-RELEASE</option>
+<option value="FreeBSD 2.2.2-RELEASE">FreeBSD 2.2.2-RELEASE</option>
+<option value="FreeBSD 2.2.1-RELEASE">FreeBSD 2.2.1-RELEASE</option>
+<option value="FreeBSD 2.1.7.1-RELEASE">FreeBSD 2.1.7.1-RELEASE</option>
+<option value="FreeBSD 2.1.6.1-RELEASE">FreeBSD 2.1.6.1-RELEASE</option>
+<option value="FreeBSD 2.1.5-RELEASE">FreeBSD 2.1.5-RELEASE</option>
+<option value="FreeBSD 2.1.0-RELEASE">FreeBSD 2.1.0-RELEASE</option>
+<option value="FreeBSD 2.0.5-RELEASE">FreeBSD 2.0.5-RELEASE</option>
+<option value="FreeBSD 2.0-RELEASE">FreeBSD 2.0-RELEASE</option>
+<option value="FreeBSD 1.1.5.1-RELEASE">FreeBSD 1.1.5.1-RELEASE</option>
+<option value="FreeBSD 1.1-RELEASE">FreeBSD 1.1-RELEASE</option>
+<option value="FreeBSD 1.0-RELEASE">FreeBSD 1.0-RELEASE</option>
+<option value="FreeBSD Ports 15.1">FreeBSD Ports 15.1</option>
+<option value="FreeBSD Ports 15.1.quarterly">FreeBSD Ports 15.1.quarterly</option>
+<option value="FreeBSD Ports 15.0">FreeBSD Ports 15.0</option>
+<option value="FreeBSD Ports 14.5">FreeBSD Ports 14.5</option>
+<option value="FreeBSD Ports 14.4">FreeBSD Ports 14.4</option>
+<option value="FreeBSD Ports 14.3">FreeBSD Ports 14.3</option>
+<option value="FreeBSD Ports 14.2">FreeBSD Ports 14.2</option>
+<option value="FreeBSD Ports 14.1">FreeBSD Ports 14.1</option>
+<option value="FreeBSD Ports 14.0">FreeBSD Ports 14.0</option>
+<option value="FreeBSD Ports 13.5">FreeBSD Ports 13.5</option>
+<option value="FreeBSD Ports 13.4">FreeBSD Ports 13.4</option>
+<option value="FreeBSD Ports 13.3">FreeBSD Ports 13.3</option>
+<option value="FreeBSD Ports 13.2">FreeBSD Ports 13.2</option>
+<option value="FreeBSD Ports 13.1">FreeBSD Ports 13.1</option>
+<option value="FreeBSD Ports 13.0">FreeBSD Ports 13.0</option>
+<option value="FreeBSD Ports 12.4">FreeBSD Ports 12.4</option>
+<option value="FreeBSD Ports 12.3">FreeBSD Ports 12.3</option>
+<option value="FreeBSD Ports 12.2">FreeBSD Ports 12.2</option>
+<option value="FreeBSD Ports 12.1">FreeBSD Ports 12.1</option>
+<option value="FreeBSD Ports 12.0">FreeBSD Ports 12.0</option>
+<option value="FreeBSD Ports 11.4">FreeBSD Ports 11.4</option>
+<option value="FreeBSD Ports 11.3">FreeBSD Ports 11.3</option>
+<option value="FreeBSD Ports 11.2">FreeBSD Ports 11.2</option>
+<option value="FreeBSD Ports 11.1">FreeBSD Ports 11.1</option>
+<option value="FreeBSD Ports 11.0">FreeBSD Ports 11.0</option>
+<option value="FreeBSD Ports 10.4">FreeBSD Ports 10.4</option>
+<option value="FreeBSD Ports 10.3">FreeBSD Ports 10.3</option>
+<option value="FreeBSD Ports 10.2">FreeBSD Ports 10.2</option>
+<option value="FreeBSD Ports 10.1">FreeBSD Ports 10.1</option>
+<option value="FreeBSD Ports 10.0">FreeBSD Ports 10.0</option>
+<option value="FreeBSD Ports 9.3">FreeBSD Ports 9.3</option>
+<option value="FreeBSD Ports 9.2">FreeBSD Ports 9.2</option>
+<option value="FreeBSD Ports 9.1">FreeBSD Ports 9.1</option>
+<option value="FreeBSD Ports 9.0">FreeBSD Ports 9.0</option>
+<option value="FreeBSD Ports 8.4">FreeBSD Ports 8.4</option>
+<option value="FreeBSD Ports 8.3">FreeBSD Ports 8.3</option>
+<option value="FreeBSD Ports 8.2">FreeBSD Ports 8.2</option>
+<option value="FreeBSD Ports 8.1">FreeBSD Ports 8.1</option>
+<option value="FreeBSD Ports 8.0">FreeBSD Ports 8.0</option>
+<option value="FreeBSD Ports 7.4">FreeBSD Ports 7.4</option>
+<option value="FreeBSD Ports 7.3">FreeBSD Ports 7.3</option>
+<option value="FreeBSD Ports 7.2">FreeBSD Ports 7.2</option>
+<option value="FreeBSD Ports 7.1">FreeBSD Ports 7.1</option>
+<option value="FreeBSD Ports 7.0">FreeBSD Ports 7.0</option>
+<option value="FreeBSD Ports 6.4">FreeBSD Ports 6.4</option>
+<option value="FreeBSD Ports 6.3">FreeBSD Ports 6.3</option>
+<option value="FreeBSD Ports 6.2">FreeBSD Ports 6.2</option>
+<option value="FreeBSD Ports 6.0">FreeBSD Ports 6.0</option>
+<option value="FreeBSD Ports 5.5">FreeBSD Ports 5.5</option>
+<option value="FreeBSD Ports 5.4">FreeBSD Ports 5.4</option>
+<option value="FreeBSD Ports 5.3">FreeBSD Ports 5.3</option>
+<option value="FreeBSD Ports 5.2.1">FreeBSD Ports 5.2.1</option>
+<option value="FreeBSD Ports 5.2">FreeBSD Ports 5.2</option>
+<option value="FreeBSD Ports 5.1">FreeBSD Ports 5.1</option>
+<option value="FreeBSD Ports 4.11">FreeBSD Ports 4.11</option>
+<option value="FreeBSD Ports 4.10">FreeBSD Ports 4.10</option>
+<option value="FreeBSD Ports 4.9">FreeBSD Ports 4.9</option>
+<option value="FreeBSD Ports 4.8">FreeBSD Ports 4.8</option>
+<option value="FreeBSD Ports 4.7">FreeBSD Ports 4.7</option>
+<option value="FreeBSD Ports 4.6.2">FreeBSD Ports 4.6.2</option>
+<option value="FreeBSD Ports 4.6">FreeBSD Ports 4.6</option>
+<option value="FreeBSD Ports 4.5">FreeBSD Ports 4.5</option>
+<option value="FreeBSD Ports 4.3">FreeBSD Ports 4.3</option>
+<option value="FreeBSD Ports 4.2">FreeBSD Ports 4.2</option>
+<option value="FreeBSD Ports 4.1.1">FreeBSD Ports 4.1.1</option>
+<option value="FreeBSD Ports 3.5.1">FreeBSD Ports 3.5.1</option>
+<option value="FreeBSD Ports 3.5">FreeBSD Ports 3.5</option>
+<option value="FreeBSD Ports 3.4">FreeBSD Ports 3.4</option>
+<option value="FreeBSD Ports 2.2.8">FreeBSD Ports 2.2.8</option>
+<option value="4.4BSD Lite2">4.4BSD Lite2</option>
+<option value="4.3BSD NET/2">4.3BSD NET/2</option>
+<option value="4.3BSD Reno">4.3BSD Reno</option>
+<option value="2.11 BSD">2.11 BSD</option>
+<option value="2.10 BSD">2.10 BSD</option>
+<option value="2.9.1 BSD">2.9.1 BSD</option>
+<option value="2.8 BSD">2.8 BSD</option>
+<option value="386BSD 0.1">386BSD 0.1</option>
+<option value="386BSD 0.0">386BSD 0.0</option>
+<option value="CentOS 7.9">CentOS 7.9</option>
+<option value="CentOS 7.8">CentOS 7.8</option>
+<option value="CentOS 7.7">CentOS 7.7</option>
+<option value="CentOS 7.6">CentOS 7.6</option>
+<option value="CentOS 7.5">CentOS 7.5</option>
+<option value="CentOS 7.4">CentOS 7.4</option>
+<option value="CentOS 7.3">CentOS 7.3</option>
+<option value="CentOS 7.2">CentOS 7.2</option>
+<option value="CentOS 7.1">CentOS 7.1</option>
+<option value="CentOS 7.0">CentOS 7.0</option>
+<option value="CentOS 6.10">CentOS 6.10</option>
+<option value="CentOS 6.9">CentOS 6.9</option>
+<option value="CentOS 6.8">CentOS 6.8</option>
+<option value="CentOS 6.7">CentOS 6.7</option>
+<option value="CentOS 6.6">CentOS 6.6</option>
+<option value="CentOS 6.5">CentOS 6.5</option>
+<option value="CentOS 6.4">CentOS 6.4</option>
+<option value="CentOS 6.3">CentOS 6.3</option>
+<option value="CentOS 6.2">CentOS 6.2</option>
+<option value="CentOS 6.1">CentOS 6.1</option>
+<option value="CentOS 6.0">CentOS 6.0</option>
+<option value="CentOS 5.11">CentOS 5.11</option>
+<option value="CentOS 5.10">CentOS 5.10</option>
+<option value="CentOS 5.9">CentOS 5.9</option>
+<option value="CentOS 5.8">CentOS 5.8</option>
+<option value="CentOS 5.7">CentOS 5.7</option>
+<option value="CentOS 5.6">CentOS 5.6</option>
+<option value="CentOS 5.5">CentOS 5.5</option>
+<option value="CentOS 5.4">CentOS 5.4</option>
+<option value="CentOS 4.8">CentOS 4.8</option>
+<option value="CentOS 3.9">CentOS 3.9</option>
+<option value="Darwin 8.0.1/ppc">Darwin 8.0.1/ppc</option>
+<option value="Darwin 7.0.1">Darwin 7.0.1</option>
+<option value="Darwin 6.0.2/x86">Darwin 6.0.2/x86</option>
+<option value="Darwin 1.4.1/x86">Darwin 1.4.1/x86</option>
+<option value="Darwin 1.3.1/x86">Darwin 1.3.1/x86</option>
+<option value="Debian 14.0 unstable">Debian 14.0 unstable</option>
+<option value="Debian 13.6.0">Debian 13.6.0</option>
+<option value="Debian 12.15.0">Debian 12.15.0</option>
+<option value="Debian 11.11.0">Debian 11.11.0</option>
+<option value="Debian 10.13.0">Debian 10.13.0</option>
+<option value="Debian 9.13.0">Debian 9.13.0</option>
+<option value="Debian 8.11.1">Debian 8.11.1</option>
+<option value="Debian 7.11.0">Debian 7.11.0</option>
+<option value="Debian 6.0.10">Debian 6.0.10</option>
+<option value="Debian 5.0.10">Debian 5.0.10</option>
+<option value="Debian 4.0.9">Debian 4.0.9</option>
+<option value="Debian 3.1.8">Debian 3.1.8</option>
+<option value="Debian 2.2.7">Debian 2.2.7</option>
+<option value="Debian 2.0.0">Debian 2.0.0</option>
+<option value="Dell UNIX SVR4 2.2">Dell UNIX SVR4 2.2</option>
+<option value="DragonFly 6.4.2">DragonFly 6.4.2</option>
+<option value="DragonFly 5.8.3">DragonFly 5.8.3</option>
+<option value="DragonFly 4.8.1">DragonFly 4.8.1</option>
+<option value="DragonFly 3.8.2">DragonFly 3.8.2</option>
+<option value="DragonFly 2.10.1">DragonFly 2.10.1</option>
+<option value="DragonFly 1.12.1">DragonFly 1.12.1</option>
+<option value="DragonFly 1.0A">DragonFly 1.0A</option>
+<option value="HP-UX 11.22">HP-UX 11.22</option>
+<option value="HP-UX 11.20">HP-UX 11.20</option>
+<option value="HP-UX 11.11">HP-UX 11.11</option>
+<option value="HP-UX 11.00">HP-UX 11.00</option>
+<option value="HP-UX 10.20">HP-UX 10.20</option>
+<option value="HP-UX 10.10">HP-UX 10.10</option>
+<option value="HP-UX 10.01">HP-UX 10.01</option>
+<option value="HP-UX 9.07">HP-UX 9.07</option>
+<option value="HP-UX 8.07">HP-UX 8.07</option>
+<option value="Inferno 4th Edition">Inferno 4th Edition</option>
+<option value="IRIX 6.5.30">IRIX 6.5.30</option>
+<option value="Linux Slackware 3.1">Linux Slackware 3.1</option>
+<option value="MACH 2.5/i386">MACH 2.5/i386</option>
+<option value="macOS 26.6.1">macOS 26.6.1</option>
+<option value="macOS 15.7.5">macOS 15.7.5</option>
+<option value="macOS 14.8.5">macOS 14.8.5</option>
+<option value="macOS 13.6.5">macOS 13.6.5</option>
+<option value="macOS 12.7.3">macOS 12.7.3</option>
+<option value="macOS 11.1">macOS 11.1</option>
+<option value="macOS 10.15.7">macOS 10.15.7</option>
+<option value="macOS 10.13.6">macOS 10.13.6</option>
+<option value="macOS 10.12.0">macOS 10.12.0</option>
+<option value="Minix 3.3.0">Minix 3.3.0</option>
+<option value="Minix 3.2.1">Minix 3.2.1</option>
+<option value="Minix 3.2.0">Minix 3.2.0</option>
+<option value="Minix 3.1.7">Minix 3.1.7</option>
+<option value="Minix 3.1.6">Minix 3.1.6</option>
+<option value="Minix 3.1.5">Minix 3.1.5</option>
+<option value="Minix 2.0.0">Minix 2.0.0</option>
+<option value="NetBSD 11.0">NetBSD 11.0</option>
+<option value="NetBSD 10.1">NetBSD 10.1</option>
+<option value="NetBSD 10.0">NetBSD 10.0</option>
+<option value="NetBSD 9.4">NetBSD 9.4</option>
+<option value="NetBSD 9.3">NetBSD 9.3</option>
+<option value="NetBSD 9.2">NetBSD 9.2</option>
+<option value="NetBSD 9.1">NetBSD 9.1</option>
+<option value="NetBSD 9.0">NetBSD 9.0</option>
+<option value="NetBSD 8.3">NetBSD 8.3</option>
+<option value="NetBSD 8.2">NetBSD 8.2</option>
+<option value="NetBSD 8.1">NetBSD 8.1</option>
+<option value="NetBSD 8.0">NetBSD 8.0</option>
+<option value="NetBSD 7.2">NetBSD 7.2</option>
+<option value="NetBSD 7.1.2">NetBSD 7.1.2</option>
+<option value="NetBSD 7.1">NetBSD 7.1</option>
+<option value="NetBSD 7.0">NetBSD 7.0</option>
+<option value="NetBSD 6.1.5">NetBSD 6.1.5</option>
+<option value="NetBSD 6.0">NetBSD 6.0</option>
+<option value="NetBSD 5.2.3">NetBSD 5.2.3</option>
+<option value="NetBSD 5.2">NetBSD 5.2</option>
+<option value="NetBSD 5.1">NetBSD 5.1</option>
+<option value="NetBSD 5.0">NetBSD 5.0</option>
+<option value="NetBSD 4.0.1">NetBSD 4.0.1</option>
+<option value="NetBSD 4.0">NetBSD 4.0</option>
+<option value="NetBSD 3.1">NetBSD 3.1</option>
+<option value="NetBSD 3.0">NetBSD 3.0</option>
+<option value="NetBSD 2.1">NetBSD 2.1</option>
+<option value="NetBSD 2.0.2">NetBSD 2.0.2</option>
+<option value="NetBSD 2.0">NetBSD 2.0</option>
+<option value="NetBSD 1.6.2">NetBSD 1.6.2</option>
+<option value="NetBSD 1.6.1">NetBSD 1.6.1</option>
+<option value="NetBSD 1.6">NetBSD 1.6</option>
+<option value="NetBSD 1.5.3">NetBSD 1.5.3</option>
+<option value="NetBSD 1.5.2">NetBSD 1.5.2</option>
+<option value="NetBSD 1.5.1">NetBSD 1.5.1</option>
+<option value="NetBSD 1.5">NetBSD 1.5</option>
+<option value="NetBSD 1.4.3">NetBSD 1.4.3</option>
+<option value="NetBSD 1.4.2">NetBSD 1.4.2</option>
+<option value="NetBSD 1.4.1">NetBSD 1.4.1</option>
+<option value="NetBSD 1.4">NetBSD 1.4</option>
+<option value="NetBSD 1.3.3">NetBSD 1.3.3</option>
+<option value="NetBSD 1.3.2">NetBSD 1.3.2</option>
+<option value="NetBSD 1.3.1">NetBSD 1.3.1</option>
+<option value="NetBSD 1.3">NetBSD 1.3</option>
+<option value="NetBSD 1.2.1">NetBSD 1.2.1</option>
+<option value="NetBSD 1.2">NetBSD 1.2</option>
+<option value="NetBSD 1.1">NetBSD 1.1</option>
+<option value="NetBSD 1.0">NetBSD 1.0</option>
+<option value="NeXTSTEP 3.3">NeXTSTEP 3.3</option>
+<option value="OpenBSD 7.9">OpenBSD 7.9</option>
+<option value="OpenBSD 7.8">OpenBSD 7.8</option>
+<option value="OpenBSD 7.7">OpenBSD 7.7</option>
+<option value="OpenBSD 7.6">OpenBSD 7.6</option>
+<option value="OpenBSD 7.5">OpenBSD 7.5</option>
+<option value="OpenBSD 7.4">OpenBSD 7.4</option>
+<option value="OpenBSD 7.3">OpenBSD 7.3</option>
+<option value="OpenBSD 7.2">OpenBSD 7.2</option>
+<option value="OpenBSD 7.1">OpenBSD 7.1</option>
+<option value="OpenBSD 7.0">OpenBSD 7.0</option>
+<option value="OpenBSD 6.9">OpenBSD 6.9</option>
+<option value="OpenBSD 6.8">OpenBSD 6.8</option>
+<option value="OpenBSD 6.7">OpenBSD 6.7</option>
+<option value="OpenBSD 6.6">OpenBSD 6.6</option>
+<option value="OpenBSD 6.5">OpenBSD 6.5</option>
+<option value="OpenBSD 6.4">OpenBSD 6.4</option>
+<option value="OpenBSD 6.3">OpenBSD 6.3</option>
+<option value="OpenBSD 6.2">OpenBSD 6.2</option>
+<option value="OpenBSD 6.1">OpenBSD 6.1</option>
+<option value="OpenBSD 6.0">OpenBSD 6.0</option>
+<option value="OpenBSD 5.9">OpenBSD 5.9</option>
+<option value="OpenBSD 5.8">OpenBSD 5.8</option>
+<option value="OpenBSD 5.7">OpenBSD 5.7</option>
+<option value="OpenBSD 5.6">OpenBSD 5.6</option>
+<option value="OpenBSD 5.5">OpenBSD 5.5</option>
+<option value="OpenBSD 5.4">OpenBSD 5.4</option>
+<option value="OpenBSD 5.3">OpenBSD 5.3</option>
+<option value="OpenBSD 5.2">OpenBSD 5.2</option>
+<option value="OpenBSD 5.1">OpenBSD 5.1</option>
+<option value="OpenBSD 5.0">OpenBSD 5.0</option>
+<option value="OpenBSD 4.9">OpenBSD 4.9</option>
+<option value="OpenBSD 4.8">OpenBSD 4.8</option>
+<option value="OpenBSD 4.7">OpenBSD 4.7</option>
+<option value="OpenBSD 4.6">OpenBSD 4.6</option>
+<option value="OpenBSD 4.5">OpenBSD 4.5</option>
+<option value="OpenBSD 4.4">OpenBSD 4.4</option>
+<option value="OpenBSD 4.3">OpenBSD 4.3</option>
+<option value="OpenBSD 4.2">OpenBSD 4.2</option>
+<option value="OpenBSD 4.1">OpenBSD 4.1</option>
+<option value="OpenBSD 4.0">OpenBSD 4.0</option>
+<option value="OpenBSD 3.9">OpenBSD 3.9</option>
+<option value="OpenBSD 3.8">OpenBSD 3.8</option>
+<option value="OpenBSD 3.7">OpenBSD 3.7</option>
+<option value="OpenBSD 3.6">OpenBSD 3.6</option>
+<option value="OpenBSD 3.5">OpenBSD 3.5</option>
+<option value="OpenBSD 3.4">OpenBSD 3.4</option>
+<option value="OpenBSD 3.3">OpenBSD 3.3</option>
+<option value="OpenBSD 3.2">OpenBSD 3.2</option>
+<option value="OpenBSD 3.1">OpenBSD 3.1</option>
+<option value="OpenBSD 3.0">OpenBSD 3.0</option>
+<option value="OpenBSD 2.9">OpenBSD 2.9</option>
+<option value="OpenBSD 2.8">OpenBSD 2.8</option>
+<option value="OpenBSD 2.7">OpenBSD 2.7</option>
+<option value="OpenBSD 2.6">OpenBSD 2.6</option>
+<option value="OpenBSD 2.5">OpenBSD 2.5</option>
+<option value="OpenBSD 2.4">OpenBSD 2.4</option>
+<option value="OpenBSD 2.3">OpenBSD 2.3</option>
+<option value="OpenBSD 2.2">OpenBSD 2.2</option>
+<option value="OpenBSD 2.1">OpenBSD 2.1</option>
+<option value="OpenBSD 2.0">OpenBSD 2.0</option>
+<option value="OpenDarwin 7.2.1">OpenDarwin 7.2.1</option>
+<option value="OpenDarwin 6.6.2/x86">OpenDarwin 6.6.2/x86</option>
+<option value="OpenDarwin 6.6.1/x86">OpenDarwin 6.6.1/x86</option>
+<option value="OpenDarwin 20030208pre4/ppc">OpenDarwin 20030208pre4/ppc</option>
+<option value="OpenIndiana 2025.10">OpenIndiana 2025.10</option>
+<option value="OpenIndiana 2024.10">OpenIndiana 2024.10</option>
+<option value="OpenIndiana 2022.10">OpenIndiana 2022.10</option>
+<option value="OpenIndiana 2020.10">OpenIndiana 2020.10</option>
+<option value="OpenIndiana 2017.10">OpenIndiana 2017.10</option>
+<option value="OpenIndiana 2015.10">OpenIndiana 2015.10</option>
+<option value="OpenIndiana 2013.08">OpenIndiana 2013.08</option>
+<option value="OpenSolaris 2010.03">OpenSolaris 2010.03</option>
+<option value="OpenSolaris 2009.06">OpenSolaris 2009.06</option>
+<option value="OpenStep 4.2">OpenStep 4.2</option>
+<option value="openSUSE 42.3">openSUSE 42.3</option>
+<option value="openSUSE 42.2">openSUSE 42.2</option>
+<option value="openSUSE 42.1">openSUSE 42.1</option>
+<option value="openSUSE 16.0">openSUSE 16.0</option>
+<option value="openSUSE 15.6">openSUSE 15.6</option>
+<option value="openSUSE 15.5">openSUSE 15.5</option>
+<option value="openSUSE 15.4">openSUSE 15.4</option>
+<option value="openSUSE 15.3">openSUSE 15.3</option>
+<option value="openSUSE 15.2">openSUSE 15.2</option>
+<option value="openSUSE 15.1">openSUSE 15.1</option>
+<option value="openSUSE 15.0">openSUSE 15.0</option>
+<option value="openSUSE 13.2">openSUSE 13.2</option>
+<option value="openSUSE 13.1">openSUSE 13.1</option>
+<option value="openSUSE 11.4">openSUSE 11.4</option>
+<option value="openSUSE 11.3">openSUSE 11.3</option>
+<option value="openSUSE 11.2">openSUSE 11.2</option>
+<option value="openSUSE 10.3">openSUSE 10.3</option>
+<option value="openSUSE 10.2">openSUSE 10.2</option>
+<option value="OSF1 V5.1/alpha">OSF1 V5.1/alpha</option>
+<option value="OSF1 V4.0/alpha">OSF1 V4.0/alpha</option>
+<option value="OSF1 V1.0/mips">OSF1 V1.0/mips</option>
+<option value="Plan 9">Plan 9</option>
+<option value="Red Hat 9.0">Red Hat 9.0</option>
+<option value="Red Hat 8.0">Red Hat 8.0</option>
+<option value="Red Hat 7.3">Red Hat 7.3</option>
+<option value="Red Hat 7.2">Red Hat 7.2</option>
+<option value="Red Hat 7.1">Red Hat 7.1</option>
+<option value="Red Hat 7.0">Red Hat 7.0</option>
+<option value="Red Hat 6.2">Red Hat 6.2</option>
+<option value="Red Hat 6.1">Red Hat 6.1</option>
+<option value="Red Hat 5.2">Red Hat 5.2</option>
+<option value="Red Hat 5.0">Red Hat 5.0</option>
+<option value="Red Hat 4.2">Red Hat 4.2</option>
+<option value="Rhapsody DR1">Rhapsody DR1</option>
+<option value="Rhapsody DR2">Rhapsody DR2</option>
+<option value="Rocky 10.2">Rocky 10.2</option>
+<option value="Rocky 10.1">Rocky 10.1</option>
+<option value="Rocky 10.0">Rocky 10.0</option>
+<option value="Rocky 9.8">Rocky 9.8</option>
+<option value="Rocky 9.7">Rocky 9.7</option>
+<option value="Rocky 9.6">Rocky 9.6</option>
+<option value="Rocky 9.5">Rocky 9.5</option>
+<option value="Rocky 9.4">Rocky 9.4</option>
+<option value="Rocky 9.3">Rocky 9.3</option>
+<option value="Rocky 9.2">Rocky 9.2</option>
+<option value="Rocky 9.1">Rocky 9.1</option>
+<option value="Rocky 9.0">Rocky 9.0</option>
+<option value="Rocky 8.10">Rocky 8.10</option>
+<option value="Rocky 8.9">Rocky 8.9</option>
+<option value="Rocky 8.8">Rocky 8.8</option>
+<option value="Rocky 8.7">Rocky 8.7</option>
+<option value="Rocky 8.6">Rocky 8.6</option>
+<option value="Rocky 8.5">Rocky 8.5</option>
+<option value="Rocky 8.4">Rocky 8.4</option>
+<option value="Rocky 8.3">Rocky 8.3</option>
+<option value="Sun UNIX 0.4">Sun UNIX 0.4</option>
+<option value="SunOS 5.10">SunOS 5.10</option>
+<option value="SunOS 5.9">SunOS 5.9</option>
+<option value="SunOS 5.8">SunOS 5.8</option>
+<option value="SunOS 5.7">SunOS 5.7</option>
+<option value="SunOS 5.6">SunOS 5.6</option>
+<option value="SunOS 5.5.1">SunOS 5.5.1</option>
+<option value="SunOS 4.1.3">SunOS 4.1.3</option>
+<option value="SuSE 11.3">SuSE 11.3</option>
+<option value="SuSE 11.2">SuSE 11.2</option>
+<option value="SuSE 11.1">SuSE 11.1</option>
+<option value="SuSE 11.0">SuSE 11.0</option>
+<option value="SuSE 10.3">SuSE 10.3</option>
+<option value="SuSE 10.2">SuSE 10.2</option>
+<option value="SuSE 10.1">SuSE 10.1</option>
+<option value="SuSE 10.0">SuSE 10.0</option>
+<option value="SuSE 9.3">SuSE 9.3</option>
+<option value="SuSE 9.2">SuSE 9.2</option>
+<option value="SuSE 8.2">SuSE 8.2</option>
+<option value="SuSE 8.1">SuSE 8.1</option>
+<option value="SuSE 8.0">SuSE 8.0</option>
+<option value="SuSE 7.3">SuSE 7.3</option>
+<option value="SuSE 7.2">SuSE 7.2</option>
+<option value="SuSE 7.1">SuSE 7.1</option>
+<option value="SuSE 7.0">SuSE 7.0</option>
+<option value="SuSE 6.4">SuSE 6.4</option>
+<option value="SuSE 6.3">SuSE 6.3</option>
+<option value="SuSE 6.1">SuSE 6.1</option>
+<option value="SuSE 6.0">SuSE 6.0</option>
+<option value="SuSE 5.3">SuSE 5.3</option>
+<option value="SuSE 5.2">SuSE 5.2</option>
+<option value="SuSE 5.0">SuSE 5.0</option>
+<option value="SuSE 4.3">SuSE 4.3</option>
+<option value="SuSE ES 10 SP1">SuSE ES 10 SP1</option>
+<option value="Ubuntu 26.04 resolute">Ubuntu 26.04 resolute</option>
+<option value="Ubuntu 24.04 noble">Ubuntu 24.04 noble</option>
+<option value="Ubuntu 23.10 mantic">Ubuntu 23.10 mantic</option>
+<option value="Ubuntu 22.04 jammy">Ubuntu 22.04 jammy</option>
+<option value="Ubuntu 20.04 focal">Ubuntu 20.04 focal</option>
+<option value="Ubuntu 18.04 bionic">Ubuntu 18.04 bionic</option>
+<option value="Ubuntu 16.04 xenial">Ubuntu 16.04 xenial</option>
+<option value="Ubuntu 14.04 trusty">Ubuntu 14.04 trusty</option>
+<option value="ULTRIX 4.2">ULTRIX 4.2</option>
+<option value="Ultrix-32 2.0/VAX">Ultrix-32 2.0/VAX</option>
+<option value="Unix Seventh Edition">Unix Seventh Edition</option>
+<option value="X11R7.4">X11R7.4</option>
+<option value="X11R7.3.2">X11R7.3.2</option>
+<option value="X11R7.2">X11R7.2</option>
+<option value="X11R6.9.0">X11R6.9.0</option>
+<option value="X11R6.8.2">X11R6.8.2</option>
+<option value="X11R6.7.0">X11R6.7.0</option>
+<option value="XFree86 4.8.0">XFree86 4.8.0</option>
+<option value="XFree86 4.7.0">XFree86 4.7.0</option>
+<option value="XFree86 4.6.0">XFree86 4.6.0</option>
+<option value="XFree86 4.5.0">XFree86 4.5.0</option>
+<option value="XFree86 4.4.0">XFree86 4.4.0</option>
+<option value="XFree86 4.3.0">XFree86 4.3.0</option>
+<option value="XFree86 4.2.99.3">XFree86 4.2.99.3</option>
+<option value="XFree86 4.2.0">XFree86 4.2.0</option>
+<option value="XFree86 4.1.0">XFree86 4.1.0</option>
+<option value="XFree86 4.0.2">XFree86 4.0.2</option>
+<option value="XFree86 4.0.1">XFree86 4.0.1</option>
+<option value="XFree86 4.0">XFree86 4.0</option>
+<option value="XFree86 3.3.6">XFree86 3.3.6</option>
+<option value="XFree86 3.3">XFree86 3.3</option>
+<option value="XFree86 2.1">XFree86 2.1</option>
+</select>
+<select name="format">
+<option value="html">html</option>
+<option value="pdf">pdf</option>
+<option value="ascii">ascii</option>
+</select>
+</form>
+
+<br/>
+<span class="footer_links">
+  <a href="/cgi/man.cgi">home</a> |
+  <a href="/cgi/man.cgi/help.html">help</a>
+</span>
+<hr/>
+<pre>
+<i>FIND</i>(1) 		     General Commands Manual			 <i>FIND</i>(1)
+
+<a name="NAME" href="#end"><b>NAME</b></a>
+     <b>find</b> -- walk a file hierarchy
+
+<a name="SYNOPSIS" href="#end"><b>SYNOPSIS</b></a>
+     <b>find</b> [<b>-H</b> | <b>-L</b> | <b>-P</b>] [<b>-EXdsx</b>] [<b>-f</b> <i>path</i>] <i>path</i> ... [<i>expression</i>]
+     <b>find</b> [<b>-H</b> | <b>-L</b> | <b>-P</b>] [<b>-EXdsx</b>] <b>-f</b> <i>path</i> [<i>path</i> ...] [<i>expression</i>]
+
+<a name="DESCRIPTION" href="#end"><b>DESCRIPTION</b></a>
+     The  <b>find</b>	utility  recursively  descends	the directory tree for each <i>path</i>
+     listed,  evaluating  an  <i>expression</i>  (composed  of  the   "primaries"   and
+     "operands" listed below) in terms of each file in the tree.
+
+     The options are as follows:
+
+     <b>-E</b>      Interpret regular expressions following the <b>-regex</b> and <b>-iregex</b> pri-
+	     maries  as  extended (modern) regular expressions rather than basic
+	     regular expressions (BRE's).  The <a href="/cgi/man.cgi?query=re_format&amp;sektion=7&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>re_format</i>(7)</a>  manual  page  fully
+	     describes both formats.
+
+     <b>-H</b>      Cause the file information and file type (see <a href="/cgi/man.cgi?query=stat&amp;sektion=2&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>stat</i>(2)</a>) returned for
+	     each symbolic link specified on the command line to be those of the
+	     file  referenced  by  the link, not the link itself.  If the refer-
+	     enced file does not exist, the file information and  type	will  be
+	     for the link itself.  File information of all symbolic links not on
+	     the command line is that of the link itself.
+
+     <b>-L</b>      Cause the file information and file type (see <a href="/cgi/man.cgi?query=stat&amp;sektion=2&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>stat</i>(2)</a>) returned for
+	     each  symbolic link to be those of the file referenced by the link,
+	     not the link itself.  If the referenced file does	not  exist,  the
+	     file information and type will be for the link itself.
+
+	     This option is equivalent to the deprecated <b>-follow</b> primary.
+
+     <b>-P</b>      Cause the file information and file type (see <a href="/cgi/man.cgi?query=stat&amp;sektion=2&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>stat</i>(2)</a>) returned for
+	     each symbolic link to be those of the link itself.  This is the de-
+	     fault.
+
+     <b>-X</b>      Permit  <b>find</b>  to be safely used in conjunction with <a href="/cgi/man.cgi?query=xargs&amp;sektion=1&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>xargs</i>(1)</a>.  If a
+	     file name	contains  any  of  the	delimiting  characters	used  by
+	     <a href="/cgi/man.cgi?query=xargs&amp;sektion=1&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>xargs</i>(1)</a>,	a diagnostic message is displayed on standard error, and
+	     the file is skipped.  The delimiting characters include single (" <b>'</b>
+	     ") and double (" <b>"</b> ") quotes, backslash ("<b>\</b>"), space, tab and  new-
+	     line characters.
+
+	     However,  you  may wish to consider the <b>-print0</b> primary in conjunc-
+	     tion with "<b>xargs</b> <b>-0</b>" as an effective alternative.
+
+     <b>-d</b>      Cause <b>find</b> to perform a depth-first traversal.
+
+	     This option is a BSD-specific  equivalent	of  the  <b>-depth</b>  primary
+	     specified	by  IEEE  Std 1003.1-2001 ("POSIX.1").	Refer to its de-
+	     scription under "PRIMARIES" for more information.
+
+     <b>-f</b> <i>path</i>
+	     Add <i>path</i> to the list of paths that will be recursed into.	This  is
+	     useful  when  <i>path</i>  begins with a character that would otherwise be
+	     interpreted as an <i>expression</i>, namely ""!, "(" and "<b>-</b>".
+
+     <b>-s</b>      Cause <b>find</b> to traverse the file hierarchies in lexicographical  or-
+	     der,  i.e.,  alphabetical order within each directory.  Note: `find
+	     -s' and `find | sort' may give different results.
+
+	     For example, `find -s' puts a directory `<i>foo</i>' with all its contents
+	     before a directory `<i>foo</i>'.	but `find |  sort'  puts  the  directory
+	     name  `<i>foo</i>'.  before any string like `<i>foo/bar</i>' because `.' goes be-
+	     fore `/' in ASCII.  In locales other than <i>C</i> results may  vary  more
+	     due to collation differences.
+
+     <b>-x</b>      Prevent  <b>find</b>  from  descending into directories that have a device
+	     number different than that of the file from which the  descent  be-
+	     gan.
+
+	     This option is equivalent to the deprecated <b>-xdev</b> primary.
+
+<a name="PRIMARIES" href="#end"><b>PRIMARIES</b></a>
+     All primaries which take a numeric argument allow the number to be preceded
+     by  a  plus  sign ("<b>+</b>") or a minus sign ("<b>-</b>").  A preceding plus sign means
+     "more than n", a preceding minus sign means "less than n" and neither means
+     "exactly n".
+
+     <b>-Bmin</b> <i>n</i>
+	     True if the difference between the time of a file's inode	creation
+	     and  the time <b>find</b> was started, rounded up to the next full minute,
+	     is <i>n</i> minutes.
+
+     <b>-Bnewer</b> <i>file</i>
+	     Same as <b>-newerBm</b>.
+
+     <b>-Btime</b> <i>n</i>[<b>smhdw</b>]
+	     If no units are specified, this primary evaluates to  true  if  the
+	     difference between the time of a file's inode creation and the time
+	     <b>find</b>  was started, rounded up to the next full 24-hour period, is <i>n</i>
+	     24-hour periods.
+
+	     If units are specified, this primary evaluates to true if the  dif-
+	     ference  between  the  time of a file's inode creation and the time
+	     <b>find</b> was started is exactly <i>n</i> units.  Please refer  to  the  <b>-atime</b>
+	     primary description for information on supported time units.
+
+     <b>-acl</b>    May  be  used  in	conjunction with other primaries to locate files
+	     with extended ACLs.  See <a href="/cgi/man.cgi?query=acl&amp;sektion=3&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>acl</i>(3)</a> for more information.
+
+     <b>-amin</b> [<b>-</b>|<b>+</b>]<i>n</i>
+	     True if the difference between the file last access  time	and  the
+	     time  <b>find</b> was started, rounded up to the next full minute, is more
+	     than <i>n</i> (+<i>n</i>), less than <i>n</i> (-<i>n</i>), or exactly <i>n</i> minutes ago.
+
+     <b>-anewer</b> <i>file</i>
+	     Same as <b>-neweram</b>.
+
+     <b>-atime</b> <i>n</i>[<b>smhdw</b>]
+	     If no units are specified, this primary evaluates to  true  if  the
+	     difference  between the file last access time and the time <b>find</b> was
+	     started, rounded up to the next full 24-hour period, is  <i>n</i>  24-hour
+	     periods.
+
+	     If  units are specified, this primary evaluates to true if the dif-
+	     ference between the file last access time and  the  time  <b>find</b>  was
+	     started is exactly <i>n</i> units.  Possible time units are as follows:
+
+	     <b>s</b>	     second
+	     <b>m</b>	     minute (60 seconds)
+	     <b>h</b>	     hour (60 minutes)
+	     <b>d</b>	     day (24 hours)
+	     <b>w</b>	     week (7 days)
+
+	     Any number of units may be combined in one <b>-atime</b> argument, for ex-
+	     ample,  "<b>-atime</b>  <b>-1h30m</b>".	Units are probably only useful when used
+	     in conjunction with the <b>+</b> or <b>-</b> modifier.
+
+     <b>-cmin</b> [<b>-</b>|<b>+</b>]<i>n</i>
+	     True if the difference between the time of last change of file sta-
+	     tus information and the time <b>find</b> was started, rounded  up  to  the
+	     next full minute, is more than <i>n</i> (+<i>n</i>), less than <i>n</i> (-<i>n</i>), or exactly
+	     <i>n</i> minutes ago.
+
+     <b>-cnewer</b> <i>file</i>
+	     Same as <b>-newercm</b>.
+
+     <b>-ctime</b> <i>n</i>[<b>smhdw</b>]
+	     If  no  units  are specified, this primary evaluates to true if the
+	     difference between the time of last change of file status	informa-
+	     tion  and	the  time  <b>find</b> was started, rounded up to the next full
+	     24-hour period, is <i>n</i> 24-hour periods.
+
+	     If units are specified, this primary evaluates to true if the  dif-
+	     ference  between the time of last change of file status information
+	     and the time <b>find</b> was started is exactly <i>n</i> units.	Please refer  to
+	     the  <b>-atime</b>  primary  description for information on supported time
+	     units.
+
+     <b>-d</b>      Non-portable, BSD-specific version of <b>depth</b>.  GNU	find  implements
+	     this as a primary in mistaken emulation of FreeBSD <b>find</b>.
+
+     <b>-delete</b>
+	     Delete  found files and/or directories.  Always returns true.  This
+	     executes from the current working directory as <b>find</b>  recurses  down
+	     the  tree.   It  will  not  attempt to delete a filename with a "<i>/</i>"
+	     character in its pathname relative to  "<i>.</i>"  for  security	reasons.
+	     Depth-first  traversal  processing  is implied by this option.  The
+	     <b>-delete</b> primary will fail to delete a directory if it is not empty.
+	     Following symlinks is incompatible with this option.
+
+	     <i>WARNING</i>: The <b>-delete</b> primary will immediately attempt to delete the
+	     current path when evaluated.  Be mindful of its place  in	the  ex-
+	     pression; as a general rule, it should almost always come last.  If
+	     in  doubt,  try running with <b>-print</b> in place of <b>-delete</b> first.  See
+	     "OPERATORS" below for additional information on the order of evalu-
+	     ation.
+
+     <b>-depth</b>  Always true; same as the non-portable <b>-d</b>  option.	 Cause	<b>find</b>  to
+	     perform  a  depth-first traversal, i.e., directories are visited in
+	     post-order and all entries in a directory will be acted  on  before
+	     the  directory itself.  By default, <b>find</b> visits directories in pre-
+	     order, i.e., before their contents.  Note, the  default  is  <i>not</i>  a
+	     breadth-first traversal.
+
+	     The  <b>-depth</b> primary can be useful when <b>find</b> is used with <a href="/cgi/man.cgi?query=cpio&amp;sektion=1&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>cpio</i>(1)</a> to
+	     process files that are contained in directories with  unusual  per-
+	     missions.	 It ensures that you have write permission while you are
+	     placing files in a directory, then sets the directory's permissions
+	     as the last thing.
+
+     <b>-depth</b> <i>n</i>
+	     True if the depth of the file relative to the starting point of the
+	     traversal is <i>n</i>.
+
+     <b>-empty</b>  True if the current file or directory is empty.
+
+     <b>-exec</b> <i>utility</i> [<i>argument</i> <i>...</i>] <b>;</b>
+	     True if the program named <i>utility</i> returns a zero value as its  exit
+	     status.   Optional <i>arguments</i> may be passed to the utility.  The ex-
+	     pression must be terminated by a semicolon ("<b>;</b>").	 If  you  invoke
+	     <b>find</b>  from a shell you may need to quote the semicolon if the shell
+	     would otherwise treat it as a control operator.  If the string "<b>{}</b>"
+	     appears anywhere in the utility name or the  arguments  it  is  re-
+	     placed  by  the pathname of the current file.  <i>Utility</i> will be exe-
+	     cuted from the directory from which <b>find</b> was executed.  <i>Utility</i> and
+	     <i>arguments</i> are not subject to the further expansion  of  shell  pat-
+	     terns and constructs.
+
+     <b>-exec</b> <i>utility</i> [<i>argument</i> <i>...</i>] <b>{}</b> <b>+</b>
+	     Same  as <b>-exec</b>, except that "<b>{}</b>" is replaced with as many pathnames
+	     as possible for each invocation of <i>utility</i>.  This behaviour is sim-
+	     ilar to that of <a href="/cgi/man.cgi?query=xargs&amp;sektion=1&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>xargs</i>(1)</a>.	The primary always returns true;  if  at
+	     least  one  invocation  of  <i>utility</i> returns a non-zero exit status,
+	     <b>find</b> will return a non-zero exit status.
+
+     <b>-execdir</b> <i>utility</i> [<i>argument</i> <i>...</i>] <b>;</b>
+	     The <b>-execdir</b> primary is identical to the <b>-exec</b> primary with the ex-
+	     ception that <i>utility</i> will be executed from the directory that holds
+	     the current file.	The filename substituted for the string "<b>{}</b>"  is
+	     not qualified.
+
+     <b>-execdir</b> <i>utility</i> [<i>argument</i> <i>...</i>] <b>{}</b> <b>+</b>
+	     Same  as  <b>-execdir</b>, except that "<b>{}</b>" is replaced with as many path-
+	     names as possible for each invocation of <i>utility</i>.	 This  behaviour
+	     is  similar  to that of <a href="/cgi/man.cgi?query=xargs&amp;sektion=1&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>xargs</i>(1)</a>.	The primary always returns true;
+	     if at least one invocation of <i>utility</i> returns a non-zero exit  sta-
+	     tus, <b>find</b> will return a non-zero exit status.
+
+     <b>-executable</b>
+	     Matches  files which are executable by the current user.  This test
+	     makes use of the <a href="/cgi/man.cgi?query=access&amp;sektion=2&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>access</i>(2)</a> system call, and so can be fooled by NFS
+	     servers which do UID mapping (or root-squashing).	This  is  a  GNU
+	     find extension.
+
+     <b>-flags</b> [<b>-</b>|<b>+</b>]<i>flags</i>,<i>notflags</i>
+	     The  flags  are  specified  using	symbolic names (see <a href="/cgi/man.cgi?query=chflags&amp;sektion=1&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>chflags</i>(1)</a>).
+	     Those with the  "<b>no</b>"  prefix  (except  "<b>nodump</b>")  are  said  to  be
+	     <i>notflags</i>.	 Flags	in  <i>flags</i>  are	checked  to be set, and flags in
+	     <i>notflags</i> are checked to be not set.  Note that  this  is  different
+	     from  <b>-perm</b>,  which  only allows the user to specify mode bits that
+	     are set.
+
+	     If flags are preceded by a dash ("<b>-</b>"), this  primary  evaluates  to
+	     true  if  at least all of the bits in <i>flags</i> and none of the bits in
+	     <i>notflags</i> are set in the file's flags bits.  If flags  are	preceded
+	     by  a plus ("<b>+</b>"), this primary evaluates to true if any of the bits
+	     in <i>flags</i> is set in the file's flags bits, or any  of  the	bits  in
+	     <i>notflags</i> is not set in the file's flags bits.  Otherwise, this pri-
+	     mary  evaluates  to  true	if  the  bits in <i>flags</i> exactly match the
+	     file's flags bits, and none  of  the  <i>flags</i>  bits	match  those  of
+	     <i>notflags</i>.
+
+     <b>-fprint</b> <i>filename</i>
+	     This  primary  always  evaluates to true.	This creates <i>filename</i> or
+	     truncates the file if it already exists.  The file  is  created  at
+	     startup.	It writes the pathname of the current file to this file,
+	     followed by a newline character.  The file  will  be  empty  if  no
+	     files are matched.
+
+     <b>-fprint0</b> <i>filename</i>
+	     This  primary  always  evaluates to true.	This creates <i>filename</i> or
+	     truncates the file if it already exists.  The file  is  created  at
+	     startup.	It writes the pathname of the current file to this file,
+	     followed by an ASCII NUL character (character code  0).   The  file
+	     will be empty if no files are matched.
+
+     <b>-fstype</b> <i>type</i>
+	     True  if  the file is contained in a file system of type <i>type</i>.  The
+	     <a href="/cgi/man.cgi?query=lsvfs&amp;sektion=1&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>lsvfs</i>(1)</a> command can be used to find out the types of file  systems
+	     that  are	available  on  the  system.   In addition, there are two
+	     pseudo-types, "<b>local</b>" and "<b>rdonly</b>".  The former  matches  any  file
+	     system physically mounted on the system where the <b>find</b> is being ex-
+	     ecuted  and  the  latter  matches	any file system which is mounted
+	     read-only.
+
+     <b>-gid</b> <i>gname</i>
+	     The same thing as <b>-group</b> <i>gname</i> for  compatibility	with  GNU  find.
+	     GNU  find	imposes  a restriction that <i>gname</i> is numeric, while <b>find</b>
+	     does not.
+
+     <b>-group</b> <i>gname</i>
+	     True if the file belongs to the group <i>gname</i>.  If <i>gname</i>  is  numeric
+	     and  there  is no such group name, then <i>gname</i> is treated as a group
+	     ID.
+
+     <b>-ignore_readdir_race</b>
+	     Ignore errors because a file or a directory is deleted after  read-
+	     ing  the name from a directory.  This option does not affect errors
+	     occurring on starting points.
+
+     <b>-ilname</b> <i>pattern</i>
+	     Like <b>-lname</b>, but the match is case insensitive.  This is a GNU find
+	     extension.
+
+     <b>-iname</b> <i>pattern</i>
+	     Like <b>-name</b>, but the match is case insensitive.
+
+     <b>-inum</b> <i>n</i>
+	     True if the file has inode number <i>n</i>.
+
+     <b>-ipath</b> <i>pattern</i>
+	     Like <b>-path</b>, but the match is case insensitive.
+
+     <b>-iregex</b> <i>pattern</i>
+	     Like <b>-regex</b>, but the match is case insensitive.
+
+     <b>-iwholename</b> <i>pattern</i>
+	     The same thing as <b>-ipath</b>, for GNU find compatibility.
+
+     <b>-links</b> <i>n</i>
+	     True if the file has <i>n</i> links.
+
+     <b>-lname</b> <i>pattern</i>
+	     Like <b>-name</b>, but the contents of the symbolic link are  matched  in-
+	     stead  of	the  file name.  Note that this only matches broken sym-
+	     bolic links if symbolic links are being followed.	This  is  a  GNU
+	     find extension.
+
+     <b>-ls</b>     This  primary  always evaluates to true.  The following information
+	     for the current file is written to standard output: its inode  num-
+	     ber,  size  in  512-byte  blocks,	file permissions, number of hard
+	     links, owner, group, size in bytes,  last	modification  time,  and
+	     pathname.	 If  the  file is a block or character special file, the
+	     device number will be displayed instead of the size in  bytes.   If
+	     the  file	is  a  symbolic link, the pathname of the linked-to file
+	     will be displayed preceded by "<b>-&gt;</b>".  The  format  is  identical  to
+	     that produced by "<b>ls</b> <b>-dils</b>".
+
+     <b>-maxdepth</b> <i>n</i>
+	     Always  true;  descend at most <i>n</i> directory levels below the command
+	     line arguments.  If any <b>-maxdepth</b> primary is specified, it  applies
+	     to  the  entire  expression even if it would not normally be evalu-
+	     ated.  "<b>-maxdepth</b> <b>0</b>" limits the whole search to  the  command  line
+	     arguments.
+
+     <b>-mindepth</b> <i>n</i>
+	     Always  true; do not apply any tests or actions at levels less than
+	     <i>n</i>.  If any <b>-mindepth</b> primary is specified, it applies to the entire
+	     expression even if it would not normally be evaluated.   "<b>-mindepth</b>
+	     <b>1</b>" processes all but the command line arguments.
+
+     <b>-mmin</b> [<b>-</b>|<b>+</b>]<i>n</i>
+	     True  if the difference between the file last modification time and
+	     the time <b>find</b> was started, rounded up to the next full  minute,  is
+	     more than <i>n</i> (+<i>n</i>), less than <i>n</i> (-<i>n</i>), or exactly <i>n</i> minutes ago.
+
+     <b>-mnewer</b> <i>file</i>
+	     Same as <b>-newer</b>.
+
+     <b>-mount</b>  The same thing as <b>-xdev</b>, for GNU find compatibility.
+
+     <b>-mtime</b> <i>n</i>[<b>smhdw</b>]
+	     If  no  units  are specified, this primary evaluates to true if the
+	     difference between the file last modification  time  and  the  time
+	     <b>find</b>  was started, rounded up to the next full 24-hour period, is <i>n</i>
+	     24-hour periods.
+
+	     If units are specified, this primary evaluates to true if the  dif-
+	     ference  between  the file last modification time and the time <b>find</b>
+	     was started is exactly <i>n</i> units.  Please refer to the <b>-atime</b> primary
+	     description for information on supported time units.
+
+     <b>-name</b> <i>pattern</i>
+	     True if the last component of the pathname being  examined  matches
+	     <i>pattern</i>.  Special shell pattern matching characters ("<b>[</b>", "<b>]</b>", "<b>*</b>",
+	     and  "<b>?</b>")	may be used as part of <i>pattern</i>.  These characters may be
+	     matched explicitly by escaping them with a backslash ("<b>\</b>").
+
+     <b>-newer</b> <i>file</i>
+	     True if the current file has a more recent last  modification  time
+	     than <i>file</i>.
+
+     <b>-newer</b><i>XY</i> <i>file</i>
+	     True  if the current file has a more recent last access time (<i>X</i>=<b>a</b>),
+	     inode creation time (<i>X</i>=<b>B</b>), change time (<i>X</i>=<b>c</b>), or modification  time
+	     (<i>X</i>=<b>m</b>)  than  the last access time (<i>Y</i>=<b>a</b>), inode creation time (<i>Y</i>=<b>B</b>),
+	     change time (<i>Y</i>=<b>c</b>), or modification time (<i>Y</i>=<b>m</b>) of  <i>file</i>.   In  addi-
+	     tion,  if	<i>Y</i>=<b>t</b>,  then  <i>file</i> is instead interpreted as a direct date
+	     specification of the form understood by ISO8601  or  RFC822.   Note
+	     that <b>-newermm</b> is equivalent to <b>-newer</b>.
+
+     <b>-nogroup</b>
+	     True if the file belongs to an unknown group.
+
+     <b>-noignore_readdir_race</b>
+	     Turn  off	the effect of <b>-ignore_readdir_race</b>.  This is default be-
+	     haviour.
+
+     <b>-noleaf</b>
+	     This option is for GNU find compatibility.  In GNU find it disables
+	     an optimization not relevant to <b>find</b>, so it is ignored.
+
+     <b>-nouser</b>
+	     True if the file belongs to an unknown user.
+
+     <b>-ok</b> <i>utility</i> [<i>argument</i> <i>...</i>] <b>;</b>
+	     The <b>-ok</b> primary is identical to the <b>-exec</b> primary with  the  excep-
+	     tion  that  <b>find</b> requests user affirmation for the execution of the
+	     <i>utility</i> by printing a message to the terminal  and  reading  a  re-
+	     sponse.  If the response is not affirmative (`y' in the "<b>POSIX</b>" lo-
+	     cale), the command is not executed and the value of the <b>-ok</b> expres-
+	     sion is false.
+
+     <b>-okdir</b> <i>utility</i> [<i>argument</i> <i>...</i>] <b>;</b>
+	     The  <b>-okdir</b>  primary  is identical to the <b>-execdir</b> primary with the
+	     same exception as described for the <b>-ok</b> primary.
+
+     <b>-path</b> <i>pattern</i>
+	     True if the pathname being examined matches <i>pattern</i>.  Special shell
+	     pattern matching characters ("<b>[</b>", "<b>]</b>", "<b>*</b>", and "<b>?</b>") may be used as
+	     part of <i>pattern</i>.  These characters may be matched explicitly by es-
+	     caping them with a backslash ("<b>\</b>").  Slashes ("<b>/</b>") are  treated  as
+	     normal characters and do not have to be matched explicitly.
+
+     <b>-perm</b> [<b>-</b>|<b>+</b>|<b>/</b>]<i>mode</i>
+	     The  <i>mode</i> may be either symbolic (see <a href="/cgi/man.cgi?query=chmod&amp;sektion=1&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>chmod</i>(1)</a>) or an octal number.
+	     If the <i>mode</i> is symbolic, a starting value of zero	is  assumed  and
+	     the  <i>mode</i> sets or clears permissions without regard to the process'
+	     file mode creation mask.  If the <i>mode</i> is  octal,  only  bits  07777
+	     (S_ISUID  | S_ISGID | S_ISTXT | S_IRWXU | S_IRWXG | S_IRWXO) of the
+	     file's mode bits participate in the comparison.   If  the	<i>mode</i>  is
+	     preceded  by  a  dash  ("<b>-</b>"),  this primary evaluates to true if at
+	     least all of the bits in the <i>mode</i> are set in the file's mode  bits.
+	     If  the  <i>mode</i> is preceded by a plus ("<b>+</b>") this primary evaluates to
+	     true if any of the bits in the <i>mode</i> are  set  in  the  file's  mode
+	     bits.  A slash ("<b>/</b>") is also accepted with the same meaning as plus
+	     for compatibility with GNU find.  Otherwise, this primary evaluates
+	     to true if the bits in the <i>mode</i> exactly match the file's mode bits.
+	     Note,  the  first	character  of  a symbolic mode may not be a dash
+	     ("<b>-</b>").
+
+     <b>-print</b>  This primary always evaluates to true.  It prints the  pathname  of
+	     the  current  file  to  standard  output.	 If  none of <b>-exec</b>, <b>-ls</b>,
+	     <b>-print0</b>, or <b>-ok</b> is specified, the given expression shall be  effec-
+	     tively replaced by <b>(</b> <i>given</i> <i>expression</i> <b>)</b> <b>-print</b>.
+
+     <b>-print0</b>
+	     This  primary  always evaluates to true.  It prints the pathname of
+	     the current file to standard output, followed by an ASCII NUL char-
+	     acter (character code 0).
+
+     <b>-printf</b> <i>fmt</i>
+	     This primary always evaluates to true.  It prints information about
+	     the file, interpreting `and' `%' escape sequences as  described  in
+	     the  PRINTF FORMATS section.  Unlike <b>-print</b>, <b>-printf</b> does not add a
+	     newline automatically.
+
+     <b>-prune</b>  This primary always evaluates to true.  It causes <b>find</b> to	not  de-
+	     scend  into  the current file.  Note, the <b>-prune</b> primary has no ef-
+	     fect if the <b>-d</b> option was specified.
+
+     <b>-quit</b>   Causes <b>find</b> to terminate immediately.
+
+     <b>-readable</b>
+	     Matches files which are readable by the current  user.   This  test
+	     makes use of the <a href="/cgi/man.cgi?query=access&amp;sektion=2&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>access</i>(2)</a> system call, and so can be fooled by NFS
+	     servers  which  do  UID mapping (or root-squashing).  This is a GNU
+	     find extension.
+
+     <b>-regex</b> <i>pattern</i>
+	     True if the whole path of the file matches  <i>pattern</i>  using  regular
+	     expression.   To  match a file named "<i>./foo/xyzzy</i>", you can use the
+	     regular expression "<b>.*/[xyz]*</b>" or "<b>.*/foo/.*</b>", but not  "<b>xyzzy</b>"  or
+	     "<b>/foo/</b>".
+
+     <b>-samefile</b> <i>name</i>
+	     True  if the file is a hard link to <i>name</i>.	If the command option <b>-L</b>
+	     is specified, it is also true if the file is a  symbolic  link  and
+	     points to <i>name</i>.
+
+     <b>-size</b> <i>n</i>[<b>ckMGTP</b>]
+	     True if the file's size, rounded up, in 512-byte blocks is <i>n</i>.  If <i>n</i>
+	     is  followed by a <b>c</b>, then the primary is true if the file's size is
+	     <i>n</i> bytes (characters).  Similarly if <i>n</i> is followed by a scale  indi-
+	     cator then the file's size is compared to <i>n</i> scaled as:
+
+	     <b>k</b>	     kilobytes (1024 bytes)
+	     <b>M</b>	     megabytes (1024 kilobytes)
+	     <b>G</b>	     gigabytes (1024 megabytes)
+	     <b>T</b>	     terabytes (1024 gigabytes)
+	     <b>P</b>	     petabytes (1024 terabytes)
+
+     <b>-sparse</b>
+	     True if the current file is sparse, i.e. has fewer blocks allocated
+	     than  expected  based  on its size in bytes.  This might also match
+	     files that have been compressed by the filesystem.
+
+     <b>-type</b> <i>t</i>
+	     True if the file is of the specified type.  Possible file types are
+	     as follows:
+
+	     <b>b</b>	     block special
+	     <b>c</b>	     character special
+	     <b>d</b>	     directory
+	     <b>f</b>	     regular file
+	     <b>l</b>	     symbolic link
+	     <b>p</b>	     FIFO
+	     <b>s</b>	     socket
+
+     <b>-uid</b> <i>uname</i>
+	     The same thing as <i>-user</i> <i>uname</i> for compatibility with GNU find.  GNU
+	     find imposes a restriction that <i>uname</i> is numeric, while  <b>find</b>  does
+	     not.
+
+     <b>-user</b> <i>uname</i>
+	     True  if  the  file belongs to the user <i>uname</i>.  If <i>uname</i> is numeric
+	     and there is no such user name, then <i>uname</i> is treated as a user ID.
+
+     <b>-wholename</b> <i>pattern</i>
+	     The same thing as <b>-path</b>, for GNU find compatibility.
+
+     <b>-writable</b>
+	     Matches files which are writable by the current  user.   This  test
+	     makes use of the <a href="/cgi/man.cgi?query=access&amp;sektion=2&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>access</i>(2)</a> system call, and so can be fooled by NFS
+	     servers  which  do  UID mapping (or root-squashing).  This is a GNU
+	     find extension.
+
+     <b>-xattr</b>  Matches files which have extended attributes set in  any  supported
+	     namespace.
+
+     <b>-xattrname</b> <i>xattr</i>
+	     Matches  files  which  have  the specified <i>xattr</i> extended attribute
+	     set.  All supported namespaces are searched by default,  but  <i>xattr</i>
+	     may be prefixed with "user:" or "system:" to filter by namespace.
+
+	     Note that named attributes are not supported, only extended attrib-
+	     utes as set by, e.g., <a href="/cgi/man.cgi?query=setextattr&amp;sektion=8&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>setextattr</i>(8)</a>.
+
+<a name="OPERATORS" href="#end"><b>OPERATORS</b></a>
+     The primaries may be combined using the following operators.  The operators
+     are listed in order of decreasing precedence.
+
+     <b>(</b> <i>expression</i> <b>)</b>
+	     This evaluates to true if the parenthesized expression evaluates to
+	     true.
+
+     <b>!</b> <i>expression</i>
+     <b>-not</b> <i>expression</i>
+	     This  is  the  unary NOT operator.  It evaluates to true if the ex-
+	     pression is false.
+
+     <b>-false</b>  Always false.
+     <b>-true</b>   Always true.
+
+     <i>expression</i> <b>-and</b> <i>expression</i>
+     <i>expression</i> <i>expression</i>
+	     The <b>-and</b> operator is the logical AND operator.  As it is implied by
+	     the juxtaposition of two expressions it does not have to be  speci-
+	     fied.   The  expression  evaluates  to true if both expressions are
+	     true.  The second expression is not evaluated if the first  expres-
+	     sion is false.
+
+     <i>expression</i> <b>-or</b> <i>expression</i>
+	     The <b>-or</b> operator is the logical OR operator.  The expression evalu-
+	     ates  to true if either the first or the second expression is true.
+	     The second expression is not evaluated if the first  expression  is
+	     true.
+
+     All  operands  and primaries must be separate arguments to <b>find</b>.  Primaries
+     which themselves take arguments expect each argument to be a separate argu-
+     ment to <b>find</b>.
+
+<a name="PRINTF_FORMATS" href="#end"><b>PRINTF FORMATS</b></a>
+     The following `\' escapes are recognized:
+	   <b>\a</b>	   Write a &lt;bell&gt; character.
+	   <b>\b</b>	   Write a &lt;backspace&gt; character.
+	   <b>\c</b>	   Writes no characters, but terminates the string  and  flushes
+		   the output so far after each match.
+	   <b>\f</b>	   Write a &lt;form-feed&gt; character.
+	   <b>\n</b>	   Write a &lt;new-line&gt; character.
+	   <b>\r</b>	   Write a &lt;carriage return&gt; character.
+	   <b>\t</b>	   Write a &lt;tab&gt; character.
+	   <b>\v</b>	   Write a &lt;vertical tab&gt; character.
+	   <b>\'</b>	   Write a &lt;single quote&gt; character.
+	   <b>\\</b>	   Write a backslash character.
+	   <b>\</b><i>num</i>    Write a byte whose value is the 1-, 2-, or 3-digit octal num-
+		   ber	<i>num</i>.  Multibyte characters can be constructed using mul-
+		   tiple <b>\</b><i>num</i> sequences.
+
+     Each format specification is introduced by the percent  character	(``%'').
+     The remainder of the format specification includes, in the following order:
+
+     Zero or more of the following flags:
+
+	     <b>#</b>	     A	`#'  character, has no effect on almost all formats.  It
+		     is not yet implemented.
+
+	     <b>-</b>	     A minus sign `-' which specifies  <i>left</i>  <i>adjustment</i>  of  the
+		     output in the indicated field; It is not yet implemented.
+
+	     Field Width:
+		     An  optional  digit string specifying a <i>field</i> <i>width</i>; if the
+		     output string has fewer bytes than the field width it  will
+		     be  blank-padded on the left (or right, if the left-adjust-
+		     ment indicator has been given) to make up the  field  width
+		     (note  that  a leading zero is a flag, but an embedded zero
+		     is part of a field width); It is not yet implemented.
+
+	     Precision:
+		     An optional period, `<b>.</b>',  followed  by  an  optional  digit
+		     string  giving a <i>precision</i> which specifies the maximum num-
+		     ber of bytes to be printed from  a  string;  if  the  digit
+		     string  is missing, the precision is treated as zero; It is
+		     not yet implemented.
+
+	     Format:
+		     One or two characters, described below, which indicates the
+		     information to display.
+
+		     p	     Path to file
+
+		     f	     Filename without directories.
+
+		     h	     Path relative to the  starting  point,  or  '.'  if
+			     that's empty for some reason.
+
+		     P	     Unimplemented -- File with command line arg.
+
+		     H	     Unimplemented -- Command line arg.
+
+		     g	     gid in human readable form.
+
+		     G	     gid as a number.
+
+		     h	     uid in human readable form.
+
+		     U	     uid as a number.
+
+		     m	     File permission mode in octal.
+
+		     M	     File mode in <a href="/cgi/man.cgi?query=ls&amp;sektion=1&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>ls</i>(1)</a> standard form.
+
+		     k	     File size in KiB (units of 1024 bytes).
+
+		     b	     File size in blocks (Always 512 byte units, even if
+			     underlying storage size differs).
+
+		     s	     Size in bytes of the file.
+
+		     S	     Sparseness  of the file.  The blocks the file occu-
+			     pies times 512 divided by the file size.
+
+		     d	     Depth in the tree
+
+		     D	     Device number for the file.
+
+		     F	     Unimplemented -- Filesystem type where the file re-
+			     sides.
+
+		     l	     Object of the symbolic link.
+
+		     i	     Inode of the file.
+
+		     n	     Number of hard links.
+
+		     y	     A single character representing  the  type  of  the
+			     file.
+
+		     Y	     A	single	character  representing  the type of the
+			     file.  If the file is a symbolic link, show  infor-
+			     mation  for  the target of the link instead, or `L'
+			     if the link loops, `N' if the target does	not  ex-
+			     ist,  or  `'?   if any other error occurs while at-
+			     tempting to determine the type of the target.
+
+		     a	     Access time of the file.
+
+		     A	     Access time of the file in strftime format.   Takes
+			     an additional argument.
+
+		     B	     Birth  time  of the file in strftime format.  Takes
+			     an additional argument.
+
+		     c	     Creation time of the file.
+
+		     C	     Creation time  of	the  file  in  strftime  format.
+			     Takes an additional argument.
+
+		     t	     Modification time of the file.
+
+		     T	     Modification  time  of the file in strftime format.
+			     Takes an additional argument.
+		     Any format not listed is not supported,  though  the  error
+		     changes.
+
+<a name="ENVIRONMENT" href="#end"><b>ENVIRONMENT</b></a>
+     The <i>LANG</i>, <i>LC_ALL</i>, <i>LC_COLLATE</i>, <i>LC_CTYPE</i>, <i>LC_MESSAGES</i> and <i>LC_TIME</i> environment
+     variables	affect	the  execution of the <b>find</b> utility as described in <i>envi-</i>
+     <a href="/cgi/man.cgi?query=ron&amp;sektion=7&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>ron</i>(7)</a>.
+
+<a name="EXAMPLES" href="#end"><b>EXAMPLES</b></a>
+     The following examples are shown as given to the shell:
+
+     <b>find</b> <b>/</b> <b>\!</b> <b>-name</b> <b>"*.c"</b> <b>-print</b>
+	     Print out a list of all the files whose names do not end in <i>.c</i>.
+
+     <b>find</b> <b>/</b> <b>-newer</b> <b>ttt</b> <b>-user</b> <b>wnj</b> <b>-print</b>
+	     Print out a list of all the files owned  by  user	"wnj"  that  are
+	     newer than the file <i>ttt</i>.
+
+     <b>find</b> <b>/</b> <b>\!</b> <b>\(</b> <b>-newer</b> <b>ttt</b> <b>-user</b> <b>wnj</b> <b>\)</b> <b>-print</b>
+	     Print out a list of all the files which are not both newer than <i>ttt</i>
+	     and owned by "wnj".
+
+     <b>find</b> <b>/</b> <b>\(</b> <b>-newer</b> <b>ttt</b> <b>-or</b> <b>-user</b> <b>wnj</b> <b>\)</b> <b>-print</b>
+	     Print out a list of all the files that are either owned by "wnj" or
+	     that are newer than <i>ttt</i>.
+
+     <b>find</b> <b>/</b> <b>-newerct</b> <b>'1</b> <b>minute</b> <b>ago'</b> <b>-print</b>
+	     Print  out  a list of all the files whose inode change time is more
+	     recent than the current time minus one minute.
+
+     <b>find</b> <b>/</b> <b>-type</b> <b>f</b> <b>-exec</b> <b>echo</b> <b>{}</b> <b>\;</b>
+	     Use the <a href="/cgi/man.cgi?query=echo&amp;sektion=1&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>echo</i>(1)</a> command to print out a list of all the files.
+
+     <b>find</b> <b>-L</b> <b>/usr/ports/packages</b> <b>-type</b> <b>l</b> <b>-exec</b> <b>rm</b> <b>--</b> <b>{}</b> <b>+</b>
+	     Delete all broken symbolic links in <i>/usr/ports/packages</i>.
+
+     <b>find</b> <b>/usr/src</b> <b>-name</b> <b>CVS</b> <b>-prune</b> <b>-o</b> <b>-depth</b> <b>+6</b> <b>-print</b>
+	     Find files and directories that are at least seven levels	deep  in
+	     the working directory <i>/usr/src</i>.
+
+     <b>find</b> <b>/usr/src</b> <b>-name</b> <b>CVS</b> <b>-prune</b> <b>-o</b> <b>-mindepth</b> <b>7</b> <b>-print</b>
+	     Is  not  equivalent  to  the  previous example, since <b>-prune</b> is not
+	     evaluated below level seven.
+
+<a name="COMPATIBILITY" href="#end"><b>COMPATIBILITY</b></a>
+     The <b>-follow</b> primary is deprecated; the <b>-L</b> option should  be  used	instead.
+     See the "STANDARDS" section below for details.
+
+<a name="SEE_ALSO" href="#end"><b>SEE ALSO</b></a>
+     <a href="/cgi/man.cgi?query=chflags&amp;sektion=1&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>chflags</i>(1)</a>,  <a href="/cgi/man.cgi?query=chmod&amp;sektion=1&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>chmod</i>(1)</a>, <a href="/cgi/man.cgi?query=locate&amp;sektion=1&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>locate</i>(1)</a>, <a href="/cgi/man.cgi?query=lsvfs&amp;sektion=1&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>lsvfs</i>(1)</a>, <a href="/cgi/man.cgi?query=whereis&amp;sektion=1&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>whereis</i>(1)</a>, <a href="/cgi/man.cgi?query=which&amp;sektion=1&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>which</i>(1)</a>, <a href="/cgi/man.cgi?query=xargs&amp;sektion=1&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>xargs</i>(1)</a>,
+     <a href="/cgi/man.cgi?query=extattr&amp;sektion=2&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>extattr</i>(2)</a>, <a href="/cgi/man.cgi?query=stat&amp;sektion=2&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>stat</i>(2)</a>, <a href="/cgi/man.cgi?query=acl&amp;sektion=3&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>acl</i>(3)</a>, <a href="/cgi/man.cgi?query=fts&amp;sektion=3&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>fts</i>(3)</a>, <a href="/cgi/man.cgi?query=getgrent&amp;sektion=3&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>getgrent</i>(3)</a>, <a href="/cgi/man.cgi?query=getpwent&amp;sektion=3&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>getpwent</i>(3)</a>,  <a href="/cgi/man.cgi?query=strmode&amp;sektion=3&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>strmode</i>(3)</a>,
+     <a href="/cgi/man.cgi?query=ascii&amp;sektion=7&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>ascii</i>(7)</a>, <a href="/cgi/man.cgi?query=re_format&amp;sektion=7&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>re_format</i>(7)</a>, <a href="/cgi/man.cgi?query=symlink&amp;sektion=7&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>symlink</i>(7)</a>, <a href="/cgi/man.cgi?query=setextattr&amp;sektion=8&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>setextattr</i>(8)</a>
+
+<a name="STANDARDS" href="#end"><b>STANDARDS</b></a>
+     The  <b>find</b>	utility syntax is a superset of the syntax specified by the IEEE
+     Std 1003.1-2001 ("POSIX.1") standard.
+
+     All the single character options  except  <b>-H</b>  and	<b>-L</b>  as	well  as  <b>-amin</b>,
+     <b>-anewer</b>,  <b>-cmin</b>, <b>-cnewer</b>, <b>-delete</b>, <b>-empty</b>, <b>-fstype</b>, <b>-iname</b>, <b>-inum</b>, <b>-iregex</b>,
+     <b>-ls</b>, <b>-maxdepth</b>, <b>-mindepth</b>, <b>-mmin</b>, <b>-not</b>, <b>-path</b>, <b>-print0</b>, <b>-regex</b>, <b>-sparse</b> and
+     all of the <b>-B*</b> birthtime related  primaries  are  extensions  to  IEEE  Std
+     1003.1-2001 ("POSIX.1").
+
+     Historically,  the  <b>-d</b>,  <b>-L</b>  and <b>-x</b> options were implemented using the pri-
+     maries <b>-depth</b>, <b>-follow</b>, and <b>-xdev</b>.  These	primaries  always  evaluated  to
+     true.   As  they  were  really global variables that took effect before the
+     traversal began, some legal expressions could have unexpected results.   An
+     example  is the expression <b>-print</b> <b>-o</b> <b>-depth</b>.  As <b>-print</b> always evaluates to
+     true, the standard order of evaluation implies that <b>-depth</b> would  never  be
+     evaluated.  This is not the case.
+
+     The  operator  <b>-or</b>  was implemented as <b>-o</b>, and the operator <b>-and</b> was imple-
+     mented as <b>-a</b>.
+
+     Historic implementations of the <b>-exec</b> and <b>-ok</b> primaries did not replace the
+     string "<b>{}</b>" in the utility name or the utility arguments if it had  preced-
+     ing  or  following  non-whitespace characters.  This version replaces it no
+     matter where in the utility name or arguments it appears.
+
+     The <b>-E</b> option was inspired by the equivalent <a href="/cgi/man.cgi?query=grep&amp;sektion=1&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>grep</i>(1)</a> and <a href="/cgi/man.cgi?query=sed&amp;sektion=1&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>sed</i>(1)</a> options.
+
+     The <b>-perm</b> primary accepts a leading slash ("<b>/</b>") as an alias for  a  leading
+     plus  ("<b>+</b>")  for  its  argument  as  an  extension  of IEEE Std 1003.1-2001
+     ("POSIX.1") to be compatible with GNU find.
+
+<a name="HISTORY" href="#end"><b>HISTORY</b></a>
+     A simple <b>find</b> command appeared in Version 1 AT&amp;T UNIX and	was  removed  in
+     Version  3  AT&amp;T  UNIX.   It  was rewritten for Version 5 AT&amp;T UNIX and was
+     later enhanced for the Programmer's Workbench (PWB).   These  changes  were
+     later incorporated in Version 7 AT&amp;T UNIX.
+
+<a name="BUGS" href="#end"><b>BUGS</b></a>
+     The  special  characters  used  by <b>find</b> are also special characters to many
+     shell programs.  In particular, the characters "<b>*</b>",  "<b>[</b>",	"<b>]</b>",  "<b>?</b>",  "<b>(</b>",
+     "<b>)</b>", "<b>!</b>", "<b>\</b>" and "<b>;</b>" may have to be escaped from the shell.
+
+     As  there	is  no delimiter separating options and file names or file names
+     and the <i>expression</i>, it is difficult to specify  files  named  <i>-xdev</i>  or  <i>!</i>.
+     These  problems  are  handled  by the <b>-f</b> option and the <a href="/cgi/man.cgi?query=getopt&amp;sektion=3&amp;apropos=0&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"><i>getopt</i>(3)</a> "<b>--</b>" con-
+     struct.
+
+     The <b>-delete</b> primary does not interact well with other  options  that  cause
+     the file system tree traversal options to be changed.
+
+     The <b>-mindepth</b> and <b>-maxdepth</b> primaries are actually global options (as docu-
+     mented above).  They should probably be replaced by options which look like
+     options.
+
+FreeBSD ports 15.quarterly	February 14, 2026			 <i>FIND</i>(1)
+</pre>
+<a name="end" />
+<hr />
+
+<p id="section_links">
+<a href="#NAME">NAME</a> |
+<a href="#SYNOPSIS">SYNOPSIS</a> |
+<a href="#DESCRIPTION">DESCRIPTION</a> |
+<a href="#PRIMARIES">PRIMARIES</a> |
+<a href="#OPERATORS">OPERATORS</a> |
+<a href="#PRINTF_FORMATS">PRINTF FORMATS</a> |
+<a href="#ENVIRONMENT">ENVIRONMENT</a> |
+<a href="#EXAMPLES">EXAMPLES</a> |
+<a href="#COMPATIBILITY">COMPATIBILITY</a> |
+<a href="#SEE_ALSO">SEE ALSO</a> |
+<a href="#STANDARDS">STANDARDS</a> |
+<a href="#HISTORY">HISTORY</a> |
+<a href="#BUGS">BUGS</a>
+</p>
+
+<p align="left">Want to link to this manual page? Use this URL:<br/>&lt;<a href="https://man.freebsd.org/cgi/man.cgi?query=find&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly">https://man.freebsd.org/cgi/man.cgi?query=find&amp;manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly</a>&gt;</p>
+<span class="footer_links">
+  <a href="/cgi/man.cgi">home</a>
+| <a href="/cgi/man.cgi/help.html">help</a>
+</span>
+
+<hr noshade="noshade" />
+	</div>
+        <div id="footer">
+          <a href="https://www.FreeBSD.org/copyright/">Legal Notices</a> | &copy; 1995-2026
+          The FreeBSD Project. All rights reserved.<br />
+	  <address><a href='https://www.FreeBSD.org/mailto/'>Contact</a><br /></address>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

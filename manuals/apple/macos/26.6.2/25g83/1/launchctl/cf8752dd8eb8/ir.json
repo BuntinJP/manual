@@ -1,0 +1,4638 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "cf8752dd8eb8c3370c7d03b333430aa68a665c907c475ea407cb1b6542083ae2",
+  "extraction": {
+    "selector": ".manual-text",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "NAME",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "[[p0]] — Interfaces with launchd",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchctl"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "SYNOPSIS",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchctl"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "paragraph",
+      "text": "[[p0]] [[[p1]]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "subcommand"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "arguments ..."
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0006",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "[[p0]] interfaces with [[p1]] to manage and inspect daemons, agents and XPC services.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchctl"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "heading",
+      "text": "SUBCOMMANDS",
+      "protected": []
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "[[p0]] allows for detailed examination of [[p1]]'s data structures. The fundamental structures are domains, services, and endpoints. A domain manages the execution policy for a collection of services. A service may be thought of as a virtual process that is always available to be spawned in response to demand. Each service has a collection of endpoints, and sending a message to one of those endpoints will cause the service to launch on demand. Domains advertise these endpoints in a shared namespace and may be thought of as synonymous with Mach bootstrap subsets.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchctl"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "Many subcommands in [[p0]] take a specifier which indicates the target domain or service for the subcommand. This specifier may take one of the following forms:",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchctl"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0011",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "system/[service-name]"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0012",
+      "kind": "paragraph",
+      "text": "Targets the system domain or a service within the system domain. The system domain manages the root Mach bootstrap and is considered a privileged execution context. Anyone may read or query the system domain, but root privileges are required to make modifications.",
+      "protected": []
+    },
+    {
+      "id": "s0013",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "user/<uid>/[service-name]"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0014",
+      "kind": "paragraph",
+      "text": "Targets the user domain for the given UID or a service within that domain. A user domain may exist independently of a logged-in user. User domains do not exist on iOS.",
+      "protected": []
+    },
+    {
+      "id": "s0015",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "login/<asid>/[service-name]"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0016",
+      "kind": "paragraph",
+      "text": "Targets a user-login domain or service within that domain. A user-login domain is created when the user logs in at the GUI and is identified by the audit session identifier associated with that login. If a user domain has an associated login domain, the [[p0]] subcommand will display the ASID of that login domain. User-login domains do not exist on iOS.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "print"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0017",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "gui/<uid>/[service-name]"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0018",
+      "kind": "paragraph",
+      "text": "Another form of the [[p0]] specifier. Rather than specifying a user-login domain by its ASID, this specifier targets the domain based on which user it is associated with and is generally more convenient.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "login"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "[[p0]]: GUI domains and user domains share many resources. For the purposes of the Mach bootstrap name lookups, they are \"flat\", so they share the same set of registered names. But they still have discrete sets of services. So when printing the user domain's contents, you may see many Mach bootstrap name registrations from services that exist in the GUI domain for that user, but you will not see the services themselves in that list.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "Note"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0020",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "pid/<pid>/[service-name]"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0021",
+      "kind": "paragraph",
+      "text": "Targets the domain for the given PID or a service within that domain. Each process on the system will have a PID domain associated with it that consists of the XPC services visible to that process which can be reached with [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "xpc_connection_create(3)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0022",
+      "kind": "paragraph",
+      "text": "For instance, when referring to a service with the identifier [[p0]] loaded into the GUI domain of a user with UID 501, [[p1]] is [[p2]], [[p3]] is [[p4]], and [[p5]] is [[p6]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "com.apple.example"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "domain-target"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "gui/501/"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "service-name"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "com.apple.example"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "service-target"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "gui/501/com.apple.example"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0023",
+      "kind": "heading",
+      "text": "SUBCOMMANDS",
+      "protected": []
+    },
+    {
+      "id": "s0024",
+      "kind": "term",
+      "text": "[[p0]] | [[p1]] [[p2]] [[[p3]]] | [[p4]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "bootstrap"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "bootout"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "domain-target"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "em",
+            "text": "service-path service-path2 ..."
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "em",
+            "text": "service-target"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0025",
+      "kind": "paragraph",
+      "text": "Bootstraps or removes domains and services. When service arguments are present, bootstraps and correspondingly removes their definitions into the domain. Services may be specified as a series of paths or a service identifier. Paths may point to XPC service bundles, [[p0]] s, or a directories containing a collection of either. If there were one or more errors while bootstrapping or removing a collection of services, the problematic paths will be printed with the errors that occurred.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd.plist(5)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0026",
+      "kind": "paragraph",
+      "text": "If no paths or service target are specified, these commands can either bootstrap or remove a domain specified as a domain target. Some domains will implicitly bootstrap pre-defined paths as part of their creation.",
+      "protected": []
+    },
+    {
+      "id": "s0027",
+      "kind": "term",
+      "text": "[[p0]] | [[p1]] [[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "enable"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "disable"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "service-target"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0028",
+      "kind": "paragraph",
+      "text": "Enables or disables the service in the requested domain. Once a service is disabled, it cannot be loaded in the specified domain until it is once again enabled. This state persists across boots of the device. This subcommand may only target services within the system domain or user and user-login domains.",
+      "protected": []
+    },
+    {
+      "id": "s0029",
+      "kind": "term",
+      "text": "[[p0]] [[[p1]]] [[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "kickstart"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-kp"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "service-target"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0030",
+      "kind": "paragraph",
+      "text": "Instructs [[p0]] to run the specified service immediately, regardless of its configured launch conditions.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0031",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-k"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0032",
+      "kind": "paragraph",
+      "text": "If the service is already running, kill the running instance before restarting the service.",
+      "protected": []
+    },
+    {
+      "id": "s0033",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-p"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0034",
+      "kind": "paragraph",
+      "text": "Upon success, print the PID of the new process or the already-running process to stdout.",
+      "protected": []
+    },
+    {
+      "id": "s0035",
+      "kind": "term",
+      "text": "[[p0]] [[[p1]]] [[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "attach"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-ksx"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "service-target"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0036",
+      "kind": "paragraph",
+      "text": "Attaches the system's debugger to the process currently backing the specified service. By default, if the service is not running, this subcommand will block until the service starts.",
+      "protected": []
+    },
+    {
+      "id": "s0037",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-k"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0038",
+      "kind": "paragraph",
+      "text": "If the service is already running, kill the running instance.",
+      "protected": []
+    },
+    {
+      "id": "s0039",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-s"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0040",
+      "kind": "paragraph",
+      "text": "Force the service to start.",
+      "protected": []
+    },
+    {
+      "id": "s0041",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-x"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0042",
+      "kind": "paragraph",
+      "text": "Attach to [[p0]] before it execs and becomes the service process. This flag is generally not useful for anyone but the [[p1]] maintainer.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "xpcproxy(3)"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0043",
+      "kind": "term",
+      "text": "[[p0]] [[p1]] [[[p2]]] [[[p3]]] [[[p4]]] [[[p5]]] [[[p6]]] [[[p7]]] [[[p8]]] [[[p9]]] [[[p10]]] [[[p11]]] [[[p12]]] [[[p13]]] [[[p14]]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "debug"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "service-target"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "--program <program path>"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "em",
+            "text": "--guard-malloc"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "em",
+            "text": "--malloc-stack-logging"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "em",
+            "text": "--debug-libraries"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "em",
+            "text": "--introspection-libraries"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "em",
+            "text": "--NSZombie"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "em",
+            "text": "--32"
+          }
+        },
+        {
+          "token": "[[p9]]",
+          "inline": {
+            "tag": "em",
+            "text": "--stdin"
+          }
+        },
+        {
+          "token": "[[p10]]",
+          "inline": {
+            "tag": "em",
+            "text": "--stdout"
+          }
+        },
+        {
+          "token": "[[p11]]",
+          "inline": {
+            "tag": "em",
+            "text": "--stderr"
+          }
+        },
+        {
+          "token": "[[p12]]",
+          "inline": {
+            "tag": "em",
+            "text": "--environment"
+          }
+        },
+        {
+          "token": "[[p13]]",
+          "inline": {
+            "tag": "em",
+            "text": "--"
+          }
+        },
+        {
+          "token": "[[p14]]",
+          "inline": {
+            "tag": "em",
+            "text": "argv0 argv1 argv2 ..."
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0044",
+      "kind": "paragraph",
+      "text": "Configures the next invocation of a service for debugging. This subcommand allows you to temporarily replace the main executable of the service with one at a different path, enable [[p0]], set environment variables, set the argument vector and more. This is a convenient alternative to editing the [[p1]] for the service and then reloading it, as the additional debugging properties are cleared once the service has run once with them.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "libgmalloc(3)"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd.plist(5)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0045",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "--program <program-path>"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0046",
+      "kind": "paragraph",
+      "text": "Instructs [[p0]] to use [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd(8)"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "program-path as the service's executable."
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0047",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "--guard-malloc"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0048",
+      "kind": "paragraph",
+      "text": "Turns on [[p0]] for the service.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "libgmalloc(3)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0049",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "--malloc-stack-logging"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0050",
+      "kind": "paragraph",
+      "text": "Turns on [[p0]] stack logging for the service.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "malloc(3)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0051",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "--malloc-nano-allocator"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0052",
+      "kind": "paragraph",
+      "text": "Turns on the [[p0]] nano allocator for the service.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "malloc(3)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0053",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "--debug-libraries"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0054",
+      "kind": "paragraph",
+      "text": "Sets the [[p0]] for the service to \"_debug\", which prefers the debug variants of libraries if they exist. See [[p1]] for more information.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "DYLD_IMAGE_SUFFIX"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "dyld(1)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0055",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "--introspection-libraries"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0056",
+      "kind": "paragraph",
+      "text": "Adds [[p0]] to the [[p1]] environment variable for the service. This causes the system to prefer the introspection variants of libraries if they exist.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "/usr/lib/system/introspection"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "DYLD_LIBRARY_PATH"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0057",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "--NSZombie"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0058",
+      "kind": "paragraph",
+      "text": "Enables NSZombie.",
+      "protected": []
+    },
+    {
+      "id": "s0059",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "--32"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0060",
+      "kind": "paragraph",
+      "text": "Runs the service in the appropriate 32-bit architecture. Only available on 64-bit platforms.",
+      "protected": []
+    },
+    {
+      "id": "s0061",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "--stdin [stdin-path]"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0062",
+      "kind": "paragraph",
+      "text": "Sets the service's standard input to be [[p0]]. If no file is given, uses the current terminal as the service's standard input. If [[p1]] does not exist, it is created.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "stdin-path"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "stdin-path"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0063",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "--stdout [stdout-path]"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0064",
+      "kind": "paragraph",
+      "text": "Sets the service's standard output to be [[p0]]. If no file is given, uses the current terminal as the service's standard output. If [[p1]] does not exist, it is created.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "stdout-path"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "stdout-path"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0065",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "--stderr [stderr-path]"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0066",
+      "kind": "paragraph",
+      "text": "Sets the service's standard error to be [[p0]]. If no file is given, uses the current terminal as the service's standard error. If [[p1]] does not exist, it is created.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "stderr-path"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "stderr-path"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0067",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "--environment VARIABLE0=value VARIABLE1=value ..."
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0068",
+      "kind": "paragraph",
+      "text": "Sets the given environment variables on the service.",
+      "protected": []
+    },
+    {
+      "id": "s0069",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "-- argv0 argv1 ..."
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0070",
+      "kind": "paragraph",
+      "text": "Any arguments following the [[p0]] are given to the service as its argument vector.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "--"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0071",
+      "kind": "paragraph",
+      "text": "[[p0]]: These arguments replace the service's default argument vector; they are not merged in any way. The first argument following [[p1]] is given as the initial (zeroth) element of the service's argument vector. As with the [[p2]] [[p3]] key, you should read carefully and understand the [[p4]] man page.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "IMPORTANT"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "--"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "ProgramArguments"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd.plist(5)"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "execve(2)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0072",
+      "kind": "term",
+      "text": "[[p0]] [[p1]] | [[p2]] [[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "kill"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "signal-name"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "signal-number"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "em",
+            "text": "service-target"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0073",
+      "kind": "paragraph",
+      "text": "Sends the specified signal to the specified service if it is running. The signal number or name (SIGTERM, SIGKILL, etc.) may be specified.",
+      "protected": []
+    },
+    {
+      "id": "s0074",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "blame"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "service-target"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0075",
+      "kind": "paragraph",
+      "text": "If the service is running, prints a human-readable string describing why [[p0]] launched the service. Note that services may run for many reasons; this subcommand will only show the most proximate reason. So if a service was run due to a timer firing, this subcommand will print that reason, irrespective of whether there were messages waiting on the service's various endpoints. This subcommand is only intended for debugging and profiling use and its output should not be relied upon in production scenarios.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0076",
+      "kind": "term",
+      "text": "[[p0]] [[p1]] | [[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "print"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "domain-target"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "service-target"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0077",
+      "kind": "paragraph",
+      "text": "Prints information about the specified service or domain. Domain output includes various properties about the domain as well as a list of services and endpoints in the domain with state pertaining to each. Service output includes various properties of the service, including information about its origin on-disk, its current state, execution context, and last exit status.",
+      "protected": []
+    },
+    {
+      "id": "s0078",
+      "kind": "paragraph",
+      "text": "[[p0]]: This output is [[p1]] API in any sense at all. Do [[p2]] rely on the structure or information emitted for [[p3]] reason. It may change from release to release without warning.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "IMPORTANT"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "NOT"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "NOT"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "em",
+            "text": "ANY"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0079",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "print-cache"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0080",
+      "kind": "paragraph",
+      "text": "Prints the contents of the [[p0]] service cache.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0081",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "print-disabled domain-target"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0082",
+      "kind": "paragraph",
+      "text": "Prints the list of disabled services in the specified domain.",
+      "protected": []
+    },
+    {
+      "id": "s0083",
+      "kind": "term",
+      "text": "[[p0]] [[[p1]]] [[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "plist"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "segment,section"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "Mach-O"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0084",
+      "kind": "paragraph",
+      "text": "Prints the the property list embedded in the __TEXT,__info_plist segment/section of the target Mach-O or the specified segment/section.",
+      "protected": []
+    },
+    {
+      "id": "s0085",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "procinfo"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "pid"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0086",
+      "kind": "paragraph",
+      "text": "Prints information about the execution context of the specified PID. This information includes Mach task-special ports and exception ports (and when run against a DEVELOPMENT launchd, what names the ports are advertised as in the Mach bootstrap namespace, if they are known to [[p0]]) and audit session context. This subcommand is intended for diagnostic purposes only, and its output should not be relied upon in production scenarios. This command requires root privileges.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0087",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "hostinfo"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0088",
+      "kind": "paragraph",
+      "text": "Prints information about the system's host-special ports, including the host-exception port. This subcommand requires root privileges.",
+      "protected": []
+    },
+    {
+      "id": "s0089",
+      "kind": "term",
+      "text": "[[p0]] [[p1]] [[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "resolveport"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "owner-pid"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "port-name"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0090",
+      "kind": "paragraph",
+      "text": "Given a PID and the name of a Mach port right in that process' port namespace, resolves that port to an endpoint name known to [[p0]]. This subcommand requires root privileges.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0091",
+      "kind": "term",
+      "text": "[[p0]] [[[p1]] [[p2]] [[p3]] [[p4]] [[p5]]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "examine"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "tool"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "arg0"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "em",
+            "text": "arg1"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "em",
+            "text": "@PID"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "em",
+            "text": "..."
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0092",
+      "kind": "paragraph",
+      "text": "Causes [[p0]] to [[p1]] itself for examination by a profiling tool and prints the PID of this new instance to stdout. You are responsible for killing this snapshot when it is no longer needed.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "fork(2)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0093",
+      "kind": "paragraph",
+      "text": "Many profiling tools cannot safely examine [[p0]] because they depend on the functionality it provides. This subcommand creates an effective snapshot of [[p1]] that can be examined independently. Note that on Darwin platforms, [[p2]] is implemented such that only the thread which called [[p3]] is replicated into the new child process, so this subcommand is not useful for examining any thread other than the main event loop.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "fork(2)"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "fork(2)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0094",
+      "kind": "paragraph",
+      "text": "This subcommand takes an optional invocation of a tool to be used on the [[p0]] snapshot. Where you would normally give the PID of the process to be examined in the tool's invocation, instead specify the argument \"@PID\", and [[p1]] will substitute that argument with the PID of the launchd snapshot in its subsequent execution of the tool. If used in this form, [[p2]] will automatically kill the snapshot instance when the examination tool exits.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchctl"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchctl"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0095",
+      "kind": "paragraph",
+      "text": "This subcommand may only be used against a DEVELOPMENT [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0096",
+      "kind": "term",
+      "text": "[[p0]] [[p1]] | [[p2]] [[p3]] [[p4]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "config"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "system"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "user"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "em",
+            "text": "parameter"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "em",
+            "text": "value"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0097",
+      "kind": "paragraph",
+      "text": "Sets persistent configuration information for [[p0]] domains. Only the system domain and user domains may be configured. The location of the persistent storage is an implementation detail, and changes to that storage should [[p1]] be made through this subcommand. A reboot is required for changes made through this subcommand to take effect.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd(8)"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "only"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0098",
+      "kind": "paragraph",
+      "text": "Supported configuration parameters are:",
+      "protected": []
+    },
+    {
+      "id": "s0099",
+      "kind": "term",
+      "text": "umask",
+      "protected": []
+    },
+    {
+      "id": "s0100",
+      "kind": "paragraph",
+      "text": "Sets the [[p0]] for services within the target domain to the value specified by [[p1]]. Note that this value is parsed by [[p2]] as an octal-encoded number, so there is no need to prefix it with a leading '0'.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "umask(2)"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "value"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "strtoul(3)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0101",
+      "kind": "term",
+      "text": "path",
+      "protected": []
+    },
+    {
+      "id": "s0102",
+      "kind": "paragraph",
+      "text": "Sets the PATH environment variable for all services within the target domain to the string [[p0]]. The string [[p1]] should conform to the format outlined for the PATH environment variable in [[p2]]. Note that if a service specifies its own PATH, the service-specific environment variable will take precedence.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "value"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "value"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "environ(7)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0103",
+      "kind": "paragraph",
+      "text": "[[p0]]: This facility cannot be used to set general environment variables for all services within the domain. It is intentionally scoped to the PATH environment variable and nothing else for security reasons.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "NOTE"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0104",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "reboot"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "[system|userspace|halt|logout|apps]"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0105",
+      "kind": "paragraph",
+      "text": "Instructs [[p0]] to begin tearing down userspace. With no argument given or with the [[p1]] argument given, [[p2]] will make the [[p3]] system call when userspace has been completely torn down. With the [[p4]] argument given, [[p5]] will make the [[p6]] system call when userspace has been completely torn down and pass the [[p7]] flag, halting the system and not initiating a reboot.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "system"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "reboot(2)"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "em",
+            "text": "halt"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "reboot(2)"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "em",
+            "text": "RB_HALT"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0106",
+      "kind": "paragraph",
+      "text": "With the [[p0]] argument given, [[p1]] will re-exec itself when userspace has been torn down and bring userspace back up. This is useful for rebooting the system quickly under conditions where kernel data structures or hardware do not need to be re-initialized.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "userspace"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0107",
+      "kind": "paragraph",
+      "text": "With the [[p0]] argument given, launchd will tear down the caller's GUI login session in a manner similar to a logout initiated from the Apple menu. The key difference is that a logout initiated through this subcommand will be much faster since it will not give apps a chance to display modal dialogs to block logout indefinitely; therefore there is data corruption risk to using this option. Only use it when you know you have no unsaved data in your running apps.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "logout"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0108",
+      "kind": "paragraph",
+      "text": "With the [[p0]] argument given, launchd will terminate all apps running in the caller's GUI login session that did not come from a [[p1]] on-disk. Apps like Finder, Dock and SystemUIServer will be unaffected. Apps are terminated in the same manner as the [[p2]] argument, and all the same caveats apply.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "apps"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd.plist(5)"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "logout"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0109",
+      "kind": "term",
+      "text": "[[p0]] [[p1]] [[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "error"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "[posix|mach|bootstrap]"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "code"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0110",
+      "kind": "paragraph",
+      "text": "Prints a human-readable string of the given error [[p0]]. By default, [[p1]] will attempt to guess which error domain the code given belongs to. The caller may optionally specify which domain (either [[p2]], [[p3]], or [[p4]]) to interpret the given code as an error from that subsystem.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "code"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchctl"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "posix"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "em",
+            "text": "mach"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "em",
+            "text": "bootstrap"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0111",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "variant"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0112",
+      "kind": "paragraph",
+      "text": "Prints the [[p0]] variant currently active on the system. Possible variants include RELEASE, DEVELOPMENT and DEBUG.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0113",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "version"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0114",
+      "kind": "paragraph",
+      "text": "Prints the [[p0]] version string.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0115",
+      "kind": "heading",
+      "text": "LEGACY SUBCOMMANDS",
+      "protected": []
+    },
+    {
+      "id": "s0116",
+      "kind": "paragraph",
+      "text": "Legacy subcommands select the target domain based on whether they are executed as root or not. When executed as root, they target the system domain.",
+      "protected": []
+    },
+    {
+      "id": "s0117",
+      "kind": "term",
+      "text": "[[p0]] | [[p1]] [[[p2]]] [[[p3]] [[p4]]] [[[p5]] [[p6]]] [[p7]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "load"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "unload"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "-wF"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-S"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "em",
+            "text": "sessiontype"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "-D"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "em",
+            "text": "searchpath"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "em",
+            "text": "paths ..."
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0118",
+      "kind": "paragraph",
+      "text": "Recommended alternative subcommands: [[p0]] | [[p1]] | [[p2]] | [[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "bootstrap"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "bootout"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "enable"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "em",
+            "text": "disable"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0119",
+      "kind": "paragraph",
+      "text": "Load the specified configuration files or directories of configuration files. Jobs that are not on-demand will be started as soon as possible. All specified jobs will be loaded before any of them are allowed to start. Note that per-user configuration files (LaunchAgents) must be owned by root (if they are located in [[p0]]) or the user loading them (if they are located in [[p1]]). All system-wide daemons (LaunchDaemons) must be owned by root. Configuration files must disallow group and world writes. These restrictions are in place for security reasons, as allowing writability to a launchd configuration file allows one to specify which executable will be launched.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/Library/LaunchAgents"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "$HOME/Library/LaunchAgents"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0120",
+      "kind": "paragraph",
+      "text": "Note that allowing non-root write access to the [[p0]] directory WILL render your system unbootable.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/System/Library/LaunchDaemons"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0121",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-w"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0122",
+      "kind": "paragraph",
+      "text": "Overrides the Disabled key and sets it to false or true for the load and unload subcommands respectively. In previous versions, this option would modify the configuration file. Now the state of the Disabled key is stored elsewhere on- disk in a location that may not be directly manipulated by any process other than [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0123",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-F"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0124",
+      "kind": "paragraph",
+      "text": "Force the loading or unloading of the plist. Ignore the Disabled key.",
+      "protected": []
+    },
+    {
+      "id": "s0125",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-S"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "sessiontype"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0126",
+      "kind": "paragraph",
+      "text": "Some jobs only make sense in certain contexts. This flag instructs [[p0]] to look for jobs in a different location when using the [[p1]] flag, and allows [[p2]] to restrict which jobs are loaded into which session types. Sessions are only relevant for per-user [[p3]] contexts. Relevant sessions are Aqua (the default), Background and LoginWindow. Background agents may be loaded independently of a GUI login. Aqua agents are loaded only when a user has logged in at the GUI. LoginWindow agents are loaded when the LoginWindow UI is displaying and currently run as root.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchctl"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-D"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchctl"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0127",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-D"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "searchpath"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0128",
+      "kind": "paragraph",
+      "text": "Load or unload all [[p0]] files in the search path given. This option may be thought of as expanding into many individual paths depending on the search path given. Valid search paths include \"system,\" \"local,\" and \"all.\" When providing a session type, an additional search path is available for use called \"user.\" For example, without a session type given, \"[[p1]] system\" would load from or unload all property list files from [[p2]]. With a session type passed, it would load from [[p3]]. Note that [[p4]] no longer respects the network search path.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "plist(5)"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-D"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "/System/Library/LaunchDaemons"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "/System/Library/LaunchAgents"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchctl"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0129",
+      "kind": "paragraph",
+      "text": "In a previous version of launchd, these search paths were called \"domains\", hence [[p0]]. The word \"domain\" is now used for a totally different concept.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-D"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0130",
+      "kind": "paragraph",
+      "text": "[[p0]]: Due to bugs in the previous implementation and long-standing client expectations around those bugs, the [[p1]] and [[p2]] subcommands will only return a non-zero exit code due to improper usage. Otherwise, zero is always returned.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "NOTE"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "load"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "unload"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0131",
+      "kind": "term",
+      "text": "[[p0]] [[p1]] [[p2]] [[[p3]] [[p4]]] [[[p5]] [[p6]]] [[[p7]] [[p8]]] [[p9]] [[[p10]]] [[[p11]]] [[[p12]]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "submit"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-l"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "label"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-p"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "em",
+            "text": "executable"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "-o"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "em",
+            "text": "stdout-path"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "code",
+            "text": "-e"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "em",
+            "text": "stderr-path"
+          }
+        },
+        {
+          "token": "[[p9]]",
+          "inline": {
+            "tag": "em",
+            "text": "-- command"
+          }
+        },
+        {
+          "token": "[[p10]]",
+          "inline": {
+            "tag": "em",
+            "text": "arg0"
+          }
+        },
+        {
+          "token": "[[p11]]",
+          "inline": {
+            "tag": "em",
+            "text": "arg1"
+          }
+        },
+        {
+          "token": "[[p12]]",
+          "inline": {
+            "tag": "em",
+            "text": "..."
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0132",
+      "kind": "paragraph",
+      "text": "A simple way of submitting a program to run without a configuration file. This mechanism also tells launchd to keep the program alive in the event of failure.",
+      "protected": []
+    },
+    {
+      "id": "s0133",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-l"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "label"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0134",
+      "kind": "paragraph",
+      "text": "What unique label to assign this job to launchd.",
+      "protected": []
+    },
+    {
+      "id": "s0135",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-p"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "program"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0136",
+      "kind": "paragraph",
+      "text": "What program to really execute, regardless of what follows the -- in the submit sub-command.",
+      "protected": []
+    },
+    {
+      "id": "s0137",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-o"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "stdout-path"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0138",
+      "kind": "paragraph",
+      "text": "Where to send the stdout of the program.",
+      "protected": []
+    },
+    {
+      "id": "s0139",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-e"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "stderr-path"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0140",
+      "kind": "paragraph",
+      "text": "Where to send the stderr of the program.",
+      "protected": []
+    },
+    {
+      "id": "s0141",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "remove"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "label"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0142",
+      "kind": "paragraph",
+      "text": "Remove the job from launchd by label. This subcommand will return immediately and not block until the job has been stopped.",
+      "protected": []
+    },
+    {
+      "id": "s0143",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "start"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "label"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0144",
+      "kind": "paragraph",
+      "text": "Start the specified job by label. The expected use of this subcommand is for debugging and testing so that one can manually kick-start an on-demand server.",
+      "protected": []
+    },
+    {
+      "id": "s0145",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "stop"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "label"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0146",
+      "kind": "paragraph",
+      "text": "Stop the specified job by label. If a job is on-demand, launchd may immediately restart the job if launchd finds any criteria that is satisfied.",
+      "protected": []
+    },
+    {
+      "id": "s0147",
+      "kind": "term",
+      "text": "[[p0]] [[[p1]]] [[[p2]]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "list"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "-x"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "label"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0148",
+      "kind": "paragraph",
+      "text": "Recommended alternative subcommand: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "print"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0149",
+      "kind": "paragraph",
+      "text": "With no arguments, list all of the jobs loaded into [[p0]] in three columns. The first column displays the PID of the job if it is running. The second column displays the last exit status of the job. If the number in this column is negative, it represents the negative of the signal which stopped the job. Thus, \"-15\" would indicate that the job was terminated with SIGTERM. The third column is the job's label. If [[[p1]]] is specified, prints information about the requested job.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "label"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0150",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-x"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0151",
+      "kind": "paragraph",
+      "text": "This flag is no longer supported.",
+      "protected": []
+    },
+    {
+      "id": "s0152",
+      "kind": "term",
+      "text": "[[p0]] [[p1]] [[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "setenv"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "key"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "value"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0153",
+      "kind": "paragraph",
+      "text": "Specify an environment variable to be set on all future processes launched by [[p0]] in the caller's context.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0154",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "unsetenv"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "key"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0155",
+      "kind": "paragraph",
+      "text": "Specify that an environment variable no longer be set on any future processes launched by [[p0]] in the caller's context.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0156",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "getenv"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "key"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0157",
+      "kind": "paragraph",
+      "text": "Print the value of an environment variable that [[p0]] would set for all processes launched into the caller's context.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0158",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "export"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0159",
+      "kind": "paragraph",
+      "text": "Export all of the environment variables of [[p0]] for use in a shell eval statement.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0160",
+      "kind": "term",
+      "text": "[[p0]] | [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "getrusage self"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "children"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0161",
+      "kind": "paragraph",
+      "text": "Get the resource utilization statistics for [[p0]] or the children of [[p1]]. This subcommand is not implemented.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0162",
+      "kind": "term",
+      "text": "[[p0]] [[[p1]] | [[p2]] | [[p3]] | [[p4]] | [[p5]] | [[p6]] | [[p7]] | [[p8]] | [[p9]]] [[[p10]] [[[p11]] | [[p12]]]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "limit"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "cpu"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "filesize"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "em",
+            "text": "data"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "em",
+            "text": "stack"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "em",
+            "text": "core"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "em",
+            "text": "rss"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "em",
+            "text": "memlock"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "em",
+            "text": "maxproc"
+          }
+        },
+        {
+          "token": "[[p9]]",
+          "inline": {
+            "tag": "em",
+            "text": "maxfiles"
+          }
+        },
+        {
+          "token": "[[p10]]",
+          "inline": {
+            "tag": "em",
+            "text": "both"
+          }
+        },
+        {
+          "token": "[[p11]]",
+          "inline": {
+            "tag": "em",
+            "text": "soft"
+          }
+        },
+        {
+          "token": "[[p12]]",
+          "inline": {
+            "tag": "em",
+            "text": "hard"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0163",
+      "kind": "paragraph",
+      "text": "With no arguments, this command prints all the resource limits of [[p0]] as found via [[p1]]. When a given resource is specified, it prints the limits for that resource. With a third argument, it sets both the hard and soft limits to that value. With four arguments, the third and forth argument represent the soft and hard limits respectively. See [[p2]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "getrlimit(2)"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "setrlimit(2)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0164",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "shutdown"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0165",
+      "kind": "paragraph",
+      "text": "Tell [[p0]] to prepare for shutdown by removing all jobs. This subcommand is not implemented.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0166",
+      "kind": "term",
+      "text": "[[p0]] [[[p1]]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "umask"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "newmask"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0167",
+      "kind": "paragraph",
+      "text": "Get or optionally set the [[p0]] of [[p1]]. This subcommand is not implemented.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "umask(2)"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0168",
+      "kind": "term",
+      "text": "[[p0]] [[[p1]] | [[p2]]] [[[p3]]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "bslist"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "PID"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": ".."
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "em",
+            "text": "-j"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0169",
+      "kind": "paragraph",
+      "text": "This subcommand is not implemented and has been superseded by the [[p0]] subcommand, which provides much richer information.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "print"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0170",
+      "kind": "term",
+      "text": "[[p0]] [[p1]] [[[p2]]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "bsexec"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "PID command"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "args"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0171",
+      "kind": "paragraph",
+      "text": "This executes the given command in as similar an execution context as possible to the target PID. Adopted attributes include the Mach bootstrap namespace, exception server and security audit session. It does not modify the process' credentials (UID, GID, etc.) or adopt any environment variables from the target process. It affects only the Mach bootstrap context and directly-related attributes.",
+      "protected": []
+    },
+    {
+      "id": "s0172",
+      "kind": "term",
+      "text": "[[p0]] [[p1]] [[[p2]]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "asuser"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "UID command"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "args"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0173",
+      "kind": "paragraph",
+      "text": "This executes the given command in as similar an execution context as possible to that of the target user's bootstrap. Adopted attributes include the Mach bootstrap namespace, exception server and security audit session. It does not modify the process' credentials (UID, GID, etc.) or adopt any user-specific environment variables. It affects only the Mach bootstrap context and directly- related attributes.",
+      "protected": []
+    },
+    {
+      "id": "s0174",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "bstree"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0175",
+      "kind": "paragraph",
+      "text": "This subcommand is not implemented and has been superseded by the [[p0]] subcommand, which provides much richer information.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "print"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0176",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "managerpid"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0177",
+      "kind": "paragraph",
+      "text": "This prints the PID of the launchd which manages the current bootstrap. In prior implementations, there could be multiple [[p0]] processes each managing their own Mach bootstrap subsets. In the current implementation, all bootstraps are managed by one process, so this subcommand will always print \"1\".",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0178",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "manageruid"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0179",
+      "kind": "paragraph",
+      "text": "This prints the UID associated with the caller's launchd context.",
+      "protected": []
+    },
+    {
+      "id": "s0180",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "managername"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0181",
+      "kind": "paragraph",
+      "text": "This prints the name of the launchd job manager which manages the current launchd context. See LimitLoadToSessionType in [[p0]] for more details.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd.plist(5)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0182",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "help"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0183",
+      "kind": "paragraph",
+      "text": "Print out a quick usage statement.",
+      "protected": []
+    },
+    {
+      "id": "s0184",
+      "kind": "heading",
+      "text": "CAVEATS",
+      "protected": []
+    },
+    {
+      "id": "s0185",
+      "kind": "paragraph",
+      "text": "The output produced by the \"legacy\" subcommands (chiefly [[p0]]) should match their output on previous OS X releases. However, the output of newer subcommands does not conform to any particular format and is not guaranteed to remain stable across releases. These commands are intended for use by human developers and system administrators, not for automation by programs or scripts. Their output does not constitute an API and no promises of forward compatibility are offered to programs that attempt to parse it.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "list"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0186",
+      "kind": "heading",
+      "text": "DEPRECATED AND REMOVED FUNCTIONALITY",
+      "protected": []
+    },
+    {
+      "id": "s0187",
+      "kind": "paragraph",
+      "text": "[[p0]] no longer has an interactive mode, nor does it accept commands from stdin. The [[p1]] file is no longer consulted for subcommands to run during early boot time; this functionality was removed for security considerations. While it was documented that [[p2]] would be consulted prior to setting up a user's session, this functionality was never implemented.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchctl"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "/etc/launchd.conf"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "$HOME/.launchd.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0188",
+      "kind": "paragraph",
+      "text": "launchd no longer uses Unix domain sockets for communication, so the [[p0]] environment variable is no longer relevant and is not set.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "LAUNCHD_SOCKET"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0189",
+      "kind": "paragraph",
+      "text": "[[p0]] no longer loads configuration files from the network",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0190",
+      "kind": "heading",
+      "text": "FILES",
+      "protected": []
+    },
+    {
+      "id": "s0191",
+      "kind": "term",
+      "text": "~/Library/LaunchAgents",
+      "protected": []
+    },
+    {
+      "id": "s0192",
+      "kind": "paragraph",
+      "text": "Per-user agents provided by the user.",
+      "protected": []
+    },
+    {
+      "id": "s0193",
+      "kind": "term",
+      "text": "/Library/LaunchAgents",
+      "protected": []
+    },
+    {
+      "id": "s0194",
+      "kind": "paragraph",
+      "text": "Per-user agents provided by the administrator.",
+      "protected": []
+    },
+    {
+      "id": "s0195",
+      "kind": "term",
+      "text": "/Library/LaunchDaemons",
+      "protected": []
+    },
+    {
+      "id": "s0196",
+      "kind": "paragraph",
+      "text": "System wide daemons provided by the administrator.",
+      "protected": []
+    },
+    {
+      "id": "s0197",
+      "kind": "term",
+      "text": "/System/Library/LaunchAgents",
+      "protected": []
+    },
+    {
+      "id": "s0198",
+      "kind": "paragraph",
+      "text": "OS X Per-user agents.",
+      "protected": []
+    },
+    {
+      "id": "s0199",
+      "kind": "term",
+      "text": "/System/Library/LaunchDaemons",
+      "protected": []
+    },
+    {
+      "id": "s0200",
+      "kind": "paragraph",
+      "text": "OS X System wide daemons.",
+      "protected": []
+    },
+    {
+      "id": "s0201",
+      "kind": "heading",
+      "text": "EXIT STATUS",
+      "protected": []
+    },
+    {
+      "id": "s0202",
+      "kind": "paragraph",
+      "text": "[[p0]] will exit with status 0 if the subcommand succeeded. Otherwise, it will exit with an error code that can be given to the [[p1]] subcommand to be decoded into human-readable form.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchctl"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "error"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0203",
+      "kind": "heading",
+      "text": "SEE ALSO",
+      "protected": []
+    },
+    {
+      "id": "s0204",
+      "kind": "paragraph",
+      "text": "[[p0]], [[p1]], [[p2]], [[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd.plist(5)"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "launchd(8)"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "audit(8)"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "setaudit_addr(2)"
+          }
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "NAME",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "SYNOPSIS",
+      "segment": "s0003"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0004"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0005"
+            }
+          ]
+        ]
+      ],
+      "headers": [
+        [
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "DESCRIPTION",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "SUBCOMMANDS",
+      "segment": "s0008"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0009"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0010"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0011",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0012"
+            }
+          ]
+        },
+        {
+          "term": "s0013",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0014"
+            }
+          ]
+        },
+        {
+          "term": "s0015",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0016"
+            }
+          ]
+        },
+        {
+          "term": "s0017",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0018"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0019"
+            }
+          ]
+        },
+        {
+          "term": "s0020",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0021"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0022"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "SUBCOMMANDS-2",
+      "segment": "s0023"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0024",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0025"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0026"
+            }
+          ]
+        },
+        {
+          "term": "s0027",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0028"
+            }
+          ]
+        },
+        {
+          "term": "s0029",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0030"
+            },
+            {
+              "type": "definition",
+              "entries": [
+                {
+                  "term": "s0031",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0032"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0033",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0034"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "s0035",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0036"
+            },
+            {
+              "type": "definition",
+              "entries": [
+                {
+                  "term": "s0037",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0038"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0039",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0040"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0041",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0042"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "s0043",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0044"
+            },
+            {
+              "type": "definition",
+              "entries": [
+                {
+                  "term": "s0045",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0046"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0047",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0048"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0049",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0050"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0051",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0052"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0053",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0054"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0055",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0056"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0057",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0058"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0059",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0060"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0061",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0062"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0063",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0064"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0065",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0066"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0067",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0068"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0069",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0070"
+                    },
+                    {
+                      "type": "paragraph",
+                      "segment": "s0071"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "s0072",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0073"
+            }
+          ]
+        },
+        {
+          "term": "s0074",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0075"
+            }
+          ]
+        },
+        {
+          "term": "s0076",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0077"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0078"
+            }
+          ]
+        },
+        {
+          "term": "s0079",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0080"
+            }
+          ]
+        },
+        {
+          "term": "s0081",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0082"
+            }
+          ]
+        },
+        {
+          "term": "s0083",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0084"
+            }
+          ]
+        },
+        {
+          "term": "s0085",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0086"
+            }
+          ]
+        },
+        {
+          "term": "s0087",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0088"
+            }
+          ]
+        },
+        {
+          "term": "s0089",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0090"
+            }
+          ]
+        },
+        {
+          "term": "s0091",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0092"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0093"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0094"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0095"
+            }
+          ]
+        },
+        {
+          "term": "s0096",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0097"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0098"
+            },
+            {
+              "type": "definition",
+              "entries": [
+                {
+                  "term": "s0099",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0100"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0101",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0102"
+                    },
+                    {
+                      "type": "paragraph",
+                      "segment": "s0103"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "s0104",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0105"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0106"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0107"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0108"
+            }
+          ]
+        },
+        {
+          "term": "s0109",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0110"
+            }
+          ]
+        },
+        {
+          "term": "s0111",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0112"
+            }
+          ]
+        },
+        {
+          "term": "s0113",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0114"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "LEGACY_SUBCOMMANDS",
+      "segment": "s0115"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0116"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0117",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0118"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0119"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0120"
+            },
+            {
+              "type": "definition",
+              "entries": [
+                {
+                  "term": "s0121",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0122"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0123",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0124"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0125",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0126"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0127",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0128"
+                    },
+                    {
+                      "type": "paragraph",
+                      "segment": "s0129"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0130"
+            }
+          ]
+        },
+        {
+          "term": "s0131",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0132"
+            },
+            {
+              "type": "definition",
+              "entries": [
+                {
+                  "term": "s0133",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0134"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0135",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0136"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0137",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0138"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0139",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0140"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "s0141",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0142"
+            }
+          ]
+        },
+        {
+          "term": "s0143",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0144"
+            }
+          ]
+        },
+        {
+          "term": "s0145",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0146"
+            }
+          ]
+        },
+        {
+          "term": "s0147",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0148"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0149"
+            },
+            {
+              "type": "definition",
+              "entries": [
+                {
+                  "term": "s0150",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0151"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "s0152",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0153"
+            }
+          ]
+        },
+        {
+          "term": "s0154",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0155"
+            }
+          ]
+        },
+        {
+          "term": "s0156",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0157"
+            }
+          ]
+        },
+        {
+          "term": "s0158",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0159"
+            }
+          ]
+        },
+        {
+          "term": "s0160",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0161"
+            }
+          ]
+        },
+        {
+          "term": "s0162",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0163"
+            }
+          ]
+        },
+        {
+          "term": "s0164",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0165"
+            }
+          ]
+        },
+        {
+          "term": "s0166",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0167"
+            }
+          ]
+        },
+        {
+          "term": "s0168",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0169"
+            }
+          ]
+        },
+        {
+          "term": "s0170",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0171"
+            }
+          ]
+        },
+        {
+          "term": "s0172",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0173"
+            }
+          ]
+        },
+        {
+          "term": "s0174",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0175"
+            }
+          ]
+        },
+        {
+          "term": "s0176",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0177"
+            }
+          ]
+        },
+        {
+          "term": "s0178",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0179"
+            }
+          ]
+        },
+        {
+          "term": "s0180",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0181"
+            }
+          ]
+        },
+        {
+          "term": "s0182",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0183"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "CAVEATS",
+      "segment": "s0184"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0185"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "DEPRECATED_AND_REMOVED_FUNCTIONALITY",
+      "segment": "s0186"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0187"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0188"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0189"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "FILES",
+      "segment": "s0190"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0191",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0192"
+            }
+          ]
+        },
+        {
+          "term": "s0193",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0194"
+            }
+          ]
+        },
+        {
+          "term": "s0195",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0196"
+            }
+          ]
+        },
+        {
+          "term": "s0197",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0198"
+            }
+          ]
+        },
+        {
+          "term": "s0199",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0200"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "EXIT_STATUS",
+      "segment": "s0201"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0202"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "SEE_ALSO",
+      "segment": "s0203"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0204"
+    }
+  ]
+}

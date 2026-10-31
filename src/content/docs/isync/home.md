@@ -10,12 +10,4 @@ sidebar:
 1. [mbsync](/isync/mbsync/)
 2. [mbsyncrc.sample](/isync/mbsyncrcsample/)
 
-## SiteTree
-
-<!-- TREE_START:/isync -->
-<pre>
-<a href="/isync/home/">isync</a>
-├── <a href="/isync/mbsync/">mbsync</a>
-└── <a href="/isync/mbsyncrc.sample/">mbsyncrc.sample</a>
-</pre>
-<!-- TREE_END -->
+[コマンド名で検索する](/search/?provider=isync)

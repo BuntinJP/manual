@@ -1,17 +1,8 @@
 ---
-title: manual
-description: A self-japanized manual for the Japanese.自作日本語マニュアルです。日本語記事が少ないライブラリを特に取り上げます。
-template: splash
-hero:
-  tagline: MANUAL
+title: マニュアル一覧
+tableOfContents: false
 ---
 
-import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+import Catalog from '../../components/Catalog.astro';
 
-## Next steps
-
-<CardGrid>
-  <LinkCard href='/top/' title='TOPページ' />
-  <LinkCard href='/isync/home/' title='isync' />
-  <LinkCard href='/megacmd/home/' title='megacmd' />
-</CardGrid>
+<Catalog />

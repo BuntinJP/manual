@@ -7,7 +7,7 @@
     }
   },
   "files": {
-    "includes": ["src/**/*", "*.ts", "*.tsx", "*.js", "*.jsx"],
+    "includes": ["src/**/*", "tools/**/*.ts", "tests/**/*.ts", "*.ts", "*.tsx", "*.js", "*.jsx"],
     "ignoreUnknown": true
   },
   "formatter": {
@@ -33,5 +33,15 @@
         "noUnknownAtRules": "off"
       }
     }
-  }
+  },
+  "overrides": [
+    {
+      "includes": ["**/*.astro"],
+      "linter": {
+        "rules": {
+          "correctness": { "noUnusedImports": "off", "noUnusedVariables": "off" }
+        }
+      }
+    }
+  ]
 }

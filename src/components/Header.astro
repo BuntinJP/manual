@@ -1,0 +1,13 @@
+---
+import Search from './FullTextSearch.astro';
+---
+<div class="manual-header">
+  <a class="wordmark" href="/" aria-label="manual 日本語マニュアル ホーム">manual<span>/ ja</span></a>
+  <form class="command-search" action="/search/" role="search" aria-label="コマンド検索">
+    <label class="sr-only" for="command-query">コマンド名</label>
+    <span aria-hidden="true">$ man</span>
+    <input id="command-query" name="q" type="search" placeholder="find" autocomplete="off" spellcheck="false" />
+    <button type="submit">開く <span aria-hidden="true">↵</span></button>
+  </form>
+  <div class="fulltext-search"><Search /></div>
+</div>
