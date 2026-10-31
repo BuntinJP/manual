@@ -1,0 +1,35 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>winbind_krb5_localauth</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="winbind_krb5_localauth.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>winbind_krb5_localauth &#8212; A plugin for MIT Kerberos for mapping user accounts.</p></div><div class="refsect1"><a name="id1337"></a><h2>DESCRIPTION</h2><p>
+		This plugin is part of the
+		<a class="citerefentry" href="samba.7.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(7)</span></a> suite.
+	</p><p>
+		<code class="literal">winbind_krb5_localauth</code> is a plugin that
+		permits the MIT Kerberos libraries that Kerberos principals can
+		be validated against local user accounts.
+	</p></div><div class="refsect1"><a name="id1338"></a><h2>PREREQUISITES</h2><p>
+		MIT Kerberos (at least version 1.12) is required.
+	</p><p>
+		The plugin queries the <a class="citerefentry" href="winbindd.8.html"><span class="citerefentry"><span class="refentrytitle">winbindd</span>(8)</span></a> daemon which needs to be configured
+		and started separately.
+	</p><p>
+		The following sections needs to be added to the
+		<code class="filename">krb5.conf</code> file.
+
+		</p><pre class="programlisting">
+[plugins]
+	localauth = {
+		module = winbind:/usr/lib64/samba/krb5/winbind_krb5_localauth.so
+		enable_only = winbind
+	}
+</pre><p>
+	</p></div><div class="refsect1"><a name="id1339"></a><h2>VERSION</h2><p>
+		This man page is part of version 4.25.0 of the Samba
+		suite.
+	</p></div><div class="refsect1"><a name="id1340"></a><h2>AUTHOR</h2><p>
+		The original Samba software and related utilities were created
+		by Andrew Tridgell. Samba is now developed by the Samba Team as
+		an Open Source project similar to the way the Linux kernel is
+		developed.
+	</p><p>
+		The winbind_krb5_localauth manpage was written by Andreas
+		Schneider.
+	</p></div></div></body></html>

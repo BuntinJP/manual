@@ -1,0 +1,369 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "7c7a0a2552b413e8264fa5ae0bf177b2d996a7c164cd00d5df3c181eab1dba7f",
+  "extraction": {
+    "selector": ".refentry",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "Name",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "vfs_ceph_snapshots — Expose CephFS snapshots as shadow-copies",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "Synopsis",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs objects = ceph_snapshots"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "This VFS module is part of the [[p0]] suite.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "samba(8)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/samba.8.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "The [[p0]] VFS module exposes CephFS snapshots for use by Samba. When enabled, SMB clients such as Windows Explorer's Previous Versions dialog, can enumerate snapshots and access them via \"timewarp\" tokens.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs_ceph_snapshots"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "paragraph",
+      "text": "This module can be combined with [[p0]], but [[p1]] must be listed first in the [[p2]] parameter list.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs_ceph"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs_ceph_snapshots"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs objects"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "CephFS support for ceph.snap.btime virtual extended attributes is required for this module to work properly. This support was added via https://tracker.ceph.com/issues/38838.",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "heading",
+      "text": "CONFIGURATION",
+      "protected": []
+    },
+    {
+      "id": "s0011",
+      "kind": "paragraph",
+      "text": "When used atop [[p0]], [[p1]] refers to an absolute path within the Ceph filesystem and should not be mounted locally:",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs_ceph"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "path"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0012",
+      "kind": "paragraph",
+      "text": "[[p0]] can also be used atop a kernel CephFS mounted share path, without [[p1]]. In this case Samba's default VFS backend [[p2]] is used:",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs_ceph_snapshots"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs_ceph"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs_default"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0013",
+      "kind": "heading",
+      "text": "OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0014",
+      "kind": "term",
+      "text": "ceph:snapdir = subdirectory",
+      "protected": []
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "Allows for the configuration of the special CephFS snapshot subdirectory name. This parameter should only be changed from the \".snap\" default if the ceph.conf [[p0]] or [[p1]] mount option settings are changed from their matching \".snap\" defaults.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "client snapdir"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "snapdirname"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0016",
+      "kind": "paragraph",
+      "text": "Default: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "ceph:snapdir = .snap",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#CEPH:SNAPDIR"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "Example: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "ceph:snapdir = .snapshots",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#CEPH:SNAPDIR"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0018",
+      "kind": "heading",
+      "text": "VERSION",
+      "protected": []
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "This man page is part of version 4.25.0 of the Samba suite.",
+      "protected": []
+    },
+    {
+      "id": "s0020",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0021",
+      "kind": "paragraph",
+      "text": "The original Samba software and related utilities were created by Andrew Tridgell. Samba is now developed by the Samba Team as an Open Source project similar to the way the Linux kernel is developed.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Name",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Synopsis",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0008"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0009"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "CONFIGURATION",
+      "segment": "s0010"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0011"
+    },
+    {
+      "type": "literal",
+      "text": "\t\t[share]\n\t\tvfs objects = ceph_snapshots ceph\n\t\tpath = /non-mounted/cephfs/path\n\t\tkernel share modes = no"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0012"
+    },
+    {
+      "type": "literal",
+      "text": "\t\t[share]\n\t\tvfs objects = ceph_snapshots\n\t\tpath = /mnt/cephfs/"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "OPTIONS",
+      "segment": "s0013"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0014",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0015"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0016"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0017"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "VERSION",
+      "segment": "s0018"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0019"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "AUTHOR",
+      "segment": "s0020"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0021"
+    }
+  ]
+}

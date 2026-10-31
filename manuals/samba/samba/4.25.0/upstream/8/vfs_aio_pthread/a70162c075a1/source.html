@@ -1,0 +1,20 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>vfs_aio_pthread</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="vfs_aio_pthread.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>vfs_aio_pthread &#8212; implement async open in Samba vfs using a pthread pool</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="literal">vfs objects = aio_pthread</code></p></div></div><div class="refsect1"><a name="id1337"></a><h2>DESCRIPTION</h2><p>This VFS module is part of the
+	<a class="citerefentry" href="samba.7.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(7)</span></a> suite.</p><p>The <code class="literal">aio_pthread</code> VFS module enables asynchronous
+	opens (for new files) with <a class="link" href="smb.conf.5.html#AIO_PTHREAD:AIOOPEN" target="_top">aio_pthread:aio open = yes</a>
+	on platforms which have the pthreads API available,
+	support the openat() syscall and support per thread credentials (modern Linux kernels).
+	</p><p>The module makes use of the global thread pool which uses the
+	<a class="link" href="smb.conf.5.html#AIOMAXTHREADS" target="_top">aio max threads</a> option.</p><p>This module MUST be listed last in any module stack as
+	the Samba VFS open interface is not thread-safe. This
+	module makes direct openat() system calls and does
+	NOT call the Samba VFS open interfaces.</p></div><div class="refsect1"><a name="id1338"></a><h2>EXAMPLES</h2><p>Straight forward use:</p><pre class="programlisting">
+        <em class="parameter"><code>[cooldata]</code></em>
+	<a class="link" href="smb.conf.5.html#PATH" target="_top">path = /data/ice</a>
+	<a class="link" href="smb.conf.5.html#VFSOBJECTS" target="_top">vfs objects = aio_pthread</a>
+	<a class="link" href="smb.conf.5.html#AIO_PTHREAD:AIOOPEN" target="_top">aio_pthread:aio open = yes</a>
+</pre></div><div class="refsect1"><a name="id1339"></a><h2>OPTIONS</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term">aio_pthread:aio open = BOOL</span></dt><dd><p>Try async opens for creating new files.
+		</p><p>The default is 'no'.</p></dd></dl></div></div><div class="refsect1"><a name="id1340"></a><h2>VERSION</h2><p>This man page is part of version 4.25.0 of the Samba suite.
+	</p></div><div class="refsect1"><a name="id1341"></a><h2>AUTHOR</h2><p>The original Samba software and related utilities
+	were created by Andrew Tridgell. Samba is now developed
+	by the Samba Team as an Open Source project similar
+	to the way the Linux kernel is developed.</p></div></div></body></html>

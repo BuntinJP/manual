@@ -1,0 +1,7228 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "0649f72361f918f70541eb76791a68181761f3add79584c1b77c91e515265fc1",
+  "extraction": {
+    "selector": "div.body",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "paragraph",
+      "text": "[ [[p0]] . [[p1]] ]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "aws",
+            "href": "https://docs.aws.amazon.com/cli/latest/reference/index.html#cli-aws"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "ssm",
+            "href": "https://docs.aws.amazon.com/cli/latest/reference/ssm/index.html#cli-aws-ssm"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0002",
+      "kind": "heading",
+      "text": "register-task-with-maintenance-window¶",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "Description¶",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "Adds a new task to a maintenance window.",
+      "protected": []
+    },
+    {
+      "id": "s0005",
+      "kind": "paragraph",
+      "text": "See also: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "AWS API Documentation",
+            "href": "https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/RegisterTaskWithMaintenanceWindow"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0006",
+      "kind": "heading",
+      "text": "Synopsis¶",
+      "protected": []
+    },
+    {
+      "id": "s0007",
+      "kind": "heading",
+      "text": "Options¶",
+      "protected": []
+    },
+    {
+      "id": "s0008",
+      "kind": "paragraph",
+      "text": "[[p0]] (string) [required]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--window-id"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "The ID of the maintenance window the task should be added to.",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0011",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "20"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0012",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "20"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "pattern: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "^mw-[0-9a-f]{17}$"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0014",
+      "kind": "paragraph",
+      "text": "[[p0]] (list)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--targets"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "The targets (either managed nodes or maintenance window targets).",
+      "protected": []
+    },
+    {
+      "id": "s0016",
+      "kind": "heading",
+      "text": "Note",
+      "protected": []
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "One or more targets must be specified for maintenance window Run Command-type tasks. Depending on the task, targets are optional for other maintenance window task types (Automation, Lambda, and Step Functions). For more information about running tasks that don’t specify targets, see [[p0]] in the [[p1]]Amazon Web Services Systems Manager User Guide[[p2]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Registering maintenance window tasks without targets",
+            "href": "https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0018",
+      "kind": "paragraph",
+      "text": "Specify managed nodes using the following format:",
+      "protected": []
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Key=InstanceIds,Values=<instance-id-1>,<instance-id-2>"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0020",
+      "kind": "paragraph",
+      "text": "Specify maintenance window targets using the following format:",
+      "protected": []
+    },
+    {
+      "id": "s0021",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Key=WindowTargetIds,Values=<window-target-id-1>,<window-target-id-2>"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0022",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0023",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "0"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0024",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "5"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0025",
+      "kind": "paragraph",
+      "text": "(structure)",
+      "protected": []
+    },
+    {
+      "id": "s0026",
+      "kind": "paragraph",
+      "text": "An array of search criteria that targets managed nodes using a key-value pair that you specify.",
+      "protected": []
+    },
+    {
+      "id": "s0027",
+      "kind": "heading",
+      "text": "Note",
+      "protected": []
+    },
+    {
+      "id": "s0028",
+      "kind": "paragraph",
+      "text": "One or more targets must be specified for maintenance window Run Command-type tasks. Depending on the task, targets are optional for other maintenance window task types (Automation, Lambda, and Step Functions). For more information about running tasks that don’t specify targets, see [[p0]] in the [[p1]]Amazon Web Services Systems Manager User Guide[[p2]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Registering maintenance window tasks without targets",
+            "href": "https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0029",
+      "kind": "paragraph",
+      "text": "Supported formats include the following.",
+      "protected": []
+    },
+    {
+      "id": "s0030",
+      "kind": "paragraph",
+      "text": "[[p0]]For all Systems Manager tools:[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0031",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Key=tag-key,Values=tag-value-1,tag-value-2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0032",
+      "kind": "paragraph",
+      "text": "[[p0]]For Automation and Change Manager:[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0033",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Key=tag:tag-key,Values=tag-value"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0034",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Key=ResourceGroup,Values=resource-group-name"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0035",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Key=ParameterValues,Values=value-1,value-2,value-3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0036",
+      "kind": "paragraph",
+      "text": "To target all instances in the Amazon Web Services Region:",
+      "protected": []
+    },
+    {
+      "id": "s0037",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Key=AWS::EC2::Instance,Values=*"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0038",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Key=InstanceIds,Values=*"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0039",
+      "kind": "paragraph",
+      "text": "[[p0]]For Run Command and Maintenance Windows:[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0040",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Key=InstanceIds,Values=instance-id-1,instance-id-2,instance-id-3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0041",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Key=tag:tag-key,Values=tag-value-1,tag-value-2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0042",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Key=resource-groups:Name,Values=resource-group-name"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0043",
+      "kind": "paragraph",
+      "text": "Additionally, Maintenance Windows support targeting resource types:",
+      "protected": []
+    },
+    {
+      "id": "s0044",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Key=resource-groups:ResourceTypeFilters,Values=resource-type-1,resource-type-2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0045",
+      "kind": "paragraph",
+      "text": "[[p0]]For State Manager:[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0046",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Key=InstanceIds,Values=instance-id-1,instance-id-2,instance-id-3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0047",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Key=tag:tag-key,Values=tag-value-1,tag-value-2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0048",
+      "kind": "paragraph",
+      "text": "To target all instances in the Amazon Web Services Region:",
+      "protected": []
+    },
+    {
+      "id": "s0049",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Key=InstanceIds,Values=*"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0050",
+      "kind": "paragraph",
+      "text": "For more information about how to send commands that target managed nodes using [[p0]] parameters, see [[p1]] in the [[p2]]Amazon Web Services Systems Manager User Guide[[p3]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Key,Value"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "Targeting multiple managed nodes",
+            "href": "https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-targeting"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0051",
+      "kind": "paragraph",
+      "text": "Key -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0052",
+      "kind": "paragraph",
+      "text": "User-defined criteria for sending commands that target managed nodes that meet the criteria.",
+      "protected": []
+    },
+    {
+      "id": "s0053",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0054",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0055",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "163"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0056",
+      "kind": "paragraph",
+      "text": "pattern: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "^[\\p{L}\\p{Z}\\p{N}_.:/=\\-@]*$|resource-groups:ResourceTypeFilters|resource-groups:Name"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0057",
+      "kind": "paragraph",
+      "text": "Values -> (list)",
+      "protected": []
+    },
+    {
+      "id": "s0058",
+      "kind": "paragraph",
+      "text": "User-defined criteria that maps to [[p0]] . For example, if you specified [[p1]] , you could specify [[p2]] to run a command on instances that include EC2 tags of [[p3]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Key"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "tag:ServerRole"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "value:WebServer"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "ServerRole,WebServer"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0059",
+      "kind": "paragraph",
+      "text": "Depending on the type of target, the maximum number of values for a key might be lower than the global maximum of 50.",
+      "protected": []
+    },
+    {
+      "id": "s0060",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0061",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "0"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0062",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "50"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0063",
+      "kind": "paragraph",
+      "text": "(string)",
+      "protected": []
+    },
+    {
+      "id": "s0064",
+      "kind": "paragraph",
+      "text": "Shorthand Syntax:",
+      "protected": []
+    },
+    {
+      "id": "s0065",
+      "kind": "paragraph",
+      "text": "JSON Syntax:",
+      "protected": []
+    },
+    {
+      "id": "s0066",
+      "kind": "paragraph",
+      "text": "[[p0]] (string) [required]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--task-arn"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0067",
+      "kind": "paragraph",
+      "text": "The ARN of the task to run.",
+      "protected": []
+    },
+    {
+      "id": "s0068",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0069",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0070",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0071",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--service-role-arn"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0072",
+      "kind": "paragraph",
+      "text": "The Amazon Resource Name (ARN) of the IAM service role for Amazon Web Services Systems Manager to assume when running a maintenance window task. If you do not specify a service role ARN, Systems Manager uses a service-linked role in your account. If no appropriate service-linked role for Systems Manager exists in your account, it is created when you run [[p0]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "RegisterTaskWithMaintenanceWindow"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0073",
+      "kind": "paragraph",
+      "text": "However, for an improved security posture, we strongly recommend creating a custom policy and custom service role for running your maintenance window tasks. The policy can be crafted to provide only the permissions needed for your particular maintenance window tasks. For more information, see [[p0]] in the in the [[p1]]Amazon Web Services Systems Manager User Guide[[p2]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Setting up Maintenance Windows",
+            "href": "https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0074",
+      "kind": "paragraph",
+      "text": "[[p0]] (string) [required]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--task-type"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0075",
+      "kind": "paragraph",
+      "text": "The type of task being registered.",
+      "protected": []
+    },
+    {
+      "id": "s0076",
+      "kind": "paragraph",
+      "text": "Possible values:",
+      "protected": []
+    },
+    {
+      "id": "s0077",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "RUN_COMMAND"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0078",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "AUTOMATION"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0079",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "STEP_FUNCTIONS"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0080",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "LAMBDA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0081",
+      "kind": "paragraph",
+      "text": "[[p0]] (map)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--task-parameters"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0082",
+      "kind": "paragraph",
+      "text": "The parameters that should be passed to the task when it is run.",
+      "protected": []
+    },
+    {
+      "id": "s0083",
+      "kind": "heading",
+      "text": "Note",
+      "protected": []
+    },
+    {
+      "id": "s0084",
+      "kind": "paragraph",
+      "text": "[[p0]] has been deprecated. To specify parameters to pass to a task when it runs, instead use the [[p1]] option in the [[p2]] structure. For information about how Systems Manager handles these options for the supported maintenance window task types, see MaintenanceWindowTaskInvocationParameters .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "TaskParameters"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "Parameters"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "TaskInvocationParameters"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0085",
+      "kind": "paragraph",
+      "text": "key -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0086",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0087",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0088",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "255"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0089",
+      "kind": "paragraph",
+      "text": "value -> (structure)",
+      "protected": []
+    },
+    {
+      "id": "s0090",
+      "kind": "paragraph",
+      "text": "Defines the values for a task parameter.",
+      "protected": []
+    },
+    {
+      "id": "s0091",
+      "kind": "paragraph",
+      "text": "Values -> (list)",
+      "protected": []
+    },
+    {
+      "id": "s0092",
+      "kind": "paragraph",
+      "text": "This field contains an array of 0 or more strings, each 1 to 255 characters in length.",
+      "protected": []
+    },
+    {
+      "id": "s0093",
+      "kind": "paragraph",
+      "text": "(string)",
+      "protected": []
+    },
+    {
+      "id": "s0094",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0095",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0096",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "255"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0097",
+      "kind": "paragraph",
+      "text": "Shorthand Syntax:",
+      "protected": []
+    },
+    {
+      "id": "s0098",
+      "kind": "paragraph",
+      "text": "JSON Syntax:",
+      "protected": []
+    },
+    {
+      "id": "s0099",
+      "kind": "paragraph",
+      "text": "[[p0]] (structure)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--task-invocation-parameters"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0100",
+      "kind": "paragraph",
+      "text": "The parameters that the task should use during execution. Populate only the fields that match the task type. All other fields should be empty.",
+      "protected": []
+    },
+    {
+      "id": "s0101",
+      "kind": "paragraph",
+      "text": "RunCommand -> (structure)",
+      "protected": []
+    },
+    {
+      "id": "s0102",
+      "kind": "paragraph",
+      "text": "The parameters for a [[p0]] task type.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "RUN_COMMAND"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0103",
+      "kind": "paragraph",
+      "text": "Comment -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0104",
+      "kind": "paragraph",
+      "text": "Information about the commands to run.",
+      "protected": []
+    },
+    {
+      "id": "s0105",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0106",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "100"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0107",
+      "kind": "paragraph",
+      "text": "CloudWatchOutputConfig -> (structure)",
+      "protected": []
+    },
+    {
+      "id": "s0108",
+      "kind": "paragraph",
+      "text": "Configuration options for sending command output to Amazon CloudWatch Logs.",
+      "protected": []
+    },
+    {
+      "id": "s0109",
+      "kind": "paragraph",
+      "text": "CloudWatchLogGroupName -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0110",
+      "kind": "paragraph",
+      "text": "The name of the CloudWatch Logs log group where you want to send command output. If you don’t specify a group name, Amazon Web Services Systems Manager automatically creates a log group for you. The log group uses the following naming format:",
+      "protected": []
+    },
+    {
+      "id": "s0111",
+      "kind": "paragraph",
+      "text": "[[p0]]aws/ssm/[[p1]]SystemsManagerDocumentName[[p2]] ``",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "``",
+            "href": "#id1"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0112",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0113",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0114",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "512"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0115",
+      "kind": "paragraph",
+      "text": "CloudWatchOutputEnabled -> (boolean)",
+      "protected": []
+    },
+    {
+      "id": "s0116",
+      "kind": "paragraph",
+      "text": "Enables Systems Manager to send command output to CloudWatch Logs.",
+      "protected": []
+    },
+    {
+      "id": "s0117",
+      "kind": "paragraph",
+      "text": "DocumentHash -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0118",
+      "kind": "paragraph",
+      "text": "The SHA-256 or SHA-1 hash created by the system when the document was created. SHA-1 hashes have been deprecated.",
+      "protected": []
+    },
+    {
+      "id": "s0119",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0120",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "256"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0121",
+      "kind": "paragraph",
+      "text": "DocumentHashType -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0122",
+      "kind": "paragraph",
+      "text": "SHA-256 or SHA-1. SHA-1 hashes have been deprecated.",
+      "protected": []
+    },
+    {
+      "id": "s0123",
+      "kind": "paragraph",
+      "text": "Possible values:",
+      "protected": []
+    },
+    {
+      "id": "s0124",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Sha256"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0125",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Sha1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0126",
+      "kind": "paragraph",
+      "text": "DocumentVersion -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0127",
+      "kind": "paragraph",
+      "text": "The Amazon Web Services Systems Manager document (SSM document) version to use in the request. You can specify [[p0]] , [[p1]] , or a specific version number. If you run commands by using the Amazon Web Services CLI, then you must escape the first two options by using a backslash. If you specify a version number, then you don’t need to use the backslash. For example:",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "$DEFAULT"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "$LATEST"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0128",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--document-version \"\\$DEFAULT\""
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0129",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--document-version \"\\$LATEST\""
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0130",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--document-version \"3\""
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0131",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0132",
+      "kind": "paragraph",
+      "text": "pattern: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "([$]LATEST|[$]DEFAULT|^[1-9][0-9]*$)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0133",
+      "kind": "paragraph",
+      "text": "NotificationConfig -> (structure)",
+      "protected": []
+    },
+    {
+      "id": "s0134",
+      "kind": "paragraph",
+      "text": "Configurations for sending notifications about command status changes on a per-managed node basis.",
+      "protected": []
+    },
+    {
+      "id": "s0135",
+      "kind": "paragraph",
+      "text": "NotificationArn -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0136",
+      "kind": "paragraph",
+      "text": "An Amazon Resource Name (ARN) for an Amazon Simple Notification Service (Amazon SNS) topic. Run Command pushes notifications about command status changes to this topic.",
+      "protected": []
+    },
+    {
+      "id": "s0137",
+      "kind": "paragraph",
+      "text": "NotificationEvents -> (list)",
+      "protected": []
+    },
+    {
+      "id": "s0138",
+      "kind": "paragraph",
+      "text": "The different events for which you can receive notifications. To learn more about these events, see [[p0]] in the [[p1]]Amazon Web Services Systems Manager User Guide[[p2]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Monitoring Systems Manager status changes using Amazon SNS notifications",
+            "href": "https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-sns-notifications.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0139",
+      "kind": "paragraph",
+      "text": "(string)",
+      "protected": []
+    },
+    {
+      "id": "s0140",
+      "kind": "paragraph",
+      "text": "Possible values:",
+      "protected": []
+    },
+    {
+      "id": "s0141",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "All"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0142",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "InProgress"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0143",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Success"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0144",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "TimedOut"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0145",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Cancelled"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0146",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Failed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0147",
+      "kind": "paragraph",
+      "text": "NotificationType -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0148",
+      "kind": "paragraph",
+      "text": "The type of notification.",
+      "protected": []
+    },
+    {
+      "id": "s0149",
+      "kind": "paragraph",
+      "text": "[[p0]] : Receive notification when the status of a command changes.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Command"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0150",
+      "kind": "paragraph",
+      "text": "[[p0]] : For commands sent to multiple managed nodes, receive notification on a per-node basis when the status of a command changes.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Invocation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0151",
+      "kind": "paragraph",
+      "text": "Possible values:",
+      "protected": []
+    },
+    {
+      "id": "s0152",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Command"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0153",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Invocation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0154",
+      "kind": "paragraph",
+      "text": "OutputS3BucketName -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0155",
+      "kind": "paragraph",
+      "text": "The name of the Amazon Simple Storage Service (Amazon S3) bucket.",
+      "protected": []
+    },
+    {
+      "id": "s0156",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0157",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0158",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "63"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0159",
+      "kind": "paragraph",
+      "text": "OutputS3KeyPrefix -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0160",
+      "kind": "paragraph",
+      "text": "The S3 bucket subfolder.",
+      "protected": []
+    },
+    {
+      "id": "s0161",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0162",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "500"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0163",
+      "kind": "paragraph",
+      "text": "Parameters -> (map)",
+      "protected": []
+    },
+    {
+      "id": "s0164",
+      "kind": "paragraph",
+      "text": "The parameters for the [[p0]] task execution.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "RUN_COMMAND"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0165",
+      "kind": "paragraph",
+      "text": "key -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0166",
+      "kind": "paragraph",
+      "text": "value -> (list)",
+      "protected": []
+    },
+    {
+      "id": "s0167",
+      "kind": "paragraph",
+      "text": "(string)",
+      "protected": []
+    },
+    {
+      "id": "s0168",
+      "kind": "paragraph",
+      "text": "ServiceRoleArn -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0169",
+      "kind": "paragraph",
+      "text": "The Amazon Resource Name (ARN) of the IAM service role for Amazon Web Services Systems Manager to assume when running a maintenance window task. If you do not specify a service role ARN, Systems Manager uses a service-linked role in your account. If no appropriate service-linked role for Systems Manager exists in your account, it is created when you run [[p0]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "RegisterTaskWithMaintenanceWindow"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0170",
+      "kind": "paragraph",
+      "text": "However, for an improved security posture, we strongly recommend creating a custom policy and custom service role for running your maintenance window tasks. The policy can be crafted to provide only the permissions needed for your particular maintenance window tasks. For more information, see [[p0]] in the in the [[p1]]Amazon Web Services Systems Manager User Guide[[p2]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Setting up Maintenance Windows",
+            "href": "https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0171",
+      "kind": "paragraph",
+      "text": "TimeoutSeconds -> (integer)",
+      "protected": []
+    },
+    {
+      "id": "s0172",
+      "kind": "paragraph",
+      "text": "If this time is reached and the command hasn’t already started running, it doesn’t run.",
+      "protected": []
+    },
+    {
+      "id": "s0173",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0174",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "30"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0175",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "2592000"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0176",
+      "kind": "paragraph",
+      "text": "Automation -> (structure)",
+      "protected": []
+    },
+    {
+      "id": "s0177",
+      "kind": "paragraph",
+      "text": "The parameters for an [[p0]] task type.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "AUTOMATION"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0178",
+      "kind": "paragraph",
+      "text": "DocumentVersion -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0179",
+      "kind": "paragraph",
+      "text": "The version of an Automation runbook to use during task execution.",
+      "protected": []
+    },
+    {
+      "id": "s0180",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0181",
+      "kind": "paragraph",
+      "text": "pattern: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "([$]LATEST|[$]DEFAULT|^[1-9][0-9]*$)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0182",
+      "kind": "paragraph",
+      "text": "Parameters -> (map)",
+      "protected": []
+    },
+    {
+      "id": "s0183",
+      "kind": "paragraph",
+      "text": "The parameters for the [[p0]] task.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "AUTOMATION"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0184",
+      "kind": "paragraph",
+      "text": "For information about specifying and updating task parameters, see RegisterTaskWithMaintenanceWindow and UpdateMaintenanceWindowTask .",
+      "protected": []
+    },
+    {
+      "id": "s0185",
+      "kind": "heading",
+      "text": "Note",
+      "protected": []
+    },
+    {
+      "id": "s0186",
+      "kind": "paragraph",
+      "text": "[[p0]] has been deprecated. To specify an Amazon Simple Storage Service (Amazon S3) bucket to contain logs, instead use the [[p1]] and [[p2]] options in the [[p3]] structure. For information about how Amazon Web Services Systems Manager handles these options for the supported maintenance window task types, see MaintenanceWindowTaskInvocationParameters .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "LoggingInfo"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "OutputS3BucketName"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "OutputS3KeyPrefix"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "TaskInvocationParameters"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0187",
+      "kind": "paragraph",
+      "text": "[[p0]] has been deprecated. To specify parameters to pass to a task when it runs, instead use the [[p1]] option in the [[p2]] structure. For information about how Systems Manager handles these options for the supported maintenance window task types, see MaintenanceWindowTaskInvocationParameters .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "TaskParameters"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "Parameters"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "TaskInvocationParameters"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0188",
+      "kind": "paragraph",
+      "text": "For [[p0]] task types, Amazon Web Services Systems Manager ignores any values specified for these parameters.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "AUTOMATION"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0189",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0190",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0191",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "200"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0192",
+      "kind": "paragraph",
+      "text": "key -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0193",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0194",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0195",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "50"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0196",
+      "kind": "paragraph",
+      "text": "value -> (list)",
+      "protected": []
+    },
+    {
+      "id": "s0197",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0198",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "0"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0199",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "50"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0200",
+      "kind": "paragraph",
+      "text": "(string)",
+      "protected": []
+    },
+    {
+      "id": "s0201",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0202",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0203",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "512"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0204",
+      "kind": "paragraph",
+      "text": "StepFunctions -> (structure)",
+      "protected": []
+    },
+    {
+      "id": "s0205",
+      "kind": "paragraph",
+      "text": "The parameters for a [[p0]] task type.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "STEP_FUNCTIONS"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0206",
+      "kind": "paragraph",
+      "text": "Input -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0207",
+      "kind": "paragraph",
+      "text": "The inputs for the [[p0]] task.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "STEP_FUNCTIONS"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0208",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0209",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "4096"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0210",
+      "kind": "paragraph",
+      "text": "Name -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0211",
+      "kind": "paragraph",
+      "text": "The name of the [[p0]] task.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "STEP_FUNCTIONS"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0212",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0213",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0214",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "80"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0215",
+      "kind": "paragraph",
+      "text": "Lambda -> (structure)",
+      "protected": []
+    },
+    {
+      "id": "s0216",
+      "kind": "paragraph",
+      "text": "The parameters for a [[p0]] task type.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "LAMBDA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0217",
+      "kind": "paragraph",
+      "text": "ClientContext -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0218",
+      "kind": "paragraph",
+      "text": "Pass client-specific information to the Lambda function that you are invoking. You can then process the client information in your Lambda function as you choose through the context variable.",
+      "protected": []
+    },
+    {
+      "id": "s0219",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0220",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0221",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "8000"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0222",
+      "kind": "paragraph",
+      "text": "Qualifier -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0223",
+      "kind": "paragraph",
+      "text": "(Optional) Specify an Lambda function version or alias name. If you specify a function version, the operation uses the qualified function Amazon Resource Name (ARN) to invoke a specific Lambda function. If you specify an alias name, the operation uses the alias ARN to invoke the Lambda function version to which the alias points.",
+      "protected": []
+    },
+    {
+      "id": "s0224",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0225",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0226",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "128"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0227",
+      "kind": "paragraph",
+      "text": "Payload -> (blob)",
+      "protected": []
+    },
+    {
+      "id": "s0228",
+      "kind": "paragraph",
+      "text": "JSON to provide to your Lambda function as input.",
+      "protected": []
+    },
+    {
+      "id": "s0229",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0230",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "4096"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0231",
+      "kind": "paragraph",
+      "text": "JSON Syntax:",
+      "protected": []
+    },
+    {
+      "id": "s0232",
+      "kind": "paragraph",
+      "text": "[[p0]] (integer)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--priority"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0233",
+      "kind": "paragraph",
+      "text": "The priority of the task in the maintenance window, the lower the number the higher the priority. Tasks in a maintenance window are scheduled in priority order with tasks that have the same priority scheduled in parallel.",
+      "protected": []
+    },
+    {
+      "id": "s0234",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0235",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "0"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0236",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--max-concurrency"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0237",
+      "kind": "paragraph",
+      "text": "The maximum number of targets this task can be run for, in parallel.",
+      "protected": []
+    },
+    {
+      "id": "s0238",
+      "kind": "heading",
+      "text": "Note",
+      "protected": []
+    },
+    {
+      "id": "s0239",
+      "kind": "paragraph",
+      "text": "Although this element is listed as “Required: No”, a value can be omitted only when you are registering or updating a [[p0]] You must provide a value in all other cases.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "targetless task",
+            "href": "https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0240",
+      "kind": "paragraph",
+      "text": "For maintenance window tasks without a target specified, you can’t supply a value for this option. Instead, the system inserts a placeholder value of [[p0]] . This value doesn’t affect the running of your task.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0241",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0242",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0243",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "7"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0244",
+      "kind": "paragraph",
+      "text": "pattern: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "^([1-9][0-9]*|[1-9][0-9]%|[1-9]%|100%)$"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0245",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--max-errors"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0246",
+      "kind": "paragraph",
+      "text": "The maximum number of errors allowed before this task stops being scheduled.",
+      "protected": []
+    },
+    {
+      "id": "s0247",
+      "kind": "heading",
+      "text": "Note",
+      "protected": []
+    },
+    {
+      "id": "s0248",
+      "kind": "paragraph",
+      "text": "Although this element is listed as “Required: No”, a value can be omitted only when you are registering or updating a [[p0]] You must provide a value in all other cases.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "targetless task",
+            "href": "https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0249",
+      "kind": "paragraph",
+      "text": "For maintenance window tasks without a target specified, you can’t supply a value for this option. Instead, the system inserts a placeholder value of [[p0]] . This value doesn’t affect the running of your task.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0250",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0251",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0252",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "7"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0253",
+      "kind": "paragraph",
+      "text": "pattern: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "^([1-9][0-9]*|[0]|[1-9][0-9]%|[0-9]%|100%)$"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0254",
+      "kind": "paragraph",
+      "text": "[[p0]] (structure)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--logging-info"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0255",
+      "kind": "paragraph",
+      "text": "A structure containing information about an Amazon Simple Storage Service (Amazon S3) bucket to write managed node-level logs to.",
+      "protected": []
+    },
+    {
+      "id": "s0256",
+      "kind": "heading",
+      "text": "Note",
+      "protected": []
+    },
+    {
+      "id": "s0257",
+      "kind": "paragraph",
+      "text": "[[p0]] has been deprecated. To specify an Amazon Simple Storage Service (Amazon S3) bucket to contain logs, instead use the [[p1]] and [[p2]] options in the [[p3]] structure. For information about how Amazon Web Services Systems Manager handles these options for the supported maintenance window task types, see MaintenanceWindowTaskInvocationParameters .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "LoggingInfo"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "OutputS3BucketName"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "OutputS3KeyPrefix"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "TaskInvocationParameters"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0258",
+      "kind": "paragraph",
+      "text": "S3BucketName -> (string) [required]",
+      "protected": []
+    },
+    {
+      "id": "s0259",
+      "kind": "paragraph",
+      "text": "The name of an S3 bucket where execution logs are stored.",
+      "protected": []
+    },
+    {
+      "id": "s0260",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0261",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0262",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "63"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0263",
+      "kind": "paragraph",
+      "text": "S3KeyPrefix -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0264",
+      "kind": "paragraph",
+      "text": "(Optional) The S3 bucket subfolder.",
+      "protected": []
+    },
+    {
+      "id": "s0265",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0266",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "500"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0267",
+      "kind": "paragraph",
+      "text": "S3Region -> (string) [required]",
+      "protected": []
+    },
+    {
+      "id": "s0268",
+      "kind": "paragraph",
+      "text": "The Amazon Web Services Region where the S3 bucket is located.",
+      "protected": []
+    },
+    {
+      "id": "s0269",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0270",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0271",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "20"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0272",
+      "kind": "paragraph",
+      "text": "Shorthand Syntax:",
+      "protected": []
+    },
+    {
+      "id": "s0273",
+      "kind": "paragraph",
+      "text": "JSON Syntax:",
+      "protected": []
+    },
+    {
+      "id": "s0274",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--name"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0275",
+      "kind": "paragraph",
+      "text": "An optional name for the task.",
+      "protected": []
+    },
+    {
+      "id": "s0276",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0277",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0278",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "128"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0279",
+      "kind": "paragraph",
+      "text": "pattern: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "^[a-zA-Z0-9_\\-.]{3,128}$"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0280",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--description"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0281",
+      "kind": "paragraph",
+      "text": "An optional description for the task.",
+      "protected": []
+    },
+    {
+      "id": "s0282",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0283",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0284",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "128"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0285",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--client-token"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0286",
+      "kind": "paragraph",
+      "text": "User-provided idempotency token.",
+      "protected": []
+    },
+    {
+      "id": "s0287",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0288",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0289",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "64"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0290",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cutoff-behavior"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0291",
+      "kind": "paragraph",
+      "text": "Indicates whether tasks should continue to run after the cutoff time specified in the maintenance windows is reached.",
+      "protected": []
+    },
+    {
+      "id": "s0292",
+      "kind": "paragraph",
+      "text": "[[p0]] : When the cutoff time is reached, any tasks that are running continue. The default value.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "CONTINUE_TASK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0293",
+      "kind": "paragraph",
+      "text": "[[p0]] :",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "CANCEL_TASK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0294",
+      "kind": "paragraph",
+      "text": "For Automation, Lambda, Step Functions tasks: When the cutoff time is reached, any task invocations that are already running continue, but no new task invocations are started.",
+      "protected": []
+    },
+    {
+      "id": "s0295",
+      "kind": "paragraph",
+      "text": "For Run Command tasks: When the cutoff time is reached, the system sends a CancelCommand operation that attempts to cancel the command associated with the task. However, there is no guarantee that the command will be terminated and the underlying process stopped.",
+      "protected": []
+    },
+    {
+      "id": "s0296",
+      "kind": "paragraph",
+      "text": "The status for tasks that are not completed is [[p0]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "TIMED_OUT"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0297",
+      "kind": "paragraph",
+      "text": "Possible values:",
+      "protected": []
+    },
+    {
+      "id": "s0298",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "CONTINUE_TASK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0299",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "CANCEL_TASK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0300",
+      "kind": "paragraph",
+      "text": "[[p0]] (structure)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--alarm-configuration"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0301",
+      "kind": "paragraph",
+      "text": "The CloudWatch alarm you want to apply to your maintenance window task.",
+      "protected": []
+    },
+    {
+      "id": "s0302",
+      "kind": "paragraph",
+      "text": "IgnorePollAlarmFailure -> (boolean)",
+      "protected": []
+    },
+    {
+      "id": "s0303",
+      "kind": "paragraph",
+      "text": "When this value is [[p0]]true[[p1]] , your automation or command continues to run in cases where we can’t retrieve alarm status information from CloudWatch. In cases where we successfully retrieve an alarm status of OK or INSUFFICIENT_DATA, the automation or command continues to run, regardless of this value. Default is [[p2]]false[[p3]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0304",
+      "kind": "paragraph",
+      "text": "Alarms -> (list) [required]",
+      "protected": []
+    },
+    {
+      "id": "s0305",
+      "kind": "paragraph",
+      "text": "The name of the CloudWatch alarm specified in the configuration.",
+      "protected": []
+    },
+    {
+      "id": "s0306",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0307",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0308",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0309",
+      "kind": "paragraph",
+      "text": "(structure)",
+      "protected": []
+    },
+    {
+      "id": "s0310",
+      "kind": "paragraph",
+      "text": "A CloudWatch alarm you apply to an automation or command.",
+      "protected": []
+    },
+    {
+      "id": "s0311",
+      "kind": "paragraph",
+      "text": "Name -> (string) [required]",
+      "protected": []
+    },
+    {
+      "id": "s0312",
+      "kind": "paragraph",
+      "text": "The name of your CloudWatch alarm.",
+      "protected": []
+    },
+    {
+      "id": "s0313",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0314",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0315",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "255"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0316",
+      "kind": "paragraph",
+      "text": "pattern: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "^(?!\\s*$).+"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0317",
+      "kind": "paragraph",
+      "text": "Shorthand Syntax:",
+      "protected": []
+    },
+    {
+      "id": "s0318",
+      "kind": "paragraph",
+      "text": "JSON Syntax:",
+      "protected": []
+    },
+    {
+      "id": "s0319",
+      "kind": "paragraph",
+      "text": "[[p0]] | [[p1]] (string) Reads arguments from the JSON string provided. The JSON string follows the format provided by [[p2]]. If other arguments are provided on the command line, those values will override the JSON-provided values. It is not possible to pass arbitrary binary values using a JSON-provided value as the string will be taken literally. This may not be specified along with [[p3]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-input-json"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-input-yaml"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--generate-cli-skeleton"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-input-yaml"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0320",
+      "kind": "paragraph",
+      "text": "[[p0]] (string) Prints a JSON skeleton to standard output without sending an API request. If provided with no value or the value [[p1]], prints a sample input JSON that can be used as an argument for [[p2]]. Similarly, if provided [[p3]] it will print a sample input YAML that can be used with [[p4]]. If provided with the value [[p5]], it validates the command inputs and returns a sample output JSON for that command. The generated JSON skeleton is not stable between versions of the AWS CLI and there are no backwards compatibility guarantees in the JSON skeleton generated.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--generate-cli-skeleton"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "input"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-input-json"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "yaml-input"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-input-yaml"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "output"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0321",
+      "kind": "heading",
+      "text": "Global Options¶",
+      "protected": []
+    },
+    {
+      "id": "s0322",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debug"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0323",
+      "kind": "paragraph",
+      "text": "Turn on debug logging.",
+      "protected": []
+    },
+    {
+      "id": "s0324",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--endpoint-url"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0325",
+      "kind": "paragraph",
+      "text": "Override command’s default URL with the given URL.",
+      "protected": []
+    },
+    {
+      "id": "s0326",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-verify-ssl"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0327",
+      "kind": "paragraph",
+      "text": "By default, the AWS CLI uses SSL when communicating with AWS services. For each SSL connection, the AWS CLI will verify SSL certificates. This option overrides the default behavior of verifying SSL certificates.",
+      "protected": []
+    },
+    {
+      "id": "s0328",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-paginate"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0329",
+      "kind": "paragraph",
+      "text": "Disable automatic pagination. If automatic pagination is disabled, the AWS CLI will only make one call, for the first page of results.",
+      "protected": []
+    },
+    {
+      "id": "s0330",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--output"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0331",
+      "kind": "paragraph",
+      "text": "The formatting style for command output.",
+      "protected": []
+    },
+    {
+      "id": "s0332",
+      "kind": "paragraph",
+      "text": "json",
+      "protected": []
+    },
+    {
+      "id": "s0333",
+      "kind": "paragraph",
+      "text": "text",
+      "protected": []
+    },
+    {
+      "id": "s0334",
+      "kind": "paragraph",
+      "text": "table",
+      "protected": []
+    },
+    {
+      "id": "s0335",
+      "kind": "paragraph",
+      "text": "yaml",
+      "protected": []
+    },
+    {
+      "id": "s0336",
+      "kind": "paragraph",
+      "text": "yaml-stream",
+      "protected": []
+    },
+    {
+      "id": "s0337",
+      "kind": "paragraph",
+      "text": "off",
+      "protected": []
+    },
+    {
+      "id": "s0338",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--query"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0339",
+      "kind": "paragraph",
+      "text": "A JMESPath query to use in filtering the response data.",
+      "protected": []
+    },
+    {
+      "id": "s0340",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--profile"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0341",
+      "kind": "paragraph",
+      "text": "Use a specific profile from your credential file.",
+      "protected": []
+    },
+    {
+      "id": "s0342",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--region"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0343",
+      "kind": "paragraph",
+      "text": "The region to use. Overrides config/env settings.",
+      "protected": []
+    },
+    {
+      "id": "s0344",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--version"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0345",
+      "kind": "paragraph",
+      "text": "Display the version of this tool.",
+      "protected": []
+    },
+    {
+      "id": "s0346",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--color"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0347",
+      "kind": "paragraph",
+      "text": "Turn on/off color output.",
+      "protected": []
+    },
+    {
+      "id": "s0348",
+      "kind": "paragraph",
+      "text": "on",
+      "protected": []
+    },
+    {
+      "id": "s0349",
+      "kind": "paragraph",
+      "text": "off",
+      "protected": []
+    },
+    {
+      "id": "s0350",
+      "kind": "paragraph",
+      "text": "auto",
+      "protected": []
+    },
+    {
+      "id": "s0351",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-sign-request"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0352",
+      "kind": "paragraph",
+      "text": "Do not sign requests. Credentials will not be loaded if this argument is provided.",
+      "protected": []
+    },
+    {
+      "id": "s0353",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--ca-bundle"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0354",
+      "kind": "paragraph",
+      "text": "The CA certificate bundle to use when verifying SSL certificates. Overrides config/env settings.",
+      "protected": []
+    },
+    {
+      "id": "s0355",
+      "kind": "paragraph",
+      "text": "[[p0]] (int)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-read-timeout"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0356",
+      "kind": "paragraph",
+      "text": "The maximum socket read time in seconds. If the value is set to 0, the socket read will be blocking and not timeout. The default value is 60 seconds.",
+      "protected": []
+    },
+    {
+      "id": "s0357",
+      "kind": "paragraph",
+      "text": "[[p0]] (int)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-connect-timeout"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0358",
+      "kind": "paragraph",
+      "text": "The maximum socket connect time in seconds. If the value is set to 0, the socket connect will be blocking and not timeout. The default value is 60 seconds.",
+      "protected": []
+    },
+    {
+      "id": "s0359",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-binary-format"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0360",
+      "kind": "paragraph",
+      "text": "The formatting style to be used for binary blobs. The default format is base64. The base64 format expects binary blobs to be provided as a base64 encoded string. The raw-in-base64-out format preserves compatibility with AWS CLI V1 behavior and binary values must be passed literally. When providing contents from a file that map to a binary blob [[p0]] will always be treated as binary and use the file contents directly regardless of the [[p1]] setting. When using [[p2]] the file contents will need to properly formatted for the configured [[p3]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "fileb://"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "cli-binary-format"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "file://"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "cli-binary-format"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0361",
+      "kind": "paragraph",
+      "text": "base64",
+      "protected": []
+    },
+    {
+      "id": "s0362",
+      "kind": "paragraph",
+      "text": "raw-in-base64-out",
+      "protected": []
+    },
+    {
+      "id": "s0363",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-cli-pager"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0364",
+      "kind": "paragraph",
+      "text": "Disable cli pager for output.",
+      "protected": []
+    },
+    {
+      "id": "s0365",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-auto-prompt"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0366",
+      "kind": "paragraph",
+      "text": "Automatically prompt for CLI input parameters.",
+      "protected": []
+    },
+    {
+      "id": "s0367",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-cli-auto-prompt"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0368",
+      "kind": "paragraph",
+      "text": "Disable automatically prompt for CLI input parameters.",
+      "protected": []
+    },
+    {
+      "id": "s0369",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-error-format"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0370",
+      "kind": "paragraph",
+      "text": "The formatting style for error output. By default, errors are displayed in enhanced format.",
+      "protected": []
+    },
+    {
+      "id": "s0371",
+      "kind": "paragraph",
+      "text": "legacy",
+      "protected": []
+    },
+    {
+      "id": "s0372",
+      "kind": "paragraph",
+      "text": "json",
+      "protected": []
+    },
+    {
+      "id": "s0373",
+      "kind": "paragraph",
+      "text": "yaml",
+      "protected": []
+    },
+    {
+      "id": "s0374",
+      "kind": "paragraph",
+      "text": "text",
+      "protected": []
+    },
+    {
+      "id": "s0375",
+      "kind": "paragraph",
+      "text": "table",
+      "protected": []
+    },
+    {
+      "id": "s0376",
+      "kind": "paragraph",
+      "text": "enhanced",
+      "protected": []
+    },
+    {
+      "id": "s0377",
+      "kind": "heading",
+      "text": "Examples¶",
+      "protected": []
+    },
+    {
+      "id": "s0378",
+      "kind": "heading",
+      "text": "Note",
+      "protected": []
+    },
+    {
+      "id": "s0379",
+      "kind": "paragraph",
+      "text": "To use the following examples, you must have the AWS CLI installed and configured. See the [[p0]] in the [[p1]]AWS CLI User Guide[[p2]] for more information.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Getting started guide",
+            "href": "https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0380",
+      "kind": "paragraph",
+      "text": "Unless otherwise stated, all examples have unix-like quotation rules. These examples will need to be adapted to your terminal’s quoting rules. See [[p0]] in the [[p1]]AWS CLI User Guide[[p2]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Using quotation marks with strings",
+            "href": "https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-quoting-strings.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0381",
+      "kind": "paragraph",
+      "text": "[[p0]]Example 1: To register an Automation task with a maintenance window[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0382",
+      "kind": "paragraph",
+      "text": "The following [[p0]] example registers an Automation task with a maintenance window that is targeted at an instance.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "register-task-with-maintenance-window"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0383",
+      "kind": "paragraph",
+      "text": "Output:",
+      "protected": []
+    },
+    {
+      "id": "s0384",
+      "kind": "paragraph",
+      "text": "For more information, see [[p0]] in the [[p1]]AWS Systems Manager User Guide[[p2]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Register a Task with the Maintenance Window (AWS CLI)",
+            "href": "https://docs.aws.amazon.com/systems-manager/latest/userguide/mw-cli-tutorial-tasks.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0385",
+      "kind": "paragraph",
+      "text": "[[p0]]Example 2: To register a Lambda task with a Maintenance Window[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0386",
+      "kind": "paragraph",
+      "text": "The following [[p0]] example registers a Lambda task with a Maintenance Window that is targeted at an instance.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "register-task-with-maintenance-window"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0387",
+      "kind": "paragraph",
+      "text": "Output:",
+      "protected": []
+    },
+    {
+      "id": "s0388",
+      "kind": "paragraph",
+      "text": "For more information, see [[p0]] in the [[p1]]AWS Systems Manager User Guide[[p2]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Register a Task with the Maintenance Window (AWS CLI)",
+            "href": "https://docs.aws.amazon.com/systems-manager/latest/userguide/mw-cli-tutorial-tasks.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0389",
+      "kind": "paragraph",
+      "text": "[[p0]]Example 3: To register a Run Command task with a maintenance window[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0390",
+      "kind": "paragraph",
+      "text": "The following [[p0]] example registers a Run Command task with a maintenance window that is targeted at an instance.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "register-task-with-maintenance-window"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0391",
+      "kind": "paragraph",
+      "text": "Output:",
+      "protected": []
+    },
+    {
+      "id": "s0392",
+      "kind": "paragraph",
+      "text": "For more information, see [[p0]] in the [[p1]]AWS Systems Manager User Guide[[p2]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Register a Task with the Maintenance Window (AWS CLI)",
+            "href": "https://docs.aws.amazon.com/systems-manager/latest/userguide/mw-cli-tutorial-tasks.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0393",
+      "kind": "paragraph",
+      "text": "[[p0]]Example 4: To register a Step Functions task with a maintenance window[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0394",
+      "kind": "paragraph",
+      "text": "The following [[p0]] example registers a Step Functions task with a maintenance window that is targeted at an instance.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "register-task-with-maintenance-window"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0395",
+      "kind": "paragraph",
+      "text": "Output:",
+      "protected": []
+    },
+    {
+      "id": "s0396",
+      "kind": "paragraph",
+      "text": "For more information, see [[p0]] in the [[p1]]AWS Systems Manager User Guide[[p2]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Register a Task with the Maintenance Window (AWS CLI)",
+            "href": "https://docs.aws.amazon.com/systems-manager/latest/userguide/mw-cli-tutorial-tasks.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0397",
+      "kind": "paragraph",
+      "text": "[[p0]]Example 5: To register a task using a maintenance windows target ID[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0398",
+      "kind": "paragraph",
+      "text": "The following [[p0]] example registers a task using a maintenance window target ID. The maintenance window target ID was in the output of the [[p1]] command. You can also retrieve it from the output of the [[p2]] command.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "register-task-with-maintenance-window"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "aws ssm register-target-with-maintenance-window"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "aws ssm describe-maintenance-window-targets"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0399",
+      "kind": "paragraph",
+      "text": "Output:",
+      "protected": []
+    },
+    {
+      "id": "s0400",
+      "kind": "paragraph",
+      "text": "For more information, see [[p0]] in the [[p1]]AWS Systems Manager User Guide[[p2]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Register a Task with the Maintenance Window (AWS CLI)",
+            "href": "https://docs.aws.amazon.com/systems-manager/latest/userguide/mw-cli-tutorial-tasks.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0401",
+      "kind": "heading",
+      "text": "Output¶",
+      "protected": []
+    },
+    {
+      "id": "s0402",
+      "kind": "paragraph",
+      "text": "WindowTaskId -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0403",
+      "kind": "paragraph",
+      "text": "The ID of the task in the maintenance window.",
+      "protected": []
+    },
+    {
+      "id": "s0404",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0405",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "36"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0406",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "36"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0407",
+      "kind": "paragraph",
+      "text": "pattern: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "^[0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{12}$"
+          }
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "segment": "s0001"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "register-task-with-maintenance-window",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Description",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0005"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Synopsis",
+      "segment": "s0006"
+    },
+    {
+      "type": "literal",
+      "text": "  register-task-with-maintenance-window\n--window-id <value>\n[--targets <value>]\n--task-arn <value>\n[--service-role-arn <value>]\n--task-type <value>\n[--task-parameters <value>]\n[--task-invocation-parameters <value>]\n[--priority <value>]\n[--max-concurrency <value>]\n[--max-errors <value>]\n[--logging-info <value>]\n[--name <value>]\n[--description <value>]\n[--client-token <value>]\n[--cutoff-behavior <value>]\n[--alarm-configuration <value>]\n[--cli-input-json | --cli-input-yaml]\n[--generate-cli-skeleton <value>]\n[--debug]\n[--endpoint-url <value>]\n[--no-verify-ssl]\n[--no-paginate]\n[--output <value>]\n[--query <value>]\n[--profile <value>]\n[--region <value>]\n[--version <value>]\n[--color <value>]\n[--no-sign-request]\n[--ca-bundle <value>]\n[--cli-read-timeout <value>]\n[--cli-connect-timeout <value>]\n[--cli-binary-format <value>]\n[--no-cli-pager]\n[--cli-auto-prompt]\n[--no-cli-auto-prompt]\n[--cli-error-format <value>]"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Options",
+      "segment": "s0007"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0008"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0009"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0010"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0011"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0012"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0013"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0014"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0015"
+        },
+        {
+          "type": "heading",
+          "level": 4,
+          "anchor": "Note",
+          "segment": "s0016"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0017"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0018"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0019"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0020"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0021"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0022"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0023"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0024"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0025"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0026"
+            },
+            {
+              "type": "heading",
+              "level": 4,
+              "anchor": "Note-2",
+              "segment": "s0027"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0028"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0029"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0030"
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0031"
+                  }
+                ]
+              ]
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0032"
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0033"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0034"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0035"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0036"
+                  },
+                  {
+                    "type": "list",
+                    "ordered": false,
+                    "items": [
+                      [
+                        {
+                          "type": "paragraph",
+                          "segment": "s0037"
+                        }
+                      ],
+                      [
+                        {
+                          "type": "paragraph",
+                          "segment": "s0038"
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0039"
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0040"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0041"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0042"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0043"
+                  },
+                  {
+                    "type": "list",
+                    "ordered": false,
+                    "items": [
+                      [
+                        {
+                          "type": "paragraph",
+                          "segment": "s0044"
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0045"
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0046"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0047"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0048"
+                  },
+                  {
+                    "type": "list",
+                    "ordered": false,
+                    "items": [
+                      [
+                        {
+                          "type": "paragraph",
+                          "segment": "s0049"
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0050"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0051"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0052"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0053"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0054"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0055"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0056"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0057"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0058"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0059"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0060"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0061"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0062"
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0063"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0064"
+    },
+    {
+      "type": "literal",
+      "text": "Key=string,Values=string,string ..."
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0065"
+    },
+    {
+      "type": "literal",
+      "text": "[\n  {\n    \"Key\": \"string\",\n    \"Values\": [\"string\", ...]\n  }\n  ...\n]"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0066"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0067"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0068"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0069"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0070"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0071"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0072"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0073"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0074"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0075"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0076"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0077"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0078"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0079"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0080"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0081"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0082"
+        },
+        {
+          "type": "heading",
+          "level": 4,
+          "anchor": "Note-3",
+          "segment": "s0083"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0084"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0085"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0086"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0087"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0088"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0089"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0090"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0091"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0092"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0093"
+                },
+                {
+                  "type": "quote",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0094"
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "items": [
+                        [
+                          {
+                            "type": "paragraph",
+                            "segment": "s0095"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "paragraph",
+                            "segment": "s0096"
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0097"
+    },
+    {
+      "type": "literal",
+      "text": "KeyName1={Values=[string,string]},KeyName2={Values=[string,string]}"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0098"
+    },
+    {
+      "type": "literal",
+      "text": "{\"string\": {\n      \"Values\": [\"string\", ...]\n    }\n  ...}"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0099"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0100"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0101"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0102"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0103"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0104"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0105"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0106"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0107"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0108"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0109"
+                },
+                {
+                  "type": "quote",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0110"
+                    },
+                    {
+                      "type": "quote",
+                      "blocks": [
+                        {
+                          "type": "paragraph",
+                          "segment": "s0111"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "segment": "s0112"
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "items": [
+                        [
+                          {
+                            "type": "paragraph",
+                            "segment": "s0113"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "paragraph",
+                            "segment": "s0114"
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0115"
+                },
+                {
+                  "type": "quote",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0116"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0117"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0118"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0119"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0120"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0121"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0122"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0123"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0124"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0125"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0126"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0127"
+                },
+                {
+                  "type": "quote",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0128"
+                    },
+                    {
+                      "type": "paragraph",
+                      "segment": "s0129"
+                    },
+                    {
+                      "type": "paragraph",
+                      "segment": "s0130"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0131"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0132"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0133"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0134"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0135"
+                },
+                {
+                  "type": "quote",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0136"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0137"
+                },
+                {
+                  "type": "quote",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0138"
+                    },
+                    {
+                      "type": "paragraph",
+                      "segment": "s0139"
+                    },
+                    {
+                      "type": "quote",
+                      "blocks": [
+                        {
+                          "type": "paragraph",
+                          "segment": "s0140"
+                        },
+                        {
+                          "type": "list",
+                          "ordered": false,
+                          "items": [
+                            [
+                              {
+                                "type": "paragraph",
+                                "segment": "s0141"
+                              }
+                            ],
+                            [
+                              {
+                                "type": "paragraph",
+                                "segment": "s0142"
+                              }
+                            ],
+                            [
+                              {
+                                "type": "paragraph",
+                                "segment": "s0143"
+                              }
+                            ],
+                            [
+                              {
+                                "type": "paragraph",
+                                "segment": "s0144"
+                              }
+                            ],
+                            [
+                              {
+                                "type": "paragraph",
+                                "segment": "s0145"
+                              }
+                            ],
+                            [
+                              {
+                                "type": "paragraph",
+                                "segment": "s0146"
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0147"
+                },
+                {
+                  "type": "quote",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0148"
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "items": [
+                        [
+                          {
+                            "type": "paragraph",
+                            "segment": "s0149"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "paragraph",
+                            "segment": "s0150"
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "segment": "s0151"
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "items": [
+                        [
+                          {
+                            "type": "paragraph",
+                            "segment": "s0152"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "paragraph",
+                            "segment": "s0153"
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0154"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0155"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0156"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0157"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0158"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0159"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0160"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0161"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0162"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0163"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0164"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0165"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0166"
+                },
+                {
+                  "type": "quote",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0167"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0168"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0169"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0170"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0171"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0172"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0173"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0174"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0175"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0176"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0177"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0178"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0179"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0180"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0181"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0182"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0183"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0184"
+                },
+                {
+                  "type": "heading",
+                  "level": 4,
+                  "anchor": "Note-4",
+                  "segment": "s0185"
+                },
+                {
+                  "type": "quote",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0186"
+                    },
+                    {
+                      "type": "paragraph",
+                      "segment": "s0187"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0188"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0189"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0190"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0191"
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0192"
+                },
+                {
+                  "type": "quote",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0193"
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "items": [
+                        [
+                          {
+                            "type": "paragraph",
+                            "segment": "s0194"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "paragraph",
+                            "segment": "s0195"
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0196"
+                },
+                {
+                  "type": "quote",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0197"
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "items": [
+                        [
+                          {
+                            "type": "paragraph",
+                            "segment": "s0198"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "paragraph",
+                            "segment": "s0199"
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "segment": "s0200"
+                    },
+                    {
+                      "type": "quote",
+                      "blocks": [
+                        {
+                          "type": "paragraph",
+                          "segment": "s0201"
+                        },
+                        {
+                          "type": "list",
+                          "ordered": false,
+                          "items": [
+                            [
+                              {
+                                "type": "paragraph",
+                                "segment": "s0202"
+                              }
+                            ],
+                            [
+                              {
+                                "type": "paragraph",
+                                "segment": "s0203"
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0204"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0205"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0206"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0207"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0208"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0209"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0210"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0211"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0212"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0213"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0214"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0215"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0216"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0217"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0218"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0219"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0220"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0221"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0222"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0223"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0224"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0225"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0226"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0227"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0228"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0229"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0230"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0231"
+    },
+    {
+      "type": "literal",
+      "text": "{\n  \"RunCommand\": {\n    \"Comment\": \"string\",\n    \"CloudWatchOutputConfig\": {\n      \"CloudWatchLogGroupName\": \"string\",\n      \"CloudWatchOutputEnabled\": true|false\n    },\n    \"DocumentHash\": \"string\",\n    \"DocumentHashType\": \"Sha256\"|\"Sha1\",\n    \"DocumentVersion\": \"string\",\n    \"NotificationConfig\": {\n      \"NotificationArn\": \"string\",\n      \"NotificationEvents\": [\"All\"|\"InProgress\"|\"Success\"|\"TimedOut\"|\"Cancelled\"|\"Failed\", ...],\n      \"NotificationType\": \"Command\"|\"Invocation\"\n    },\n    \"OutputS3BucketName\": \"string\",\n    \"OutputS3KeyPrefix\": \"string\",\n    \"Parameters\": {\"string\": [\"string\", ...]\n      ...},\n    \"ServiceRoleArn\": \"string\",\n    \"TimeoutSeconds\": integer\n  },\n  \"Automation\": {\n    \"DocumentVersion\": \"string\",\n    \"Parameters\": {\"string\": [\"string\", ...]\n      ...}\n  },\n  \"StepFunctions\": {\n    \"Input\": \"string\",\n    \"Name\": \"string\"\n  },\n  \"Lambda\": {\n    \"ClientContext\": \"string\",\n    \"Qualifier\": \"string\",\n    \"Payload\": blob\n  }\n}"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0232"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0233"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0234"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0235"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0236"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0237"
+        },
+        {
+          "type": "heading",
+          "level": 4,
+          "anchor": "Note-5",
+          "segment": "s0238"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0239"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0240"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0241"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0242"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0243"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0244"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0245"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0246"
+        },
+        {
+          "type": "heading",
+          "level": 4,
+          "anchor": "Note-6",
+          "segment": "s0247"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0248"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0249"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0250"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0251"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0252"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0253"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0254"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0255"
+        },
+        {
+          "type": "heading",
+          "level": 4,
+          "anchor": "Note-7",
+          "segment": "s0256"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0257"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0258"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0259"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0260"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0261"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0262"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0263"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0264"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0265"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0266"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0267"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0268"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0269"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0270"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0271"
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0272"
+    },
+    {
+      "type": "literal",
+      "text": "S3BucketName=string,S3KeyPrefix=string,S3Region=string"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0273"
+    },
+    {
+      "type": "literal",
+      "text": "{\n  \"S3BucketName\": \"string\",\n  \"S3KeyPrefix\": \"string\",\n  \"S3Region\": \"string\"\n}"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0274"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0275"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0276"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0277"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0278"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0279"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0280"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0281"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0282"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0283"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0284"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0285"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0286"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0287"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0288"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0289"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0290"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0291"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0292"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0293"
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "items": [
+                  [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0294"
+                    }
+                  ],
+                  [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0295"
+                    }
+                  ]
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0296"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0297"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0298"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0299"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0300"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0301"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0302"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0303"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0304"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0305"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0306"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0307"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0308"
+                  }
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0309"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0310"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0311"
+                },
+                {
+                  "type": "quote",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0312"
+                    },
+                    {
+                      "type": "paragraph",
+                      "segment": "s0313"
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "items": [
+                        [
+                          {
+                            "type": "paragraph",
+                            "segment": "s0314"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "paragraph",
+                            "segment": "s0315"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "paragraph",
+                            "segment": "s0316"
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0317"
+    },
+    {
+      "type": "literal",
+      "text": "IgnorePollAlarmFailure=boolean,Alarms=[{Name=string},{Name=string}]"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0318"
+    },
+    {
+      "type": "literal",
+      "text": "{\n  \"IgnorePollAlarmFailure\": true|false,\n  \"Alarms\": [\n    {\n      \"Name\": \"string\"\n    }\n    ...\n  ]\n}"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0319"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0320"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Global-Options",
+      "segment": "s0321"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0322"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0323"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0324"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0325"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0326"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0327"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0328"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0329"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0330"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0331"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0332"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0333"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0334"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0335"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0336"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0337"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0338"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0339"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0340"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0341"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0342"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0343"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0344"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0345"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0346"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0347"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0348"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0349"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0350"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0351"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0352"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0353"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0354"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0355"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0356"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0357"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0358"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0359"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0360"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0361"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0362"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0363"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0364"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0365"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0366"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0367"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0368"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0369"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0370"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0371"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0372"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0373"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0374"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0375"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0376"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Examples",
+      "segment": "s0377"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "Note-8",
+      "segment": "s0378"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0379"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0380"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0381"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0382"
+    },
+    {
+      "type": "literal",
+      "text": "aws ssm register-task-with-maintenance-window \\\n    --cli-binary-format raw-in-base64-out \\\n    --window-id \"mw-082dcd7649EXAMPLE\" \\\n    --targets Key=InstanceIds,Values=i-1234520122EXAMPLE \\\n    --task-arn AWS-RestartEC2Instance \\\n    --service-role-arn arn:aws:iam::123456789012:role/SSM \\\n    --task-type AUTOMATION \\\n    --task-invocation-parameters \"{\\\"Automation\\\":{\\\"DocumentVersion\\\":\\\"\\$LATEST\\\",\\\"Parameters\\\":{\\\"InstanceId\\\":[\\\"{{RESOURCE_ID}}\\\"]}}}\" \\\n    --priority 0 \\\n    --max-concurrency 1 \\\n    --max-errors 1 \\\n    --name \"AutomationExample\" \\\n    --description \"Restarting EC2 Instance for maintenance\""
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0383"
+    },
+    {
+      "type": "literal",
+      "text": "{\n    \"WindowTaskId\":\"11144444-5555-6666-7777-88888888\"\n}"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0384"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0385"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0386"
+    },
+    {
+      "type": "literal",
+      "text": "aws ssm register-task-with-maintenance-window \\\n    --cli-binary-format raw-in-base64-out \\\n    --window-id \"mw-082dcd7649dee04e4\" \\\n    --targets Key=InstanceIds,Values=i-12344d305eEXAMPLE \\\n    --task-arn arn:aws:lambda:us-west-2:123456789012:function:SSMTestLAMBDA \\\n    --service-role-arn arn:aws:iam::123456789012:role/SSM \\\n    --task-type LAMBDA \\\n    --task-invocation-parameters '{\"Lambda\":{\"Payload\":\"{\\\"InstanceId\\\":\\\"{{RESOURCE_ID}}\\\",\\\"targetType\\\":\\\"{{TARGET_TYPE}}\\\"}\",\"Qualifier\":\"$LATEST\"}}' \\\n    --priority 0 \\\n    --max-concurrency 10 \\\n    --max-errors 5 \\\n    --name \"Lambda_Example\" \\\n    --description \"My Lambda Example\""
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0387"
+    },
+    {
+      "type": "literal",
+      "text": "{\n    \"WindowTaskId\":\"22244444-5555-6666-7777-88888888\"\n}"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0388"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0389"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0390"
+    },
+    {
+      "type": "literal",
+      "text": "aws ssm register-task-with-maintenance-window \\\n    --cli-binary-format raw-in-base64-out \\\n    --window-id \"mw-082dcd7649dee04e4\" \\\n    --targets \"Key=InstanceIds,Values=i-12344d305eEXAMPLE\" \\\n    --service-role-arn \"arn:aws:iam::123456789012:role/SSM\" \\\n    --task-type \"RUN_COMMAND\" \\\n    --name \"SSMInstallPowerShellModule\" \\\n    --task-arn \"AWS-InstallPowerShellModule\" \\\n    --task-invocation-parameters \"{\\\"RunCommand\\\":{\\\"Comment\\\":\\\"\\\",\\\"OutputS3BucketName\\\":\\\"runcommandlogs\\\",\\\"Parameters\\\":{\\\"commands\\\":[\\\"Get-Module -ListAvailable\\\"],\\\"executionTimeout\\\":[\\\"3600\\\"],\\\"source\\\":[\\\"https:\\/\\/gallery.technet.microsoft.com\\/EZOut-33ae0fb7\\/file\\/110351\\/1\\/EZOut.zip\\\"],\\\"workingDirectory\\\":[\\\"\\\\\\\\\\\"]},\\\"TimeoutSeconds\\\":600}}\" \\\n    --max-concurrency 1 \\\n    --max-errors 1 \\\n    --priority 10"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0391"
+    },
+    {
+      "type": "literal",
+      "text": "{\n    \"WindowTaskId\":\"33344444-5555-6666-7777-88888888\"\n}"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0392"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0393"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0394"
+    },
+    {
+      "type": "literal",
+      "text": "aws ssm register-task-with-maintenance-window \\\n    --cli-binary-format raw-in-base64-out \\\n    --window-id \"mw-1234d787d6EXAMPLE\" \\\n    --targets Key=WindowTargetIds,Values=a1b2c3d4-5678-90ab-cdef-EXAMPLE11111 \\\n    --task-arn arn:aws:states:us-west-2:123456789012:stateMachine:SSMTestStateMachine \\\n    --service-role-arn arn:aws:iam::123456789012:role/MaintenanceWindows \\\n    --task-type STEP_FUNCTIONS \\\n    --task-invocation-parameters '{\"StepFunctions\":{\"Input\":\"{\\\"InstanceId\\\":\\\"{{RESOURCE_ID}}\\\"}\"}}' \\\n    --priority 0 \\\n    --max-concurrency 10 \\\n    --max-errors 5 \\\n    --name \"Step_Functions_Example\" \\\n    --description \"My Step Functions Example\""
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0395"
+    },
+    {
+      "type": "literal",
+      "text": "{\n    \"WindowTaskId\":\"44444444-5555-6666-7777-88888888\"\n}"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0396"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0397"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0398"
+    },
+    {
+      "type": "literal",
+      "text": "aws ssm register-task-with-maintenance-window \\\n    --cli-binary-format raw-in-base64-out \\\n    --targets \"Key=WindowTargetIds,Values=a1b2c3d4-5678-90ab-cdef-EXAMPLE22222\" \\\n    --task-arn \"AWS-RunShellScript\" \\\n    --service-role-arn \"arn:aws:iam::123456789012:role/MaintenanceWindowsRole\" \\\n    --window-id \"mw-ab12cd34eEXAMPLE\" \\\n    --task-type \"RUN_COMMAND\" \\\n    --task-parameters  \"{\\\"commands\\\":{\\\"Values\\\":[\\\"df\\\"]}}\" \\\n    --max-concurrency 1 \\\n    --max-errors 1 \\\n    --priority 10"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0399"
+    },
+    {
+      "type": "literal",
+      "text": "{\n    \"WindowTaskId\":\"33344444-5555-6666-7777-88888888\"\n}"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0400"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Output",
+      "segment": "s0401"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0402"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0403"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0404"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0405"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0406"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0407"
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

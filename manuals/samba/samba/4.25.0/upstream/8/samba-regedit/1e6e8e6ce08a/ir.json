@@ -1,0 +1,2217 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "1e6e8e6ce08ad3eee730ef8a271612578b33942379a80a820f6af0abb5d90a4e",
+  "extraction": {
+    "selector": ".refentry",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "Name",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "samba-regedit — ncurses based tool to manage the Samba registry",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "Synopsis",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]] [-?|[[p1]]] [[[p2]]] [[[p3]]|[[p4]]=DEBUGLEVEL] [[[p5]]] [[[p6]]=CONFIGFILE] [[[p7]]=name=value] [[[p8]]|[[p9]]=LOGFILEBASE] [[[p10]]] [[[p11]]] [[[p12]]|[[p13]]=NAME-RESOLVE-ORDER] [[[p14]]|[[p15]]=SOCKETOPTIONS] [[[p16]]|[[p17]]=MAXPROTOCOL] [[[p18]]|[[p19]]=NETBIOSNAME] [[[p20]]=SCOPE] [[[p21]]|[[p22]]=WORKGROUP] [[[p23]]=REALM] [[[p24]]|[[p25]]=[DOMAIN/]USERNAME[[[p26]]ASSWORD]] [[[p27]]|[[p28]]] [[[p29]]=STRING] [[[p30]]] [[[p31]]|[[p32]]=FILE] [[[p33]]|[[p34]]] [[[p35]]=DN] [[[p36]]=desired|required|off] [[[p37]]=CCACHE] [[[p38]]] [[[p39]]=sign|encrypt|off] [[[p40]]|[[p41]]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "samba-regedit"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--help"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--usage"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-d"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debuglevel"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debug-stdout"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "--configfile"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "code",
+            "text": "--option"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "code",
+            "text": "-l"
+          }
+        },
+        {
+          "token": "[[p9]]",
+          "inline": {
+            "tag": "code",
+            "text": "--log-basename"
+          }
+        },
+        {
+          "token": "[[p10]]",
+          "inline": {
+            "tag": "code",
+            "text": "--leak-report"
+          }
+        },
+        {
+          "token": "[[p11]]",
+          "inline": {
+            "tag": "code",
+            "text": "--leak-report-full"
+          }
+        },
+        {
+          "token": "[[p12]]",
+          "inline": {
+            "tag": "code",
+            "text": "-R"
+          }
+        },
+        {
+          "token": "[[p13]]",
+          "inline": {
+            "tag": "code",
+            "text": "--name-resolve"
+          }
+        },
+        {
+          "token": "[[p14]]",
+          "inline": {
+            "tag": "code",
+            "text": "-O"
+          }
+        },
+        {
+          "token": "[[p15]]",
+          "inline": {
+            "tag": "code",
+            "text": "--socket-options"
+          }
+        },
+        {
+          "token": "[[p16]]",
+          "inline": {
+            "tag": "code",
+            "text": "-m"
+          }
+        },
+        {
+          "token": "[[p17]]",
+          "inline": {
+            "tag": "code",
+            "text": "--max-protocol"
+          }
+        },
+        {
+          "token": "[[p18]]",
+          "inline": {
+            "tag": "code",
+            "text": "-n"
+          }
+        },
+        {
+          "token": "[[p19]]",
+          "inline": {
+            "tag": "code",
+            "text": "--netbiosname"
+          }
+        },
+        {
+          "token": "[[p20]]",
+          "inline": {
+            "tag": "code",
+            "text": "--netbios-scope"
+          }
+        },
+        {
+          "token": "[[p21]]",
+          "inline": {
+            "tag": "code",
+            "text": "-W"
+          }
+        },
+        {
+          "token": "[[p22]]",
+          "inline": {
+            "tag": "code",
+            "text": "--workgroup"
+          }
+        },
+        {
+          "token": "[[p23]]",
+          "inline": {
+            "tag": "code",
+            "text": "--realm"
+          }
+        },
+        {
+          "token": "[[p24]]",
+          "inline": {
+            "tag": "code",
+            "text": "-U"
+          }
+        },
+        {
+          "token": "[[p25]]",
+          "inline": {
+            "tag": "code",
+            "text": "--user"
+          }
+        },
+        {
+          "token": "[[p26]]",
+          "inline": {
+            "tag": "code",
+            "text": "%P"
+          }
+        },
+        {
+          "token": "[[p27]]",
+          "inline": {
+            "tag": "code",
+            "text": "-N"
+          }
+        },
+        {
+          "token": "[[p28]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-pass"
+          }
+        },
+        {
+          "token": "[[p29]]",
+          "inline": {
+            "tag": "code",
+            "text": "--password"
+          }
+        },
+        {
+          "token": "[[p30]]",
+          "inline": {
+            "tag": "code",
+            "text": "--pw-nt-hash"
+          }
+        },
+        {
+          "token": "[[p31]]",
+          "inline": {
+            "tag": "code",
+            "text": "-A"
+          }
+        },
+        {
+          "token": "[[p32]]",
+          "inline": {
+            "tag": "code",
+            "text": "--authentication-file"
+          }
+        },
+        {
+          "token": "[[p33]]",
+          "inline": {
+            "tag": "code",
+            "text": "-P"
+          }
+        },
+        {
+          "token": "[[p34]]",
+          "inline": {
+            "tag": "code",
+            "text": "--machine-pass"
+          }
+        },
+        {
+          "token": "[[p35]]",
+          "inline": {
+            "tag": "code",
+            "text": "--simple-bind-dn"
+          }
+        },
+        {
+          "token": "[[p36]]",
+          "inline": {
+            "tag": "code",
+            "text": "--use-kerberos"
+          }
+        },
+        {
+          "token": "[[p37]]",
+          "inline": {
+            "tag": "code",
+            "text": "--use-krb5-ccache"
+          }
+        },
+        {
+          "token": "[[p38]]",
+          "inline": {
+            "tag": "code",
+            "text": "--use-winbind-ccache"
+          }
+        },
+        {
+          "token": "[[p39]]",
+          "inline": {
+            "tag": "code",
+            "text": "--client-protection"
+          }
+        },
+        {
+          "token": "[[p40]]",
+          "inline": {
+            "tag": "code",
+            "text": "-V"
+          }
+        },
+        {
+          "token": "[[p41]]",
+          "inline": {
+            "tag": "code",
+            "text": "--version"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "This tool is part of the [[p0]] suite.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "samba(7)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/samba.7.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "[[p0]] is a ncurses based tool to manage the Samba registry. It can be used to show/edit registry keys/subkeys and their values.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "samba-regedit"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "heading",
+      "text": "OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0009",
+      "kind": "term",
+      "text": "-?|[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--help"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "Print a summary of command line options.",
+      "protected": []
+    },
+    {
+      "id": "s0011",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--usage"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0012",
+      "kind": "paragraph",
+      "text": "Display brief usage message.",
+      "protected": []
+    },
+    {
+      "id": "s0013",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]=level",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-d"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debuglevel"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0014",
+      "kind": "paragraph",
+      "text": "[[p0]][[p1]][[p2]] is an integer from 0 to 10. The default value if this parameter is not specified is 1 for client applications.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "level"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "The higher this value, the more detail will be logged to the log files about the activities of the server. At level 0, only critical errors and serious warnings will be logged. Level 1 is a reasonable level for day-to-day running - it generates a small amount of information about operations carried out.",
+      "protected": []
+    },
+    {
+      "id": "s0016",
+      "kind": "paragraph",
+      "text": "Levels above 1 will generate considerable amounts of log data, and should only be used when investigating a problem. Levels above 3 are designed for use only by developers and generate HUGE amounts of log data, most of which is extremely cryptic.",
+      "protected": []
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "Note that specifying this parameter here will override the [[p0]] parameter in the [[p1]] file.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "log level",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#LOGLEVEL"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0018",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debug-stdout"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "This will redirect debug output to STDOUT. By default all clients are logging to STDERR.",
+      "protected": []
+    },
+    {
+      "id": "s0020",
+      "kind": "term",
+      "text": "[[p0]]=<configuration file>",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--configfile"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0021",
+      "kind": "paragraph",
+      "text": "The file specified contains the configuration details required by the client. The information in this file can be general for client and server or only provide client specific like options such as [[p0]]. See [[p1]] for more information. The default configuration file name is determined at compile time.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "client smb encrypt",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#CLIENTSMBENCRYPT"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0022",
+      "kind": "term",
+      "text": "[[p0]]=<name>=<value>",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--option"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0023",
+      "kind": "paragraph",
+      "text": "Set the [[p0]] option \"<name>\" to value \"<value>\" from the command line. This overrides compiled-in defaults and options read from the configuration file. If a name or a value includes a space, wrap whole [[p1]]=name=value into quotes.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "smb.conf(5)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--option"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0024",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]=logdirectory",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-l"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--log-basename"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0025",
+      "kind": "paragraph",
+      "text": "Base directory name for log/debug files. The extension [[p0]] will be appended (e.g. log.smbclient, log.smbd, etc...). The log file is never removed by the client.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "\".progname\""
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0026",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--leak-report"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0027",
+      "kind": "paragraph",
+      "text": "Enable talloc leak reporting on exit.",
+      "protected": []
+    },
+    {
+      "id": "s0028",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--leak-report-full"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0029",
+      "kind": "paragraph",
+      "text": "Enable full talloc leak reporting on exit.",
+      "protected": []
+    },
+    {
+      "id": "s0030",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-V"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--version"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0031",
+      "kind": "paragraph",
+      "text": "Prints the program version number.",
+      "protected": []
+    },
+    {
+      "id": "s0032",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]=NAME-RESOLVE-ORDER",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-R"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--name-resolve"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0033",
+      "kind": "paragraph",
+      "text": "This option is used to determine what naming services and in what order to resolve host names to IP addresses. The option takes a space-separated string of different name resolution options. The best is to wrap the whole [[p0]]=NAME-RESOLVE-ORDER into quotes.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--name-resolve"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0034",
+      "kind": "paragraph",
+      "text": "The options are: \"lmhosts\", \"host\", \"wins\" and \"bcast\". They cause names to be resolved as follows:",
+      "protected": []
+    },
+    {
+      "id": "s0035",
+      "kind": "paragraph",
+      "text": "[[p0]]: Lookup an IP address in the Samba lmhosts file. If the line in lmhosts has no name type attached to the NetBIOS name (see the [[p1]] for details) then any name type matches for lookup.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "lmhosts"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "lmhosts(5)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/lmhosts.5.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0036",
+      "kind": "paragraph",
+      "text": "[[p0]]: Do a standard host name to IP address resolution, using the system [[p1]], NIS, or DNS lookups. This method of name resolution is operating system dependent, for instance on IRIX or Solaris this may be controlled by the [[p2]] file). Note that this method is only used if the NetBIOS name type being queried is the 0x20 (server) name type, otherwise it is ignored.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "host"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "/etc/hosts"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "/etc/nsswitch.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0037",
+      "kind": "paragraph",
+      "text": "[[p0]]: Query a name with the IP address listed in the [[p1]][[p2]][[p3]] parameter. If no WINS server has been specified this method will be ignored.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "wins"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "wins server"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0038",
+      "kind": "paragraph",
+      "text": "[[p0]]: Do a broadcast on each of the known local interfaces listed in the [[p1]][[p2]][[p3]] parameter. This is the least reliable of the name resolution methods as it depends on the target host being on a locally connected subnet.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "bcast"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "interfaces"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0039",
+      "kind": "paragraph",
+      "text": "If this parameter is not set then the name resolve order defined in the [[p0]] file parameter ([[p1]]) will be used.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "name resolve order",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#NAMERESOLVEORDER"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0040",
+      "kind": "paragraph",
+      "text": "The default order is lmhosts, host, wins, bcast. Without this parameter or any entry in the [[p0]] parameter of the [[p1]] file, the name resolution methods will be attempted in this order.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "name resolve order",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#NAMERESOLVEORDER"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0041",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]=SOCKETOPTIONS",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-O"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--socket-options"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0042",
+      "kind": "paragraph",
+      "text": "TCP socket options to set on the client socket. See the socket options parameter in the [[p0]] manual page for the list of valid options.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0043",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]=MAXPROTOCOL",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-m"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--max-protocol"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0044",
+      "kind": "paragraph",
+      "text": "The value of the parameter (a string) is the highest protocol level that will be supported by the client.",
+      "protected": []
+    },
+    {
+      "id": "s0045",
+      "kind": "paragraph",
+      "text": "Note that specifying this parameter here will override the [[p0]] parameter in the [[p1]] file.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "client max protocol",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#CLIENTMAXPROTOCOL"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0046",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]=NETBIOSNAME",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-n"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--netbiosname"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0047",
+      "kind": "paragraph",
+      "text": "This option allows you to override the NetBIOS name that Samba uses for itself. This is identical to setting the [[p0]] parameter in the [[p1]] file. However, a command line setting will take precedence over settings in [[p2]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "netbios name",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#NETBIOSNAME"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0048",
+      "kind": "term",
+      "text": "[[p0]]=SCOPE",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--netbios-scope"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0049",
+      "kind": "paragraph",
+      "text": "This specifies a NetBIOS scope that [[p0]] will use to communicate with when generating NetBIOS names. For details on the use of NetBIOS scopes, see rfc1001.txt and rfc1002.txt. NetBIOS scopes are [[p1]]very[[p2]] rarely used, only set this parameter if you are the system administrator in charge of all the NetBIOS systems you communicate with.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "nmblookup"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0050",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]=WORKGROUP",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-W"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--workgroup"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0051",
+      "kind": "paragraph",
+      "text": "Set the SMB domain of the username. This overrides the default domain which is the domain defined in smb.conf. If the domain specified is the same as the servers NetBIOS name, it causes the client to log on using the servers local SAM (as opposed to the Domain SAM).",
+      "protected": []
+    },
+    {
+      "id": "s0052",
+      "kind": "paragraph",
+      "text": "Note that specifying this parameter here will override the [[p0]] parameter in the [[p1]] file.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "workgroup",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#WORKGROUP"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0053",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]=REALM",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-r"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--realm"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0054",
+      "kind": "paragraph",
+      "text": "Set the realm for the domain.",
+      "protected": []
+    },
+    {
+      "id": "s0055",
+      "kind": "paragraph",
+      "text": "Note that specifying this parameter here will override the [[p0]] parameter in the [[p1]] file.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "realm",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#REALM"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0056",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]=[DOMAIN\\]USERNAME[[[p2]]ASSWORD]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-U"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--user"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "%P"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0057",
+      "kind": "paragraph",
+      "text": "Sets the SMB username or username and password.",
+      "protected": []
+    },
+    {
+      "id": "s0058",
+      "kind": "paragraph",
+      "text": "If [[p0]]ASSWORD is not specified, the user will be prompted. The client will first check the [[p1]] environment variable (which is also permitted to also contain the password separated by a %), then the [[p2]] variable (which is not permitted to contain a password) and if either exists, the value is used. If these environmental variables are not found, the username found in a Kerberos Credentials cache may be used.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "%P"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "USER"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "LOGNAME"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0059",
+      "kind": "paragraph",
+      "text": "A third option is to use a credentials file which contains the plaintext of the username and password. This option is mainly provided for scripts where the admin does not wish to pass the credentials on the command line or via environment variables. If this method is used, make certain that the permissions on the file restrict access from unwanted users. See the [[p0]][[p1]][[p2]] for more details.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-A"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0060",
+      "kind": "paragraph",
+      "text": "Be cautious about including passwords in scripts or passing user-supplied values onto the command line. For security it is better to let the Samba client tool ask for the password if needed, or obtain the password once with [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "kinit"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0061",
+      "kind": "paragraph",
+      "text": "While Samba will attempt to scrub the password from the process title (as seen in ps), this is after startup and so is subject to a race.",
+      "protected": []
+    },
+    {
+      "id": "s0062",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-N"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-pass"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0063",
+      "kind": "paragraph",
+      "text": "If specified, this parameter suppresses the normal password prompt from the client to the user. This is useful when accessing a service that does not require a password.",
+      "protected": []
+    },
+    {
+      "id": "s0064",
+      "kind": "paragraph",
+      "text": "Unless a password is specified on the command line or this parameter is specified, the client will request a password.",
+      "protected": []
+    },
+    {
+      "id": "s0065",
+      "kind": "paragraph",
+      "text": "If a password is specified on the command line and this option is also defined the password on the command line will be silently ignored and no password will be used.",
+      "protected": []
+    },
+    {
+      "id": "s0066",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--password"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0067",
+      "kind": "paragraph",
+      "text": "Specify the password on the commandline.",
+      "protected": []
+    },
+    {
+      "id": "s0068",
+      "kind": "paragraph",
+      "text": "Be cautious about including passwords in scripts or passing user-supplied values onto the command line. For security it is better to let the Samba client tool ask for the password if needed, or obtain the password once with [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "kinit"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0069",
+      "kind": "paragraph",
+      "text": "If [[p0]] is not specified, the tool will check the [[p1]] environment variable, followed by [[p2]] which is expected to contain an open file descriptor (FD) number.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--password"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "PASSWD"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "PASSWD_FD"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0070",
+      "kind": "paragraph",
+      "text": "Finally it will check [[p0]] (containing a file path to be opened). The file should only contain the password. Make certain that the permissions on the file restrict access from unwanted users!",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "PASSWD_FILE"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0071",
+      "kind": "paragraph",
+      "text": "While Samba will attempt to scrub the password from the process title (as seen in ps), this is after startup and so is subject to a race.",
+      "protected": []
+    },
+    {
+      "id": "s0072",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--pw-nt-hash"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0073",
+      "kind": "paragraph",
+      "text": "The supplied password is the NT hash.",
+      "protected": []
+    },
+    {
+      "id": "s0074",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]=filename",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-A"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--authentication-file"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0075",
+      "kind": "paragraph",
+      "text": "This option allows you to specify a file from which to read the username and password used in the connection. The format of the file is:",
+      "protected": []
+    },
+    {
+      "id": "s0076",
+      "kind": "paragraph",
+      "text": "Make certain that the permissions on the file restrict access from unwanted users!",
+      "protected": []
+    },
+    {
+      "id": "s0077",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-P"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--machine-pass"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0078",
+      "kind": "paragraph",
+      "text": "Use stored machine account password.",
+      "protected": []
+    },
+    {
+      "id": "s0079",
+      "kind": "term",
+      "text": "[[p0]]=DN",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--simple-bind-dn"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0080",
+      "kind": "paragraph",
+      "text": "DN to use for a simple bind.",
+      "protected": []
+    },
+    {
+      "id": "s0081",
+      "kind": "term",
+      "text": "[[p0]]=desired|required|off",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--use-kerberos"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0082",
+      "kind": "paragraph",
+      "text": "This parameter determines whether Samba client tools will try to authenticate using Kerberos. For Kerberos authentication you should use DNS names instead of IP addresses when connecting to a service. By default Samba client tools will try to use the default Kerberos credential cache (ccache). In case the ccache does not exist or [[p0]]|[[p1]] option was specified, clients will ask to enter a password and will obtain a Kerberos ticket (kinit) for you. If you want to use an alternative Kerberos credentical cache, use the [[p2]] option.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-U"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--user"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--use-krb5-ccache"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0083",
+      "kind": "paragraph",
+      "text": "Note that specifying this parameter here will override the [[p0]] parameter in the [[p1]] file.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "client use kerberos",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#CLIENTUSEKERBEROS"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0084",
+      "kind": "term",
+      "text": "[[p0]]=CCACHE",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--use-krb5-ccache"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0085",
+      "kind": "paragraph",
+      "text": "Specifies the credential cache location for Kerberos authentication.",
+      "protected": []
+    },
+    {
+      "id": "s0086",
+      "kind": "paragraph",
+      "text": "This will enforce [[p0]]=required.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--use-kerberos"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0087",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--use-winbind-ccache"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0088",
+      "kind": "paragraph",
+      "text": "Try to use the credential cache by winbind.",
+      "protected": []
+    },
+    {
+      "id": "s0089",
+      "kind": "term",
+      "text": "[[p0]]=sign|encrypt|off",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--client-protection"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0090",
+      "kind": "paragraph",
+      "text": "Sets the connection protection the client tool should use.",
+      "protected": []
+    },
+    {
+      "id": "s0091",
+      "kind": "paragraph",
+      "text": "Note that specifying this parameter here will override the [[p0]] parameter in the [[p1]] file.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "client protection",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#CLIENTPROTECTION"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0092",
+      "kind": "paragraph",
+      "text": "In case you need more fine grained control you can use: [[p0]], [[p1]], [[p2]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--option=clientsmbencrypt=OPTION"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--option=clientipcsigning=OPTION"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--option=clientsigning=OPTION"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0093",
+      "kind": "heading",
+      "text": "VERSION",
+      "protected": []
+    },
+    {
+      "id": "s0094",
+      "kind": "paragraph",
+      "text": "This man page is part of version 4.25.0 of the Samba suite.",
+      "protected": []
+    },
+    {
+      "id": "s0095",
+      "kind": "heading",
+      "text": "SEE ALSO",
+      "protected": []
+    },
+    {
+      "id": "s0096",
+      "kind": "paragraph",
+      "text": "[[p0]], [[p1]] and [[p2]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "smbd(8)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smbd.8.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "samba(7)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/samba.7.html"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "link",
+            "text": "net(8)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/net.8.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0097",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0098",
+      "kind": "paragraph",
+      "text": "The original Samba software and related utilities were created by Andrew Tridgell. Samba is now developed by the Samba Team as an Open Source project similar to the way the Linux kernel is developed.",
+      "protected": []
+    },
+    {
+      "id": "s0099",
+      "kind": "paragraph",
+      "text": "The samba-regedit man page was written by Karolin Seeger.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Name",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Synopsis",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "OPTIONS",
+      "segment": "s0008"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0009",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0010"
+            }
+          ]
+        },
+        {
+          "term": "s0011",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0012"
+            }
+          ]
+        },
+        {
+          "term": "s0013",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0014"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0015"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0016"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0017"
+            }
+          ]
+        },
+        {
+          "term": "s0018",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0019"
+            }
+          ]
+        },
+        {
+          "term": "s0020",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0021"
+            }
+          ]
+        },
+        {
+          "term": "s0022",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0023"
+            }
+          ]
+        },
+        {
+          "term": "s0024",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0025"
+            }
+          ]
+        },
+        {
+          "term": "s0026",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0027"
+            }
+          ]
+        },
+        {
+          "term": "s0028",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0029"
+            }
+          ]
+        },
+        {
+          "term": "s0030",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0031"
+            }
+          ]
+        },
+        {
+          "term": "s0032",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0033"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0034"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0035"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0036"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0037"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0038"
+                  }
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0039"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0040"
+            }
+          ]
+        },
+        {
+          "term": "s0041",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0042"
+            }
+          ]
+        },
+        {
+          "term": "s0043",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0044"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0045"
+            }
+          ]
+        },
+        {
+          "term": "s0046",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0047"
+            }
+          ]
+        },
+        {
+          "term": "s0048",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0049"
+            }
+          ]
+        },
+        {
+          "term": "s0050",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0051"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0052"
+            }
+          ]
+        },
+        {
+          "term": "s0053",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0054"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0055"
+            }
+          ]
+        },
+        {
+          "term": "s0056",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0057"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0058"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0059"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0060"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0061"
+            }
+          ]
+        },
+        {
+          "term": "s0062",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0063"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0064"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0065"
+            }
+          ]
+        },
+        {
+          "term": "s0066",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0067"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0068"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0069"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0070"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0071"
+            }
+          ]
+        },
+        {
+          "term": "s0072",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0073"
+            }
+          ]
+        },
+        {
+          "term": "s0074",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0075"
+            },
+            {
+              "type": "literal",
+              "text": "\t\t\t\tusername = <value>\n\t\t\t\tpassword = <value>\n\t\t\t\tdomain   = <value>\n\t\t\t"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0076"
+            }
+          ]
+        },
+        {
+          "term": "s0077",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0078"
+            }
+          ]
+        },
+        {
+          "term": "s0079",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0080"
+            }
+          ]
+        },
+        {
+          "term": "s0081",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0082"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0083"
+            }
+          ]
+        },
+        {
+          "term": "s0084",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0085"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0086"
+            }
+          ]
+        },
+        {
+          "term": "s0087",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0088"
+            }
+          ]
+        },
+        {
+          "term": "s0089",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0090"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0091"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0092"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "VERSION",
+      "segment": "s0093"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0094"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "SEE-ALSO",
+      "segment": "s0095"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0096"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "AUTHOR",
+      "segment": "s0097"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0098"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0099"
+    }
+  ]
+}

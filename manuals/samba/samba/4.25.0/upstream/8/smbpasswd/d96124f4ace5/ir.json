@@ -1,0 +1,1816 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "d96124f4ace57f86daf095379510fee15f9d0ea37009fcd293323f1066d4c138",
+  "extraction": {
+    "selector": ".refentry",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "Name",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "smbpasswd — change a user's SMB password",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "Synopsis",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]] [[[p1]]] [[[p2]] <config file>] [[[p3]]] [[[p4]]] [[[p5]]] [[[p6]] debuglevel] [[[p7]]] [[[p8]] <remote machine>] [[[p9]] <name resolve order>] [[[p10]]] [[[p11]] username[[[p12]]assword]] [[[p13]]] [[[p14]]] [[[p15]] pass] [[[p16]]] [[[p17]]] [[[p18]]] [username]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "smbpasswd"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-a"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "-c"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-x"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "-d"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "-e"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "-D"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "code",
+            "text": "-n"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "code",
+            "text": "-r"
+          }
+        },
+        {
+          "token": "[[p9]]",
+          "inline": {
+            "tag": "code",
+            "text": "-R"
+          }
+        },
+        {
+          "token": "[[p10]]",
+          "inline": {
+            "tag": "code",
+            "text": "-m"
+          }
+        },
+        {
+          "token": "[[p11]]",
+          "inline": {
+            "tag": "code",
+            "text": "-U"
+          }
+        },
+        {
+          "token": "[[p12]]",
+          "inline": {
+            "tag": "code",
+            "text": "%p"
+          }
+        },
+        {
+          "token": "[[p13]]",
+          "inline": {
+            "tag": "code",
+            "text": "-h"
+          }
+        },
+        {
+          "token": "[[p14]]",
+          "inline": {
+            "tag": "code",
+            "text": "-s"
+          }
+        },
+        {
+          "token": "[[p15]]",
+          "inline": {
+            "tag": "code",
+            "text": "-w"
+          }
+        },
+        {
+          "token": "[[p16]]",
+          "inline": {
+            "tag": "code",
+            "text": "-W"
+          }
+        },
+        {
+          "token": "[[p17]]",
+          "inline": {
+            "tag": "code",
+            "text": "-i"
+          }
+        },
+        {
+          "token": "[[p18]]",
+          "inline": {
+            "tag": "code",
+            "text": "-L"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "This tool is part of the [[p0]] suite.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "samba(7)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/samba.7.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "The smbpasswd program has several different functions, depending on whether it is run by the [[p0]]root[[p1]] user or not. When run as a normal user it allows the user to change the password used for their SMB sessions on any machines that store SMB passwords.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "paragraph",
+      "text": "By default (when run with no arguments) it will attempt to change the current user's SMB password on the local machine. This is similar to the way the [[p0]] program works. [[p1]] differs from how the passwd program works however in that it is not [[p2]]setuid root[[p3]] but works in a client-server mode and communicates with a locally running [[p4]]. As a consequence in order for this to succeed the smbd daemon must be running on the local machine. On a UNIX machine the encrypted SMB passwords are usually stored in the default passdb backend.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "passwd(1)"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "smbpasswd"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "link",
+            "text": "smbd(8)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smbd.8.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "When run by an ordinary user with no options, smbpasswd will prompt them for their old SMB password and then ask them for their new password twice, to ensure that the new password was typed correctly. No passwords will be echoed on the screen whilst being typed. If you have a blank SMB password (specified by the string \"NO PASSWORD\" in the smbpasswd file) then just press the <Enter> key when asked for your old password.",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "smbpasswd can also be used by a normal user to change their SMB password on remote machines, such as Windows NT Primary Domain Controllers. See the ([[p0]][[p1]][[p2]]) and [[p3]][[p4]][[p5]] options below.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-r"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "-U"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0011",
+      "kind": "paragraph",
+      "text": "When run by root, smbpasswd allows new users to be added and deleted in the smbpasswd file, as well as allows changes to the attributes of the user in this file to be made. When run by root, [[p0]] accesses the local smbpasswd file directly, thus enabling changes to be made even if smbd is not running.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "smbpasswd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0012",
+      "kind": "heading",
+      "text": "OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0013",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-a"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0014",
+      "kind": "paragraph",
+      "text": "This option specifies that the username following should be added to the local smbpasswd file, with the new password typed (type <Enter> for the old password). This option is ignored if the username following already exists in the smbpasswd file and it is treated like a regular change password command. Note that the default passdb backends require the user to already exist in the system password file (usually [[p0]]), else the request to add the user will fail.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/etc/passwd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "This option is only available when running smbpasswd as root.",
+      "protected": []
+    },
+    {
+      "id": "s0016",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-c"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "This option can be used to specify the path and file name of the [[p0]] configuration file when it is important to use other than the default file and / or location.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0018",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-x"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "This option specifies that the username following should be deleted from the local smbpasswd file.",
+      "protected": []
+    },
+    {
+      "id": "s0020",
+      "kind": "paragraph",
+      "text": "This option is only available when running smbpasswd as root.",
+      "protected": []
+    },
+    {
+      "id": "s0021",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-d"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0022",
+      "kind": "paragraph",
+      "text": "This option specifies that the username following should be [[p0]] in the local smbpasswd file. This is done by writing a [[p1]] flag into the account control space in the smbpasswd file. Once this is done all attempts to authenticate via SMB using this username will fail.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "disabled"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "'D'"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0023",
+      "kind": "paragraph",
+      "text": "If the smbpasswd file is in the 'old' format (pre-Samba 2.0 format) there is no space in the user's password entry to write this information and the command will FAIL. See [[p0]] for details on the 'old' and new password file formats.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "smbpasswd(5)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smbpasswd.5.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0024",
+      "kind": "paragraph",
+      "text": "This option is only available when running smbpasswd as root.",
+      "protected": []
+    },
+    {
+      "id": "s0025",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-e"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0026",
+      "kind": "paragraph",
+      "text": "This option specifies that the username following should be [[p0]] in the local smbpasswd file, if the account was previously disabled. If the account was not disabled this option has no effect. Once the account is enabled then the user will be able to authenticate via SMB once again.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "enabled"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0027",
+      "kind": "paragraph",
+      "text": "If the smbpasswd file is in the 'old' format, then [[p0]] will FAIL to enable the account. See [[p1]] for details on the 'old' and new password file formats.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "smbpasswd"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "smbpasswd(5)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smbpasswd.5.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0028",
+      "kind": "paragraph",
+      "text": "This option is only available when running smbpasswd as root.",
+      "protected": []
+    },
+    {
+      "id": "s0029",
+      "kind": "term",
+      "text": "[[p0]] debuglevel",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-D"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0030",
+      "kind": "paragraph",
+      "text": "[[p0]][[p1]][[p2]] is an integer from 0 to 10. The default value if this parameter is not specified is zero.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "debuglevel"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0031",
+      "kind": "paragraph",
+      "text": "The higher this value, the more detail will be logged to the log files about the activities of smbpasswd. At level 0, only critical errors and serious warnings will be logged.",
+      "protected": []
+    },
+    {
+      "id": "s0032",
+      "kind": "paragraph",
+      "text": "Levels above 1 will generate considerable amounts of log data, and should only be used when investigating a problem. Levels above 3 are designed for use only by developers and generate HUGE amounts of log data, most of which is extremely cryptic.",
+      "protected": []
+    },
+    {
+      "id": "s0033",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-n"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0034",
+      "kind": "paragraph",
+      "text": "This option specifies that the username following should have their password set to null (i.e. a blank password) in the local smbpasswd file. This is done by writing the string \"NO PASSWORD\" as the first part of the first password stored in the smbpasswd file.",
+      "protected": []
+    },
+    {
+      "id": "s0035",
+      "kind": "paragraph",
+      "text": "Note that to allow users to logon to a Samba server once the password has been set to \"NO PASSWORD\" in the smbpasswd file the administrator must set the following parameter in the [global] section of the [[p0]] file :",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "smb.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0036",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "null passwords = yes"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0037",
+      "kind": "paragraph",
+      "text": "This option is only available when running smbpasswd as root.",
+      "protected": []
+    },
+    {
+      "id": "s0038",
+      "kind": "term",
+      "text": "[[p0]] remote machine name",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-r"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0039",
+      "kind": "paragraph",
+      "text": "This option allows a user to specify what machine they wish to change their password on. Without this parameter smbpasswd defaults to the local host. The [[p0]][[p1]][[p2]] is the NetBIOS name of the SMB/CIFS server to contact to attempt the password change. This name is resolved into an IP address using the standard name resolution mechanism in all programs of the Samba suite. See the [[p3]][[p4]][[p5]] parameter for details on changing this resolving mechanism.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "remote machine name"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "-R name resolve order"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0040",
+      "kind": "paragraph",
+      "text": "The username whose password is changed is that of the current UNIX logged on user. See the [[p0]][[p1]][[p2]] parameter for details on changing the password for a different username.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-U username"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0041",
+      "kind": "paragraph",
+      "text": "Note that if changing a Windows NT Domain password the remote machine specified must be the Primary Domain Controller for the domain (Backup Domain Controllers only have a read-only copy of the user account database and will not allow the password change).",
+      "protected": []
+    },
+    {
+      "id": "s0042",
+      "kind": "paragraph",
+      "text": "[[p0]]Note[[p1]] that Windows 95/98 do not have a real password database so it is not possible to change passwords specifying a Win95/98 machine as remote machine target.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0043",
+      "kind": "term",
+      "text": "[[p0]] name resolve order",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-R"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0044",
+      "kind": "paragraph",
+      "text": "This option allows the user of smbpasswd to determine what name resolution services to use when looking up the NetBIOS name of the host being connected to.",
+      "protected": []
+    },
+    {
+      "id": "s0045",
+      "kind": "paragraph",
+      "text": "The options are :\"lmhosts\", \"host\", \"wins\" and \"bcast\". They cause names to be resolved as follows:",
+      "protected": []
+    },
+    {
+      "id": "s0046",
+      "kind": "paragraph",
+      "text": "[[p0]]: Lookup an IP address in the Samba lmhosts file. If the line in lmhosts has no name type attached to the NetBIOS name (see the [[p1]] for details) then any name type matches for lookup.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "lmhosts"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "lmhosts(5)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/lmhosts.5.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0047",
+      "kind": "paragraph",
+      "text": "[[p0]]: Do a standard host name to IP address resolution, using the system [[p1]], NIS, or DNS lookups. This method of name resolution is operating system depended for instance on IRIX or Solaris this may be controlled by the [[p2]] file). Note that this method is only used if the NetBIOS name type being queried is the 0x20 (server) name type, otherwise it is ignored.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "host"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "/etc/hosts"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "/etc/nsswitch.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0048",
+      "kind": "paragraph",
+      "text": "[[p0]]: Query a name with the IP address listed in the [[p1]][[p2]][[p3]] parameter. If no WINS server has been specified this method will be ignored.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "wins"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "wins server"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0049",
+      "kind": "paragraph",
+      "text": "[[p0]]: Do a broadcast on each of the known local interfaces listed in the [[p1]][[p2]][[p3]] parameter. This is the least reliable of the name resolution methods as it depends on the target host being on a locally connected subnet.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "bcast"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "interfaces"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0050",
+      "kind": "paragraph",
+      "text": "The default order is [[p0]] and without this parameter or any entry in the [[p1]] file the name resolution methods will be attempted in this order.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "lmhosts, host, wins, bcast"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "smb.conf(5)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0051",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-m"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0052",
+      "kind": "paragraph",
+      "text": "This option tells smbpasswd that the account being changed is a MACHINE account. Currently this is used when Samba is being used as an NT Primary Domain Controller.",
+      "protected": []
+    },
+    {
+      "id": "s0053",
+      "kind": "paragraph",
+      "text": "This option is only available when running smbpasswd as root.",
+      "protected": []
+    },
+    {
+      "id": "s0054",
+      "kind": "term",
+      "text": "[[p0]] username",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-U"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0055",
+      "kind": "paragraph",
+      "text": "This option may only be used in conjunction with the [[p0]][[p1]][[p2]] option. When changing a password on a remote machine it allows the user to specify the user name on that machine whose password will be changed. It is present to allow users who have different user names on different systems to change these passwords.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-r"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0056",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-h"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0057",
+      "kind": "paragraph",
+      "text": "This option prints the help string for [[p0]], selecting the correct one for running as root or as an ordinary user.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "smbpasswd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0058",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-s"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0059",
+      "kind": "paragraph",
+      "text": "This option causes smbpasswd to be silent (i.e. not issue prompts) and to read its old and new passwords from standard input, rather than from [[p0]] (like the [[p1]] program does). This option is to aid people writing scripts to drive smbpasswd",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/dev/tty"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "passwd(1)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0060",
+      "kind": "term",
+      "text": "[[p0]] password",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-w"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0061",
+      "kind": "paragraph",
+      "text": "This parameter is only available if Samba has been compiled with LDAP support. The [[p0]][[p1]][[p2]] switch is used to specify the password to be used with the [[p3]]. Note that the password is stored in the [[p4]] and is keyed off of the admin's DN. This means that if the value of [[p5]][[p6]][[p7]] ever changes, the password will need to be manually updated as well.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-w"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "link",
+            "text": "ldap admin dn",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#LDAPADMINDN"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "secrets.tdb"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "ldap admin dn"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0062",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-W"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0063",
+      "kind": "paragraph",
+      "text": "[[p0]] This option is same as \"[[p1]]\" except that the password should be entered using stdin.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "NOTE:"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-w"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0064",
+      "kind": "paragraph",
+      "text": "This parameter is only available if Samba has been compiled with LDAP support. The [[p0]][[p1]][[p2]] switch is used to specify the password to be used with the [[p3]]. Note that the password is stored in the [[p4]] and is keyed off of the admin's DN. This means that if the value of [[p5]][[p6]][[p7]] ever changes, the password will need to be manually updated as well.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-W"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "link",
+            "text": "ldap admin dn",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#LDAPADMINDN"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "secrets.tdb"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "ldap admin dn"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0065",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-i"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0066",
+      "kind": "paragraph",
+      "text": "This option tells smbpasswd that the account being changed is an interdomain trust account. Currently this is used when Samba is being used as an NT Primary Domain Controller. The account contains the info about another trusted domain.",
+      "protected": []
+    },
+    {
+      "id": "s0067",
+      "kind": "paragraph",
+      "text": "This option is only available when running smbpasswd as root.",
+      "protected": []
+    },
+    {
+      "id": "s0068",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-L"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0069",
+      "kind": "paragraph",
+      "text": "Run in local mode.",
+      "protected": []
+    },
+    {
+      "id": "s0070",
+      "kind": "term",
+      "text": "username",
+      "protected": []
+    },
+    {
+      "id": "s0071",
+      "kind": "paragraph",
+      "text": "This specifies the username for all of the [[p0]]root only[[p1]] options to operate on. Only root can specify this parameter as only root has the permission needed to modify attributes directly in the local smbpasswd file.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0072",
+      "kind": "heading",
+      "text": "NOTES",
+      "protected": []
+    },
+    {
+      "id": "s0073",
+      "kind": "paragraph",
+      "text": "Since [[p0]] works in client-server mode communicating with a local smbd for a non-root user then the smbd daemon must be running for this to work. A common problem is to add a restriction to the hosts that may access the [[p1]] running on the local machine by specifying either [[p2]][[p3]][[p4]] or [[p5]][[p6]][[p7]] entry in the [[p8]] file and neglecting to allow \"localhost\" access to the smbd.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "smbpasswd"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "smbd"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "allow hosts"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "deny hosts"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "link",
+            "text": "smb.conf(5)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0074",
+      "kind": "paragraph",
+      "text": "In addition, the smbpasswd command is only useful if Samba has been set up to use encrypted passwords.",
+      "protected": []
+    },
+    {
+      "id": "s0075",
+      "kind": "heading",
+      "text": "VERSION",
+      "protected": []
+    },
+    {
+      "id": "s0076",
+      "kind": "paragraph",
+      "text": "This man page is part of version 4.25.0 of the Samba suite.",
+      "protected": []
+    },
+    {
+      "id": "s0077",
+      "kind": "heading",
+      "text": "SEE ALSO",
+      "protected": []
+    },
+    {
+      "id": "s0078",
+      "kind": "paragraph",
+      "text": "[[p0]], [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "smbpasswd(5)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smbpasswd.5.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "Samba(7)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/Samba.7.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0079",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0080",
+      "kind": "paragraph",
+      "text": "The original Samba software and related utilities were created by Andrew Tridgell. Samba is now developed by the Samba Team as an Open Source project similar to the way the Linux kernel is developed.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Name",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Synopsis",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0008"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0009"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0010"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0011"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "OPTIONS",
+      "segment": "s0012"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0013",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0014"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0015"
+            }
+          ]
+        },
+        {
+          "term": "s0016",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0017"
+            }
+          ]
+        },
+        {
+          "term": "s0018",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0019"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0020"
+            }
+          ]
+        },
+        {
+          "term": "s0021",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0022"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0023"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0024"
+            }
+          ]
+        },
+        {
+          "term": "s0025",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0026"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0027"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0028"
+            }
+          ]
+        },
+        {
+          "term": "s0029",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0030"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0031"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0032"
+            }
+          ]
+        },
+        {
+          "term": "s0033",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0034"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0035"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0036"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0037"
+            }
+          ]
+        },
+        {
+          "term": "s0038",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0039"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0040"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0041"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0042"
+            }
+          ]
+        },
+        {
+          "term": "s0043",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0044"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0045"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0046"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0047"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0048"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0049"
+                  }
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0050"
+            }
+          ]
+        },
+        {
+          "term": "s0051",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0052"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0053"
+            }
+          ]
+        },
+        {
+          "term": "s0054",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0055"
+            }
+          ]
+        },
+        {
+          "term": "s0056",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0057"
+            }
+          ]
+        },
+        {
+          "term": "s0058",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0059"
+            }
+          ]
+        },
+        {
+          "term": "s0060",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0061"
+            }
+          ]
+        },
+        {
+          "term": "s0062",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0063"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0064"
+            }
+          ]
+        },
+        {
+          "term": "s0065",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0066"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0067"
+            }
+          ]
+        },
+        {
+          "term": "s0068",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0069"
+            }
+          ]
+        },
+        {
+          "term": "s0070",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0071"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "NOTES",
+      "segment": "s0072"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0073"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0074"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "VERSION",
+      "segment": "s0075"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0076"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "SEE-ALSO",
+      "segment": "s0077"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0078"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "AUTHOR",
+      "segment": "s0079"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0080"
+    }
+  ]
+}

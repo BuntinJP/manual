@@ -1,0 +1,53 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>vfs_ceph_snapshots</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="vfs_ceph_snapshots.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>vfs_ceph_snapshots &#8212; 
+		Expose CephFS snapshots as shadow-copies
+	</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="literal">vfs objects = ceph_snapshots</code></p></div></div><div class="refsect1"><a name="id1337"></a><h2>DESCRIPTION</h2><p>This VFS module is part of the
+	<a class="citerefentry" href="samba.8.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(8)</span></a> suite.</p><p>
+		The <code class="literal">vfs_ceph_snapshots</code> VFS module exposes
+		CephFS snapshots for use by Samba. When enabled, SMB clients
+		such as Windows Explorer's Previous Versions dialog, can
+		enumerate snapshots and access them via "timewarp" tokens.
+	</p><p>
+		This module can be combined with <code class="literal">vfs_ceph</code>,
+		but <code class="literal">vfs_ceph_snapshots</code> must be listed first
+		in the <code class="literal">vfs objects</code> parameter list.
+	</p><p>
+		CephFS support for ceph.snap.btime virtual extended attributes
+		is required for this module to work properly. This support was
+		added via https://tracker.ceph.com/issues/38838.
+	</p></div><div class="refsect1"><a name="id1338"></a><h2>CONFIGURATION</h2><p>
+		When used atop <code class="literal">vfs_ceph</code>,
+		<code class="literal">path</code> refers to an absolute path within the
+		Ceph filesystem and should not be mounted locally:
+	</p><pre class="programlisting">
+		<em class="parameter"><code>[share]</code></em>
+		<a class="link" href="smb.conf.5.html#VFSOBJECTS" target="_top">vfs objects = ceph_snapshots ceph</a>
+		<a class="link" href="smb.conf.5.html#PATH" target="_top">path = /non-mounted/cephfs/path</a>
+		<a class="link" href="smb.conf.5.html#KERNELSHAREMODES" target="_top">kernel share modes = no</a>
+</pre><p>
+		<code class="literal">vfs_ceph_snapshots</code> can also be used atop a
+		kernel CephFS mounted share path, without
+		<code class="literal">vfs_ceph</code>. In this case Samba's default VFS
+		backend <code class="literal">vfs_default</code> is used:
+	</p><pre class="programlisting">
+		<em class="parameter"><code>[share]</code></em>
+		<a class="link" href="smb.conf.5.html#VFSOBJECTS" target="_top">vfs objects = ceph_snapshots</a>
+		<a class="link" href="smb.conf.5.html#PATH" target="_top">path = /mnt/cephfs/</a>
+</pre></div><div class="refsect1"><a name="id1339"></a><h2>OPTIONS</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term">ceph:snapdir = subdirectory</span></dt><dd><p>
+			Allows for the configuration of the special CephFS
+			snapshot subdirectory name. This parameter should only
+			be changed from the ".snap" default if the ceph.conf
+			<code class="literal">client snapdir</code> or
+			<code class="literal">snapdirname</code> mount option settings
+			are changed from their matching ".snap" defaults.
+		</p><p>
+			Default:
+			<a class="link" href="smb.conf.5.html#CEPH:SNAPDIR" target="_top">ceph:snapdir = .snap</a>
+		</p><p>
+			Example:
+			<a class="link" href="smb.conf.5.html#CEPH:SNAPDIR" target="_top">ceph:snapdir = .snapshots</a>
+		</p></dd></dl></div></div><div class="refsect1"><a name="id1340"></a><h2>VERSION</h2><p>
+		This man page is part of version 4.25.0 of the Samba suite.
+	</p></div><div class="refsect1"><a name="id1341"></a><h2>AUTHOR</h2><p>The original Samba software and related utilities
+	were created by Andrew Tridgell. Samba is now developed
+	by the Samba Team as an Open Source project similar
+	to the way the Linux kernel is developed.</p></div></div></body></html>

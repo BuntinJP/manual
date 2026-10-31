@@ -1,0 +1,94 @@
+<!doctype html><html><head><meta charset="utf-8"><title>cifscreds</title></head><body><main>
+<section id="cifscreds">
+<h1>cifscreds</h1>
+<section id="manage-ntlm-credentials-in-kernel-keyring">
+<h2>manage NTLM credentials in kernel keyring</h2>
+<dl class="field-list simple">
+<dt>Manual section<span class="colon">:</span></dt>
+<dd><p>1</p>
+</dd>
+</dl>
+<section id="synopsis">
+<h3>SYNOPSIS</h3>
+<blockquote>
+<p>cifscreds add|clear|clearall|update [-u username] [-d] host|domain [-t timeout]</p>
+</blockquote>
+</section>
+<section id="description">
+<h3>DESCRIPTION</h3>
+<p>The <span class="docutils literal">cifscreds</span>  program is a tool for managing credentials (username
+and password) for the purpose of establishing sessions in multiuser
+mounts.</p>
+<p>When a cifs filesystem is mounted with the &quot;multiuser&quot; option, and does
+not use krb5 authentication, it needs to be able to get the credentials
+for each user from somewhere. The <span class="docutils literal">cifscreds</span> program is the tool used
+to provide these credentials to the kernel.</p>
+<p>The first non-option argument to cifscreds is a command (see the
+<a class="reference internal" href="#commands">COMMANDS</a>  section below). The second non-option argument is a hostname
+or address, or an NT domain name.</p>
+</section>
+<section id="commands">
+<h3>COMMANDS</h3>
+<dl class="simple">
+<dt>add</dt>
+<dd><p>Add credentials to the kernel to be used for connecting to the given
+server, or servers in the given domain.</p>
+</dd>
+<dt>clear</dt>
+<dd><p>Clear credentials for a particular host or domain from the kernel.</p>
+</dd>
+<dt>clearall</dt>
+<dd><p>Clear all cifs credentials from the kernel.</p>
+</dd>
+<dt>update</dt>
+<dd><p>Update stored credentials in the kernel with a new username and
+password.</p>
+</dd>
+</dl>
+</section>
+<section id="options">
+<h3>OPTIONS</h3>
+<dl class="option-list">
+<dt><kbd><span class="option">-d</span>, <span class="option">--domain</span></kbd></dt>
+<dd><p>The provided host/domain argument is a NT domainname.</p>
+<p>Ordinarily the second argument provided to cifscreds is treated as a
+hostname or IP address. This option causes the cifscreds program to
+treat that argument as an NT domainname instead.</p>
+<p>If there are not host specific credentials for the mounted server, then
+the kernel will next look for a set of domain credentials equivalent to
+the domain= option provided at mount time.</p>
+</dd>
+<dt><kbd><span class="option">-u</span>, <span class="option">--username</span></kbd></dt>
+<dd><p>Ordinarily, the username is derived from the unix username of the user
+adding the credentials. This option allows the user to substitute a
+different username.</p>
+</dd>
+<dt><kbd><span class="option">-t</span>, <span class="option">--timeout</span></kbd></dt>
+<dd><p>Sets the key timeout in seconds. If not set, will use the system default
+timeout for logon keys.</p>
+</dd>
+</dl>
+</section>
+<section id="notes">
+<h3>NOTES</h3>
+<p>The cifscreds utility requires a kernel built with support for the
+<span class="docutils literal">login</span> key type. That key type was added in v3.3 in mainline Linux
+kernels.</p>
+<p>Since <span class="docutils literal">cifscreds</span> adds keys to the session keyring, it is highly
+recommended that one use <span class="docutils literal">pam_keyinit</span> to ensure that a session keyring
+is established at login time.</p>
+</section>
+<section id="see-also">
+<h3>SEE ALSO</h3>
+<p>pam_keyinit(8)</p>
+</section>
+<section id="authors">
+<h3>AUTHORS</h3>
+<p>The cifscreds program was originally developed by Igor Druzhinin
+&lt;<a class="reference external" href="mailto:jaxbrigs&#64;gmail.com">jaxbrigs&#64;gmail.com</a>&gt;. This manpage and a redesign of the code was done
+by Jeff Layton &lt;<a class="reference external" href="mailto:jlayton&#64;samba.org">jlayton&#64;samba.org</a>&gt;.</p>
+</section>
+</section>
+</section>
+</main>
+</body></html>

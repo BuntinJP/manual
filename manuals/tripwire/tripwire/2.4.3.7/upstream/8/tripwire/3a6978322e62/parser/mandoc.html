@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    table.head, table.foot { width: 100%; }
+    td.head-rtitle, td.foot-os { text-align: right; }
+    td.head-vol { text-align: center; }
+    .Nd, .Bf, .Op { display: inline; }
+    .Pa, .Ad { font-style: italic; }
+    .Ms { font-weight: bold; }
+    .Bl-diag > dt { font-weight: bold; }
+    code.Nm, .Fl, .Cm, .Ic, code.In, .Fd, .Fn, .Cd { font-weight: bold;
+      font-family: inherit; }
+  </style>
+  <title>TRIPWIRE(8)</title>
+</head>
+<!-- This is an automatically generated file.  Do not edit.
+   t
+   Do not move or remove previous line.
+   Used by some man commands to know that tbl should be used.
+  
+   Macros added by addw@phcomp.co.uk for those systems where the an
+   troff macro package doesn't know about .Ps & .Pe.
+   Note it is assumed that CW is a constant width font.
+   Ps - Start display text
+ -->
+<body>
+<div class="head" role="doc-pageheader" aria-label="Manual header
+  line"><span class="head-ltitle">TRIPWIRE(8)</span>
+  <span class="head-vol">System Manager's Manual</span>
+  <span class="head-rtitle">TRIPWIRE(8)</span></div>
+<main class="manual-text">
+<section class="Sh">
+<h2 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h2>
+<p class="Pp">tripwire - a file integrity checker for UNIX-like systems</p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h2>
+<p class="Pp"><b>tripwire</b> { <b>-m i</b> | <b>--init</b> } [
+    <i>options...</i> ]
+  <br/>
+  <b>tripwire</b> { <b>-m c</b> | <b>--check</b> } [ <i>options...</i> ]
+  <br/>
+  [ <i>object1</i> [ <i>object2...</i> ]]
+  <br/>
+  <b>tripwire</b> { <b>-m u</b> | <b>--update</b> } [ <i>options...</i> ]
+  <br/>
+  <b>tripwire</b> { <b>-m p</b> | <b>--update-policy</b> } [ <i>options...</i> ]
+  <br/>
+  <i>policyfile.txt</i>
+  <br/>
+  <b>tripwire</b> { <b>-m t</b> | <b>--test</b> } [ <i>options...</i> ]</p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h2>
+<section class="Ss">
+<h3 class="Ss" id="Database_Initialization_Mode"><a class="permalink" href="#Database_Initialization_Mode">Database
+  Initialization Mode</a></h3>
+<p class="Pp">Running <b>tripwire</b> in Database Initialization mode is
+    typically one of the first steps in setting up <i>Tripwire</i> for regular
+    operation. This mode creates a baseline database in the location specified
+    by the <span class="Li">DBFILE</span> variable in the <i>Tripwire</i>
+    configuration file. The database is essentially a snapshot of the objects
+    residing on the system. During later <i>Tripwire</i> integrity checks, this
+    database serves as the basis for comparison.</p>
+<p class="Pp">When run in Database Initialization mode, <b>tripwire</b> reads
+    the policy file, generates a database based on its contents, and then
+    cryptographically signs the resulting database. Options can be entered on
+    the command line to specify which policy, configuration, and key files are
+    used to create the database. The filename for the database can be specified
+    as well. If no options are specified, the default values from the current
+    configuration file are used.</p>
+</section>
+<section class="Ss">
+<h3 class="Ss">Integrity Checking Mode</h3>
+<p class="Pp">After building the <i>Tripwire</i> database, the next step is
+    typically to run <b>tripwire</b> in Integrity Checking mode. This mode scans
+    the system for violations, as specified in the policy file. Using the policy
+    file rules, <i>Tripwire</i> will compare the state of the current file
+    system against the initial baseline database. An integrity checking report
+    is printed to <i>stdout</i> and is saved in the location specified by the
+    <span class="Li">REPORTFILE</span> setting in the <i>Tripwire</i>
+    configuration file.</p>
+<p class="Pp">The generated report describes each policy file violation in
+    detail, depending on whether the specified file system object was added,
+    deleted, or changed. Each report item lists the properties of the object as
+    it currently resides on the file system, and, if appropriate, the old value
+    stored in the database. If there are differences between the database and
+    the current system, the administrator can either fix the problem by
+    replacing the current file with the correct file (e.g., an intruder replaced
+    <i>/bin/login</i>), or update the database to reflect the new file (e.g., a
+    fellow system administrator installed a new version of
+    <i>/usr/local/bin/emacs</i>). The (<b>&#x2010;I</b> or
+    <b>&#x2010;&#x2010;interactive</b>) option launches an editor that allows
+    the user to update the database quickly. The Database Update mode of
+    <b>tripwire</b> can also be used.</p>
+</section>
+<section class="Ss">
+<h3 class="Ss" id="Database_Update_Mode"><a class="permalink" href="#Database_Update_Mode">Database
+  Update Mode</a></h3>
+<p class="Pp">Running <b>tripwire</b> in Database Update mode allows any
+    differences between the database and the current system to be reconciled.
+    This will prevent the violation from showing up in future reports. If the
+    reported change is unexpected and potentially malicious, then the changed
+    file should be replaced with the original version. If there is a valid
+    reason for the change, the database must be changed to match the current
+    files.</p>
+<p class="Pp">In Database Update mode, the items to be changed are specified in
+    a &quot;ballot box&quot; in the plain text report that is launched in an
+    editor program. The entries to be updated are specified by leaving the
+    &quot;x&quot; next to each policy violation. After the user exits the editor
+    and provides the correct local passphrase, <b>tripwire</b> will update the
+    database. Options to control this operation include the
+    (<b>&#x2010;Z</b>&#x00A0;or&#x00A0;<b>&#x2010;&#x2010;secure&#x2010;mode</b>)
+    and
+    (<b>&#x2010;a</b>&#x00A0;or&#x00A0;<b>&#x2010;&#x2010;accept&#x2010;all</b>)
+    flags.</p>
+</section>
+<section class="Ss">
+<h3 class="Ss" id="Policy_Update_Mode"><a class="permalink" href="#Policy_Update_Mode">Policy
+  Update Mode</a></h3>
+<p class="Pp">Policy update mode is used by <b>tripwire</b> to change or update
+    the policy file and to synchronize an earlier database with new policy file
+    information. The filename of the new clear text version of the policy file
+    is specified on the command line. The new policy file is compared to the
+    existing version, and the database is updated according to the new policy
+    rules. Any changes in the database since the last integrity check will be
+    detected and reported. How these violations are interpreted depends on the
+    security mode specified with the (<b>&#x2010;Z</b> or
+    <b>&#x2010;&#x2010;secure&#x2010;mode</b>) option. In <b>high</b> security
+    mode (the default), <i>Tripwire</i> will print a list of violations and exit
+    without making changes to the database. In <b>low</b> security mode, the
+    violations are still reported, but changes to the database are made
+    automatically.</p>
+<p class="Pp">Because the policy and database files are binary-encoded and
+    cryptographically signed, the user will be prompted for the site and local
+    passphrases to change the policy settings. After the database is
+    successfully updated, the database and policy files are re-encoded and
+    signed.</p>
+</section>
+<section class="Ss">
+<h3 class="Ss" id="Test_Mode"><a class="permalink" href="#Test_Mode">Test
+  Mode</a></h3>
+<p class="Pp">Test mode is used to check the operation of the <i>Tripwire</i>
+    email notification system. When run in this mode, <i>Tripwire</i> will use
+    the email notification settings specified in the configuration file to send
+    a test email message. If MAILMETHOD is set to SMTP, the SMTPHOST and
+    SMTPPORT values will be used to send email. If MAILMETHOD is set to
+    SENDMAIL, the MAILPROGRAM value will be used. If email notification is
+    working correctly, the address specified on the command line will receive
+    the following message:</p>
+<p class="Pp"></p>
+<pre>
+<br/>
+<span class="Li">To: user@domain.com </span>
+<span class="Li">From: user &lt;user@domain.com&gt; </span>
+<span class="Li">Subject: Test email message from Tripwire </span>
+<span class="Li">If you receive this message, email notification</span>
+<span class="Li">from Tripwire is working correctly.</span></pre>
+<br/>
+<p class="Pp">Test mode only tests email notification for the address specified
+    on the command-line, and does not check for errors in the syntax used with
+    the <span class="Li">emailto</span> attribute in the policy file.</p>
+</section>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h2>
+<section class="Ss">
+<h3 class="Ss" id="Database_Initialization_mode:"><a class="permalink" href="#Database_Initialization_mode:">Database
+  Initialization mode:</a></h3>
+<div class="Bd-indent">
+<table class="tbl">
+  <tr>
+    <td><b>-m i</b></td>
+    <td><b>--init</b></td>
+  </tr>
+  <tr>
+    <td><b>-v</b></td>
+    <td><b>--verbose</b></td>
+  </tr>
+  <tr>
+    <td><b>-s</b></td>
+    <td><b>--silent</b>,<b> --quiet</b></td>
+  </tr>
+  <tr>
+    <td><b>-c </b><i>cfgfile</i><b></b></td>
+    <td><b>--cfgfile </b><i>cfgfile</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-p </b><i>polfile</i><b></b></td>
+    <td><b>--polfile </b><i>polfile</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-d </b><i>database</i><b></b></td>
+    <td><b>--dbfile </b><i>database</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-S </b><i>sitekey</i><b></b></td>
+    <td><b>--site-keyfile </b><i>sitekey</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-L </b><i>localkey</i><b></b></td>
+    <td><b>--local-keyfile </b><i>localkey</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-P </b><i>passphrase</i><b></b></td>
+    <td><b>--local-passphrase </b><i>passphrase</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-e</b></td>
+    <td><b>--no-encryption</b></td>
+  </tr>
+</table>
+</div>
+<dl class="Bl-tag">
+  <dt><b>&#x2010;m i</b>, <b>--init</b></dt>
+  <dd>Mode selector.</dd>
+  <dt><b>&#x2010;v</b>, <b>--verbose</b></dt>
+  <dd>Verbose output mode. Mutually exclusive with (<b>&#x2010;s</b>).</dd>
+  <dt><b>&#x2010;s</b>, <b>--silent</b>, <b>--quiet</b></dt>
+  <dd>Silent output mode. Mutually exclusive with (<b>&#x2010;v</b>).</dd>
+  <dt><b>&#x2010;c</b><i> cfgfile, </i><b>--cfgfile</b><i> cfgfile</i></dt>
+  <dd>Use the specified configuration file.</dd>
+  <dt><b>&#x2010;p</b><i> polfile, </i><b>--polfile</b><i> polfile</i></dt>
+  <dd>Use the specified policy file.</dd>
+  <dt><b>&#x2010;d</b><i> database, </i><b>--dbfile</b><i> database</i></dt>
+  <dd>Write to the specified database file.</dd>
+  <dt><b>&#x2010;S</b><i> sitekey, </i><b>--site-keyfile</b><i> sitekey</i></dt>
+  <dd>Use the specified site key file to read the configuration and policy
+      files.</dd>
+  <dt><b>&#x2010;L</b><i> localkey, </i><b>--local-keyfile</b><i>
+    localkey</i></dt>
+  <dd>Use the specified local key file to write the new database file. Mutually
+      exclusive with (<b>&#x2010;e</b>).</dd>
+  <dt><b>&#x2010;P</b><i> passphrase, </i><b>--local-passphrase</b><i>
+    passphrase</i></dt>
+  <dd>Specifies passphrase to be used with local key to sign the new database.
+      Mutually exclusive with (<b>&#x2010;e</b>).</dd>
+  <dt><b>&#x2010;e</b>, <b>--no-encryption</b></dt>
+  <dd>Do not sign the database being stored. The database file will still be
+      compressed and will not be human-readable. Mutually exclusive with
+      (<b>&#x2010;L</b>) and (<b>&#x2010;P</b>).
+    <p class="Pp">
+      <br/>
+      
+      <br/>
+    </p>
+  </dd>
+</dl>
+</section>
+<section class="Ss">
+<h3 class="Ss" id="Integrity_Checking_mode:"><a class="permalink" href="#Integrity_Checking_mode:">Integrity
+  Checking mode:</a></h3>
+<div class="Bd-indent">
+<table class="tbl">
+  <tr>
+    <td><b>-m c</b></td>
+    <td><b>--check</b></td>
+  </tr>
+  <tr>
+    <td><b>-I</b></td>
+    <td><b>--interactive</b></td>
+  </tr>
+  <tr>
+    <td><b>-v</b></td>
+    <td><b>--verbose</b></td>
+  </tr>
+  <tr>
+    <td><b>-s</b></td>
+    <td><b>--silent</b>,<b> --quiet</b></td>
+  </tr>
+  <tr>
+    <td><b>-c </b><i>cfgfile</i><b></b></td>
+    <td><b>--cfgfile </b><i>cfgfile</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-p </b><i>polfile</i><b></b></td>
+    <td><b>--polfile </b><i>polfile</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-d </b><i>database</i><b></b></td>
+    <td><b>--dbfile </b><i>database</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-r </b><i>report</i><b></b></td>
+    <td><b>--twrfile </b><i>report</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-S </b><i>sitekey</i><b></b></td>
+    <td><b>--site-keyfile </b><i>sitekey</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-L </b><i>localkey</i><b></b></td>
+    <td><b>--local-keyfile </b><i>localkey</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-P </b><i>passphrase</i><b></b></td>
+    <td><b>--local-passphrase </b><i>passphrase</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-n</b></td>
+    <td><b>--no-tty-output</b></td>
+  </tr>
+  <tr>
+    <td><b>-V </b><i>editor</i><b></b></td>
+    <td><b>--visual </b><i>editor</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-E</b></td>
+    <td><b>--signed-report</b></td>
+  </tr>
+  <tr>
+    <td><b>-i </b><i>list</i><b></b></td>
+    <td><b>--ignore </b><i>list</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-l </b>{ <i>level</i> | <i>name</i> }<i></i></td>
+    <td><b>--severity </b>{ <i>level</i> | <i>name</i> }<i></i></td>
+  </tr>
+  <tr>
+    <td><b>-R </b><i>rule</i><b></b></td>
+    <td><b>--rule-name </b><i>rule</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-x </b><i>section</i><b></b></td>
+    <td><b>--section </b><i>section</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-M</b></td>
+    <td><b>--email-report</b></td>
+  </tr>
+  <tr>
+    <td><b>-t </b>{ 0|1|2|3|4 }<b></b></td>
+    <td><b>--email-report-level </b>{ 0|1|2|3|4 }<b></b></td>
+  </tr>
+  <tr>
+    <td><b>-h</b></td>
+    <td><b>--hexadecimal</b></td>
+  </tr>
+</table>
+[ <i>object1</i> [ <i>object2...</i> ]]</div>
+<dl class="Bl-tag">
+  <dt><b>&#x2010;m c</b>, <b>--check</b></dt>
+  <dd>Mode selector.</dd>
+  <dt><b>&#x2010;I</b>, <b>--interactive</b></dt>
+  <dd>At the end of integrity checking, the resulting report is opened in an
+      editor where database updates can be easily specified using the ballot
+      boxes included in the report.</dd>
+  <dt><b>&#x2010;v</b>, <b>--verbose</b></dt>
+  <dd>Verbose output mode. Mutually exclusive with (<b>&#x2010;s</b>).</dd>
+  <dt><b>&#x2010;s</b>, <b>--silent</b>, <b>--quiet</b></dt>
+  <dd>Silent output mode. Mutually exclusive with (<b>&#x2010;v</b>).</dd>
+  <dt><b>&#x2010;c</b><i> cfgfile, </i><b>--cfgfile</b><i> cfgfile</i></dt>
+  <dd>Use the specified configuration file.</dd>
+  <dt><b>&#x2010;p</b><i> polfile, </i><b>--polfile</b><i> polfile</i></dt>
+  <dd>Use the specified policy file.</dd>
+  <dt><b>&#x2010;d</b><i> database, </i><b>--dbfile</b><i> database</i></dt>
+  <dd>Use the specified database file.</dd>
+  <dt><b>&#x2010;r</b><i> report, </i><b>--twrfile</b><i> report</i></dt>
+  <dd>Write the specified report file.</dd>
+  <dt><b>&#x2010;S</b><i> sitekey, </i><b>--site-keyfile</b><i> sitekey</i></dt>
+  <dd>Use the specified site key file to read the configuration and policy
+      files.</dd>
+  <dt><b>&#x2010;L</b><i> localkey, </i><b>--local-keyfile</b><i>
+    localkey</i></dt>
+  <dd>Use the specified local key file to read the database file and, if
+      (<b>&#x2010;E</b>) is specified, to write the report file.</dd>
+  <dt><b>&#x2010;P</b><i> passphrase, </i><b>--local-passphrase</b><i>
+    passphrase</i></dt>
+  <dd>Specifies passphrase to be used with local key to sign the database when
+      (<b>&#x2010;I</b>) is used, and to sign the report when (<b>&#x2010;E</b>)
+      is used. Valid only with (<b>&#x2010;I</b>) or (<b>&#x2010;E</b>).</dd>
+  <dt><b>&#x2010;n</b>, <b>--no-tty-output</b></dt>
+  <dd>Suppress the report from being printed at the console.</dd>
+  <dt><b>&#x2010;V</b><i> editor, </i><b>--visual</b><i> editor</i></dt>
+  <dd>Use the specified editor to edit the update ballot boxes. Meaningful only
+      with (<b>&#x2010;I</b>).</dd>
+  <dt><b>&#x2010;E</b>, <b>--signed-report</b></dt>
+  <dd>Specifies that the <i>Tripwire</i> report will be signed. If no passphrase
+      is specified on the command line, <b>tripwire</b> will prompt for the
+      local passphrase.</dd>
+  <dt><b>&#x2010;i</b><i> list, </i><b>--ignore</b><i> list</i></dt>
+  <dd>Do not compute or compare the properties specified in <i>list</i>. Any of
+      the letter codes (abcdgimnprstulCHMS) specified in propertymasks can be
+      excluded. Use of this option overrides information from the policy file.
+      The format to be used for <i>list</i> is a double-quoted, comma-delimited
+      list of properties
+    (e.g.&#x00A0;<i>--ignore&#x00A0;&quot;p,c,m&quot;</i>).</dd>
+  <dt><b>&#x2010;l </b>{ <i>level </i>| <i>name </i>}, <b>--severity </b>{
+    <i>level </i>| <i>name </i>}</dt>
+  <dd>Check only policy rules with severity greater than or equal to the given
+      level. The level may be specified as a number or as a name. Severity names
+      are defined as follows:
+    <pre>
+	Low	33
+	Medium	66
+	High	100</pre>
+    Mutually exclusive with (<b>&#x2010;R</b>).</dd>
+  <dt><b>&#x2010;R</b><i> rule, </i><b>--rule-name</b><i> rule</i></dt>
+  <dd>Check only the specified policy rule. Mutually exclusive with
+      (<b>&#x2010;l</b>).</dd>
+  <dt><b>&#x2010;x</b><i> section, </i><b>--section</b><i> section</i></dt>
+  <dd>Only check the rules in the specified section of the policy file. For
+      <i>Tripwire 2.4</i>, <span class="Li">FS</span> is the only meaningful
+      argument for this flag.</dd>
+  <dt><b>&#x2010;M</b>, <b>--email-report</b></dt>
+  <dd>Specifies that reports be emailed to the recipient(s) designated in the
+      policy file.</dd>
+  <dt><b>&#x2010;t</b><i> level, </i><b>--email-report-level</b><i>
+    level</i></dt>
+  <dd>Specifies the detail level of email reports, overriding the
+      EMAILREPORTLEVEL variable in the configuration file. <i>level</i> must be
+      a number from 0&#x00A0;to&#x00A0;4. Valid only with
+    (<b>&#x2010;M</b>).</dd>
+  <dt><b>&#x2010;h</b>, <b>--hexadecimal</b></dt>
+  <dd>Display hash values as hexadecimal in email reports</dd>
+  <dt>[ <i>object1</i> [ <i>object2...</i> ]]</dt>
+  <dd>List of files and directories that should be integrity checked. Default is
+      all files. If files are specified for checking, the <b>--severity</b> and
+      <b>--rule-name</b> options will be ignored.
+    <p class="Pp">
+      <br/>
+      
+      <br/>
+    </p>
+  </dd>
+</dl>
+</section>
+<section class="Ss">
+<h3 class="Ss" id="Database_Update_mode:"><a class="permalink" href="#Database_Update_mode:">Database
+  Update mode:</a></h3>
+<div class="Bd-indent">
+<table class="tbl">
+  <tr>
+    <td><b>-m u</b></td>
+    <td><b>--update</b></td>
+  </tr>
+  <tr>
+    <td><b>-v</b></td>
+    <td><b>--verbose</b></td>
+  </tr>
+  <tr>
+    <td><b>-s</b></td>
+    <td><b>--silent</b>,<b> --quiet</b></td>
+  </tr>
+  <tr>
+    <td><b>-c </b><i>cfgfile</i><b></b></td>
+    <td><b>--cfgfile </b><i>cfgfile</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-p </b><i>polfile</i><b></b></td>
+    <td><b>--polfile </b><i>polfile</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-d </b><i>database</i><b></b></td>
+    <td><b>--dbfile </b><i>database</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-r </b><i>report</i><b></b></td>
+    <td><b>--twrfile </b><i>report</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-S </b><i>sitekey</i><b></b></td>
+    <td><b>--site-keyfile </b><i>sitekey</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-L </b><i>localkey</i><b></b></td>
+    <td><b>--local-keyfile </b><i>localkey</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-P </b><i>passphrase</i><b></b></td>
+    <td><b>--local-passphrase </b><i>passphrase</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-V </b><i>editor</i><b></b></td>
+    <td><b>--visual </b><i>editor</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-a</b></td>
+    <td><b>--accept-all</b></td>
+  </tr>
+  <tr>
+    <td><b>-Z </b>{ low | high }<b></b></td>
+    <td><b>--secure-mode </b>{ low | high }<b></b></td>
+  </tr>
+</table>
+</div>
+<dl class="Bl-tag">
+  <dt><b>&#x2010;m u</b>, <b>--update</b></dt>
+  <dd>Mode selector.</dd>
+  <dt><b>&#x2010;v</b>, <b>--verbose</b></dt>
+  <dd>Verbose output mode. Mutually exclusive with (<b>&#x2010;s</b>).</dd>
+  <dt><b>&#x2010;s</b>, <b>--silent</b>, <b>--quiet</b></dt>
+  <dd>Silent output mode. Mutually exclusive with (<b>&#x2010;v</b>).</dd>
+  <dt><b>&#x2010;c</b><i> cfgfile, </i><b>--cfgfile</b><i> cfgfile</i></dt>
+  <dd>Use the specified configuration file.</dd>
+  <dt><b>&#x2010;p</b><i> polfile, </i><b>--polfile</b><i> polfile</i></dt>
+  <dd>Use the specified policy file.</dd>
+  <dt><b>&#x2010;d</b><i> database, </i><b>--dbfile</b><i> database</i></dt>
+  <dd>Update the specified database file.</dd>
+  <dt><b>&#x2010;r</b><i> report, </i><b>--twrfile</b><i> report</i></dt>
+  <dd>Read the specified report file.</dd>
+  <dt><b>&#x2010;S</b><i> sitekey, </i><b>--site-keyfile</b><i> sitekey</i></dt>
+  <dd>Use the specified site key file to read the configuration and policy
+      files.</dd>
+  <dt><b>&#x2010;L</b><i> localkey, </i><b>--local-keyfile</b><i>
+    localkey</i></dt>
+  <dd>Use the specified local key file to read the database file and report
+      file, and to re-write the database file.</dd>
+  <dt><b>&#x2010;P</b><i> passphrase, </i><b>--local-passphrase</b><i>
+    passphrase</i></dt>
+  <dd>Specifies passphrase to be used with local key to sign the database.</dd>
+  <dt><b>&#x2010;V</b><i> editor, </i><b>--visual</b><i> editor</i></dt>
+  <dd>Use the specified editor to edit the update ballot boxes. Mutually
+      exclusive with (<b>&#x2010;a</b>).</dd>
+  <dt><b>&#x2010;a</b>, <b>--accept-all</b></dt>
+  <dd>Specifies that all the entries in the report file are updated without
+      prompting. Mutually exclusive with (<b>&#x2010;V</b>).</dd>
+  <dt><b>&#x2010;Z </b>{ low | high }, <b>--secure-mode </b>{ low | high }</dt>
+  <dd>Specifies the security level, which affects how certain conditions are
+      handled when inconsistent information is found between the report file and
+      the current database:
+    <p class="Pp">High: In <b>high</b> security mode, if a file does not match
+        the properties in the report file, Tripwire reports the differences as
+        warnings, and exits without changing the database.</p>
+    <p class="Pp">Low: In <b>low</b> security mode, inconsistencies are reported
+        as warnings, but the changes are still made to the database.</p>
+    <p class="Pp">
+      <br/>
+      
+      <br/>
+    </p>
+  </dd>
+</dl>
+</section>
+<section class="Ss">
+<h3 class="Ss" id="Policy_Update_mode:"><a class="permalink" href="#Policy_Update_mode:">Policy
+  Update mode:</a></h3>
+<div class="Bd-indent">
+<table class="tbl">
+  <tr>
+    <td><b>-m p</b></td>
+    <td><b>--update-policy</b></td>
+  </tr>
+  <tr>
+    <td><b>-v</b></td>
+    <td><b>--verbose</b></td>
+  </tr>
+  <tr>
+    <td><b>-s</b></td>
+    <td><b>--silent</b>,<b> --quiet</b></td>
+  </tr>
+  <tr>
+    <td><b>-c </b><i>cfgfile</i><b></b></td>
+    <td><b>--cfgfile </b><i>cfgfile</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-p </b><i>polfile</i><b></b></td>
+    <td><b>--polfile </b><i>polfile</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-d </b><i>database</i><b></b></td>
+    <td><b>--dbfile </b><i>database</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-S </b><i>sitekey</i><b></b></td>
+    <td><b>--site-keyfile </b><i>sitekey</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-L </b><i>localkey</i><b></b></td>
+    <td><b>--local-keyfile </b><i>localkey</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-P </b><i>passphrase</i><b></b></td>
+    <td><b>--local-passphrase </b><i>passphrase</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-Q </b><i>passphrase</i><b></b></td>
+    <td><b>--site-passphrase </b><i>passphrase</i><b></b></td>
+  </tr>
+  <tr>
+    <td><b>-Z </b>{ low | high }<b></b></td>
+    <td><b>--secure-mode </b>{ low | high }<b></b></td>
+  </tr>
+</table>
+<i>policyfile.txt</i></div>
+<dl class="Bl-tag">
+  <dt><b>&#x2010;m p</b>, <b>--update-policy</b></dt>
+  <dd>Mode selector.</dd>
+  <dt><b>&#x2010;v</b>, <b>--verbose</b></dt>
+  <dd>Verbose output mode. Mutually exclusive with (<b>&#x2010;s</b>).</dd>
+  <dt><b>&#x2010;s</b>, <b>--silent</b>, <b>--quiet</b></dt>
+  <dd>Silent output mode. Mutually exclusive with (<b>&#x2010;v</b>).</dd>
+  <dt><b>&#x2010;c</b><i> cfgfile, </i><b>--cfgfile</b><i> cfgfile</i></dt>
+  <dd>Use the specified configuration file.</dd>
+  <dt><b>&#x2010;p</b><i> polfile, </i><b>--polfile</b><i> polfile</i></dt>
+  <dd>Write the specified policy file.</dd>
+  <dt><b>&#x2010;d</b><i> database, </i><b>--dbfile</b><i> database</i></dt>
+  <dd>Use the specified database file.</dd>
+  <dt><b>&#x2010;S</b><i> sitekey, </i><b>--site-keyfile</b><i> sitekey</i></dt>
+  <dd>Use the specified site key file to read the configuration file, and read
+      and write the policy file.</dd>
+  <dt><b>&#x2010;L</b><i> localkey, </i><b>--local-keyfile</b><i>
+    localkey</i></dt>
+  <dd>Use the specified local key file to read and write the database file.</dd>
+  <dt><b>&#x2010;P</b><i> passphrase, </i><b>--local-passphrase</b><i>
+    passphrase</i></dt>
+  <dd>Specifies passphrase to be used with local key to sign the database.</dd>
+  <dt><b>&#x2010;Q</b><i> passphrase, </i><b>--site-passphrase</b><i>
+    passphrase</i></dt>
+  <dd>Specifies passphrase to be used with site key to sign the new policy
+    file.</dd>
+  <dt><b>&#x2010;Z </b>{ low | high }, <b>--secure-mode </b>{ low | high }</dt>
+  <dd>Specifies the security level, which affects how certain conditions are
+      handled when the existing filesystem does not match the database
+      information. Since the database produced at the end of a policy update
+      becomes the baseline for future integrity checks, this
+      consistency-checking ensures that no substantive filesystem changes have
+      occurred since the last integrity check.
+    <p class="Pp">High: In <b>high</b> security mode, if a file on the
+        filesystem does not match the properties in the database file, Tripwire
+        reports the differences as warnings, and exits without changing the
+        database or the policy file.</p>
+    <p class="Pp">Low: In <b>low</b> security mode, inconsistencies are reported
+        as warnings, but the changes are still made to the database and policy
+        file.</p>
+  </dd>
+  <dt id="policyfile.txt"><a class="permalink" href="#policyfile.txt"><i>policyfile.txt</i></a></dt>
+  <dd>Specifies the text policy file that will become the new policy file.
+    <p class="Pp">
+      <br/>
+      
+      <br/>
+    </p>
+  </dd>
+</dl>
+</section>
+<section class="Ss">
+<h3 class="Ss" id="Test_mode:"><a class="permalink" href="#Test_mode:">Test
+  mode:</a></h3>
+<div class="Bd-indent">
+<table class="tbl">
+  <tr>
+    <td><b>-m t</b></td>
+    <td><b>--test</b></td>
+  </tr>
+  <tr>
+    <td><b>-e </b><i>user@domain.com</i><b></b></td>
+    <td><b>--email </b><i>user@domain.com</i><b></b></td>
+  </tr>
+</table>
+</div>
+<dl class="Bl-tag">
+  <dt><b>&#x2010;m t</b>, <b>--test</b></dt>
+  <dd>Mode selector.</dd>
+  <dt><b>&#x2010;e</b><i> user@domain.com, </i><b>--email</b><i>
+    user@domain.com</i></dt>
+  <dd>Use the specified email address. This parameter must be supplied when test
+      mode is used. Only one address may be specified.</dd>
+</dl>
+</section>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="EXIT_STATUS"><a class="permalink" href="#EXIT_STATUS">EXIT
+  STATUS</a></h2>
+<section class="Ss">
+<h3 class="Ss">Integrity Checking Mode</h3>
+<p class="Pp"><b>tripwire</b> exits 0 if no changes are detected. Otherwise the
+    exit value is a bit mask:</p>
+<dl class="Bl-tag">
+  <dt><b>1</b> At least one file or directory has been added.</dt>
+  <dd></dd>
+  <dt><b>2</b> At least one file or directory has been modified.</dt>
+  <dd></dd>
+  <dt><b>4</b> At least one file or directory has been modified.</dt>
+  <dd></dd>
+  <dt><b>8</b> Error(s) occurred during the check.</dt>
+  <dd></dd>
+</dl>
+</section>
+<section class="Ss">
+<h3 class="Ss" id="All_Other_Modes"><a class="permalink" href="#All_Other_Modes">All
+  Other Modes</a></h3>
+<p class="Pp"><b>tripwire</b> exits 0 on success, 8 on error.</p>
+</section>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="VERSION_INFORMATION"><a class="permalink" href="#VERSION_INFORMATION">VERSION
+  INFORMATION</a></h2>
+<p class="Pp">This man page describes <b>tripwire</b> version 2.4</p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="AUTHORS"><a class="permalink" href="#AUTHORS">AUTHORS</a></h2>
+<p class="Pp">Tripwire, Inc.</p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="COPYING_PERMISSIONS"><a class="permalink" href="#COPYING_PERMISSIONS">COPYING
+  PERMISSIONS</a></h2>
+<p class="Pp">Permission is granted to make and distribute verbatim copies of
+    this man page provided the copyright notice and this permission notice are
+    preserved on all copies.</p>
+<p class="Pp">Permission is granted to copy and distribute modified versions of
+    this man page under the conditions for verbatim copying, provided that the
+    entire resulting derived work is distributed under the terms of a permission
+    notice identical to this one.</p>
+<p class="Pp">Permission is granted to copy and distribute translations of this
+    man page into another language, under the above conditions for modified
+    versions, except that this permission notice may be stated in a translation
+    approved by Tripwire, Inc.</p>
+<p class="Pp">Copyright 2000-2018 Tripwire, Inc. Tripwire is a registered
+    trademark of Tripwire, Inc. in the United States and other countries. All
+    rights reserved.</p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h2>
+<p class="Pp"><b>twintro</b>(8), <b>twadmin</b>(8), <b>twprint</b>(8),
+    <b>siggen</b>(8), <b>twconfig</b>(4), <b>twpolicy</b>(4),
+  <b>twfiles</b>(5)</p>
+<p class="Pp"><i>The Design and Implementation of Tripwire: A UNIX File
+    Integrity Checker</i> by Gene Kim and Eugene Spafford. Purdue Technical
+    Report CSD-TR-93-071.</p>
+</section>
+</main>
+<div class="foot" role="doc-pagefooter" aria-label="Manual footer
+  line"><span class="foot-left">Open Source Tripwire 2.4</span>
+  <span class="foot-date">04 Jan 2018</span>
+  <span class="foot-right">TRIPWIRE(8)</span></div>
+</body>
+</html>

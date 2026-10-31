@@ -1,0 +1,1748 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "3ae27318f73b6c471f47d83e3d4be7fc673f9f35bb7447d853d936d7ca32d087",
+  "extraction": {
+    "selector": ".refentry",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "Name",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "sharesec — Set or get share ACLs",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "Synopsis",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]] {sharename} [[[p1]], [[p2]]=ACL] [[[p3]], [[p4]]=ACL] [[[p5]], [[p6]]=ACL] [[[p7]], [[p8]]=ACLs] [[[p9]], [[p10]]] [[[p11]], [[p12]]] [[[p13]]] [[[p14]], [[p15]]] [[[p16]], [[p17]]] [[[p18]], [[p19]]=DEBUGLEVEL] [[[p20]], [[p21]]=CONFIGFILE] [[[p22]], [[p23]]=LOGFILEBASE] [[[p24]], [[p25]]=STRING] [[[p26]]] [-?|[[p27]]] [[[p28]]] [[[p29]]|[[p30]]=DEBUGLEVEL] [[[p31]]] [[[p32]]=CONFIGFILE] [[[p33]]=name=value] [[[p34]]|[[p35]]=LOGFILEBASE] [[[p36]]] [[[p37]]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "sharesec"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-r"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--remove"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-m"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "--modify"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "-a"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "--add"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "code",
+            "text": "-R"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "code",
+            "text": "--replace"
+          }
+        },
+        {
+          "token": "[[p9]]",
+          "inline": {
+            "tag": "code",
+            "text": "-D"
+          }
+        },
+        {
+          "token": "[[p10]]",
+          "inline": {
+            "tag": "code",
+            "text": "--delete"
+          }
+        },
+        {
+          "token": "[[p11]]",
+          "inline": {
+            "tag": "code",
+            "text": "-v"
+          }
+        },
+        {
+          "token": "[[p12]]",
+          "inline": {
+            "tag": "code",
+            "text": "--view"
+          }
+        },
+        {
+          "token": "[[p13]]",
+          "inline": {
+            "tag": "code",
+            "text": "--view-all"
+          }
+        },
+        {
+          "token": "[[p14]]",
+          "inline": {
+            "tag": "code",
+            "text": "-M"
+          }
+        },
+        {
+          "token": "[[p15]]",
+          "inline": {
+            "tag": "code",
+            "text": "--machine-sid"
+          }
+        },
+        {
+          "token": "[[p16]]",
+          "inline": {
+            "tag": "code",
+            "text": "-F"
+          }
+        },
+        {
+          "token": "[[p17]]",
+          "inline": {
+            "tag": "code",
+            "text": "--force"
+          }
+        },
+        {
+          "token": "[[p18]]",
+          "inline": {
+            "tag": "code",
+            "text": "-d"
+          }
+        },
+        {
+          "token": "[[p19]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debuglevel"
+          }
+        },
+        {
+          "token": "[[p20]]",
+          "inline": {
+            "tag": "code",
+            "text": "-s"
+          }
+        },
+        {
+          "token": "[[p21]]",
+          "inline": {
+            "tag": "code",
+            "text": "--configfile"
+          }
+        },
+        {
+          "token": "[[p22]]",
+          "inline": {
+            "tag": "code",
+            "text": "-l"
+          }
+        },
+        {
+          "token": "[[p23]]",
+          "inline": {
+            "tag": "code",
+            "text": "--log-basename"
+          }
+        },
+        {
+          "token": "[[p24]]",
+          "inline": {
+            "tag": "code",
+            "text": "-S"
+          }
+        },
+        {
+          "token": "[[p25]]",
+          "inline": {
+            "tag": "code",
+            "text": "--setsddl"
+          }
+        },
+        {
+          "token": "[[p26]]",
+          "inline": {
+            "tag": "code",
+            "text": "--viewsddl"
+          }
+        },
+        {
+          "token": "[[p27]]",
+          "inline": {
+            "tag": "code",
+            "text": "--help"
+          }
+        },
+        {
+          "token": "[[p28]]",
+          "inline": {
+            "tag": "code",
+            "text": "--usage"
+          }
+        },
+        {
+          "token": "[[p29]]",
+          "inline": {
+            "tag": "code",
+            "text": "-d"
+          }
+        },
+        {
+          "token": "[[p30]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debuglevel"
+          }
+        },
+        {
+          "token": "[[p31]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debug-stdout"
+          }
+        },
+        {
+          "token": "[[p32]]",
+          "inline": {
+            "tag": "code",
+            "text": "--configfile"
+          }
+        },
+        {
+          "token": "[[p33]]",
+          "inline": {
+            "tag": "code",
+            "text": "--option"
+          }
+        },
+        {
+          "token": "[[p34]]",
+          "inline": {
+            "tag": "code",
+            "text": "-l"
+          }
+        },
+        {
+          "token": "[[p35]]",
+          "inline": {
+            "tag": "code",
+            "text": "--log-basename"
+          }
+        },
+        {
+          "token": "[[p36]]",
+          "inline": {
+            "tag": "code",
+            "text": "--leak-report"
+          }
+        },
+        {
+          "token": "[[p37]]",
+          "inline": {
+            "tag": "code",
+            "text": "--leak-report-full"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "This tool is part of the [[p0]] suite.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "samba(7)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/samba.7.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "The [[p0]] program manipulates share permissions on SMB file shares.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "sharesec"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "heading",
+      "text": "OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "The following options are available to the [[p0]] program. The format of ACLs is described in the section ACL FORMAT",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "sharesec"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0010",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]=ACL",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-a"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--add"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0011",
+      "kind": "paragraph",
+      "text": "Add the ACEs specified to the ACL list.",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-D"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--delete"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "Delete the entire security descriptor.",
+      "protected": []
+    },
+    {
+      "id": "s0014",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-F"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--force"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "Force storing the ACL.",
+      "protected": []
+    },
+    {
+      "id": "s0016",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]=ACL",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-m"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--modify"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "Modify existing ACEs.",
+      "protected": []
+    },
+    {
+      "id": "s0018",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-M"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--machine-sid"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "Initialize the machine SID.",
+      "protected": []
+    },
+    {
+      "id": "s0020",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]=ACL",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-r"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--remove"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0021",
+      "kind": "paragraph",
+      "text": "Remove ACEs.",
+      "protected": []
+    },
+    {
+      "id": "s0022",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]=ACLS",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-R"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--replace"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0023",
+      "kind": "paragraph",
+      "text": "Overwrite an existing share permission ACL.",
+      "protected": []
+    },
+    {
+      "id": "s0024",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-v"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--view"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0025",
+      "kind": "paragraph",
+      "text": "List a share acl",
+      "protected": []
+    },
+    {
+      "id": "s0026",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--view-all"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0027",
+      "kind": "paragraph",
+      "text": "List all share acls",
+      "protected": []
+    },
+    {
+      "id": "s0028",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]=STRING",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-S"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--setsddl"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0029",
+      "kind": "paragraph",
+      "text": "Set security descriptor by providing ACL in SDDL format.",
+      "protected": []
+    },
+    {
+      "id": "s0030",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--viewsddl"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0031",
+      "kind": "paragraph",
+      "text": "List a share acl in SDDL format.",
+      "protected": []
+    },
+    {
+      "id": "s0032",
+      "kind": "term",
+      "text": "-?|[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--help"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0033",
+      "kind": "paragraph",
+      "text": "Print a summary of command line options.",
+      "protected": []
+    },
+    {
+      "id": "s0034",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--usage"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0035",
+      "kind": "paragraph",
+      "text": "Display brief usage message.",
+      "protected": []
+    },
+    {
+      "id": "s0036",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]=level",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-d"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debuglevel"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0037",
+      "kind": "paragraph",
+      "text": "[[p0]][[p1]][[p2]] is an integer from 0 to 10. The default value if this parameter is not specified is 1 for client applications.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "level"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0038",
+      "kind": "paragraph",
+      "text": "The higher this value, the more detail will be logged to the log files about the activities of the server. At level 0, only critical errors and serious warnings will be logged. Level 1 is a reasonable level for day-to-day running - it generates a small amount of information about operations carried out.",
+      "protected": []
+    },
+    {
+      "id": "s0039",
+      "kind": "paragraph",
+      "text": "Levels above 1 will generate considerable amounts of log data, and should only be used when investigating a problem. Levels above 3 are designed for use only by developers and generate HUGE amounts of log data, most of which is extremely cryptic.",
+      "protected": []
+    },
+    {
+      "id": "s0040",
+      "kind": "paragraph",
+      "text": "Note that specifying this parameter here will override the [[p0]] parameter in the [[p1]] file.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "log level",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#LOGLEVEL"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0041",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debug-stdout"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0042",
+      "kind": "paragraph",
+      "text": "This will redirect debug output to STDOUT. By default all clients are logging to STDERR.",
+      "protected": []
+    },
+    {
+      "id": "s0043",
+      "kind": "term",
+      "text": "[[p0]]=<configuration file>",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--configfile"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0044",
+      "kind": "paragraph",
+      "text": "The file specified contains the configuration details required by the client. The information in this file can be general for client and server or only provide client specific like options such as [[p0]]. See [[p1]] for more information. The default configuration file name is determined at compile time.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "client smb encrypt",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#CLIENTSMBENCRYPT"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0045",
+      "kind": "term",
+      "text": "[[p0]]=<name>=<value>",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--option"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0046",
+      "kind": "paragraph",
+      "text": "Set the [[p0]] option \"<name>\" to value \"<value>\" from the command line. This overrides compiled-in defaults and options read from the configuration file. If a name or a value includes a space, wrap whole [[p1]]=name=value into quotes.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "smb.conf(5)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--option"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0047",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]=logdirectory",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-l"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--log-basename"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0048",
+      "kind": "paragraph",
+      "text": "Base directory name for log/debug files. The extension [[p0]] will be appended (e.g. log.smbclient, log.smbd, etc...). The log file is never removed by the client.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "\".progname\""
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0049",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--leak-report"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0050",
+      "kind": "paragraph",
+      "text": "Enable talloc leak reporting on exit.",
+      "protected": []
+    },
+    {
+      "id": "s0051",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--leak-report-full"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0052",
+      "kind": "paragraph",
+      "text": "Enable full talloc leak reporting on exit.",
+      "protected": []
+    },
+    {
+      "id": "s0053",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-V"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--version"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0054",
+      "kind": "paragraph",
+      "text": "Prints the program version number.",
+      "protected": []
+    },
+    {
+      "id": "s0055",
+      "kind": "heading",
+      "text": "ACL FORMAT",
+      "protected": []
+    },
+    {
+      "id": "s0056",
+      "kind": "paragraph",
+      "text": "The format of an ACL is one or more ACL entries separated by either commas or newlines. An ACL entry is one of the following:",
+      "protected": []
+    },
+    {
+      "id": "s0057",
+      "kind": "paragraph",
+      "text": "The revision of the ACL specifies the internal Windows NT ACL revision for the security descriptor. If not specified it defaults to 1. Using values other than 1 may cause strange behaviour.",
+      "protected": []
+    },
+    {
+      "id": "s0058",
+      "kind": "paragraph",
+      "text": "The owner and group specify the owner and group SIDs for the object. Share ACLs do not specify an owner or a group, so these fields are empty.",
+      "protected": []
+    },
+    {
+      "id": "s0059",
+      "kind": "paragraph",
+      "text": "ACLs specify permissions granted to the SID. This SID can be specified in S-1-x-y-z format or as a name in which case it is resolved against the server on which the file or directory resides. The type, flags and mask values determine the type of access granted to the SID.",
+      "protected": []
+    },
+    {
+      "id": "s0060",
+      "kind": "paragraph",
+      "text": "The type can be either ALLOWED or DENIED to allow/deny access to the SID. The flags values are generally zero for share ACLs.",
+      "protected": []
+    },
+    {
+      "id": "s0061",
+      "kind": "paragraph",
+      "text": "The mask is a value which expresses the access right granted to the SID. It can be given as a decimal or hexadecimal value, or by using one of the following text strings which map to the NT file permissions of the same name.",
+      "protected": []
+    },
+    {
+      "id": "s0062",
+      "kind": "paragraph",
+      "text": "[[p0]]R[[p1]] - Allow read access",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0063",
+      "kind": "paragraph",
+      "text": "[[p0]]W[[p1]] - Allow write access",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0064",
+      "kind": "paragraph",
+      "text": "[[p0]]X[[p1]] - Execute permission on the object",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0065",
+      "kind": "paragraph",
+      "text": "[[p0]]D[[p1]] - Delete the object",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0066",
+      "kind": "paragraph",
+      "text": "[[p0]]P[[p1]] - Change permissions",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0067",
+      "kind": "paragraph",
+      "text": "[[p0]]O[[p1]] - Take ownership",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0068",
+      "kind": "paragraph",
+      "text": "The following combined permissions can be specified:",
+      "protected": []
+    },
+    {
+      "id": "s0069",
+      "kind": "paragraph",
+      "text": "[[p0]]READ[[p1]] - Equivalent to 'RX' permissions",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0070",
+      "kind": "paragraph",
+      "text": "[[p0]]CHANGE[[p1]] - Equivalent to 'RXWD' permissions",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0071",
+      "kind": "paragraph",
+      "text": "[[p0]]FULL[[p1]] - Equivalent to 'RWXDPO' permissions",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0072",
+      "kind": "heading",
+      "text": "EXIT STATUS",
+      "protected": []
+    },
+    {
+      "id": "s0073",
+      "kind": "paragraph",
+      "text": "The [[p0]] program sets the exit status depending on the success or otherwise of the operations performed. The exit status may be one of the following values.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "sharesec"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0074",
+      "kind": "paragraph",
+      "text": "If the operation succeeded, sharesec returns and exit status of 0. If [[p0]] couldn't connect to the specified server, or there was an error getting or setting the ACLs, an exit status of 1 is returned. If there was an error parsing any command line arguments, an exit status of 2 is returned.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "sharesec"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0075",
+      "kind": "heading",
+      "text": "EXAMPLES",
+      "protected": []
+    },
+    {
+      "id": "s0076",
+      "kind": "paragraph",
+      "text": "Add full access for SID [[p0]][[p1]][[p2]] on [[p3]][[p4]][[p5]]:",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "S-1-5-21-1866488690-1365729215-3963860297-17724"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "share"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0077",
+      "kind": "paragraph",
+      "text": "List all ACEs for [[p0]][[p1]][[p2]]:",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "share"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0078",
+      "kind": "heading",
+      "text": "VERSION",
+      "protected": []
+    },
+    {
+      "id": "s0079",
+      "kind": "paragraph",
+      "text": "This man page is part of version 4.25.0 of the Samba suite.",
+      "protected": []
+    },
+    {
+      "id": "s0080",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0081",
+      "kind": "paragraph",
+      "text": "The original Samba software and related utilities were created by Andrew Tridgell. Samba is now developed by the Samba Team as an Open Source project similar to the way the Linux kernel is developed.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Name",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Synopsis",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "OPTIONS",
+      "segment": "s0008"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0009"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0010",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0011"
+            }
+          ]
+        },
+        {
+          "term": "s0012",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0013"
+            }
+          ]
+        },
+        {
+          "term": "s0014",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0015"
+            }
+          ]
+        },
+        {
+          "term": "s0016",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0017"
+            }
+          ]
+        },
+        {
+          "term": "s0018",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0019"
+            }
+          ]
+        },
+        {
+          "term": "s0020",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0021"
+            }
+          ]
+        },
+        {
+          "term": "s0022",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0023"
+            }
+          ]
+        },
+        {
+          "term": "s0024",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0025"
+            }
+          ]
+        },
+        {
+          "term": "s0026",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0027"
+            }
+          ]
+        },
+        {
+          "term": "s0028",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0029"
+            }
+          ]
+        },
+        {
+          "term": "s0030",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0031"
+            }
+          ]
+        },
+        {
+          "term": "s0032",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0033"
+            }
+          ]
+        },
+        {
+          "term": "s0034",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0035"
+            }
+          ]
+        },
+        {
+          "term": "s0036",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0037"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0038"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0039"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0040"
+            }
+          ]
+        },
+        {
+          "term": "s0041",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0042"
+            }
+          ]
+        },
+        {
+          "term": "s0043",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0044"
+            }
+          ]
+        },
+        {
+          "term": "s0045",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0046"
+            }
+          ]
+        },
+        {
+          "term": "s0047",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0048"
+            }
+          ]
+        },
+        {
+          "term": "s0049",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0050"
+            }
+          ]
+        },
+        {
+          "term": "s0051",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0052"
+            }
+          ]
+        },
+        {
+          "term": "s0053",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0054"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "ACL-FORMAT",
+      "segment": "s0055"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0056"
+    },
+    {
+      "type": "literal",
+      "text": "\tREVISION:<revision number>\n\tOWNER:<sid or name>\n\tGROUP:<sid or name>\n\tACL:<sid or name>:<type>/<flags>/<mask>"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0057"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0058"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0059"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0060"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0061"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0062"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0063"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0064"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0065"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0066"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0067"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0068"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0069"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0070"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0071"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "EXIT-STATUS",
+      "segment": "s0072"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0073"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0074"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "EXAMPLES",
+      "segment": "s0075"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0076"
+    },
+    {
+      "type": "literal",
+      "text": "\thost:~ # sharesec share -a S-1-5-21-1866488690-1365729215-3963860297-17724:ALLOWED/0/FULL"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0077"
+    },
+    {
+      "type": "literal",
+      "text": "\thost:~ # sharesec share -v\n\tREVISION:1\n\tCONTROL:SR|DP\n\tOWNER:\n\tGROUP:\n\tACL:S-1-1-0:ALLOWED/0x0/FULL\n\tACL:S-1-5-21-1866488690-1365729215-3963860297-17724:ALLOWED/0x0/FULL"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "VERSION",
+      "segment": "s0078"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0079"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "AUTHOR",
+      "segment": "s0080"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0081"
+    }
+  ]
+}

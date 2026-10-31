@@ -1,0 +1,383 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "07d67d6aa930904a55ceaec2d6e8205026085a949ca77bcd7cba64c77525ac34",
+  "extraction": {
+    "selector": ".refentry",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "Name",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "vfs_catia — translate illegal characters in Catia filenames",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "Synopsis",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs objects = catia"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "This VFS module is part of the [[p0]] suite.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "samba(7)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/samba.7.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "The Catia CAD package commonly creates filenames that use characters that are illegal in CIFS filenames. The [[p0]] VFS module implements a character mapping so that these files can be shared with CIFS clients.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs_catia"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "paragraph",
+      "text": "This module is stackable.",
+      "protected": []
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "The parameter \"catia:mappings\" specifies the mapping on a per-character basis, see below.",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "heading",
+      "text": "OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0011",
+      "kind": "term",
+      "text": "catia:mappings = SERVER_HEX_CHAR:CLIENT_HEX_CHAR",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "paragraph",
+      "text": "SERVER_HEX_CHAR specifies a 0x prefixed hexedecimal character code that, when included in a Samba server-side filename, will be mapped to CLIENT_HEX_CHAR for the CIFS client.",
+      "protected": []
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "The same mapping occurs in the opposite direction. Multiple character mappings are separated by a comma.",
+      "protected": []
+    },
+    {
+      "id": "s0014",
+      "kind": "heading",
+      "text": "EXAMPLES",
+      "protected": []
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "Map server-side quotation-marks (\") to client-side diaeresis (¨) on filenames in the [CAD] share:",
+      "protected": []
+    },
+    {
+      "id": "s0016",
+      "kind": "paragraph",
+      "text": "Perform comprehensive mapping of common Catia filename characters:",
+      "protected": []
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "Server-side filename to be translated (Note that the path delimiter \"/\" is not used here):",
+      "protected": []
+    },
+    {
+      "id": "s0018",
+      "kind": "paragraph",
+      "text": "a\\a:a*a?a\"a<a>a|a",
+      "protected": []
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "Resulting filename, as seen by the client:",
+      "protected": []
+    },
+    {
+      "id": "s0020",
+      "kind": "paragraph",
+      "text": "aÿa÷a¤a¿a¨a«a»a¦a",
+      "protected": []
+    },
+    {
+      "id": "s0021",
+      "kind": "heading",
+      "text": "CAVEATS",
+      "protected": []
+    },
+    {
+      "id": "s0022",
+      "kind": "paragraph",
+      "text": "Character mapping must work in BOTH directions (server -> client and client -> server) to get unique and existing file names!",
+      "protected": []
+    },
+    {
+      "id": "s0023",
+      "kind": "paragraph",
+      "text": "A NOT working example:",
+      "protected": []
+    },
+    {
+      "id": "s0024",
+      "kind": "paragraph",
+      "text": "Here the colon \":\" is mapped to the underscore \"_\".",
+      "protected": []
+    },
+    {
+      "id": "s0025",
+      "kind": "paragraph",
+      "text": "Assuming a server-side filename \"a:should_work\", which is translated to \"a_should_work\" for the client.",
+      "protected": []
+    },
+    {
+      "id": "s0026",
+      "kind": "paragraph",
+      "text": "BUT the reverse mapping from client \"a_should_work\" to server will result in \"a:should:work\" - something like \"file not found\" will be returned.",
+      "protected": []
+    },
+    {
+      "id": "s0027",
+      "kind": "heading",
+      "text": "VERSION",
+      "protected": []
+    },
+    {
+      "id": "s0028",
+      "kind": "paragraph",
+      "text": "This man page is part of Samba versions from 3.5.0 to 4.0.6.",
+      "protected": []
+    },
+    {
+      "id": "s0029",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0030",
+      "kind": "paragraph",
+      "text": "The original Samba software and related utilities were created by Andrew Tridgell. Samba is now developed by the Samba Team as an Open Source project similar to the way the Linux kernel is developed.",
+      "protected": []
+    },
+    {
+      "id": "s0031",
+      "kind": "paragraph",
+      "text": "New version written by Guenter Kukkukk kukks@samba.org",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Name",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Synopsis",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0008"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0009"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "OPTIONS",
+      "segment": "s0010"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0011",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0012"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0013"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "EXAMPLES",
+      "segment": "s0014"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0015"
+    },
+    {
+      "type": "literal",
+      "text": "        [CAD]\n\tpath = /data/cad\n\tvfs objects = catia\n\tcatia:mappings = 0x22:0xa8"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0016"
+    },
+    {
+      "type": "literal",
+      "text": "        [CAD]\n\tpath = /data/cad\n\tvfs objects = catia\n\tcatia:mappings = 0x22:0xa8,0x2a:0xa4,0x2f:0xf8,0x3a:0xf7,0x3c:0xab,0x3e:0xbb,0x3f:0xbf,0x5c:0xff,0x7c:0xa6"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0017"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0018"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0019"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0020"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "CAVEATS",
+      "segment": "s0021"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0022"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0023"
+    },
+    {
+      "type": "literal",
+      "text": "        [CAD]\n\tpath = /data/cad\n\tvfs objects = catia\n\tcatia:mappings = 0x3a:0x5f"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0024"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0025"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0026"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "VERSION",
+      "segment": "s0027"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0028"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "AUTHOR",
+      "segment": "s0029"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0030"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0031"
+    }
+  ]
+}

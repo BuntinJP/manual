@@ -1,0 +1,80 @@
+<!doctype html><html><head><meta charset="utf-8"><title>pam_cifscreds</title></head><body><main>
+<section id="pam-cifscreds">
+<h1>pam_cifscreds</h1>
+<section id="pam-module-to-manage-ntlm-credentials-in-kernel-keyring">
+<h2>PAM module to manage NTLM credentials in kernel keyring</h2>
+<dl class="field-list simple">
+<dt>Manual section<span class="colon">:</span></dt>
+<dd><p>8</p>
+</dd>
+</dl>
+<section id="synopsis">
+<h3>SYNOPSIS</h3>
+<p>Edit the PAM configuration files for the systems that you want to
+automatically register NTLM credentials for, e.g. <em>/etc/pam.d/login</em>,
+and modify as follows:</p>
+<pre class="literal-block">    ...
+    auth       substack     system-auth
++++ auth       optional     pam_cifscreds.so
+    auth       include      postlogin
+    ...
+
+    ...
+    session    include      system-auth
++++ session    optional     pam_cifscreds.so domain=DOMAIN
+    session    include      postlogin
+    ...</pre>
+<p>Change DOMAIN to the name of you Windows domain, or use host= as
+described below.</p>
+</section>
+<section id="description">
+<h3>DESCRIPTION</h3>
+<p>The <span class="docutils literal">pam_cifscreds</span> PAM module is a tool for automatically adding
+credentials (username and password) for the purpose of establishing
+sessions in multiuser mounts.</p>
+<p>When a cifs filesystem is mounted with the &quot;multiuser&quot; option, and does
+not use krb5 authentication, it needs to be able to get the credentials
+for each user from somewhere. The <span class="docutils literal">pam_cifscreds</span> module can be used
+to provide these credentials to the kernel automatically at login.</p>
+<p>In the session section of the PAM configuration file, the module can
+either an NT domain name or a list of hostname or addresses.</p>
+</section>
+<section id="options">
+<h3>OPTIONS</h3>
+<p><span class="docutils literal">pam_cifscreds</span> supports a couple options which can be set in the PAM
+configuration files. You must have one (and only one) of <span class="docutils literal">domain=</span> or
+<span class="docutils literal">host=</span>.</p>
+<dl class="simple">
+<dt>debug</dt>
+<dd><p>Turns on some extra debug logging.</p>
+</dd>
+<dt>domain=&lt;NT domain name&gt;</dt>
+<dd><p>Credentials will be added for the specified NT domain name.</p>
+</dd>
+<dt>host=&lt;hostname or IP address&gt;[,...]</dt>
+<dd><p>Credentials will be added for the specified hostnames or IP addresses.</p>
+</dd>
+</dl>
+</section>
+<section id="notes">
+<h3>NOTES</h3>
+<p>The pam_cifscreds PAM module requires a kernel built with support for
+the <span class="docutils literal">login</span> key type. That key type was added in v3.3 in mainline Linux
+kernels.</p>
+<p>Since <span class="docutils literal">pam_cifscreds</span> adds keys to the session keyring, it is highly
+recommended that one use <span class="docutils literal">pam_keyinit</span> to ensure that a session keyring
+is established at login time.</p>
+</section>
+<section id="see-also">
+<h3>SEE ALSO</h3>
+<p>cifscreds(1), pam_keyinit(8)</p>
+</section>
+<section id="author">
+<h3>AUTHOR</h3>
+<p>The pam_cifscreds PAM module was developed by Orion Poplawski
+&lt;<a class="reference external" href="mailto:orion&#64;nwra.com">orion&#64;nwra.com</a>&gt;.</p>
+</section>
+</section>
+</section>
+</main>
+</body></html>

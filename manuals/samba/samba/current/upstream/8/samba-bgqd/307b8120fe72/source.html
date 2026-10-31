@@ -1,0 +1,14 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>samba-bgqd</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="samba-bgqd.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>samba-bgqd &#8212; This is an internal helper program performing
+	asynchronous printing-related tasks</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="literal">samba-bgqd</code> [-D|--daemon] [-i|--interactive] [-F|--foreground] [--no-process-group] [-d &lt;debug level&gt;] [--debug-stdout] [--configfile=&lt;configuration file&gt;] [--option=&lt;name&gt;=&lt;value&gt;] [-l|--log-basename &lt;log directory&gt;] [--ready-signal-fd &lt;fd&gt;] [--parent-watch-fd &lt;fd&gt;]</p></div></div><div class="refsect1"><a name="id1337"></a><h2>DESCRIPTION</h2><p>This program is part of the
+	<a class="citerefentry" href="samba.7.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(7)</span></a> suite.</p><p><code class="literal">samba-bgqd</code> is not intended to be invoked
+	directly by users.</p><p>Likewise, while <code class="literal">samba-bgqd</code> is also not
+	intended to be run manually by system administrators, on systems with a
+	large number of printers configured via CUPS, it is recommended to run
+	<code class="literal">samba-bgqd</code> as a systemd service to improve
+	performance and responsiveness of printing operations.</p></div><div class="refsect1"><a name="id1338"></a><h2>SEE ALSO</h2><p>
+	<a class="citerefentry" href="smbd.8.html"><span class="citerefentry"><span class="refentrytitle">smbd</span>(8)</span></a>, and
+	<a class="citerefentry" href="smb.conf.5.html"><span class="citerefentry"><span class="refentrytitle">smb.conf</span>(5)</span></a>.
+	</p></div><div class="refsect1"><a name="id1339"></a><h2>AUTHOR</h2><p>The original Samba software and related utilities
+	were created by Andrew Tridgell. Samba is now developed
+	by the Samba Team as an Open Source project similar
+	to the way the Linux kernel is developed.</p></div></div></body></html>

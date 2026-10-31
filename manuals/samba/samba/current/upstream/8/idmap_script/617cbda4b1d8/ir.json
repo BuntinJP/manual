@@ -1,0 +1,366 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "617cbda4b1d80063899447d874e488decae66db03f11528d3ff7baa82e22033e",
+  "extraction": {
+    "selector": ".refentry",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "Name",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "idmap_script — Samba's idmap_script Backend for Winbind",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "The idmap_script plugin is a substitute for the idmap_tdb2 backend used by winbindd for storing SID/uid/gid mapping tables in clustered environments with Samba and CTDB. It is a read only backend that uses a script to perform mapping.",
+      "protected": []
+    },
+    {
+      "id": "s0005",
+      "kind": "paragraph",
+      "text": "It was developed out of the idmap_tdb2 back end and does not store SID/uid/gid mappings in a TDB, since the winbind_cache tdb will store the mappings once they are provided.",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "heading",
+      "text": "IDMAP OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0007",
+      "kind": "term",
+      "text": "range = low - high",
+      "protected": []
+    },
+    {
+      "id": "s0008",
+      "kind": "paragraph",
+      "text": "Defines the available matching uid and gid range for which the backend is authoritative.",
+      "protected": []
+    },
+    {
+      "id": "s0009",
+      "kind": "term",
+      "text": "script",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "This option can be used to configure an external program for performing id mappings.",
+      "protected": []
+    },
+    {
+      "id": "s0011",
+      "kind": "heading",
+      "text": "IDMAP SCRIPT",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "paragraph",
+      "text": "The script idmap backend supports an external program for performing id mappings through the [[p0]] option [[p1]][[p2]][[p3]] or its deprecated legacy form [[p4]][[p5]][[p6]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "idmap config * : script"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "idmap : script"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "The script should accept the following command line options.",
+      "protected": []
+    },
+    {
+      "id": "s0014",
+      "kind": "paragraph",
+      "text": "And it should return one of the following responses as a single line of text.",
+      "protected": []
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "XID indicates that the ID returned should be both a UID and a GID. That is, it requests an ID_TYPE_BOTH, but it is ultimately up to the script whether or not it can honor that request. It can choose to return a UID or a GID mapping only.",
+      "protected": []
+    },
+    {
+      "id": "s0016",
+      "kind": "heading",
+      "text": "EXAMPLES",
+      "protected": []
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "This example shows how script is used as the default idmap backend using an external program via the script parameter:",
+      "protected": []
+    },
+    {
+      "id": "s0018",
+      "kind": "paragraph",
+      "text": "This shows a simple script to partially perform the task:",
+      "protected": []
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "Clearly, this script is not enough, as it should probably use wbinfo to determine if an incoming SID is a user or group SID and then look up the mapping in a table or use some other mechanism for mapping SIDs to UIDs and etc.",
+      "protected": []
+    },
+    {
+      "id": "s0020",
+      "kind": "paragraph",
+      "text": "Please be aware that the script is called with the _NO_WINBINDD environment variable set to 1. This prevents recursive calls into winbind from the script both via explicit calls to wbinfo and via implicit calls via nss_winbind. For example a call to [[p0]] could trigger such an infinite recursion.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "ls -l"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0021",
+      "kind": "paragraph",
+      "text": "It is safe to call [[p0]] and [[p1]] from within an idmap script. To do so, the script must unset the _NO_WINBINDD environment variable right before the call to [[p2]] and set it to 1 again right after [[p3]] has returned to protect against the recursion.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "wbinfo -n"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "wbinfo -s"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "wbinfo"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "wbinfo"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0022",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0023",
+      "kind": "paragraph",
+      "text": "The original Samba software and related utilities were created by Andrew Tridgell. Samba is now developed by the Samba Team as an Open Source project similar to the way the Linux kernel is developed.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Name",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0005"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "IDMAP-OPTIONS",
+      "segment": "s0006"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0007",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0008"
+            }
+          ]
+        },
+        {
+          "term": "s0009",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0010"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "IDMAP-SCRIPT",
+      "segment": "s0011"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0012"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0013"
+    },
+    {
+      "type": "literal",
+      "text": "\tSIDTOID S-1-xxxx\n\tIDTOSID UID xxxx\n\tIDTOSID GID xxxx\n\tIDTOSID XID xxxx"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0014"
+    },
+    {
+      "type": "literal",
+      "text": "\tUID:yyyy\n\tGID:yyyy\n\tXID:yyyy\n\tSID:ssss\n\tERR:yyyy"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0015"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "EXAMPLES",
+      "segment": "s0016"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0017"
+    },
+    {
+      "type": "literal",
+      "text": "\t[global]\n\tidmap config * : backend = script\n\tidmap config * : range = 1000000-2000000\n\tidmap config * : script = /usr/local/samba/bin/idmap_script.sh"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0018"
+    },
+    {
+      "type": "literal",
+      "text": "\t#!/bin/sh\n\t#\n\t# Uncomment this if you want some logging\n\t#echo $@ >> /tmp/idmap.sh.log\n\tif [ \"$1\" == \"SIDTOID\" ]\n\tthen\n\t\t# Note. The number returned has to be within the range defined\n\t\t#echo \"Sending UID:1000005\" >> /tmp/idmap.sh.log\n\t\techo \"UID:1000005\"\n\t\texit 0\n\telse\n\t\t#echo \"Sending ERR: No idea what to do\" >> /tmp/idmap.sh.log\n\t\techo \"ERR: No idea what to do\"\n\t\texit 1\n\tfi"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0019"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0020"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0021"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "AUTHOR",
+      "segment": "s0022"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0023"
+    }
+  ]
+}

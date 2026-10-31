@@ -1,0 +1,575 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "1d3df0e575d6ac2998ed9b6bb257a727a07de52bc481100130db9dd63b13111b",
+  "extraction": {
+    "selector": ".refentry",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "Name",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "vfs_zfsacl — ZFS ACL samba module",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "Synopsis",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs objects = zfsacl"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "This VFS module is part of the [[p0]] suite.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "samba(7)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/samba.7.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "The [[p0]] VFS module is the home for all ACL extensions that Samba requires for proper integration with ZFS.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "zfsacl"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "paragraph",
+      "text": "Currently the zfsacl vfs module provides extensions in following areas :",
+      "protected": []
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "NFSv4 ACL Interfaces with configurable options for ZFS",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "[[p0]]This module follows the posix-acl behaviour and hence allows permission stealing via chown. Samba might allow at a later point in time, to restrict the chown via this module as such restrictions are the responsibility of the underlying filesystem than of Samba.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "NOTE:"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0011",
+      "kind": "paragraph",
+      "text": "This module makes use of the smb.conf parameter [[p0]] When set to yes (the default), this parameter will add in the FILE_DELETE_CHILD bit on a returned ACE entry for a file (not a directory) that already contains all file permissions except for FILE_DELETE and FILE_DELETE_CHILD. This can prevent Windows applications that request GENERIC_ALL access from getting ACCESS_DENIED errors when running against a filesystem with NFSv4 compatible ACLs.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "acl map full control = acl map full control",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#ACLMAPFULLCONTROL"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0012",
+      "kind": "paragraph",
+      "text": "ZFS has multiple dataset configuration parameters that determine ACL behavior. Although the nuances of these parameters are outside the scope of this manpage, the \"aclmode\" and \"aclinherit\" are of particular importance for samba shares. For datasets that are intended solely as Samba shares, \"aclmode = restricted\" and \"aclinherit = passthrough\" provide inheritance behavior most consistent with NTFS ACLs. A \"restricted\" aclmode prevents chmod() on files that have a non-trivial ACL (one that cannot be expressed as a POSIX mode without loss of information). Consult the relevant ZFS manpages for further information.",
+      "protected": []
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "This module is stackable.",
+      "protected": []
+    },
+    {
+      "id": "s0014",
+      "kind": "paragraph",
+      "text": "Since Samba 4.0 all options are per share options.",
+      "protected": []
+    },
+    {
+      "id": "s0015",
+      "kind": "heading",
+      "text": "OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0016",
+      "kind": "paragraph",
+      "text": "nfs4:mode = [ simple | special ] Controls substitution of special IDs (OWNER@ and GROUP@) on NFS4 ACLs. The use of mode simple is recommended. In this mode only non inheriting ACL entries for the file owner and group are mapped to special IDs. The following MODEs are understood by the module:[[p0]] - use OWNER@ and GROUP@ special IDs for non inheriting ACEs only.[[p1]] - use OWNER@ and GROUP@ special IDs in ACEs for all file owner and group ACEs.nfs4:acedup = [dontcare|reject|ignore|merge] This parameter configures how Samba handles duplicate ACEs encountered in NFS4 ACLs. They allow creating duplicate ACEs with different bits for same ID, which may confuse the Windows clients. Following is the behaviour of Samba for different values :[[p2]] - copy the ACEs as they come[[p3]] - stop operation and exit with error on ACL set op[[p4]] - don't include the second matching ACE[[p5]] - bitwise OR the 2 ace.flag fields and 2 ace.mask fields of the 2 duplicate ACEs into 1 ACEnfs4:chown = [yes|no]This parameter allows enabling or disabling the chown supported by the underlying filesystem. This parameter should be enabled with care as it might leave your system insecure.Some filesystems allow chown as a) giving b) stealing. It is the latter that is considered a risk.Following is the behaviour of Samba for different values : [[p6]] - Enable chown if as supported by the under filesystem[[p7]] - Disable chown",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "simple(default)"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "special(deprecated)"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "dontcare"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "reject (deprecated)"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "ignore (deprecated)"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "merge (default)"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "yes"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "code",
+            "text": "no (default)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0017",
+      "kind": "term",
+      "text": "zfsacl:denymissingspecial = [yes|no]",
+      "protected": []
+    },
+    {
+      "id": "s0018",
+      "kind": "paragraph",
+      "text": "Prevent users from setting an ACL that lacks NFSv4 special entries (owner@, group@, everyone@). ZFS will automatically generate these these entries when calculating the inherited ACL of new files if the ACL of the parent directory lacks an inheriting special entry. This may result in user confusion and unexpected change in permissions of files and directories as the inherited ACL is generated.",
+      "protected": []
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "yes"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0020",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "no (default)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0021",
+      "kind": "term",
+      "text": "zfsacl:block_special = [yes|no]",
+      "protected": []
+    },
+    {
+      "id": "s0022",
+      "kind": "paragraph",
+      "text": "Prevent ZFS from automatically adding NFSv4 special entries (owner@, group@, everyone@). ZFS will automatically generate these these entries when calculating the inherited ACL of new files if the ACL of the parent directory lacks an inheriting special entry. This may result in user confusion and unexpected change in permissions of files and directories as the inherited ACL is generated. Blocking this behavior is achieved by setting an inheriting everyone@ that grants no permissions and not adding the entry to the file's Security Descriptor",
+      "protected": []
+    },
+    {
+      "id": "s0023",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "yes (default)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0024",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "no"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0025",
+      "kind": "term",
+      "text": "zfsacl:map_dacl_protected = [yes|no]",
+      "protected": []
+    },
+    {
+      "id": "s0026",
+      "kind": "paragraph",
+      "text": "If enabled and the ZFS ACL on the underlying filesystem does not contain any inherited access control entries, then set the SEC_DESC_DACL_PROTECTED flag on the Security Descriptor returned to SMB clients. This ensures correct Windows client behavior when disabling inheritance on directories.",
+      "protected": []
+    },
+    {
+      "id": "s0027",
+      "kind": "paragraph",
+      "text": "Following is the behaviour of Samba for different values :",
+      "protected": []
+    },
+    {
+      "id": "s0028",
+      "kind": "paragraph",
+      "text": "[[p0]] - Enable mapping to SEC_DESC_DACL_PROTECTED",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "yes"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0029",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "no (default)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0030",
+      "kind": "heading",
+      "text": "EXAMPLES",
+      "protected": []
+    },
+    {
+      "id": "s0031",
+      "kind": "paragraph",
+      "text": "A ZFS mount can be exported via Samba as follows :",
+      "protected": []
+    },
+    {
+      "id": "s0032",
+      "kind": "heading",
+      "text": "VERSION",
+      "protected": []
+    },
+    {
+      "id": "s0033",
+      "kind": "paragraph",
+      "text": "This man page is part of version 4.25.0 of the Samba suite.",
+      "protected": []
+    },
+    {
+      "id": "s0034",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0035",
+      "kind": "paragraph",
+      "text": "The original Samba software and related utilities were created by Andrew Tridgell. Samba is now developed by the Samba Team as an Open Source project similar to the way the Linux kernel is developed.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Name",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Synopsis",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0008"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0009"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0010"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0011"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0012"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0013"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0014"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "OPTIONS",
+      "segment": "s0015"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0016"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0017",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0018"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0019"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0020"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "term": "s0021",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0022"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0023"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0024"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "term": "s0025",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0026"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0027"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0028"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0029"
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "EXAMPLES",
+      "segment": "s0030"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0031"
+    },
+    {
+      "type": "literal",
+      "text": "        [samba_zfs_share]\n\tvfs objects = zfsacl\n\tpath = /test/zfs_mount\n\tnfs4: mode = simple\n\tnfs4: acedup = merge"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "VERSION",
+      "segment": "s0032"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0033"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "AUTHOR",
+      "segment": "s0034"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0035"
+    }
+  ]
+}

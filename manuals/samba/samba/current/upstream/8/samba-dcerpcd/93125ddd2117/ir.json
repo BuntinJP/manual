@@ -1,0 +1,851 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "93125ddd21176ee51c117850a08b544d2ea4e135cdb148f759f983c13e0dca1f",
+  "extraction": {
+    "selector": ".refentry",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "Name",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "samba-dcerpcd — This is one of Samba's DCERPC server processes that can listen on sockets where RPC services are offered and is the parent process of the DCERPC services it invokes. Unless separately invoked it is started on demand from [[p0]] or [[p1]] and serves DCERPC only over named pipes (np) as a helper process. This will be the standard setup for most installations (standalone/member server/AD server) unless they modify their startup scripts. Note in when Samba is configured as an Active Directory Domain controller the [[p2]] process that invokes [[p3]] will still provide its normal DCERPC services, not [[p4]]. When separately invoked by system startup scripts or a daemon, the global smb.conf option [[p5]] MUST be set to allow [[p6]] to start standalone.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "smbd"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "winbind"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "samba"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "smbd"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "samba-dcerpcd"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "link",
+            "text": "rpc start on demand helpers = false",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#RPCSTARTONDEMANDHELPERS"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "samba-dcerpcd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "Synopsis",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]] [[[p1]]|[[p2]]] [[[p3]]|[[p4]]] [[[p5]]|[[p6]]] [[[p7]]] [[[p8]] <debug level>] [[[p9]]] [[[p10]]=<configuration file>] [[[p11]]=<name>=<value>] [[[p12]]] [[[p13]]] [[[p14]]|[[p15]]] [[[p16]]] [[[p17]]] [[[p18]]] [[[p19]]=<fd>] [<SERVICE_1>] [<SERVICE_2>] [<...>]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "samba-dcerpcd"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-D"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--daemon"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-i"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "--interactive"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "-F"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "--foreground"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-process-group"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "code",
+            "text": "-d"
+          }
+        },
+        {
+          "token": "[[p9]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debug-stdout"
+          }
+        },
+        {
+          "token": "[[p10]]",
+          "inline": {
+            "tag": "code",
+            "text": "--configfile"
+          }
+        },
+        {
+          "token": "[[p11]]",
+          "inline": {
+            "tag": "code",
+            "text": "--option"
+          }
+        },
+        {
+          "token": "[[p12]]",
+          "inline": {
+            "tag": "code",
+            "text": "--leak-report"
+          }
+        },
+        {
+          "token": "[[p13]]",
+          "inline": {
+            "tag": "code",
+            "text": "--leak-report-full"
+          }
+        },
+        {
+          "token": "[[p14]]",
+          "inline": {
+            "tag": "code",
+            "text": "-V"
+          }
+        },
+        {
+          "token": "[[p15]]",
+          "inline": {
+            "tag": "code",
+            "text": "--version"
+          }
+        },
+        {
+          "token": "[[p16]]",
+          "inline": {
+            "tag": "code",
+            "text": "--libexec-rpcds"
+          }
+        },
+        {
+          "token": "[[p17]]",
+          "inline": {
+            "tag": "code",
+            "text": "--np-helper"
+          }
+        },
+        {
+          "token": "[[p18]]",
+          "inline": {
+            "tag": "code",
+            "text": "--np-only"
+          }
+        },
+        {
+          "token": "[[p19]]",
+          "inline": {
+            "tag": "code",
+            "text": "--ready-signal-fd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "This tool is part of the [[p0]] suite.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "samba(7)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/samba.7.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "samba-dcerpcd can be used in two ways. In the normal case without startup script modification and the global smb.conf option [[p0]] is set (the default setting), it is invoked on demand from [[p1]] or [[p2]] with a command line containing [[p3]] to serve DCERPC over named pipes (np). It can also be used in a standalone mode where it is started separately from [[p4]] or [[p5]] via system startup scripts. If invoked as a standalone daemon or started from system startup scripts the global smb.conf option [[p6]] MUST be set to false. If the global smb.conf option [[p7]] is set to true or left as default, [[p8]] will fail to start and log an error message.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "rpc start on demand helpers = true",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#RPCSTARTONDEMANDHELPERS"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "smbd"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "winbind"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "--np-helper"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "smbd"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "winbind"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "link",
+            "text": "rpc start on demand helpers = false",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#RPCSTARTONDEMANDHELPERS"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "link",
+            "text": "rpc start on demand helpers = true",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#RPCSTARTONDEMANDHELPERS"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "code",
+            "text": "samba-dcerpcd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "paragraph",
+      "text": "Note that when Samba is run in the Active Directory Domain Controller mode the [[p0]] AD code will still provide its normal DCERPC services whilst allowing samba-dcerpcd to provide services like SRVSVC in the same way that [[p1]] used to in this configuration.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "samba"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "smbd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "The standalone mode can also be useful for use outside of the Samba framework, for example, use with the Linux kernel SMB2 server ksmbd or possibly other SMB2 server implementations. In this mode it behaves like inetd and listens on sockets on behalf of RPC server implementations.",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "When a client connects, [[p0]] will start the relevant RPC service binary on demand and hand over the connection to that service. When an RPC service has been idle for a while, [[p1]] will ask it to shut down again.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "samba-dcerpcd"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "samba-dcerpcd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0011",
+      "kind": "heading",
+      "text": "OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-D"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--daemon"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "If specified, this parameter causes the server to operate as a daemon. That is, it detaches itself and runs in the background, fielding requests on the appropriate port. Operating the server as a daemon is useful for running [[p0]] outside of the Samba framework. However, it can also be used in this way within Samba for member servers if configured to start up via system startup scripts. This switch is assumed if [[p1]] is executed on the command line of a shell.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "samba-dcerpcd"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "samba-dcerpcd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0014",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-i"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--interactive"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "If this parameter is specified it causes the server to run \"interactively\", not as a daemon, even if the server is executed on the command line of a shell. Setting this parameter negates the implicit daemon mode when run from the command line. [[p0]] will only accept one connection and terminate. It will also log to standard output, as if the [[p1]] parameter had been given.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "samba-dcerpcd"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-S"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0016",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-F"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--foreground"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "If specified, this parameter causes the main [[p0]] process to not daemonize, i.e. double-fork and disassociate with the terminal. Child processes are still spawned as normal to service each connection request, but the main process does not exit. This operation mode is suitable for running [[p1]] under process supervisors such as [[p2]] and [[p3]] from Daniel J. Bernstein's [[p4]] package, or the AIX process monitor.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "samba-dcerpcd"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "samba-dcerpcd"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "supervise"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "svscan"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "daemontools"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0018",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-process-group"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "Do not create a new process group for samba-dcerpcd.",
+      "protected": []
+    },
+    {
+      "id": "s0020",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--libexec-rpcds"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0021",
+      "kind": "paragraph",
+      "text": "Offer RPC services for all daemons in Samba's LIBEXECDIR, all programs starting with \"rpcd_\" are assumed to offer RPC services. If you don't use the [[p0]] option, you can explicitly list all RPC service helpers explicitly on the command line.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--libexec-rpcds"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0022",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--np-helper"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0023",
+      "kind": "paragraph",
+      "text": "Run [[p0]] on demand opening named pipe sockets as helpers for [[p1]] or [[p2]]. In order to run in this mode, the global smb.conf option [[p3]] must be set to true (this is the default setting).",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "samba-dcerpcd"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "smbd"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "winbind"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "link",
+            "text": "rpc start on demand helpers = true",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#RPCSTARTONDEMANDHELPERS"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0024",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--np-only"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0025",
+      "kind": "paragraph",
+      "text": "Run [[p0]] as daemon without [[p1]], the [[p2]] options it still only binds to ncacn_np services.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "samba-dcerpcd"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--np-helper"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--np-only"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0026",
+      "kind": "term",
+      "text": "[[p0]]=<fd>",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--ready-signal-fd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0027",
+      "kind": "paragraph",
+      "text": "Report service readiness via this fd to [[p0]] or [[p1]]. Only for internal use.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "smbd"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "winbind"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0028",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0029",
+      "kind": "paragraph",
+      "text": "The original Samba software and related utilities were created by Andrew Tridgell. Samba is now developed by the Samba Team as an Open Source project similar to the way the Linux kernel is developed.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Name",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Synopsis",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0008"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0009"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0010"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "OPTIONS",
+      "segment": "s0011"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0012",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0013"
+            }
+          ]
+        },
+        {
+          "term": "s0014",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0015"
+            }
+          ]
+        },
+        {
+          "term": "s0016",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0017"
+            }
+          ]
+        },
+        {
+          "term": "s0018",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0019"
+            }
+          ]
+        },
+        {
+          "term": "s0020",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0021"
+            }
+          ]
+        },
+        {
+          "term": "s0022",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0023"
+            }
+          ]
+        },
+        {
+          "term": "s0024",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0025"
+            }
+          ]
+        },
+        {
+          "term": "s0026",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0027"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "AUTHOR",
+      "segment": "s0028"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0029"
+    }
+  ]
+}

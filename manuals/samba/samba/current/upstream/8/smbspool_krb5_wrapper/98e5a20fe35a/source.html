@@ -1,0 +1,10 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>smbspool_krb5_wrapper</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="smbspool.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>smbspool_krb5_wrapper &#8212; This is a CUPS printing backend which calls smbspool</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="literal">smbspool_krb5_wrapper</code> {job} {user} {title} {copies} {options} [filename]</p></div></div><div class="refsect1"><a name="id1337"></a><h2>DESCRIPTION</h2><p>This tool is part of the <a class="citerefentry" href="samba.7.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(7)</span></a> suite.</p><p>smbspool_krb5_wrapper is a tool that can be used to print using
+		Kerberos credentials. To get this working smbspool_krb5_wrapper
+		needs to be the smb backend of CUPS. It needs to be owned by
+		root and the permissions for the binary need to be 0700. Once
+		smbspool_krb5_wrapper switched to the user trying to print it
+		executes smbspool. It should not be called by a user.</p></div><div class="refsect1"><a name="id1338"></a><h2>SEE ALSO</h2><p><a class="citerefentry" href="smbspool.8.html"><span class="citerefentry"><span class="refentrytitle">smbspool</span>(8)</span></a>.</p></div><div class="refsect1"><a name="id1339"></a><h2>AUTHOR</h2><p>The original Samba software and related utilities
+	were created by Andrew Tridgell. Samba is now developed
+	by the Samba Team as an Open Source project similar
+	to the way the Linux kernel is developed.</p><p>The smbspool_krb5_wrapper manpage was written by Andreas
+		Schneider.</p></div></div></body></html>

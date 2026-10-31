@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "78b2d047a6d9b6f12aa6bedaa5c062f7a3aacdf278808f417323cd17802eb2ec",
+  "extraction": {
+    "selector": ".refentry",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "Name",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "vfs_glusterfs_fuse — Utilize features provided by GlusterFS",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "Synopsis",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs objects = glusterfs_fuse"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "This VFS module is part of the [[p0]] suite.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "samba(8)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/samba.8.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "GlusterFS ([[p0]]) is an Open Source clustered file system capable of scaling to several peta-bytes. With its FUSE based native client, GlusterFS is available as a POSIX compliant file system and can hence be shared by Samba without additional steps.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "http://www.gluster.org",
+            "href": "http://www.gluster.org/"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "paragraph",
+      "text": "The [[p0]] VFS module provides an enhanced way to access a Gluster filesystem using a Gluster FUSE mount. It provides support for the [[p1]] VFS call which enhances file access performance by avoiding multiple expensive case folding lookup calls to detect the appropriate case of an existing filename.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs_glusterfs_fuse"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "get_real_filename"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "Furthermore, this module implements a substitute file-id mechanism. The default file-id mechanism is not working correctly for gluster fuse mount re-exports, so in order to avoid data loss, users exporting gluster fuse mounts with Samba should enable this module.",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "This module can be combined with other modules, but it should be the last module in the [[p0]] list. Modules added to this list to the right of the glusterfs entry may not have any effect at all.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs objects"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0011",
+      "kind": "heading",
+      "text": "CONFIGURATION",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "paragraph",
+      "text": "A basic configuration looks like this.",
+      "protected": []
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "Note that [[p0]] requires a Gluster mount. For accessing glusterfs directly over the GFAPI library please use the [[p1]] module.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs_glusterfs_fuse"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs_glusterfs"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0014",
+      "kind": "heading",
+      "text": "OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "This module does currently have no further options.",
+      "protected": []
+    },
+    {
+      "id": "s0016",
+      "kind": "heading",
+      "text": "VERSION",
+      "protected": []
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "This man page is part of version 4.25.0 of the Samba suite.",
+      "protected": []
+    },
+    {
+      "id": "s0018",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "The original Samba software and related utilities were created by Andrew Tridgell. Samba is now developed by the Samba Team as an Open Source project similar to the way the Linux kernel is developed.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Name",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Synopsis",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0008"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0009"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0010"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "CONFIGURATION",
+      "segment": "s0011"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0012"
+    },
+    {
+      "type": "literal",
+      "text": "\t\t[share]\n\t\tvfs objects = glusterfs_fuse\n\t\tpath = /absolute/path_of_fusemount"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0013"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "OPTIONS",
+      "segment": "s0014"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0015"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "VERSION",
+      "segment": "s0016"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0017"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "AUTHOR",
+      "segment": "s0018"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0019"
+    }
+  ]
+}

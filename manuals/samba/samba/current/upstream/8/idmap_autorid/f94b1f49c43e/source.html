@@ -1,0 +1,103 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>idmap_autorid</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="idmap_autorid.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>idmap_autorid &#8212; Samba's idmap_autorid Backend for Winbind</p></div><div class="refsynopsisdiv"><h2>DESCRIPTION</h2><p>The idmap_autorid backend provides a way to use an algorithmic
+	mapping scheme to map UIDs/GIDs and SIDs that is more deterministic
+	than idmap_tdb and easier to configure than idmap_rid.</p><p>The module works similar to idmap_rid, but it automatically
+	configures the range to be used for each domain, so there is no need
+	to specify a specific range for each domain in the forest, the only
+	configuration that is needed is the range of uid/gids that shall
+	be used for user/group mappings and an optional size of the ranges
+	to be used.</p><p>The mappings of which domain is mapped to which range is stored
+	in autorid.tdb, thus you should backup this database regularly.</p><p>Due to the algorithm being used, it is the module that is
+	most easy to use as it only requires a minimal configuration.</p></div><div class="refsect1"><a name="id1337"></a><h2>IDMAP OPTIONS</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term">range = low - high</span></dt><dd><p>
+			Defines the available matching uid and gid
+			range for which the backend is
+			authoritative. Note that the range acts as a
+			filter.  If algorithmically determined UID or
+			GID fall outside the range, they are ignored
+			and the corresponding map is discarded.  It is
+			intended as a way to avoid accidental UID/GID
+			overlaps between local and remotely defined
+			IDs. Note that the range should be a multiple
+			of the rangesize and needs to be at least twice
+			as large in order to have sufficient id range
+			space for the mandatory BUILTIN domain.
+			With a default rangesize of 100000 the range
+			needs to span at least 200000.
+			This would be: range = 100000 - 299999.
+		</p></dd><dt><span class="term">rangesize = numberofidsperrange</span></dt><dd><p>
+			Defines the number of uids/gids available per
+			domain range. The minimum needed value is 2000.
+			SIDs with RIDs larger than this value will be mapped
+			into extension ranges depending upon number of available
+			ranges. If the autorid backend runs out of available
+			ranges, mapping requests for new domains (or new
+			extension ranges for domains already known) are ignored
+			and the corresponding map is discarded.
+			</p><p>
+			Example: with rangesize set to 10000, users/groups with
+			a RID up to 10000 will be put into the first range for the
+			domain. When attempting to map the an object with a RID
+			of 25000, an extension range will be allocated that
+			will then be used to map all RIDs from 20000-29999.
+			</p><p>One range will be used for local users and groups and for
+			non-domain well-known SIDs like Everyone (S-1-1-0) or Creator Owner (S-1-3-0).
+			A chosen list of well-known SIDs will be preallocated on first start
+			to create deterministic mappings for those.</p><p>
+			Thus the number of local users and groups that can be created is
+			limited by this option as well. If you plan to create a large amount
+			of local users or groups, you will need set this parameter accordingly.
+			</p><p>The default value is 100000.</p></dd><dt><span class="term">read only = [ yes | no ]</span></dt><dd><p>Turn the module into read-only mode. No new ranges will be allocated
+			nor will new mappings be created in the idmap pool. Defaults to no.</p></dd><dt><span class="term">ignore builtin = [ yes | no ]</span></dt><dd><p>Ignore any mapping requests for the BUILTIN domain.
+			Defaults to no.</p></dd></dl></div></div><div class="refsect1"><a name="id1338"></a><h2>THE MAPPING FORMULAS</h2><p>
+		The Unix ID for a RID is calculated this way:
+		</p><pre class="programlisting">
+			ID =  REDUCED RID + IDMAP RANGE LOW VALUE + RANGE NUMBER * RANGE SIZE
+</pre><p>
+		where REDUCED RID = RID % RANGE_SIZE
+		and a DOMAIN RANGE INDEX = RID / RANGE_SIZE is used together with the
+		domain sid to determine the RANGE NUMBER (stored in the database).
+	</p><p>
+		Correspondingly, the formula for calculating the RID for a
+		given Unix ID is this:
+		</p><pre class="programlisting">
+			RID = (ID - LOW ID) % RANGE SIZE + DOMAIN RANGE INDEX * RANGE SIZE
+</pre><p>
+		Where the DOMAIN RANGE INDEX is retrieved from the database along with the
+		domain sid by the RANGE NUMBER = (ID - LOW ID) / RANGE SIZE .
+	</p></div><div class="refsect1"><a name="id1339"></a><h2>EXAMPLES</h2><p>
+		This example shows you the minimal configuration that will
+		work for the principal domain and 19 trusted domains / range
+		extensions.
+	</p><pre class="programlisting">
+	[global]
+	security = ads
+	workgroup = CUSTOMER
+	realm = CUSTOMER.COM
+
+	idmap config * : backend = autorid
+	idmap config * : range = 1000000-1999999
+
+</pre><p>
+		This example shows how to configure idmap_autorid as default
+		for all domains with a potentially large amount of users
+		plus a specific configuration for a trusted domain
+		that uses the SFU mapping scheme. Please note that idmap
+		ranges and sfu ranges are not allowed to overlap.
+	</p><pre class="programlisting">
+	[global]
+	security = ads
+	workgroup = CUSTOMER
+	realm = CUSTOMER.COM
+
+	idmap config * : backend = autorid
+	idmap config * : range = 1000000-19999999
+	idmap config * : rangesize = 1000000
+
+	idmap config TRUSTED : backend  = ad
+	idmap config TRUSTED : range    = 50000 - 99999
+	idmap config TRUSTED : schema_mode = sfu
+</pre></div><div class="refsect1"><a name="id1340"></a><h2>AUTHOR</h2><p>
+	The original Samba software and related utilities
+	were created by Andrew Tridgell. Samba is now developed
+	by the Samba Team as an Open Source project similar
+	to the way the Linux kernel is developed.
+	</p></div></div></body></html>

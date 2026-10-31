@@ -1,0 +1,738 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Use the AWS CLI 2.39.3 to run the ssm describe-instance-information command." name="description" />
+
+  
+    <title>describe-instance-information &#8212; AWS CLI 2.39.3 Command Reference</title>
+  <link rel="stylesheet" type="text/css" href="../../_static/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../_static/override.css" />
+  <script src="/SdkStatic/sdk-priv.js" async="true"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/guzzle.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="describe-instance-patch-states" href="describe-instance-patch-states.html" />
+    <link rel="prev" title="describe-instance-associations-status" href="describe-instance-associations-status.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-responsive.min.css" />
+  
+   
+
+<link rel="alternate" type="text/markdown" href="describe-instance-information.md" title="Markdown version" />
+  </head><body>
+  <div class="navbar navbar-fixed-top ">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="../../index.html">AWS CLI Command Reference</a>
+        <ul class="nav">
+<li><a class="nav-link" href="../../index.html">Home</a></li>
+<li><a class="nav-link" href="https://docs.aws.amazon.com/cli/latest/userguide/">User Guide</a></li>
+<li><a class="nav-link" href="https://forums.aws.amazon.com/forum.jspa?forumID=150">Forum</a></li>
+<li><a class="nav-link" href="https://github.com/aws/aws-cli">GitHub</a></li>
+        </ul>
+        <div class="pull-right" id="github-stars">
+          <iframe src="https://ghbtns.com/github-btn.html?user=aws&repo=aws-cli&type=watch&count=true&size=small"
+                  allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"  sandbox="allow-scripts"
+                  title="GitHub button showing the number of project stars."></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--REGION_DISCLAIMER_DO_NOT_REMOVE-->
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="describe-instance-patch-states.html" title="describe-instance-patch-states"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="describe-instance-associations-status.html" title="describe-instance-associations-status"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">AWS CLI 2.39.3 Command Reference</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >aws</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">ssm</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">describe-instance-information</a></li> 
+      </ul>
+    </div>
+    <div class="container">
+        
+    <div class="top-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="describe-instance-associations-status.html" title="previous chapter (use the left arrow)">&larr; describe-instance-associations-status</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="describe-instance-patch-states.html" title="next chapter (use the right arrow)">describe-instance-patch-states &rarr;</a></li>
+      </ul>
+    </div>
+  
+        <div class="document clearer">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo left-bar-other">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/logo.png" alt="Amazon Web Services logo" height="63" />
+  </a>
+</p>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">describe-instance-information</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
+<li><a class="reference internal" href="#options">Options</a></li>
+<li><a class="reference internal" href="#global-options">Global Options</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#output">Output</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+<div id="searchbox" style="display: none">
+    <h3>Quick search</h3>
+    <form class="form-search margin-top-1em" action="../../search.html" method="get">
+        <label for="searchbox">Search box</label>
+        <input id="searchbox" type="search" name="q" style="width: 105px" class="input-small search-query" autocomplete="off" />
+        <button type="submit" class="btn btn-small">Search</button>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script src="../../_static/searchbox.js"></script><div class="left-bar-other">
+  <h3>Feedback</h3>
+  <p class="feedback">Did you find this page useful? Do you have a suggestion to improve the documentation? <a href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=AWS%20Command%20Line%20Interface&hidden_guide_name=Reference&topic_url=https%3A%2F%2Fdocs.aws.amazon.com%2Fcli%2Flatest%2Freference/ssm/describe-instance-information.html">Give us feedback</a>.
+    <br />
+    If you would like to suggest an improvement or fix for the AWS CLI, check out our <a href="https://github.com/aws/aws-cli/blob/v2/CONTRIBUTING.rst">contributing guide</a> on GitHub.</p>
+</div><div class="left-bar-other">
+  <h3>User Guide</h3>
+  <p>First time using the AWS CLI? See the
+  <a href="https://docs.aws.amazon.com/cli/latest/userguide/">User Guide</a> for
+  help getting started.</p>
+</div>
+        </div>
+      </div>
+            <div class="body">
+              
+  <p>[ <a class="reference internal" href="../index.html#cli-aws"><span class="std std-ref">aws</span></a> . <a class="reference internal" href="index.html#cli-aws-ssm"><span class="std std-ref">ssm</span></a> ]</p>
+<div class="section" id="describe-instance-information">
+<span id="cli-aws-ssm-describe-instance-information"></span><h1>describe-instance-information<a class="headerlink" href="#describe-instance-information" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
+<p>Provides information about one or more of your managed nodes, including the operating system platform, SSM Agent version, association status, and IP address. This operation does not return information for nodes that are either Stopped or Terminated.</p>
+<p>If you specify one or more node IDs, the operation returns information for those managed nodes. If you don’t specify node IDs, it returns information for all your managed nodes. If you specify a node ID that isn’t valid or a node that you don’t own, you receive an error.</p>
+<div class="admonition note">
+<h3 class='admonition-title'>Note</h3>The <code class="docutils literal notranslate"><span class="pre">IamRole</span></code> field returned for this API operation is the role assigned to an Amazon EC2 instance configured with a Systems Manager Quick Setup host management configuration or the role assigned to an on-premises managed node.</div>
+<p>See also: <a class="reference external" href="https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeInstanceInformation">AWS API Documentation</a></p>
+<p><code class="docutils literal notranslate"><span class="pre">describe-instance-information</span></code> is a paginated operation. Multiple API calls may be issued in order to retrieve the entire data set of results. You can disable pagination by providing the <code class="docutils literal notranslate"><span class="pre">--no-paginate</span></code> argument.
+When using <code class="docutils literal notranslate"><span class="pre">--output</span> <span class="pre">text</span></code> and the <code class="docutils literal notranslate"><span class="pre">--query</span></code> argument on a paginated response, the <code class="docutils literal notranslate"><span class="pre">--query</span></code> argument must extract data from the results of the following query expressions: <code class="docutils literal notranslate"><span class="pre">InstanceInformationList</span></code></p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">describe</span><span class="o">-</span><span class="n">instance</span><span class="o">-</span><span class="n">information</span>
+<span class="p">[</span><span class="o">--</span><span class="n">instance</span><span class="o">-</span><span class="n">information</span><span class="o">-</span><span class="nb">filter</span><span class="o">-</span><span class="nb">list</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">filters</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">starting</span><span class="o">-</span><span class="n">token</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">page</span><span class="o">-</span><span class="n">size</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="nb">max</span><span class="o">-</span><span class="n">items</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="n">json</span> <span class="o">|</span> <span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="n">yaml</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">generate</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">skeleton</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">debug</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">verify</span><span class="o">-</span><span class="n">ssl</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">paginate</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">output</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">query</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">profile</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">region</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">version</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">color</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">sign</span><span class="o">-</span><span class="n">request</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">ca</span><span class="o">-</span><span class="n">bundle</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">read</span><span class="o">-</span><span class="n">timeout</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">connect</span><span class="o">-</span><span class="n">timeout</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">binary</span><span class="o">-</span><span class="nb">format</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">pager</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">auto</span><span class="o">-</span><span class="n">prompt</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">auto</span><span class="o">-</span><span class="n">prompt</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">error</span><span class="o">-</span><span class="nb">format</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">--instance-information-filter-list</span></code> (list)</p>
+<blockquote>
+<div><p>This is a legacy method. We recommend that you don’t use this method. Instead, use the <code class="docutils literal notranslate"><span class="pre">Filters</span></code> data type. <code class="docutils literal notranslate"><span class="pre">Filters</span></code> enables you to return node information by filtering based on tags applied to managed nodes.</p>
+<div class="admonition note">
+<h3 class='admonition-title'>Note</h3>Attempting to use <code class="docutils literal notranslate"><span class="pre">InstanceInformationFilterList</span></code> and <code class="docutils literal notranslate"><span class="pre">Filters</span></code> leads to an exception error.</div>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+</ul>
+<p>(structure)</p>
+<blockquote>
+<div><p>Describes a filter for a specific list of managed nodes. You can filter node information by using tags. You specify tags by using a key-value mapping.</p>
+<p>Use this operation instead of the  DescribeInstanceInformationRequest$InstanceInformationFilterList method. The <code class="docutils literal notranslate"><span class="pre">InstanceInformationFilterList</span></code> method is a legacy method and doesn’t support tags.</p>
+<p>key -&gt; (string) [required]</p>
+<blockquote>
+<div><p>The name of the filter.</p>
+<p>Possible values:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">InstanceIds</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">AgentVersion</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">PingStatus</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">PlatformTypes</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">ActivationIds</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">IamRole</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">ResourceType</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">AssociationStatus</span></code></li>
+</ul>
+</div></blockquote>
+<p>valueSet -&gt; (list) [required]</p>
+<blockquote>
+<div><p>The filter values.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">100</span></code></li>
+</ul>
+<p>(string)</p>
+<blockquote>
+<div><p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>Shorthand Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">key</span><span class="o">=</span><span class="n">string</span><span class="p">,</span><span class="n">valueSet</span><span class="o">=</span><span class="n">string</span><span class="p">,</span><span class="n">string</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>JSON Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;InstanceIds&quot;</span><span class="o">|</span><span class="s2">&quot;AgentVersion&quot;</span><span class="o">|</span><span class="s2">&quot;PingStatus&quot;</span><span class="o">|</span><span class="s2">&quot;PlatformTypes&quot;</span><span class="o">|</span><span class="s2">&quot;ActivationIds&quot;</span><span class="o">|</span><span class="s2">&quot;IamRole&quot;</span><span class="o">|</span><span class="s2">&quot;ResourceType&quot;</span><span class="o">|</span><span class="s2">&quot;AssociationStatus&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;valueSet&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+  <span class="p">}</span>
+  <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--filters</span></code> (list)</p>
+<blockquote>
+<div><p>One or more filters. Use a filter to return a more specific list of managed nodes. You can filter based on tags applied to your managed nodes. Tag filters can’t be combined with other filter types. Use this <code class="docutils literal notranslate"><span class="pre">Filters</span></code> data type instead of <code class="docutils literal notranslate"><span class="pre">InstanceInformationFilterList</span></code> , which is deprecated.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+</ul>
+<p>(structure)</p>
+<blockquote>
+<div><p>The filters to describe or get information about your managed nodes.</p>
+<p>Key -&gt; (string) [required]</p>
+<blockquote>
+<div><p>The filter key name to describe your managed nodes.</p>
+<p>Valid filter key values: ActivationIds | AgentVersion | AssociationStatus | IamRole | InstanceIds | PingStatus | PlatformTypes | ResourceType | SourceIds | SourceTypes | “tag-key” | “tag:<code class="docutils literal notranslate"><span class="pre">{keyname}</span></code></p>
+<ul class="simple">
+<li>Valid values for the <code class="docutils literal notranslate"><span class="pre">AssociationStatus</span></code> filter key: Success | Pending | Failed</li>
+<li>Valid values for the <code class="docutils literal notranslate"><span class="pre">PingStatus</span></code> filter key: Online | ConnectionLost | Inactive (deprecated)</li>
+<li>Valid values for the <code class="docutils literal notranslate"><span class="pre">PlatformTypes</span></code> filter key: Windows | Linux | MacOS</li>
+<li>Valid values for the <code class="docutils literal notranslate"><span class="pre">ResourceType</span></code> filter key: EC2Instance | ManagedInstance</li>
+<li>Valid values for the <code class="docutils literal notranslate"><span class="pre">SourceType</span></code> filter key: AWS::EC2::Instance | AWS::SSM::ManagedInstance | AWS::IoT::Thing | Microsoft.Compute/virtualMachines</li>
+<li>Valid tag examples: <code class="docutils literal notranslate"><span class="pre">Key=tag-key,Values=Purpose</span></code> | <code class="docutils literal notranslate"><span class="pre">Key=tag:Purpose,Values=Test</span></code> .</li>
+</ul>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+</ul>
+</div></blockquote>
+<p>Values -&gt; (list) [required]</p>
+<blockquote>
+<div><p>The filter values.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">100</span></code></li>
+</ul>
+<p>(string)</p>
+<blockquote>
+<div><p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>Shorthand Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Key</span><span class="o">=</span><span class="n">string</span><span class="p">,</span><span class="n">Values</span><span class="o">=</span><span class="n">string</span><span class="p">,</span><span class="n">string</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>JSON Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;Key&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+  <span class="p">}</span>
+  <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--starting-token</span></code> (string)</p>
+<blockquote>
+<div><p>A token to specify where to start paginating. This is the <code class="docutils literal notranslate"><span class="pre">NextToken</span></code> from a previously truncated response.</p>
+<p>For usage examples, see <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/pagination.html">Pagination</a> in the <em>AWS Command Line Interface User Guide</em> .</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--page-size</span></code> (integer)</p>
+<blockquote>
+<div><p>The size of each page to get in the AWS service call. This does not affect the number of items returned in the command’s output. Setting a smaller page size results in more calls to the AWS service, retrieving fewer items in each call. This can help prevent the AWS service calls from timing out.</p>
+<p>For usage examples, see <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/pagination.html">Pagination</a> in the <em>AWS Command Line Interface User Guide</em> .</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">5</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">50</span></code></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--max-items</span></code> (integer)</p>
+<blockquote>
+<div><p>The total number of items to return in the command’s output. If the total number of items available is more than the value specified, a <code class="docutils literal notranslate"><span class="pre">NextToken</span></code> is provided in the command’s output. To resume pagination, provide the <code class="docutils literal notranslate"><span class="pre">NextToken</span></code> value in the <code class="docutils literal notranslate"><span class="pre">starting-token</span></code> argument of a subsequent command. <strong>Do not</strong> use the <code class="docutils literal notranslate"><span class="pre">NextToken</span></code> response element directly outside of the AWS CLI.</p>
+<p>For usage examples, see <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/pagination.html">Pagination</a> in the <em>AWS Command Line Interface User Guide</em> .</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-input-json</span></code> | <code class="docutils literal notranslate"><span class="pre">--cli-input-yaml</span></code> (string)
+Reads arguments from the JSON string provided. The JSON string follows the format provided by <code class="docutils literal notranslate"><span class="pre">--generate-cli-skeleton</span></code>. If other arguments are provided on the command line, those values will override the JSON-provided values. It is not possible to pass arbitrary binary values using a JSON-provided value as the string will be taken literally. This may not be specified along with <code class="docutils literal notranslate"><span class="pre">--cli-input-yaml</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--generate-cli-skeleton</span></code> (string)
+Prints a JSON skeleton to standard output without sending an API request. If provided with no value or the value <code class="docutils literal notranslate"><span class="pre">input</span></code>, prints a sample input JSON that can be used as an argument for <code class="docutils literal notranslate"><span class="pre">--cli-input-json</span></code>. Similarly, if provided <code class="docutils literal notranslate"><span class="pre">yaml-input</span></code> it will print a sample input YAML that can be used with <code class="docutils literal notranslate"><span class="pre">--cli-input-yaml</span></code>. If provided with the value <code class="docutils literal notranslate"><span class="pre">output</span></code>, it validates the command inputs and returns a sample output JSON for that command. The generated JSON skeleton is not stable between versions of the AWS CLI and there are no backwards compatibility guarantees in the JSON skeleton generated.</p>
+</div>
+<div class="section" id="global-options">
+<h2>Global Options<a class="headerlink" href="#global-options" title="Permalink to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">--debug</span></code> (boolean)</p>
+<p>Turn on debug logging.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--endpoint-url</span></code> (string)</p>
+<p>Override command’s default URL with the given URL.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--no-verify-ssl</span></code> (boolean)</p>
+<p>By default, the AWS CLI uses SSL when communicating with AWS services. For each SSL connection, the AWS CLI will verify SSL certificates. This option overrides the default behavior of verifying SSL certificates.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--no-paginate</span></code> (boolean)</p>
+<p>Disable automatic pagination. If automatic pagination is disabled, the AWS CLI will only make one call, for the first page of results.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--output</span></code> (string)</p>
+<p>The formatting style for command output.</p>
+<ul class="simple">
+<li>json</li>
+<li>text</li>
+<li>table</li>
+<li>yaml</li>
+<li>yaml-stream</li>
+<li>off</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">--query</span></code> (string)</p>
+<p>A JMESPath query to use in filtering the response data.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--profile</span></code> (string)</p>
+<p>Use a specific profile from your credential file.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--region</span></code> (string)</p>
+<p>The region to use. Overrides config/env settings.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--version</span></code> (string)</p>
+<p>Display the version of this tool.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--color</span></code> (string)</p>
+<p>Turn on/off color output.</p>
+<ul class="simple">
+<li>on</li>
+<li>off</li>
+<li>auto</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">--no-sign-request</span></code> (boolean)</p>
+<p>Do not sign requests. Credentials will not be loaded if this argument is provided.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--ca-bundle</span></code> (string)</p>
+<p>The CA certificate bundle to use when verifying SSL certificates. Overrides config/env settings.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-read-timeout</span></code> (int)</p>
+<p>The maximum socket read time in seconds. If the value is set to 0, the socket read will be blocking and not timeout. The default value is 60 seconds.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-connect-timeout</span></code> (int)</p>
+<p>The maximum socket connect time in seconds. If the value is set to 0, the socket connect will be blocking and not timeout. The default value is 60 seconds.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-binary-format</span></code> (string)</p>
+<p>The formatting style to be used for binary blobs. The default format is base64. The base64 format expects binary blobs to be provided as a base64 encoded string. The raw-in-base64-out format preserves compatibility with AWS CLI V1 behavior and binary values must be passed literally. When providing contents from a file that map to a binary blob <code class="docutils literal notranslate"><span class="pre">fileb://</span></code> will always be treated as binary and use the file contents directly regardless of the <code class="docutils literal notranslate"><span class="pre">cli-binary-format</span></code> setting. When using <code class="docutils literal notranslate"><span class="pre">file://</span></code> the file contents will need to properly formatted for the configured <code class="docutils literal notranslate"><span class="pre">cli-binary-format</span></code>.</p>
+<ul class="simple">
+<li>base64</li>
+<li>raw-in-base64-out</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">--no-cli-pager</span></code> (boolean)</p>
+<p>Disable cli pager for output.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-auto-prompt</span></code> (boolean)</p>
+<p>Automatically prompt for CLI input parameters.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--no-cli-auto-prompt</span></code> (boolean)</p>
+<p>Disable automatically prompt for CLI input parameters.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-error-format</span></code> (string)</p>
+<p>The formatting style for error output. By default, errors are displayed in enhanced format.</p>
+<ul class="simple">
+<li>legacy</li>
+<li>json</li>
+<li>yaml</li>
+<li>text</li>
+<li>table</li>
+<li>enhanced</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<div class="admonition note">
+<h3 class='admonition-title'>Note</h3><p class="first">To use the following examples, you must have the AWS CLI installed and configured. See the <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html">Getting started guide</a> in the <em>AWS CLI User Guide</em> for more information.</p>
+<p class="last">Unless otherwise stated, all examples have unix-like quotation rules. These examples will need to be adapted to your terminal’s quoting rules. See <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-quoting-strings.html">Using quotation marks with strings</a> in the <em>AWS CLI User Guide</em> .</p>
+</div>
+<p><strong>Example 1: To describe managed instance information</strong></p>
+<p>The following <code class="docutils literal notranslate"><span class="pre">describe-instance-information</span></code> example retrieves details of each of your managed instances.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aws</span> <span class="n">ssm</span> <span class="n">describe</span><span class="o">-</span><span class="n">instance</span><span class="o">-</span><span class="n">information</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;InstanceInformationList&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;InstanceId&quot;</span><span class="p">:</span> <span class="s2">&quot;i-028ea792daEXAMPLE&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;PingStatus&quot;</span><span class="p">:</span> <span class="s2">&quot;Online&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;LastPingDateTime&quot;</span><span class="p">:</span> <span class="mf">1582221233.421</span><span class="p">,</span>
+            <span class="s2">&quot;AgentVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2.3.842.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;IsLatestVersion&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">&quot;PlatformType&quot;</span><span class="p">:</span> <span class="s2">&quot;Linux&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;PlatformName&quot;</span><span class="p">:</span> <span class="s2">&quot;SLES&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;PlatformVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;15.1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ResourceType&quot;</span><span class="p">:</span> <span class="s2">&quot;EC2Instance&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;IPAddress&quot;</span><span class="p">:</span> <span class="s2">&quot;192.0.2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ComputerName&quot;</span><span class="p">:</span> <span class="s2">&quot;ip-198.51.100.0.us-west-2.compute.internal&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;AssociationStatus&quot;</span><span class="p">:</span> <span class="s2">&quot;Success&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;LastAssociationExecutionDate&quot;</span><span class="p">:</span> <span class="mf">1582220806.0</span><span class="p">,</span>
+            <span class="s2">&quot;LastSuccessfulAssociationExecutionDate&quot;</span><span class="p">:</span> <span class="mf">1582220806.0</span><span class="p">,</span>
+            <span class="s2">&quot;AssociationOverview&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;DetailedStatus&quot;</span><span class="p">:</span> <span class="s2">&quot;Success&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;InstanceAssociationStatusAggregatedCount&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;Success&quot;</span><span class="p">:</span> <span class="mi">2</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;InstanceId&quot;</span><span class="p">:</span> <span class="s2">&quot;i-0cb99161f6EXAMPLE&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;PingStatus&quot;</span><span class="p">:</span> <span class="s2">&quot;Online&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;LastPingDateTime&quot;</span><span class="p">:</span> <span class="mf">1582221158.297</span><span class="p">,</span>
+            <span class="s2">&quot;AgentVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2.3.842.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;IsLatestVersion&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">&quot;PlatformType&quot;</span><span class="p">:</span> <span class="s2">&quot;Windows&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;PlatformName&quot;</span><span class="p">:</span> <span class="s2">&quot;Microsoft Windows Server 2019 Datacenter&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;PlatformVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.17763&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ResourceType&quot;</span><span class="p">:</span> <span class="s2">&quot;EC2Instance&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;IPAddress&quot;</span><span class="p">:</span> <span class="s2">&quot;192.0.2.1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ComputerName&quot;</span><span class="p">:</span> <span class="s2">&quot;EC2AMAZ-EXAMPLE.WORKGROUP&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;AssociationStatus&quot;</span><span class="p">:</span> <span class="s2">&quot;Success&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;LastAssociationExecutionDate&quot;</span><span class="p">:</span> <span class="mf">1582220806.0</span><span class="p">,</span>
+            <span class="s2">&quot;LastSuccessfulAssociationExecutionDate&quot;</span><span class="p">:</span> <span class="mf">1582220806.0</span><span class="p">,</span>
+            <span class="s2">&quot;AssociationOverview&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;DetailedStatus&quot;</span><span class="p">:</span> <span class="s2">&quot;Success&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;InstanceAssociationStatusAggregatedCount&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;Success&quot;</span><span class="p">:</span> <span class="mi">1</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example 2: To describe information about a specific managed instance</strong></p>
+<p>The following <code class="docutils literal notranslate"><span class="pre">describe-instance-information</span></code> example shows details of the managed instance <code class="docutils literal notranslate"><span class="pre">i-028ea792daEXAMPLE</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aws</span> <span class="n">ssm</span> <span class="n">describe</span><span class="o">-</span><span class="n">instance</span><span class="o">-</span><span class="n">information</span> \
+    <span class="o">--</span><span class="n">filters</span> <span class="s2">&quot;Key=InstanceIds,Values=i-028ea792daEXAMPLE&quot;</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;InstanceInformationList&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;InstanceId&quot;</span><span class="p">:</span> <span class="s2">&quot;i-028ea792daEXAMPLE&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;PingStatus&quot;</span><span class="p">:</span> <span class="s2">&quot;Online&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;LastPingDateTime&quot;</span><span class="p">:</span> <span class="mf">1582221233.421</span><span class="p">,</span>
+            <span class="s2">&quot;AgentVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2.3.842.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;IsLatestVersion&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">&quot;PlatformType&quot;</span><span class="p">:</span> <span class="s2">&quot;Linux&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;PlatformName&quot;</span><span class="p">:</span> <span class="s2">&quot;SLES&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;PlatformVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;15.1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ResourceType&quot;</span><span class="p">:</span> <span class="s2">&quot;EC2Instance&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;IPAddress&quot;</span><span class="p">:</span> <span class="s2">&quot;192.0.2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ComputerName&quot;</span><span class="p">:</span> <span class="s2">&quot;ip-198.51.100.0.us-west-2.compute.internal&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;AssociationStatus&quot;</span><span class="p">:</span> <span class="s2">&quot;Success&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;LastAssociationExecutionDate&quot;</span><span class="p">:</span> <span class="mf">1582220806.0</span><span class="p">,</span>
+            <span class="s2">&quot;LastSuccessfulAssociationExecutionDate&quot;</span><span class="p">:</span> <span class="mf">1582220806.0</span><span class="p">,</span>
+            <span class="s2">&quot;AssociationOverview&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;DetailedStatus&quot;</span><span class="p">:</span> <span class="s2">&quot;Success&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;InstanceAssociationStatusAggregatedCount&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;Success&quot;</span><span class="p">:</span> <span class="mi">2</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example 3: To describe information about managed instances with a specific tag key</strong></p>
+<p>The following <code class="docutils literal notranslate"><span class="pre">describe-instance-information</span></code> example shows details for managed instances that have the tag key <code class="docutils literal notranslate"><span class="pre">DEV</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aws</span> <span class="n">ssm</span> <span class="n">describe</span><span class="o">-</span><span class="n">instance</span><span class="o">-</span><span class="n">information</span> \
+    <span class="o">--</span><span class="n">filters</span> <span class="s2">&quot;Key=tag-key,Values=DEV&quot;</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;InstanceInformationList&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;InstanceId&quot;</span><span class="p">:</span> <span class="s2">&quot;i-028ea792daEXAMPLE&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;PingStatus&quot;</span><span class="p">:</span> <span class="s2">&quot;Online&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;LastPingDateTime&quot;</span><span class="p">:</span> <span class="mf">1582221233.421</span><span class="p">,</span>
+            <span class="s2">&quot;AgentVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2.3.842.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;IsLatestVersion&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">&quot;PlatformType&quot;</span><span class="p">:</span> <span class="s2">&quot;Linux&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;PlatformName&quot;</span><span class="p">:</span> <span class="s2">&quot;SLES&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;PlatformVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;15.1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ResourceType&quot;</span><span class="p">:</span> <span class="s2">&quot;EC2Instance&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;IPAddress&quot;</span><span class="p">:</span> <span class="s2">&quot;192.0.2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ComputerName&quot;</span><span class="p">:</span> <span class="s2">&quot;ip-198.51.100.0.us-west-2.compute.internal&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;AssociationStatus&quot;</span><span class="p">:</span> <span class="s2">&quot;Success&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;LastAssociationExecutionDate&quot;</span><span class="p">:</span> <span class="mf">1582220806.0</span><span class="p">,</span>
+            <span class="s2">&quot;LastSuccessfulAssociationExecutionDate&quot;</span><span class="p">:</span> <span class="mf">1582220806.0</span><span class="p">,</span>
+            <span class="s2">&quot;AssociationOverview&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;DetailedStatus&quot;</span><span class="p">:</span> <span class="s2">&quot;Success&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;InstanceAssociationStatusAggregatedCount&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;Success&quot;</span><span class="p">:</span> <span class="mi">2</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For more information, see <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/managed_instances.html">Managed Instances</a> in the <em>AWS Systems Manager User Guide</em>.</p>
+</div>
+<div class="section" id="output">
+<h2>Output<a class="headerlink" href="#output" title="Permalink to this heading">¶</a></h2>
+<p>InstanceInformationList -&gt; (list)</p>
+<blockquote>
+<div><p>The managed node information list.</p>
+<p>(structure)</p>
+<blockquote>
+<div><p>Describes a filter for a specific list of managed nodes.</p>
+<p>InstanceId -&gt; (string)</p>
+<blockquote>
+<div><p>The managed node ID.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">(^i-(\w{8}|\w{17})$)|(^mi-\w{17}$)</span></code></li>
+</ul>
+</div></blockquote>
+<p>PingStatus -&gt; (string)</p>
+<blockquote>
+<div><p>Connection status of SSM Agent.</p>
+<div class="admonition note">
+<h3 class='admonition-title'>Note</h3>The status <code class="docutils literal notranslate"><span class="pre">Inactive</span></code> has been deprecated and is no longer in use.</div>
+<p>Possible values:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">Online</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">ConnectionLost</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Inactive</span></code></li>
+</ul>
+</div></blockquote>
+<p>LastPingDateTime -&gt; (timestamp)</p>
+<blockquote>
+<div>The date and time when the agent last pinged the Systems Manager service.</div></blockquote>
+<p>AgentVersion -&gt; (string)</p>
+<blockquote>
+<div><p>The version of SSM Agent running on your Linux managed node.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^[0-9]{1,6}(\.[0-9]{1,6}){2,3}$</span></code></li>
+</ul>
+</div></blockquote>
+<p>IsLatestVersion -&gt; (boolean)</p>
+<blockquote>
+<div>Indicates whether the latest version of SSM Agent is running on your Linux managed node. This field doesn’t indicate whether or not the latest version is installed on Windows managed nodes, because some older versions of Windows Server use the EC2Config service to process Systems Manager requests.</div></blockquote>
+<p>PlatformType -&gt; (string)</p>
+<blockquote>
+<div><p>The operating system platform type.</p>
+<p>Possible values:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">Windows</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Linux</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">MacOS</span></code></li>
+</ul>
+</div></blockquote>
+<p>PlatformName -&gt; (string)</p>
+<blockquote>
+<div>The name of the operating system platform running on your managed node.</div></blockquote>
+<p>PlatformVersion -&gt; (string)</p>
+<blockquote>
+<div>The version of the OS platform running on your managed node.</div></blockquote>
+<p>ActivationId -&gt; (string)</p>
+<blockquote>
+<div><p>The activation ID created by Amazon Web Services Systems Manager when the server or virtual machine (VM) was registered.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$</span></code></li>
+</ul>
+</div></blockquote>
+<p>IamRole -&gt; (string)</p>
+<blockquote>
+<div><p>The role assigned to an Amazon EC2 instance configured with a Systems Manager Quick Setup host management configuration or the role assigned to an on-premises managed node.</p>
+<p>This call doesn’t return the IAM role for <em>unmanaged</em> Amazon EC2 instances (instances not configured for Systems Manager). To retrieve the role for an unmanaged instance, use the Amazon EC2 <code class="docutils literal notranslate"><span class="pre">DescribeInstances</span></code> operation. For information, see <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html">DescribeInstances</a> in the <em>Amazon EC2 API Reference</em> or <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html">describe-instances</a> in the <em>Amazon Web Services CLI Command Reference</em> .</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>max: <code class="docutils literal notranslate"><span class="pre">64</span></code></li>
+</ul>
+</div></blockquote>
+<p>RegistrationDate -&gt; (timestamp)</p>
+<blockquote>
+<div>The date the server or VM was registered with Amazon Web Services as a managed node.</div></blockquote>
+<p>ResourceType -&gt; (string)</p>
+<blockquote>
+<div><p>The type of instance. Instances are either EC2 instances or managed instances.</p>
+<p>Possible values:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">ManagedInstance</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">EC2Instance</span></code></li>
+</ul>
+</div></blockquote>
+<p>Name -&gt; (string)</p>
+<blockquote>
+<div>The name assigned to an on-premises server, edge device, or virtual machine (VM) when it is activated as a Systems Manager managed node. The name is specified as the <code class="docutils literal notranslate"><span class="pre">DefaultInstanceName</span></code> property using the  CreateActivation command. It is applied to the managed node by specifying the Activation Code and Activation ID when you install SSM Agent on the node, as explained in <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/hybrid-multicloud-ssm-agent-install-linux.html">How to install SSM Agent on hybrid Linux nodes</a> and <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/hybrid-multicloud-ssm-agent-install-windows.html">How to install SSM Agent on hybrid Windows Server nodes</a> . To retrieve the <code class="docutils literal notranslate"><span class="pre">Name</span></code> tag of an EC2 instance, use the Amazon EC2 <code class="docutils literal notranslate"><span class="pre">DescribeInstances</span></code> operation. For information, see <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html">DescribeInstances</a> in the <em>Amazon EC2 API Reference</em> or <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html">describe-instances</a> in the <em>Amazon Web Services CLI Command Reference</em> .</div></blockquote>
+<p>IPAddress -&gt; (string)</p>
+<blockquote>
+<div><p>The IP address of the managed node.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">46</span></code></li>
+</ul>
+</div></blockquote>
+<p>ComputerName -&gt; (string)</p>
+<blockquote>
+<div><p>The fully qualified host name of the managed node.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">255</span></code></li>
+</ul>
+</div></blockquote>
+<p>AssociationStatus -&gt; (string)</p>
+<blockquote>
+<div>The status of the association.</div></blockquote>
+<p>LastAssociationExecutionDate -&gt; (timestamp)</p>
+<blockquote>
+<div>The date the association was last run.</div></blockquote>
+<p>LastSuccessfulAssociationExecutionDate -&gt; (timestamp)</p>
+<blockquote>
+<div>The last date the association was successfully run.</div></blockquote>
+<p>AssociationOverview -&gt; (structure)</p>
+<blockquote>
+<div><p>Information about the association.</p>
+<p>DetailedStatus -&gt; (string)</p>
+<blockquote>
+<div>Detailed status information about the aggregated associations.</div></blockquote>
+<p>InstanceAssociationStatusAggregatedCount -&gt; (map)</p>
+<blockquote>
+<div><p>The number of associations for the managed nodes.</p>
+<p>key -&gt; (string)</p>
+<p>value -&gt; (integer)</p>
+</div></blockquote>
+</div></blockquote>
+<p>SourceId -&gt; (string)</p>
+<blockquote>
+<div><p>The ID of the source resource. For IoT Greengrass devices, <code class="docutils literal notranslate"><span class="pre">SourceId</span></code> is the Thing name.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">128</span></code></li>
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^[a-zA-Z0-9:_-]*$</span></code></li>
+</ul>
+</div></blockquote>
+<p>SourceType -&gt; (string)</p>
+<blockquote>
+<div><p>The type of the source resource. For IoT Greengrass devices, <code class="docutils literal notranslate"><span class="pre">SourceType</span></code> is <code class="docutils literal notranslate"><span class="pre">AWS::IoT::Thing</span></code> . For Azure Virtual Machines, <code class="docutils literal notranslate"><span class="pre">SourceType</span></code> is <code class="docutils literal notranslate"><span class="pre">Microsoft.Compute/virtualMachines</span></code> .</p>
+<p>Possible values:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">AWS::EC2::Instance</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">AWS::IoT::Thing</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">AWS::SSM::ManagedInstance</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Microsoft.Compute/virtualMachines</span></code></li>
+</ul>
+</div></blockquote>
+<p>SourceLocation -&gt; (string)</p>
+<blockquote>
+<div><p>The location of the source resource in the third-party cloud environment.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">128</span></code></li>
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^.{1,128}$</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>NextToken -&gt; (string)</p>
+<blockquote>
+<div>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</div></blockquote>
+</div>
+</div>
+
+
+            </div>
+          <div class="clearfix"></div>
+        </div>
+        
+    <div class="footer-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="describe-instance-associations-status.html" title="previous chapter (use the left arrow)">&larr; describe-instance-associations-status</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="describe-instance-patch-states.html" title="next chapter (use the right arrow)">describe-instance-patch-states &rarr;</a></li>
+      </ul>
+    </div>
+  
+
+    </div>
+  <script type="text/javascript" src="https://media.amazonwebservices.com/js/sitecatalyst/s_code.min.js"></script>
+  <script type="text/javascript" src="../../_static/analytics.js"></script>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="describe-instance-patch-states.html" title="describe-instance-patch-states"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="describe-instance-associations-status.html" title="describe-instance-associations-status"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">AWS CLI 2.39.3 Command Reference</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >aws</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >ssm</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">describe-instance-information</a></li> 
+      </ul>
+    </div>
+  <div class="footer container">
+    &copy; Copyright 2026, Amazon Web Services. Created using <a href="https://www.sphinx-doc.org/">Sphinx</a>.
+  </div>
+
+
+
+  
+    
+  
+  </body>
+</html>

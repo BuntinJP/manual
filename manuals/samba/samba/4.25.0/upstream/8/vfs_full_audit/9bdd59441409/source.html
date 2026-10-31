@@ -1,0 +1,52 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>vfs_full_audit</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="vfs_full_audit.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>vfs_full_audit &#8212; record Samba VFS operations in the system log</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="literal">vfs objects = full_audit</code></p></div></div><div class="refsect1"><a name="id1337"></a><h2>DESCRIPTION</h2><p>This VFS module is part of the
+	<a class="citerefentry" href="samba.7.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(7)</span></a> suite.</p><p>The <code class="literal">vfs_full_audit</code> VFS module records selected
+	client operations to the system log using
+	<a class="citerefentry" href="syslog.3.html"><span class="citerefentry"><span class="refentrytitle">syslog</span>(3)</span></a>.</p><p><code class="literal">vfs_full_audit</code> is able to record the
+	complete set of Samba VFS operations:</p><table border="0" summary="Simple list" class="simplelist"><tr><td>aio_force</td></tr><tr><td>brl_lock_windows</td></tr><tr><td>brl_unlock_windows</td></tr><tr><td>chdir</td></tr><tr><td>close</td></tr><tr><td>closedir</td></tr><tr><td>connect</td></tr><tr><td>create_dfs_pathat</td></tr><tr><td>create_file</td></tr><tr><td>disconnect</td></tr><tr><td>disk_free</td></tr><tr><td>durable_cookie</td></tr><tr><td>durable_disconnect</td></tr><tr><td>durable_reconnect</td></tr><tr><td>fallocate</td></tr><tr><td>fchflags</td></tr><tr><td>fchmod</td></tr><tr><td>fchown</td></tr><tr><td>fcntl</td></tr><tr><td>fdopendir</td></tr><tr><td>fget_compression</td></tr><tr><td>fget_dos_attributes</td></tr><tr><td>fget_nt_acl</td></tr><tr><td>fgetxattr</td></tr><tr><td>file_id_create</td></tr><tr><td>filesystem_sharemode</td></tr><tr><td>flistxattr</td></tr><tr><td>fntimes</td></tr><tr><td>freaddir_attr</td></tr><tr><td>fremovexattr</td></tr><tr><td>fs_capabilities</td></tr><tr><td>fsctl</td></tr><tr><td>fset_dos_attributes</td></tr><tr><td>fset_nt_acl</td></tr><tr><td>fsetxattr</td></tr><tr><td>fs_file_id</td></tr><tr><td>fstat</td></tr><tr><td>fstatat</td></tr><tr><td>fstreaminfo</td></tr><tr><td>fsync_recv</td></tr><tr><td>fsync_send</td></tr><tr><td>ftruncate</td></tr><tr><td>get_alloc_size</td></tr><tr><td>get_dfs_referrals</td></tr><tr><td>get_dos_attributes_recv</td></tr><tr><td>get_dos_attributes_send</td></tr><tr><td>getlock</td></tr><tr><td>get_quota</td></tr><tr><td>get_real_filename</td></tr><tr><td>get_real_filename_at</td></tr><tr><td>get_shadow_copy_data</td></tr><tr><td>getxattrat_recv</td></tr><tr><td>getxattrat_send</td></tr><tr><td>is_offline</td></tr><tr><td>lchown</td></tr><tr><td>linkat</td></tr><tr><td>linux_setlease</td></tr><tr><td>lock</td></tr><tr><td>lseek</td></tr><tr><td>lstat</td></tr><tr><td>mkdirat</td></tr><tr><td>mknodat</td></tr><tr><td>ntimes</td></tr><tr><td>offload_read_recv</td></tr><tr><td>offload_read_send</td></tr><tr><td>offload_write_recv</td></tr><tr><td>offload_write_send</td></tr><tr><td>open</td></tr><tr><td>openat</td></tr><tr><td>open_share_root</td></tr><tr><td>parent_pathname</td></tr><tr><td>pread</td></tr><tr><td>pread_recv</td></tr><tr><td>pread_send</td></tr><tr><td>pwrite</td></tr><tr><td>pwrite_recv</td></tr><tr><td>pwrite_send</td></tr><tr><td>read</td></tr><tr><td>read_dfs_pathat</td></tr><tr><td>readdir</td></tr><tr><td>readlinkat</td></tr><tr><td>realpath</td></tr><tr><td>recvfile</td></tr><tr><td>removexattr</td></tr><tr><td>renameat</td></tr><tr><td>rewinddir</td></tr><tr><td>sendfile</td></tr><tr><td>set_compression</td></tr><tr><td>set_offline</td></tr><tr><td>set_quota</td></tr><tr><td>snap_check_path</td></tr><tr><td>snap_create</td></tr><tr><td>snap_delete</td></tr><tr><td>stat</td></tr><tr><td>statvfs</td></tr><tr><td>strict_lock_check</td></tr><tr><td>symlinkat</td></tr><tr><td>sys_acl_blob_get_fd</td></tr><tr><td>sys_acl_delete_def_fd</td></tr><tr><td>sys_acl_get_fd</td></tr><tr><td>sys_acl_set_fd</td></tr><tr><td>translate_name</td></tr><tr><td>unlinkat</td></tr><tr><td>write</td></tr></table><p>In addition to these operations,
+	<code class="literal">vfs_full_audit</code> recognizes the special operation
+	names "all" and "none ", which refer to all
+	the VFS operations and none of the VFS operations respectively.
+	</p><p>If an unknown operation name is used (for example an operation name
+	is miss-spelled), the module will fail to load and clients will
+	be refused connections to a share using this module.
+	</p><p><code class="literal">vfs_full_audit</code> records operations in fixed
+	format consisting of fields separated by '|' characters. The
+	format is: </p><pre class="programlisting">
+		smbd_audit: PREFIX|OPERATION|RESULT|FILE
+</pre><p>The record fields are:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">PREFIX</code> - the result of the full_audit:prefix string after variable substitutions</p></li><li class="listitem"><p><code class="literal">OPERATION</code> - the name of the VFS operation</p></li><li class="listitem"><p><code class="literal">RESULT</code> - whether the operation succeeded or failed</p></li><li class="listitem"><p><code class="literal">FILE</code> - the name of the file or directory the operation was performed on</p></li></ul></div><p>This module is stackable.</p></div><div class="refsect1"><a name="id1338"></a><h2>OPTIONS</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term">full_audit:prefix = STRING</span></dt><dd><p>Prepend audit messages with STRING. STRING is
+		processed for standard substitution variables listed in
+		<a class="citerefentry" href="smb.conf.5.html"><span class="citerefentry"><span class="refentrytitle">smb.conf</span>(5)</span></a>. The default
+		prefix is "%u|%I". </p></dd><dt><span class="term">full_audit:success = LIST</span></dt><dd><p>LIST is a list of VFS operations that should be
+		recorded if they succeed. Operations are specified using
+		the names listed above. Operations can be unset by prefixing
+		the names with "!". The default is none operations.
+		</p></dd><dt><span class="term">full_audit:failure = LIST</span></dt><dd><p>LIST is a list of VFS operations that should be
+		recorded if they failed. Operations are specified using
+		the names listed above. Operations can be unset by prefixing
+		the names with "!". The default is none operations.
+		</p></dd><dt><span class="term">full_audit:facility = FACILITY</span></dt><dd><p>Log messages to the named
+                <a class="citerefentry" href="syslog.3.html"><span class="citerefentry"><span class="refentrytitle">syslog</span>(3)</span></a> facility.
+
+                </p></dd><dt><span class="term">full_audit:priority = PRIORITY</span></dt><dd><p>Log messages with the named
+                <a class="citerefentry" href="syslog.3.html"><span class="citerefentry"><span class="refentrytitle">syslog</span>(3)</span></a> priority.
+                </p></dd><dt><span class="term">full_audit:syslog = true/false</span></dt><dd><p>Log messages to syslog (default) or as a debug level 1
+                message.
+                </p></dd><dt><span class="term">full_audit:log_secdesc = true/false</span></dt><dd><p>Log an sddl form of the security descriptor coming in
+                when a client sets an acl. Defaults to false.
+                </p></dd></dl></div></div><div class="refsect1"><a name="id1339"></a><h2>EXAMPLES</h2><p>Log file and directory open operations on the [records]
+	share using the LOCAL7 facility and ALERT priority, including
+	the username and IP address. Logging excludes the open VFS function
+	on failures:</p><pre class="programlisting">
+        <em class="parameter"><code>[records]</code></em>
+	<a class="link" href="smb.conf.5.html#PATH" target="_top">path = /data/records</a>
+	<a class="link" href="smb.conf.5.html#VFSOBJECTS" target="_top">vfs objects = full_audit</a>
+	<a class="link" href="smb.conf.5.html#FULL_AUDIT:PREFIX" target="_top">full_audit:prefix = %u|%I</a>
+	<a class="link" href="smb.conf.5.html#FULL_AUDIT:SUCCESS" target="_top">full_audit:success = open opendir</a>
+	<a class="link" href="smb.conf.5.html#FULL_AUDIT:FAILURE" target="_top">full_audit:failure = all !open</a>
+	<a class="link" href="smb.conf.5.html#FULL_AUDIT:FACILITY" target="_top">full_audit:facility = LOCAL7</a>
+	<a class="link" href="smb.conf.5.html#FULL_AUDIT:PRIORITY" target="_top">full_audit:priority = ALERT</a>
+</pre></div><div class="refsect1"><a name="id1340"></a><h2>VERSION</h2><p>This man page is part of version 4.25.0 of the Samba suite.
+	</p></div><div class="refsect1"><a name="id1341"></a><h2>AUTHOR</h2><p>The original Samba software and related utilities
+	were created by Andrew Tridgell. Samba is now developed
+	by the Samba Team as an Open Source project similar
+	to the way the Linux kernel is developed.</p></div></div></body></html>

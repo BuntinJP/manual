@@ -1,0 +1,61 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title></title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><span style="color: red">&lt;ns:Root&gt;
+<div class="refentry"><a name="vfs_nfs4acl_xattr.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>vfs_nfs4acl_xattr &#8212; Save NTFS-ACLs as NFS4 encoded blobs in extended
+    attributes</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="literal">vfs objects = nfs4acl_xattr</code></p></div></div><div class="refsect1"><a name="id1338"></a><h2>DESCRIPTION</h2><p>This VFS module is part of the
+    <a class="citerefentry" href="samba.7.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(7)</span></a> suite.</p><p>The <code class="literal">vfs_nfs4acl_xattr</code> VFS module provides
+    an interoperability layer between the SMB ACLs that clients expect
+    and an NFSv4 ACL implementation a file system might provide.
+    </p><p>This module is stackable.</p></div><div class="refsect1"><a name="id1339"></a><h2>OPTIONS</h2><dt><span class="term">nfs4:mode = [ simple | special ]</span></dt><dd><p>
+	Controls substitution of special IDs (OWNER@ and GROUP@) on NFS4 ACLs.
+	The use of mode simple is recommended.
+	In this mode only non inheriting ACL entries for the file owner
+	and group are mapped to special IDs.
+	</p><p>The following MODEs are understood by the module:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">simple(default)</code> - use OWNER@ and GROUP@ special IDs for non inheriting ACEs only.</p></li><li class="listitem"><p><code class="literal">special(deprecated)</code> - use OWNER@ and GROUP@ special IDs in ACEs for all file owner and group ACEs.</p></li></ul></div></dd><dt><span class="term">nfs4:acedup = [dontcare|reject|ignore|merge]</span></dt><dd><p>
+	This parameter configures how Samba handles duplicate ACEs encountered in NFS4 ACLs.
+	They allow creating duplicate ACEs with different bits for same ID, which may confuse the Windows clients.
+	</p><p>Following is the behaviour of Samba for different values :</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">dontcare</code> - copy the ACEs as they come</p></li><li class="listitem"><p><code class="literal">reject (deprecated)</code> - stop operation and exit with error on ACL set op</p></li><li class="listitem"><p><code class="literal">ignore (deprecated)</code> - don't include the second matching ACE</p></li><li class="listitem"><p><code class="literal">merge (default)</code> - bitwise OR the 2 ace.flag fields and 2 ace.mask fields of the 2 duplicate ACEs into 1 ACE</p></li></ul></div></dd><dt><span class="term">nfs4:chown = [yes|no]</span></dt><dd><p>This parameter allows enabling or disabling the chown supported
+	by the underlying filesystem. This parameter should be enabled with
+	care as it might leave your system insecure.</p><p>Some filesystems allow chown as a) giving b) stealing. It is the latter
+	that is considered a risk.</p><p>Following is the behaviour of Samba for different values : </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">yes</code> - Enable chown if as supported by the under filesystem</p></li><li class="listitem"><p><code class="literal">no (default)</code> - Disable chown</p></li></ul></div></dd><div class="variablelist"><dl class="variablelist"><dt><span class="term">nfs4acl_xattr:encoding = [nfs|ndr|xdr]</span></dt><dd><p>This parameter configures the marshaling format used in the ACL
+	  blob and the default extended attribute name used to store the blob.
+	  </p><p>When set to <span class="emphasis"><em>nfs</em></span> - fetch and store the NT
+	  ACL in NFS 4.0 or 4.1 compatible XDR encoding. By default this uses
+	  the extended attribute "system.nfs4_acl". This setting also
+	  disables <span class="emphasis"><em>validate_mode</em></span>.</p><p>When set to <span class="emphasis"><em>ndr (default)</em></span> - store the NT
+	  ACL with POSIX draft NFSv4 compatible NDR encoding. By default this
+	  uses the extended attribute "security.nfs4acl_ndr".</p><p>When set to <span class="emphasis"><em>xdr</em></span> - store the NT ACL in a
+	  format similar to NFS 4.1 RFC 5661 in XDR encoding. The main
+	  differences to RFC 5661 are the use of ids instead of strings as users
+	  and group identifiers and an additional attribute per nfsace4. By
+	  default this encoding stores the blob in the extended attribute
+	  "security.nfs4acl_xdr".</p></dd><dt><span class="term">nfs4acl_xattr:version = [40|41]</span></dt><dd><p>This parameter configures the NFS4 ACL level. Only
+	  <span class="emphasis"><em>41</em></span> fully supports mapping NT ACLs and should be
+	  used. The default is <span class="emphasis"><em>41</em></span>.</p></dd><dt><span class="term">nfs4acl_xattr:default acl style = [posix|windows|everyone]</span></dt><dd><p>This parameter determines the type of ACL that is synthesized in
+	  case a file or directory lacks an ACL extended attribute.</p><p>When set to <span class="emphasis"><em>posix</em></span>, an ACL will be
+	  synthesized based on the POSIX mode permissions for user, group and
+	  others, with an additional ACE for <span class="emphasis"><em>NT
+	  Authority\SYSTEM</em></span> will full rights.</p><p>When set to <span class="emphasis"><em>windows</em></span>, an ACL is synthesized
+	  the same way Windows does it, only including permissions for the owner
+	  and <span class="emphasis"><em>NT Authority\SYSTEM</em></span>.</p><p>When set to <span class="emphasis"><em>everyone</em></span>, an ACL is synthesized
+	  giving full permissions to everyone (S-1-1-0).</p><p>The default for this option is
+	  <span class="emphasis"><em>everyone</em></span>.</p></dd><dt><span class="term">nfs4acl_xattr:xattr_name = STRING</span></dt><dd><p>This parameter configures the extended attribute name used to
+	  store the marshaled ACL.</p><p>The default depends on the setting for
+	  <span class="emphasis"><em>nfs4acl_xattr:encoding</em></span>.</p></dd><dt><span class="term">nfs4acl_xattr:nfs4_id_numeric = yes|no (default: no)</span></dt><dd><p>This parameter tells the module how the NFS4 server encodes user
+	  and group identifiers on the network. With the default setting the
+	  module expects identifiers encoded as per the NFS4 RFC as
+	  user@domain.</p><p>When set to <span class="emphasis"><em>yes</em></span>, the module expects the
+	  identifiers as numeric string.</p><p>The default for this options<span class="emphasis"><em>no</em></span>.</p></dd><dt><span class="term">nfs4acl_xattr:validate_mode = yes|no</span></dt><dd><p>This parameter configures whether the module enforces the POSIX
+	  mode is set to 0777 for directories and 0666 for files. If this
+	  constrained is not met, the xattr with the ACL blob is
+	  discarded.</p><p>The default depends on the setting for
+	  <span class="emphasis"><em>nfs4acl_xattr:encoding</em></span>: when set to
+	  <span class="emphasis"><em>nfs</em></span> this setting is disabled by default,
+	  otherwise it is enabled.</p></dd></dl></div></div><div class="refsect1"><a name="id1340"></a><h2>EXAMPLES</h2><p>A directory can be exported via Samba using this module as
+    follows:</p><pre class="programlisting">
+      <em class="parameter"><code>[samba_gpfs_share]</code></em>
+      <a class="link" href="smb.conf.5.html#VFSOBJECTS" target="_top">vfs objects = nfs4acl_xattr</a>
+      <a class="link" href="smb.conf.5.html#PATH" target="_top">path = /foo/bar</a>
+</pre></div><div class="refsect1"><a name="id1341"></a><h2>AUTHOR</h2><p>The original Samba software and related utilities
+    were created by Andrew Tridgell. Samba is now developed
+    by the Samba Team as an Open Source project similar
+    to the way the Linux kernel is developed.</p></div></div>
+&lt;/ns:Root&gt;</span></body></html>

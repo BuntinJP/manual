@@ -1,0 +1,1732 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "5cc6afa914d70689c057158160338e7263db7be2eac02c8135b6dbc2b4164356",
+  "extraction": {
+    "selector": ".manual-text",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "NAME",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "xcode-select - Manages the active developer directory for Xcode and BSD tools.",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "SYNOPSIS",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]] [[[p1]]|[[p2]]] [[[p3]]|[[p4]] <path>] [[[p5]]|[[p6]]] [[[p7]]|[[p8]]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "xcode-select"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-h"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--help"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-s"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "--switch"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "-p"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "--print-path"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "code",
+            "text": "-v"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "code",
+            "text": "--version"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "[[p0]] controls the location of the developer directory used by [[p1]], [[p2]], [[p3]], and other Xcode and BSD development tools. This also controls the locations that are searched for by [[p4]] for developer tool manpages.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "xcode-select"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "xcrun(1)"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "strong",
+            "text": "xcodebuild(1)"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "strong",
+            "text": "cc(1)"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "strong",
+            "text": "man(1)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "This allows you to easily switch between different versions of the Xcode tools and can be used to update the path to the Xcode if it is moved after installation.",
+      "protected": []
+    },
+    {
+      "id": "s0008",
+      "kind": "heading",
+      "text": "Usage",
+      "protected": []
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "When multiple Xcode applications are installed on a system (e.g. [[p0]], containing the latest Xcode, and [[p1]] containing a beta) use [[p2]] [[p3]][[p4]] path/to/Xcode.app[[p5]] to specify the Xcode that you wish to use for command line developer tools.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/Applications/Xcode.app"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/Applications/Xcode-beta.app"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "strong",
+            "text": "xcode-select"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "--switch"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "After setting a developer directory, all of the [[p0]] provided developer tool shims (see [[p1]]) will automatically invoke the version of the tool inside the selected developer directory. Your own scripts, makefiles, and other tools can also use [[p2]] to easily lookup tools inside the active developer directory, making it easy to switch them between different versions of the Xcode tools and allowing them to function properly on systems where the Xcode application has been installed to a non-default location.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "xcode-select"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "FILES"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "strong",
+            "text": "xcrun(1)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0011",
+      "kind": "heading",
+      "text": "OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-h"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--help"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "Prints the usage message.",
+      "protected": []
+    },
+    {
+      "id": "s0014",
+      "kind": "term",
+      "text": "[[p0]][[p1]] <path>, [[p2]] <path>[[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-s"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--switch"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "Sets the active developer directory to the given path, for example [[p0]]. This command must be run with superuser permissions (see [[p1]]), and will affect all users on the system. To set the path without superuser permissions or only for the current shell session, use the DEVELOPER_DIR environment variable instead (see [[p2]]).",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/Applications/Xcode-beta.app"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "sudo(8)"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "ENVIRONMENT"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0016",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-p"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--print-path"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "Prints the path to the currently selected developer directory. This is useful for inspection, but scripts and other tools should use [[p0]] to locate tool inside the active developer directory.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "xcrun(1)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0018",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-r"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--reset"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "Unsets any user-specified developer directory, so that the developer directory will be found via the default search mechanism. This command must be run with superuser permissions (see [[p0]]), and will affect all users on the system.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "sudo(8)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0020",
+      "kind": "term",
+      "text": "[[p0]][[p1]], [[p2]][[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-v"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--version"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0021",
+      "kind": "paragraph",
+      "text": "Prints [[p0]] version information.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "xcode-select"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0022",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "--install"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0023",
+      "kind": "paragraph",
+      "text": "Opens a user interface dialog to request automatic installation of the command line developer tools.",
+      "protected": []
+    },
+    {
+      "id": "s0024",
+      "kind": "heading",
+      "text": "ENVIRONMENT",
+      "protected": []
+    },
+    {
+      "id": "s0025",
+      "kind": "paragraph",
+      "text": "DEVELOPER_DIR",
+      "protected": []
+    },
+    {
+      "id": "s0026",
+      "kind": "paragraph",
+      "text": "Overrides the active developer directory. When DEVELOPER_DIR is set, its value will be used instead of the system-wide active developer directory.",
+      "protected": []
+    },
+    {
+      "id": "s0027",
+      "kind": "paragraph",
+      "text": "Note that for historical reason, the developer directory is considered to be the Developer content directory inside the Xcode application (for example [[p0]]). You can set the environment variable to either the actual Developer contents directory, or the Xcode application directory -- the [[p1]] provided shims will automatically convert the environment variable into the full Developer content path.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/Applications/Xcode.app/Contents/Developer"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "xcode-select"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0028",
+      "kind": "heading",
+      "text": "EXAMPLES",
+      "protected": []
+    },
+    {
+      "id": "s0029",
+      "kind": "paragraph",
+      "text": "[[p0]]xcode-select [[p1]] /Applications/Xcode.app/Contents/Developer[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--switch"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0030",
+      "kind": "paragraph",
+      "text": "Select [[p0]] as the active developer directory.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/Applications/Xcode.app/Contents/Developer"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0031",
+      "kind": "paragraph",
+      "text": "[[p0]]xcode-select [[p1]] /Applications/Xcode.app[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--switch"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0032",
+      "kind": "paragraph",
+      "text": "As above, selects [[p0]] as the active developer directory. The Developer content directory is automatically inferred by [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/Applications/Xcode.app/Contents/Developer"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "xcode-select"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0033",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/xcodebuild"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0034",
+      "kind": "paragraph",
+      "text": "Runs [[p0]] out of the active developer directory.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "xcodebuild"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0035",
+      "kind": "paragraph",
+      "text": "[[p0]]/usr/bin/xcrun [[p1]] xcodebuild[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--find"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0036",
+      "kind": "paragraph",
+      "text": "Use [[p0]] to locate [[p1]] inside the active developer directory.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "xcrun"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "xcodebuild"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0037",
+      "kind": "paragraph",
+      "text": "[[p0]]env DEVELOPER_DIR=\"/Applications/Xcode-beta.app\" /usr/bin/xcodebuild[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0038",
+      "kind": "paragraph",
+      "text": "Execute [[p0]] using an alternate developer directory.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "xcodebuild"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0039",
+      "kind": "heading",
+      "text": "FILES",
+      "protected": []
+    },
+    {
+      "id": "s0040",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/xcrun"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0041",
+      "kind": "paragraph",
+      "text": "Used to find or run arbitrary commands from the active developer directory. See [[p0]] for more information.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "xcrun(1)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0042",
+      "kind": "paragraph",
+      "text": "[[p0]] [[p1]] [[p2]] [[p3]] [[p4]] [[p5]] [[p6]] [[p7]] [[p8]] [[p9]] [[p10]] [[p11]] [[p12]] [[p13]] [[p14]] [[p15]] [[p16]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/actool"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/agvtool"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/desdp"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/genstrings"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/ibtool"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/ictool"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/opendiff"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/pip3"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/python3"
+          }
+        },
+        {
+          "token": "[[p9]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/sdef"
+          }
+        },
+        {
+          "token": "[[p10]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/sdp"
+          }
+        },
+        {
+          "token": "[[p11]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/stapler"
+          }
+        },
+        {
+          "token": "[[p12]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/xcodebuild"
+          }
+        },
+        {
+          "token": "[[p13]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/xcscontrol"
+          }
+        },
+        {
+          "token": "[[p14]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/xcsdiagnose"
+          }
+        },
+        {
+          "token": "[[p15]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/xctrace"
+          }
+        },
+        {
+          "token": "[[p16]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/xed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0043",
+      "kind": "paragraph",
+      "text": "Runs the matching Xcode tool from with the active developer directory.",
+      "protected": []
+    },
+    {
+      "id": "s0044",
+      "kind": "paragraph",
+      "text": "[[p0]] [[p1]] [[p2]] [[p3]] [[p4]] [[p5]] [[p6]] [[p7]] [[p8]] [[p9]] [[p10]] [[p11]] [[p12]] [[p13]] [[p14]] [[p15]] [[p16]] [[p17]] [[p18]] [[p19]] [[p20]] [[p21]] [[p22]] [[p23]] [[p24]] [[p25]] [[p26]] [[p27]] [[p28]] [[p29]] [[p30]] [[p31]] [[p32]] [[p33]] [[p34]] [[p35]] [[p36]] [[p37]] [[p38]] [[p39]] [[p40]] [[p41]] [[p42]] [[p43]] [[p44]] [[p45]] [[p46]] [[p47]] [[p48]] [[p49]] [[p50]] [[p51]] [[p52]] [[p53]] [[p54]] [[p55]] [[p56]] [[p57]] [[p58]] [[p59]] [[p60]] [[p61]] [[p62]] [[p63]] [[p64]] [[p65]] [[p66]] [[p67]] [[p68]] [[p69]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/DeRez"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/GetFileInfo"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/ResMerger"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/Rez"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/SetFile"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/SplitForks"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/ar"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/as"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/asa"
+          }
+        },
+        {
+          "token": "[[p9]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/bm4"
+          }
+        },
+        {
+          "token": "[[p10]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/bison"
+          }
+        },
+        {
+          "token": "[[p11]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/c89"
+          }
+        },
+        {
+          "token": "[[p12]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/c99"
+          }
+        },
+        {
+          "token": "[[p13]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/clang++"
+          }
+        },
+        {
+          "token": "[[p14]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/clang"
+          }
+        },
+        {
+          "token": "[[p15]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/clangd"
+          }
+        },
+        {
+          "token": "[[p16]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/cmpdylib"
+          }
+        },
+        {
+          "token": "[[p17]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/codesign_allocate"
+          }
+        },
+        {
+          "token": "[[p18]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/cpp"
+          }
+        },
+        {
+          "token": "[[p19]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/ctags"
+          }
+        },
+        {
+          "token": "[[p20]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/ctf_insert"
+          }
+        },
+        {
+          "token": "[[p21]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/dsymutil"
+          }
+        },
+        {
+          "token": "[[p22]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/dwarfdump"
+          }
+        },
+        {
+          "token": "[[p23]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/dyld_info"
+          }
+        },
+        {
+          "token": "[[p24]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/flex++"
+          }
+        },
+        {
+          "token": "[[p25]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/flex"
+          }
+        },
+        {
+          "token": "[[p26]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/g++"
+          }
+        },
+        {
+          "token": "[[p27]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/gatherheaderdoc"
+          }
+        },
+        {
+          "token": "[[p28]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/gcc"
+          }
+        },
+        {
+          "token": "[[p29]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/gcov"
+          }
+        },
+        {
+          "token": "[[p30]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/git-receive-pack"
+          }
+        },
+        {
+          "token": "[[p31]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/git-shell"
+          }
+        },
+        {
+          "token": "[[p32]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/git-upload-archive"
+          }
+        },
+        {
+          "token": "[[p33]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/git-upload-pack"
+          }
+        },
+        {
+          "token": "[[p34]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/git"
+          }
+        },
+        {
+          "token": "[[p35]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/gm4"
+          }
+        },
+        {
+          "token": "[[p36]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/gnumake"
+          }
+        },
+        {
+          "token": "[[p37]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/gperf"
+          }
+        },
+        {
+          "token": "[[p38]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/hdxml2manxml"
+          }
+        },
+        {
+          "token": "[[p39]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/headerdoc2html"
+          }
+        },
+        {
+          "token": "[[p40]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/indent"
+          }
+        },
+        {
+          "token": "[[p41]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/install_name_tool"
+          }
+        },
+        {
+          "token": "[[p42]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/ld"
+          }
+        },
+        {
+          "token": "[[p43]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/lex"
+          }
+        },
+        {
+          "token": "[[p44]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/libtool"
+          }
+        },
+        {
+          "token": "[[p45]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/lipo"
+          }
+        },
+        {
+          "token": "[[p46]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/lldb"
+          }
+        },
+        {
+          "token": "[[p47]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/lorder"
+          }
+        },
+        {
+          "token": "[[p48]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/m4"
+          }
+        },
+        {
+          "token": "[[p49]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/make"
+          }
+        },
+        {
+          "token": "[[p50]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/mig"
+          }
+        },
+        {
+          "token": "[[p51]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/nm"
+          }
+        },
+        {
+          "token": "[[p52]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/nmedit"
+          }
+        },
+        {
+          "token": "[[p53]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/objdump"
+          }
+        },
+        {
+          "token": "[[p54]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/otool"
+          }
+        },
+        {
+          "token": "[[p55]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/pagestuff"
+          }
+        },
+        {
+          "token": "[[p56]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/ranlib"
+          }
+        },
+        {
+          "token": "[[p57]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/resolveLinks"
+          }
+        },
+        {
+          "token": "[[p58]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/rpcgen"
+          }
+        },
+        {
+          "token": "[[p59]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/segedit"
+          }
+        },
+        {
+          "token": "[[p60]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/size"
+          }
+        },
+        {
+          "token": "[[p61]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/strings"
+          }
+        },
+        {
+          "token": "[[p62]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/strip"
+          }
+        },
+        {
+          "token": "[[p63]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/swift"
+          }
+        },
+        {
+          "token": "[[p64]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/swiftc"
+          }
+        },
+        {
+          "token": "[[p65]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/unifdef"
+          }
+        },
+        {
+          "token": "[[p66]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/unifdefall"
+          }
+        },
+        {
+          "token": "[[p67]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/vtool"
+          }
+        },
+        {
+          "token": "[[p68]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/xml2man"
+          }
+        },
+        {
+          "token": "[[p69]]",
+          "inline": {
+            "tag": "strong",
+            "text": "/usr/bin/yacc"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0045",
+      "kind": "paragraph",
+      "text": "Runs the matching BSD tool from with the active developer directory.",
+      "protected": []
+    },
+    {
+      "id": "s0046",
+      "kind": "heading",
+      "text": "SEE ALSO",
+      "protected": []
+    },
+    {
+      "id": "s0047",
+      "kind": "paragraph",
+      "text": "[[p0]], [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "xcrun(1)"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "xcodebuild(1)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0048",
+      "kind": "heading",
+      "text": "HISTORY",
+      "protected": []
+    },
+    {
+      "id": "s0049",
+      "kind": "paragraph",
+      "text": "The [[p0]] command first appeared in Xcode 3.0.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "xcode-select"
+          }
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "NAME",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "SYNOPSIS",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "Usage",
+      "segment": "s0008"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0009"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0010"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "OPTIONS",
+      "segment": "s0011"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0012",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0013"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0014",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0015"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0016",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0017"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0018",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0019"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0020",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0021"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0022",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0023"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "ENVIRONMENT",
+      "segment": "s0024"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0025"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0026"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0027"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "EXAMPLES",
+      "segment": "s0028"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0029"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0030"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0031"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0032"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0033"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0034"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0035"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0036"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0037"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0038"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "FILES",
+      "segment": "s0039"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0040"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0041"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0042"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0043"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0044"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0045"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "SEE_ALSO",
+      "segment": "s0046"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0047"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "HISTORY",
+      "segment": "s0048"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0049"
+    }
+  ]
+}

@@ -1,0 +1,1170 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "d00c69e7485de3fa3c11d717b8a6532ebdd383536295c80a752728eb29219520",
+  "extraction": {
+    "selector": ".refentry",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "Name",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "ntlm_auth — tool to allow external access to Winbind's NTLM authentication function",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "Synopsis",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "ntlm_auth"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "This tool is part of the [[p0]] suite.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "samba(7)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/samba.7.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "[[p0]] is a helper utility that authenticates users using NT/LM authentication. It returns 0 if the users is authenticated successfully and 1 if access was denied. ntlm_auth uses winbind to access the user and authentication data for a domain. This utility is only intended to be used by other programs (currently [[p1]] and [[p2]]).",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "ntlm_auth"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "Squid",
+            "href": "https://www.squid-cache.org/"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "link",
+            "text": "mod_ntlm_winbind",
+            "href": "https://www.samba.org/ftp/unpacked/lorikeet/mod_auth_ntlm_winbind/"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "heading",
+      "text": "OPERATIONAL REQUIREMENTS",
+      "protected": []
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "The [[p0]] daemon must be operational for many of these commands to function.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "winbindd(8)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/winbindd.8.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "Some of these commands also require access to the directory [[p0]] in [[p1]]. This should be done either by running this command as root or providing group access to the [[p2]] directory. For security reasons, this directory should not be world-accessable.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "winbindd_privileged"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "$LOCKDIR"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "winbindd_privileged"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0011",
+      "kind": "heading",
+      "text": "OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "term",
+      "text": "[[p0]]=PROTO",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--helper-protocol"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "Operate as a stdio-based helper. Valid helper protocols are:",
+      "protected": []
+    },
+    {
+      "id": "s0014",
+      "kind": "term",
+      "text": "squid-2.4-basic",
+      "protected": []
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "Server-side helper for use with Squid 2.4's basic (plaintext) authentication.",
+      "protected": []
+    },
+    {
+      "id": "s0016",
+      "kind": "term",
+      "text": "squid-2.5-basic",
+      "protected": []
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "Server-side helper for use with Squid 2.5's basic (plaintext) authentication.",
+      "protected": []
+    },
+    {
+      "id": "s0018",
+      "kind": "term",
+      "text": "squid-2.5-ntlmssp",
+      "protected": []
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "Server-side helper for use with Squid 2.5's NTLMSSP authentication.",
+      "protected": []
+    },
+    {
+      "id": "s0020",
+      "kind": "paragraph",
+      "text": "Requires access to the directory [[p0]] in [[p1]]. The protocol used is described here: [[p2]]. This protocol has been extended to allow the NTLMSSP Negotiate packet to be included as an argument to the [[p3]] command. (Thus avoiding loss of information in the protocol exchange).",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "winbindd_privileged"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "$LOCKDIR"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "link",
+            "text": "http://devel.squid-cache.org/ntlm/squid_helper_protocol.html",
+            "href": "http://devel.squid-cache.org/ntlm/squid_helper_protocol.html"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "YR"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0021",
+      "kind": "term",
+      "text": "ntlmssp-client-1",
+      "protected": []
+    },
+    {
+      "id": "s0022",
+      "kind": "paragraph",
+      "text": "Client-side helper for use with arbitrary external programs that may wish to use Samba's NTLMSSP authentication knowledge.",
+      "protected": []
+    },
+    {
+      "id": "s0023",
+      "kind": "paragraph",
+      "text": "This helper is a client, and as such may be run by any user. The protocol used is effectively the reverse of the previous protocol. A [[p0]] command (without any arguments) starts the authentication exchange.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "YR"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0024",
+      "kind": "term",
+      "text": "gss-spnego",
+      "protected": []
+    },
+    {
+      "id": "s0025",
+      "kind": "paragraph",
+      "text": "Server-side helper that implements GSS-SPNEGO. This uses a protocol that is almost the same as [[p0]], but has some subtle differences that are undocumented outside the source at this stage.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "squid-2.5-ntlmssp"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0026",
+      "kind": "paragraph",
+      "text": "Requires access to the directory [[p0]] in [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "winbindd_privileged"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "$LOCKDIR"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0027",
+      "kind": "term",
+      "text": "gss-spnego-client",
+      "protected": []
+    },
+    {
+      "id": "s0028",
+      "kind": "paragraph",
+      "text": "Client-side helper that implements GSS-SPNEGO. This also uses a protocol similar to the above helpers, but is currently undocumented.",
+      "protected": []
+    },
+    {
+      "id": "s0029",
+      "kind": "term",
+      "text": "ntlm-server-1",
+      "protected": []
+    },
+    {
+      "id": "s0030",
+      "kind": "paragraph",
+      "text": "Server-side helper protocol, intended for use by a RADIUS server or the 'winbind' plugin for pppd, for the provision of MSCHAP and MSCHAPv2 authentication.",
+      "protected": []
+    },
+    {
+      "id": "s0031",
+      "kind": "paragraph",
+      "text": "This protocol consists of lines in the form: [[p0]] and [[p1]]. The presence of a single period [[p2]] indicates that one side has finished supplying data to the other. (Which in turn could cause the helper to authenticate the user).",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "Parameter: value"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "Parameter:: Base64-encode value"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "."
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0032",
+      "kind": "paragraph",
+      "text": "Currently implemented parameters from the external program to the helper are:",
+      "protected": []
+    },
+    {
+      "id": "s0033",
+      "kind": "term",
+      "text": "Username",
+      "protected": []
+    },
+    {
+      "id": "s0034",
+      "kind": "paragraph",
+      "text": "The username, expected to be in Samba's [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "unix charset",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#UNIXCHARSET"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0035",
+      "kind": "term",
+      "text": "Examples:",
+      "protected": []
+    },
+    {
+      "id": "s0036",
+      "kind": "term",
+      "text": "NT-Domain",
+      "protected": []
+    },
+    {
+      "id": "s0037",
+      "kind": "paragraph",
+      "text": "The user's domain, expected to be in Samba's [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "unix charset",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#UNIXCHARSET"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0038",
+      "kind": "term",
+      "text": "Examples:",
+      "protected": []
+    },
+    {
+      "id": "s0039",
+      "kind": "term",
+      "text": "Full-Username",
+      "protected": []
+    },
+    {
+      "id": "s0040",
+      "kind": "paragraph",
+      "text": "The fully qualified username, expected to be in Samba's [[p0]] and qualified with the [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "unix charset",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#UNIXCHARSET"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "winbind separator",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#WINBINDSEPARATOR"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0041",
+      "kind": "term",
+      "text": "Examples:",
+      "protected": []
+    },
+    {
+      "id": "s0042",
+      "kind": "term",
+      "text": "LANMAN-Challenge",
+      "protected": []
+    },
+    {
+      "id": "s0043",
+      "kind": "paragraph",
+      "text": "The 8 byte [[p0]] value, generated randomly by the server, or (in cases such as MSCHAPv2) generated in some way by both the server and the client.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "LANMAN Challenge"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0044",
+      "kind": "term",
+      "text": "Examples:",
+      "protected": []
+    },
+    {
+      "id": "s0045",
+      "kind": "term",
+      "text": "LANMAN-Response",
+      "protected": []
+    },
+    {
+      "id": "s0046",
+      "kind": "paragraph",
+      "text": "The 24 byte [[p0]] value, calculated from the user's password and the supplied [[p1]]. Typically, this is provided over the network by a client wishing to authenticate.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "LANMAN Response"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "LANMAN Challenge"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0047",
+      "kind": "term",
+      "text": "Examples:",
+      "protected": []
+    },
+    {
+      "id": "s0048",
+      "kind": "term",
+      "text": "NT-Response",
+      "protected": []
+    },
+    {
+      "id": "s0049",
+      "kind": "paragraph",
+      "text": "The >= 24 byte [[p0]] calculated from the user's password and the supplied [[p1]]. Typically, this is provided over the network by a client wishing to authenticate.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "NT Response"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "LANMAN Challenge"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0050",
+      "kind": "term",
+      "text": "Examples:",
+      "protected": []
+    },
+    {
+      "id": "s0051",
+      "kind": "term",
+      "text": "Password",
+      "protected": []
+    },
+    {
+      "id": "s0052",
+      "kind": "paragraph",
+      "text": "The user's password. This would be provided by a network client, if the helper is being used in a legacy situation that exposes plaintext passwords in this way.",
+      "protected": []
+    },
+    {
+      "id": "s0053",
+      "kind": "term",
+      "text": "Examples:",
+      "protected": []
+    },
+    {
+      "id": "s0054",
+      "kind": "term",
+      "text": "Request-User-Session-Key",
+      "protected": []
+    },
+    {
+      "id": "s0055",
+      "kind": "paragraph",
+      "text": "Upon successful authentication, return the user session key associated with the login.",
+      "protected": []
+    },
+    {
+      "id": "s0056",
+      "kind": "term",
+      "text": "Examples:",
+      "protected": []
+    },
+    {
+      "id": "s0057",
+      "kind": "term",
+      "text": "Request-LanMan-Session-Key",
+      "protected": []
+    },
+    {
+      "id": "s0058",
+      "kind": "paragraph",
+      "text": "Upon successful authentication, return the LANMAN session key associated with the login.",
+      "protected": []
+    },
+    {
+      "id": "s0059",
+      "kind": "term",
+      "text": "Examples:",
+      "protected": []
+    },
+    {
+      "id": "s0060",
+      "kind": "heading",
+      "text": "Warning",
+      "protected": []
+    },
+    {
+      "id": "s0061",
+      "kind": "paragraph",
+      "text": "Implementers should take care to base64 encode any data (such as usernames/passwords) that may contain malicious user data, such as a newline. They may also need to decode strings from the helper, which likewise may have been base64 encoded.",
+      "protected": []
+    },
+    {
+      "id": "s0062",
+      "kind": "paragraph",
+      "text": "[[p0]]=USERNAME Specify username of user to authenticate [[p1]]=DOMAIN Specify domain of user to authenticate [[p2]]=WORKSTATION Specify the workstation the user authenticated from [[p3]]=STRINGNTLM challenge (in HEXADECIMAL)[[p4]]=RESPONSELM Response to the challenge (in HEXADECIMAL)[[p5]]=RESPONSENT or NTLMv2 Response to the challenge (in HEXADECIMAL)[[p6]]=PASSWORDUser's plaintext passwordIf not specified on the command line, this is prompted for when required. For the NTLMSSP based server roles, this parameter specifies the expected password, allowing testing without winbindd operational.[[p7]]Retrieve LM session key[[p8]]Request NT key[[p9]]Perform Diagnostics on the authentication chain. Uses the password from [[p10]] or prompts for one.[[p11]]={SID|Name}Require that a user be a member of specified group (either name or SID) for authentication to succeed.[[p12]]=FILENAMEDefine the path to the pam_winbind.conf file.[[p13]]=HOSTNAMEDefine the target hostname.[[p14]]=SERVICEDefine the target service.[[p15]]Whether to use credentials cached by winbindd.[[p16]]Explicitly allow MSCHAPv2.[[p17]]Allow offline logons for plain text auth. -?|[[p18]]Print a summary of command line options. [[p19]]Display brief usage message. [[p20]]|[[p21]]=level [[p22]][[p23]][[p24]] is an integer from 0 to 10. The default value if this parameter is not specified is 1 for client applications. The higher this value, the more detail will be logged to the log files about the activities of the server. At level 0, only critical errors and serious warnings will be logged. Level 1 is a reasonable level for day-to-day running - it generates a small amount of information about operations carried out. Levels above 1 will generate considerable amounts of log data, and should only be used when investigating a problem. Levels above 3 are designed for use only by developers and generate HUGE amounts of log data, most of which is extremely cryptic. Note that specifying this parameter here will override the [[p25]] parameter in the [[p26]] file. [[p27]] This will redirect debug output to STDOUT. By default all clients are logging to STDERR. [[p28]]=<configuration file> The file specified contains the configuration details required by the client. The information in this file can be general for client and server or only provide client specific like options such as [[p29]]. See [[p30]] for more information. The default configuration file name is determined at compile time. [[p31]]=<name>=<value> Set the [[p32]] option \"<name>\" to value \"<value>\" from the command line. This overrides compiled-in defaults and options read from the configuration file. If a name or a value includes a space, wrap whole [[p33]]=name=value into quotes. [[p34]]|[[p35]] Prints the program version number.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--username"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--domain"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--workstation"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "--challenge"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "--lm-response"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "--nt-response"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "--password"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "code",
+            "text": "--request-lm-key"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "code",
+            "text": "--request-nt-key"
+          }
+        },
+        {
+          "token": "[[p9]]",
+          "inline": {
+            "tag": "code",
+            "text": "--diagnostics"
+          }
+        },
+        {
+          "token": "[[p10]]",
+          "inline": {
+            "tag": "code",
+            "text": "--password"
+          }
+        },
+        {
+          "token": "[[p11]]",
+          "inline": {
+            "tag": "code",
+            "text": "--require-membership-of"
+          }
+        },
+        {
+          "token": "[[p12]]",
+          "inline": {
+            "tag": "code",
+            "text": "--pam-winbind-conf"
+          }
+        },
+        {
+          "token": "[[p13]]",
+          "inline": {
+            "tag": "code",
+            "text": "--target-hostname"
+          }
+        },
+        {
+          "token": "[[p14]]",
+          "inline": {
+            "tag": "code",
+            "text": "--target-service"
+          }
+        },
+        {
+          "token": "[[p15]]",
+          "inline": {
+            "tag": "code",
+            "text": "--use-cached-creds"
+          }
+        },
+        {
+          "token": "[[p16]]",
+          "inline": {
+            "tag": "code",
+            "text": "--allow-mschapv2"
+          }
+        },
+        {
+          "token": "[[p17]]",
+          "inline": {
+            "tag": "code",
+            "text": "--offline-logon"
+          }
+        },
+        {
+          "token": "[[p18]]",
+          "inline": {
+            "tag": "code",
+            "text": "--help"
+          }
+        },
+        {
+          "token": "[[p19]]",
+          "inline": {
+            "tag": "code",
+            "text": "--usage"
+          }
+        },
+        {
+          "token": "[[p20]]",
+          "inline": {
+            "tag": "code",
+            "text": "-d"
+          }
+        },
+        {
+          "token": "[[p21]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debuglevel"
+          }
+        },
+        {
+          "token": "[[p22]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p23]]",
+          "inline": {
+            "tag": "code",
+            "text": "level"
+          }
+        },
+        {
+          "token": "[[p24]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p25]]",
+          "inline": {
+            "tag": "link",
+            "text": "log level",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#LOGLEVEL"
+          }
+        },
+        {
+          "token": "[[p26]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        },
+        {
+          "token": "[[p27]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debug-stdout"
+          }
+        },
+        {
+          "token": "[[p28]]",
+          "inline": {
+            "tag": "code",
+            "text": "--configfile"
+          }
+        },
+        {
+          "token": "[[p29]]",
+          "inline": {
+            "tag": "link",
+            "text": "client smb encrypt",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#CLIENTSMBENCRYPT"
+          }
+        },
+        {
+          "token": "[[p30]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        },
+        {
+          "token": "[[p31]]",
+          "inline": {
+            "tag": "code",
+            "text": "--option"
+          }
+        },
+        {
+          "token": "[[p32]]",
+          "inline": {
+            "tag": "link",
+            "text": "smb.conf(5)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+          }
+        },
+        {
+          "token": "[[p33]]",
+          "inline": {
+            "tag": "code",
+            "text": "--option"
+          }
+        },
+        {
+          "token": "[[p34]]",
+          "inline": {
+            "tag": "code",
+            "text": "-V"
+          }
+        },
+        {
+          "token": "[[p35]]",
+          "inline": {
+            "tag": "code",
+            "text": "--version"
+          }
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Name",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Synopsis",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "OPERATIONAL-REQUIREMENTS",
+      "segment": "s0008"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0009"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0010"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "OPTIONS",
+      "segment": "s0011"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0012",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0013"
+            },
+            {
+              "type": "definition",
+              "entries": [
+                {
+                  "term": "s0014",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0015"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0016",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0017"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0018",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0019"
+                    },
+                    {
+                      "type": "paragraph",
+                      "segment": "s0020"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0021",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0022"
+                    },
+                    {
+                      "type": "paragraph",
+                      "segment": "s0023"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0024",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0025"
+                    },
+                    {
+                      "type": "paragraph",
+                      "segment": "s0026"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0027",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0028"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0029",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0030"
+                    },
+                    {
+                      "type": "paragraph",
+                      "segment": "s0031"
+                    },
+                    {
+                      "type": "paragraph",
+                      "segment": "s0032"
+                    },
+                    {
+                      "type": "definition",
+                      "entries": [
+                        {
+                          "term": "s0033",
+                          "body": [
+                            {
+                              "type": "paragraph",
+                              "segment": "s0034"
+                            }
+                          ]
+                        },
+                        {
+                          "term": "s0035",
+                          "body": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "term": "s0036",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0037"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0038",
+                  "body": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "s0039",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0040"
+            }
+          ]
+        },
+        {
+          "term": "s0041",
+          "body": []
+        },
+        {
+          "term": "s0042",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0043"
+            }
+          ]
+        },
+        {
+          "term": "s0044",
+          "body": []
+        },
+        {
+          "term": "s0045",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0046"
+            }
+          ]
+        },
+        {
+          "term": "s0047",
+          "body": []
+        },
+        {
+          "term": "s0048",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0049"
+            }
+          ]
+        },
+        {
+          "term": "s0050",
+          "body": []
+        },
+        {
+          "term": "s0051",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0052"
+            }
+          ]
+        },
+        {
+          "term": "s0053",
+          "body": []
+        },
+        {
+          "term": "s0054",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0055"
+            }
+          ]
+        },
+        {
+          "term": "s0056",
+          "body": []
+        },
+        {
+          "term": "s0057",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0058"
+            }
+          ]
+        },
+        {
+          "term": "s0059",
+          "body": []
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "Warning",
+      "segment": "s0060"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0061"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0062"
+    }
+  ]
+}

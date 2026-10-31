@@ -1,0 +1,108 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>samba-dcerpcd</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="samba-dcerpcd.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>samba-dcerpcd &#8212; This is one of Samba's DCERPC server processes
+	that can listen on sockets where RPC services are offered and
+	is the parent process of the DCERPC services it
+	invokes. Unless separately invoked it is started on demand
+	from <code class="literal">smbd</code> or <code class="literal">winbind</code> and
+	serves DCERPC only over named pipes (np) as a helper
+	process. This will be the standard setup for most
+	installations (standalone/member server/AD server) unless they
+	modify their startup scripts. Note in when Samba is configured
+	as an Active Directory Domain controller the
+	<code class="literal">samba</code> process that invokes
+	<code class="literal">smbd</code> will still provide its normal DCERPC
+	services, not <code class="literal">samba-dcerpcd</code>. When
+	separately invoked by system startup scripts or a daemon,
+	the global smb.conf option <a class="link" href="smb.conf.5.html#RPCSTARTONDEMANDHELPERS" target="_top">rpc start on  demand helpers = false</a> MUST be set to allow
+	<code class="literal">samba-dcerpcd</code> to start standalone.
+	</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="literal">samba-dcerpcd</code> [-D|--daemon] [-i|--interactive] [-F|--foreground] [--no-process-group] [-d &lt;debug level&gt;] [--debug-stdout] [--configfile=&lt;configuration file&gt;] [--option=&lt;name&gt;=&lt;value&gt;] [--leak-report] [--leak-report-full] [-V|--version] [--libexec-rpcds] [--np-helper] [--np-only] [--ready-signal-fd=&lt;fd&gt;] [&lt;SERVICE_1&gt;] [&lt;SERVICE_2&gt;] [&lt;...&gt;]</p></div></div><div class="refsect1"><a name="id1337"></a><h2>DESCRIPTION</h2><p>This tool is part of the
+	<a class="citerefentry" href="samba.7.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(7)</span></a> suite.</p><p>
+	  samba-dcerpcd can be used in two ways. In the normal case
+	  without startup script modification and the global smb.conf
+	  option <a class="link" href="smb.conf.5.html#RPCSTARTONDEMANDHELPERS" target="_top">rpc start on demand    helpers = true</a> is set (the default setting),
+	  it is invoked on demand from <code class="literal">smbd</code> or
+	  <code class="literal">winbind</code> with a command line
+	  containing --np-helper to serve DCERPC over named pipes
+	  (np). It can also be used in a standalone mode where it is
+	  started separately from <code class="literal">smbd</code> or
+	  <code class="literal">winbind</code> via system startup scripts. If
+	  invoked as a standalone daemon or started from system
+	  startup scripts the global smb.conf option <a class="link" href="smb.conf.5.html#RPCSTARTONDEMANDHELPERS" target="_top">rpc start on demand helpers = false</a>
+	  MUST be set to false. If the global smb.conf option
+	  <a class="link" href="smb.conf.5.html#RPCSTARTONDEMANDHELPERS" target="_top">rpc start on demand    helpers = true</a> is set to true or left as
+	  default, <code class="literal">samba-dcerpcd</code> will fail to start
+	  and log an error message.
+	</p><p>
+	  Note that when Samba is run in the Active Directory Domain
+	  Controller mode the <code class="literal">samba</code> AD code will
+	  still provide its normal DCERPC services whilst allowing
+	  samba-dcerpcd to provide services like SRVSVC in the same
+	  way that <code class="literal">smbd</code> used to in this
+	  configuration.
+	</p><p>
+	  The standalone mode can also be useful for use outside of
+	  the Samba framework, for example, use with the Linux kernel
+	  SMB2 server ksmbd or possibly other SMB2 server
+	  implementations. In this mode it behaves like inetd and
+	  listens on sockets on behalf of RPC server implementations.
+	</p><p>
+	  When a client connects, <code class="literal">samba-dcerpcd</code>
+	  will start the relevant RPC service binary on demand and
+	  hand over the connection to that service. When an RPC
+	  service has been idle for a while,
+	  <code class="literal">samba-dcerpcd</code> will ask it to shut down
+	  again.
+	</p></div><div class="refsect1"><a name="id1338"></a><h2>OPTIONS</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term">-D|--daemon</span></dt><dd><p>If specified, this parameter causes
+		the server to operate as a daemon. That is, it
+		detaches itself and runs in the background, fielding
+		requests on the appropriate port. Operating the server
+		as a daemon is useful for running
+		<code class="literal">samba-dcerpcd</code> outside of the Samba
+		framework. However, it can also be used in this way
+		within Samba for member servers if configured to start
+		up via system startup scripts.  This switch is assumed
+		if <code class="literal">samba-dcerpcd</code> is executed on the
+		command line of a shell.  </p></dd><dt><span class="term">-i|--interactive</span></dt><dd><p>If this parameter is specified it
+		causes the server to run "interactively", not as a
+		daemon, even if the server is executed on the command
+		line of a shell. Setting this parameter negates the
+		implicit daemon mode when run from the command
+		line. <code class="literal">samba-dcerpcd</code> will only
+		accept one connection and terminate. It will also log
+		to standard output, as if the <code class="literal">-S</code>
+		parameter had been given.
+		</p></dd><dt><span class="term">-F|--foreground</span></dt><dd><p>If specified, this parameter causes
+		the main <code class="literal">samba-dcerpcd</code> process to
+		not daemonize, i.e. double-fork and disassociate with
+		the terminal.  Child processes are still spawned as
+		normal to service each connection request, but the
+		main process does not exit. This operation mode is
+		suitable for running <code class="literal">samba-dcerpcd</code>
+		under process supervisors such as
+		<code class="literal">supervise</code> and
+		<code class="literal">svscan</code> from Daniel J. Bernstein's
+		<code class="literal">daemontools</code> package, or the AIX
+		process monitor.  </p></dd><dt><span class="term">--no-process-group</span></dt><dd><p>Do not create a new process group for
+		samba-dcerpcd.
+		</p></dd><dt><span class="term">--libexec-rpcds</span></dt><dd><p>Offer RPC services for all daemons in
+		Samba's LIBEXECDIR, all programs starting with
+		"rpcd_" are assumed to offer RPC
+		services. If you don't use the
+		<code class="literal">--libexec-rpcds</code> option, you can
+		explicitly list all RPC service helpers explicitly on
+		the command line.</p></dd><dt><span class="term">--np-helper</span></dt><dd><p>Run <code class="literal">samba-dcerpcd</code>
+		on demand opening named pipe sockets as helpers for
+		<code class="literal">smbd</code> or <code class="literal">winbind</code>.
+		In order to run in this mode, the global smb.conf
+		option <a class="link" href="smb.conf.5.html#RPCSTARTONDEMANDHELPERS" target="_top">rpc start on demand   helpers = true</a> must be set to true
+		(this is the default setting).  </p></dd><dt><span class="term">--np-only</span></dt><dd><p>Run <code class="literal">samba-dcerpcd</code>
+		as daemon without --np-helper, the --np-only options
+		it still only binds to ncacn_np services.
+		</p></dd><dt><span class="term">--ready-signal-fd=&lt;fd&gt;</span></dt><dd><p>Report service readiness via this fd
+		to <code class="literal">smbd</code> or <code class="literal">winbind</code>.
+		Only for internal use.
+		</p></dd></dl></div></div><div class="refsect1"><a name="id1339"></a><h2>AUTHOR</h2><p>
+	  The original Samba software and related utilities were
+	  created by Andrew Tridgell. Samba is now developed by the
+	  Samba Team as an Open Source project similar to the way the
+	  Linux kernel is developed.
+	</p></div></div></body></html>

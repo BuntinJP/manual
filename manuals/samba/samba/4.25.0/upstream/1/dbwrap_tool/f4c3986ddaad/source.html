@@ -1,0 +1,81 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>dbwrap_tool</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="dbwrap_tool.1"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>dbwrap_tool &#8212; low level TDB/CTDB manipulation tool using the dbwrap interface</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="literal">dbwrap_tool</code> [-?|--help] [--usage] [--persistent] [--non-persistent] [-d|--debuglevel=DEBUGLEVEL] [--debug-stdout] [--configfile=CONFIGFILE] [--option=name=value] [-l|--log-basename=LOGFILEBASE] [--leak-report] [--leak-report-full] {&lt;database&gt;} {&lt;operation&gt;} [&lt;key&gt;
+			[&lt;type&gt;
+				[&lt;value&gt;]]]</p></div></div><div class="refsect1"><a name="id1337"></a><h2>DESCRIPTION</h2><p>This tool is part of the <a class="citerefentry" href="samba.7.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(7)</span></a> suite.</p><p>The dbwrap_tool program is used to read and manipulate
+	TDB/CTDB databases using the dbwrap interface.</p><p>The following database operations are available:
+	</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>fetch: fetch a record</p></li><li class="listitem"><p>store: create or modify a record</p></li><li class="listitem"><p>delete: remove a record</p></li><li class="listitem"><p>exists: test for existence of a record</p></li><li class="listitem"><p>erase: remove all records</p></li><li class="listitem"><p>listkeys: list all available records</p></li><li class="listitem"><p>listwatchers: list processes, which are waiting for changes in a record</p></li></ul></div><p>
+	</p><p>The following types are available:
+	</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>int32: signed 32bit integer</p></li><li class="listitem"><p>uint32: unsigned 32bit integer</p></li><li class="listitem"><p>string: "hello world"</p></li><li class="listitem"><p>hex: hex strings like "68656C6C6F20776F726C6400" ("hello world")</p></li></ul></div><p>
+	</p></div><div class="refsect1"><a name="id1338"></a><h2>OPTIONS</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term">--persistent</span></dt><dd><p>Open the database as a persistent database.
+			</p><p>
+			Exactly one of --persistent and --non-persistent must be
+			specified.
+			</p></dd><dt><span class="term">--non-persistent</span></dt><dd><p>Open the database as a non-persistent database.
+			</p><p>
+			Caveat: opening a database as non-persistent when there
+			is currently no other opener will wipe the database.
+			</p><p>
+			Exactly one of --persistent and --non-persistent must be
+			specified.
+			</p></dd><dt><span class="term">-?|--help</span></dt><dd><p>Print a summary of command line options.
+</p></dd><dt><span class="term">--usage</span></dt><dd><p>Display brief usage message.
+</p></dd><dt><span class="term">-d|--debuglevel=level</span></dt><dd><p>
+			<em class="replaceable"><code>level</code></em> is an integer from 0
+			to 10. The default value if this parameter is not
+			specified is 1 for client applications.
+		</p><p>
+			The higher this value, the more detail will be logged
+			to the log files about the activities of the server. At
+			level 0, only critical errors and serious warnings will
+			be logged. Level 1 is a reasonable level for day-to-day
+			running - it generates a small amount of information
+			about operations carried out.
+		</p><p>
+			Levels above 1 will generate considerable amounts of
+			log data, and should only be used when investigating a
+			problem. Levels above 3 are designed for use only by
+			developers and generate HUGE amounts of log data, most
+			of which is extremely cryptic.
+			</p><p>
+			Note that specifying this parameter here will override
+			the <a class="link" href="smb.conf.5.html#LOGLEVEL" target="_top">log level</a> parameter in the
+			<code class="filename">${prefix}/etc/smb.conf</code> file.
+		</p></dd><dt><span class="term">--debug-stdout</span></dt><dd><p>
+			This will redirect debug output to STDOUT. By default
+			all clients are logging to STDERR.
+		</p></dd><dt><span class="term">--configfile=&lt;configuration file&gt;</span></dt><dd><p>
+			The file specified contains the configuration details
+			required by the client. The information in this file
+			can be general for client and server or only provide
+			client specific like options such as
+			<a class="link" href="smb.conf.5.html#CLIENTSMBENCRYPT" target="_top">client smb encrypt</a>. See
+			<code class="filename">${prefix}/etc/smb.conf</code> for more information.  The default
+			configuration file name is determined at compile time.
+		</p></dd><dt><span class="term">--option=&lt;name&gt;=&lt;value&gt;</span></dt><dd><p>
+			Set the
+			<a class="citerefentry" href="smb.conf.5.html"><span class="citerefentry"><span class="refentrytitle">smb.conf</span>(5)</span></a> option
+			"&lt;name&gt;" to value "&lt;value&gt;" from the
+			command line. This overrides compiled-in defaults and
+			options read from the configuration file. If a name or
+			a value includes a space, wrap whole
+			--option=name=value into quotes.
+		</p></dd><dt><span class="term">-l|--log-basename=logdirectory</span></dt><dd><p>
+			Base directory name for log/debug files. The extension
+			<code class="constant">".progname"</code> will be appended (e.g.
+			log.smbclient, log.smbd, etc...). The log file is never
+			removed by the client.
+		</p></dd><dt><span class="term">--leak-report</span></dt><dd><p>
+			Enable talloc leak reporting on exit.
+		</p></dd><dt><span class="term">--leak-report-full</span></dt><dd><p>
+			Enable full talloc leak reporting on exit.
+		</p></dd><dt><span class="term">-V|--version</span></dt><dd><p>
+			Prints the program version number.
+		</p></dd></dl></div></div><div class="refsect1"><a name="id1339"></a><h2>COMMANDS</h2><div class="refsect2"><a name="id1340"></a><h3>fetch</h3><div class="cmdsynopsis"><p><code class="literal">dbwrap_tool</code> &lt;database&gt; fetch &lt;key&gt; &lt;type&gt;
+		</p></div></div><div class="refsect2"><a name="id1341"></a><h3>store</h3><div class="cmdsynopsis"><p><code class="literal">dbwrap_tool</code> &lt;database&gt; store &lt;key&gt; &lt;type&gt; &lt;value&gt;
+		</p></div></div><div class="refsect2"><a name="id1342"></a><h3>delete</h3><div class="cmdsynopsis"><p><code class="literal">dbwrap_tool</code> &lt;database&gt; delete &lt;key&gt;
+		</p></div></div><div class="refsect2"><a name="id1343"></a><h3>exists</h3><div class="cmdsynopsis"><p><code class="literal">dbwrap_tool</code> &lt;database&gt; exists &lt;key&gt;
+		</p></div></div><div class="refsect2"><a name="id1344"></a><h3>erase</h3><div class="cmdsynopsis"><p><code class="literal">dbwrap_tool</code> &lt;database&gt; erase </p></div></div><div class="refsect2"><a name="id1345"></a><h3>listkeys</h3><div class="cmdsynopsis"><p><code class="literal">dbwrap_tool</code> &lt;database&gt; listkeys
+		</p></div></div><div class="refsect2"><a name="id1346"></a><h3>listwatchers</h3><div class="cmdsynopsis"><p><code class="literal">dbwrap_tool</code> &lt;database&gt; listwatchers
+		</p></div></div></div><div class="refsect1"><a name="id1347"></a><h2>EXAMPLES</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term">List all keys from winbindd_idmap.tdb</span></dt><dd><p><code class="literal">dbwrap_tool</code> --persistent winbindd_idmap.tdb listkeys</p></dd><dt><span class="term">Fetch record with key "USER HWM" as uint32</span></dt><dd><p><code class="literal">dbwrap_tool</code> --persistent winbindd_idmap.tdb fetch "USER HWM" uint32</p></dd><dt><span class="term">Remove record with key "USER HWM"</span></dt><dd><p><code class="literal">dbwrap_tool</code> --persistent winbindd_idmap.tdb remove "USER HWM"</p></dd><dt><span class="term">Store and overwrite record "USER HWM" with value 214</span></dt><dd><p>uint32: <code class="literal">dbwrap_tool</code> --persistent winbindd_idmap.tdb store "USER HWM" uint32 214</p><p>hex: <code class="literal">dbwrap_tool</code> --persistent winbindd_idmap.tdb store "USER HWM" hex D6000000</p></dd></dl></div></div><div class="refsect1"><a name="id1348"></a><h2>NOTES</h2><p>Use with caution!</p></div><div class="refsect1"><a name="id1349"></a><h2>VERSION</h2><p>This man page is part of version 4.25.0 of the Samba suite.</p></div><div class="refsect1"><a name="id1350"></a><h2>SEE ALSO</h2><p><a class="citerefentry" href="smbd.8.html"><span class="citerefentry"><span class="refentrytitle">smbd</span>(8)</span></a>, <a class="citerefentry" href="samba.7.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(7)</span></a></p></div><div class="refsect1"><a name="id1351"></a><h2>AUTHOR</h2><p>The original Samba software and related utilities
+	were created by Andrew Tridgell. Samba is now developed
+	by the Samba Team as an Open Source project similar
+	to the way the Linux kernel is developed.</p><p>The dbwrap_tool manpage was written by Bjoern Baumbach.</p></div></div></body></html>

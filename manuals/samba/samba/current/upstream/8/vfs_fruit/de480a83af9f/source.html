@@ -1,0 +1,175 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>vfs_fruit</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="vfs_fruit.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>vfs_fruit &#8212; Enhanced OS X and Netatalk interoperability</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="literal">vfs objects = fruit</code></p></div></div><div class="refsect1"><a name="id1337"></a><h2>DESCRIPTION</h2><p>This VFS module is part of the
+	<a class="citerefentry" href="samba.7.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(7)</span></a> suite.</p><p>The <code class="literal">vfs_fruit</code> module provides
+	enhanced compatibility with Apple SMB clients and
+	interoperability with a Netatalk 3 AFP fileserver.</p><p>The module should be stacked with
+	<code class="literal">vfs_catia</code> if enabling character conversion and
+	must be stacked with <code class="literal">vfs_streams_xattr</code>, see the
+	example section for the correct config.</p><p>The module enables alternate data streams (ADS) support
+	for a share, intercepts the OS X special streams "AFP_AfpInfo"
+	and "AFP_Resource" and handles them in a special way. All
+	other named streams are deferred to
+	<code class="literal">vfs_streams_xattr</code> which must be loaded
+	together with <code class="literal">vfs_fruit</code>.</p><p>Be careful when mixing shares with and without
+	vfs_fruit. OS X clients negotiate SMB2 AAPL protocol
+	extensions on the first tcon, so mixing shares with and
+	without fruit will globally disable AAPL if the first tcon is
+	without fruit.</p><p>Having shares with ADS support enabled for OS X client
+	is worthwhile because it resembles the behaviour of Apple's
+	own SMB server implementation and it avoids certain severe
+	performance degradations caused by Samba's case sensitivity
+	semantics.</p><p>The OS X metadata and resource fork stream can be stored
+	in a way compatible with Netatalk 3 by setting
+	<code class="literal">fruit:resource = file</code> and
+	<code class="literal">fruit:metadata = netatalk</code>.</p><p>OS X maps NTFS illegal characters to the Unicode private
+	range in SMB requests. By setting <code class="literal">fruit:encoding =
+	native</code>, all mapped characters are converted to
+	native ASCII characters.</p><p>Finally, share access modes are optionally checked
+	against Netatalk AFP sharing modes by setting
+	<code class="literal">fruit:locking = netatalk</code>.</p><p>This module is not stackable other than described in
+	this manpage.</p></div><div class="refsect1"><a name="id1338"></a><h2>GLOBAL OPTIONS</h2><p>The following options must be set in the global smb.conf section
+	and won't take effect when set per share.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">fruit:aapl = yes | no</span></dt><dd><p>A <span class="emphasis"><em>global</em></span> option whether to enable Apple's SMB2+
+	      extension codenamed AAPL. Default
+	      <span class="emphasis"><em>yes</em></span>. This extension enhances
+	      several deficiencies when connecting from Macs:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>directory enumeration is enriched with
+		Mac relevant filesystem metadata (UNIX mode,
+		FinderInfo, resource fork size and effective
+		permission), as a result the Mac client doesn't need
+		to fetch this metadata individually per directory
+		entry resulting in an often tremendous performance
+		increase.</p></li><li class="listitem"><p>The ability to query and modify the
+		UNIX mode of directory entries.</p></li></ul></div><p>There's a set of per share options that come into play when
+	      <span class="emphasis"><em>fruit:aapl</em></span> is enabled. These options, listed
+	      below, can be used to disable the computation of specific Mac
+	      metadata in the directory enumeration context, all are enabled by
+	      default:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>readdir_attr:aapl_rsize = yes | no</p></li><li class="listitem"><p>readdir_attr:aapl_finder_info = yes | no</p></li><li class="listitem"><p>readdir_attr:aapl_max_access = yes | no</p></li></ul></div><p>See below for a description of these options.</p></dd><dt><span class="term">fruit:nfs_aces = yes | no</span></dt><dd><p>A <span class="emphasis"><em>global</em></span> option whether support for
+	      querying and modifying the UNIX mode of directory entries via NFS
+	      ACEs is enabled, default <span class="emphasis"><em>yes</em></span>.</p></dd><dt><span class="term">fruit:copyfile = yes | no</span></dt><dd><p>A <span class="emphasis"><em>global</em></span> option whether to enable OS X
+	      specific copychunk ioctl that requests a copy of a whole file
+	      along with all attached metadata.</p><p>WARNING: the copyfile request is blocking the
+	      client while the server does the copy.</p><p>The default is <span class="emphasis"><em>no</em></span>.</p></dd><dt><span class="term">fruit:model = MacSamba</span></dt><dd><p>This option defines the model string inside the AAPL
+	      extension and will determine the appearance of the icon representing the
+	      Samba server in the Finder window.</p><p>The default is <span class="emphasis"><em>MacSamba</em></span>.</p></dd></dl></div></div><div class="refsect1"><a name="id1339"></a><h2>OPTIONS</h2><p>The following options can be set either in the global smb.conf section
+	or per share.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">fruit:resource = [ file | xattr | stream ]</span></dt><dd><p>Controls where the OS X resource fork is stored.</p><p>Due to a spelling bug in all Samba versions older than
+	      4.6.0, this option can also be given as
+	      <span class="emphasis"><em>fruit:ressource</em></span>, ie with two s.</p><p>Settings:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">file (default)</code> - use a ._
+		AppleDouble file compatible with OS X and
+		Netatalk</p></li><li class="listitem"><p><code class="literal">xattr</code> - use a
+		xattr, requires a filesystem with large xattr support
+		and a file IO API compatible with xattrs, this boils
+		down to Solaris and derived platforms and
+		ZFS</p></li><li class="listitem"><p><code class="literal">stream (experimental)</code> - pass
+		the stream on to the next module in the VFS stack.
+		<span class="emphasis"><em>Warning: </em></span> this option should not be used
+		with the <span class="emphasis"><em>streams_xattr</em></span> module due to the
+		extended attributes size limitations of most
+		filesystems.</p></li></ul></div></dd><dt><span class="term">fruit:time machine = [ yes | no ]</span></dt><dd><p>Controls if Time Machine support via the FULLSYNC volume
+	      capability is advertised to clients.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">yes</code> - Enables Time Machine
+		support for this share. Also registers the share with mDNS in
+		case Samba is built with mDNS support.</p></li><li class="listitem"><p><code class="literal">no (default)</code> Disables
+		advertising Time Machine support.</p></li></ul></div><p>This option enforces the following settings per share (or
+	      for all shares if enabled globally):</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">durable handles = yes</code></p></li><li class="listitem"><p><code class="literal">kernel oplocks = no</code></p></li><li class="listitem"><p><code class="literal">kernel share modes = no</code></p></li><li class="listitem"><p><code class="literal">posix locking = no</code></p></li></ul></div></dd><dt><span class="term">fruit:time machine max size = SIZE [K|M|G|T|P]</span></dt><dd><p>Useful for Time Machine: limits the reported disksize, thus
+	      preventing Time Machine from using the whole real disk space for
+	      backup. The option takes a number plus an optional unit.</p><p><span class="emphasis"><em>IMPORTANT</em></span>: This is an approximated
+	      calculation that only takes into account the contents of Time
+	      Machine sparsebundle images. Therefore you <span class="emphasis"><em>MUST
+	      NOT</em></span> use this volume to store other content when using
+	      this option, because it would NOT be accounted.</p><p>The calculation works by reading the band size from the
+	      Info.plist XML file of the sparsebundle, reading the bands/
+	      directory counting the number of band files, and then multiplying
+	      one with the other.</p></dd><dt><span class="term">fruit:metadata = [ stream | netatalk ]</span></dt><dd><p>Controls where the OS X metadata stream is stored:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">netatalk (default)</code> - use
+		Netatalk compatible xattr</p></li><li class="listitem"><p><code class="literal">stream</code> - pass the
+		stream on to the next module in the VFS
+		stack</p></li></ul></div></dd><dt><span class="term">fruit:locking = [ netatalk | none ]</span></dt><dd><p></p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">none (default)</code> - no
+		cross protocol locking</p></li><li class="listitem"><p><code class="literal">netatalk</code> - use
+		cross protocol locking with Netatalk</p></li></ul></div></dd><dt><span class="term">fruit:encoding = [ native | private ]</span></dt><dd><p>Controls how the set of illegal NTFS ASCII
+	      character, commonly used by OS X clients, are stored in
+	      the filesystem.</p><p><span class="emphasis"><em>Important:</em></span> this is known to not fully
+	      work with <span class="emphasis"><em>fruit:metadata=stream</em></span> or
+	      <span class="emphasis"><em>fruit:resource=stream</em></span>.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">private (default)</code> -
+		store characters as encoded by the OS X client: mapped
+		to the Unicode private range</p></li><li class="listitem"><p><code class="literal">native</code> - store
+		characters with their native ASCII
+		value. <span class="emphasis"><em>Important</em></span>: this option
+		requires the use of <span class="emphasis"><em>vfs_catia</em></span> in
+		the VFS module stack as shown in the examples
+		section.</p></li></ul></div></dd><dt><span class="term">fruit:veto_appledouble = yes | no</span></dt><dd><p><span class="emphasis"><em>Note:</em></span> this option only applies when
+	      <em class="parameter"><code>fruit:resource</code></em> is set to
+	      <em class="parameter"><code>file</code></em> (the default).</p><p>When <em class="parameter"><code>fruit:resource</code></em> is set to
+	      <em class="parameter"><code>file</code></em>, vfs_fruit may create ._ AppleDouble
+	      files. This options controls whether these ._ AppleDouble files
+	      are vetoed which prevents the client from accessing them.</p><p>Vetoing ._ files may break some applications, e.g.
+	      extracting Mac ZIP archives from Mac clients fails,
+	      because they contain ._ files. <code class="literal">rsync</code> will
+	      also be unable to sync files beginning with underscores, as
+	      the temporary files it uses for these will start with ._ and
+	      so cannot be created.</p><p>Setting this option to
+	      false will fix this, but the abstraction leak of
+	      exposing the internally created ._ files may have other
+	      unknown side effects.</p><p>The default is <span class="emphasis"><em>yes</em></span>.</p></dd><dt><span class="term">readdir_attr:aapl_rsize = yes | no</span></dt><dd><p>Return resource fork size in SMB2 FIND responses.</p><p>The default is <span class="emphasis"><em>yes</em></span>.</p></dd><dt><span class="term">readdir_attr:aapl_finder_info = yes | no</span></dt><dd><p>Return FinderInfo in SMB2 FIND responses.</p><p>The default is <span class="emphasis"><em>yes</em></span>.</p></dd><dt><span class="term">readdir_attr:aapl_max_access = yes | no</span></dt><dd><p>Return the user's effective maximum permissions in SMB2 FIND
+	      responses. This is an expensive computation, setting this to off
+	      pretends the use has maximum effective permissions.</p><p>The default is <span class="emphasis"><em>yes</em></span>.</p></dd><dt><span class="term">fruit:wipe_intentionally_left_blank_rfork = yes | no</span></dt><dd><p>Whether to wipe Resource Fork data that matches the special
+	      286 bytes sized placeholder blob that macOS client create on
+	      occasion. The blob contains a string <span class="quote">&#8220;<span class="quote">This resource fork
+	      intentionally left blank</span>&#8221;</span>, the remaining bytes being mostly
+	      zero. There being no one use of this data, it is probably safe to
+	      discard it. When this option is enabled, this module truncates the
+	      Resource Fork stream to 0 bytes.</p><p>The default is <span class="emphasis"><em>no</em></span>.</p></dd><dt><span class="term">fruit:delete_empty_adfiles = yes | no</span></dt><dd><p>Whether to delete empty AppleDouble files. Empty means that
+	      the resource fork entry in the AppleDouble files is of size 0, or
+	      the size is exactly 286 bytes and the content matches a special
+	      boilerplate resource fork created my macOS.</p><p>The default is <span class="emphasis"><em>no</em></span>.</p></dd><dt><span class="term">fruit:zero_file_id = yes | no</span></dt><dd><p>Whether to return zero to queries of on-disk file
+	      identifier if the client has negotiated AAPL.</p><p>Mac applications and / or the Mac SMB client code expect the
+	      on-disk file identifier to have the semantics of HFS+ Catalog Node
+	      Identifier (CNID). Samba provides File-IDs based on a file's inode
+	      number which gets recycled across file creation and deletion and
+	      can therefore not be used for Mac client. Returning a file identifier of
+	      zero causes the Mac client to stop using and trusting the file id
+	      returned from the server.</p><p>The default is <span class="emphasis"><em>yes</em></span>.</p></dd><dt><span class="term">fruit:convert_adouble = yes | no</span></dt><dd><p>Whether an attempt shall be made to convert ._ AppleDouble
+	      sidecar files to native streams (xattrs when using
+	      vfs_streams_xattr). The main use case for this conversion is
+	      transparent migration from a server config without streams support
+	      where the macOS client created those AppleDouble sidecar
+	      files.</p><p>The default is <span class="emphasis"><em>yes</em></span>.</p></dd><dt><span class="term">fruit:validate_afpinfo = yes | no</span></dt><dd><p>Apple clients use the AFP_AfpInfo stream to store structured
+	      file metadata. As part of the marshaled data stored in the stream
+	      the first eight bytes contain some header information. Apple's SMB
+	      server as well as Samba will validate this header bytes processing
+	      a client write request on this stream, and, if the validation
+	      fails, fail the write. While this validation is generally correct,
+	      in some data migration scenarios clients may try to migrate data
+	      from 3rd-party SMB servers to Samba servers where the header
+	      information is broken for whatever reason. To allow migration and
+	      header fix-up in these scenarios, the validation can be temporarily
+	      disabled by setting this option to <span class="emphasis"><em>no</em></span>.</p><p>The default is <span class="emphasis"><em>yes</em></span>.</p></dd><dt><span class="term">fruit:veto_localized = yes | no</span></dt><dd><p>When <em class="parameter"><code>fruit:veto_localized</code></em> is set to
+	      <em class="parameter"><code>yes</code></em>, vfs_fruit will automatically veto any
+	      attempts to access the <span class="emphasis"><em>.localized</em></span> file or directory.
+	      These can be created in order to let Mac OS provide localized
+	      translations for folder names (typically for localized versions
+	      of <span class="emphasis"><em>Desktop</em></span>, <span class="emphasis"><em>Music</em></span>, etc.).
+	      When very large directories are listed a Mac client might do queries for
+	      the presence of the .localized file for each and every entry in that
+	      directory listing. In combination with clustered filesystems this might
+	      have a significant impact on the overal directory listing performance.
+	      When potential folder name translation is not desired this option allows
+	      to avoid the additional network overhead by not letting the server go
+	      down to the filesystem layer for any queries.</p><p>The default is <span class="emphasis"><em>no</em></span>.</p></dd><dt><span class="term">fruit:posix_opens = yes | no</span></dt><dd><p>When <em class="parameter"><code>fruit:posix_opens</code></em> is set to
+	      <em class="parameter"><code>yes</code></em>, vfs_fruit will internally translate
+	      all filesystem semantics to use POSIX behaviour instead of Windows
+	      behaviour. As Macs are closer to POSIX than Windows with regard
+	      to filesystem semantics, this improves access semantics for
+	      a lot of corner cases.</p><p>The default is <span class="emphasis"><em>yes</em></span>.</p></dd><dt><span class="term">fruit:ignore_zero_aces = yes | no</span></dt><dd><p>When <em class="parameter"><code>fruit:ignore_zero_aces</code></em> is
+	      enabled, attempts to modify filesystem permissions fail if the ACL
+	      sent over the wire contains no ACEs. This is completely valid
+	      client behaviour, but it means subsequently no further access is
+	      possible to the file, unless permissions get fixed by an
+	      administrator.</p><p>This problematic behaviour has been reported for latest
+	      macOS versions and this new option allows to work around
+	      it.</p><p>The default is <span class="emphasis"><em>yes</em></span>.</p></dd></dl></div></div><div class="refsect1"><a name="id1340"></a><h2>EXAMPLES</h2><pre class="programlisting">
+        <em class="parameter"><code>[share]</code></em>
+	<a class="link" href="smb.conf.5.html#VFSOBJECTS" target="_top">vfs objects = catia fruit streams_xattr</a>
+	<a class="link" href="smb.conf.5.html#FRUIT:RESOURCE" target="_top">fruit:resource = file</a>
+	<a class="link" href="smb.conf.5.html#FRUIT:METADATA" target="_top">fruit:metadata = netatalk</a>
+	<a class="link" href="smb.conf.5.html#FRUIT:LOCKING" target="_top">fruit:locking = netatalk</a>
+	<a class="link" href="smb.conf.5.html#FRUIT:ENCODING" target="_top">fruit:encoding = native</a>
+</pre></div><div class="refsect1"><a name="id1341"></a><h2>AUTHOR</h2><p>The original Samba software and related utilities
+	were created by Andrew Tridgell. Samba is now developed
+	by the Samba Team as an Open Source project similar
+	to the way the Linux kernel is developed.</p></div></div></body></html>

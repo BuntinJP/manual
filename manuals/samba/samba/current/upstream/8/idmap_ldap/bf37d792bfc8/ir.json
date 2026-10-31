@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "bf37d792bfc8be01536ed75fde997aae92806a8583e76379a5075631d860e9a3",
+  "extraction": {
+    "selector": ".refentry",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "Name",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "idmap_ldap — Samba's idmap_ldap Backend for Winbind",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "The idmap_ldap plugin provides a means for Winbind to store and retrieve SID/uid/gid mapping tables in an LDAP directory service.",
+      "protected": []
+    },
+    {
+      "id": "s0005",
+      "kind": "paragraph",
+      "text": "In contrast to read only backends like idmap_rid, it is an allocating backend: This means that it needs to allocate new user and group IDs in order to create new mappings.",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "heading",
+      "text": "IDMAP OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0007",
+      "kind": "term",
+      "text": "ldap_base_dn = DN",
+      "protected": []
+    },
+    {
+      "id": "s0008",
+      "kind": "paragraph",
+      "text": "Defines the directory base suffix to use for SID/uid/gid mapping entries. If not defined, idmap_ldap will default to using the \"ldap idmap suffix\" option from [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0009",
+      "kind": "term",
+      "text": "ldap_user_dn = DN",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "Defines the user DN to be used for authentication. The secret for authenticating this user should be stored with net idmap secret (see [[p0]]). If absent, the ldap credentials from the ldap passdb configuration are used, and if these are also absent, an anonymous bind will be performed as last fallback.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "net(8)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/net.8.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0011",
+      "kind": "term",
+      "text": "ldap_url = ldap://server/",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "paragraph",
+      "text": "Specifies the LDAP server to use for SID/uid/gid map entries. If not defined, idmap_ldap will assume that ldap://localhost/ should be used.",
+      "protected": []
+    },
+    {
+      "id": "s0013",
+      "kind": "term",
+      "text": "range = low - high",
+      "protected": []
+    },
+    {
+      "id": "s0014",
+      "kind": "paragraph",
+      "text": "Defines the available matching uid and gid range for which the backend is authoritative.",
+      "protected": []
+    },
+    {
+      "id": "s0015",
+      "kind": "heading",
+      "text": "EXAMPLES",
+      "protected": []
+    },
+    {
+      "id": "s0016",
+      "kind": "paragraph",
+      "text": "The following example shows how an ldap directory is used as the default idmap backend. It also configures the idmap range and base directory suffix. The secret for the ldap_user_dn has to be set with \"net idmap secret '*' password\".",
+      "protected": []
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "This example shows how ldap can be used as a readonly backend while tdb is the default backend used to store the mappings. It adds an explicit configuration for some domain DOM1, that uses the ldap idmap backend. Note that a range disjoint from the default range is used.",
+      "protected": []
+    },
+    {
+      "id": "s0018",
+      "kind": "heading",
+      "text": "NOTE",
+      "protected": []
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "In order to use authentication against ldap servers you may need to provide a DN and a password. To avoid exposing the password in plain text in the configuration file we store it into a security store. The \"net idmap \" command is used to store a secret for the DN specified in a specific idmap domain.",
+      "protected": []
+    },
+    {
+      "id": "s0020",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0021",
+      "kind": "paragraph",
+      "text": "The original Samba software and related utilities were created by Andrew Tridgell. Samba is now developed by the Samba Team as an Open Source project similar to the way the Linux kernel is developed.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Name",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0005"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "IDMAP-OPTIONS",
+      "segment": "s0006"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0007",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0008"
+            }
+          ]
+        },
+        {
+          "term": "s0009",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0010"
+            }
+          ]
+        },
+        {
+          "term": "s0011",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0012"
+            }
+          ]
+        },
+        {
+          "term": "s0013",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0014"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "EXAMPLES",
+      "segment": "s0015"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0016"
+    },
+    {
+      "type": "literal",
+      "text": "\t[global]\n\tidmap config * : backend      = ldap\n\tidmap config * : range        = 1000000-1999999\n\tidmap config * : ldap_url     = ldap://localhost/\n\tidmap config * : ldap_base_dn = ou=idmap,dc=example,dc=com\n\tidmap config * : ldap_user_dn = cn=idmap_admin,dc=example,dc=com"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0017"
+    },
+    {
+      "type": "literal",
+      "text": "\t[global]\n\t# \"backend = tdb\" is redundant here since it is the default\n\tidmap config * : backend = tdb\n\tidmap config * : range = 1000000-1999999\n\n\tidmap config DOM1 : backend = ldap\n\tidmap config DOM1 : range = 2000000-2999999\n\tidmap config DOM1 : read only = yes\n\tidmap config DOM1 : ldap_url = ldap://server/\n\tidmap config DOM1 : ldap_base_dn = ou=idmap,dc=dom1,dc=example,dc=com\n\tidmap config DOM1 : ldap_user_dn = cn=idmap_admin,dc=dom1,dc=example,dc=com"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "NOTE",
+      "segment": "s0018"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0019"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "AUTHOR",
+      "segment": "s0020"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0021"
+    }
+  ]
+}

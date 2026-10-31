@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.2, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- This manual documents version 9.12 of the GNU core
+utilities, including the standard programs for text and file manipulation.
+
+Copyright © 1994-2026 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts.  A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>cut invocation (GNU Coreutils 9.12)</title>
+
+<meta name="description" content="cut invocation (GNU Coreutils 9.12)">
+<meta name="keywords" content="cut invocation (GNU Coreutils 9.12)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-index.html" rel="index" title="Concept index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Operating-on-fields.html" rel="up" title="Operating on fields">
+<link href="paste-invocation.html" rel="next" title="paste invocation">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="https://www.gnu.org/software/gnulib/manual.css">
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="cut-invocation">
+<div class="nav-panel">
+<p>
+Next: <a href="paste-invocation.html" accesskey="n" rel="next"><code class="command">paste</code>: Merge lines of files</a>, Up: <a href="Operating-on-fields.html" accesskey="u" rel="up">Operating on fields</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="cut_003a-Print-selected-parts-of-lines"><span>8.1 <code class="command">cut</code>: Print selected parts of lines<a class="copiable-link" href="#cut_003a-Print-selected-parts-of-lines"> &para;</a></span></h3>
+
+<a class="index-entry-id" id="index-cut"></a>
+<p><code class="command">cut</code> writes to standard output selected parts of each line of each
+input file, or standard input if no files are given or for a file name of
+&lsquo;<samp class="samp">-</samp>&rsquo;.  Synopsis:
+</p>
+<div class="example">
+<pre class="example-preformatted">cut <var class="var">option</var>... [<var class="var">file</var>]...
+</pre></div>
+
+<p>In the table which follows, the <var class="var">byte-list</var>, <var class="var">character-list</var>,
+and <var class="var">field-list</var> are one or more numbers or ranges (two numbers
+separated by a dash) separated by commas.  Bytes, characters, and
+fields are numbered starting at 1.  Incomplete ranges may be
+given: <samp class="option">-<var class="var">m</var></samp> means &lsquo;<samp class="samp">1-<var class="var">m</var></samp>&rsquo;; &lsquo;<samp class="samp"><var class="var">n</var>-</samp>&rsquo; means
+&lsquo;<samp class="samp"><var class="var">n</var></samp>&rsquo; through end of line or last field.  The list elements
+can be repeated, can overlap, and can be specified in any order; but
+the selected input is written in the same order that it is read, and
+is written exactly once.
+</p>
+<p>The program accepts the following options.  Also see <a class="ref" href="Common-options.html">Common options</a>.
+</p>
+<dl class="table">
+<dd>
+<a class="anchor" id="cut-b"></a></dd>
+<dt><a id="index-_002d_002dbytes-5"></a><span>&lsquo;<samp class="samp">-b&nbsp;<!-- /@w --><var class="var">byte-list</var></samp>&rsquo;<a class="copiable-link" href="#index-_002d_002dbytes-5"> &para;</a></span></dt>
+<dd><a class="index-entry-id" id="index-_002db-11"></a>
+<a class="anchor" id="cut--bytes"></a></dd>
+<dt>&lsquo;<samp class="samp">--bytes=<var class="var">byte-list</var></samp>&rsquo;</dt>
+<dd><p>Select for printing only the bytes in positions listed in
+<var class="var">byte-list</var>.  Tabs and backspaces are treated like any other
+character; they take up 1 byte.  If an output delimiter is specified,
+(see the description of <samp class="option">--output-delimiter</samp>), then output that
+string between ranges of selected bytes.
+</p>
+<a class="anchor" id="cut-c"></a></dd>
+<dt><a id="index-_002d_002dcharacters-1"></a><span>&lsquo;<samp class="samp">-c&nbsp;<!-- /@w --><var class="var">character-list</var></samp>&rsquo;<a class="copiable-link" href="#index-_002d_002dcharacters-1"> &para;</a></span></dt>
+<dd><a class="index-entry-id" id="index-_002dc-10"></a>
+<a class="anchor" id="cut--characters"></a></dd>
+<dt>&lsquo;<samp class="samp">--characters=<var class="var">character-list</var></samp>&rsquo;</dt>
+<dd><p>Select for printing only the characters in positions listed in
+<var class="var">character-list</var>.  Tabs and backspaces are
+treated like any other character; they take up 1 character.
+Combining characters are considered as separate characters.
+If an output delimiter is specified, (see the description of
+<samp class="option">--output-delimiter</samp>), then output that string between ranges
+of selected characters.
+</p>
+<a class="anchor" id="cut--complement"></a></dd>
+<dt><a id="index-_002d_002dcomplement"></a><span>&lsquo;<samp class="samp">--complement</samp>&rsquo;<a class="copiable-link" href="#index-_002d_002dcomplement"> &para;</a></span></dt>
+<dd><p>This option is a GNU extension.
+Select for printing the complement of the bytes, characters or fields
+selected with the <samp class="option">-b</samp>, <samp class="option">-c</samp> or <samp class="option">-f</samp> options.
+In other words, do <em class="emph">not</em> print the bytes, characters or fields
+specified via those options.  This option is useful when you have
+many fields and want to print all but a few of them.
+</p>
+<a class="anchor" id="cut-d"></a></dd>
+<dt><a id="index-_002d_002ddelimiter"></a><span>&lsquo;<samp class="samp">-d&nbsp;<!-- /@w --><var class="var">character</var></samp>&rsquo;<a class="copiable-link" href="#index-_002d_002ddelimiter"> &para;</a></span></dt>
+<dd><a class="index-entry-id" id="index-_002dd-7"></a>
+<a class="anchor" id="cut--delimiter"></a></dd>
+<dt>&lsquo;<samp class="samp">--delimiter=<var class="var">character</var></samp>&rsquo;</dt>
+<dd><p>With <samp class="option">-f</samp>, use <var class="var">character</var> as
+the input field separator (default is TAB).
+If an empty delimiter <var class="var">character</var> is specified then the ASCII NUL
+character is used to delimit the fields.
+Note the delimiter <var class="var">character</var> can be the same as the
+line terminator character, which can be used to select ranges of lines.
+In this case the last line terminator in the input is not treated
+as a field separator, which is significant with the <samp class="option">-s</samp> option.
+</p>
+<a class="anchor" id="cut-f"></a></dd>
+<dt><a id="index-_002d_002dfields"></a><span>&lsquo;<samp class="samp">-f&nbsp;<!-- /@w --><var class="var">field-list</var></samp>&rsquo;<a class="copiable-link" href="#index-_002d_002dfields"> &para;</a></span></dt>
+<dd><a class="index-entry-id" id="index-_002df-8"></a>
+<a class="anchor" id="cut--fields"></a></dd>
+<dt>&lsquo;<samp class="samp">--fields=<var class="var">field-list</var></samp>&rsquo;</dt>
+<dd><p>Select for printing only the fields listed in <var class="var">field-list</var>.
+Fields are separated by a TAB character by default.  Also print any
+line that contains no delimiter character, unless the
+<samp class="option">--only-delimited</samp> (<samp class="option">-s</samp>) option is specified.
+</p>
+<p>The <code class="command">awk</code> command supports more sophisticated field processing,
+like reordering fields, and handling fields aligned with blank characters.
+By default <code class="command">awk</code> uses (and discards) runs of blank characters
+to separate fields, and ignores leading and trailing blanks.
+</p><div class="example">
+<pre class="verbatim">awk '{print $2}'      # print the second field
+awk '{print $(NF-1)}' # print the penultimate field
+awk '{print $2,$1}'   # reorder the first two fields
+</pre></div>
+<p>While <code class="command">cut</code> accepts field specifications in
+arbitrary order, output is always in the order encountered in the file.
+</p>
+<p>In the unlikely event that <code class="command">awk</code> is unavailable,
+one can use the <code class="command">join</code> command, to process blank
+characters as <code class="command">awk</code> does above.
+</p><div class="example">
+<pre class="verbatim">join -a1 -o 1.2     - /dev/null # print the second field
+join -a1 -o 1.2,1.1 - /dev/null # reorder the first two fields
+</pre></div>
+
+<a class="anchor" id="cut-F"></a></dd>
+<dt><a id="index-_002dF-3"></a><span>&lsquo;<samp class="samp">-F</samp>&rsquo;<a class="copiable-link" href="#index-_002dF-3"> &para;</a></span></dt>
+<dd><p>Like the <samp class="option">-f,--fields</samp> option, but also implies
+<samp class="option">-w</samp> and <samp class="option">--output-delimitor=' '</samp>.
+I.e., fields are separated by runs of blank characters,
+and output fields are separated by a single ASCII space.
+</p>
+<a class="anchor" id="cut-n"></a></dd>
+<dt><a id="index-_002d_002dno_002dpartial"></a><span>&lsquo;<samp class="samp">-n</samp>&rsquo;<a class="copiable-link" href="#index-_002d_002dno_002dpartial"> &para;</a></span></dt>
+<dd><a class="index-entry-id" id="index-_002dn-9"></a>
+<a class="anchor" id="cut--no-partial"></a></dd>
+<dt>&lsquo;<samp class="samp">--no-partial</samp>&rsquo;</dt>
+<dd><p>With <samp class="option">--bytes</samp>, do not split multi-byte characters.
+A byte range must encompass the end of a multi-byte character
+for it to be selected.
+</p>
+<a class="anchor" id="cut-O"></a></dd>
+<dt><a id="index-_002d_002doutput_002ddelimiter-1"></a><span>&lsquo;<samp class="samp">-O&nbsp;<!-- /@w --><var class="var">string</var></samp>&rsquo;<a class="copiable-link" href="#index-_002d_002doutput_002ddelimiter-1"> &para;</a></span></dt>
+<dd><a class="index-entry-id" id="index-_002dO-1"></a>
+<a class="anchor" id="cut--output-delimiter"></a></dd>
+<dt>&lsquo;<samp class="samp">--output-delimiter=<var class="var">string</var></samp>&rsquo;</dt>
+<dd><p>With <samp class="option">-f</samp>, output fields are separated by <var class="var">string</var>.
+The default with <samp class="option">-f</samp> is to use the input delimiter,
+or with <samp class="option">-w</samp> the TAB character.
+When using <samp class="option">-b</samp> or <samp class="option">-c</samp> to select ranges of byte or
+character offsets (as opposed to ranges of fields),
+output <var class="var">output_delim_string</var> between non-overlapping
+ranges of selected bytes.
+</p>
+<a class="anchor" id="cut-s"></a></dd>
+<dt><a id="index-_002d_002donly_002ddelimited"></a><span>&lsquo;<samp class="samp">-s</samp>&rsquo;<a class="copiable-link" href="#index-_002d_002donly_002ddelimited"> &para;</a></span></dt>
+<dd><a class="index-entry-id" id="index-_002ds-12"></a>
+<a class="anchor" id="cut--only-delimited"></a></dd>
+<dt>&lsquo;<samp class="samp">--only-delimited</samp>&rsquo;</dt>
+<dd><p>For <samp class="option">-f</samp>, do not print lines that do not contain field separators.
+Normally, any line without a field separator is printed verbatim.
+With <samp class="option">--whitespace-delimited=trimmed</samp>, lines that contain
+only leading or trailing blanks will be suppressed.
+</p>
+<a class="anchor" id="cut-w"></a></dd>
+<dt><a id="index-_002d_002dwhitespace_002ddelimited"></a><span>&lsquo;<samp class="samp">-w</samp>&rsquo;<a class="copiable-link" href="#index-_002d_002dwhitespace_002ddelimited"> &para;</a></span></dt>
+<dd><a class="index-entry-id" id="index-_002dw-10"></a>
+<a class="anchor" id="cut--whitespace-delimited"></a></dd>
+<dt>&lsquo;<samp class="samp">--whitespace-delimited[=trimmed]</samp>&rsquo;</dt>
+<dd><p>With <samp class="option">-f</samp>, separate fields with a run of blank characters
+(usually space or TAB).  With &lsquo;<samp class="samp">trimmed</samp>&rsquo; do not consider
+leading and trailing blanks as field separators.
+<samp class="option">-w</samp> is implied with the <samp class="option">-F</samp> option.
+Note efficiency of this mode can be improved if the input
+fields are separated by runs of only ASCII blank characters (space or TAB).
+Even if fields contain arbitrary other characters, you can efficiently
+search for ASCII blanks by invoking <code class="command">cut</code> like &lsquo;<samp class="samp">LC_ALL=C cut</samp>&rsquo;.
+</p>
+<a class="anchor" id="cut-z"></a></dd>
+<dt><a class="index-entry-id" id="index-process-zero_002dterminated-items-6"></a>
+<a id="index-_002d_002dzero_002dterminated-6"></a><span>&lsquo;<samp class="samp">-z</samp>&rsquo;<a class="copiable-link" href="#index-_002d_002dzero_002dterminated-6"> &para;</a></span></dt>
+<dd><a class="index-entry-id" id="index-_002dz-8"></a>
+<a class="anchor" id="cut--zero-terminated"></a></dd>
+<dt>&lsquo;<samp class="samp">--zero-terminated</samp>&rsquo;</dt>
+<dd><p>Delimit items with a zero byte rather than a newline (ASCII LF).
+I.e., treat input as items separated by ASCII NUL
+and terminate output items with ASCII NUL.
+This option can be useful in conjunction with &lsquo;<samp class="samp">perl -0</samp>&rsquo; or
+&lsquo;<samp class="samp">find -print0</samp>&rsquo; and &lsquo;<samp class="samp">xargs -0</samp>&rsquo; which do the same in order to
+reliably handle arbitrary file names (even those containing blanks
+or other special characters).
+</p>
+</dd>
+</dl>
+
+<p>An exit status of zero indicates success,
+and a nonzero value indicates failure.
+</p>
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="paste-invocation.html"><code class="command">paste</code>: Merge lines of files</a>, Up: <a href="Operating-on-fields.html">Operating on fields</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,368 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "86a39f304949a8a173b923681cc8f569d212eea55f7cb10d02f0def69ea8f404",
+  "extraction": {
+    "selector": ".refentry",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "Name",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "idmap_rfc2307 — Samba's idmap_rfc2307 Backend for Winbind",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "The idmap_rfc2307 plugin provides a way for winbind to read id mappings from records in an LDAP server as defined in RFC 2307. The LDAP server can be stand-alone or the LDAP server provided by the AD server. An AD server is always required to provide the mapping between name and SID, and the LDAP server is queried for the mapping between name and uid/gid. This module implements only the \"idmap\" API, and is READONLY.",
+      "protected": []
+    },
+    {
+      "id": "s0005",
+      "kind": "paragraph",
+      "text": "Mappings must be provided in advance by the administrator by creating the user accounts in the Active Directory server and the posixAccount and posixGroup objects in the LDAP server. The names in the Active Directory server and in the LDAP server have to be the same.",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "This id mapping approach allows the reuse of existing LDAP authentication servers that store records in the RFC 2307 format.",
+      "protected": []
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "When connecting to the LDAP server provided by an AD server, the parameter [[p0]] determines whether SSL should be used. When using a stand-alone LDAP server, [[p1]] applies.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "ldap ssl ads",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#LDAPSSLADS"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "ldap ssl",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#LDAPSSL"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "heading",
+      "text": "IDMAP OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0009",
+      "kind": "term",
+      "text": "range = low - high",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "Defines the available matching UID and GID range for which the backend is authoritative. Note that the range acts as a filter. If specified any UID or GID stored in AD that fall outside the range is ignored and the corresponding map is discarded. It is intended as a way to avoid accidental UID/GID overlaps between local and remotely defined IDs.",
+      "protected": []
+    },
+    {
+      "id": "s0011",
+      "kind": "term",
+      "text": "ldap_server = <ad | stand-alone >",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "paragraph",
+      "text": "Defines the type of LDAP server to use. This can either be the LDAP server provided by the Active Directory server (ad) or a stand-alone LDAP server.",
+      "protected": []
+    },
+    {
+      "id": "s0013",
+      "kind": "term",
+      "text": "bind_path_user",
+      "protected": []
+    },
+    {
+      "id": "s0014",
+      "kind": "paragraph",
+      "text": "Specifies the search base where user objects can be found in the LDAP server.",
+      "protected": []
+    },
+    {
+      "id": "s0015",
+      "kind": "term",
+      "text": "bind_path_group",
+      "protected": []
+    },
+    {
+      "id": "s0016",
+      "kind": "paragraph",
+      "text": "Specifies the search base where group objects can be found in the LDAP server.",
+      "protected": []
+    },
+    {
+      "id": "s0017",
+      "kind": "term",
+      "text": "user_cn = <yes | no>",
+      "protected": []
+    },
+    {
+      "id": "s0018",
+      "kind": "paragraph",
+      "text": "Query cn attribute instead of uid attribute for the user name in LDAP. This option is not required, the default is no.",
+      "protected": []
+    },
+    {
+      "id": "s0019",
+      "kind": "term",
+      "text": "realm",
+      "protected": []
+    },
+    {
+      "id": "s0020",
+      "kind": "paragraph",
+      "text": "Append @realm to cn for groups (and users if user_cn is set) in LDAP queries. This option is not required, the default is not to append the realm.",
+      "protected": []
+    },
+    {
+      "id": "s0021",
+      "kind": "term",
+      "text": "ldap_domain",
+      "protected": []
+    },
+    {
+      "id": "s0022",
+      "kind": "paragraph",
+      "text": "When using the LDAP server in the Active Directory server, this allows one to specify the domain where to access the Active Directory server. This allows using trust relationships while keeping all RFC 2307 records in one place. This parameter is optional, the default is to access the AD server in the current domain to query LDAP records.",
+      "protected": []
+    },
+    {
+      "id": "s0023",
+      "kind": "term",
+      "text": "ldap_url",
+      "protected": []
+    },
+    {
+      "id": "s0024",
+      "kind": "paragraph",
+      "text": "When using a stand-alone LDAP server, this parameter specifies the ldap URL for accessing the LDAP server.",
+      "protected": []
+    },
+    {
+      "id": "s0025",
+      "kind": "term",
+      "text": "ldap_user_dn",
+      "protected": []
+    },
+    {
+      "id": "s0026",
+      "kind": "paragraph",
+      "text": "Defines the user DN to be used for authentication. The secret for authenticating this user should be stored with net idmap secret (see [[p0]]). If absent, an anonymous bind will be performed.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "net(8)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/net.8.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0027",
+      "kind": "heading",
+      "text": "EXAMPLES",
+      "protected": []
+    },
+    {
+      "id": "s0028",
+      "kind": "paragraph",
+      "text": "The following example shows how to retrieve id mappings from a stand-alone LDAP server. This example also shows how to leave a small non conflicting range for local id allocation that may be used in internal backends like BUILTIN.",
+      "protected": []
+    },
+    {
+      "id": "s0029",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0030",
+      "kind": "paragraph",
+      "text": "The original Samba software and related utilities were created by Andrew Tridgell. Samba is now developed by the Samba Team as an Open Source project similar to the way the Linux kernel is developed.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Name",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "IDMAP-OPTIONS",
+      "segment": "s0008"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0009",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0010"
+            }
+          ]
+        },
+        {
+          "term": "s0011",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0012"
+            }
+          ]
+        },
+        {
+          "term": "s0013",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0014"
+            }
+          ]
+        },
+        {
+          "term": "s0015",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0016"
+            }
+          ]
+        },
+        {
+          "term": "s0017",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0018"
+            }
+          ]
+        },
+        {
+          "term": "s0019",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0020"
+            }
+          ]
+        },
+        {
+          "term": "s0021",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0022"
+            }
+          ]
+        },
+        {
+          "term": "s0023",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0024"
+            }
+          ]
+        },
+        {
+          "term": "s0025",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0026"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "EXAMPLES",
+      "segment": "s0027"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0028"
+    },
+    {
+      "type": "literal",
+      "text": "\t[global]\n\tidmap config * : backend = tdb\n\tidmap config * : range = 1000000-1999999\n\n\tidmap config DOMAIN : backend = rfc2307\n\tidmap config DOMAIN : range = 2000000-2999999\n\tidmap config DOMAIN : ldap_server = stand-alone\n\tidmap config DOMAIN : ldap_url = ldap://ldap1.example.com\n\tidmap config DOMAIN : ldap_user_dn = cn=ldapmanager,dc=example,dc=com\n\tidmap config DOMAIN : bind_path_user = ou=People,dc=example,dc=com\n\tidmap config DOMAIN : bind_path_group = ou=Group,dc=example,dc=com"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "AUTHOR",
+      "segment": "s0029"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0030"
+    }
+  ]
+}

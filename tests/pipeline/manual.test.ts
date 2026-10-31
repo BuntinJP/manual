@@ -160,6 +160,8 @@ describe('semantic import and literal preservation', () => {
       "'so /etc/passwd",
       '.sy echo dangerous',
       '.do so /etc/passwd',
+      '.als Sy sy\n.Sy echo dangerous',
+      '.rn so Include\n.Include /etc/passwd',
     ])
       await expect(roffToHtml(source)).rejects.toThrow('unsupported');
   });
@@ -173,6 +175,14 @@ describe('semantic import and literal preservation', () => {
       type: 'literal',
       text: 'demo -q "a b"',
     });
+  });
+  test('mdoc emphasis Sy is distinct from the lowercase shell request sy', async () => {
+    const source =
+      '.Dd November 1, 2026\n.Dt DEMO 1\n.Os\n.Sh DESCRIPTION\n.Sy Note :\nDo not change the file.\n';
+    const { html } = await roffToHtml(source);
+    const ir = parseManualHtml(html, sha256(source), 'local:demo.1');
+    expect(html).toContain('Note');
+    expect(ir.segments.some((segment) => segment.text.includes('Do not change'))).toBe(true);
   });
   test('allows bounded control-character changes used for literal dots but still rejects hidden requests', async () => {
     const safe = '.TH DEMO 1\n.nf\n.cc |\n.mode list\n|cc .\n.fi\n';
@@ -286,6 +296,12 @@ test('supporting provenance and license bytes are hash-verified', async () => {
     origin: 'https://example.org/demo.1',
     materials: [
       {
+        role: 'original-source',
+        path: 'provenance/original-iso-8859-1.html',
+        bytes: new Uint8Array([0x63, 0x61, 0x66, 0xe9]),
+        origin: 'https://example.org/original.html',
+      },
+      {
         role: 'license',
         path: 'licenses/COPYING',
         bytes: new TextEncoder().encode('license text\n'),
@@ -294,6 +310,9 @@ test('supporting provenance and license bytes are hash-verified', async () => {
     ],
   });
   expect((await verifyManual(project, leaf)).stage).toBe('source');
+  expect(new Uint8Array(await readFile(join(leaf, 'provenance/original-iso-8859-1.html')))).toEqual(
+    new Uint8Array([0x63, 0x61, 0x66, 0xe9]),
+  );
   await writeFile(join(leaf, 'licenses', 'COPYING'), 'changed');
   await expect(verifyManual(project, leaf)).rejects.toThrow('supporting material SHA-256');
 });

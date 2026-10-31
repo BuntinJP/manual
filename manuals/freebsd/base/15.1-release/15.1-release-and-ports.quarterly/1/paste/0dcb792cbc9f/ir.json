@@ -1,0 +1,180 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "0dcb792cbc9fab9539c3d7d560e0b9441bbba819335feed32fe46fe994f56dd7",
+  "extraction": {
+    "selector": "#contentwrap",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "paragraph",
+      "text": "[[p0]] | [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "home",
+            "href": "https://man.freebsd.org/cgi/man.cgi"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "help",
+            "href": "https://man.freebsd.org/cgi/man.cgi/help.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "[[p0]] | [[p1]] | [[p2]] | [[p3]] | [[p4]] | [[p5]] | [[p6]] | [[p7]] | [[p8]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "NAME",
+            "href": "#NAME"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "SYNOPSIS",
+            "href": "#SYNOPSIS"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "link",
+            "text": "DESCRIPTION",
+            "href": "#DESCRIPTION"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "link",
+            "text": "EXIT STATUS",
+            "href": "#EXIT_STATUS"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "link",
+            "text": "EXAMPLES",
+            "href": "#EXAMPLES"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "link",
+            "text": "SEE ALSO",
+            "href": "#SEE_ALSO"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "link",
+            "text": "STANDARDS",
+            "href": "#STANDARDS"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "link",
+            "text": "HISTORY",
+            "href": "#HISTORY"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "link",
+            "text": "AUTHORS",
+            "href": "#AUTHORS"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0003",
+      "kind": "paragraph",
+      "text": "Want to link to this manual page? Use this URL:[[p0]]<[[p1]]>",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "br"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "https://man.FreeBSD.org/cgi/man.cgi?query=paste&sektion=1&manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly",
+            "href": "https://man.freebsd.org/cgi/man.cgi?query=paste&sektion=1&manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]] | [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "home",
+            "href": "https://man.freebsd.org/cgi/man.cgi"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "help",
+            "href": "https://man.freebsd.org/cgi/man.cgi/help.html"
+          }
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "segment": "s0001"
+    },
+    {
+      "type": "literal",
+      "text": "PASTE(1)\t\t     General Commands Manual\t\t\tPASTE(1)\n\nNAME\n     paste -- merge corresponding or subsequent lines of files\n\nSYNOPSIS\n     paste [-s] [-d list] file ...\n\nDESCRIPTION\n     The  paste  utility concatenates the corresponding lines of the given input\n     files, replacing all but the last file's newline characters with  a  single\n     tab  character, and writes the resulting lines to standard output.  If end-\n     of-file is reached on an input file while other input files  still  contain\n     data, the file is treated as if it were an endless source of empty lines.\n\n     The options are as follows:\n\n     -d list\t Use  one or more of the provided characters to replace the new-\n\t\t line characters instead of the default tab.  The characters  in\n\t\t list  are  used  circularly,  i.e.,  when list is exhausted the\n\t\t first character from list is reused.  This  continues\tuntil  a\n\t\t line  from  the  last\tinput file (in default operation) or the\n\t\t last line in each file (using the -s option) is  displayed,  at\n\t\t which time paste begins selecting characters from the beginning\n\t\t of list again.\n\n\t\t The following special characters can also be used in list:\n\n\t\t \\n    newline character\n\t\t \\t    tab character\n\t\t \\\\    backslash character\n\t\t \\0    Empty string (not a null character).\n\n\t\t Any  other  character\tpreceded by a backslash is equivalent to\n\t\t the character itself.\n\n     -s \t Concatenate all of the lines of each  separate  input\tfile  in\n\t\t command line order.  The newline character of every line except\n\t\t the last line in each input file is replaced with the tab char-\n\t\t acter, unless otherwise specified by the -d option.\n\n     If  `-' is specified for one or more of the input files, the standard input\n     is used; standard input is read one line at a time,  circularly,  for  each\n     instance of `-'.\n\nEXIT STATUS\n     The paste utility exits 0 on success, and >0 if an error occurs.\n\nEXAMPLES\n     List the files in the current directory in three columns:\n\n\t   ls | paste - - -\n\n     Combine pairs of lines from a file into single lines:\n\n\t   paste -s -d '\\t\\n' myfile\n\n     Number the lines in a file, similar to nl(1):\n\n\t   sed = myfile | paste - -\n\n     Create a colon-separated list of directories named bin, suitable for use in\n     the PATH environment variable:\n\n\t   find / -name bin -type d | paste -s -d : -\n\nSEE ALSO\n     cut(1), lam(1)\n\nSTANDARDS\n     The paste utility is expected to be IEEE Std 1003.2 (\"POSIX.2\") compatible.\n\nHISTORY\n     A\tpaste command first appeared in AT&T System III UNIX and has been avail-\n     able since 4.3BSD-Reno.\n\nAUTHORS\n     The original Bell Labs version was written by Gottfried W. R.  Luderer  and\n     the BSD version by Adam S. Moskowitz and Marciano Pitargue.\n\nFreeBSD 15.1\t\t\tNovember 6, 2022\t\t\tPASTE(1)"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    }
+  ]
+}

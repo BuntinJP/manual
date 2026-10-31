@@ -1,0 +1,3 @@
+Requested group: aws ssm *.
+Source fetched from https://docs.aws.amazon.com/cli/latest/reference/ssm/deregister-patch-baseline-for-patch-group.html.
+Queued for translation; extraction and semantic review remain agent work.

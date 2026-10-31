@@ -1,0 +1,467 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "e614985cf2cbfe5a8b9c7c08a0302cdc3e8d86c0aee3609707138dba4cfd2532",
+  "extraction": {
+    "selector": "body",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "cifs.idmap",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "heading",
+      "text": "Userspace helper for mapping ids for Common Internet File System (CIFS)",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "term",
+      "text": "Manual section:",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "8",
+      "protected": []
+    },
+    {
+      "id": "s0005",
+      "kind": "heading",
+      "text": "SYNOPSIS",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "cifs.idmap [[[p0]]|[[p1]]] [[[p2]]|[[p3]]] [[[p4]]|[[p5]]] {keyid}",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--help"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-h"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--timeout"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-t"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "--version"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "-v"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0008",
+      "kind": "paragraph",
+      "text": "This tool is part of the cifs-utils suite.",
+      "protected": []
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "cifs.idmap is a userspace helper program for the linux CIFS client filesystem. There are a number of activities that the kernel cannot easily do itself. This program is a callout program that does these things for the kernel and then returns the result.",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "cifs.idmap is generally intended to be run when the kernel calls request-key(8) for a particular key type. While it can be run directly from the command-line, it is not generally intended to be run that way.",
+      "protected": []
+    },
+    {
+      "id": "s0011",
+      "kind": "paragraph",
+      "text": "This program is only called if a share is mounted with the cifsacl mount option. The kernel will only upcall to do this conversion if that mount option is specified.",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "paragraph",
+      "text": "cifs.idmap relies on a plugin to handle the ID mapping. If it can't find the plugin then it will not work properly. The plugin (or a symlink to it) must be at @pluginpath@.",
+      "protected": []
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "In the case where cifs.idmap or the plugin are unavailable, file objects in a mounted share are assigned uid and gid of the credentials of the process that mounted the share. It is strongly recomemended to use mount options of uid and gid to specify a default uid and gid to map owner SIDs and group SIDs in this situation.",
+      "protected": []
+    },
+    {
+      "id": "s0014",
+      "kind": "heading",
+      "text": "OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0015",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--help"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-h"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0016",
+      "kind": "paragraph",
+      "text": "Print the usage message and exit.",
+      "protected": []
+    },
+    {
+      "id": "s0017",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--timeout"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-t"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0018",
+      "kind": "paragraph",
+      "text": "Set the expiration timer, in seconds on the key. The default is 600 seconds (10 minutes). Setting this to 0 will cause the key to never expire.",
+      "protected": []
+    },
+    {
+      "id": "s0019",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--version"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-v"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0020",
+      "kind": "paragraph",
+      "text": "Print version number and exit.",
+      "protected": []
+    },
+    {
+      "id": "s0021",
+      "kind": "heading",
+      "text": "CONFIGURATION FOR KEYCTL",
+      "protected": []
+    },
+    {
+      "id": "s0022",
+      "kind": "paragraph",
+      "text": "cifs.idmap is designed to be called from the kernel via the request-key callout program. This requires that request-key be told where and how to call this program. Currently cifs.idmap handles a key type of:",
+      "protected": []
+    },
+    {
+      "id": "s0023",
+      "kind": "paragraph",
+      "text": "This keytype is for mapping a SID to either an uid or a gid.",
+      "protected": []
+    },
+    {
+      "id": "s0024",
+      "kind": "paragraph",
+      "text": "To make this program useful for CIFS, you will need to set up entry for it in request-key.conf(5). Here is an example of an entry for this key type:",
+      "protected": []
+    },
+    {
+      "id": "s0025",
+      "kind": "paragraph",
+      "text": "See request-key.conf(5) for more info on each field.",
+      "protected": []
+    },
+    {
+      "id": "s0026",
+      "kind": "heading",
+      "text": "NOTES",
+      "protected": []
+    },
+    {
+      "id": "s0027",
+      "kind": "paragraph",
+      "text": "Support for upcalls to cifs.idmap was initially introduced in the 3.0 kernel.",
+      "protected": []
+    },
+    {
+      "id": "s0028",
+      "kind": "heading",
+      "text": "SEE ALSO",
+      "protected": []
+    },
+    {
+      "id": "s0029",
+      "kind": "paragraph",
+      "text": "request-key.conf(5), mount.cifs(8)",
+      "protected": []
+    },
+    {
+      "id": "s0030",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0031",
+      "kind": "paragraph",
+      "text": "Shirish Pargaonkar wrote the cifs.idmap program.",
+      "protected": []
+    },
+    {
+      "id": "s0032",
+      "kind": "paragraph",
+      "text": "The Linux CIFS Mailing list is the preferred place to ask questions regarding these programs.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "cifs-idmap",
+      "segment": "s0001"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Userspace-helper-for-mapping-ids-for-Common-Internet-File-System--CIFS",
+      "segment": "s0002"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0003",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0004"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "SYNOPSIS",
+      "segment": "s0005"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0006"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "DESCRIPTION",
+      "segment": "s0007"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0008"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0009"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0010"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0011"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0012"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0013"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "OPTIONS",
+      "segment": "s0014"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0015",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0016"
+            }
+          ]
+        },
+        {
+          "term": "s0017",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0018"
+            }
+          ]
+        },
+        {
+          "term": "s0019",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0020"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "CONFIGURATION-FOR-KEYCTL",
+      "segment": "s0021"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0022"
+    },
+    {
+      "type": "literal",
+      "text": "cifs.idmap"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0023"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0024"
+    },
+    {
+      "type": "literal",
+      "text": "#OPERATION  TYPE           D C PROGRAM ARG1 ARG2...\n#=========  =============  = = ================================\ncreate      cifs.idmap     * * @sbindir@/cifs.idmap %k"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0025"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "NOTES",
+      "segment": "s0026"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0027"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "SEE-ALSO",
+      "segment": "s0028"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0029"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "AUTHOR",
+      "segment": "s0030"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0031"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0032"
+    }
+  ]
+}

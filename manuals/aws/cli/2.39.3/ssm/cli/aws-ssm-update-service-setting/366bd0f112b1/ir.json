@@ -1,0 +1,1977 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "366bd0f112b17400160daaae052a86157a569641c2c43ff43ae54e76442e021a",
+  "extraction": {
+    "selector": "div.body",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "paragraph",
+      "text": "[ [[p0]] . [[p1]] ]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "aws",
+            "href": "https://docs.aws.amazon.com/cli/latest/reference/index.html#cli-aws"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "ssm",
+            "href": "https://docs.aws.amazon.com/cli/latest/reference/ssm/index.html#cli-aws-ssm"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0002",
+      "kind": "heading",
+      "text": "update-service-setting¶",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "Description¶",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]] is an account-level setting for an Amazon Web Services service. This setting defines how a user interacts with or uses a service or a feature of a service. For example, if an Amazon Web Services service charges money to the account based on feature or service usage, then the Amazon Web Services service team might create a default setting of “false”. This means the user can’t use this feature unless they change the setting to “true” and intentionally opt in for a paid feature.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "ServiceSetting"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "paragraph",
+      "text": "Services map a [[p0]] object to a setting value. Amazon Web Services services teams define the default value for a [[p1]] . You can’t create a new [[p2]] , but you can overwrite the default value if you have the [[p3]] permission for the setting. Use the GetServiceSetting API operation to view the current value. Or, use the ResetServiceSetting to change the value back to the original value defined by the Amazon Web Services service team.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "SettingId"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "SettingId"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "SettingId"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "ssm:UpdateServiceSetting"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "Update the service setting for the account.",
+      "protected": []
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "See also: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "AWS API Documentation",
+            "href": "https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/UpdateServiceSetting"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "heading",
+      "text": "Synopsis¶",
+      "protected": []
+    },
+    {
+      "id": "s0009",
+      "kind": "heading",
+      "text": "Options¶",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "[[p0]] (string) [required]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--setting-id"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0011",
+      "kind": "paragraph",
+      "text": "The Amazon Resource Name (ARN) of the service setting to update. For example, [[p0]] . The setting ID can be one of the following.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "arn:aws:ssm:us-east-1:111122223333:servicesetting/ssm/parameter-store/high-throughput-enabled"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0012",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/ssm/appmanager/appmanager-enabled"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/ssm/automation/customer-script-log-destination"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0014",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/ssm/automation/customer-script-log-group-name"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "/ssm/automation/enable-adaptive-concurrency",
+      "protected": []
+    },
+    {
+      "id": "s0016",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/ssm/documents/console/public-sharing-permission"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/ssm/managed-instance/activation-tier"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0018",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/ssm/managed-instance/default-ec2-instance-management-role"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/ssm/opsinsights/opscenter"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0020",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/ssm/parameter-store/default-parameter-tier"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0021",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/ssm/parameter-store/high-throughput-enabled"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0022",
+      "kind": "heading",
+      "text": "Note",
+      "protected": []
+    },
+    {
+      "id": "s0023",
+      "kind": "paragraph",
+      "text": "Permissions to update the [[p0]] setting should only be provided to administrators. Implement least privilege access when allowing individuals to configure or modify the Default Host Management Configuration.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/ssm/managed-instance/default-ec2-instance-management-role"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0024",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0025",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0026",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1000"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0027",
+      "kind": "paragraph",
+      "text": "[[p0]] (string) [required]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--setting-value"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0028",
+      "kind": "paragraph",
+      "text": "The new value to specify for the service setting. The following list specifies the available values for each setting.",
+      "protected": []
+    },
+    {
+      "id": "s0029",
+      "kind": "paragraph",
+      "text": "For [[p0]] , enter [[p1]] or [[p2]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/ssm/appmanager/appmanager-enabled"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "True"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "False"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0030",
+      "kind": "paragraph",
+      "text": "For [[p0]] , enter [[p1]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/ssm/automation/customer-script-log-destination"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "CloudWatch"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0031",
+      "kind": "paragraph",
+      "text": "For [[p0]] , enter the name of an Amazon CloudWatch Logs log group.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/ssm/automation/customer-script-log-group-name"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0032",
+      "kind": "paragraph",
+      "text": "For [[p0]] , enter [[p1]] or [[p2]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/ssm/documents/console/public-sharing-permission"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "Enable"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "Disable"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0033",
+      "kind": "paragraph",
+      "text": "For [[p0]] , enter [[p1]] or [[p2]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/ssm/managed-instance/activation-tier"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "standard"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "advanced"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0034",
+      "kind": "paragraph",
+      "text": "For [[p0]] , enter the name of an IAM role.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/ssm/managed-instance/default-ec2-instance-management-role"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0035",
+      "kind": "paragraph",
+      "text": "For [[p0]] , enter [[p1]] or [[p2]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/ssm/opsinsights/opscenter"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "Enabled"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "Disabled"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0036",
+      "kind": "paragraph",
+      "text": "For [[p0]] , enter [[p1]] , [[p2]] , or [[p3]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/ssm/parameter-store/default-parameter-tier"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "Standard"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "Advanced"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "Intelligent-Tiering"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0037",
+      "kind": "paragraph",
+      "text": "For [[p0]] , enter [[p1]] or [[p2]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "/ssm/parameter-store/high-throughput-enabled"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "true"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "false"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0038",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0039",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0040",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "4096"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0041",
+      "kind": "paragraph",
+      "text": "[[p0]] | [[p1]] (string) Reads arguments from the JSON string provided. The JSON string follows the format provided by [[p2]]. If other arguments are provided on the command line, those values will override the JSON-provided values. It is not possible to pass arbitrary binary values using a JSON-provided value as the string will be taken literally. This may not be specified along with [[p3]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-input-json"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-input-yaml"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--generate-cli-skeleton"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-input-yaml"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0042",
+      "kind": "paragraph",
+      "text": "[[p0]] (string) Prints a JSON skeleton to standard output without sending an API request. If provided with no value or the value [[p1]], prints a sample input JSON that can be used as an argument for [[p2]]. Similarly, if provided [[p3]] it will print a sample input YAML that can be used with [[p4]]. If provided with the value [[p5]], it validates the command inputs and returns a sample output JSON for that command. The generated JSON skeleton is not stable between versions of the AWS CLI and there are no backwards compatibility guarantees in the JSON skeleton generated.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--generate-cli-skeleton"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "input"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-input-json"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "yaml-input"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-input-yaml"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "output"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0043",
+      "kind": "heading",
+      "text": "Global Options¶",
+      "protected": []
+    },
+    {
+      "id": "s0044",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debug"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0045",
+      "kind": "paragraph",
+      "text": "Turn on debug logging.",
+      "protected": []
+    },
+    {
+      "id": "s0046",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--endpoint-url"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0047",
+      "kind": "paragraph",
+      "text": "Override command’s default URL with the given URL.",
+      "protected": []
+    },
+    {
+      "id": "s0048",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-verify-ssl"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0049",
+      "kind": "paragraph",
+      "text": "By default, the AWS CLI uses SSL when communicating with AWS services. For each SSL connection, the AWS CLI will verify SSL certificates. This option overrides the default behavior of verifying SSL certificates.",
+      "protected": []
+    },
+    {
+      "id": "s0050",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-paginate"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0051",
+      "kind": "paragraph",
+      "text": "Disable automatic pagination. If automatic pagination is disabled, the AWS CLI will only make one call, for the first page of results.",
+      "protected": []
+    },
+    {
+      "id": "s0052",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--output"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0053",
+      "kind": "paragraph",
+      "text": "The formatting style for command output.",
+      "protected": []
+    },
+    {
+      "id": "s0054",
+      "kind": "paragraph",
+      "text": "json",
+      "protected": []
+    },
+    {
+      "id": "s0055",
+      "kind": "paragraph",
+      "text": "text",
+      "protected": []
+    },
+    {
+      "id": "s0056",
+      "kind": "paragraph",
+      "text": "table",
+      "protected": []
+    },
+    {
+      "id": "s0057",
+      "kind": "paragraph",
+      "text": "yaml",
+      "protected": []
+    },
+    {
+      "id": "s0058",
+      "kind": "paragraph",
+      "text": "yaml-stream",
+      "protected": []
+    },
+    {
+      "id": "s0059",
+      "kind": "paragraph",
+      "text": "off",
+      "protected": []
+    },
+    {
+      "id": "s0060",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--query"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0061",
+      "kind": "paragraph",
+      "text": "A JMESPath query to use in filtering the response data.",
+      "protected": []
+    },
+    {
+      "id": "s0062",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--profile"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0063",
+      "kind": "paragraph",
+      "text": "Use a specific profile from your credential file.",
+      "protected": []
+    },
+    {
+      "id": "s0064",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--region"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0065",
+      "kind": "paragraph",
+      "text": "The region to use. Overrides config/env settings.",
+      "protected": []
+    },
+    {
+      "id": "s0066",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--version"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0067",
+      "kind": "paragraph",
+      "text": "Display the version of this tool.",
+      "protected": []
+    },
+    {
+      "id": "s0068",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--color"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0069",
+      "kind": "paragraph",
+      "text": "Turn on/off color output.",
+      "protected": []
+    },
+    {
+      "id": "s0070",
+      "kind": "paragraph",
+      "text": "on",
+      "protected": []
+    },
+    {
+      "id": "s0071",
+      "kind": "paragraph",
+      "text": "off",
+      "protected": []
+    },
+    {
+      "id": "s0072",
+      "kind": "paragraph",
+      "text": "auto",
+      "protected": []
+    },
+    {
+      "id": "s0073",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-sign-request"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0074",
+      "kind": "paragraph",
+      "text": "Do not sign requests. Credentials will not be loaded if this argument is provided.",
+      "protected": []
+    },
+    {
+      "id": "s0075",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--ca-bundle"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0076",
+      "kind": "paragraph",
+      "text": "The CA certificate bundle to use when verifying SSL certificates. Overrides config/env settings.",
+      "protected": []
+    },
+    {
+      "id": "s0077",
+      "kind": "paragraph",
+      "text": "[[p0]] (int)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-read-timeout"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0078",
+      "kind": "paragraph",
+      "text": "The maximum socket read time in seconds. If the value is set to 0, the socket read will be blocking and not timeout. The default value is 60 seconds.",
+      "protected": []
+    },
+    {
+      "id": "s0079",
+      "kind": "paragraph",
+      "text": "[[p0]] (int)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-connect-timeout"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0080",
+      "kind": "paragraph",
+      "text": "The maximum socket connect time in seconds. If the value is set to 0, the socket connect will be blocking and not timeout. The default value is 60 seconds.",
+      "protected": []
+    },
+    {
+      "id": "s0081",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-binary-format"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0082",
+      "kind": "paragraph",
+      "text": "The formatting style to be used for binary blobs. The default format is base64. The base64 format expects binary blobs to be provided as a base64 encoded string. The raw-in-base64-out format preserves compatibility with AWS CLI V1 behavior and binary values must be passed literally. When providing contents from a file that map to a binary blob [[p0]] will always be treated as binary and use the file contents directly regardless of the [[p1]] setting. When using [[p2]] the file contents will need to properly formatted for the configured [[p3]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "fileb://"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "cli-binary-format"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "file://"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "cli-binary-format"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0083",
+      "kind": "paragraph",
+      "text": "base64",
+      "protected": []
+    },
+    {
+      "id": "s0084",
+      "kind": "paragraph",
+      "text": "raw-in-base64-out",
+      "protected": []
+    },
+    {
+      "id": "s0085",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-cli-pager"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0086",
+      "kind": "paragraph",
+      "text": "Disable cli pager for output.",
+      "protected": []
+    },
+    {
+      "id": "s0087",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-auto-prompt"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0088",
+      "kind": "paragraph",
+      "text": "Automatically prompt for CLI input parameters.",
+      "protected": []
+    },
+    {
+      "id": "s0089",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-cli-auto-prompt"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0090",
+      "kind": "paragraph",
+      "text": "Disable automatically prompt for CLI input parameters.",
+      "protected": []
+    },
+    {
+      "id": "s0091",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-error-format"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0092",
+      "kind": "paragraph",
+      "text": "The formatting style for error output. By default, errors are displayed in enhanced format.",
+      "protected": []
+    },
+    {
+      "id": "s0093",
+      "kind": "paragraph",
+      "text": "legacy",
+      "protected": []
+    },
+    {
+      "id": "s0094",
+      "kind": "paragraph",
+      "text": "json",
+      "protected": []
+    },
+    {
+      "id": "s0095",
+      "kind": "paragraph",
+      "text": "yaml",
+      "protected": []
+    },
+    {
+      "id": "s0096",
+      "kind": "paragraph",
+      "text": "text",
+      "protected": []
+    },
+    {
+      "id": "s0097",
+      "kind": "paragraph",
+      "text": "table",
+      "protected": []
+    },
+    {
+      "id": "s0098",
+      "kind": "paragraph",
+      "text": "enhanced",
+      "protected": []
+    },
+    {
+      "id": "s0099",
+      "kind": "heading",
+      "text": "Examples¶",
+      "protected": []
+    },
+    {
+      "id": "s0100",
+      "kind": "heading",
+      "text": "Note",
+      "protected": []
+    },
+    {
+      "id": "s0101",
+      "kind": "paragraph",
+      "text": "To use the following examples, you must have the AWS CLI installed and configured. See the [[p0]] in the [[p1]]AWS CLI User Guide[[p2]] for more information.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Getting started guide",
+            "href": "https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0102",
+      "kind": "paragraph",
+      "text": "Unless otherwise stated, all examples have unix-like quotation rules. These examples will need to be adapted to your terminal’s quoting rules. See [[p0]] in the [[p1]]AWS CLI User Guide[[p2]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Using quotation marks with strings",
+            "href": "https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-quoting-strings.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0103",
+      "kind": "paragraph",
+      "text": "[[p0]]To update the service setting for Parameter Store throughput[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0104",
+      "kind": "paragraph",
+      "text": "The following [[p0]] example updates the current service setting for Parameter Store throughput in the specified region to use increased throughput.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "update-service-setting"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0105",
+      "kind": "paragraph",
+      "text": "This command produces no output.",
+      "protected": []
+    },
+    {
+      "id": "s0106",
+      "kind": "paragraph",
+      "text": "For more information, see [[p0]] in the [[p1]]AWS Systems Manager User Guide[[p2]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Increasing Parameter Store Throughput",
+            "href": "https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-throughput.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0107",
+      "kind": "heading",
+      "text": "Output¶",
+      "protected": []
+    },
+    {
+      "id": "s0108",
+      "kind": "paragraph",
+      "text": "None",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "segment": "s0001"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "update-service-setting",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Description",
+      "segment": "s0003"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0004"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Synopsis",
+      "segment": "s0008"
+    },
+    {
+      "type": "literal",
+      "text": "  update-service-setting\n--setting-id <value>\n--setting-value <value>\n[--cli-input-json | --cli-input-yaml]\n[--generate-cli-skeleton <value>]\n[--debug]\n[--endpoint-url <value>]\n[--no-verify-ssl]\n[--no-paginate]\n[--output <value>]\n[--query <value>]\n[--profile <value>]\n[--region <value>]\n[--version <value>]\n[--color <value>]\n[--no-sign-request]\n[--ca-bundle <value>]\n[--cli-read-timeout <value>]\n[--cli-connect-timeout <value>]\n[--cli-binary-format <value>]\n[--no-cli-pager]\n[--cli-auto-prompt]\n[--no-cli-auto-prompt]\n[--cli-error-format <value>]"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Options",
+      "segment": "s0009"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0010"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0011"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0012"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0013"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0014"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0015"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0016"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0017"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0018"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0019"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0020"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0021"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 4,
+          "anchor": "Note",
+          "segment": "s0022"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0023"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0024"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0025"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0026"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0027"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0028"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0029"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0030"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0031"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0032"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0033"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0034"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0035"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0036"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0037"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0038"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0039"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0040"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0041"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0042"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Global-Options",
+      "segment": "s0043"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0044"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0045"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0046"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0047"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0048"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0049"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0050"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0051"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0052"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0053"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0054"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0055"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0056"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0057"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0058"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0059"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0060"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0061"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0062"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0063"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0064"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0065"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0066"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0067"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0068"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0069"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0070"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0071"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0072"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0073"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0074"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0075"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0076"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0077"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0078"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0079"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0080"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0081"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0082"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0083"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0084"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0085"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0086"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0087"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0088"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0089"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0090"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0091"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0092"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0093"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0094"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0095"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0096"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0097"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0098"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Examples",
+      "segment": "s0099"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "Note-2",
+      "segment": "s0100"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0101"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0102"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0103"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0104"
+    },
+    {
+      "type": "literal",
+      "text": "aws ssm update-service-setting \\\n    --setting-id arn:aws:ssm:us-west-2:123456789012:servicesetting/ssm/parameter-store/high-throughput-enabled \\\n    --setting-value true"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0105"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0106"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Output",
+      "segment": "s0107"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0108"
+    }
+  ]
+}

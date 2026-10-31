@@ -1,0 +1,255 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>vfs_shadow_copy2</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="vfs_shadow_copy2.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>vfs_shadow_copy2 &#8212; Expose snapshots to Windows clients as shadow copies.
+	</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="literal">vfs objects = shadow_copy2</code></p></div></div><div class="refsect1"><a name="id1337"></a><h2>DESCRIPTION</h2><p>This VFS module is part of the
+	<a class="citerefentry" href="samba.7.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(7)</span></a> suite.</p><p>
+	The <code class="literal">vfs_shadow_copy2</code> VFS module offers a
+	functionality similar to Microsoft Shadow Copy services.
+	When set up properly,
+	this module allows Microsoft Shadow Copy clients to browse
+	through file system snapshots as "shadow copies" on Samba shares.
+	</p><p>
+	This is a second implementation of a shadow copy module
+	which has the following additional features (compared to the original
+	<a class="citerefentry" href="shadow_copy.8.html"><span class="citerefentry"><span class="refentrytitle">shadow_copy</span>(8)</span></a> module):
+	</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+	There is no need any more to populate your share's root directory
+	with symlinks to the snapshots if the file system stores the
+	snapshots elsewhere.
+	Instead, you can flexibly configure the module where to look for
+	the file system snapshots.
+	This can be very important when you have thousands of
+	shares, or use [homes].
+	</p></li><li class="listitem"><p>
+	Snapshot directories need not be in one fixed central place but
+	can be located anywhere in the directory tree. This mode helps to
+	support file systems that offer snapshotting of particular
+	subtrees, for example the GPFS independent file sets.
+	</p></li><li class="listitem"><p>
+	Vanity naming for snapshots: snapshots can be named in any format
+	compatible with str[fp]time conversions.
+	</p></li><li class="listitem"><p>
+	Timestamps can be represented in localtime rather than UTC.
+	</p></li><li class="listitem"><p>
+	The inode number of the files can optionally be altered to be
+	different from the original. This fixes the 'restore' button
+	in the Windows GUI to work without a sharing violation when
+	serving from file systems, like GPFS, that return the same
+	device and inode number for the snapshot file and the original.
+	</p></li><li class="listitem"><p>
+	Shadow copy results are by default sorted before being sent to the
+	client. This is beneficial for filesystems that don't read
+	directories alphabetically (the default unix). Sort ordering can be
+	configured and sorting can be turned off completely if the file
+	system sorts its directory listing.
+	</p></li></ol></div><p>This module is stackable.</p></div><div class="refsect1"><a name="id1338"></a><h2>CONFIGURATION</h2><p><code class="literal">vfs_shadow_copy2</code> relies on a filesystem
+	snapshot implementation. Many common filesystems have native
+	support for this.
+	</p><p>Filesystem snapshots must be available under
+	specially named directories in order to be recognized by
+	<code class="literal">vfs_shadow_copy2</code>. These snapshot directory
+	is typically a direct subdirectory of the share root's mountpoint
+	but there are other modes that can be configured with the
+	parameters described in detail below.</p><p>The snapshot at a given point in time is expected in a
+	subdirectory of the snapshot directory where the snapshot's
+	directory is expected to be a formatted version of the
+	snapshot time. The default format which can be changed
+	with the <code class="literal">shadow:format</code> option
+	is @GMT-YYYY.MM.DD-hh.mm.ss, where:
+	</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">YYYY</code> is the 4 digit year</p></li><li class="listitem"><p><code class="literal">MM</code> is the 2 digit month</p></li><li class="listitem"><p><code class="literal">DD</code> is the 2 digit day</p></li><li class="listitem"><p><code class="literal">hh</code> is the 2 digit hour</p></li><li class="listitem"><p><code class="literal">mm</code> is the 2 digit minute</p></li><li class="listitem"><p><code class="literal">ss</code> is the 2 digit second.</p></li></ul></div><p>
+	</p><p>The <code class="literal">vfs_shadow_copy2</code> snapshot naming
+	convention can be produced with the following
+	<a class="citerefentry" href="date.1.html"><span class="citerefentry"><span class="refentrytitle">date</span>(1)</span></a> command:
+	</p><pre class="programlisting">
+	TZ=GMT date +@GMT-%Y.%m.%d-%H.%M.%S
+</pre></div><div class="refsect1"><a name="id1339"></a><h2>OPTIONS</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term">shadow:mountpoint = MOUNTPOINT
+                </span></dt><dd><p>
+		With this parameter, one can specify the mount point
+		of the filesystem that contains the share path.
+		Usually this mount point is automatically detected.
+		But for some constellations, in particular tests,
+		it can be convenient to be able to specify it.
+		</p><p>Example: shadow:mountpoint = /path/to/filesystem</p><p>Default: shadow:mountpoint = NOT SPECIFIED</p></dd><dt><span class="term">shadow:snapdir = SNAPDIR
+                </span></dt><dd><p>
+		Path to the directory where the file system of
+		the share keeps its snapshots.
+		If an absolute path is specified, it is used as-is.
+		If a relative path is specified, then it is taken
+		relative to the mount point of the filesystem of
+		the share root. (See <code class="literal">shadow:mountpoint</code>.)
+		</p><p>
+		Note that <code class="literal">shadow:snapdirseverywhere</code>
+		depends on this parameter and needs a relative path.
+		Setting an absolute path disables
+		<code class="literal">shadow:snapdirseverywhere</code>.
+		</p><p>
+		Note that the <code class="literal">shadow:crossmountpoints</code>
+		option also requires a relative snapdir.
+		Setting an absolute path disables
+		<code class="literal">shadow:crossmountpoints</code>.
+		</p><p>Example: shadow:snapdir = /some/absolute/path</p><p>Default: shadow:snapdir = .snapshots</p></dd><dt><span class="term">shadow:basedir = BASEDIR
+		</span></dt><dd><p>
+		The basedir option allows one to specify a directory
+		between the share's mount point and the share root,
+		relative to which the file system's snapshots are taken.
+		</p><p>
+		For example, if
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+		<code class="literal">basedir = mountpoint/rel_basedir</code>
+		</p></li><li class="listitem"><p>
+		<code class="literal">share_root = basedir/rel_share_root</code>
+		</p></li><li class="listitem"><p>
+		<code class="literal">snapshot_path = mountpoint/snapdir</code>
+		</p><p>
+		or
+		<code class="literal">snapshot_path = snapdir</code>
+		if snapdir is absolute
+		</p></li></ul></div><p>
+		then the snapshot of a
+		<code class="literal">file = mountpoint/rel_basedir/rel_share_root/rel_file</code>
+		at a time TIME will be found under
+		<code class="literal">snapshot_path/FS_GMT_TOKEN(TIME)/rel_share_root/rel_file</code>,
+		where FS_GMT_TOKEN(TIME) is the timestamp string belonging
+		to TIME in the format required by the file system.
+		(See <code class="literal">shadow:format</code>.)
+		</p><p>The default for the basedir is the mount point
+		of the file system of the share root
+		(see <code class="literal">shadow:mountpoint</code>).
+		</p><p>
+		Note that the <code class="literal">shadow:snapdirseverywhere</code>
+		and  <code class="literal">shadow:crossmountpoints</code>
+		options are incompatible with <code class="literal">shadow:basedir</code>
+		and disable the basedir setting.
+		</p></dd><dt><span class="term">shadow:snapsharepath = SNAPSHAREPATH
+		</span></dt><dd><p>
+		With this parameter, one can specify the path of the share's
+		root directory in snapshots, relative to the snapshot's
+		root directory. It is an alternative method to
+		<code class="literal">shadow:basedir</code>, allowing greater control.
+		</p><p>
+		For example, if within each
+		snapshot the files of the share have a
+		<code class="literal">path/to/share/</code> prefix, then
+		<code class="literal">shadow:snapsharepath</code> can be
+		set to <code class="literal">path/to/share</code>.
+		</p><p>
+		With this parameter, it is no longer assumed that a
+		snapshot represents an image of the original file system or
+		a portion of it. For example, a system could perform
+		backups of only files contained in shares, and then
+		expose the backup files in a logical structure:
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>share1/</p></li><li class="listitem"><p>share2/</p></li><li class="listitem"><p>.../</p></li></ul></div><p>
+		Note that the <code class="literal">shadow:snapdirseverywhere</code>
+		and the <code class="literal">shadow:basedir</code> options
+		are incompatible with <code class="literal">shadow:snapsharepath</code>
+		and disable <code class="literal">shadow:snapsharepath</code> setting.
+		</p><p>Example: shadow:snapsharepath = path/to/share</p><p>Default: shadow:snapsharepath = NOT SPECIFIED</p></dd><dt><span class="term">shadow:sort = asc/desc
+                </span></dt><dd><p>By default, this module sorts the shadow copy data
+		alphabetically before sending it to the client.
+		With this parameter, one can specify the sort order.
+		Possible known values are desc (descending, the default)
+		and asc (ascending). If the file system lists directories
+		alphabetically sorted, one can turn off sorting in this
+		module by specifying any other value.
+		</p><p>Example: shadow:sort = asc</p><p>Example: shadow:sort = none</p><p>Default: shadow:sort = desc</p></dd><dt><span class="term">shadow:localtime = yes/no
+                </span></dt><dd><p>This is an optional parameter that indicates whether the
+		snapshot names are in UTC/GMT or in local time. If it is
+		disabled then UTC/GMT is expected.
+                </p><p>shadow:localtime = no</p></dd><dt><span class="term">shadow:format = format specification for snapshot names
+                </span></dt><dd><p>This is an optional parameter that specifies the format
+		specification for the naming of snapshots in the file system.
+		The format must be compatible with the conversion
+		specifications recognized by str[fp]time.
+                </p><p>Default: shadow:format = "@GMT-%Y.%m.%d-%H.%M.%S"</p></dd><dt><span class="term">shadow:sscanf = yes/no</span></dt><dd><p>
+		This parameter can be used to specify that the time in
+		format string is given as an unsigned long integer (%lu)
+		rather than a time strptime() can parse.
+		The result must be a unix time_t time.
+		</p><p>Default: shadow:sscanf = no</p></dd><dt><span class="term">shadow:fixinodes = yes/no
+                </span></dt><dd><p>If you enable <code class="literal">shadow:fixinodes
+		</code> then this module will modify the apparent inode
+		number of files in the snapshot directories using a hash of the
+		files path. This is needed for snapshot systems where the
+		snapshots have the same device:inode number as the original
+		files (such as happens with GPFS snapshots). If you don't set
+		this option then the 'restore' button in the shadow copy UI
+		will fail with a sharing violation.
+                </p><p>Default: shadow:fixinodes = no</p></dd><dt><span class="term">shadow:snapdirseverywhere = yes/no
+		</span></dt><dd><p>
+		If you enable
+		<code class="literal">shadow:snapdirseverywhere </code>
+		then this module will look
+		out for snapshot directories in the current working directory
+		and all parent directories, stopping at the mount point
+		by default.
+		But see <code class="literal">shadow:crossmountpoints</code> how to change
+		that behaviour.
+		</p><p>
+		An example where this is needed are independent filesets in
+		IBM's GPFS, but other filesystems might support snapshotting
+		only particular subtrees of the filesystem as well.
+		</p><p>
+		Note that <code class="literal">shadow:snapdirseverywhere</code>
+		depends on <code class="literal">shadow:snapdir</code> and needs it to be
+		a relative path. Setting an absolute snapdir path disables
+		<code class="literal">shadow:snapdirseverywhere</code>.
+		</p><p>
+		Note that this option is incompatible with the
+		<code class="literal">shadow:basedir</code> option and removes the
+		<code class="literal">shadow:basedir</code> setting by itself.
+		</p><p>Example: shadow:snapdirseverywhere = yes</p><p>Default: shadow:snapdirseverywhere = no</p></dd><dt><span class="term">shadow:crossmountpoints = yes/no
+                </span></dt><dd><p>
+		This option is effective in the case of
+		<code class="literal">shadow:snapdirseverywhere = yes</code>.
+		Setting this option makes the module not stop at the
+		first mount point encountered when looking for snapdirs,
+		but lets it search potentially all through the path
+		instead.
+                </p><p>
+		An example where this is needed are independent filesets in
+		IBM's GPFS, but other filesystems might support snapshotting
+		only particular subtrees of the filesystem as well.
+		</p><p>
+		Note that <code class="literal">shadow:crossmountpoints</code>
+		depends on <code class="literal">shadow:snapdir</code> and needs it to be
+		a relative path. Setting an absolute snapdir path disables
+		<code class="literal">shadow:crossmountpoints</code>.
+		</p><p>
+		Note that this option is incompatible with the
+		<code class="literal">shadow:basedir</code> option and removes the
+		<code class="literal">shadow:basedir</code> setting by itself.
+		</p><p>Example: shadow:crossmountpoints = yes</p><p>Default: shadow:crossmountpoints = no</p></dd><dt><span class="term">shadow:snapprefix
+		</span></dt><dd><p>
+		With growing number of snapshots file-systems need some mechanism
+		to differentiate one set of snapshots from other, e.g. monthly, weekly,
+		manual, special events, etc. Therefore these file-systems provide different
+		ways to tag snapshots, e.g. provide a configurable way to name snapshots,
+		which is not just based on time.  With only <code class="literal">shadow:format</code>
+		it is very difficult to filter these snapshots. With this optional parameter,
+		one can specify a variable prefix component for names of the snapshot
+		directories in the file-system. If this parameter is set, together with the
+		<code class="literal">shadow:format</code> and <code class="literal">shadow:delimiter</code>
+		parameters it determines the possible names of snapshot
+		directories in the file-system. The option only supports Basic
+		Regular Expression (BRE).
+		</p></dd><dt><span class="term">shadow:delimiter
+		</span></dt><dd><p>
+		This optional parameter is used as a delimiter between
+		<code class="literal">shadow:snapprefix</code> and <code class="literal">shadow:format</code>.
+		This parameter is used only when <code class="literal">shadow:snapprefix</code>
+		is set.
+		</p><p>Default: shadow:delimiter = "_GMT"</p></dd></dl></div></div><div class="refsect1"><a name="id1340"></a><h2>EXAMPLES</h2><p>Add shadow copy support to user home directories:</p><pre class="programlisting">
+        <em class="parameter"><code>[homes]</code></em>
+	<a class="link" href="smb.conf.5.html#VFSOBJECTS" target="_top">vfs objects = shadow_copy2</a>
+	<a class="link" href="smb.conf.5.html#SHADOW:SNAPDIR" target="_top">shadow:snapdir = /data/snapshots</a>
+	<a class="link" href="smb.conf.5.html#SHADOW:BASEDIR" target="_top">shadow:basedir = /data/home</a>
+	<a class="link" href="smb.conf.5.html#SHADOW:SORT" target="_top">shadow:sort = desc</a>
+</pre></div><div class="refsect1"><a name="id1341"></a><h2>CAVEATS</h2><p>This is not a backup, archival, or version control solution.
+	</p><p>With Samba or Windows servers,
+	<code class="literal">vfs_shadow_copy2</code> is designed to be an end-user
+	tool only. It does not replace or enhance your backup and
+	archival solutions and should in no way be considered as
+	such. Additionally, if you need version control, implement a
+	version control system.</p></div><div class="refsect1"><a name="id1342"></a><h2>VERSION</h2><p>This man page is part of version 4.25.0 of the Samba suite.
+	</p></div><div class="refsect1"><a name="id1343"></a><h2>AUTHOR</h2><p>The original Samba software and related utilities
+	were created by Andrew Tridgell. Samba is now developed
+	by the Samba Team as an Open Source project similar
+	to the way the Linux kernel is developed.</p></div></div></body></html>

@@ -1,0 +1,347 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "82bc47a323c59f860df1a3adc0fb2f0e1d85f4a1deb7de9931cafacca2901891",
+  "extraction": {
+    "selector": ".refentry",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "Name",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "vfs_btrfs — Utilize features provided by the Btrfs filesystem",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "Synopsis",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs objects = btrfs"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "This VFS module is part of the [[p0]] suite.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "samba(8)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/samba.8.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "The [[p0]] VFS module exposes Btrfs specific features for use by Samba.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs_btrfs"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "paragraph",
+      "text": "Btrfs allows for multiple files to share the same on-disk data through the use cloned ranges. When an SMB client issues a request to copy duplicate data (via FSCTL_SRV_COPYCHUNK), this module maps the request to a Btrfs clone range IOCTL, instead of performing reads and writes required by a traditional copy. Doing so saves storage capacity and greatly reduces disk IO.",
+      "protected": []
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "This module also exposes Btrfs per-file compression support to SMB clients via the get/set compression fsctls.",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "Btrfs snapshots can be manipulated by Samba's FSRVP server. Snapshot manipulation using this module is currently considered experimental, and is therefore disabled by default. The [[p0]] module is instead recommended for this purpose.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs_snapper"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0011",
+      "kind": "paragraph",
+      "text": "This module is stackable.",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "heading",
+      "text": "OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0013",
+      "kind": "term",
+      "text": "btrfs: manipulate snapshots = [yes|no]",
+      "protected": []
+    },
+    {
+      "id": "s0014",
+      "kind": "paragraph",
+      "text": "When set to [[p0]]yes[[p1]], experimental support for the creation and deletion of snapshots via corresponding Btrfs IOCTLs will be enabled. The default is [[p2]]no[[p3]], which means that such requests are passed through to any underlying VFS module.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0015",
+      "kind": "heading",
+      "text": "CONFIGURATION",
+      "protected": []
+    },
+    {
+      "id": "s0016",
+      "kind": "paragraph",
+      "text": "[[p0]] requires that the underlying share path is a Btrfs subvolume.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs_btrfs"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "To use the experimental snapshot manipulation functionality provided by this module, it must be explicitly enabled, and Samba's FSRVP server must be running.",
+      "protected": []
+    },
+    {
+      "id": "s0018",
+      "kind": "paragraph",
+      "text": "The [[p0]] module can be used to expose snapshots created by [[p1]] to Windows Explorer as file / directory \"previous versions\".",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs_shadow_copy"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs_btrfs"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0019",
+      "kind": "heading",
+      "text": "VERSION",
+      "protected": []
+    },
+    {
+      "id": "s0020",
+      "kind": "paragraph",
+      "text": "This man page is part of version 4.25.0 of the Samba suite.",
+      "protected": []
+    },
+    {
+      "id": "s0021",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0022",
+      "kind": "paragraph",
+      "text": "The original Samba software and related utilities were created by Andrew Tridgell. Samba is now developed by the Samba Team as an Open Source project similar to the way the Linux kernel is developed.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Name",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Synopsis",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0008"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0009"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0010"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0011"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "OPTIONS",
+      "segment": "s0012"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0013",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0014"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "CONFIGURATION",
+      "segment": "s0015"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0016"
+    },
+    {
+      "type": "literal",
+      "text": "\t\t[share]\n\t\tvfs objects = btrfs\n\t\tbtrfs: manipulate snapshots = no"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0017"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0018"
+    },
+    {
+      "type": "literal",
+      "text": "\t\t[global]\n\t\tregistry shares = yes\n\t\tinclude = registry\n\n\t\t[share]\n\t\tvfs objects = btrfs shadow_copy\n\t\tbtrfs: manipulate snapshots = yes"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "VERSION",
+      "segment": "s0019"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0020"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "AUTHOR",
+      "segment": "s0021"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0022"
+    }
+  ]
+}

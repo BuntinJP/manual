@@ -1,0 +1,1518 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "c8d685708a11f652d366b981b25403064f8177c434b93d1a6ce02048d075554a",
+  "extraction": {
+    "selector": ".refentry",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "Name",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "smbstatus — report on current Samba connections",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "Synopsis",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]] [[[p1]]|[[p2]]] [[[p3]]|[[p4]]] [[[p5]]|[[p6]]] [[[p7]]|[[p8]]] [[[p9]]|[[p10]]] [[[p11]]|[[p12]]=STRING] [[[p13]]|[[p14]]] [[[p15]]|[[p16]]] [[[p17]]|[[p18]]] [[[p19]]|[[p20]]] [[[p21]]|[[p22]]] [[[p23]]|[[p24]]] [[[p25]]|[[p26]]] [[[p27]]] [-?|[[p28]]] [[[p29]]] [[[p30]]|[[p31]]=DEBUGLEVEL] [[[p32]]] [[[p33]]=CONFIGFILE] [[[p34]]=name=value] [[[p35]]|[[p36]]=LOGFILEBASE] [[[p37]]] [[[p38]]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "smbstatus"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-p"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--processes"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-v"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "--verbose"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "-L"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "--locks"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "code",
+            "text": "-S"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "code",
+            "text": "--shares"
+          }
+        },
+        {
+          "token": "[[p9]]",
+          "inline": {
+            "tag": "code",
+            "text": "-N"
+          }
+        },
+        {
+          "token": "[[p10]]",
+          "inline": {
+            "tag": "code",
+            "text": "--notify"
+          }
+        },
+        {
+          "token": "[[p11]]",
+          "inline": {
+            "tag": "code",
+            "text": "-u"
+          }
+        },
+        {
+          "token": "[[p12]]",
+          "inline": {
+            "tag": "code",
+            "text": "--user"
+          }
+        },
+        {
+          "token": "[[p13]]",
+          "inline": {
+            "tag": "code",
+            "text": "-b"
+          }
+        },
+        {
+          "token": "[[p14]]",
+          "inline": {
+            "tag": "code",
+            "text": "--brief"
+          }
+        },
+        {
+          "token": "[[p15]]",
+          "inline": {
+            "tag": "code",
+            "text": "-P"
+          }
+        },
+        {
+          "token": "[[p16]]",
+          "inline": {
+            "tag": "code",
+            "text": "--profile"
+          }
+        },
+        {
+          "token": "[[p17]]",
+          "inline": {
+            "tag": "code",
+            "text": "-R"
+          }
+        },
+        {
+          "token": "[[p18]]",
+          "inline": {
+            "tag": "code",
+            "text": "--profile-rates"
+          }
+        },
+        {
+          "token": "[[p19]]",
+          "inline": {
+            "tag": "code",
+            "text": "-B"
+          }
+        },
+        {
+          "token": "[[p20]]",
+          "inline": {
+            "tag": "code",
+            "text": "--byterange"
+          }
+        },
+        {
+          "token": "[[p21]]",
+          "inline": {
+            "tag": "code",
+            "text": "-n"
+          }
+        },
+        {
+          "token": "[[p22]]",
+          "inline": {
+            "tag": "code",
+            "text": "--numeric"
+          }
+        },
+        {
+          "token": "[[p23]]",
+          "inline": {
+            "tag": "code",
+            "text": "-f"
+          }
+        },
+        {
+          "token": "[[p24]]",
+          "inline": {
+            "tag": "code",
+            "text": "--fast"
+          }
+        },
+        {
+          "token": "[[p25]]",
+          "inline": {
+            "tag": "code",
+            "text": "-j"
+          }
+        },
+        {
+          "token": "[[p26]]",
+          "inline": {
+            "tag": "code",
+            "text": "--json"
+          }
+        },
+        {
+          "token": "[[p27]]",
+          "inline": {
+            "tag": "code",
+            "text": "--resolve-uids"
+          }
+        },
+        {
+          "token": "[[p28]]",
+          "inline": {
+            "tag": "code",
+            "text": "--help"
+          }
+        },
+        {
+          "token": "[[p29]]",
+          "inline": {
+            "tag": "code",
+            "text": "--usage"
+          }
+        },
+        {
+          "token": "[[p30]]",
+          "inline": {
+            "tag": "code",
+            "text": "-d"
+          }
+        },
+        {
+          "token": "[[p31]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debuglevel"
+          }
+        },
+        {
+          "token": "[[p32]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debug-stdout"
+          }
+        },
+        {
+          "token": "[[p33]]",
+          "inline": {
+            "tag": "code",
+            "text": "--configfile"
+          }
+        },
+        {
+          "token": "[[p34]]",
+          "inline": {
+            "tag": "code",
+            "text": "--option"
+          }
+        },
+        {
+          "token": "[[p35]]",
+          "inline": {
+            "tag": "code",
+            "text": "-l"
+          }
+        },
+        {
+          "token": "[[p36]]",
+          "inline": {
+            "tag": "code",
+            "text": "--log-basename"
+          }
+        },
+        {
+          "token": "[[p37]]",
+          "inline": {
+            "tag": "code",
+            "text": "--leak-report"
+          }
+        },
+        {
+          "token": "[[p38]]",
+          "inline": {
+            "tag": "code",
+            "text": "--leak-report-full"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "This tool is part of the [[p0]] suite.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "samba(7)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/samba.7.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "[[p0]] is a very simple program to list the current Samba connections.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "smbstatus"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "heading",
+      "text": "OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0009",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-P"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--profile"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "If samba has been compiled with the profiling option, print only the contents of the profiling shared memory area.",
+      "protected": []
+    },
+    {
+      "id": "s0011",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-R"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--profile-rates"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0012",
+      "kind": "paragraph",
+      "text": "If samba has been compiled with the profiling option, print the contents of the profiling shared memory area and the call rates.",
+      "protected": []
+    },
+    {
+      "id": "s0013",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-b"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--brief"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0014",
+      "kind": "paragraph",
+      "text": "gives brief output.",
+      "protected": []
+    },
+    {
+      "id": "s0015",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-v"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--verbose"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0016",
+      "kind": "paragraph",
+      "text": "gives verbose output.",
+      "protected": []
+    },
+    {
+      "id": "s0017",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-L"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--locks"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0018",
+      "kind": "paragraph",
+      "text": "causes smbstatus to only list locks.",
+      "protected": []
+    },
+    {
+      "id": "s0019",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-B"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--byterange"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0020",
+      "kind": "paragraph",
+      "text": "causes smbstatus to include byte range locks.",
+      "protected": []
+    },
+    {
+      "id": "s0021",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-p"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--processes"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0022",
+      "kind": "paragraph",
+      "text": "print a list of [[p0]] processes and exit. Useful for scripting.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "smbd(8)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smbd.8.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0023",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-S"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--shares"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0024",
+      "kind": "paragraph",
+      "text": "causes smbstatus to only list shares.",
+      "protected": []
+    },
+    {
+      "id": "s0025",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-N"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--notify"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0026",
+      "kind": "paragraph",
+      "text": "causes smbstatus to display registered file notifications",
+      "protected": []
+    },
+    {
+      "id": "s0027",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-f"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--fast"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0028",
+      "kind": "paragraph",
+      "text": "causes smbstatus to not check if the status data is valid by checking if the processes that the status data refer to all still exist. This speeds up execution on busy systems and clusters but might display stale data of processes that died without cleaning up properly.",
+      "protected": []
+    },
+    {
+      "id": "s0029",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]=<username>",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-u"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--user"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0030",
+      "kind": "paragraph",
+      "text": "selects information relevant to [[p0]][[p1]][[p2]] only.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "username"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0031",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-n"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--numeric"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0032",
+      "kind": "paragraph",
+      "text": "causes smbstatus to display numeric UIDs and GIDs instead of resolving them to names.",
+      "protected": []
+    },
+    {
+      "id": "s0033",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-j"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--json"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0034",
+      "kind": "paragraph",
+      "text": "Output more detailed information in JSON format instead of human readable. The output has the following format:",
+      "protected": []
+    },
+    {
+      "id": "s0035",
+      "kind": "paragraph",
+      "text": "If oplocks are used:",
+      "protected": []
+    },
+    {
+      "id": "s0036",
+      "kind": "paragraph",
+      "text": "If leases are used:",
+      "protected": []
+    },
+    {
+      "id": "s0037",
+      "kind": "paragraph",
+      "text": "With byte-range locks ([[p0]], [[p1]]):",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-B"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--byterange"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0038",
+      "kind": "paragraph",
+      "text": "With notifies ([[p0]], [[p1]]):",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-N"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--notify"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0039",
+      "kind": "paragraph",
+      "text": "For profiling ([[p0]], [[p1]]):",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-P"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--profile"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0040",
+      "kind": "term",
+      "text": "-?|[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--help"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0041",
+      "kind": "paragraph",
+      "text": "Print a summary of command line options.",
+      "protected": []
+    },
+    {
+      "id": "s0042",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--usage"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0043",
+      "kind": "paragraph",
+      "text": "Display brief usage message.",
+      "protected": []
+    },
+    {
+      "id": "s0044",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]=level",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-d"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debuglevel"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0045",
+      "kind": "paragraph",
+      "text": "[[p0]][[p1]][[p2]] is an integer from 0 to 10. The default value if this parameter is not specified is 1 for client applications.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "level"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0046",
+      "kind": "paragraph",
+      "text": "The higher this value, the more detail will be logged to the log files about the activities of the server. At level 0, only critical errors and serious warnings will be logged. Level 1 is a reasonable level for day-to-day running - it generates a small amount of information about operations carried out.",
+      "protected": []
+    },
+    {
+      "id": "s0047",
+      "kind": "paragraph",
+      "text": "Levels above 1 will generate considerable amounts of log data, and should only be used when investigating a problem. Levels above 3 are designed for use only by developers and generate HUGE amounts of log data, most of which is extremely cryptic.",
+      "protected": []
+    },
+    {
+      "id": "s0048",
+      "kind": "paragraph",
+      "text": "Note that specifying this parameter here will override the [[p0]] parameter in the [[p1]] file.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "log level",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#LOGLEVEL"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0049",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debug-stdout"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0050",
+      "kind": "paragraph",
+      "text": "This will redirect debug output to STDOUT. By default all clients are logging to STDERR.",
+      "protected": []
+    },
+    {
+      "id": "s0051",
+      "kind": "term",
+      "text": "[[p0]]=<configuration file>",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--configfile"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0052",
+      "kind": "paragraph",
+      "text": "The file specified contains the configuration details required by the client. The information in this file can be general for client and server or only provide client specific like options such as [[p0]]. See [[p1]] for more information. The default configuration file name is determined at compile time.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "client smb encrypt",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#CLIENTSMBENCRYPT"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0053",
+      "kind": "term",
+      "text": "[[p0]]=<name>=<value>",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--option"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0054",
+      "kind": "paragraph",
+      "text": "Set the [[p0]] option \"<name>\" to value \"<value>\" from the command line. This overrides compiled-in defaults and options read from the configuration file. If a name or a value includes a space, wrap whole [[p1]]=name=value into quotes.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "smb.conf(5)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--option"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0055",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]=logdirectory",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-l"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--log-basename"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0056",
+      "kind": "paragraph",
+      "text": "Base directory name for log/debug files. The extension [[p0]] will be appended (e.g. log.smbclient, log.smbd, etc...). The log file is never removed by the client.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "\".progname\""
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0057",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--leak-report"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0058",
+      "kind": "paragraph",
+      "text": "Enable talloc leak reporting on exit.",
+      "protected": []
+    },
+    {
+      "id": "s0059",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--leak-report-full"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0060",
+      "kind": "paragraph",
+      "text": "Enable full talloc leak reporting on exit.",
+      "protected": []
+    },
+    {
+      "id": "s0061",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-V"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--version"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0062",
+      "kind": "paragraph",
+      "text": "Prints the program version number.",
+      "protected": []
+    },
+    {
+      "id": "s0063",
+      "kind": "heading",
+      "text": "VERSION",
+      "protected": []
+    },
+    {
+      "id": "s0064",
+      "kind": "paragraph",
+      "text": "This man page is part of version 4.25.0 of the Samba suite.",
+      "protected": []
+    },
+    {
+      "id": "s0065",
+      "kind": "heading",
+      "text": "SEE ALSO",
+      "protected": []
+    },
+    {
+      "id": "s0066",
+      "kind": "paragraph",
+      "text": "[[p0]] and [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "smbd(8)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smbd.8.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "smb.conf(5)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0067",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0068",
+      "kind": "paragraph",
+      "text": "The original Samba software and related utilities were created by Andrew Tridgell. Samba is now developed by the Samba Team as an Open Source project similar to the way the Linux kernel is developed.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Name",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Synopsis",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "OPTIONS",
+      "segment": "s0008"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0009",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0010"
+            }
+          ]
+        },
+        {
+          "term": "s0011",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0012"
+            }
+          ]
+        },
+        {
+          "term": "s0013",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0014"
+            }
+          ]
+        },
+        {
+          "term": "s0015",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0016"
+            }
+          ]
+        },
+        {
+          "term": "s0017",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0018"
+            }
+          ]
+        },
+        {
+          "term": "s0019",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0020"
+            }
+          ]
+        },
+        {
+          "term": "s0021",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0022"
+            }
+          ]
+        },
+        {
+          "term": "s0023",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0024"
+            }
+          ]
+        },
+        {
+          "term": "s0025",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0026"
+            }
+          ]
+        },
+        {
+          "term": "s0027",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0028"
+            }
+          ]
+        },
+        {
+          "term": "s0029",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0030"
+            }
+          ]
+        },
+        {
+          "term": "s0031",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0032"
+            }
+          ]
+        },
+        {
+          "term": "s0033",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0034"
+            },
+            {
+              "type": "literal",
+              "text": "{\n  \"timestamp\": \"2022-04-15T18:25:15.364891+0200\",\n  \"version\": \"4.17.0pre1-GIT-a0f12b9c80b\",\n  \"smb_conf\": \"/opt/samba/etc/smb.conf\",\n  \"sessions\": {\n    \"3639217376\": {\n      \"session_id\": \"3639217376\",\n      \"server_id\": {\n        \"pid\": \"69650\",\n        \"task_id\": \"0\",\n        \"vnn\": \"4294967295\",\n        \"unique_id\": \"10756714984493602300\"\n      },\n      \"uid\": 1000,\n      \"gid\": 1000,\n      \"username\": \"johndoe\",\n      \"groupname\": \"johndoe\",\n      \"remote_machine\": \"127.0.0.1\",\n      \"hostname\": \"ipv4:127.0.0.1:59944\",\n      \"session_dialect\": \"SMB3_11\",\n      \"encryption\": {\n        \"cipher\": \"\",\n        \"degree\": \"none\"\n      },\n      \"signing\": {\n        \"cipher\": \"AES-128-GMAC\",\n        \"degree\": \"partial\"\n      }\n    }\n  },\n  \"tcons\": {\n    \"3813255619\": {\n      \"service\": \"sharename\",\n      \"server_id\": {\n        \"pid\": \"69650\",\n        \"task_id\": \"0\",\n        \"vnn\": \"4294967295\",\n        \"unique_id\": \"10756714984493602300\"\n      },\n      \"tcon_id\": \"3813255619\",\n      \"session_id\": \"3639217376\",\n      \"machine\": \"127.0.0.1\",\n      \"connected_at\": \"2022-04-15T17:30:37+0200\",\n      \"encryption\": {\n        \"cipher\": \"AES-128-GMAC\",\n        \"degree\": \"full\"\n      },\n      \"signing\": {\n        \"cipher\": \"\",\n        \"degree\": \"none\"\n      }\n    }\n  },\n  \"open_files\": {\n    \"/home/johndoe/testfolder/sample\": {\n      \"service_path\": \"/home/johndoe/testfolder\",\n      \"filename\": \"sample\",\n      \"fileid\": {\n        \"devid\": 59,\n        \"inode\": 11404245,\n        \"extid\": 0\n      },\n      \"num_pending_deletes\": 0,\n      \"opens\": {\n        \"56839/2\": {\n          \"server_id\": {\n            \"pid\": \"69650\",\n            \"task_id\": \"0\",\n            \"vnn\": \"4294967295\",\n            \"unique_id\": \"10756714984493602300\"\n          },\n          \"uid\": 1000,\n          \"share_file_id\": 2,\n          \"sharemode\": {\n            \"hex\": \"0x00000003\",\n            \"NONE\": false,\n            \"READ\": true,\n            \"WRITE\": true,\n            \"DELETE\": false,\n            \"text\": \"RW\"\n          },\n          \"access_mask\": {\n            \"hex\": \"0x00000003\",\n            \"READ_DATA\": true,\n            \"WRITE_DATA\": true,\n            \"APPEND_DATA\": false,\n            \"READ_EA\": false,\n            \"WRITE_EA\": false,\n            \"EXECUTE\": false,\n            \"READ_ATTRIBUTES\": false,\n            \"WRITE_ATTRIBUTES\": false,\n            \"DELETE_CHILD\": false,\n            \"DELETE\": false,\n            \"READ_CONTROL\": false,\n            \"WRITE_DAC\": false,\n            \"SYNCHRONIZE\": false,\n            \"ACCESS_SYSTEM_SECURITY\": false,\n            \"text\": \"RW\"\n          },\n          \"caching\": {\n            \"READ\": false,\n            \"WRITE\": false,\n            \"HANDLE\": false,\n            \"hex\": \"0x00000000\",\n            \"text\": \"\"\n          },\n          \"oplock\": {},\n          \"lease\": {},\n          \"opened_at\": \"2022-04-15T17:30:38+0200\"\n        }\n      }\n    }\n  }\n}"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0035"
+            },
+            {
+              "type": "literal",
+              "text": "          \"oplock\": {\n            \"EXCLUSIVE\": false,\n            \"BATCH\": false,\n            \"LEVEL_II\": true,\n            \"LEASE\": false,\n            \"text\": \"LEVEL_II\"\n          }"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0036"
+            },
+            {
+              "type": "literal",
+              "text": "          \"lease\": {\n            \"lease_key\": \"29316055-f55c-de10-c813-af7bf5a430bb\",\n            \"hex\": \"0x00000005\",\n            \"READ\": true,\n            \"WRITE\": true,\n            \"HANDLE\": false,\n            \"text\": \"RW\"\n          }"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0037"
+            },
+            {
+              "type": "literal",
+              "text": "  \"byte_range_locks\": {\n    \"/home/johndoe/testfolder/sample\": {\n      \"fileid\": {\n        \"devid\": 59,\n        \"inode\": 11404245,\n        \"extid\": 0\n      },\n      \"file_name\": \"sample\",\n      \"share_path\": \"/home/johndoe/testfolder\",\n      \"locks\": [\n        {\n          \"server_id\": {\n            \"pid\": \"69650\",\n            \"task_id\": \"0\",\n            \"vnn\": \"4294967295\",\n            \"unique_id\": \"10756714984493602300\"\n          },\n          \"type\": \"R\",\n          \"flavour\": \"Posix\",\n          \"start\": 0,\n          \"size\": 16\n        }\n      ]\n    }"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0038"
+            },
+            {
+              "type": "literal",
+              "text": "  \"notify\": {\n    \"77247\": {\n      \"server_id\": {\n        \"pid\": \"69650\",\n        \"task_id\": \"0\",\n        \"vnn\": \"4294967295\",\n        \"unique_id\": \"10756714984493602300\"\n      },\n      \"path\": \"/home/johndoe/testfolder/testdir\",\n      \"filter\": 4095,\n      \"subdir_filter\": 4095,\n      \"creation_time\": \"1970-01-01T01:00:14.326582+01:00\"\n    }\n  }"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0039"
+            },
+            {
+              "type": "literal",
+              "text": "{\n  \"timestamp\": \"2022-04-15T18:40:43.112216+0200\",\n  \"version\": \"4.17.0pre1-GIT-a0f12b9c80b\",\n  \"smb_conf\": \"/opt/samba/etc/smb.conf\",\n  \"SMBD loop\": {\n    \"connect\": {\n      \"count\": 2\n    },\n    \"disconnect\": {\n      \"count\": 1\n    },\n    ...\n  },\n  \"System Calls\": {\n    \"syscall_opendir\": {\n      \"count\": 0,\n      \"time\": 0\n    },\n    ...\n  },\n  \"ACL Calls\": {\n    \"get_nt_acl\": {\n      \"count\": 0,\n      \"time\": 0\n    },\n    ...\n  },\n  \"Stat Cache\": {\n    \"statcache_lookups\": {\n      \"count\": 2\n    },\n    ...\n  },\n  \"SMB Calls\": {\n    \"SMBmkdir\": {\n      \"count\": 0,\n      \"time\": 0\n    },\n    ...\n  },\n  \"Trans2 Calls\": {\n    \"Trans2_open\": {\n      \"count\": 0,\n      \"time\": 0\n    },\n    ...\n  },\n  \"NT Transact Calls\": {\n    \"NT_transact_create\": {\n      \"count\": 0,\n      \"time\": 0\n    },\n    ...\n  },\n  \"SMB2 Calls\": {\n    \"smb2_negprot\": {\n      \"count\": 2,\n      \"time\": 3060,\n      \"idle\": 0,\n      \"inbytes\": 452,\n      \"outbytes\": 568\n    },\n    ...\n  }\n}"
+            }
+          ]
+        },
+        {
+          "term": "s0040",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0041"
+            }
+          ]
+        },
+        {
+          "term": "s0042",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0043"
+            }
+          ]
+        },
+        {
+          "term": "s0044",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0045"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0046"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0047"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0048"
+            }
+          ]
+        },
+        {
+          "term": "s0049",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0050"
+            }
+          ]
+        },
+        {
+          "term": "s0051",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0052"
+            }
+          ]
+        },
+        {
+          "term": "s0053",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0054"
+            }
+          ]
+        },
+        {
+          "term": "s0055",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0056"
+            }
+          ]
+        },
+        {
+          "term": "s0057",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0058"
+            }
+          ]
+        },
+        {
+          "term": "s0059",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0060"
+            }
+          ]
+        },
+        {
+          "term": "s0061",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0062"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "VERSION",
+      "segment": "s0063"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0064"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "SEE-ALSO",
+      "segment": "s0065"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0066"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "AUTHOR",
+      "segment": "s0067"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0068"
+    }
+  ]
+}

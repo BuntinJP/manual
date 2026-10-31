@@ -1,0 +1,153 @@
+<!doctype html><html><head><meta charset="utf-8"><title>cifs.upcall</title></head><body><main>
+<section id="cifs-upcall">
+<h1>cifs.upcall</h1>
+<section id="userspace-upcall-helper-for-common-internet-file-system-cifs">
+<h2>Userspace upcall helper for Common Internet File System (CIFS)</h2>
+<dl class="field-list simple">
+<dt>Manual section<span class="colon">:</span></dt>
+<dd><p>8</p>
+</dd>
+</dl>
+<section id="synopsis">
+<h3>SYNOPSIS</h3>
+<blockquote>
+<dl class="simple">
+<dt>cifs.upcall [--trust-dns|-t] [--version|-v] [--legacy-uid|-l] [--debug|-d]</dt>
+<dd><p>[--krb5conf=/path/to/krb5.conf|-k /path/to/krb5.conf]
+[--keytab=/path/to/keytab|-K /path/to/keytab] [--expire|-e nsecs] {keyid}</p>
+</dd>
+</dl>
+</blockquote>
+</section>
+<section id="description">
+<h3>DESCRIPTION</h3>
+<p>This tool is part of the cifs-utils suite.</p>
+<p><span class="docutils literal">cifs.upcall</span> is a userspace helper program for the linux CIFS client
+filesystem. There are a number of activities that the kernel cannot
+easily do itself. This program is a callout program that does these
+things for the kernel and then returns the result.</p>
+<p><span class="docutils literal">cifs.upcall</span> is generally intended to be run when the kernel calls
+request-key(8) for a particular key type. While it can be run
+directly from the command-line, it's not generally intended to be run
+that way.</p>
+</section>
+<section id="options">
+<h3>OPTIONS</h3>
+<dl class="option-list">
+<dt><kbd><span class="option">-c</span></kbd></dt>
+<dd><p>This option is deprecated and is currently ignored.</p>
+</dd>
+</dl>
+<dl>
+<dt>--debug|-d</dt>
+<dd><p>Enable debug logs. By default no debug messages are logged, only errors.</p>
+</dd>
+<dt>--no-env-probe|-E</dt>
+<dd><p>Normally, <span class="docutils literal">cifs.upcall</span> will probe the environment variable space of
+the process that initiated the upcall in order to fetch the value of
+<span class="docutils literal">$KRB5CCNAME</span>. This can assist the program with finding credential
+caches in non-default locations. If this option is set, then the
+program won't do this and will rely on finding credcaches in the
+default locations specified in <em>krb5.conf</em>. Note that this is never
+performed when the uid is 0. The default credcache location is always
+used when the uid is 0, regardless of the environment variable setting
+in the process.</p>
+</dd>
+<dt>--krb5conf|-k=/path/to/krb5.conf</dt>
+<dd><p>This option allows administrators to set an alternate location for the
+<em>krb5.conf</em> file that <span class="docutils literal">cifs.upcall</span> will use.</p>
+</dd>
+<dt>--keytab=|-K=/path/to/keytab</dt>
+<dd><p>This option allows administrators to specify a keytab file to be
+used. When a user has no credential cache already established,
+<span class="docutils literal">cifs.upcall</span> will attempt to use this keytab to acquire them. The
+default is the system-wide keytab <em>/etc/krb5.keytab</em>.</p>
+</dd>
+<dt>--trust-dns|-t</dt>
+<dd><p>With krb5 upcalls, the name used as the host portion of the service
+principal defaults to the hostname portion of the UNC. This option
+allows the upcall program to reverse resolve the network address of
+the server in order to get the hostname.</p>
+<p>This is less secure than not trusting DNS. When using this option,
+it's possible that an attacker could get control of DNS and trick the
+client into mounting a different server altogether. It's preferable to
+instead add server principals to the KDC for every possible hostname,
+but this option exists for cases where that isn't possible. The
+default is to not trust reverse hostname lookups in this fashion.</p>
+</dd>
+<dt>--legacy-uid|-l</dt>
+<dd><p>Traditionally, the kernel has sent only a single uid= parameter to the
+upcall for the SPNEGO upcall that's used to determine what user's
+credential cache to use.  This parameter is affected by the uid=
+mount option, which also governs the ownership of files on the mount.</p>
+<p>Newer kernels send a creduid= option as well, which contains what uid
+it thinks actually owns the credentials that it's looking for. At
+mount time, this is generally set to the real uid of the user doing
+the mount. For multisession mounts, it's set to the fsuid of the mount
+user. Set this option if you want cifs.upcall to use the older uid=
+parameter instead of the creduid= parameter.</p>
+</dd>
+<dt>--expire|-e</dt>
+<dd><p>Override default timeout value (600 seconds) for <span class="docutils literal">dns_resolver</span> key.</p>
+</dd>
+<dt>--version|-v</dt>
+<dd><p>Print version number and exit.</p>
+</dd>
+</dl>
+</section>
+<section id="environment-variables">
+<h3>ENVIRONMENT VARIABLES</h3>
+<dl class="simple">
+<dt>GSS_USE_PROXY=&quot;yes&quot;</dt>
+<dd><p>Enable usage of gssproxy for credential retrieval. This includes keytab
+based client initiation as well as (Resource Based) Constrained Delegation.
+See gssproxy-mech(8).</p>
+</dd>
+</dl>
+</section>
+<section id="configuration-for-keyctl">
+<h3>CONFIGURATION FOR KEYCTL</h3>
+<p><span class="docutils literal">cifs.upcall</span> is designed to be called from the kernel via the
+request-key callout program. This requires that request-key be told
+where and how to call this program.  The current <span class="docutils literal">cifs.upcall</span>
+program handles two different key types:</p>
+<dl>
+<dt>cifs.spnego</dt>
+<dd><p>This keytype is for retrieving kerberos session keys</p>
+</dd>
+<dt>dns_resolver</dt>
+<dd><p>This key type is for resolving hostnames into IP addresses. Support
+for this key type may eventually be deprecated (see below).</p>
+<p>To make this program useful for CIFS, you'll need to set up entries
+for them in request-key.conf(5). Here's an example of an entry for
+each key type:</p>
+<pre class="literal-block">#OPERATION  TYPE           D C PROGRAM ARG1 ARG2...
+#=========  =============  = = ================================
+create      cifs.spnego    * * &#64;sbindir&#64;/cifs.upcall %k
+create      dns_resolver   * * &#64;sbindir&#64;/cifs.upcall %k</pre>
+<p>See request-key.conf(5) for more info on each field.</p>
+<p>The keyutils package has also started including a dns_resolver
+handling program as well that is preferred over the one in
+<span class="docutils literal">cifs.upcall</span>. If you are using a keyutils version equal to or
+greater than 1.5, you should use <span class="docutils literal">key.dns_resolver</span> to handle the
+<span class="docutils literal">dns_resolver</span> keytype instead of <span class="docutils literal">cifs.upcall</span>. See
+key.dns_resolver(8) for more info.</p>
+</dd>
+</dl>
+</section>
+<section id="see-also">
+<h3>SEE ALSO</h3>
+<p>request-key.conf(5), mount.cifs(8), key.dns_resolver(8)</p>
+</section>
+<section id="author">
+<h3>AUTHOR</h3>
+<p>Igor Mammedov wrote the cifs.upcall program.</p>
+<p>Jeff Layton authored this manpage.</p>
+<p>The maintainer of the Linux CIFS VFS is Paulo Alcantara.</p>
+<p>The Linux CIFS Mailing list is the preferred place to ask questions
+regarding these programs.</p>
+</section>
+</section>
+</section>
+</main>
+</body></html>

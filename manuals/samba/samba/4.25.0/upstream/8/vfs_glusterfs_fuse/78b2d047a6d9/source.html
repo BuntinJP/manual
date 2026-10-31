@@ -1,0 +1,44 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>vfs_glusterfs_fuse</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="vfs_glusterfs_fuse.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>vfs_glusterfs_fuse &#8212; 
+		Utilize features provided by GlusterFS
+	</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="literal">vfs objects = glusterfs_fuse</code></p></div></div><div class="refsect1"><a name="id1337"></a><h2>DESCRIPTION</h2><p>This VFS module is part of the
+	<a class="citerefentry" href="samba.8.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(8)</span></a> suite.</p><p>
+		GlusterFS
+		(<a class="ulink" href="http://www.gluster.org/" target="_top">http://www.gluster.org</a>)
+		is an Open Source clustered file system capable of scaling to
+		several peta-bytes.  With its FUSE based native client,
+		GlusterFS is available as a POSIX compliant file system and can
+		hence be shared by Samba without additional steps.
+	</p><p>
+		The <code class="literal">vfs_glusterfs_fuse</code> VFS module provides an enhanced way
+		to access a Gluster filesystem using a Gluster FUSE mount. It provides support
+		for the <code class="literal">get_real_filename</code> VFS call which enhances file access performance
+		by avoiding multiple expensive case folding lookup calls to detect the appropriate
+		case of an existing filename.
+	</p><p>
+		Furthermore, this module implements a substitute file-id
+		mechanism. The default file-id mechanism is not working
+		correctly for gluster fuse mount re-exports, so in order to
+		avoid data loss, users exporting gluster fuse mounts with
+		Samba should enable this module.
+	</p><p>
+		This module can be combined with other modules, but it
+		should be the last module in the <code class="literal">vfs objects</code>
+		list. Modules added to this list to the right of the glusterfs
+		entry may not have any effect at all.
+	</p></div><div class="refsect1"><a name="id1338"></a><h2>CONFIGURATION</h2><p>
+		A basic configuration looks like this.
+	</p><pre class="programlisting">
+		<em class="parameter"><code>[share]</code></em>
+		<a class="link" href="smb.conf.5.html#VFSOBJECTS" target="_top">vfs objects = glusterfs_fuse</a>
+		<a class="link" href="smb.conf.5.html#PATH" target="_top">path = /absolute/path_of_fusemount</a>
+</pre><p>
+		Note that <code class="literal">vfs_glusterfs_fuse</code> requires a Gluster mount. For accessing glusterfs directly
+		over the GFAPI library please use the <code class="literal">vfs_glusterfs</code> module.
+	</p></div><div class="refsect1"><a name="id1339"></a><h2>OPTIONS</h2><p>
+		This module does currently have no further options.
+	</p></div><div class="refsect1"><a name="id1340"></a><h2>VERSION</h2><p>
+		This man page is part of version 4.25.0 of the Samba suite.
+	</p></div><div class="refsect1"><a name="id1341"></a><h2>AUTHOR</h2><p>The original Samba software and related utilities
+	were created by Andrew Tridgell. Samba is now developed
+	by the Samba Team as an Open Source project similar
+	to the way the Linux kernel is developed.</p></div></div></body></html>

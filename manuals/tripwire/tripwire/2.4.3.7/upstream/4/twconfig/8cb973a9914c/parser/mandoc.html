@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    table.head, table.foot { width: 100%; }
+    td.head-rtitle, td.foot-os { text-align: right; }
+    td.head-vol { text-align: center; }
+    .Nd, .Bf, .Op { display: inline; }
+    .Pa, .Ad { font-style: italic; }
+    .Ms { font-weight: bold; }
+    .Bl-diag > dt { font-weight: bold; }
+    code.Nm, .Fl, .Cm, .Ic, code.In, .Fd, .Fn, .Cd { font-weight: bold;
+      font-family: inherit; }
+  </style>
+  <title>TWCONFIG(4)</title>
+</head>
+<!-- This is an automatically generated file.  Do not edit.
+   Macros added by addw@phcomp.co.uk for those systems where the an
+   troff macro package doesn't know about .Ps & .Pe.
+   Note it is assumed that CW is a constant width font.
+   Ps - Start display text
+ -->
+<body>
+<div class="head" role="doc-pageheader" aria-label="Manual header
+  line"><span class="head-ltitle">TWCONFIG(4)</span>
+  <span class="head-vol">Device Drivers Manual</span>
+  <span class="head-rtitle">TWCONFIG(4)</span></div>
+<main class="manual-text">
+<section class="Sh">
+<h2 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h2>
+<p class="Pp">twconfig - <i>Tripwire</i> configuration file reference</p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h2>
+<p class="Pp">The configuration file stores system-specific information,
+    including the location of <i>Tripwire</i> data files, and the settings used
+    to send email notification. The configuration file settings are generated
+    during the installation process, but can be changed by the system
+    administrator at any time. The configuration file is signed with the site
+    key, and the site passphrase is required to edit the file.</p>
+<p class="Pp">During installation, a signed <i>Tripwire</i> configuration file
+    <i>tw.cfg</i> will be created in the <i>/etc/tripwire</i> directory, and a
+    plain text copy of this configuration file <i>twcfg.txt</i> will be created
+    in the same directory.</p>
+<p class="Pp">The configuration file is modified using the
+    <b>twadmin&#x00A0;&#x2010;&#x2010;create&#x2010;cfgfile</b> command. With
+    this command, the user can designate an existing plain text file as the
+    current configuration file. Using the current site key and passphrase, the
+    new configuration file is cryptographically signed and saved with this
+    command.</p>
+<section class="Ss">
+<h3 class="Ss" id="Components_of_the_Configuration_File"><a class="permalink" href="#Components_of_the_Configuration_File">Components
+  of the Configuration File</a></h3>
+<p class="Pp">The <i>Tripwire</i> configuration file is structured as a list of
+    keyword-value pairs, and may also contain comments and variable definitions.
+    Any lines with &quot;#&quot; in the first column are treated as
+  comments.</p>
+<p class="Pp">The general syntax for variable definition is:
+  <br/>
+  <br/>
+</p>
+<pre><i>keyword</i>  =  <i>value</i></pre>
+<br/>
+For example:
+<br/>
+<pre>ROOT = /usr/tripwire
+EDITOR = /usr/local/bin/jove</pre>
+<br/>
+<p class="Pp">Variable substitution on the right hand side is permitted using
+    the syntax:
+  <br/>
+  <br/>
+</p>
+<pre>$(<i>  varname  </i>)</pre>
+<br/>
+For example:
+<br/>
+<pre>DBFILE = $(ROOT)/db/$(HOSTNAME).twd</pre>
+<br/>
+<p class="Pp">Variable names are case-sensitive, and may contain all
+    alphanumeric characters, underscores, the characters
+    &quot;+&#x2010;@:&quot;, and the period. Two variables are predefined in the
+    configuration file, and may not be changed. <span class="Li">HOSTNAME</span>
+    is the unqualified hostname that <i>Tripwire</i> is running on, and
+    <span class="Li">DATE</span> is a string representation of the date and
+    time.</p>
+</section>
+<section class="Ss">
+<h3 class="Ss" id="Required_Variables"><a class="permalink" href="#Required_Variables">Required
+  Variables</a></h3>
+<p class="Pp">The following variables must be set in order for <i>Tripwire</i>
+    to operate. The values listed below are assigned during installation.</p>
+<p class="Pp">
+  <br/>
+</p>
+<pre>
+<br/>
+POLFILE         Default = /etc/tripwire/tw.pol
+DBFILE          Default = /var/lib/tripwire/$(HOSTNAME).twd
+REPORTFILE      Default = /var/lib/tripwire/report/$(HOSTNAME)-$(DATE).twr
+SITEKEYFILE     Default = /etc/tripwire/site.key
+LOCALKEYFILE    Default = /etc/tripwire/$(HOSTNAME)-local.key</pre>
+<br/>
+<br/>
+</section>
+<section class="Ss">
+<h3 class="Ss" id="Other_Variables"><a class="permalink" href="#Other_Variables">Other
+  Variables</a></h3>
+<p class="Pp">The following variables are not required to run <i>Tripwire</i>,
+    but some of the program's functionality will be lost without them. The
+    values assigned during installation are listed.</p>
+<dl class="Bl-tag">
+  <dt id="EDITOR"><a class="permalink" href="#EDITOR"><span class="Li">EDITOR</span></a></dt>
+  <dd>Specifies an editor to be used in interactive modes. If <i>EDITOR</i> is
+      not defined, and no editor is specified on the command line, using
+      interactive modes will cause an error.
+    <br/>
+    Initial value: <i>/bin/vi</i></dd>
+  <dt id="TEMPDIRECTORY"><a class="permalink" href="#TEMPDIRECTORY"><span class="Li">TEMPDIRECTORY</span></a></dt>
+  <dd>This variable can be set to the location to which tripwire should write
+      its temporary files. By default it is /tmp, which due to the default
+      permissions can be very insecure. It is recommended that you use this
+      configuration variable to provide tripwire with a secure place to write
+      temporary files. The directory used should have its permissions set such
+      that only the owning process can read/write to it, i.e. &quot;chmod
+      700&quot;.
+    <br/>
+    Initial value: <i>/tmp</i></dd>
+  <dt id="GLOBALEMAIL"><a class="permalink" href="#GLOBALEMAIL"><span class="Li">GLOBALEMAIL</span></a></dt>
+  <dd>This variable is set to a list of email addresses separated by either a
+      comma &quot;,&quot;, or semi-colon &quot;;&quot;. If a report would have
+      normally been sent out, it will also be send to this list of recipients.
+    <br/>
+    Initial value: <i>none</i></dd>
+  <dt id="LATEPROMPTING"><a class="permalink" href="#LATEPROMPTING"><span class="Li">LATEPROMPTING</span></a></dt>
+  <dd>Prompt for passphrase as late as possible to minimize the amount of time
+      that the passphrase is stored in memory. If the value is <i>true</i>
+      (case-sensitive), then late prompting is turned on. With any other value,
+      or if the variable is removed from the configuration file, late prompting
+      is turned off.
+    <br/>
+    Initial value: <i>false</i></dd>
+  <dt id="LOOSEDIRECTORYCHECKING"><a class="permalink" href="#LOOSEDIRECTORYCHECKING"><span class="Li">LOOSEDIRECTORYCHECKING</span></a></dt>
+  <dd>When a file is added or removed from a directory, <i>Tripwire</i> reports
+      both the changes to the file itself, and the modification to the directory
+      (size, num links, etc.). This can create redundant entries in
+      <i>Tripwire</i> reports. With loose directory checking, Tripwire will not
+      check directories for any properties that would change when a file was
+      added or deleted. This includes: size, number of links, access time,
+      change time, modification time, number of blocks, growing file, and all
+      hashes.</dd>
+  <dt>&#x00A0;&#x00A0;&#x00A0;</dt>
+  <dd>If the value for this variable is <i>true</i> (case-sensitive), then loose
+      directory checking is turned on, and these properties will be ignored for
+      all directories. With any other value, or if the variable is removed from
+      the configuration file, loose directory checking is turned off. Turning
+      loose directory checking on is equivalent to appending the following
+      propertymask to the rules for all directory inodes:
+      <span class="Li">&#x2010;snacmblCMSH</span>
+    <br/>
+    Initial value: <i>false</i></dd>
+  <dt id="SYSLOGREPORTING"><a class="permalink" href="#SYSLOGREPORTING"><span class="Li">SYSLOGREPORTING</span></a></dt>
+  <dd>If this variable is set to <i>true</i>, messages are sent to the syslog
+      for four events: database initialization, integrity check completions,
+      database updates, and policy updates. The syslog messages are sent from
+      the &quot;user&quot; facility at the &quot;notice&quot; level. For more
+      information, see the <b>syslogd</b>(1) man page and the <i>syslog.conf</i>
+      file. The following illustrates the information logged in the syslog for
+      each of the four events:
+    <br/>
+    <pre>
+<br/>
+Jun 18 14:09:42 lighthouse tripwire[9444]: Database initialized:
+/var/lib/tripwire/test.twd
+Jun 18 14:10:57 lighthouse tripwire[9671]: Integrity Check Complete:
+TWReport lighthouse 20000618141057 V:2 S:90 A:1 R:0 C:1
+<br/>
+  
+Jun 18 14:11:19 lighthouse tripwire[9672]: Database Update Complete:
+/var/lib/tripwire/test.twd 
+Jun 18 14:18:26 lighthouse tripwire[9683]: Policy Update Complete:
+/var/lib/tripwire/test.twd 
+<br/>
+ </pre>
+    <br/>
+    <br/>
+    The letters in the Integrity Checking log correspond to # of violations,
+      maximum severity level, and # of files added, deleted, and changed,
+      respectively. With any value other than <i>true</i>, or if this variable
+      is removed from the configuration file, syslog reporting will be turned
+      off.
+    <br/>
+    Initial value: <i>true</i></dd>
+  <dt id="REPORTLEVEL"><a class="permalink" href="#REPORTLEVEL"><span class="Li">REPORTLEVEL</span></a></dt>
+  <dd>Specifies the default level of report produced by the <b>twprint</b>
+      <b>&#x2010;&#x2010;print&#x2010;report</b> mode. Valid values for this
+      option are 0 to 4. The report level specified by this option can be
+      overridden with the
+      (<b>&#x2010;t</b>&#x00A0;or&#x00A0;<b>&#x2010;&#x2010;report&#x2010;level</b>)
+      option on the command line. If this variable is not included in the
+      configuration file, the default report level is 3. Note that only reports
+      printed using the
+      <b>twprint&#x00A0;&#x2010;&#x2010;print&#x2010;report</b> mode are
+      affected by this parameter; reports displayed by other modes and other
+      commands are not affected.
+    <br/>
+    Initial value: <i>3</i></dd>
+  <dt id="DBPRINTLEVEL"><a class="permalink" href="#DBPRINTLEVEL"><span class="Li">DBPRINTLEVEL</span></a></dt>
+  <dd>Specifies the default level of report produced by the <b>twprint</b>
+      <b>&#x2010;&#x2010;print&#x2010;dbfile</b> mode. Valid values for this
+      option are 0 to 2. The output level specified by this option can be
+      overridden with the
+      (<b>&#x2010;t</b>&#x00A0;or&#x00A0;<b>&#x2010;&#x2010;output&#x2010;level</b>)
+      option on the command line. If this variable is not included in the
+      configuration file, the default output level is 2.
+    <br/>
+    Initial value: <i>2</i></dd>
+  <dt id="HASH_DIRECT_IO"><a class="permalink" href="#HASH_DIRECT_IO"><span class="Li">HASH_DIRECT_IO</span></a></dt>
+  <dd>Use direct i/o when hashing files. (Linux-only as of OST 2.4.3.2)
+    <br/>
+    Initial value: <i>false</i></dd>
+  <dt id="RESOLVE_IDS_TO_NAMES"><a class="permalink" href="#RESOLVE_IDS_TO_NAMES"><span class="Li">RESOLVE_IDS_TO_NAMES</span></a></dt>
+  <dd>Specifies whether to resolve uid/gid values to user &amp; group names.
+      Static binaries may segfault while calling getpwuid/getgrgid in certain
+      nsswitch.conf configurations, and setting this to false will bypass the
+      name resolution step and prevent the segfault.
+    <br/>
+    Initial value: <i>true</i></dd>
+</dl>
+</section>
+<section class="Ss">
+<h3 class="Ss" id="Email_Notification_Variables"><a class="permalink" href="#Email_Notification_Variables">Email
+  Notification Variables</a></h3>
+<dl class="Bl-tag">
+  <dt id="MAILMETHOD"><a class="permalink" href="#MAILMETHOD"><span class="Li">MAILMETHOD</span></a></dt>
+  <dd>Specifies the protocol to be used by <i>Tripwire</i> for email
+      notification. The only acceptable values for this field are
+      <span class="Li">SMTP</span> or <span class="Li">SENDMAIL</span>. Any
+      other value will produce an error message.
+    <br/>
+    Initial value: <i>SENDMAIL</i></dd>
+  <dt id="SMTPHOST"><a class="permalink" href="#SMTPHOST"><span class="Li">SMTPHOST</span></a></dt>
+  <dd>Specifies the domain name or IP address of the SMTP server used for email
+      notification. Ignored unless <span class="Li">MAILMETHOD</span> is set to
+      <span class="Li">SMTP</span>.
+    <br/>
+    Initial value: <i>mail.domain.com</i></dd>
+  <dt id="SMTPPORT"><a class="permalink" href="#SMTPPORT"><span class="Li">SMTPPORT</span></a></dt>
+  <dd>Specifies the port number used with SMTP. Ignored unless
+      <span class="Li">MAILMETHOD</span> is set to <span class="Li">SMTP</span>.
+    <br/>
+    Initial value: <i>25</i></dd>
+  <dt id="MAILPROGRAM"><a class="permalink" href="#MAILPROGRAM"><span class="Li">MAILPROGRAM</span></a></dt>
+  <dd>Specifies the program used for email reporting of rule violations if
+      <span class="Li">MAILMETHOD</span> is set to
+      <span class="Li">SENDMAIL</span>. The program must take an RFC822 style
+      mail header, and recipients will be listed in the &quot;To:&quot; field of
+      the mail header. Some mail programs interpret a line consisting of only a
+      single period character to mean end&#x2010;of&#x2010;input, and all text
+      after that is ignored. Since there is a small possibility that a
+      <i>Tripwire</i> report would contain such a line, the mail program
+      specified must be able to ignore lines that consist of a single period
+      (the <b>-oi</b> option to sendmail produces this behavior).
+    <br/>
+    Initial value: <i>/usr/lib/sendmail -oi -t</i></dd>
+  <dt id="EMAILREPORTLEVEL"><a class="permalink" href="#EMAILREPORTLEVEL"><span class="Li">EMAILREPORTLEVEL</span></a></dt>
+  <dd>Specifies the default level of report produced by the <b>tripwire</b>
+      <b>&#x2010;&#x2010;check</b> mode email report. Valid values for this
+      option are 0 to 4. The report level specified by this option can be
+      overridden with the
+      (<b>&#x2010;t</b>&#x00A0;or&#x00A0;<b>&#x2010;&#x2010;email&#x2010;report&#x2010;level</b>)
+      option on the command&#x2010;line. If this variable is not included in the
+      configuration file, the default report level is 3.
+    <br/>
+    Initial value: <i>3</i></dd>
+  <dt id="MAILNOVIOLATIONS"><a class="permalink" href="#MAILNOVIOLATIONS"><span class="Li">MAILNOVIOLATIONS</span></a></dt>
+  <dd>This option controls the way that <i>Tripwire</i> sends email notification
+      if no rule violations are found during an integrity check. If
+      <span class="Li">MAILNOVIOLATIONS</span> is set to <i>false</i> and no
+      violations are found, <i>Tripwire</i> will not send a report. With any
+      other value, or if the variable is removed from the configuration file,
+      <i>Tripwire</i> will send an email message stating that no violations were
+      found.</dd>
+  <dt>&#x00A0;&#x00A0;&#x00A0;</dt>
+  <dd>Mailing reports of no violations allows an administrator to distinguish
+      between unattended integrity checks that are failing to run and integrity
+      checks that are running but are not finding any violations. However,
+      mailing no violations reports will increase the amount of data that must
+      be processed.
+    <br/>
+    Initial value: <i>true</i></dd>
+  <dt id="MAILFROMADDRESS"><a class="permalink" href="#MAILFROMADDRESS"><span class="Li">MAILFROMADDRESS</span></a></dt>
+  <dd>Specifies the value of the &quot;From:&quot; field in email reports.
+    <br/>
+    Initial value: <i>tripwire@hostname</i>, where 'hostname' is the local
+      machine name.</dd>
+</dl>
+</section>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="VERSION_INFORMATION"><a class="permalink" href="#VERSION_INFORMATION">VERSION
+  INFORMATION</a></h2>
+<p class="Pp">This man page describes <i>Tripwire 2.4</i>.</p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="AUTHORS"><a class="permalink" href="#AUTHORS">AUTHORS</a></h2>
+<p class="Pp">Tripwire, Inc.</p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="COPYING_PERMISSIONS"><a class="permalink" href="#COPYING_PERMISSIONS">COPYING
+  PERMISSIONS</a></h2>
+<p class="Pp">Permission is granted to make and distribute verbatim copies of
+    this man page provided the copyright notice and this permission notice are
+    preserved on all copies.</p>
+<p class="Pp">Permission is granted to copy and distribute modified versions of
+    this man page under the conditions for verbatim copying, provided that the
+    entire resulting derived work is distributed under the terms of a permission
+    notice identical to this one.</p>
+<p class="Pp">Permission is granted to copy and distribute translations of this
+    man page into another language, under the above conditions for modified
+    versions, except that this permission notice may be stated in a translation
+    approved by Tripwire, Inc.</p>
+<p class="Pp">Copyright 2000-2018 Tripwire, Inc. Tripwire is a registered
+    trademark of Tripwire, Inc. in the United States and other countries. All
+    rights reserved.</p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h2>
+<p class="Pp"><b>twintro</b>(8), <b>tripwire</b>(8), <b>twadmin</b>(8),
+    <b>twprint</b>(8), <b>siggen</b>(8), <b>twpolicy</b>(4), <b>twfiles</b>(5),
+    <b>sendmail</b>(1), <b>vi</b>(1), <b>syslogd</b>(1)</p>
+</section>
+</main>
+<div class="foot" role="doc-pagefooter" aria-label="Manual footer
+  line"><span class="foot-left">Open Source Tripwire 2.4</span>
+  <span class="foot-date">04 Jan 2018</span>
+  <span class="foot-right">TWCONFIG(4)</span></div>
+</body>
+</html>

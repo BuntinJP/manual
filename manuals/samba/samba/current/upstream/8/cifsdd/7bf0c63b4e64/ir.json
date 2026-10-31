@@ -1,0 +1,393 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "7bf0c63b4e6451d099c006320d2c478f7c614ab64d2050aa4e852bb9e6702071",
+  "extraction": {
+    "selector": ".refentry",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "Name",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "cifsdd — convert and copy a file over SMB",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "Synopsis",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]] [OPERAND]...",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "cifsdd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "paragraph",
+      "text": "[[p0]] OPTION",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "cifsdd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0006",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "This tool is part of the [[p0]] suite.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "samba(7)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/samba.7.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "paragraph",
+      "text": "Copy a file, converting and formatting according to the operands.",
+      "protected": []
+    },
+    {
+      "id": "s0009",
+      "kind": "term",
+      "text": "bs=BYTES",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "read and write up to BYTES bytes at a time (default: 4096)",
+      "protected": []
+    },
+    {
+      "id": "s0011",
+      "kind": "term",
+      "text": "ibs=BYTES",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "paragraph",
+      "text": "read up to BYTES bytes at a time (default: 4096)",
+      "protected": []
+    },
+    {
+      "id": "s0013",
+      "kind": "term",
+      "text": "obs=BYTES",
+      "protected": []
+    },
+    {
+      "id": "s0014",
+      "kind": "paragraph",
+      "text": "write BYTES bytes at a time (default: 4096)",
+      "protected": []
+    },
+    {
+      "id": "s0015",
+      "kind": "term",
+      "text": "if=FILE",
+      "protected": []
+    },
+    {
+      "id": "s0016",
+      "kind": "paragraph",
+      "text": "read from FILE instead of stdin",
+      "protected": []
+    },
+    {
+      "id": "s0017",
+      "kind": "term",
+      "text": "of=FILE",
+      "protected": []
+    },
+    {
+      "id": "s0018",
+      "kind": "paragraph",
+      "text": "write to FILE instead of stdout",
+      "protected": []
+    },
+    {
+      "id": "s0019",
+      "kind": "term",
+      "text": "count=N",
+      "protected": []
+    },
+    {
+      "id": "s0020",
+      "kind": "paragraph",
+      "text": "copy only N input blocks",
+      "protected": []
+    },
+    {
+      "id": "s0021",
+      "kind": "term",
+      "text": "seek=N",
+      "protected": []
+    },
+    {
+      "id": "s0022",
+      "kind": "paragraph",
+      "text": "skip N obs-sized blocks at start of output",
+      "protected": []
+    },
+    {
+      "id": "s0023",
+      "kind": "term",
+      "text": "skip=N",
+      "protected": []
+    },
+    {
+      "id": "s0024",
+      "kind": "paragraph",
+      "text": "skip N ibs-sized blocks at start of input",
+      "protected": []
+    },
+    {
+      "id": "s0025",
+      "kind": "term",
+      "text": "direct",
+      "protected": []
+    },
+    {
+      "id": "s0026",
+      "kind": "paragraph",
+      "text": "use direct I/O for data",
+      "protected": []
+    },
+    {
+      "id": "s0027",
+      "kind": "term",
+      "text": "sync",
+      "protected": []
+    },
+    {
+      "id": "s0028",
+      "kind": "paragraph",
+      "text": "use synchronous writes",
+      "protected": []
+    },
+    {
+      "id": "s0029",
+      "kind": "term",
+      "text": "oplock",
+      "protected": []
+    },
+    {
+      "id": "s0030",
+      "kind": "paragraph",
+      "text": "take oplocks on the input and output files",
+      "protected": []
+    },
+    {
+      "id": "s0031",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0032",
+      "kind": "paragraph",
+      "text": "The original Samba software and related utilities were created by Andrew Tridgell. Samba is now developed by the Samba Team as an Open Source project similar to the way the Linux kernel is developed.",
+      "protected": []
+    },
+    {
+      "id": "s0033",
+      "kind": "paragraph",
+      "text": "The cifsdd manpage was written by Andreas Schneider.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Name",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Synopsis",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0005"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0008"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0009",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0010"
+            }
+          ]
+        },
+        {
+          "term": "s0011",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0012"
+            }
+          ]
+        },
+        {
+          "term": "s0013",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0014"
+            }
+          ]
+        },
+        {
+          "term": "s0015",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0016"
+            }
+          ]
+        },
+        {
+          "term": "s0017",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0018"
+            }
+          ]
+        },
+        {
+          "term": "s0019",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0020"
+            }
+          ]
+        },
+        {
+          "term": "s0021",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0022"
+            }
+          ]
+        },
+        {
+          "term": "s0023",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0024"
+            }
+          ]
+        },
+        {
+          "term": "s0025",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0026"
+            }
+          ]
+        },
+        {
+          "term": "s0027",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0028"
+            }
+          ]
+        },
+        {
+          "term": "s0029",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0030"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "AUTHOR",
+      "segment": "s0031"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0032"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0033"
+    }
+  ]
+}

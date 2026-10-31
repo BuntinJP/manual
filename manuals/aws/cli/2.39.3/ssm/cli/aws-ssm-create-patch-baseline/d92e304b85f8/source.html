@@ -1,0 +1,941 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Use the AWS CLI 2.39.3 to run the ssm create-patch-baseline command." name="description" />
+
+  
+    <title>create-patch-baseline &#8212; AWS CLI 2.39.3 Command Reference</title>
+  <link rel="stylesheet" type="text/css" href="../../_static/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../_static/override.css" />
+  <script src="/SdkStatic/sdk-priv.js" async="true"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/guzzle.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="create-resource-data-sync" href="create-resource-data-sync.html" />
+    <link rel="prev" title="create-ops-metadata" href="create-ops-metadata.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-responsive.min.css" />
+  
+   
+
+<link rel="alternate" type="text/markdown" href="create-patch-baseline.md" title="Markdown version" />
+  </head><body>
+  <div class="navbar navbar-fixed-top ">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="../../index.html">AWS CLI Command Reference</a>
+        <ul class="nav">
+<li><a class="nav-link" href="../../index.html">Home</a></li>
+<li><a class="nav-link" href="https://docs.aws.amazon.com/cli/latest/userguide/">User Guide</a></li>
+<li><a class="nav-link" href="https://forums.aws.amazon.com/forum.jspa?forumID=150">Forum</a></li>
+<li><a class="nav-link" href="https://github.com/aws/aws-cli">GitHub</a></li>
+        </ul>
+        <div class="pull-right" id="github-stars">
+          <iframe src="https://ghbtns.com/github-btn.html?user=aws&repo=aws-cli&type=watch&count=true&size=small"
+                  allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"  sandbox="allow-scripts"
+                  title="GitHub button showing the number of project stars."></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--REGION_DISCLAIMER_DO_NOT_REMOVE-->
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="create-resource-data-sync.html" title="create-resource-data-sync"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="create-ops-metadata.html" title="create-ops-metadata"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">AWS CLI 2.39.3 Command Reference</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >aws</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">ssm</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">create-patch-baseline</a></li> 
+      </ul>
+    </div>
+    <div class="container">
+        
+    <div class="top-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="create-ops-metadata.html" title="previous chapter (use the left arrow)">&larr; create-ops-metadata</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="create-resource-data-sync.html" title="next chapter (use the right arrow)">create-resource-data-sync &rarr;</a></li>
+      </ul>
+    </div>
+  
+        <div class="document clearer">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo left-bar-other">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/logo.png" alt="Amazon Web Services logo" height="63" />
+  </a>
+</p>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">create-patch-baseline</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
+<li><a class="reference internal" href="#options">Options</a></li>
+<li><a class="reference internal" href="#global-options">Global Options</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#output">Output</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+<div id="searchbox" style="display: none">
+    <h3>Quick search</h3>
+    <form class="form-search margin-top-1em" action="../../search.html" method="get">
+        <label for="searchbox">Search box</label>
+        <input id="searchbox" type="search" name="q" style="width: 105px" class="input-small search-query" autocomplete="off" />
+        <button type="submit" class="btn btn-small">Search</button>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script src="../../_static/searchbox.js"></script><div class="left-bar-other">
+  <h3>Feedback</h3>
+  <p class="feedback">Did you find this page useful? Do you have a suggestion to improve the documentation? <a href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=AWS%20Command%20Line%20Interface&hidden_guide_name=Reference&topic_url=https%3A%2F%2Fdocs.aws.amazon.com%2Fcli%2Flatest%2Freference/ssm/create-patch-baseline.html">Give us feedback</a>.
+    <br />
+    If you would like to suggest an improvement or fix for the AWS CLI, check out our <a href="https://github.com/aws/aws-cli/blob/v2/CONTRIBUTING.rst">contributing guide</a> on GitHub.</p>
+</div><div class="left-bar-other">
+  <h3>User Guide</h3>
+  <p>First time using the AWS CLI? See the
+  <a href="https://docs.aws.amazon.com/cli/latest/userguide/">User Guide</a> for
+  help getting started.</p>
+</div>
+        </div>
+      </div>
+            <div class="body">
+              
+  <p>[ <a class="reference internal" href="../index.html#cli-aws"><span class="std std-ref">aws</span></a> . <a class="reference internal" href="index.html#cli-aws-ssm"><span class="std std-ref">ssm</span></a> ]</p>
+<div class="section" id="create-patch-baseline">
+<span id="cli-aws-ssm-create-patch-baseline"></span><h1>create-patch-baseline<a class="headerlink" href="#create-patch-baseline" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
+<p>Creates a patch baseline.</p>
+<div class="admonition note">
+<h3 class='admonition-title'>Note</h3>For information about valid key-value pairs in <code class="docutils literal notranslate"><span class="pre">PatchFilters</span></code> for each supported operating system type, see  PatchFilter .</div>
+<p>See also: <a class="reference external" href="https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/CreatePatchBaseline">AWS API Documentation</a></p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">create</span><span class="o">-</span><span class="n">patch</span><span class="o">-</span><span class="n">baseline</span>
+<span class="p">[</span><span class="o">--</span><span class="n">operating</span><span class="o">-</span><span class="n">system</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="o">--</span><span class="n">name</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
+<span class="p">[</span><span class="o">--</span><span class="k">global</span><span class="o">-</span><span class="n">filters</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">approval</span><span class="o">-</span><span class="n">rules</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">approved</span><span class="o">-</span><span class="n">patches</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">approved</span><span class="o">-</span><span class="n">patches</span><span class="o">-</span><span class="n">compliance</span><span class="o">-</span><span class="n">level</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">approved</span><span class="o">-</span><span class="n">patches</span><span class="o">-</span><span class="n">enable</span><span class="o">-</span><span class="n">non</span><span class="o">-</span><span class="n">security</span> <span class="o">|</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">approved</span><span class="o">-</span><span class="n">patches</span><span class="o">-</span><span class="n">enable</span><span class="o">-</span><span class="n">non</span><span class="o">-</span><span class="n">security</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">rejected</span><span class="o">-</span><span class="n">patches</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">rejected</span><span class="o">-</span><span class="n">patches</span><span class="o">-</span><span class="n">action</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">description</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">sources</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">available</span><span class="o">-</span><span class="n">security</span><span class="o">-</span><span class="n">updates</span><span class="o">-</span><span class="n">compliance</span><span class="o">-</span><span class="n">status</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">client</span><span class="o">-</span><span class="n">token</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">tags</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="n">json</span> <span class="o">|</span> <span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="n">yaml</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">generate</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">skeleton</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">debug</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">verify</span><span class="o">-</span><span class="n">ssl</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">paginate</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">output</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">query</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">profile</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">region</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">version</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">color</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">sign</span><span class="o">-</span><span class="n">request</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">ca</span><span class="o">-</span><span class="n">bundle</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">read</span><span class="o">-</span><span class="n">timeout</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">connect</span><span class="o">-</span><span class="n">timeout</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">binary</span><span class="o">-</span><span class="nb">format</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">pager</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">auto</span><span class="o">-</span><span class="n">prompt</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">auto</span><span class="o">-</span><span class="n">prompt</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">error</span><span class="o">-</span><span class="nb">format</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">--operating-system</span></code> (string)</p>
+<blockquote>
+<div><p>Defines the operating system the patch baseline applies to. The default value is <code class="docutils literal notranslate"><span class="pre">WINDOWS</span></code> .</p>
+<p>Possible values:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">WINDOWS</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">AMAZON_LINUX</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">AMAZON_LINUX_2</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">AMAZON_LINUX_2022</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">UBUNTU</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">REDHAT_ENTERPRISE_LINUX</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">SUSE</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">CENTOS</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">ORACLE_LINUX</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">DEBIAN</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">MACOS</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">RASPBIAN</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">ROCKY_LINUX</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">ALMA_LINUX</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">AMAZON_LINUX_2023</span></code></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--name</span></code> (string) [required]</p>
+<blockquote>
+<div><p>The name of the patch baseline.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">3</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">128</span></code></li>
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^[a-zA-Z0-9_\-.]{3,128}$</span></code></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--global-filters</span></code> (structure)</p>
+<blockquote>
+<div><p>A set of global filters used to include patches in the baseline.</p>
+<div class="admonition warning">
+<h3 class='admonition-title'>Warning</h3>The <code class="docutils literal notranslate"><span class="pre">GlobalFilters</span></code> parameter can be configured only by using the CLI or an Amazon Web Services SDK. It can’t be configured from the Patch Manager console, and its value isn’t displayed in the console.</div>
+<p>PatchFilters -&gt; (list) [required]</p>
+<blockquote>
+<div><p>The set of patch filters that make up the group.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">4</span></code></li>
+</ul>
+<p>(structure)</p>
+<blockquote>
+<div><p>Defines which patches should be included in a patch baseline.</p>
+<p>A patch filter consists of a key and a set of values. The filter key is a patch property. For example, the available filter keys for <code class="docutils literal notranslate"><span class="pre">WINDOWS</span></code> are <code class="docutils literal notranslate"><span class="pre">PATCH_SET</span></code> , <code class="docutils literal notranslate"><span class="pre">PRODUCT</span></code> , <code class="docutils literal notranslate"><span class="pre">PRODUCT_FAMILY</span></code> , <code class="docutils literal notranslate"><span class="pre">CLASSIFICATION</span></code> , and <code class="docutils literal notranslate"><span class="pre">MSRC_SEVERITY</span></code> .</p>
+<p>The filter values define a matching criterion for the patch property indicated by the key. For example, if the filter key is <code class="docutils literal notranslate"><span class="pre">PRODUCT</span></code> and the filter values are <code class="docutils literal notranslate"><span class="pre">[&quot;Office</span> <span class="pre">2013&quot;,</span> <span class="pre">&quot;Office</span> <span class="pre">2016&quot;]</span></code> , then the filter accepts all patches where product name is either “Office 2013” or “Office 2016”. The filter values can be exact values for the patch property given as a key, or a wildcard (*), which matches all values.</p>
+<p>You can view lists of valid values for the patch properties by running the <code class="docutils literal notranslate"><span class="pre">DescribePatchProperties</span></code> command. For information about which patch properties can be used with each major operating system, see  DescribePatchProperties .</p>
+<p>Key -&gt; (string) [required]</p>
+<blockquote>
+<div><p>The key for the filter.</p>
+<p>Run the  DescribePatchProperties command to view lists of valid keys for each operating system type.</p>
+<p>Possible values:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">ARCH</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">ADVISORY_ID</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">BUGZILLA_ID</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">PATCH_SET</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">PRODUCT</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">PRODUCT_FAMILY</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">CLASSIFICATION</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">CVE_ID</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">EPOCH</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">MSRC_SEVERITY</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">NAME</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">PATCH_ID</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">SECTION</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">PRIORITY</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">REPOSITORY</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">RELEASE</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">SEVERITY</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">SECURITY</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">VERSION</span></code></li>
+</ul>
+</div></blockquote>
+<p>Values -&gt; (list) [required]</p>
+<blockquote>
+<div><p>The value for the filter key.</p>
+<p>Run the  DescribePatchProperties command to view lists of valid values for each key based on operating system type.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">20</span></code></li>
+</ul>
+<p>(string)</p>
+<blockquote>
+<div><p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">64</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>JSON Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;PatchFilters&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;Key&quot;</span><span class="p">:</span> <span class="s2">&quot;ARCH&quot;</span><span class="o">|</span><span class="s2">&quot;ADVISORY_ID&quot;</span><span class="o">|</span><span class="s2">&quot;BUGZILLA_ID&quot;</span><span class="o">|</span><span class="s2">&quot;PATCH_SET&quot;</span><span class="o">|</span><span class="s2">&quot;PRODUCT&quot;</span><span class="o">|</span><span class="s2">&quot;PRODUCT_FAMILY&quot;</span><span class="o">|</span><span class="s2">&quot;CLASSIFICATION&quot;</span><span class="o">|</span><span class="s2">&quot;CVE_ID&quot;</span><span class="o">|</span><span class="s2">&quot;EPOCH&quot;</span><span class="o">|</span><span class="s2">&quot;MSRC_SEVERITY&quot;</span><span class="o">|</span><span class="s2">&quot;NAME&quot;</span><span class="o">|</span><span class="s2">&quot;PATCH_ID&quot;</span><span class="o">|</span><span class="s2">&quot;SECTION&quot;</span><span class="o">|</span><span class="s2">&quot;PRIORITY&quot;</span><span class="o">|</span><span class="s2">&quot;REPOSITORY&quot;</span><span class="o">|</span><span class="s2">&quot;RELEASE&quot;</span><span class="o">|</span><span class="s2">&quot;SEVERITY&quot;</span><span class="o">|</span><span class="s2">&quot;SECURITY&quot;</span><span class="o">|</span><span class="s2">&quot;VERSION&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;Values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="o">...</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--approval-rules</span></code> (structure)</p>
+<blockquote>
+<div><p>A set of rules used to include patches in the baseline.</p>
+<p>PatchRules -&gt; (list) [required]</p>
+<blockquote>
+<div><p>The rules that make up the rule group.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">10</span></code></li>
+</ul>
+<p>(structure)</p>
+<blockquote>
+<div><p>Defines an approval rule for a patch baseline.</p>
+<p>PatchFilterGroup -&gt; (structure) [required]</p>
+<blockquote>
+<div><p>The patch filter group that defines the criteria for the rule.</p>
+<p>PatchFilters -&gt; (list) [required]</p>
+<blockquote>
+<div><p>The set of patch filters that make up the group.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">4</span></code></li>
+</ul>
+<p>(structure)</p>
+<blockquote>
+<div><p>Defines which patches should be included in a patch baseline.</p>
+<p>A patch filter consists of a key and a set of values. The filter key is a patch property. For example, the available filter keys for <code class="docutils literal notranslate"><span class="pre">WINDOWS</span></code> are <code class="docutils literal notranslate"><span class="pre">PATCH_SET</span></code> , <code class="docutils literal notranslate"><span class="pre">PRODUCT</span></code> , <code class="docutils literal notranslate"><span class="pre">PRODUCT_FAMILY</span></code> , <code class="docutils literal notranslate"><span class="pre">CLASSIFICATION</span></code> , and <code class="docutils literal notranslate"><span class="pre">MSRC_SEVERITY</span></code> .</p>
+<p>The filter values define a matching criterion for the patch property indicated by the key. For example, if the filter key is <code class="docutils literal notranslate"><span class="pre">PRODUCT</span></code> and the filter values are <code class="docutils literal notranslate"><span class="pre">[&quot;Office</span> <span class="pre">2013&quot;,</span> <span class="pre">&quot;Office</span> <span class="pre">2016&quot;]</span></code> , then the filter accepts all patches where product name is either “Office 2013” or “Office 2016”. The filter values can be exact values for the patch property given as a key, or a wildcard (*), which matches all values.</p>
+<p>You can view lists of valid values for the patch properties by running the <code class="docutils literal notranslate"><span class="pre">DescribePatchProperties</span></code> command. For information about which patch properties can be used with each major operating system, see  DescribePatchProperties .</p>
+<p>Key -&gt; (string) [required]</p>
+<blockquote>
+<div><p>The key for the filter.</p>
+<p>Run the  DescribePatchProperties command to view lists of valid keys for each operating system type.</p>
+<p>Possible values:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">ARCH</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">ADVISORY_ID</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">BUGZILLA_ID</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">PATCH_SET</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">PRODUCT</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">PRODUCT_FAMILY</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">CLASSIFICATION</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">CVE_ID</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">EPOCH</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">MSRC_SEVERITY</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">NAME</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">PATCH_ID</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">SECTION</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">PRIORITY</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">REPOSITORY</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">RELEASE</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">SEVERITY</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">SECURITY</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">VERSION</span></code></li>
+</ul>
+</div></blockquote>
+<p>Values -&gt; (list) [required]</p>
+<blockquote>
+<div><p>The value for the filter key.</p>
+<p>Run the  DescribePatchProperties command to view lists of valid values for each key based on operating system type.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">20</span></code></li>
+</ul>
+<p>(string)</p>
+<blockquote>
+<div><p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">64</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>ComplianceLevel -&gt; (string)</p>
+<blockquote>
+<div><p>A compliance severity level for all approved patches in a patch baseline.</p>
+<p>Possible values:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">CRITICAL</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">HIGH</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">MEDIUM</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">LOW</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">INFORMATIONAL</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">UNSPECIFIED</span></code></li>
+</ul>
+</div></blockquote>
+<p>ApproveAfterDays -&gt; (integer)</p>
+<blockquote>
+<div><p>The number of days after the release date of each patch matched by the rule that the patch is marked as approved in the patch baseline. For example, a value of <code class="docutils literal notranslate"><span class="pre">7</span></code> means that patches are approved seven days after they are released.</p>
+<p>Patch Manager evaluates patch release dates using Coordinated Universal Time (UTC). If a patch is released at <code class="docutils literal notranslate"><span class="pre">2025-11-09T18:00:00Z</span></code> and <code class="docutils literal notranslate"><span class="pre">ApproveAfterDays</span></code> is set to <code class="docutils literal notranslate"><span class="pre">7</span></code> , the patch will be approved after <code class="docutils literal notranslate"><span class="pre">2025-11-16T18:00:00Z</span></code> .</p>
+<p>This parameter is marked as <code class="docutils literal notranslate"><span class="pre">Required:</span> <span class="pre">No</span></code> , but your request must include a value for either <code class="docutils literal notranslate"><span class="pre">ApproveAfterDays</span></code> or <code class="docutils literal notranslate"><span class="pre">ApproveUntilDate</span></code> .</p>
+<p>Not supported for Debian Server or Ubuntu Server.</p>
+<div class="admonition warning">
+<h3 class='admonition-title'>Warning</h3>Use caution when setting this value for Windows Server patch baselines. Because patch updates that are replaced by later updates are removed, setting too broad a value for this parameter can result in crucial patches not being installed. For more information, see the <strong>Windows Server</strong> tab in the topic <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-selecting-patches.html">How security patches are selected</a> in the <em>Amazon Web Services Systems Manager User Guide</em> .</div>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">360</span></code></li>
+</ul>
+</div></blockquote>
+<p>ApproveUntilDate -&gt; (string)</p>
+<blockquote>
+<div><p>The cutoff date for auto approval of released patches. Any patches released on or before this date are installed automatically.</p>
+<p>Enter dates in the format <code class="docutils literal notranslate"><span class="pre">YYYY-MM-DD</span></code> . For example, <code class="docutils literal notranslate"><span class="pre">2025-11-16</span></code> .</p>
+<p>Patch Manager evaluates patch release dates using Coordinated Universal Time (UTC). If you enter the date <code class="docutils literal notranslate"><span class="pre">2025-11-16</span></code> , patches released between <code class="docutils literal notranslate"><span class="pre">2025-11-16T00:00:00Z</span></code> and <code class="docutils literal notranslate"><span class="pre">2025-11-16T23:59:59Z</span></code> will be included in the approval.</p>
+<p>This parameter is marked as <code class="docutils literal notranslate"><span class="pre">Required:</span> <span class="pre">No</span></code> , but your request must include a value for either <code class="docutils literal notranslate"><span class="pre">ApproveUntilDate</span></code> or <code class="docutils literal notranslate"><span class="pre">ApproveAfterDays</span></code> .</p>
+<p>Not supported for Debian Server or Ubuntu Server.</p>
+<div class="admonition warning">
+<h3 class='admonition-title'>Warning</h3>Use caution when setting this value for Windows Server patch baselines. Because patch updates that are replaced by later updates are removed, setting too broad a value for this parameter can result in crucial patches not being installed. For more information, see the <strong>Windows Server</strong> tab in the topic <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-selecting-patches.html">How security patches are selected</a> in the <em>Amazon Web Services Systems Manager User Guide</em> .</div>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">10</span></code></li>
+</ul>
+</div></blockquote>
+<p>EnableNonSecurity -&gt; (boolean)</p>
+<blockquote>
+<div>For managed nodes identified by the approval rule filters, enables a patch baseline to apply non-security updates available in the specified repository. The default value is <code class="docutils literal notranslate"><span class="pre">false</span></code> . Applies to Linux managed nodes only.</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>JSON Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;PatchRules&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;PatchFilterGroup&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;PatchFilters&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;Key&quot;</span><span class="p">:</span> <span class="s2">&quot;ARCH&quot;</span><span class="o">|</span><span class="s2">&quot;ADVISORY_ID&quot;</span><span class="o">|</span><span class="s2">&quot;BUGZILLA_ID&quot;</span><span class="o">|</span><span class="s2">&quot;PATCH_SET&quot;</span><span class="o">|</span><span class="s2">&quot;PRODUCT&quot;</span><span class="o">|</span><span class="s2">&quot;PRODUCT_FAMILY&quot;</span><span class="o">|</span><span class="s2">&quot;CLASSIFICATION&quot;</span><span class="o">|</span><span class="s2">&quot;CVE_ID&quot;</span><span class="o">|</span><span class="s2">&quot;EPOCH&quot;</span><span class="o">|</span><span class="s2">&quot;MSRC_SEVERITY&quot;</span><span class="o">|</span><span class="s2">&quot;NAME&quot;</span><span class="o">|</span><span class="s2">&quot;PATCH_ID&quot;</span><span class="o">|</span><span class="s2">&quot;SECTION&quot;</span><span class="o">|</span><span class="s2">&quot;PRIORITY&quot;</span><span class="o">|</span><span class="s2">&quot;REPOSITORY&quot;</span><span class="o">|</span><span class="s2">&quot;RELEASE&quot;</span><span class="o">|</span><span class="s2">&quot;SEVERITY&quot;</span><span class="o">|</span><span class="s2">&quot;SECURITY&quot;</span><span class="o">|</span><span class="s2">&quot;VERSION&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+          <span class="p">}</span>
+          <span class="o">...</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;ComplianceLevel&quot;</span><span class="p">:</span> <span class="s2">&quot;CRITICAL&quot;</span><span class="o">|</span><span class="s2">&quot;HIGH&quot;</span><span class="o">|</span><span class="s2">&quot;MEDIUM&quot;</span><span class="o">|</span><span class="s2">&quot;LOW&quot;</span><span class="o">|</span><span class="s2">&quot;INFORMATIONAL&quot;</span><span class="o">|</span><span class="s2">&quot;UNSPECIFIED&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;ApproveAfterDays&quot;</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span>
+      <span class="s2">&quot;ApproveUntilDate&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;EnableNonSecurity&quot;</span><span class="p">:</span> <span class="n">true</span><span class="o">|</span><span class="n">false</span>
+    <span class="p">}</span>
+    <span class="o">...</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--approved-patches</span></code> (list)</p>
+<blockquote>
+<div><p>A list of explicitly approved patches for the baseline.</p>
+<p>For information about accepted formats for lists of approved patches and rejected patches, see <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html">Package name formats for approved and rejected patch lists</a> in the <em>Amazon Web Services Systems Manager User Guide</em> .</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">50</span></code></li>
+</ul>
+<p>(string)</p>
+<blockquote>
+<div><p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">100</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;string&quot;</span> <span class="s2">&quot;string&quot;</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--approved-patches-compliance-level</span></code> (string)</p>
+<blockquote>
+<div><p>Defines the compliance level for approved patches. When an approved patch is reported as missing, this value describes the severity of the compliance violation. The default value is <code class="docutils literal notranslate"><span class="pre">UNSPECIFIED</span></code> .</p>
+<p>Possible values:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">CRITICAL</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">HIGH</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">MEDIUM</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">LOW</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">INFORMATIONAL</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">UNSPECIFIED</span></code></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--approved-patches-enable-non-security</span></code> | <code class="docutils literal notranslate"><span class="pre">--no-approved-patches-enable-non-security</span></code> (boolean)</p>
+<blockquote>
+<div>Indicates whether the list of approved patches includes non-security updates that should be applied to the managed nodes. The default value is <code class="docutils literal notranslate"><span class="pre">false</span></code> . Applies to Linux managed nodes only.</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--rejected-patches</span></code> (list)</p>
+<blockquote>
+<div><p>A list of explicitly rejected patches for the baseline.</p>
+<p>For information about accepted formats for lists of approved patches and rejected patches, see <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html">Package name formats for approved and rejected patch lists</a> in the <em>Amazon Web Services Systems Manager User Guide</em> .</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">50</span></code></li>
+</ul>
+<p>(string)</p>
+<blockquote>
+<div><p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">100</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;string&quot;</span> <span class="s2">&quot;string&quot;</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--rejected-patches-action</span></code> (string)</p>
+<blockquote>
+<div><p>The action for Patch Manager to take on patches included in the <code class="docutils literal notranslate"><span class="pre">RejectedPackages</span></code> list.</p>
+<blockquote>
+<div><blockquote>
+<div>ALLOW_AS_DEPENDENCY</div></blockquote>
+<p><strong>Linux and macOS</strong> : A package in the rejected patches list is installed only if it is a dependency of another package. It is considered compliant with the patch baseline, and its status is reported as <code class="docutils literal notranslate"><span class="pre">INSTALLED_OTHER</span></code> . This is the default action if no option is specified.</p>
+<p><strong>Windows Server</strong> : Windows Server doesn’t support the concept of package dependencies. If a package in the rejected patches list and already installed on the node, its status is reported as <code class="docutils literal notranslate"><span class="pre">INSTALLED_OTHER</span></code> . Any package not already installed on the node is skipped. This is the default action if no option is specified.</p>
+<blockquote>
+<div>BLOCK</div></blockquote>
+<p><strong>All OSs</strong> : Packages in the rejected patches list, and packages that include them as dependencies, aren’t installed by Patch Manager under any circumstances.</p>
+</div></blockquote>
+<p>State value assignment for patch compliance:</p>
+<ul class="simple">
+<li>If a package was installed before it was added to the rejected patches list, or is installed outside of Patch Manager afterward, it’s considered noncompliant with the patch baseline and its status is reported as <code class="docutils literal notranslate"><span class="pre">INSTALLED_REJECTED</span></code> .</li>
+<li>If an update attempts to install a dependency package that is now rejected by the baseline, when previous versions of the package were not rejected, the package being updated is reported as <code class="docutils literal notranslate"><span class="pre">MISSING</span></code> for <code class="docutils literal notranslate"><span class="pre">SCAN</span></code> operations and as <code class="docutils literal notranslate"><span class="pre">FAILED</span></code> for <code class="docutils literal notranslate"><span class="pre">INSTALL</span></code> operations.</li>
+</ul>
+<p>Possible values:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">ALLOW_AS_DEPENDENCY</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">BLOCK</span></code></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--description</span></code> (string)</p>
+<blockquote>
+<div><p>A description of the patch baseline.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">1024</span></code></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--sources</span></code> (list)</p>
+<blockquote>
+<div><p>Information about the patches to use to update the managed nodes, including target operating systems and source repositories. Applies to Linux managed nodes only.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">20</span></code></li>
+</ul>
+<p>(structure)</p>
+<blockquote>
+<div><p>Information about the patches to use to update the managed nodes, including target operating systems and source repository. Applies to Linux managed nodes only.</p>
+<p>Name -&gt; (string) [required]</p>
+<blockquote>
+<div><p>The name specified to identify the patch source.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^[a-zA-Z0-9_\-.]{3,50}$</span></code></li>
+</ul>
+</div></blockquote>
+<p>Products -&gt; (list) [required]</p>
+<blockquote>
+<div><p>The specific operating system versions a patch repository applies to, such as “Ubuntu16.04”, “AmazonLinux2016.09”, “RedhatEnterpriseLinux7.2” or “Suse12.7”. For lists of supported product values, see  PatchFilter .</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">20</span></code></li>
+</ul>
+<p>(string)</p>
+<blockquote>
+<div><p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">128</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p>Configuration -&gt; (string) [required]</p>
+<blockquote>
+<div><p>The value of the repo configuration.</p>
+<blockquote>
+<div><p><strong>Example for yum repositories</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">[main]</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">name=MyCustomRepository</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">baseurl=https://my-custom-repository</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">enabled=1</span></code></p>
+</div></blockquote>
+<p>For information about other options available for your yum repository configuration, see <a class="reference external" href="https://man7.org/linux/man-pages/man5/dnf.conf.5.html">dnf.conf(5)</a> on the <em>man7.org</em> website.</p>
+<blockquote>
+<div><p><strong>Examples for Ubuntu Server and Debian Server</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">deb</span> <span class="pre">http://security.ubuntu.com/ubuntu</span> <span class="pre">jammy</span> <span class="pre">main</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">deb</span> <span class="pre">https://site.example.com/debian</span> <span class="pre">distribution</span> <span class="pre">component1</span> <span class="pre">component2</span> <span class="pre">component3</span></code></p>
+</div></blockquote>
+<p>Repo information for Ubuntu Server repositories must be specifed in a single line. For more examples and information, see <a class="reference external" href="https://manpages.ubuntu.com/manpages/jammy/man5/sources.list.5.html">jammy (5) sources.list.5.gz</a> on the <em>Ubuntu Server Manuals</em> website and <a class="reference external" href="https://wiki.debian.org/SourcesList#sources.list_format">sources.list format</a> on the <em>Debian Wiki</em> .</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">1024</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>Shorthand Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Name</span><span class="o">=</span><span class="n">string</span><span class="p">,</span><span class="n">Products</span><span class="o">=</span><span class="n">string</span><span class="p">,</span><span class="n">string</span><span class="p">,</span><span class="n">Configuration</span><span class="o">=</span><span class="n">string</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>JSON Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Products&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;Configuration&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+  <span class="p">}</span>
+  <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--available-security-updates-compliance-status</span></code> (string)</p>
+<blockquote>
+<div><p>Indicates the status you want to assign to security patches that are available but not approved because they don’t meet the installation criteria specified in the patch baseline.</p>
+<p>Example scenario: Security patches that you might want installed can be skipped if you have specified a long period to wait after a patch is released before installation. If an update to the patch is released during your specified waiting period, the waiting period for installing the patch starts over. If the waiting period is too long, multiple versions of the patch could be released but never installed.</p>
+<p>Supported for Windows Server managed nodes only.</p>
+<p>Possible values:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">COMPLIANT</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">NON_COMPLIANT</span></code></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--client-token</span></code> (string)</p>
+<blockquote>
+<div><p>User-provided idempotency token.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">64</span></code></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--tags</span></code> (list)</p>
+<blockquote>
+<div><p>Optional metadata that you assign to a resource. Tags enable you to categorize a resource in different ways, such as by purpose, owner, or environment. For example, you might want to tag a patch baseline to identify the severity level of patches it specifies and the operating system family it applies to. In this case, you could specify the following key-value pairs:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">Key=PatchSeverity,Value=Critical</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Key=OS,Value=Windows</span></code></li>
+</ul>
+<div class="admonition note">
+<h3 class='admonition-title'>Note</h3>To add tags to an existing patch baseline, use the  AddTagsToResource operation.</div>
+<p>Constraints:</p>
+<ul class="simple">
+<li>max: <code class="docutils literal notranslate"><span class="pre">1000</span></code></li>
+</ul>
+<p>(structure)</p>
+<blockquote>
+<div><p>Metadata that you assign to your Amazon Web Services resources. Tags enable you to categorize your resources in different ways, for example, by purpose, owner, or environment. In Amazon Web Services Systems Manager, you can apply tags to Systems Manager documents (SSM documents), managed nodes, maintenance windows, parameters, patch baselines, OpsItems, and OpsMetadata.</p>
+<p>Key -&gt; (string) [required]</p>
+<blockquote>
+<div><p>The name of the tag.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">128</span></code></li>
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^([\p{L}\p{Z}\p{N}_.:/=+\-&#64;]*)$</span></code></li>
+</ul>
+</div></blockquote>
+<p>Value -&gt; (string) [required]</p>
+<blockquote>
+<div><p>The value of the tag.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">256</span></code></li>
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^([\p{L}\p{Z}\p{N}_.:/=+\-&#64;]*)$</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>Shorthand Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Key</span><span class="o">=</span><span class="n">string</span><span class="p">,</span><span class="n">Value</span><span class="o">=</span><span class="n">string</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>JSON Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;Key&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Value&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+  <span class="p">}</span>
+  <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-input-json</span></code> | <code class="docutils literal notranslate"><span class="pre">--cli-input-yaml</span></code> (string)
+Reads arguments from the JSON string provided. The JSON string follows the format provided by <code class="docutils literal notranslate"><span class="pre">--generate-cli-skeleton</span></code>. If other arguments are provided on the command line, those values will override the JSON-provided values. It is not possible to pass arbitrary binary values using a JSON-provided value as the string will be taken literally. This may not be specified along with <code class="docutils literal notranslate"><span class="pre">--cli-input-yaml</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--generate-cli-skeleton</span></code> (string)
+Prints a JSON skeleton to standard output without sending an API request. If provided with no value or the value <code class="docutils literal notranslate"><span class="pre">input</span></code>, prints a sample input JSON that can be used as an argument for <code class="docutils literal notranslate"><span class="pre">--cli-input-json</span></code>. Similarly, if provided <code class="docutils literal notranslate"><span class="pre">yaml-input</span></code> it will print a sample input YAML that can be used with <code class="docutils literal notranslate"><span class="pre">--cli-input-yaml</span></code>. If provided with the value <code class="docutils literal notranslate"><span class="pre">output</span></code>, it validates the command inputs and returns a sample output JSON for that command. The generated JSON skeleton is not stable between versions of the AWS CLI and there are no backwards compatibility guarantees in the JSON skeleton generated.</p>
+</div>
+<div class="section" id="global-options">
+<h2>Global Options<a class="headerlink" href="#global-options" title="Permalink to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">--debug</span></code> (boolean)</p>
+<p>Turn on debug logging.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--endpoint-url</span></code> (string)</p>
+<p>Override command’s default URL with the given URL.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--no-verify-ssl</span></code> (boolean)</p>
+<p>By default, the AWS CLI uses SSL when communicating with AWS services. For each SSL connection, the AWS CLI will verify SSL certificates. This option overrides the default behavior of verifying SSL certificates.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--no-paginate</span></code> (boolean)</p>
+<p>Disable automatic pagination. If automatic pagination is disabled, the AWS CLI will only make one call, for the first page of results.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--output</span></code> (string)</p>
+<p>The formatting style for command output.</p>
+<ul class="simple">
+<li>json</li>
+<li>text</li>
+<li>table</li>
+<li>yaml</li>
+<li>yaml-stream</li>
+<li>off</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">--query</span></code> (string)</p>
+<p>A JMESPath query to use in filtering the response data.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--profile</span></code> (string)</p>
+<p>Use a specific profile from your credential file.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--region</span></code> (string)</p>
+<p>The region to use. Overrides config/env settings.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--version</span></code> (string)</p>
+<p>Display the version of this tool.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--color</span></code> (string)</p>
+<p>Turn on/off color output.</p>
+<ul class="simple">
+<li>on</li>
+<li>off</li>
+<li>auto</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">--no-sign-request</span></code> (boolean)</p>
+<p>Do not sign requests. Credentials will not be loaded if this argument is provided.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--ca-bundle</span></code> (string)</p>
+<p>The CA certificate bundle to use when verifying SSL certificates. Overrides config/env settings.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-read-timeout</span></code> (int)</p>
+<p>The maximum socket read time in seconds. If the value is set to 0, the socket read will be blocking and not timeout. The default value is 60 seconds.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-connect-timeout</span></code> (int)</p>
+<p>The maximum socket connect time in seconds. If the value is set to 0, the socket connect will be blocking and not timeout. The default value is 60 seconds.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-binary-format</span></code> (string)</p>
+<p>The formatting style to be used for binary blobs. The default format is base64. The base64 format expects binary blobs to be provided as a base64 encoded string. The raw-in-base64-out format preserves compatibility with AWS CLI V1 behavior and binary values must be passed literally. When providing contents from a file that map to a binary blob <code class="docutils literal notranslate"><span class="pre">fileb://</span></code> will always be treated as binary and use the file contents directly regardless of the <code class="docutils literal notranslate"><span class="pre">cli-binary-format</span></code> setting. When using <code class="docutils literal notranslate"><span class="pre">file://</span></code> the file contents will need to properly formatted for the configured <code class="docutils literal notranslate"><span class="pre">cli-binary-format</span></code>.</p>
+<ul class="simple">
+<li>base64</li>
+<li>raw-in-base64-out</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">--no-cli-pager</span></code> (boolean)</p>
+<p>Disable cli pager for output.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-auto-prompt</span></code> (boolean)</p>
+<p>Automatically prompt for CLI input parameters.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--no-cli-auto-prompt</span></code> (boolean)</p>
+<p>Disable automatically prompt for CLI input parameters.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-error-format</span></code> (string)</p>
+<p>The formatting style for error output. By default, errors are displayed in enhanced format.</p>
+<ul class="simple">
+<li>legacy</li>
+<li>json</li>
+<li>yaml</li>
+<li>text</li>
+<li>table</li>
+<li>enhanced</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<div class="admonition note">
+<h3 class='admonition-title'>Note</h3><p class="first">To use the following examples, you must have the AWS CLI installed and configured. See the <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html">Getting started guide</a> in the <em>AWS CLI User Guide</em> for more information.</p>
+<p class="last">Unless otherwise stated, all examples have unix-like quotation rules. These examples will need to be adapted to your terminal’s quoting rules. See <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-quoting-strings.html">Using quotation marks with strings</a> in the <em>AWS CLI User Guide</em> .</p>
+</div>
+<p><strong>Example 1: To create a patch baseline with auto-approval</strong></p>
+<p>The following <code class="docutils literal notranslate"><span class="pre">create-patch-baseline</span></code> example creates a patch baseline for Windows Server that approves patches for a production environment seven days after they are released by Microsoft.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aws</span> <span class="n">ssm</span> <span class="n">create</span><span class="o">-</span><span class="n">patch</span><span class="o">-</span><span class="n">baseline</span> \
+    <span class="o">--</span><span class="n">name</span> <span class="s2">&quot;Windows-Production-Baseline-AutoApproval&quot;</span> \
+    <span class="o">--</span><span class="n">operating</span><span class="o">-</span><span class="n">system</span> <span class="s2">&quot;WINDOWS&quot;</span> \
+    <span class="o">--</span><span class="n">approval</span><span class="o">-</span><span class="n">rules</span> <span class="s2">&quot;PatchRules=[{PatchFilterGroup={PatchFilters=[{Key=MSRC_SEVERITY,Values=[Critical,Important,Moderate]},{Key=CLASSIFICATION,Values=[SecurityUpdates,Updates,UpdateRollups,CriticalUpdates]}]},ApproveAfterDays=7}]&quot;</span> \
+    <span class="o">--</span><span class="n">description</span> <span class="s2">&quot;Baseline containing all updates approved for Windows Server production systems&quot;</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;BaselineId&quot;</span><span class="p">:</span> <span class="s2">&quot;pb-045f10b4f3EXAMPLE&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example 2: To create a patch baseline with an approval cutoff date</strong></p>
+<p>The following <code class="docutils literal notranslate"><span class="pre">create-patch-baseline</span></code> example creates a patch baseline for Windows Server that approves all patches for a production environment that are released on or before July 7, 2020.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aws</span> <span class="n">ssm</span> <span class="n">create</span><span class="o">-</span><span class="n">patch</span><span class="o">-</span><span class="n">baseline</span> \
+    <span class="o">--</span><span class="n">name</span> <span class="s2">&quot;Windows-Production-Baseline-AutoApproval&quot;</span> \
+    <span class="o">--</span><span class="n">operating</span><span class="o">-</span><span class="n">system</span> <span class="s2">&quot;WINDOWS&quot;</span> \
+    <span class="o">--</span><span class="n">approval</span><span class="o">-</span><span class="n">rules</span> <span class="s2">&quot;PatchRules=[{PatchFilterGroup={PatchFilters=[{Key=MSRC_SEVERITY,Values=[Critical,Important,Moderate]},{Key=CLASSIFICATION,Values=[SecurityUpdates,Updates,UpdateRollups,CriticalUpdates]}]},ApproveUntilDate=2020-07-07}]&quot;</span> \
+    <span class="o">--</span><span class="n">description</span> <span class="s2">&quot;Baseline containing all updates approved for Windows Server production systems&quot;</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;BaselineId&quot;</span><span class="p">:</span> <span class="s2">&quot;pb-045f10b4f3EXAMPLE&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example 3: To create a patch baseline with approval rules stored in a JSON file</strong></p>
+<p>The following <code class="docutils literal notranslate"><span class="pre">create-patch-baseline</span></code> example creates a patch baseline for Amazon Linux 2017.09 that approves patches for a production environment seven days after they are released, specifies approval rules for the patch baseline, and specifies a custom repository for patches.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aws</span> <span class="n">ssm</span> <span class="n">create</span><span class="o">-</span><span class="n">patch</span><span class="o">-</span><span class="n">baseline</span> \
+    <span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="n">json</span> <span class="n">file</span><span class="p">:</span><span class="o">//</span><span class="n">my</span><span class="o">-</span><span class="n">amazon</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">approval</span><span class="o">-</span><span class="n">rules</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">repo</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+<p>Contents of <code class="docutils literal notranslate"><span class="pre">my-amazon-linux-approval-rules-and-repo.json</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Amazon-Linux-2017.09-Production-Baseline&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;My approval rules patch baseline for Amazon Linux 2017.09 instances&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;OperatingSystem&quot;</span><span class="p">:</span> <span class="s2">&quot;AMAZON_LINUX&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Tags&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Key&quot;</span><span class="p">:</span> <span class="s2">&quot;Environment&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Value&quot;</span><span class="p">:</span> <span class="s2">&quot;Production&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;ApprovalRules&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;PatchRules&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;ApproveAfterDays&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+                <span class="s2">&quot;EnableNonSecurity&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                <span class="s2">&quot;PatchFilterGroup&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;PatchFilters&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;Key&quot;</span><span class="p">:</span> <span class="s2">&quot;SEVERITY&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Values&quot;</span><span class="p">:</span> <span class="p">[</span>
+                                <span class="s2">&quot;Important&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;Critical&quot;</span>
+                            <span class="p">]</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;Key&quot;</span><span class="p">:</span> <span class="s2">&quot;CLASSIFICATION&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Values&quot;</span><span class="p">:</span> <span class="p">[</span>
+                                <span class="s2">&quot;Security&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;Bugfix&quot;</span>
+                            <span class="p">]</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;Key&quot;</span><span class="p">:</span> <span class="s2">&quot;PRODUCT&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Values&quot;</span><span class="p">:</span> <span class="p">[</span>
+                                <span class="s2">&quot;AmazonLinux2017.09&quot;</span>
+                            <span class="p">]</span>
+                        <span class="p">}</span>
+                    <span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;Sources&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;My-AL2017.09&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Products&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;AmazonLinux2017.09&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;Configuration&quot;</span><span class="p">:</span> <span class="s2">&quot;[amzn-main] </span><span class="se">\n</span><span class="s2">name=amzn-main-Base</span><span class="se">\n</span><span class="s2">mirrorlist=http://repo./$awsregion./$awsdomain//$releasever/main/mirror.list //nmirrorlist_expire=300//nmetadata_expire=300 </span><span class="se">\n</span><span class="s2">priority=10 </span><span class="se">\n</span><span class="s2">failovermethod=priority </span><span class="se">\n</span><span class="s2">fastestmirror_enabled=0 </span><span class="se">\n</span><span class="s2">gpgcheck=1 </span><span class="se">\n</span><span class="s2">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-amazon-ga </span><span class="se">\n</span><span class="s2">enabled=1 </span><span class="se">\n</span><span class="s2">retries=3 </span><span class="se">\n</span><span class="s2">timeout=5</span><span class="se">\n</span><span class="s2">report_instanceid=yes&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;BaselineId&quot;</span><span class="p">:</span> <span class="s2">&quot;pb-045f10b4f3EXAMPLE&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example 4: To create a patch baseline that specifies approved and rejected patches</strong></p>
+<p>The following <code class="docutils literal notranslate"><span class="pre">create-patch-baseline</span></code> example explicitly specifies patches to approve and reject as exception to the default approval rules.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aws</span> <span class="n">ssm</span> <span class="n">create</span><span class="o">-</span><span class="n">patch</span><span class="o">-</span><span class="n">baseline</span> \
+    <span class="o">--</span><span class="n">name</span> <span class="s2">&quot;Amazon-Linux-2017.09-Alpha-Baseline&quot;</span> \
+    <span class="o">--</span><span class="n">description</span> <span class="s2">&quot;My custom approve/reject patch baseline for Amazon Linux 2017.09 instances&quot;</span> \
+    <span class="o">--</span><span class="n">operating</span><span class="o">-</span><span class="n">system</span> <span class="s2">&quot;AMAZON_LINUX&quot;</span> \
+    <span class="o">--</span><span class="n">approved</span><span class="o">-</span><span class="n">patches</span> <span class="s2">&quot;CVE-2018-1234567,example-pkg-EE-2018*.amzn1.noarch&quot;</span> \
+    <span class="o">--</span><span class="n">approved</span><span class="o">-</span><span class="n">patches</span><span class="o">-</span><span class="n">compliance</span><span class="o">-</span><span class="n">level</span> <span class="s2">&quot;HIGH&quot;</span> \
+    <span class="o">--</span><span class="n">approved</span><span class="o">-</span><span class="n">patches</span><span class="o">-</span><span class="n">enable</span><span class="o">-</span><span class="n">non</span><span class="o">-</span><span class="n">security</span> \
+    <span class="o">--</span><span class="n">tags</span> <span class="s2">&quot;Key=Environment,Value=Alpha&quot;</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;BaselineId&quot;</span><span class="p">:</span> <span class="s2">&quot;pb-045f10b4f3EXAMPLE&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For more information, see <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-patch-baseline-console.html">Create a Custom Patch Baseline</a> in the <em>AWS Systems Manager User Guide</em>.</p>
+</div>
+<div class="section" id="output">
+<h2>Output<a class="headerlink" href="#output" title="Permalink to this heading">¶</a></h2>
+<p>BaselineId -&gt; (string)</p>
+<blockquote>
+<div><p>The ID of the created patch baseline.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">20</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">128</span></code></li>
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^[a-zA-Z0-9_\-:/]{20,128}$</span></code></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+            </div>
+          <div class="clearfix"></div>
+        </div>
+        
+    <div class="footer-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="create-ops-metadata.html" title="previous chapter (use the left arrow)">&larr; create-ops-metadata</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="create-resource-data-sync.html" title="next chapter (use the right arrow)">create-resource-data-sync &rarr;</a></li>
+      </ul>
+    </div>
+  
+
+    </div>
+  <script type="text/javascript" src="https://media.amazonwebservices.com/js/sitecatalyst/s_code.min.js"></script>
+  <script type="text/javascript" src="../../_static/analytics.js"></script>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="create-resource-data-sync.html" title="create-resource-data-sync"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="create-ops-metadata.html" title="create-ops-metadata"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">AWS CLI 2.39.3 Command Reference</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >aws</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >ssm</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">create-patch-baseline</a></li> 
+      </ul>
+    </div>
+  <div class="footer container">
+    &copy; Copyright 2026, Amazon Web Services. Created using <a href="https://www.sphinx-doc.org/">Sphinx</a>.
+  </div>
+
+
+
+  
+    
+  
+  </body>
+</html>

@@ -1,0 +1,3280 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "f9a749cca66ba148b7a0b5cfa2154732531fbc7c319ba711659a9318bd1d98bf",
+  "extraction": {
+    "selector": "div.body",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "paragraph",
+      "text": "[ [[p0]] . [[p1]] ]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "aws",
+            "href": "https://docs.aws.amazon.com/cli/latest/reference/index.html#cli-aws"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "ssm",
+            "href": "https://docs.aws.amazon.com/cli/latest/reference/ssm/index.html#cli-aws-ssm"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0002",
+      "kind": "heading",
+      "text": "describe-maintenance-window-execution-task-invocations¶",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "Description¶",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "Retrieves the individual task executions (one per target) for a particular task run as part of a maintenance window execution.",
+      "protected": []
+    },
+    {
+      "id": "s0005",
+      "kind": "paragraph",
+      "text": "See also: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "AWS API Documentation",
+            "href": "https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeMaintenanceWindowExecutionTaskInvocations"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "[[p0]] is a paginated operation. Multiple API calls may be issued in order to retrieve the entire data set of results. You can disable pagination by providing the [[p1]] argument. When using [[p2]] and the [[p3]] argument on a paginated response, the [[p4]] argument must extract data from the results of the following query expressions: [[p5]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "describe-maintenance-window-execution-task-invocations"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-paginate"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--output text"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "--query"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "--query"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "WindowExecutionTaskInvocationIdentities"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "heading",
+      "text": "Synopsis¶",
+      "protected": []
+    },
+    {
+      "id": "s0008",
+      "kind": "heading",
+      "text": "Options¶",
+      "protected": []
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "[[p0]] (string) [required]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--window-execution-id"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "The ID of the maintenance window execution the task is part of.",
+      "protected": []
+    },
+    {
+      "id": "s0011",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "36"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "36"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0014",
+      "kind": "paragraph",
+      "text": "pattern: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "^[0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{12}$"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "[[p0]] (string) [required]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--task-id"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0016",
+      "kind": "paragraph",
+      "text": "The ID of the specific task in the maintenance window task that should be retrieved.",
+      "protected": []
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0018",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "36"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "36"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0020",
+      "kind": "paragraph",
+      "text": "pattern: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "^[0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{12}$"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0021",
+      "kind": "paragraph",
+      "text": "[[p0]] (list)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--filters"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0022",
+      "kind": "paragraph",
+      "text": "Optional filters used to scope down the returned task invocations. The supported filter key is [[p0]] with the corresponding values [[p1]] , [[p2]] , [[p3]] , [[p4]] , [[p5]] , [[p6]] , and [[p7]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "STATUS"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "PENDING"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "IN_PROGRESS"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "SUCCESS"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "FAILED"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "TIMED_OUT"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "CANCELLING"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "code",
+            "text": "CANCELLED"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0023",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0024",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "0"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0025",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "5"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0026",
+      "kind": "paragraph",
+      "text": "(structure)",
+      "protected": []
+    },
+    {
+      "id": "s0027",
+      "kind": "paragraph",
+      "text": "Filter used in the request. Supported filter keys depend on the API operation that includes the filter. API operations that use [[p0]] include the following:",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "MaintenanceWindowFilter>"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0028",
+      "kind": "paragraph",
+      "text": "DescribeMaintenanceWindowExecutions",
+      "protected": []
+    },
+    {
+      "id": "s0029",
+      "kind": "paragraph",
+      "text": "DescribeMaintenanceWindowExecutionTaskInvocations",
+      "protected": []
+    },
+    {
+      "id": "s0030",
+      "kind": "paragraph",
+      "text": "DescribeMaintenanceWindowExecutionTasks",
+      "protected": []
+    },
+    {
+      "id": "s0031",
+      "kind": "paragraph",
+      "text": "DescribeMaintenanceWindows",
+      "protected": []
+    },
+    {
+      "id": "s0032",
+      "kind": "paragraph",
+      "text": "DescribeMaintenanceWindowTargets",
+      "protected": []
+    },
+    {
+      "id": "s0033",
+      "kind": "paragraph",
+      "text": "DescribeMaintenanceWindowTasks",
+      "protected": []
+    },
+    {
+      "id": "s0034",
+      "kind": "paragraph",
+      "text": "Key -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0035",
+      "kind": "paragraph",
+      "text": "The name of the filter.",
+      "protected": []
+    },
+    {
+      "id": "s0036",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0037",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0038",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "128"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0039",
+      "kind": "paragraph",
+      "text": "Values -> (list)",
+      "protected": []
+    },
+    {
+      "id": "s0040",
+      "kind": "paragraph",
+      "text": "The filter values.",
+      "protected": []
+    },
+    {
+      "id": "s0041",
+      "kind": "paragraph",
+      "text": "(string)",
+      "protected": []
+    },
+    {
+      "id": "s0042",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0043",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0044",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "256"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0045",
+      "kind": "paragraph",
+      "text": "Shorthand Syntax:",
+      "protected": []
+    },
+    {
+      "id": "s0046",
+      "kind": "paragraph",
+      "text": "JSON Syntax:",
+      "protected": []
+    },
+    {
+      "id": "s0047",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--starting-token"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0048",
+      "kind": "paragraph",
+      "text": "A token to specify where to start paginating. This is the [[p0]] from a previously truncated response.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "NextToken"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0049",
+      "kind": "paragraph",
+      "text": "For usage examples, see [[p0]] in the [[p1]]AWS Command Line Interface User Guide[[p2]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Pagination",
+            "href": "https://docs.aws.amazon.com/cli/latest/userguide/pagination.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0050",
+      "kind": "paragraph",
+      "text": "[[p0]] (integer)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--page-size"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0051",
+      "kind": "paragraph",
+      "text": "The size of each page to get in the AWS service call. This does not affect the number of items returned in the command’s output. Setting a smaller page size results in more calls to the AWS service, retrieving fewer items in each call. This can help prevent the AWS service calls from timing out.",
+      "protected": []
+    },
+    {
+      "id": "s0052",
+      "kind": "paragraph",
+      "text": "For usage examples, see [[p0]] in the [[p1]]AWS Command Line Interface User Guide[[p2]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Pagination",
+            "href": "https://docs.aws.amazon.com/cli/latest/userguide/pagination.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0053",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0054",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "10"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0055",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "100"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0056",
+      "kind": "paragraph",
+      "text": "[[p0]] (integer)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--max-items"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0057",
+      "kind": "paragraph",
+      "text": "The total number of items to return in the command’s output. If the total number of items available is more than the value specified, a [[p0]] is provided in the command’s output. To resume pagination, provide the [[p1]] value in the [[p2]] argument of a subsequent command. [[p3]]Do not[[p4]] use the [[p5]] response element directly outside of the AWS CLI.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "NextToken"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "NextToken"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "starting-token"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "NextToken"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0058",
+      "kind": "paragraph",
+      "text": "For usage examples, see [[p0]] in the [[p1]]AWS Command Line Interface User Guide[[p2]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Pagination",
+            "href": "https://docs.aws.amazon.com/cli/latest/userguide/pagination.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0059",
+      "kind": "paragraph",
+      "text": "[[p0]] | [[p1]] (string) Reads arguments from the JSON string provided. The JSON string follows the format provided by [[p2]]. If other arguments are provided on the command line, those values will override the JSON-provided values. It is not possible to pass arbitrary binary values using a JSON-provided value as the string will be taken literally. This may not be specified along with [[p3]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-input-json"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-input-yaml"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--generate-cli-skeleton"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-input-yaml"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0060",
+      "kind": "paragraph",
+      "text": "[[p0]] (string) Prints a JSON skeleton to standard output without sending an API request. If provided with no value or the value [[p1]], prints a sample input JSON that can be used as an argument for [[p2]]. Similarly, if provided [[p3]] it will print a sample input YAML that can be used with [[p4]]. If provided with the value [[p5]], it validates the command inputs and returns a sample output JSON for that command. The generated JSON skeleton is not stable between versions of the AWS CLI and there are no backwards compatibility guarantees in the JSON skeleton generated.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--generate-cli-skeleton"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "input"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-input-json"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "yaml-input"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-input-yaml"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "output"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0061",
+      "kind": "heading",
+      "text": "Global Options¶",
+      "protected": []
+    },
+    {
+      "id": "s0062",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debug"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0063",
+      "kind": "paragraph",
+      "text": "Turn on debug logging.",
+      "protected": []
+    },
+    {
+      "id": "s0064",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--endpoint-url"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0065",
+      "kind": "paragraph",
+      "text": "Override command’s default URL with the given URL.",
+      "protected": []
+    },
+    {
+      "id": "s0066",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-verify-ssl"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0067",
+      "kind": "paragraph",
+      "text": "By default, the AWS CLI uses SSL when communicating with AWS services. For each SSL connection, the AWS CLI will verify SSL certificates. This option overrides the default behavior of verifying SSL certificates.",
+      "protected": []
+    },
+    {
+      "id": "s0068",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-paginate"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0069",
+      "kind": "paragraph",
+      "text": "Disable automatic pagination. If automatic pagination is disabled, the AWS CLI will only make one call, for the first page of results.",
+      "protected": []
+    },
+    {
+      "id": "s0070",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--output"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0071",
+      "kind": "paragraph",
+      "text": "The formatting style for command output.",
+      "protected": []
+    },
+    {
+      "id": "s0072",
+      "kind": "paragraph",
+      "text": "json",
+      "protected": []
+    },
+    {
+      "id": "s0073",
+      "kind": "paragraph",
+      "text": "text",
+      "protected": []
+    },
+    {
+      "id": "s0074",
+      "kind": "paragraph",
+      "text": "table",
+      "protected": []
+    },
+    {
+      "id": "s0075",
+      "kind": "paragraph",
+      "text": "yaml",
+      "protected": []
+    },
+    {
+      "id": "s0076",
+      "kind": "paragraph",
+      "text": "yaml-stream",
+      "protected": []
+    },
+    {
+      "id": "s0077",
+      "kind": "paragraph",
+      "text": "off",
+      "protected": []
+    },
+    {
+      "id": "s0078",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--query"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0079",
+      "kind": "paragraph",
+      "text": "A JMESPath query to use in filtering the response data.",
+      "protected": []
+    },
+    {
+      "id": "s0080",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--profile"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0081",
+      "kind": "paragraph",
+      "text": "Use a specific profile from your credential file.",
+      "protected": []
+    },
+    {
+      "id": "s0082",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--region"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0083",
+      "kind": "paragraph",
+      "text": "The region to use. Overrides config/env settings.",
+      "protected": []
+    },
+    {
+      "id": "s0084",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--version"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0085",
+      "kind": "paragraph",
+      "text": "Display the version of this tool.",
+      "protected": []
+    },
+    {
+      "id": "s0086",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--color"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0087",
+      "kind": "paragraph",
+      "text": "Turn on/off color output.",
+      "protected": []
+    },
+    {
+      "id": "s0088",
+      "kind": "paragraph",
+      "text": "on",
+      "protected": []
+    },
+    {
+      "id": "s0089",
+      "kind": "paragraph",
+      "text": "off",
+      "protected": []
+    },
+    {
+      "id": "s0090",
+      "kind": "paragraph",
+      "text": "auto",
+      "protected": []
+    },
+    {
+      "id": "s0091",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-sign-request"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0092",
+      "kind": "paragraph",
+      "text": "Do not sign requests. Credentials will not be loaded if this argument is provided.",
+      "protected": []
+    },
+    {
+      "id": "s0093",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--ca-bundle"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0094",
+      "kind": "paragraph",
+      "text": "The CA certificate bundle to use when verifying SSL certificates. Overrides config/env settings.",
+      "protected": []
+    },
+    {
+      "id": "s0095",
+      "kind": "paragraph",
+      "text": "[[p0]] (int)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-read-timeout"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0096",
+      "kind": "paragraph",
+      "text": "The maximum socket read time in seconds. If the value is set to 0, the socket read will be blocking and not timeout. The default value is 60 seconds.",
+      "protected": []
+    },
+    {
+      "id": "s0097",
+      "kind": "paragraph",
+      "text": "[[p0]] (int)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-connect-timeout"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0098",
+      "kind": "paragraph",
+      "text": "The maximum socket connect time in seconds. If the value is set to 0, the socket connect will be blocking and not timeout. The default value is 60 seconds.",
+      "protected": []
+    },
+    {
+      "id": "s0099",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-binary-format"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0100",
+      "kind": "paragraph",
+      "text": "The formatting style to be used for binary blobs. The default format is base64. The base64 format expects binary blobs to be provided as a base64 encoded string. The raw-in-base64-out format preserves compatibility with AWS CLI V1 behavior and binary values must be passed literally. When providing contents from a file that map to a binary blob [[p0]] will always be treated as binary and use the file contents directly regardless of the [[p1]] setting. When using [[p2]] the file contents will need to properly formatted for the configured [[p3]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "fileb://"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "cli-binary-format"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "file://"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "cli-binary-format"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0101",
+      "kind": "paragraph",
+      "text": "base64",
+      "protected": []
+    },
+    {
+      "id": "s0102",
+      "kind": "paragraph",
+      "text": "raw-in-base64-out",
+      "protected": []
+    },
+    {
+      "id": "s0103",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-cli-pager"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0104",
+      "kind": "paragraph",
+      "text": "Disable cli pager for output.",
+      "protected": []
+    },
+    {
+      "id": "s0105",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-auto-prompt"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0106",
+      "kind": "paragraph",
+      "text": "Automatically prompt for CLI input parameters.",
+      "protected": []
+    },
+    {
+      "id": "s0107",
+      "kind": "paragraph",
+      "text": "[[p0]] (boolean)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-cli-auto-prompt"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0108",
+      "kind": "paragraph",
+      "text": "Disable automatically prompt for CLI input parameters.",
+      "protected": []
+    },
+    {
+      "id": "s0109",
+      "kind": "paragraph",
+      "text": "[[p0]] (string)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--cli-error-format"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0110",
+      "kind": "paragraph",
+      "text": "The formatting style for error output. By default, errors are displayed in enhanced format.",
+      "protected": []
+    },
+    {
+      "id": "s0111",
+      "kind": "paragraph",
+      "text": "legacy",
+      "protected": []
+    },
+    {
+      "id": "s0112",
+      "kind": "paragraph",
+      "text": "json",
+      "protected": []
+    },
+    {
+      "id": "s0113",
+      "kind": "paragraph",
+      "text": "yaml",
+      "protected": []
+    },
+    {
+      "id": "s0114",
+      "kind": "paragraph",
+      "text": "text",
+      "protected": []
+    },
+    {
+      "id": "s0115",
+      "kind": "paragraph",
+      "text": "table",
+      "protected": []
+    },
+    {
+      "id": "s0116",
+      "kind": "paragraph",
+      "text": "enhanced",
+      "protected": []
+    },
+    {
+      "id": "s0117",
+      "kind": "heading",
+      "text": "Examples¶",
+      "protected": []
+    },
+    {
+      "id": "s0118",
+      "kind": "heading",
+      "text": "Note",
+      "protected": []
+    },
+    {
+      "id": "s0119",
+      "kind": "paragraph",
+      "text": "To use the following examples, you must have the AWS CLI installed and configured. See the [[p0]] in the [[p1]]AWS CLI User Guide[[p2]] for more information.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Getting started guide",
+            "href": "https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0120",
+      "kind": "paragraph",
+      "text": "Unless otherwise stated, all examples have unix-like quotation rules. These examples will need to be adapted to your terminal’s quoting rules. See [[p0]] in the [[p1]]AWS CLI User Guide[[p2]] .",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Using quotation marks with strings",
+            "href": "https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-quoting-strings.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0121",
+      "kind": "paragraph",
+      "text": "[[p0]]To get the specific task invocations performed for a maintenance window task execution[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0122",
+      "kind": "paragraph",
+      "text": "The following [[p0]] example lists the invocations for the specified task executed as part of the specified maintenance window execution.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "describe-maintenance-window-execution-task-invocations"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0123",
+      "kind": "paragraph",
+      "text": "Output:",
+      "protected": []
+    },
+    {
+      "id": "s0124",
+      "kind": "paragraph",
+      "text": "For more information, see [[p0]] in the [[p1]]AWS Systems Manager User Guide[[p2]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "View Information About Tasks and Task Executions (AWS CLI)",
+            "href": "https://docs.aws.amazon.com/systems-manager/latest/userguide/mw-cli-tutorial-task-info.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0125",
+      "kind": "heading",
+      "text": "Output¶",
+      "protected": []
+    },
+    {
+      "id": "s0126",
+      "kind": "paragraph",
+      "text": "WindowExecutionTaskInvocationIdentities -> (list)",
+      "protected": []
+    },
+    {
+      "id": "s0127",
+      "kind": "paragraph",
+      "text": "Information about the task invocation results per invocation.",
+      "protected": []
+    },
+    {
+      "id": "s0128",
+      "kind": "paragraph",
+      "text": "(structure)",
+      "protected": []
+    },
+    {
+      "id": "s0129",
+      "kind": "paragraph",
+      "text": "Describes the information about a task invocation for a particular target as part of a task execution performed as part of a maintenance window execution.",
+      "protected": []
+    },
+    {
+      "id": "s0130",
+      "kind": "paragraph",
+      "text": "WindowExecutionId -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0131",
+      "kind": "paragraph",
+      "text": "The ID of the maintenance window execution that ran the task.",
+      "protected": []
+    },
+    {
+      "id": "s0132",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0133",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "36"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0134",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "36"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0135",
+      "kind": "paragraph",
+      "text": "pattern: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "^[0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{12}$"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0136",
+      "kind": "paragraph",
+      "text": "TaskExecutionId -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0137",
+      "kind": "paragraph",
+      "text": "The ID of the specific task execution in the maintenance window execution.",
+      "protected": []
+    },
+    {
+      "id": "s0138",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0139",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "36"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0140",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "36"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0141",
+      "kind": "paragraph",
+      "text": "pattern: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "^[0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{12}$"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0142",
+      "kind": "paragraph",
+      "text": "InvocationId -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0143",
+      "kind": "paragraph",
+      "text": "The ID of the task invocation.",
+      "protected": []
+    },
+    {
+      "id": "s0144",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0145",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "36"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0146",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "36"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0147",
+      "kind": "paragraph",
+      "text": "pattern: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "^[0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{12}$"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0148",
+      "kind": "paragraph",
+      "text": "ExecutionId -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0149",
+      "kind": "paragraph",
+      "text": "The ID of the action performed in the service that actually handled the task invocation. If the task type is [[p0]] , this value is the command ID.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "RUN_COMMAND"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0150",
+      "kind": "paragraph",
+      "text": "TaskType -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0151",
+      "kind": "paragraph",
+      "text": "The task type.",
+      "protected": []
+    },
+    {
+      "id": "s0152",
+      "kind": "paragraph",
+      "text": "Possible values:",
+      "protected": []
+    },
+    {
+      "id": "s0153",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "RUN_COMMAND"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0154",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "AUTOMATION"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0155",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "STEP_FUNCTIONS"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0156",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "LAMBDA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0157",
+      "kind": "paragraph",
+      "text": "Parameters -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0158",
+      "kind": "paragraph",
+      "text": "The parameters that were provided for the invocation when it was run.",
+      "protected": []
+    },
+    {
+      "id": "s0159",
+      "kind": "paragraph",
+      "text": "Status -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0160",
+      "kind": "paragraph",
+      "text": "The status of the task invocation.",
+      "protected": []
+    },
+    {
+      "id": "s0161",
+      "kind": "paragraph",
+      "text": "Possible values:",
+      "protected": []
+    },
+    {
+      "id": "s0162",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "PENDING"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0163",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "IN_PROGRESS"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0164",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "SUCCESS"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0165",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "FAILED"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0166",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "TIMED_OUT"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0167",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "CANCELLING"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0168",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "CANCELLED"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0169",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "SKIPPED_OVERLAPPING"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0170",
+      "kind": "paragraph",
+      "text": "StatusDetails -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0171",
+      "kind": "paragraph",
+      "text": "The details explaining the status of the task invocation. Not available for all status values.",
+      "protected": []
+    },
+    {
+      "id": "s0172",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0173",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "0"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0174",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "250"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0175",
+      "kind": "paragraph",
+      "text": "StartTime -> (timestamp)",
+      "protected": []
+    },
+    {
+      "id": "s0176",
+      "kind": "paragraph",
+      "text": "The time the invocation started.",
+      "protected": []
+    },
+    {
+      "id": "s0177",
+      "kind": "paragraph",
+      "text": "EndTime -> (timestamp)",
+      "protected": []
+    },
+    {
+      "id": "s0178",
+      "kind": "paragraph",
+      "text": "The time the invocation finished.",
+      "protected": []
+    },
+    {
+      "id": "s0179",
+      "kind": "paragraph",
+      "text": "OwnerInformation -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0180",
+      "kind": "paragraph",
+      "text": "User-provided value that was specified when the target was registered with the maintenance window. This was also included in any Amazon CloudWatch Events events raised during the task invocation.",
+      "protected": []
+    },
+    {
+      "id": "s0181",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0182",
+      "kind": "paragraph",
+      "text": "min: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0183",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "128"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0184",
+      "kind": "paragraph",
+      "text": "WindowTargetId -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0185",
+      "kind": "paragraph",
+      "text": "The ID of the target definition in this maintenance window the invocation was performed for.",
+      "protected": []
+    },
+    {
+      "id": "s0186",
+      "kind": "paragraph",
+      "text": "Constraints:",
+      "protected": []
+    },
+    {
+      "id": "s0187",
+      "kind": "paragraph",
+      "text": "max: [[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "36"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0188",
+      "kind": "paragraph",
+      "text": "NextToken -> (string)",
+      "protected": []
+    },
+    {
+      "id": "s0189",
+      "kind": "paragraph",
+      "text": "The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "segment": "s0001"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "describe-maintenance-window-execution-task-invocations",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Description",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Synopsis",
+      "segment": "s0007"
+    },
+    {
+      "type": "literal",
+      "text": "  describe-maintenance-window-execution-task-invocations\n--window-execution-id <value>\n--task-id <value>\n[--filters <value>]\n[--starting-token <value>]\n[--page-size <value>]\n[--max-items <value>]\n[--cli-input-json | --cli-input-yaml]\n[--generate-cli-skeleton <value>]\n[--debug]\n[--endpoint-url <value>]\n[--no-verify-ssl]\n[--no-paginate]\n[--output <value>]\n[--query <value>]\n[--profile <value>]\n[--region <value>]\n[--version <value>]\n[--color <value>]\n[--no-sign-request]\n[--ca-bundle <value>]\n[--cli-read-timeout <value>]\n[--cli-connect-timeout <value>]\n[--cli-binary-format <value>]\n[--no-cli-pager]\n[--cli-auto-prompt]\n[--no-cli-auto-prompt]\n[--cli-error-format <value>]"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Options",
+      "segment": "s0008"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0009"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0010"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0011"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0012"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0013"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0014"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0015"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0016"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0017"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0018"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0019"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0020"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0021"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0022"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0023"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0024"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0025"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0026"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0027"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0028"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0029"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0030"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0031"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0032"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0033"
+                  }
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0034"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0035"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0036"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0037"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0038"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0039"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0040"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0041"
+                },
+                {
+                  "type": "quote",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0042"
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "items": [
+                        [
+                          {
+                            "type": "paragraph",
+                            "segment": "s0043"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "paragraph",
+                            "segment": "s0044"
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0045"
+    },
+    {
+      "type": "literal",
+      "text": "Key=string,Values=string,string ..."
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0046"
+    },
+    {
+      "type": "literal",
+      "text": "[\n  {\n    \"Key\": \"string\",\n    \"Values\": [\"string\", ...]\n  }\n  ...\n]"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0047"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0048"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0049"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0050"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0051"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0052"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0053"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0054"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "segment": "s0055"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0056"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0057"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0058"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0059"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0060"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Global-Options",
+      "segment": "s0061"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0062"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0063"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0064"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0065"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0066"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0067"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0068"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0069"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0070"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0071"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0072"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0073"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0074"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0075"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0076"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0077"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0078"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0079"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0080"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0081"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0082"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0083"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0084"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0085"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0086"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0087"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0088"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0089"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0090"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0091"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0092"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0093"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0094"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0095"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0096"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0097"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0098"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0099"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0100"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0101"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0102"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0103"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0104"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0105"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0106"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0107"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0108"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0109"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0110"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0111"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0112"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0113"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0114"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0115"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0116"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Examples",
+      "segment": "s0117"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "Note",
+      "segment": "s0118"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0119"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0120"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0121"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0122"
+    },
+    {
+      "type": "literal",
+      "text": "aws ssm describe-maintenance-window-execution-task-invocations \\\n    --window-execution-id \"a1b2c3d4-5678-90ab-cdef-EXAMPLE11111\" \\\n    --task-id \"a1b2c3d4-5678-90ab-cdef-EXAMPLE22222\""
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0123"
+    },
+    {
+      "type": "literal",
+      "text": "{\n    \"WindowExecutionTaskInvocationIdentities\": [\n        {\n            \"Status\": \"SUCCESS\",\n            \"Parameters\": \"{\\\"documentName\\\":\\\"AWS-RunShellScript\\\",\\\"instanceIds\\\":[\\\"i-0000293ffd8c57862\\\"],\\\"parameters\\\":{\\\"commands\\\":[\\\"df\\\"]},\\\"maxConcurrency\\\":\\\"1\\\",\\\"maxErrors\\\":\\\"1\\\"}\",\n            \"InvocationId\": \"a1b2c3d4-5678-90ab-cdef-EXAMPLE33333\",\n            \"StartTime\": 1487692834.723,\n            \"EndTime\": 1487692834.871,\n            \"WindowExecutionId\": \"a1b2c3d4-5678-90ab-cdef-EXAMPLE11111\",\n            \"TaskExecutionId\": \"a1b2c3d4-5678-90ab-cdef-EXAMPLE22222\"\n        }\n    ]\n}"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0124"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Output",
+      "segment": "s0125"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0126"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0127"
+        },
+        {
+          "type": "paragraph",
+          "segment": "s0128"
+        },
+        {
+          "type": "quote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "segment": "s0129"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0130"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0131"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0132"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0133"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0134"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0135"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0136"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0137"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0138"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0139"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0140"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0141"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0142"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0143"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0144"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0145"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0146"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0147"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0148"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0149"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0150"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0151"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0152"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0153"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0154"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0155"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0156"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0157"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0158"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0159"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0160"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0161"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0162"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0163"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0164"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0165"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0166"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0167"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0168"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0169"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0170"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0171"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0172"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0173"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0174"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0175"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0176"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0177"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0178"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0179"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0180"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0181"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0182"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0183"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0184"
+            },
+            {
+              "type": "quote",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "segment": "s0185"
+                },
+                {
+                  "type": "paragraph",
+                  "segment": "s0186"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "segment": "s0187"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0188"
+    },
+    {
+      "type": "quote",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segment": "s0189"
+        }
+      ]
+    }
+  ]
+}

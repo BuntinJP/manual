@@ -1,0 +1,990 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "3e38bd38edb9aa26d650cf147c643b58af8f9665c80ead98b4815b0761a620de",
+  "extraction": {
+    "selector": ".refentry",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "Name",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "smbtar — shell script for backing up SMB/CIFS shares directly to UNIX tape drives",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "Synopsis",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]] [[[p1]]] [[[p2]]] [[[p3]]] [[[p4]]] {[[p5]] server} [[[p6]] password] [[[p7]] services] [[[p8]]] [[[p9]] filename] [[[p10]] blocksize] [[[p11]] directory] [[[p12]] loglevel] [[[p13]] user] [[[p14]] tape] {filenames}",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "smbtar"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-r"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "-i"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-a"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "-v"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "-s"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "-p"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "code",
+            "text": "-x"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "code",
+            "text": "-X"
+          }
+        },
+        {
+          "token": "[[p9]]",
+          "inline": {
+            "tag": "code",
+            "text": "-N"
+          }
+        },
+        {
+          "token": "[[p10]]",
+          "inline": {
+            "tag": "code",
+            "text": "-b"
+          }
+        },
+        {
+          "token": "[[p11]]",
+          "inline": {
+            "tag": "code",
+            "text": "-d"
+          }
+        },
+        {
+          "token": "[[p12]]",
+          "inline": {
+            "tag": "code",
+            "text": "-l"
+          }
+        },
+        {
+          "token": "[[p13]]",
+          "inline": {
+            "tag": "code",
+            "text": "-u"
+          }
+        },
+        {
+          "token": "[[p14]]",
+          "inline": {
+            "tag": "code",
+            "text": "-t"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "This tool is part of the [[p0]] suite.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "samba(7)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/samba.7.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "[[p0]] is a very small shell script on top of [[p1]] which dumps SMB shares directly to tape.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "smbtar"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "smbclient(1)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smbclient.1.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "heading",
+      "text": "OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0009",
+      "kind": "term",
+      "text": "[[p0]] server",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-s"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "The SMB/CIFS server that the share resides upon.",
+      "protected": []
+    },
+    {
+      "id": "s0011",
+      "kind": "term",
+      "text": "[[p0]] service",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-x"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0012",
+      "kind": "paragraph",
+      "text": "The share name on the server to connect to. The default is \"backup\".",
+      "protected": []
+    },
+    {
+      "id": "s0013",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-X"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0014",
+      "kind": "paragraph",
+      "text": "Exclude mode. Exclude filenames... from tar create or restore.",
+      "protected": []
+    },
+    {
+      "id": "s0015",
+      "kind": "term",
+      "text": "[[p0]] directory",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-d"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0016",
+      "kind": "paragraph",
+      "text": "Change to initial [[p0]][[p1]][[p2]] before restoring / backing up files.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "directory"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0017",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-v"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0018",
+      "kind": "paragraph",
+      "text": "Verbose mode.",
+      "protected": []
+    },
+    {
+      "id": "s0019",
+      "kind": "term",
+      "text": "[[p0]] password",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-p"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0020",
+      "kind": "paragraph",
+      "text": "The password to use to access a share. Default: none",
+      "protected": []
+    },
+    {
+      "id": "s0021",
+      "kind": "term",
+      "text": "[[p0]] user",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-u"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0022",
+      "kind": "paragraph",
+      "text": "The user id to connect as. Default: UNIX login name.",
+      "protected": []
+    },
+    {
+      "id": "s0023",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-a"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0024",
+      "kind": "paragraph",
+      "text": "Reset DOS archive bit mode to indicate file has been archived.",
+      "protected": []
+    },
+    {
+      "id": "s0025",
+      "kind": "term",
+      "text": "[[p0]] tape",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-t"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0026",
+      "kind": "paragraph",
+      "text": "Tape device. May be regular file or tape device. Default: [[p0]][[p1]][[p2]] environmental variable; if not set, a file called [[p3]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "$TAPE"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "tar.out"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0027",
+      "kind": "term",
+      "text": "[[p0]] blocksize",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-b"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0028",
+      "kind": "paragraph",
+      "text": "Blocking factor. Defaults to 20. See [[p0]] for a fuller explanation.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "tar(1)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0029",
+      "kind": "term",
+      "text": "[[p0]] filename",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-N"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0030",
+      "kind": "paragraph",
+      "text": "Backup only files newer than filename. Could be used (for example) on a log file to implement incremental backups.",
+      "protected": []
+    },
+    {
+      "id": "s0031",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-i"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0032",
+      "kind": "paragraph",
+      "text": "Incremental mode; tar files are only backed up if they have the archive bit set. The archive bit is reset after each file is read.",
+      "protected": []
+    },
+    {
+      "id": "s0033",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-r"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0034",
+      "kind": "paragraph",
+      "text": "Restore. Files are restored to the share from the tar file.",
+      "protected": []
+    },
+    {
+      "id": "s0035",
+      "kind": "term",
+      "text": "[[p0]] log level",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-l"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0036",
+      "kind": "paragraph",
+      "text": "Log (debug) level. Corresponds to the [[p0]][[p1]][[p2]] flag of [[p3]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-d"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "link",
+            "text": "smbclient(1)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smbclient.1.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0037",
+      "kind": "heading",
+      "text": "ENVIRONMENT VARIABLES",
+      "protected": []
+    },
+    {
+      "id": "s0038",
+      "kind": "paragraph",
+      "text": "The [[p0]][[p1]][[p2]] variable specifies the default tape device to write to. May be overridden with the [[p3]] option.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "$TAPE"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-t"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0039",
+      "kind": "heading",
+      "text": "BUGS",
+      "protected": []
+    },
+    {
+      "id": "s0040",
+      "kind": "paragraph",
+      "text": "The [[p0]] script has different options from ordinary tar and from smbclient's tar command.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "smbtar"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0041",
+      "kind": "heading",
+      "text": "CAVEATS",
+      "protected": []
+    },
+    {
+      "id": "s0042",
+      "kind": "paragraph",
+      "text": "Sites that are more careful about security may not like the way the script handles PC passwords. Backup and restore work on entire shares; should work on file lists. smbtar works best with GNU tar and may not work well with other versions.",
+      "protected": []
+    },
+    {
+      "id": "s0043",
+      "kind": "heading",
+      "text": "DIAGNOSTICS",
+      "protected": []
+    },
+    {
+      "id": "s0044",
+      "kind": "paragraph",
+      "text": "See the [[p0]]DIAGNOSTICS[[p1]] section for the [[p2]] command.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "link",
+            "text": "smbclient(1)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smbclient.1.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0045",
+      "kind": "heading",
+      "text": "VERSION",
+      "protected": []
+    },
+    {
+      "id": "s0046",
+      "kind": "paragraph",
+      "text": "This man page is part of version 4.25.0 of the Samba suite.",
+      "protected": []
+    },
+    {
+      "id": "s0047",
+      "kind": "heading",
+      "text": "SEE ALSO",
+      "protected": []
+    },
+    {
+      "id": "s0048",
+      "kind": "paragraph",
+      "text": "[[p0]], [[p1]], [[p2]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "smbd(8)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smbd.8.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "smbclient(1)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smbclient.1.html"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "link",
+            "text": "smb.conf(5)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0049",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0050",
+      "kind": "paragraph",
+      "text": "The original Samba software and related utilities were created by Andrew Tridgell. Samba is now developed by the Samba Team as an Open Source project similar to the way the Linux kernel is developed.",
+      "protected": []
+    },
+    {
+      "id": "s0051",
+      "kind": "paragraph",
+      "text": "Ricky Poulten wrote the tar extension and this man page. The [[p0]] script was heavily rewritten and improved by Martin Kraemer. Many thanks to everyone who suggested extensions, improvements, bug fixes, etc. The man page sources were converted to YODL format (another excellent piece of Open Source software, available at ftp://ftp.icce.rug.nl/pub/unix/) and updated for the Samba 2.0 release by Jeremy Allison. The conversion to DocBook for Samba 2.2 was done by Gerald Carter. The conversion to DocBook XML 4.2 for Samba 3.0 was done by Alexander Bokovoy.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "smbtar"
+          }
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Name",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Synopsis",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "OPTIONS",
+      "segment": "s0008"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0009",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0010"
+            }
+          ]
+        },
+        {
+          "term": "s0011",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0012"
+            }
+          ]
+        },
+        {
+          "term": "s0013",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0014"
+            }
+          ]
+        },
+        {
+          "term": "s0015",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0016"
+            }
+          ]
+        },
+        {
+          "term": "s0017",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0018"
+            }
+          ]
+        },
+        {
+          "term": "s0019",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0020"
+            }
+          ]
+        },
+        {
+          "term": "s0021",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0022"
+            }
+          ]
+        },
+        {
+          "term": "s0023",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0024"
+            }
+          ]
+        },
+        {
+          "term": "s0025",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0026"
+            }
+          ]
+        },
+        {
+          "term": "s0027",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0028"
+            }
+          ]
+        },
+        {
+          "term": "s0029",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0030"
+            }
+          ]
+        },
+        {
+          "term": "s0031",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0032"
+            }
+          ]
+        },
+        {
+          "term": "s0033",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0034"
+            }
+          ]
+        },
+        {
+          "term": "s0035",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0036"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "ENVIRONMENT-VARIABLES",
+      "segment": "s0037"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0038"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "BUGS",
+      "segment": "s0039"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0040"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "CAVEATS",
+      "segment": "s0041"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0042"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DIAGNOSTICS",
+      "segment": "s0043"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0044"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "VERSION",
+      "segment": "s0045"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0046"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "SEE-ALSO",
+      "segment": "s0047"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0048"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "AUTHOR",
+      "segment": "s0049"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0050"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0051"
+    }
+  ]
+}

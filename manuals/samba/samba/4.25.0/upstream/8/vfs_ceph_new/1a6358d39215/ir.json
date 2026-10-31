@@ -1,0 +1,868 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "1a6358d392150d537a6828dc7fc3ed5baf2ed0fe1b4cabaf0fd2051a090a777e",
+  "extraction": {
+    "selector": ".refentry",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "Name",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "vfs_ceph_new — Utilize features provided by libcephfs low-level APIs",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "Synopsis",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs objects = ceph_new"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "This VFS module is part of the [[p0]] suite.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "samba(8)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/samba.8.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "The [[p0]] VFS module exposes CephFS specific features for use by Samba.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs_ceph_new"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "paragraph",
+      "text": "Ceph is a distributed network file system designed to provide excellent performance, reliability, and scalability. This is a shared library allowing applications to access a Ceph distributed file system via a POSIX-like interface.",
+      "protected": []
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "This module can be combined with other modules, but it should be the last module in the [[p0]] list. Modules added to this list to the right of the ceph entry may not have any effect at all.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs objects"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "[[p0]] performs mapping between Windows and POSIX Access Control Lists (ACLs). To ensure correct processing and enforcement of POSIX ACLs, the following Ceph configuration parameters are automatically applied:",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs_ceph_new"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0011",
+      "kind": "paragraph",
+      "text": "[[p0]]NOTE[[p1]]: This is a second implementation of a ceph module which uses libcephfs low-level APIs (compared to the original [[p2]] module which uses path-based APIs). Using the low-level API allows more optimized and fine-grained access to the Ceph storage layer.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "link",
+            "text": "vfs_ceph(8)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/vfs_ceph.8.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0012",
+      "kind": "heading",
+      "text": "CONFIGURATION",
+      "protected": []
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "[[p0]] requires that the underlying share path is a Ceph filesystem.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs_ceph_new"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0014",
+      "kind": "paragraph",
+      "text": "Since [[p0]] does not require a filesystem mount, the share [[p1]] is treated differently: it is interpreted as an absolute path within the Ceph filesystem on the attached Ceph cluster. In a ctdb cluster environment where ctdb manages Samba, [[p2]] must be configured to disable local share path checks, otherwise ctdb will not reach a healthy state.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs_ceph_new"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "path"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "CTDB_SAMBA_SKIP_SHARE_CHECK=yes"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "Note that currently [[p0]] have to be disabled in a share running with the CephFS vfs module for file serving to work properly.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "kernel share modes"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0016",
+      "kind": "heading",
+      "text": "OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0017",
+      "kind": "term",
+      "text": "ceph_new:config_file = path",
+      "protected": []
+    },
+    {
+      "id": "s0018",
+      "kind": "paragraph",
+      "text": "Allows one to define a ceph configfile to use. Empty by default.",
+      "protected": []
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "Example: ceph_new:config_file = /etc/ceph/ceph.conf",
+      "protected": []
+    },
+    {
+      "id": "s0020",
+      "kind": "term",
+      "text": "ceph_new:user_id = name",
+      "protected": []
+    },
+    {
+      "id": "s0021",
+      "kind": "paragraph",
+      "text": "Allows one to explicitly set the client ID used for the CephFS mount handle. Empty by default (use the libcephfs client default).",
+      "protected": []
+    },
+    {
+      "id": "s0022",
+      "kind": "paragraph",
+      "text": "Example: ceph_new:user_id = samba",
+      "protected": []
+    },
+    {
+      "id": "s0023",
+      "kind": "term",
+      "text": "ceph_new:filesystem = fs_name",
+      "protected": []
+    },
+    {
+      "id": "s0024",
+      "kind": "paragraph",
+      "text": "Allows one to explicitly select the CephFS file system to use when the Ceph cluster supports more than one file system. Empty by default (use the default file system of the Ceph cluster).",
+      "protected": []
+    },
+    {
+      "id": "s0025",
+      "kind": "paragraph",
+      "text": "Example: ceph_new:filesystem = myfs2",
+      "protected": []
+    },
+    {
+      "id": "s0026",
+      "kind": "term",
+      "text": "ceph_new:proxy = [ yes | no | auto ]",
+      "protected": []
+    },
+    {
+      "id": "s0027",
+      "kind": "paragraph",
+      "text": "Allows one to indicate use of the libcephfs proxy library for optimized resource utilization, allowing more simultaneous client connections. Prerequisites include the presence of [[p0]]libcephfs_proxy.so.X[[p1]] shared library file under loadable locations for dynamic linker and an active(running) [[p2]]libcephfsd[[p3]] daemon.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0028",
+      "kind": "paragraph",
+      "text": "[[p0]] (default) - Do not use the proxy library but regular connection through [[p1]]libcephfs.so.X[[p2]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "no"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0029",
+      "kind": "paragraph",
+      "text": "[[p0]] - Always use the proxy library and fail the client connection request if prerequisites are unmet.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "yes"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0030",
+      "kind": "paragraph",
+      "text": "[[p0]] - Attempt to use the proxy library but fall back to the regular cephfs connection if prerequisites are unmet.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "auto"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0031",
+      "kind": "term",
+      "text": "ceph_new:fscrypt = [ disabled | none | keybridge ]",
+      "protected": []
+    },
+    {
+      "id": "s0032",
+      "kind": "paragraph",
+      "text": "Configures the CephFS client to enable FSCrypt-style encrypted (sub-)volume support. If enabled, encryption is applied automatically to empty shares and future connections to said share will require FSCrypt with the same key material.",
+      "protected": []
+    },
+    {
+      "id": "s0033",
+      "kind": "paragraph",
+      "text": "[[p0]] (default) - FSCrypt support is disabled.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "disabled"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0034",
+      "kind": "paragraph",
+      "text": "[[p0]] - An alias for [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "none"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "disabled"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0035",
+      "kind": "paragraph",
+      "text": "[[p0]] - Enable CephFS FSCrypt support using the keybridge RPC API for fetching key material. Setting this option requires that the options [[p1]], [[p2]], and [[p3]] be specified.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "keybridge"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "ceph_new:keybridge socket"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "ceph_new:keybridge scope"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "ceph_new:keybridge name"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0036",
+      "kind": "term",
+      "text": "ceph_new:keybridge socket = type:path",
+      "protected": []
+    },
+    {
+      "id": "s0037",
+      "kind": "paragraph",
+      "text": "Configures the CephFS FSCrypt support to communicate with a KeyBridge server listening to the provided socket. The KeyBridge server uses the varlink KeyBridge protocol to fetch key material from one or more key distribution services, such as KMIP for example.",
+      "protected": []
+    },
+    {
+      "id": "s0038",
+      "kind": "paragraph",
+      "text": "The only permitted type is [[p0]]. The path value is a path to a unix domain socket for a keybridge server. For example: unix:/run/keybridge/keybridge.sock",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "unix"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0039",
+      "kind": "paragraph",
+      "text": "If specified, this option requires the options [[p0]] and [[p1]] to be specified.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "ceph_new:keybridge scope"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "ceph_new:keybridge name"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0040",
+      "kind": "term",
+      "text": "ceph_new:keybridge scope = scope",
+      "protected": []
+    },
+    {
+      "id": "s0041",
+      "kind": "paragraph",
+      "text": "Set the scope value for KeyBridge API requests. The scope identifies a context for keys, typically mapping to a particular backend. The available scope values depend on the configuration of the KeyBridge server. For example: \"kmip.testing\".",
+      "protected": []
+    },
+    {
+      "id": "s0042",
+      "kind": "paragraph",
+      "text": "If specified, this option requires the options [[p0]] and [[p1]] to be specified.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "ceph_new:keybridge socket"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "ceph_new:keybridge name"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0043",
+      "kind": "term",
+      "text": "ceph_new:keybridge name = name",
+      "protected": []
+    },
+    {
+      "id": "s0044",
+      "kind": "paragraph",
+      "text": "Set the name value for KeyBridge API requests. The name or identifier for a key, within a scope, that the KeyBridge server will be use to \"unlock\" the encryption for this share. For example: \"volume1\".",
+      "protected": []
+    },
+    {
+      "id": "s0045",
+      "kind": "paragraph",
+      "text": "If specified, this option requires the options [[p0]] and [[p1]] to be specified.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "ceph_new:keybridge socket"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "ceph_new:keybridge scope"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0046",
+      "kind": "term",
+      "text": "ceph_new:keybridge kind = [ B64 | VALUE ]",
+      "protected": []
+    },
+    {
+      "id": "s0047",
+      "kind": "paragraph",
+      "text": "Set the kind of the data field for KeyBridge API requests. A KeyBridge server is capable of data exchange using either Base64 encoded strings (B64) or plain text (VALUE). Depending on the scope, a server may be able to fetch key material in one form or the other. Use this option to manually select the data kind.",
+      "protected": []
+    },
+    {
+      "id": "s0048",
+      "kind": "paragraph",
+      "text": "If unspecified, B64 will be used.",
+      "protected": []
+    },
+    {
+      "id": "s0049",
+      "kind": "heading",
+      "text": "VERSION",
+      "protected": []
+    },
+    {
+      "id": "s0050",
+      "kind": "paragraph",
+      "text": "This man page is part of version 4.25.0 of the Samba suite.",
+      "protected": []
+    },
+    {
+      "id": "s0051",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0052",
+      "kind": "paragraph",
+      "text": "The original Samba software and related utilities were created by Andrew Tridgell. Samba is now developed by the Samba Team as an Open Source project similar to the way the Linux kernel is developed.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Name",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Synopsis",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0008"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0009"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0010"
+    },
+    {
+      "type": "literal",
+      "text": "\t\tclient acl type = posix_acl\n\t\tfuse default permissions = false"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0011"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "CONFIGURATION",
+      "segment": "s0012"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0013"
+    },
+    {
+      "type": "literal",
+      "text": "\t\t[share]\n\t\tvfs objects = ceph_new\n\t\tpath = /non-mounted/cephfs/path\n\t\tkernel share modes = no"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0014"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0015"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "OPTIONS",
+      "segment": "s0016"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0017",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0018"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0019"
+            }
+          ]
+        },
+        {
+          "term": "s0020",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0021"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0022"
+            }
+          ]
+        },
+        {
+          "term": "s0023",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0024"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0025"
+            }
+          ]
+        },
+        {
+          "term": "s0026",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0027"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0028"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0029"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0030"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "term": "s0031",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0032"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0033"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0034"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0035"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "term": "s0036",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0037"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0038"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0039"
+            }
+          ]
+        },
+        {
+          "term": "s0040",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0041"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0042"
+            }
+          ]
+        },
+        {
+          "term": "s0043",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0044"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0045"
+            }
+          ]
+        },
+        {
+          "term": "s0046",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0047"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0048"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "VERSION",
+      "segment": "s0049"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0050"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "AUTHOR",
+      "segment": "s0051"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0052"
+    }
+  ]
+}

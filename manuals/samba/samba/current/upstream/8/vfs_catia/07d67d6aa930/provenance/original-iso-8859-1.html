@@ -1,0 +1,41 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>vfs_catia</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="vfs_catia.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>vfs_catia &#8212; translate illegal characters in Catia filenames</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="literal">vfs objects = catia</code></p></div></div><div class="refsect1"><a name="id1337"></a><h2>DESCRIPTION</h2><p>This VFS module is part of the
+	<a class="citerefentry" href="samba.7.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(7)</span></a> suite.</p><p>The Catia CAD package commonly creates filenames that
+	use characters that are illegal in CIFS filenames. The
+	<code class="literal">vfs_catia</code> VFS module implements a character
+	mapping so that these files can be shared with CIFS clients.
+	</p><p>This module is stackable.</p><p>The parameter "catia:mappings" specifies the mapping on a
+	per-character basis, see below.
+	</p></div><div class="refsect1"><a name="id1338"></a><h2>OPTIONS</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term">catia:mappings = SERVER_HEX_CHAR:CLIENT_HEX_CHAR
+		</span></dt><dd><p>SERVER_HEX_CHAR specifies a 0x prefixed hexedecimal
+		character code that, when included in a Samba server-side
+		filename, will be mapped to CLIENT_HEX_CHAR for the CIFS
+		client.</p><p>The same mapping occurs in the opposite direction.
+		Multiple character mappings are separated by a comma.</p></dd></dl></div></div><div class="refsect1"><a name="id1339"></a><h2>EXAMPLES</h2><p>Map server-side quotation-marks (") to client-side diaeresis
+	(¨) on filenames in the [CAD] share:</p><pre class="programlisting">
+        <em class="parameter"><code>[CAD]</code></em>
+	<a class="link" href="smb.conf.5.html#PATH" target="_top">path = /data/cad</a>
+	<a class="link" href="smb.conf.5.html#VFSOBJECTS" target="_top">vfs objects = catia</a>
+	<a class="link" href="smb.conf.5.html#CATIA:MAPPINGS" target="_top">catia:mappings = 0x22:0xa8</a>
+</pre><p>Perform comprehensive mapping of common Catia filename characters:</p><pre class="programlisting">
+        <em class="parameter"><code>[CAD]</code></em>
+	<a class="link" href="smb.conf.5.html#PATH" target="_top">path = /data/cad</a>
+	<a class="link" href="smb.conf.5.html#VFSOBJECTS" target="_top">vfs objects = catia</a>
+	<a class="link" href="smb.conf.5.html#CATIA:MAPPINGS" target="_top">catia:mappings = 0x22:0xa8,0x2a:0xa4,0x2f:0xf8,0x3a:0xf7,0x3c:0xab,0x3e:0xbb,0x3f:0xbf,0x5c:0xff,0x7c:0xa6</a>
+</pre><p>Server-side filename to be translated (Note that the path delimiter "/" is not used here):
+	</p><p>a\a:a*a?a"a&lt;a&gt;a|a</p><p>Resulting filename, as seen by the client:</p><p>aÿa÷a¤a¿a¨a«a»a¦a
+	</p></div><div class="refsect1"><a name="id1340"></a><h2>CAVEATS</h2><p>Character mapping must work in BOTH directions (server -&gt;
+	client and client -&gt; server) to get unique and existing file names!
+	</p><p>A NOT working example:</p><pre class="programlisting">
+        <em class="parameter"><code>[CAD]</code></em>
+	<a class="link" href="smb.conf.5.html#PATH" target="_top">path = /data/cad</a>
+	<a class="link" href="smb.conf.5.html#VFSOBJECTS" target="_top">vfs objects = catia</a>
+	<a class="link" href="smb.conf.5.html#CATIA:MAPPINGS" target="_top">catia:mappings = 0x3a:0x5f</a>
+</pre><p>Here the colon ":" is mapped to the underscore "_".</p><p>Assuming a server-side filename "a:should_work", which is
+	translated to "a_should_work" for the client.</p><p>BUT the reverse mapping from client "a_should_work" to server
+	will result in "a:should:work" - something like "file not found"
+	will be returned.
+	</p></div><div class="refsect1"><a name="id1341"></a><h2>VERSION</h2><p>This man page is part of Samba versions from 3.5.0 to 4.0.6.
+	</p></div><div class="refsect1"><a name="id1342"></a><h2>AUTHOR</h2><p>The original Samba software and related utilities
+	were created by Andrew Tridgell. Samba is now developed
+	by the Samba Team as an Open Source project similar
+	to the way the Linux kernel is developed.</p><p>New version written by Guenter Kukkukk kukks@samba.org</p></div></div></body></html>

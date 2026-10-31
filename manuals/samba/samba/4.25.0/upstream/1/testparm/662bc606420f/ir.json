@@ -1,0 +1,1114 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "662bc606420fdb7df15104cd03fd5ed3da1db1442c0f4452668f4ea99ea69e85",
+  "extraction": {
+    "selector": ".refentry",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "Name",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "testparm — check an smb.conf configuration file for internal correctness",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "Synopsis",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]] [[[p1]]|[[p2]]] [[[p3]]|[[p4]]] [-?|[[p5]]] [[[p6]]] [[[p7]]|[[p8]]=DEBUGLEVEL] [[[p9]]] {config filename} [hostname hostIP]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "testparm"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-s"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--suppress-prompt"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-v"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "--verbose"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "--help"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "--usage"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "code",
+            "text": "-d"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debuglevel"
+          }
+        },
+        {
+          "token": "[[p9]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debug-stdout"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "This tool is part of the [[p0]] suite.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "samba(7)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/samba.7.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "[[p0]] is a very simple test program to check an [[p1]] configuration file for internal correctness. If this program reports no problems, you can use the configuration file with confidence that [[p2]] will successfully load the configuration file.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "testparm"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "smbd(8)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smbd.8.html"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "smbd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "paragraph",
+      "text": "Note that this is [[p0]]NOT[[p1]] a guarantee that the services specified in the configuration file will be available or will operate as expected.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "If the optional host name and host IP address are specified on the command line, this test program will run through the service entries reporting whether the specified host has access to each service.",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "If [[p0]] finds an error in the [[p1]] file it returns an exit code of 1 to the calling program, else it returns an exit code of 0. This allows shell scripts to test the output from [[p2]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "testparm"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "smb.conf"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "testparm"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0011",
+      "kind": "heading",
+      "text": "OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-s"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--suppress-prompt"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "Without this option, [[p0]] will prompt for a carriage return after printing the service names and before dumping the service definitions.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "testparm"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0014",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-v"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--verbose"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "If this option is specified, testparm will also output all options that were not used in [[p0]] and are thus set to their defaults.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "smb.conf(5)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0016",
+      "kind": "term",
+      "text": "[[p0]] parametername",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--parameter-name"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "Dumps the named parameter. If no section-name is set the view is limited by default to the global section. It is also possible to dump a parametrical option. Therefore the option has to be separated by a colon from the parametername.",
+      "protected": []
+    },
+    {
+      "id": "s0018",
+      "kind": "term",
+      "text": "[[p0]] sectionname",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--section-name"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "Dumps the named section.",
+      "protected": []
+    },
+    {
+      "id": "s0020",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--show-all-parameters"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0021",
+      "kind": "paragraph",
+      "text": "Show the parameters, type, possible values.",
+      "protected": []
+    },
+    {
+      "id": "s0022",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-l"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--skip-logic-checks"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0023",
+      "kind": "paragraph",
+      "text": "Skip the global checks.",
+      "protected": []
+    },
+    {
+      "id": "s0024",
+      "kind": "term",
+      "text": "-?|[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--help"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0025",
+      "kind": "paragraph",
+      "text": "Print a summary of command line options.",
+      "protected": []
+    },
+    {
+      "id": "s0026",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--usage"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0027",
+      "kind": "paragraph",
+      "text": "Display brief usage message.",
+      "protected": []
+    },
+    {
+      "id": "s0028",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]=level",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-d"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debuglevel"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0029",
+      "kind": "paragraph",
+      "text": "[[p0]][[p1]][[p2]] is an integer from 0 to 10. The default value if this parameter is not specified is 1 for client applications.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "level"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0030",
+      "kind": "paragraph",
+      "text": "The higher this value, the more detail will be logged to the log files about the activities of the server. At level 0, only critical errors and serious warnings will be logged. Level 1 is a reasonable level for day-to-day running - it generates a small amount of information about operations carried out.",
+      "protected": []
+    },
+    {
+      "id": "s0031",
+      "kind": "paragraph",
+      "text": "Levels above 1 will generate considerable amounts of log data, and should only be used when investigating a problem. Levels above 3 are designed for use only by developers and generate HUGE amounts of log data, most of which is extremely cryptic.",
+      "protected": []
+    },
+    {
+      "id": "s0032",
+      "kind": "paragraph",
+      "text": "Note that specifying this parameter here will override the [[p0]] parameter in the [[p1]] file.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "log level",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#LOGLEVEL"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0033",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--debug-stdout"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0034",
+      "kind": "paragraph",
+      "text": "This will redirect debug output to STDOUT. By default all clients are logging to STDERR.",
+      "protected": []
+    },
+    {
+      "id": "s0035",
+      "kind": "term",
+      "text": "[[p0]]=<configuration file>",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--configfile"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0036",
+      "kind": "paragraph",
+      "text": "The file specified contains the configuration details required by the client. The information in this file can be general for client and server or only provide client specific like options such as [[p0]]. See [[p1]] for more information. The default configuration file name is determined at compile time.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "client smb encrypt",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#CLIENTSMBENCRYPT"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "${prefix}/etc/smb.conf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0037",
+      "kind": "term",
+      "text": "[[p0]]=<name>=<value>",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--option"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0038",
+      "kind": "paragraph",
+      "text": "Set the [[p0]] option \"<name>\" to value \"<value>\" from the command line. This overrides compiled-in defaults and options read from the configuration file. If a name or a value includes a space, wrap whole [[p1]]=name=value into quotes.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "smb.conf(5)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--option"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0039",
+      "kind": "term",
+      "text": "[[p0]]|[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-V"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--version"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0040",
+      "kind": "paragraph",
+      "text": "Prints the program version number.",
+      "protected": []
+    },
+    {
+      "id": "s0041",
+      "kind": "term",
+      "text": "configfilename",
+      "protected": []
+    },
+    {
+      "id": "s0042",
+      "kind": "paragraph",
+      "text": "This is the name of the configuration file to check. If this parameter is not present then the default [[p0]] file will be checked.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "smb.conf(5)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0043",
+      "kind": "term",
+      "text": "hostname",
+      "protected": []
+    },
+    {
+      "id": "s0044",
+      "kind": "paragraph",
+      "text": "If this parameter and the following are specified, then [[p0]] will examine the [[p1]][[p2]][[p3]] and [[p4]][[p5]][[p6]] parameters in the [[p7]] file to determine if the hostname with this IP address would be allowed access to the [[p8]] server. If this parameter is supplied, the hostIP parameter must also be supplied.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "testparm"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "hosts allow"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "hosts deny"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "link",
+            "text": "smb.conf(5)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "code",
+            "text": "smbd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0045",
+      "kind": "term",
+      "text": "hostIP",
+      "protected": []
+    },
+    {
+      "id": "s0046",
+      "kind": "paragraph",
+      "text": "This is the IP address of the host specified in the previous parameter. This address must be supplied if the hostname parameter is supplied.",
+      "protected": []
+    },
+    {
+      "id": "s0047",
+      "kind": "heading",
+      "text": "FILES",
+      "protected": []
+    },
+    {
+      "id": "s0048",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "smb.conf(5)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0049",
+      "kind": "paragraph",
+      "text": "This is usually the name of the configuration file used by [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "smbd(8)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smbd.8.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0050",
+      "kind": "heading",
+      "text": "DIAGNOSTICS",
+      "protected": []
+    },
+    {
+      "id": "s0051",
+      "kind": "paragraph",
+      "text": "The program will issue a message saying whether the configuration file loaded OK or not. This message may be preceded by errors and warnings if the file did not load. If the file was loaded OK, the program then dumps all known service details to stdout.",
+      "protected": []
+    },
+    {
+      "id": "s0052",
+      "kind": "paragraph",
+      "text": "For certain use cases, SMB protocol requires use of cryptographic algorithms which are known to be weak and already broken. DES and ARCFOUR (RC4) ciphers and the SHA1 and MD5 hash algorithms are considered weak but they are required for backward compatibility. The testparm utility shows whether the Samba tools will fall back to these weak crypto algorithms if it is not possible to use strong cryptography by default. In FIPS mode weak crypto cannot be enabled.",
+      "protected": []
+    },
+    {
+      "id": "s0053",
+      "kind": "heading",
+      "text": "VERSION",
+      "protected": []
+    },
+    {
+      "id": "s0054",
+      "kind": "paragraph",
+      "text": "This man page is part of version 4.25.0 of the Samba suite.",
+      "protected": []
+    },
+    {
+      "id": "s0055",
+      "kind": "heading",
+      "text": "SEE ALSO",
+      "protected": []
+    },
+    {
+      "id": "s0056",
+      "kind": "paragraph",
+      "text": "[[p0]], [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "smb.conf(5)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "smbd(8)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smbd.8.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0057",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0058",
+      "kind": "paragraph",
+      "text": "The original Samba software and related utilities were created by Andrew Tridgell. Samba is now developed by the Samba Team as an Open Source project similar to the way the Linux kernel is developed.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Name",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Synopsis",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0008"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0009"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0010"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "OPTIONS",
+      "segment": "s0011"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0012",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0013"
+            }
+          ]
+        },
+        {
+          "term": "s0014",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0015"
+            }
+          ]
+        },
+        {
+          "term": "s0016",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0017"
+            }
+          ]
+        },
+        {
+          "term": "s0018",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0019"
+            }
+          ]
+        },
+        {
+          "term": "s0020",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0021"
+            }
+          ]
+        },
+        {
+          "term": "s0022",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0023"
+            }
+          ]
+        },
+        {
+          "term": "s0024",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0025"
+            }
+          ]
+        },
+        {
+          "term": "s0026",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0027"
+            }
+          ]
+        },
+        {
+          "term": "s0028",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0029"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0030"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0031"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0032"
+            }
+          ]
+        },
+        {
+          "term": "s0033",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0034"
+            }
+          ]
+        },
+        {
+          "term": "s0035",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0036"
+            }
+          ]
+        },
+        {
+          "term": "s0037",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0038"
+            }
+          ]
+        },
+        {
+          "term": "s0039",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0040"
+            }
+          ]
+        },
+        {
+          "term": "s0041",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0042"
+            }
+          ]
+        },
+        {
+          "term": "s0043",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0044"
+            }
+          ]
+        },
+        {
+          "term": "s0045",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0046"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "FILES",
+      "segment": "s0047"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0048",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0049"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DIAGNOSTICS",
+      "segment": "s0050"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0051"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0052"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "VERSION",
+      "segment": "s0053"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0054"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "SEE-ALSO",
+      "segment": "s0055"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0056"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "AUTHOR",
+      "segment": "s0057"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0058"
+    }
+  ]
+}

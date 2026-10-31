@@ -1,0 +1,75 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>vfs_shell_snap</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="vfs_shell_snap.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>vfs_shell_snap &#8212; 
+		Shell script callouts for snapshot creation and deletion
+	</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="literal">vfs objects = shell_snap</code></p></div></div><div class="refsect1"><a name="id1337"></a><h2>DESCRIPTION</h2><p>This VFS module is part of the
+	<a class="citerefentry" href="samba.8.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(8)</span></a> suite.</p><p>
+		The <code class="literal">vfs_shell_snap</code> VFS provides shell-script
+		callouts for snapshot creation and deletion operations issued
+		by remote clients using the File Server Remote VSS Protocol
+		(FSRVP).
+	</p><p>
+		The following shell callouts may be configured in smb.conf:
+	</p><p>
+		<a class="link" href="smb.conf.5.html#SHELL_SNAP:CHECKPATHCOMMAND" target="_top">shell_snap:check path command</a>
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+				Called when an FSRVP client wishes to check
+				whether a given share supports snapshot
+				create/delete requests.
+			</p></li><li class="listitem"><p>
+				The command is called with a single
+				<em class="parameter"><code>share_path</code></em> argument.
+			</p></li><li class="listitem"><p>
+				The command must return 0 if
+				<em class="parameter"><code>share_path</code></em> is capable of
+				being snapshotted.
+			</p></li></ul></div><p>
+	</p><p>
+		<a class="link" href="smb.conf.5.html#SHELL_SNAP:CREATECOMMAND" target="_top">shell_snap:create command</a>
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+				Called when an FSRVP client wishes to create
+				a snapshot.
+			</p></li><li class="listitem"><p>
+				The command is called with a single
+				<em class="parameter"><code>share_path</code></em> argument.
+			</p></li><li class="listitem"><p>
+				The command must return 0 status if the
+				snapshot was successfully taken.
+			</p></li><li class="listitem"><p>
+				The command must output the path of the newly
+				created snapshot to stdout.
+			</p></li></ul></div><p>
+	</p><p>
+		<a class="link" href="smb.conf.5.html#SHELL_SNAP:DELETECOMMAND" target="_top">shell_snap:delete command</a>
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+				Called when an FSRVP client wishes to delete
+				a snapshot.
+			</p></li><li class="listitem"><p>
+				The command is called with
+				<em class="parameter"><code>base_share_path</code></em> and
+				<em class="parameter"><code>snapshot_share_path</code></em>
+				arguments.
+			</p></li><li class="listitem"><p>
+				The command must return 0 status if the
+				snapshot was successfully removed.
+			</p></li></ul></div><p>
+		All commands are executed as the authenticated FSRVP client
+		user.
+	</p><p>
+		This module is stackable.
+	</p></div><div class="refsect1"><a name="id1338"></a><h2>CONFIGURATION</h2><pre class="programlisting">
+		<em class="parameter"><code>[share]</code></em>
+		<a class="link" href="smb.conf.5.html#VFSOBJECTS" target="_top">vfs objects = shell_snap</a>
+		<a class="link" href="smb.conf.5.html#SHELL_SNAP:CHECKPATHCOMMAND" target="_top">shell_snap:check path command = snap_check_path.sh</a>
+		<a class="link" href="smb.conf.5.html#SHELL_SNAP:CREATECOMMAND" target="_top">shell_snap:create command = snap_create.sh</a>
+		<a class="link" href="smb.conf.5.html#SHELL_SNAP:DELETECOMMAND" target="_top">shell_snap:delete command = snap_delete.sh</a>
+</pre><p>
+		Samba's FSRVP server must be configured in the [global] section:
+	</p><pre class="programlisting">
+		<em class="parameter"><code>[global]</code></em>
+		<a class="link" href="smb.conf.5.html#REGISTRYSHARES" target="_top">registry shares = yes</a>
+		<a class="link" href="smb.conf.5.html#INCLUDE" target="_top">include = registry</a>
+</pre></div><div class="refsect1"><a name="id1339"></a><h2>VERSION</h2><p>
+		This man page is part of version 4.25.0 of the Samba suite.
+	</p></div><div class="refsect1"><a name="id1340"></a><h2>AUTHOR</h2><p>The original Samba software and related utilities
+	were created by Andrew Tridgell. Samba is now developed
+	by the Samba Team as an Open Source project similar
+	to the way the Linux kernel is developed.</p></div></div></body></html>

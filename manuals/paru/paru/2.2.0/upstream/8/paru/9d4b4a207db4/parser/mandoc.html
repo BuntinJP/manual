@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    table.head, table.foot { width: 100%; }
+    td.head-rtitle, td.foot-os { text-align: right; }
+    td.head-vol { text-align: center; }
+    .Nd, .Bf, .Op { display: inline; }
+    .Pa, .Ad { font-style: italic; }
+    .Ms { font-weight: bold; }
+    .Bl-diag > dt { font-weight: bold; }
+    code.Nm, .Fl, .Cm, .Ic, code.In, .Fd, .Fn, .Cd { font-weight: bold;
+      font-family: inherit; }
+  </style>
+  <title>PARU(8)</title>
+</head>
+<body>
+<div class="head" role="doc-pageheader" aria-label="Manual header
+  line"><span class="head-ltitle">PARU(8)</span>
+  <span class="head-vol">Paru</span>
+  <span class="head-rtitle">PARU(8)</span></div>
+<main class="manual-text">
+<section class="Sh">
+<h2 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h2>
+<p class="Pp">paru - AUR helper and pacman wrapper</p>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h2>
+<p class="Pp"><i>paru</i> &lt;operation&gt; [options] [targets]</p>
+<p class="Pp"><i>paru</i> &lt;search terms&gt;</p>
+<p class="Pp"><i>paru</i></p>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h2>
+<p class="Pp">Paru is an AUR helper written in Rust and based on the design of
+    yay. It aims to be your standard pacman wrapping AUR helper with minimal
+    interaction.</p>
+<p class="Pp">Paru is a tool to easily build and install packages from the AUR,
+    along with their dependencies. Paru also expands many of pacman's options
+    making them AUR aware.</p>
+<p class="Pp">This manpage only covers options unique to paru. For other options
+    see <b>pacman(8)</b>.</p>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="PARU_OPERATIONS"><a class="permalink" href="#PARU_OPERATIONS">PARU
+  OPERATIONS</a></h2>
+<dl class="Bl-tag">
+  <dt id="P,"><a class="permalink" href="#P,"><b>-P, --show</b></a></dt>
+  <dd>Printing related options.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="G,"><a class="permalink" href="#G,"><b>-G, --getpkgbuild</b></a></dt>
+  <dd>Downloads PKGBUILDs from the ABS or AUR. The ABS can only be used for Arch
+      Linux repositories.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="B,"><a class="permalink" href="#B,"><b>-B, --build</b></a></dt>
+  <dd>Build PKGBUILDs on disk. Targets are directories directly containing a
+      PKGBUILD.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="L,"><a class="permalink" href="#L,"><b>-L, --repoctl</b></a></dt>
+  <dd>List local repos.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="C,"><a class="permalink" href="#C,"><b>-C, --chrootctl</b></a></dt>
+  <dd>Interactive shell to the chroot.
+    <p class="Pp"></p>
+  </dd>
+</dl>
+<br/>
+<p class="Pp">If no arguments are provided 'paru -Syu' will be performed.</p>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="EXTENDED_PACMAN_OPERATIONS"><a class="permalink" href="#EXTENDED_PACMAN_OPERATIONS">EXTENDED
+  PACMAN OPERATIONS</a></h2>
+<dl class="Bl-tag">
+  <dt id="R,"><a class="permalink" href="#R,"><b>-R, -S, -Si, -Sl, -Ss, -Su,
+    -Sc, -Qu -T</b></a></dt>
+  <dd>These operations are extended to support both AUR and repo packages.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="R"><a class="permalink" href="#R"><b>-R</b></a></dt>
+  <dd>Paru will also remove cached data about devel packages.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="Sc"><a class="permalink" href="#Sc"><b>-Sc</b></a></dt>
+  <dd>Paru will also clean cached AUR packages and any untracked files in the
+      cache. Cleaning untracked files will wipe any downloaded sources or built
+      packages but will keep already downloaded VCS sources. -d or --delete can
+      be passed to delete the entire package instead of just cleaning it.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="Ss"><a class="permalink" href="#Ss"><b>-Ss</b></a></dt>
+  <dd>The AUR can be searched using regex but it must be explicitly requested
+      using -x/--regex. Regex search will only search package names and not
+      descriptions regardless of SearchBy.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="Sss"><a class="permalink" href="#Sss"><b>-Sss</b></a></dt>
+  <dd>Paru will also output a verbose search result when passing two
+    <p class="Pp"></p>
+  </dd>
+  <dt id="S,"><a class="permalink" href="#S,"><b>-S, -Si, -Sl, -Ss, -Su,
+    -Qu</b></a></dt>
+  <dd>Paru will also handle AUR packages for these operations.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="Ta"><a class="permalink" href="#Ta"><b>-Ta</b></a></dt>
+  <dd>Will filter a list of packages to ones that appear in the AUR.
+    <p class="Pp"></p>
+  </dd>
+</dl>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="NO_OPERATION"><a class="permalink" href="#NO_OPERATION">NO
+  OPERATION</a></h2>
+<dl class="Bl-tag">
+  <dt><b>&lt;NO OPTION&gt;</b></dt>
+  <dd>Interactive search and install. Displays a list of packages matching the
+      search terms and prompts the user on which packages to install.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="gendb"><a class="permalink" href="#gendb"><b>--gendb</b></a></dt>
+  <dd>Generate the development package database. This tracks the latest commit
+      for each development package, so when there is a new commit paru will know
+      to update. This is done per package whenever a package is synced. This
+      option should only be used when migrating to paru from another AUR helper.
+    <p class="Pp">This also causes paru to assume all current development
+        packages are up to date. Updates will then be detected on the next
+        commit.</p>
+    <p class="Pp"></p>
+  </dd>
+  <dt id="c,"><a class="permalink" href="#c,"><b>-c, --clean</b></a></dt>
+  <dd>Remove unneeded dependencies.
+    <p class="Pp">Make and check dependencies are considered for foreign
+        packages. Pass this twice to ignore these. Pass -o to ignore optional
+        dependencies.</p>
+    <p class="Pp"></p>
+  </dd>
+</dl>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="SHOW_OPTIONS_(APPLY_TO_-P_AND_--SHOW)"><a class="permalink" href="#SHOW_OPTIONS_(APPLY_TO_-P_AND_--SHOW)">SHOW
+  OPTIONS (APPLY TO -P AND --SHOW)</a></h2>
+<dl class="Bl-tag">
+  <dt id="c,~2"><a class="permalink" href="#c,~2"><b>-c, --complete</b></a></dt>
+  <dd>Print a list of all AUR and repo packages. This allows shell completion
+      and is not intended to be used directly by the user.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="s,"><a class="permalink" href="#s,"><b>-s, --stats</b></a></dt>
+  <dd>Displays information about installed packages and system health. If there
+      are orphaned, or out-of-date packages, or packages that no longer exist on
+      the AUR; warnings will be displayed.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="w,"><a class="permalink" href="#w,"><b>-w, --news</b></a></dt>
+  <dd>Print new news from the Arch Linux homepage. News is considered new if it
+      is newer than the build date of all native packages. Pass this twice to
+      show all available news.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="o,"><a class="permalink" href="#o,"><b>-o, --order</b></a></dt>
+  <dd>Print buildorder for targets.
+    <p class="Pp">This option outputs information about how to build a package
+        and its dependencies. Each line of output specifies an action to perform
+        or information to take into consideration.</p>
+    <p class="Pp">Each line of output will be in one of the following
+      formats:</p>
+    <p class="Pp"></p>
+  </dd>
+</dl>
+<br/>
+<div class="Bd-indent"><b>MISSING &lt;DEP&gt; [WANTED BY]...</b>
+<div class="Bd-indent">A dependency could not be found.
+<p class="Pp">&lt;DEP&gt; is the dependency that could not be found and [WANTED
+    BY] is the current dependency stack. The dependency stack will be empty if
+    the package that could not be found was a target.</p>
+<p class="Pp">Paru will exit 1 if any packages are missing.</p>
+</div>
+</div>
+<p class="Pp"></p>
+<div class="Bd-indent"><b>CONFLICT LOCAL|INNER &lt;PKG&gt; &lt;CONFLICTING
+  PKG&gt; [CONFLICT]</b>
+<div class="Bd-indent">There was a package conflict.
+<p class="Pp">The second arg will be LOCAL if the conflict is with an installed
+    package and INNER if two of the to be installed packages conflict.
+    &lt;PKG&gt; and &lt;CONFLICTING PKG&gt; are the packages in conflict and
+    [CONFLICT] will be the conflict string if it is different from
+    &lt;CONFLICTING PKG&gt;.</p>
+</div>
+</div>
+<p class="Pp"></p>
+<div class="Bd-indent"><b>INSTALL TARGET|DEP|MAKE &lt;DB&gt; &lt;NAME&gt;</b>
+<div class="Bd-indent">Install a package from the pacman repos.
+<p class="Pp">The first arg will be TARGET if the package is a target, DEP if a
+    dependency, or MAKE if the package is a build time dependency. &lt;DB&gt; is
+    the name of the database the package belongs to and &lt;NAME&gt; is the name
+    of the package.</p>
+</div>
+</div>
+<p class="Pp"></p>
+<div class="Bd-indent"><b>AUR TARGET|DEP|MAKE &lt;BASE&gt; &lt;NAMES&gt;...</b>
+<div class="Bd-indent">Build a package from the AUR.
+<p class="Pp">The first arg will be TARGET if the package is a target, DEP if a
+    dependency, or MAKE if the package is a build time dependency. &lt;BASE&gt;
+    is the pkgbase of the package and &lt;NAMES&gt; are the names of the
+    packages belonging to the pkgbase.</p>
+</div>
+<p class="Pp">More options may be added in the future.</p>
+<p class="Pp"></p>
+</div>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="GETPKGBUILD_OPTIONS_(APPLY_TO_-G_AND_--GETPKGBUILD)"><a class="permalink" href="#GETPKGBUILD_OPTIONS_(APPLY_TO_-G_AND_--GETPKGBUILD)">GETPKGBUILD
+  OPTIONS (APPLY TO -G AND --GETPKGBUILD)</a></h2>
+<dl class="Bl-tag">
+  <dt id="p,"><a class="permalink" href="#p,"><b>-p, --print</b></a></dt>
+  <dd>Prints the PKGBUILD to the terminal instead of downloading it.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="c,~3"><a class="permalink" href="#c,~3"><b>-c, --comments</b></a></dt>
+  <dd>Print the AUR comments from the PKGBUILD's AUR page.
+    <p class="Pp">Pass twice to get all comments instead of the first page.</p>
+    <p class="Pp"></p>
+  </dd>
+  <dt id="s,~2"><a class="permalink" href="#s,~2"><b>-s, --ssh</b></a></dt>
+  <dd>Clone the AUR package using SSH (e.g.: a read-write remote).
+    <p class="Pp"></p>
+  </dd>
+</dl>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="REPOCTL_OPTIONS_(APPLY_TO_-L_AND_--REPOCTL)"><a class="permalink" href="#REPOCTL_OPTIONS_(APPLY_TO_-L_AND_--REPOCTL)">REPOCTL
+  OPTIONS (APPLY TO -L AND --REPOCTL)</a></h2>
+<dl class="Bl-tag">
+  <dt id="l,"><a class="permalink" href="#l,"><b>-l, --list</b></a></dt>
+  <dd>List packages in local repos
+    <p class="Pp"></p>
+  </dd>
+  <dt id="c,~4"><a class="permalink" href="#c,~4"><b>-c, --clean</b></a></dt>
+  <dd>Remove packages that are not currently installed from repos.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="d,"><a class="permalink" href="#d,"><b>-d, --delete</b></a></dt>
+  <dd>Remove a package from the local repo. Pass this twice to also uninstall
+      the package.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="y,"><a class="permalink" href="#y,"><b>-y, --refresh</b></a></dt>
+  <dd>Refresh local repos.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="q,"><a class="permalink" href="#q,"><b>-q, --quiet</b></a></dt>
+  <dd>Show less information.
+    <p class="Pp"></p>
+  </dd>
+</dl>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="CHROOTCTL_OPTIONS_(APPLY_TO_-C_AND_--CHROOTCTL)"><a class="permalink" href="#CHROOTCTL_OPTIONS_(APPLY_TO_-C_AND_--CHROOTCTL)">CHROOTCTL
+  OPTIONS (APPLY TO -C AND --CHROOTCTL)</a></h2>
+<dl class="Bl-tag">
+  <dt id="i,"><a class="permalink" href="#i,"><b>-i, --install</b></a></dt>
+  <dd>Install a package into the chroot.
+    <p class="Pp"><b>--noconfirm</b> can also be specified and will be forwarded
+        to pacman.</p>
+    <p class="Pp"></p>
+  </dd>
+  <dt id="u,"><a class="permalink" href="#u,"><b>-u, --sysupgrade</b></a></dt>
+  <dd>Upgrade the chroot.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="p,~2"><a class="permalink" href="#p,~2"><b>-p, --print</b></a></dt>
+  <dd>Print path to currently configured chroot.
+    <p class="Pp"></p>
+  </dd>
+</dl>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="BUILD_OPTIONS_(APPLY_TO_-B_AND_--BUILD)"><a class="permalink" href="#BUILD_OPTIONS_(APPLY_TO_-B_AND_--BUILD)">BUILD
+  OPTIONS (APPLY TO -B AND --BUILD)</a></h2>
+<dl class="Bl-tag">
+  <dt id="i,~2"><a class="permalink" href="#i,~2"><b>-i, --install</b></a></dt>
+  <dd>Also install the package once built.
+    <p class="Pp"></p>
+  </dd>
+</dl>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="NEW_OPTIONS"><a class="permalink" href="#NEW_OPTIONS">NEW
+  OPTIONS</a></h2>
+<dl class="Bl-tag">
+  <dt id="repo"><a class="permalink" href="#repo"><b>--repo</b></a></dt>
+  <dd>Assume all targets are from the repositories. Additionally, actions such
+      as sysupgrade will only act on repository packages.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="a,"><a class="permalink" href="#a,"><b>-a, --aur</b></a></dt>
+  <dd>Assume all targets are from the AUR. Additionally, actions such as
+      sysupgrade will only act on AUR packages.
+    <p class="Pp">Note that dependency resolution will still include repository
+        packages.</p>
+    <p class="Pp"></p>
+  </dd>
+  <dt id="pkgbuilds"><a class="permalink" href="#pkgbuilds"><b>--pkgbuilds</b></a></dt>
+  <dd>Assume all targets are from the PKGBUILD repositories. Additionally,
+      actions such as sysupgrade will only act on AUR packages.
+    <p class="Pp">Note that dependency resolution will still include repositoryi
+        and AUR packages.</p>
+    <p class="Pp"></p>
+  </dd>
+  <dt id="mode"><a class="permalink" href="#mode"><b>--mode =
+    aur|repo|pkgbuilds</b></a></dt>
+  <dd>Select what kinds of packages paru should act on. Multiple modes can be
+      selected by separating them with a comma.
+    <p class="Pp">Additionally, a, r and p may be used as short hand for aur,
+        repo and pkgbuilds respectively. Short form modes can also be combined
+        without a comma. E.g. <b>--mode=ar</b> or <b>--mode=arp</b>.</p>
+    <p class="Pp"></p>
+    <p class="Pp"></p>
+  </dd>
+  <dt id="interactive"><a class="permalink" href="#interactive"><b>--interactive</b></a></dt>
+  <dd>Enable interactive package selection for -S, -R, -Ss and -Qs.
+    <p class="Pp">For -S/-R this allows you to pick which packages to
+        install/remove from a list.</p>
+    <p class="Pp"><b> paru &lt;foo&gt;</b> is an alias to <b>paru -S
+        --interactive &lt;foo&gt;</b>.</p>
+    <p class="Pp">For -Ss/-Qs this allows you to interactively pick packages
+        from the sync/local repos respectively. This is intended to be chained
+        with other package tools so paru can handle the menu work while the
+        other tool in the pipeline just gets the packages.</p>
+    <p class="Pp">For example:</p>
+    <p class="Pp"><b> paru -Ssaq --interactive ruby | paru -Gc -</b></p>
+    <p class="Pp">will show AUR packages containing the term ruby, give the user
+        an interactive menu to pick packages, then pipeline those packages into
+        -Gc and display the comments.</p>
+    <p class="Pp">Would allow a user to interactively choose what files to
+      list.</p>
+    <p class="Pp"></p>
+  </dd>
+  <dt id="aururl"><a class="permalink" href="#aururl"><b>--aururl</b></a></dt>
+  <dd>Set an alternative AUR URL.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="aurrpcurl"><a class="permalink" href="#aurrpcurl"><b>--aurrpcurl</b></a></dt>
+  <dd>Set an alternative URL for the AUR /rpc endpoint.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="clonedir"><a class="permalink" href="#clonedir"><b>--clonedir
+    &lt;dir&gt;</b></a></dt>
+  <dd>Directory used to download and run PKGBUILDs.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="makepkg"><a class="permalink" href="#makepkg"><b>--makepkg
+    &lt;command&gt;</b></a></dt>
+  <dd>The command to use for <b>makepkg</b> calls. This can be a command in
+      <b>PATH</b> or an absolute path to the file.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="makepkgconf"><a class="permalink" href="#makepkgconf"><b>--makepkgconf
+    &lt;file&gt;</b></a></dt>
+  <dd>Specifies a <b>makepkg.conf</b> file to use in the chroot environment. The
+      file can only be an absolute path to the file.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="pacman"><a class="permalink" href="#pacman"><b>--pacman
+    &lt;command&gt;</b></a></dt>
+  <dd>The command to use for <b>pacman</b> calls. This can be a command in
+      <b>PATH</b> or an absolute path to the file.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="pacman-conf"><a class="permalink" href="#pacman-conf"><b>--pacman-conf
+    &lt;command&gt;</b></a></dt>
+  <dd>The command to use for <b>pacman-conf</b> calls. This can be a command in
+      <b>PATH</b> or an absolute path to the file.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="git"><a class="permalink" href="#git"><b>--git
+    &lt;command&gt;</b></a></dt>
+  <dd>The command to use for <b>git</b> calls. This can be a command in
+      <b>PATH</b> or an absolute path to the file.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="gitflags"><a class="permalink" href="#gitflags"><b>--gitflags
+    &lt;flags&gt;</b></a></dt>
+  <dd>Passes arguments to git. These flags get passed to every instance where
+      git is called by paru. Arguments are split on whitespace before being
+      passed to git. Multiple arguments may be passed by supplying a space
+      separated list that is quoted by the shell.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="gpg"><a class="permalink" href="#gpg"><b>--gpg
+    &lt;command&gt;</b></a></dt>
+  <dd>The command to use for <b>gpg</b> calls. This can be a command in
+      <b>PATH</b> or an absolute path to the file.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="gpgflags"><a class="permalink" href="#gpgflags"><b>--gpgflags
+    &lt;flags&gt;</b></a></dt>
+  <dd>Passes arguments to gpg. These flags get passed to every instance where
+      gpg is called by paru. Arguments are split on whitespace before being
+      passed to gpg. Multiple arguments may be passed by supplying a space
+      separated list that is quoted by the shell.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="fm"><a class="permalink" href="#fm"><b>--fm
+    &lt;command&gt;</b></a></dt>
+  <dd>This enables fm review mode, where PKGBUILD review is done using the file
+      manager specified by command.
+    <p class="Pp">This allows the PKGBUILDs and related files to be edited.
+        Changes won't persist unless committed.</p>
+    <p class="Pp"></p>
+  </dd>
+  <dt id="fmflags"><a class="permalink" href="#fmflags"><b>--fmflags
+    &lt;flags&gt;</b></a></dt>
+  <dd>Passes arguments to file manager. These flags get passed to every instance
+      where file manager is called by paru. Arguments are split on whitespace
+      before being passed to the file manager. Multiple arguments may be passed
+      by supplying a space separated list that is quoted by the shell.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="asp"><a class="permalink" href="#asp"><b>--asp
+    &lt;command&gt;</b></a></dt>
+  <dd>The command to use for <b>asp</b> calls. This can be a command in
+      <b>PATH</b> or an absolute path to the file.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="mflags"><a class="permalink" href="#mflags"><b>--mflags
+    &lt;flags&gt;</b></a></dt>
+  <dd>Passes arguments to makepkg. These flags get passed to every instance
+      where makepkg is called by paru. Arguments are split on whitespace before
+      being passed to makepkg. Multiple arguments may be passed by supplying a
+      space separated list that is quoted by the shell.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="bat"><a class="permalink" href="#bat"><b>--bat
+    &lt;command&gt;</b></a></dt>
+  <dd>The command to use for <b>bat</b> calls. This can be a command in
+      <b>PATH</b> or an absolute path to the file.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="batflags"><a class="permalink" href="#batflags"><b>--batflags
+    &lt;flags&gt;</b></a></dt>
+  <dd>Passes arguments to bat. These flags get passed to every instance where
+      bat is called by paru. Arguments are split on whitespace before being
+      passed to bat. Multiple arguments may be passed by supplying a space
+      separated list that is quoted by the shell.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="sudo"><a class="permalink" href="#sudo"><b>--sudo
+    &lt;command&gt;</b></a></dt>
+  <dd>The command to use for <b>sudo</b> calls. This can be a command in
+      <b>PATH</b> or an absolute path to the file. The --sudoloop option is not
+      guaranteed to work with a custom <b>sudo</b> command.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="sudoflags"><a class="permalink" href="#sudoflags"><b>--sudoflags
+    &lt;flags&gt;</b></a></dt>
+  <dd>Passes arguments to sudo. These flags get passed to every instance where
+      sudo is called by paru. Arguments are split on whitespace before being
+      passed to sudo. Multiple arguments may be passed by supplying a space
+      separated list that is quoted by the shell.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="chrootflags"><a class="permalink" href="#chrootflags"><b>--chrootflags
+    &lt;flags&gt;</b></a></dt>
+  <dd>Passes arguments to makechrootpkg. These flags get passed to every
+      instance where makechrootpkg is called by paru. Arguments are split on
+      whitespace before being passed to makechrootpkg. Multiple arguments may be
+      passed by supplying a space separated list that is quoted by the shell.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="chrootpkgs"><a class="permalink" href="#chrootpkgs"><b>--chrootpkgs
+    &lt;package&gt;</b></a></dt>
+  <dd>Installs package into the chroot before building. Multiple packages can be
+      specified by separating them with a comma.
+    <p class="Pp">Useful when PKGBUILDs don't declare needed dependencies.</p>
+    <p class="Pp">Note that this is only a temp fix and only applies to this one
+        build. You should ideally patch the package yourself or report the
+        problem to the maintainer.</p>
+    <p class="Pp">If you want to permanently add a package to the chroot use
+        <b>paru -Ci package</b> to install packages into the root chroot, or use
+        --rootchrootpkgs to specify packages that should be installed when the
+        chroot is created.</p>
+    <p class="Pp"></p>
+  </dd>
+  <dt id="rootchrootpkgs"><a class="permalink" href="#rootchrootpkgs"><b>--rootchrootpkgs
+    &lt;packages&gt;</b></a></dt>
+  <dd>Comma-separated list of packages to install when creating the root chroot.
+    <p class="Pp">Defaults to &quot;base-devel&quot; if not specified.</p>
+    <p class="Pp">Unlike --chrootpkgs (which installs packages temporarily
+        before each build), --rootchrootpkgs packages become part of the root
+        chroot and persist across all builds.</p>
+    <p class="Pp">This only affects chroot creation. To apply changes to an
+        existing chroot, you must delete and recreate it.</p>
+    <p class="Pp"></p>
+  </dd>
+  <dt id="completioninterval"><a class="permalink" href="#completioninterval"><b>--completioninterval
+    &lt;days&gt;</b></a></dt>
+  <dd>Time in days to refresh the completion cache. Setting this to 0 will cause
+      the cache to be refreshed every time, while setting this to -1 will cause
+      the cache to never be refreshed. Defaults to 7.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="minimumreleaseage"><a class="permalink" href="#minimumreleaseage"><b>--minimumreleaseage
+    &lt;duration&gt;</b></a></dt>
+  <dd>Refuse to install or upgrade AUR packages modified more recently than
+      this, and hide them from AUR search results. The duration is an integer
+      with an optional unit suffix (s, m, h, d, w); a bare number means days.
+      Applies to dependencies too; devel packages are exempt. See
+      <b>MinimumReleaseAge</b> in paru.conf(5).
+    <p class="Pp"></p>
+  </dd>
+  <dt id="nominimumreleaseage"><a class="permalink" href="#nominimumreleaseage"><b>--nominimumreleaseage</b></a></dt>
+  <dd>Disable the minimum release age check for this run.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="minimumreleaseageexclude"><a class="permalink" href="#minimumreleaseageexclude"><b>--minimumreleaseageexclude
+    &lt;packages&gt;</b></a></dt>
+  <dd>Packages exempt from the minimum release age check. Accepts glob patterns.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="sortby"><a class="permalink" href="#sortby"><b>--sortby
+    &lt;votes|popularity|id|baseid|name|base|submitted|modified&gt;</b></a></dt>
+  <dd>Sort AUR results by a specific field during search. Defaults to votes.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="searchby"><a class="permalink" href="#searchby"><b>--searchby
+    &lt;name|name-desc|maintainer|depends|checkdepends|makedepends|optdepends&gt;</b></a></dt>
+  <dd>Search for AUR packages by querying the specified field. Defaults to
+      name-desc.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="skipreview"><a class="permalink" href="#skipreview"><b>--skipreview</b></a></dt>
+  <dd>Skip the review process.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="review"><a class="permalink" href="#review"><b>--review</b></a></dt>
+  <dd>Don't skip the review process.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="upgrademenu"><a class="permalink" href="#upgrademenu"><b>--upgrademenu</b></a></dt>
+  <dd>Show a detailed list of updates in a similar format to pacman's
+      VerbosePkgLists option. (See <b>pacman.conf(5)).</b> Upgrades can be
+      skipped using numbers, number ranges, or repo names.
+    <p class="Pp"><b>Warning</b>: It is not recommended to skip updates from the
+        repositories as this can lead to partial upgrades. This feature is
+        intended to easily skip AUR updates on the fly that may be broken or
+        have a long compile time. Ultimately it is up to the user what upgrades
+        they skip.</p>
+    <p class="Pp"></p>
+  </dd>
+  <dt id="noupgrademenu"><a class="permalink" href="#noupgrademenu"><b>--noupgrademenu</b></a></dt>
+  <dd>Do not show the upgrade menu.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="removemake"><a class="permalink" href="#removemake"><b>--removemake
+    [yes|no|ask]</b></a></dt>
+  <dd>Remove makedepends after installing packages. If set to ask, a menu will
+      appear during builds allowing an option to be chosen then. Defaults to yes
+      when specified without an option.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="noremovemake"><a class="permalink" href="#noremovemake"><b>--noremovemake</b></a></dt>
+  <dd>Don't remove makedepends after installing packages.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="topdown"><a class="permalink" href="#topdown"><b>--topdown</b></a></dt>
+  <dd>Print search results from top to bottom. Repo packages will print first.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="bottomup"><a class="permalink" href="#bottomup"><b>--bottomup</b></a></dt>
+  <dd>Print search results from bottom to top. AUR packages will print first.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="auto"><a class="permalink" href="#auto"><b>--auto</b></a></dt>
+  <dd>Use bottom-up ordering in interactive package selection menus and top-down
+      ordering for ordinary search and list output. This is the default.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="limit"><a class="permalink" href="#limit"><b>--limit
+    &lt;limit&gt;</b></a></dt>
+  <dd>Limit the number of packages returned in a search to the given amount.
+      Defaults to 0 (no limit). This applies separately to repo and AUR
+      packages.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="x,"><a class="permalink" href="#x,"><b>-x, --regex</b></a></dt>
+  <dd>Enable regex for aur search.
+    <p class="Pp">The regex will only be matched against pkgnames and not
+        pkgdescs as you would usually expect.</p>
+    <p class="Pp"></p>
+  </dd>
+  <dt id="nocheck"><a class="permalink" href="#nocheck"><b>--nocheck</b></a></dt>
+  <dd>Don't resolve checkdepends or run the check function.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="installdebug"><a class="permalink" href="#installdebug"><b>--installdebug</b></a></dt>
+  <dd>Also install debug packages when a package provides them.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="noinstalldebug"><a class="permalink" href="#noinstalldebug"><b>--noinstalldebug</b></a></dt>
+  <dd>Don't install debug packages when a package provides them.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="devel"><a class="permalink" href="#devel"><b>--devel</b></a></dt>
+  <dd>During sysupgrade also check AUR development packages for updates.
+      Currently only Git packages are supported.
+    <p class="Pp">Devel checking is done using <b>git ls-remote</b>. The newest
+        commit hash is compared against the hash at install time. This allows
+        devel updates to be checked almost instantly and not require the
+        original PKGBUILD to be downloaded.</p>
+    <p class="Pp">The slower pacaur-like devel checks can be implemented
+        manually by piping a list of packages into paru (see
+      <b>examples</b>).</p>
+    <p class="Pp">Some packages track git sources whose HEAD moves often without
+        changing the resulting package version. These will appear as devel
+        updates on every run even when rebuilding produces an identical package.
+        See <b>IgnoreDevel</b> and <b>IgnoreDevelSource</b> in
+        <b>paru.conf</b>(5) to opt such packages or sources out of devel
+        checking.</p>
+    <p class="Pp"></p>
+  </dd>
+  <dt id="ignoredevel"><a class="permalink" href="#ignoredevel"><b>--ignoredevel</b></a></dt>
+  <dd>Like --ignore but for devel upgrades. Packages matching this will not be
+      tried for a devel update but may still be upgraded if the pkgver changes.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="nodevel"><a class="permalink" href="#nodevel"><b>--nodevel</b></a></dt>
+  <dd>Do not check for development packages updates during sysupgrade.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="develsuffixes"><a class="permalink" href="#develsuffixes"><b>--develsuffixes</b></a></dt>
+  <dd>Suffixes that paru will use to decide if a package is a devel package.
+      Used when determining if a pkgver bump is used when the --needed option is
+      set.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="cleanafter"><a class="permalink" href="#cleanafter"><b>--cleanafter</b></a></dt>
+  <dd>Remove untracked files after installation.
+    <p class="Pp">Untracked files are removed with the exception of directories.
+        This allows VCS packages to easily pull an update instead of having to
+        reclone the entire repo.</p>
+    <p class="Pp"></p>
+  </dd>
+  <dt id="nocleanafter"><a class="permalink" href="#nocleanafter"><b>--nocleanafter</b></a></dt>
+  <dd>Do not remove package sources after successful install.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="redownload"><a class="permalink" href="#redownload"><b>--redownload
+    [yes|no|all]</b></a></dt>
+  <dd>Always download PKGBUILDs of targets even when a copy is available in
+      cache. If all is specified, then PKGBUILDs will be downloaded for all
+      packages, not just targets. Defaults to yes when specified.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="noredownload"><a class="permalink" href="#noredownload"><b>--noredownload</b></a></dt>
+  <dd>When downloading PKGBUILDs, if the PKGBUILD is found in cache and is equal
+      or newer than the AUR's version use that instead of downloading a new one.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="provides"><a class="permalink" href="#provides"><b>--provides</b></a></dt>
+  <dd>Look for matching providers when searching for AUR packages. When multiple
+      providers are found a menu will appear prompting you to pick one. This
+      increases dependency resolve time although this should not be noticeable.
+    <p class="Pp">By default only targets and missing packages will be searched
+        for providers. Specifying all will enable this for all packages.</p>
+    <p class="Pp"></p>
+  </dd>
+  <dt id="noprovides"><a class="permalink" href="#noprovides"><b>--noprovides</b></a></dt>
+  <dd>Do not look for matching providers when searching for AUR packages. Paru
+      will never show its provider menu but pacman will still show its provider
+      menu for repo packages.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="pgpfetch"><a class="permalink" href="#pgpfetch"><b>--pgpfetch</b></a></dt>
+  <dd>Prompt to import unknown PGP keys from the <b>validpgpkeys</b> field of
+      each PKGBUILD.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="nopgpfetch"><a class="permalink" href="#nopgpfetch"><b>--nopgpfetch</b></a></dt>
+  <dd>Do not prompt to import unknown PGP keys. This is likely to cause a build
+      failure unless using options such as <b>--skippgpcheck</b> or a customized
+      gpg config.
+    <p class="Pp"></p>
+    <p class="Pp"></p>
+  </dd>
+  <dt id="newsonupgrade"><a class="permalink" href="#newsonupgrade"><b>--newsonupgrade</b></a></dt>
+  <dd>Print new news during sysupgrade.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="useask"><a class="permalink" href="#useask"><b>--useask</b></a></dt>
+  <dd>Use pacman's --ask flag to automatically confirm package conflicts. Paru
+      lists conflicts ahead of time. It is possible that paru does not detect a
+      conflict, causing a package to be removed without the user's confirmation.
+      However, this is very unlikely.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="nouseask"><a class="permalink" href="#nouseask"><b>--nouseask</b></a></dt>
+  <dd>Manually resolve package conflicts during the install. Packages which do
+      not conflict will not need to be confined manually.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="savechanges"><a class="permalink" href="#savechanges"><b>--savechanges</b></a></dt>
+  <dd>Commit changes to pkgbuilds made during review.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="nosavechanges"><a class="permalink" href="#nosavechanges"><b>--nosavechanges</b></a></dt>
+  <dd>Don't commit changes to pkgbuilds made during review.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="failfast"><a class="permalink" href="#failfast"><b>--failfast</b></a></dt>
+  <dd>Exit as soon as any AUR packages fail to build.
+    <p class="Pp">By default Paru will continue and try to build other AUR
+        packages.</p>
+    <p class="Pp"></p>
+  </dd>
+  <dt id="nofailfast"><a class="permalink" href="#nofailfast"><b>--nofailfast</b></a></dt>
+  <dd>Don't exit as soon as any AUR packages fail to build.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="keepsrc"><a class="permalink" href="#keepsrc"><b>--keepsrc</b></a></dt>
+  <dd>Keep src/ and pkg/ directories after building packages.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="nokeepsrc"><a class="permalink" href="#nokeepsrc"><b>--nokeepsrc</b></a></dt>
+  <dd>Don't keep src/ and pkg/ directories after building packages.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="combinedupgrade"><a class="permalink" href="#combinedupgrade"><b>--combinedupgrade</b></a></dt>
+  <dd>During sysupgrade, paru will first perform a refresh, then show its
+      combined menu of repo and AUR packages that will be upgraded. Then after
+      reviewing the PKGBUILDs, the repo and AUR upgrade will start with no need
+      for manual intervention.
+    <p class="Pp">If paru exits for any reason after the refresh without
+        upgrading, it will be the user's responsibility to either resolve the
+        reason paru exited or run a sysupgrade through pacman directly.</p>
+    <p class="Pp"></p>
+  </dd>
+  <dt id="nocombinedupgrade"><a class="permalink" href="#nocombinedupgrade"><b>--nocombinedupgrade</b></a></dt>
+  <dd>During sysupgrade, pacman -Syu will be called, then the AUR upgrade will
+      start. This means the upgrade menu and PKGBUILD review will be performed
+      after the sysupgrade has finished.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="batchinstall"><a class="permalink" href="#batchinstall"><b>--batchinstall</b></a></dt>
+  <dd>When building and installing AUR packages instead of installing each
+      package after building, queue each package for install. Then once either
+      all packages are built or a package in the build queue is needed as a
+      dependency to build another package, install all the packages in the
+      install queue.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="nobatchinstall"><a class="permalink" href="#nobatchinstall"><b>--nobatchinstall</b></a></dt>
+  <dd>Always install AUR packages immediately after building them.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="rebuild"><a class="permalink" href="#rebuild"><b>--rebuild
+    [yes|no|all|tree]</b></a></dt>
+  <dd>Always build target packages even when a copy is available in cache. If
+      all is selected then all packages are rebuilt, not only targets. If tree
+      is selected then the whole dependency tree is rebuilt, including already
+      satisfied dependencies. Defaults to no.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="norebuild"><a class="permalink" href="#norebuild"><b>--norebuild</b></a></dt>
+  <dd>When building packages if the package is found in cache and is an equal
+      version to the one wanted skip the package build and use the existing
+      package.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="sudoloop"><a class="permalink" href="#sudoloop"><b>--sudoloop [=
+    args...]</b></a></dt>
+  <dd>Periodically call sudo in the background to prevent it from timing out
+      during long builds.
+    <p class="Pp">Optionally args can be passed to choose how to loop the
+        command. This may be useful for doas where looping is done
+      differently.</p>
+    <p class="Pp"></p>
+  </dd>
+  <dt id="nosudoloop"><a class="permalink" href="#nosudoloop"><b>--nosudoloop</b></a></dt>
+  <dd>Do not loop sudo calls in the background.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="localrepo"><a class="permalink" href="#localrepo"><b>--localrepo [=
+    Repos...]</b></a></dt>
+  <dd>Use a local repo to build and upgrade AUR packages.
+    <p class="Pp">Paru will act on packages in the enabled repos instead of
+        foreign packages. The repo must already be declared in pacman.conf but
+        does not have to already exist on disk.</p>
+    <p class="Pp">Optionally a list of repos to use can be passed. By default
+        paru will consider all local repos, building new packages into the first
+        listed repo and upgrading the packages in other enabled repos.</p>
+    <p class="Pp"></p>
+  </dd>
+  <dt id="nolocalrepo"><a class="permalink" href="#nolocalrepo"><b>--nolocalrepo</b></a></dt>
+  <dd>Do not build into a local repo.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="chroot"><a class="permalink" href="#chroot"><b>--chroot [=
+    /path/to/chroot]</b></a></dt>
+  <dd>Build packages in a chroot. This requires the LocalRepo option to be
+      enabled. Optionally a directory may be passed to specify where to create
+      the chroot.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="nochroot"><a class="permalink" href="#nochroot"><b>--nochroot</b></a></dt>
+  <dd>Don't build packages in a chroot.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="sign"><a class="permalink" href="#sign"><b>--sign [= key]</b></a></dt>
+  <dd>Sign packages with gpg. Optionally indicate which key to sign with.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="nosign"><a class="permalink" href="#nosign"><b>--nosign</b></a></dt>
+  <dd>Don't sign package with gpg.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="keeprepocache"><a class="permalink" href="#keeprepocache"><b>--keeprepocache</b></a></dt>
+  <dd>Normally upon AUR packages getting updated the old versions will be
+      removed from the local repo. This option disables that behavior, keeping
+      the both all versions and only updating the DB.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="nokeeprepocache"><a class="permalink" href="#nokeeprepocache"><b>--nokeeprepocache</b></a></dt>
+  <dd>Don't keep old packages.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="signdb"><a class="permalink" href="#signdb"><b>--signdb [=
+    key]</b></a></dt>
+  <dd>Sign databases with gpg. Optionally indicate which key to sign with.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="nosigndb"><a class="permalink" href="#nosigndb"><b>--nosigndb</b></a></dt>
+  <dd>Don't sign databases with gpg.
+    <p class="Pp"></p>
+  </dd>
+</dl>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h2>
+<dl class="Bl-tag">
+  <dt id="paru"><a class="permalink" href="#paru">paru <i>foo</i></a></dt>
+  <dd>Search and install from the repos and the <b>AUR</b>&#x00A0;using
+      interactive search and install.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="paru~2"><a class="permalink" href="#paru~2">paru -Syu</a></dt>
+  <dd>Update package list and upgrade all currently installed repo and
+      <b>AUR</b> packages.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="paru~3"><a class="permalink" href="#paru~3">paru -Sua</a></dt>
+  <dd>Update all currently installed <b>AUR</b> packages.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="paru~4"><a class="permalink" href="#paru~4">paru -S
+    <i>foo</i></a></dt>
+  <dd>Installs package <i>foo</i> from the repos or the <b>AUR</b>.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="paru~5"><a class="permalink" href="#paru~5">paru -Ss
+    <i>foo</i></a></dt>
+  <dd>Searches for package <i>foo</i> on the repos or the <b>AUR</b>.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="paru~6"><a class="permalink" href="#paru~6">paru -Si
+    <i>foo</i></a></dt>
+  <dd>Gets information about package <i>foo</i> from the repos or the
+      <b>AUR</b>.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="paru~7"><a class="permalink" href="#paru~7">paru -S <i>foo</i>
+    --mflags &quot;--skipchecksums --skippgpcheck&quot;</a></dt>
+  <dd>Installs <i>foo</i> while skipping checksums and PGP checks.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="paru~8"><a class="permalink" href="#paru~8">paru -B .</a></dt>
+  <dd>Build PKGBUILD in current directory.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="pacman~2"><a class="permalink" href="#pacman~2">pacman -Qmq | grep -Ee
+    '-(cvs|svn|git|hg|bzr|darcs)$' | paru -Ta - | paru -S --needed -</a></dt>
+  <dd>pacaur-like devel check.
+    <p class="Pp"></p>
+  </dd>
+</dl>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="ENVIRONMENT_VARIABLES"><a class="permalink" href="#ENVIRONMENT_VARIABLES">ENVIRONMENT
+  VARIABLES</a></h2>
+<dl class="Bl-tag">
+  <dt id="AURDEST"><a class="permalink" href="#AURDEST"><b>AURDEST</b></a></dt>
+  <dd>Can be set to configure the build directory.
+    <p class="Pp">Overridden by --clonedir.</p>
+    <p class="Pp"></p>
+  </dd>
+  <dt id="PARU_CONF"><a class="permalink" href="#PARU_CONF"><b>PARU_CONF</b></a></dt>
+  <dd>Overrides where paru will look for its config file.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="PARU_PAGER"><a class="permalink" href="#PARU_PAGER"><b>PARU_PAGER</b></a></dt>
+  <dd>The pager paru will use for file review. Has higher priority than PAGER
+      but lower priority than paru.conf.
+    <p class="Pp"></p>
+  </dd>
+</dl>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h2>
+<dl class="Bl-tag">
+  <dt id="CONFIG"><a class="permalink" href="#CONFIG"><b>CONFIG
+    DIRECTORY</b></a></dt>
+  <dd>The config directory is <i>$XDG_CONFIG_HOME/paru/</i>. If
+      <b>$XDG_CONFIG_HOME</b> is unset, the config directory will fall back to
+      <i>$HOME/.config/paru</i>.
+    <p class="Pp"><i>paru.conf</i> is used to store all of paru's config
+        options. See <b>paru.conf</b>(5) for more about this file.</p>
+    <p class="Pp"></p>
+  </dd>
+  <dt id="CACHE"><a class="permalink" href="#CACHE"><b>CACHE
+    DIRECTORY</b></a></dt>
+  <dd>The cache directory is <i>$XDG_CACHE_HOME/paru/</i>. If
+      <b>$XDG_CACHE_HOME</b> is unset, the cache directory will fall back to
+      <i>$HOME/.cache/paru</i>.
+    <p class="Pp"><i>packages.aur</i> holds a list of of all AUR packages for
+        shell completion. By default the completion files are refreshed every 7
+        days.</p>
+    <p class="Pp"></p>
+  </dd>
+  <dt id="STATE"><a class="permalink" href="#STATE"><b>STATE
+    DIRECTORY</b></a></dt>
+  <dd>The state directory is <i>$XDG_STATE_HOME/paru/</i>. If
+      <b>$XDG_STATE_HOME</b> is unset, the state directory will fall back to
+      <i>$HOME/.local/state/paru</i>.
+    <p class="Pp"><i>devel.json</i> tracks VCS packages and the latest commit of
+        each source. If any of these commits change the package will be upgraded
+        during a devel update.</p>
+    <p class="Pp"></p>
+  </dd>
+  <dt id="BUILD"><a class="permalink" href="#BUILD"><b>BUILD
+    DIRECTORY</b></a></dt>
+  <dd>Unless otherwise set this should be the same as <b>CACHE DIRECTORY</b>.
+      This directory is used to store downloaded AUR Packages as well as any
+      source files and built packages from those packages.
+    <p class="Pp"></p>
+  </dd>
+  <dt id="PACMAN.CONF"><a class="permalink" href="#PACMAN.CONF"><b>PACMAN.CONF</b></a></dt>
+  <dd>Paru uses pacman's config file to set certain pacman options either
+      through alpm.rs or paru itself. Options inherited include most libalpm
+      options and pacman options.
+    <p class="Pp">Notably: <b>Databases</b>, <b>Color</b> and <b>*Path/*Dir</b>
+        options are used.</p>
+    <p class="Pp"></p>
+  </dd>
+</dl>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h2>
+<p class="Pp"><b>paru.conf</b>(5), <b>makepkg</b>(8), <b>makepkg.conf</b>(5),
+    <b>PKGBUILD</b>(5), <b>pacman</b>(8), <b>pacman.conf</b>(5)</p>
+<p class="Pp">See the arch wiki at
+    https://wiki.archlinux.org/index.php/Arch_User_Repository for more info on
+    the <b>AUR</b>.</p>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="BUGS"><a class="permalink" href="#BUGS">BUGS</a></h2>
+<p class="Pp">Please report bugs to our GitHub page
+    <b>https://github.com/Morganamilo/paru</b>.</p>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="AUTHORS"><a class="permalink" href="#AUTHORS">AUTHORS</a></h2>
+<p class="Pp">Morgan &lt;morganamilo@archlinux.org&gt;</p>
+</section>
+</main>
+<div class="foot" role="doc-pagefooter" aria-label="Manual footer
+  line"><span class="foot-left">paru v1.10.0 </span>
+  <span class="foot-date">2021-03-24</span>
+  <span class="foot-right">PARU(8)</span></div>
+</body>
+</html>

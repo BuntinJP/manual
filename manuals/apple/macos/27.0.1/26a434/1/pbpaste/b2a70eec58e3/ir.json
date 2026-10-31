@@ -1,0 +1,588 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "b2a70eec58e3cc7ae85a6cdc80e0627c4b481973664acc407e9a580ee0bcdf27",
+  "extraction": {
+    "selector": ".manual-text",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "NAME",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "[[p0]], [[p1]] - provide copying and pasting to the pasteboard (the Clipboard) from command line",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "pbcopy"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "pbpaste"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "SYNOPSIS",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]] [[[p1]]] [[[p2]] {[[p3]] | [[p4]] | [[p5]] | [[p6]]}]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "pbcopy"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "-help"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "strong",
+            "text": "-pboard"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "strong",
+            "text": "general"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "strong",
+            "text": "ruler"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "strong",
+            "text": "find"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "strong",
+            "text": "font"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "paragraph",
+      "text": "[[p0]] [[[p1]]] [[[p2]] {[[p3]] | [[p4]] | [[p5]] | [[p6]]}] [[[p7]] {[[p8]] | [[p9]] | [[p10]]}]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "pbpaste"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "-help"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "strong",
+            "text": "-pboard"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "strong",
+            "text": "general"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "strong",
+            "text": "ruler"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "strong",
+            "text": "find"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "strong",
+            "text": "font"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "strong",
+            "text": "-Prefer"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "strong",
+            "text": "txt"
+          }
+        },
+        {
+          "token": "[[p9]]",
+          "inline": {
+            "tag": "strong",
+            "text": "rtf"
+          }
+        },
+        {
+          "token": "[[p10]]",
+          "inline": {
+            "tag": "strong",
+            "text": "ps"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0006",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "[[p0]] takes the standard input and places it in the specified pasteboard. If no pasteboard is specified, the general pasteboard will be used by default. The input is placed in the pasteboard as plain text data unless it begins with the Encapsulated PostScript (EPS) file header or the Rich Text Format (RTF) file header, in which case it is placed in the pasteboard as one of those data types.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "pbcopy"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "paragraph",
+      "text": "[[p0]] removes the data from the pasteboard and writes it to the standard output. It normally looks first for plain text data in the pasteboard and writes that to the standard output; if no plain text data is in the pasteboard it looks for Encapsulated PostScript; if no EPS is present it looks for Rich Text. If none of those types is present in the pasteboard, [[p1]] produces no output.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "pbpaste"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "pbpaste"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "* Encoding:",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "[[p0]] and [[p1]] use locale environment variables to determine the encoding to be used for input and output. For example, absent other locale settings, setting the environment variable LANG=en_US.UTF-8 will cause [[p2]] and [[p3]] to use UTF-8 for input and output. If an encoding cannot be determined from the locale, the standard C encoding will be used. Use of UTF-8 is recommended. Note that by default the Terminal application uses the UTF-8 encoding and automatically sets the appropriate locale environment variable.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "pbcopy"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "pbpaste"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "strong",
+            "text": "pbcopy"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "strong",
+            "text": "pbpaste"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0011",
+      "kind": "heading",
+      "text": "OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "term",
+      "text": "[[p0]][[p1]] {general | ruler | find | font}[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-pboard"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "specifies which pasteboard to copy to or paste from. If no pasteboard is given, the general pasteboard will be used by default.",
+      "protected": []
+    },
+    {
+      "id": "s0014",
+      "kind": "term",
+      "text": "[[p0]][[p1]] {txt | rtf | ps}[[p2]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Prefer"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "tells [[p0]] what type of data to look for in the pasteboard first. As stated above, [[p1]] normally looks first for plain text data; however, by specifying [[p2]][[p3]] ps[[p4]] you can tell [[p5]] to look first for Encapsulated PostScript. If you specify [[p6]][[p7]] rtf[[p8]], [[p9]] looks first for Rich Text format. In any case, [[p10]] looks for the other formats if the preferred one is not found. The txt option replaces the deprecated ascii option, which continues to function as before. Both indicate a preference for plain text.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "pbpaste"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "pbpaste"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Prefer"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "strong",
+            "text": "pbpaste"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Prefer"
+          }
+        },
+        {
+          "token": "[[p8]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p9]]",
+          "inline": {
+            "tag": "strong",
+            "text": "pbpaste"
+          }
+        },
+        {
+          "token": "[[p10]]",
+          "inline": {
+            "tag": "strong",
+            "text": "pbpaste"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0016",
+      "kind": "heading",
+      "text": "SEE ALSO",
+      "protected": []
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "[[p0]]ADC Reference Library:[[p1]] [[p2]] Cocoa > Interapplication Communication > Copying and Pasting [[p3]] Carbon > Interapplication Communication > Pasteboard Manager Programming Guide [[p4]] Carbon > Interapplication Communication > Pasteboard Manager Reference",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "strong"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "br"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "br"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "br"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0018",
+      "kind": "heading",
+      "text": "BUGS",
+      "protected": []
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "There is no way to tell [[p0]] to get [[p1]] a specified data type.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "pbpaste"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "only"
+          }
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "NAME",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "SYNOPSIS",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0005"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0008"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0009"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0010"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "OPTIONS",
+      "segment": "s0011"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0012",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0013"
+            }
+          ]
+        },
+        {
+          "term": "s0014",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0015"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "SEE_ALSO",
+      "segment": "s0016"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0017"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "BUGS",
+      "segment": "s0018"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0019"
+    }
+  ]
+}

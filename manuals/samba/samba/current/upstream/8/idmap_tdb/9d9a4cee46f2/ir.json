@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "9d9a4cee46f282ba969d8d2274bb79c521a24ec10ec12487b6513dd2433f9acc",
+  "extraction": {
+    "selector": ".refentry",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "Name",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "idmap_tdb — Samba's idmap_tdb Backend for Winbind",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "The idmap_tdb plugin is the default backend used by winbindd for storing SID/uid/gid mapping tables.",
+      "protected": []
+    },
+    {
+      "id": "s0005",
+      "kind": "paragraph",
+      "text": "In contrast to read only backends like idmap_rid, it is an allocating backend: This means that it needs to allocate new user and group IDs in order to create new mappings.",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "heading",
+      "text": "IDMAP OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0007",
+      "kind": "term",
+      "text": "range = low - high",
+      "protected": []
+    },
+    {
+      "id": "s0008",
+      "kind": "paragraph",
+      "text": "Defines the available matching uid and gid range for which the backend is authoritative.",
+      "protected": []
+    },
+    {
+      "id": "s0009",
+      "kind": "heading",
+      "text": "EXAMPLES",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "This example shows how tdb is used as the default idmap backend. This configured range is used for uid and gid allocation.",
+      "protected": []
+    },
+    {
+      "id": "s0011",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "paragraph",
+      "text": "The original Samba software and related utilities were created by Andrew Tridgell. Samba is now developed by the Samba Team as an Open Source project similar to the way the Linux kernel is developed.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Name",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0005"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "IDMAP-OPTIONS",
+      "segment": "s0006"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0007",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0008"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "EXAMPLES",
+      "segment": "s0009"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0010"
+    },
+    {
+      "type": "literal",
+      "text": "\t[global]\n\t# \"backend = tdb\" is redundant here since it is the default\n\tidmap config * : backend = tdb\n\tidmap config * : range = 1000000-2000000"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "AUTHOR",
+      "segment": "s0011"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0012"
+    }
+  ]
+}

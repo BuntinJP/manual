@@ -1,0 +1,1138 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "4a0ccc004a73b71c771c357b861f2580882e0a2ebafcfa10c5418568b6651e62",
+  "extraction": {
+    "selector": "#cut-invocation",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "paragraph",
+      "text": "Next: [[p0]], Up: [[p1]] [[[p2]]][[[p3]]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "paste: Merge lines of files",
+            "href": "https://www.gnu.org/software/coreutils/manual/html_node/paste-invocation.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "Operating on fields",
+            "href": "https://www.gnu.org/software/coreutils/manual/html_node/Operating-on-fields.html"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "link",
+            "text": "Contents",
+            "href": "https://www.gnu.org/software/coreutils/manual/html_node/index.html#SEC_Contents"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "link",
+            "text": "Index",
+            "href": "https://www.gnu.org/software/coreutils/manual/html_node/Concept-index.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0002",
+      "kind": "heading",
+      "text": "8.1 cut: Print selected parts of lines ¶",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "paragraph",
+      "text": "[[p0]] writes to standard output selected parts of each line of each input file, or standard input if no files are given or for a file name of ‘[[p1]]’. Synopsis:",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "cut"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "In the table which follows, the [[p0]], [[p1]], and [[p2]] are one or more numbers or ranges (two numbers separated by a dash) separated by commas. Bytes, characters, and fields are numbered starting at 1. Incomplete ranges may be given: [[p3]] means ‘[[p4]]’; ‘[[p5]]’ means ‘[[p6]]’ through end of line or last field. The list elements can be repeated, can overlap, and can be specified in any order; but the selected input is written in the same order that it is read, and is written exactly once.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "byte-list"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "character-list"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "field-list"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-m"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "1-m"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "n-"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "n"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "paragraph",
+      "text": "The program accepts the following options. Also see [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Common options",
+            "href": "https://www.gnu.org/software/coreutils/manual/html_node/Common-options.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0006",
+      "kind": "term",
+      "text": "",
+      "protected": []
+    },
+    {
+      "id": "s0007",
+      "kind": "term",
+      "text": "‘[[p0]]’[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-b byte-list"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "¶",
+            "href": "#index-_002d_002dbytes-5"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "term",
+      "text": "‘[[p0]]’",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--bytes=byte-list"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "Select for printing only the bytes in positions listed in [[p0]]. Tabs and backspaces are treated like any other character; they take up 1 byte. If an output delimiter is specified, (see the description of [[p1]]), then output that string between ranges of selected bytes.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "byte-list"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--output-delimiter"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0010",
+      "kind": "term",
+      "text": "‘[[p0]]’[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-c character-list"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "¶",
+            "href": "#index-_002d_002dcharacters-1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0011",
+      "kind": "term",
+      "text": "‘[[p0]]’",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--characters=character-list"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0012",
+      "kind": "paragraph",
+      "text": "Select for printing only the characters in positions listed in [[p0]]. Tabs and backspaces are treated like any other character; they take up 1 character. Combining characters are considered as separate characters. If an output delimiter is specified, (see the description of [[p1]]), then output that string between ranges of selected characters.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "character-list"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--output-delimiter"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0013",
+      "kind": "term",
+      "text": "‘[[p0]]’[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--complement"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "¶",
+            "href": "#index-_002d_002dcomplement"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0014",
+      "kind": "paragraph",
+      "text": "This option is a GNU extension. Select for printing the complement of the bytes, characters or fields selected with the [[p0]], [[p1]] or [[p2]] options. In other words, do [[p3]]not[[p4]] print the bytes, characters or fields specified via those options. This option is useful when you have many fields and want to print all but a few of them.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-b"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-c"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "-f"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "em"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "em"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0015",
+      "kind": "term",
+      "text": "‘[[p0]]’[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-d character"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "¶",
+            "href": "#index-_002d_002ddelimiter"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0016",
+      "kind": "term",
+      "text": "‘[[p0]]’",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--delimiter=character"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "With [[p0]], use [[p1]] as the input field separator (default is TAB). If an empty delimiter [[p2]] is specified then the ASCII NUL character is used to delimit the fields. Note the delimiter [[p3]] can be the same as the line terminator character, which can be used to select ranges of lines. In this case the last line terminator in the input is not treated as a field separator, which is significant with the [[p4]] option.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-f"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "character"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "character"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "em",
+            "text": "character"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "-s"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0018",
+      "kind": "term",
+      "text": "‘[[p0]]’[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-f field-list"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "¶",
+            "href": "#index-_002d_002dfields"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0019",
+      "kind": "term",
+      "text": "‘[[p0]]’",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--fields=field-list"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0020",
+      "kind": "paragraph",
+      "text": "Select for printing only the fields listed in [[p0]]. Fields are separated by a TAB character by default. Also print any line that contains no delimiter character, unless the [[p1]] ([[p2]]) option is specified.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "field-list"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--only-delimited"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "-s"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0021",
+      "kind": "paragraph",
+      "text": "The [[p0]] command supports more sophisticated field processing, like reordering fields, and handling fields aligned with blank characters. By default [[p1]] uses (and discards) runs of blank characters to separate fields, and ignores leading and trailing blanks.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "awk"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "awk"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0022",
+      "kind": "paragraph",
+      "text": "While [[p0]] accepts field specifications in arbitrary order, output is always in the order encountered in the file.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "cut"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0023",
+      "kind": "paragraph",
+      "text": "In the unlikely event that [[p0]] is unavailable, one can use the [[p1]] command, to process blank characters as [[p2]] does above.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "awk"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "join"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "awk"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0024",
+      "kind": "term",
+      "text": "‘[[p0]]’[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-F"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "¶",
+            "href": "#index-_002dF-3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0025",
+      "kind": "paragraph",
+      "text": "Like the [[p0]] option, but also implies [[p1]] and [[p2]]. I.e., fields are separated by runs of blank characters, and output fields are separated by a single ASCII space.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-f,--fields"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-w"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--output-delimitor=' '"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0026",
+      "kind": "term",
+      "text": "‘[[p0]]’[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-n"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "¶",
+            "href": "#index-_002d_002dno_002dpartial"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0027",
+      "kind": "term",
+      "text": "‘[[p0]]’",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-partial"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0028",
+      "kind": "paragraph",
+      "text": "With [[p0]], do not split multi-byte characters. A byte range must encompass the end of a multi-byte character for it to be selected.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--bytes"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0029",
+      "kind": "term",
+      "text": "‘[[p0]]’[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-O string"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "¶",
+            "href": "#index-_002d_002doutput_002ddelimiter-1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0030",
+      "kind": "term",
+      "text": "‘[[p0]]’",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--output-delimiter=string"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0031",
+      "kind": "paragraph",
+      "text": "With [[p0]], output fields are separated by [[p1]]. The default with [[p2]] is to use the input delimiter, or with [[p3]] the TAB character. When using [[p4]] or [[p5]] to select ranges of byte or character offsets (as opposed to ranges of fields), output [[p6]] between non-overlapping ranges of selected bytes.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-f"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "string"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "-f"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-w"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "-b"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "-c"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "em",
+            "text": "output_delim_string"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0032",
+      "kind": "term",
+      "text": "‘[[p0]]’[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-s"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "¶",
+            "href": "#index-_002d_002donly_002ddelimited"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0033",
+      "kind": "term",
+      "text": "‘[[p0]]’",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--only-delimited"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0034",
+      "kind": "paragraph",
+      "text": "For [[p0]], do not print lines that do not contain field separators. Normally, any line without a field separator is printed verbatim. With [[p1]], lines that contain only leading or trailing blanks will be suppressed.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-f"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--whitespace-delimited=trimmed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0035",
+      "kind": "term",
+      "text": "‘[[p0]]’[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-w"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "¶",
+            "href": "#index-_002d_002dwhitespace_002ddelimited"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0036",
+      "kind": "term",
+      "text": "‘[[p0]]’",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--whitespace-delimited[=trimmed]"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0037",
+      "kind": "paragraph",
+      "text": "With [[p0]], separate fields with a run of blank characters (usually space or TAB). With ‘[[p1]]’ do not consider leading and trailing blanks as field separators. [[p2]] is implied with the [[p3]] option. Note efficiency of this mode can be improved if the input fields are separated by runs of only ASCII blank characters (space or TAB). Even if fields contain arbitrary other characters, you can efficiently search for ASCII blanks by invoking [[p4]] like ‘[[p5]]’.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-f"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "trimmed"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "-w"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-F"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "cut"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "LC_ALL=C cut"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0038",
+      "kind": "term",
+      "text": "‘[[p0]]’[[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-z"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "¶",
+            "href": "#index-_002d_002dzero_002dterminated-6"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0039",
+      "kind": "term",
+      "text": "‘[[p0]]’",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--zero-terminated"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0040",
+      "kind": "paragraph",
+      "text": "Delimit items with a zero byte rather than a newline (ASCII LF). I.e., treat input as items separated by ASCII NUL and terminate output items with ASCII NUL. This option can be useful in conjunction with ‘[[p0]]’ or ‘[[p1]]’ and ‘[[p2]]’ which do the same in order to reliably handle arbitrary file names (even those containing blanks or other special characters).",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "perl -0"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "find -print0"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "xargs -0"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0041",
+      "kind": "paragraph",
+      "text": "An exit status of zero indicates success, and a nonzero value indicates failure.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "segment": "s0001"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "cut_003a-Print-selected-parts-of-lines",
+      "segment": "s0002"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0003"
+    },
+    {
+      "type": "literal",
+      "text": "cut option... [file]..."
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0005"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0006",
+          "body": []
+        },
+        {
+          "term": "s0007",
+          "body": []
+        },
+        {
+          "term": "s0008",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0009"
+            }
+          ]
+        },
+        {
+          "term": "s0010",
+          "body": []
+        },
+        {
+          "term": "s0011",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0012"
+            }
+          ]
+        },
+        {
+          "term": "s0013",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0014"
+            }
+          ]
+        },
+        {
+          "term": "s0015",
+          "body": []
+        },
+        {
+          "term": "s0016",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0017"
+            }
+          ]
+        },
+        {
+          "term": "s0018",
+          "body": []
+        },
+        {
+          "term": "s0019",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0020"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0021"
+            },
+            {
+              "type": "literal",
+              "text": "awk '{print $2}'      # print the second field\nawk '{print $(NF-1)}' # print the penultimate field\nawk '{print $2,$1}'   # reorder the first two fields"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0022"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0023"
+            },
+            {
+              "type": "literal",
+              "text": "join -a1 -o 1.2     - /dev/null # print the second field\njoin -a1 -o 1.2,1.1 - /dev/null # reorder the first two fields"
+            }
+          ]
+        },
+        {
+          "term": "s0024",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0025"
+            }
+          ]
+        },
+        {
+          "term": "s0026",
+          "body": []
+        },
+        {
+          "term": "s0027",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0028"
+            }
+          ]
+        },
+        {
+          "term": "s0029",
+          "body": []
+        },
+        {
+          "term": "s0030",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0031"
+            }
+          ]
+        },
+        {
+          "term": "s0032",
+          "body": []
+        },
+        {
+          "term": "s0033",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0034"
+            }
+          ]
+        },
+        {
+          "term": "s0035",
+          "body": []
+        },
+        {
+          "term": "s0036",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0037"
+            }
+          ]
+        },
+        {
+          "term": "s0038",
+          "body": []
+        },
+        {
+          "term": "s0039",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0040"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0041"
+    }
+  ]
+}

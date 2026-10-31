@@ -1,0 +1,847 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Use the AWS CLI 2.39.3 to run the ssm get-ops-summary command." name="description" />
+
+  
+    <title>get-ops-summary &#8212; AWS CLI 2.39.3 Command Reference</title>
+  <link rel="stylesheet" type="text/css" href="../../_static/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../_static/override.css" />
+  <script src="/SdkStatic/sdk-priv.js" async="true"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/guzzle.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="get-parameter" href="get-parameter.html" />
+    <link rel="prev" title="get-ops-metadata" href="get-ops-metadata.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-responsive.min.css" />
+  
+   
+
+<link rel="alternate" type="text/markdown" href="get-ops-summary.md" title="Markdown version" />
+  </head><body>
+  <div class="navbar navbar-fixed-top ">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="../../index.html">AWS CLI Command Reference</a>
+        <ul class="nav">
+<li><a class="nav-link" href="../../index.html">Home</a></li>
+<li><a class="nav-link" href="https://docs.aws.amazon.com/cli/latest/userguide/">User Guide</a></li>
+<li><a class="nav-link" href="https://forums.aws.amazon.com/forum.jspa?forumID=150">Forum</a></li>
+<li><a class="nav-link" href="https://github.com/aws/aws-cli">GitHub</a></li>
+        </ul>
+        <div class="pull-right" id="github-stars">
+          <iframe src="https://ghbtns.com/github-btn.html?user=aws&repo=aws-cli&type=watch&count=true&size=small"
+                  allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"  sandbox="allow-scripts"
+                  title="GitHub button showing the number of project stars."></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--REGION_DISCLAIMER_DO_NOT_REMOVE-->
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="get-parameter.html" title="get-parameter"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="get-ops-metadata.html" title="get-ops-metadata"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">AWS CLI 2.39.3 Command Reference</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >aws</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">ssm</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">get-ops-summary</a></li> 
+      </ul>
+    </div>
+    <div class="container">
+        
+    <div class="top-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="get-ops-metadata.html" title="previous chapter (use the left arrow)">&larr; get-ops-metadata</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="get-parameter.html" title="next chapter (use the right arrow)">get-parameter &rarr;</a></li>
+      </ul>
+    </div>
+  
+        <div class="document clearer">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo left-bar-other">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/logo.png" alt="Amazon Web Services logo" height="63" />
+  </a>
+</p>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">get-ops-summary</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
+<li><a class="reference internal" href="#options">Options</a></li>
+<li><a class="reference internal" href="#global-options">Global Options</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#output">Output</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+<div id="searchbox" style="display: none">
+    <h3>Quick search</h3>
+    <form class="form-search margin-top-1em" action="../../search.html" method="get">
+        <label for="searchbox">Search box</label>
+        <input id="searchbox" type="search" name="q" style="width: 105px" class="input-small search-query" autocomplete="off" />
+        <button type="submit" class="btn btn-small">Search</button>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script src="../../_static/searchbox.js"></script><div class="left-bar-other">
+  <h3>Feedback</h3>
+  <p class="feedback">Did you find this page useful? Do you have a suggestion to improve the documentation? <a href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=AWS%20Command%20Line%20Interface&hidden_guide_name=Reference&topic_url=https%3A%2F%2Fdocs.aws.amazon.com%2Fcli%2Flatest%2Freference/ssm/get-ops-summary.html">Give us feedback</a>.
+    <br />
+    If you would like to suggest an improvement or fix for the AWS CLI, check out our <a href="https://github.com/aws/aws-cli/blob/v2/CONTRIBUTING.rst">contributing guide</a> on GitHub.</p>
+</div><div class="left-bar-other">
+  <h3>User Guide</h3>
+  <p>First time using the AWS CLI? See the
+  <a href="https://docs.aws.amazon.com/cli/latest/userguide/">User Guide</a> for
+  help getting started.</p>
+</div>
+        </div>
+      </div>
+            <div class="body">
+              
+  <p>[ <a class="reference internal" href="../index.html#cli-aws"><span class="std std-ref">aws</span></a> . <a class="reference internal" href="index.html#cli-aws-ssm"><span class="std std-ref">ssm</span></a> ]</p>
+<div class="section" id="get-ops-summary">
+<span id="cli-aws-ssm-get-ops-summary"></span><h1>get-ops-summary<a class="headerlink" href="#get-ops-summary" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
+<p>View a summary of operations metadata (OpsData) based on specified filters and aggregators. OpsData can include information about Amazon Web Services Systems Manager OpsCenter operational workitems (OpsItems) as well as information about any Amazon Web Services resource or service configured to report OpsData to Amazon Web Services Systems Manager Explorer.</p>
+<p>See also: <a class="reference external" href="https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetOpsSummary">AWS API Documentation</a></p>
+<p><code class="docutils literal notranslate"><span class="pre">get-ops-summary</span></code> is a paginated operation. Multiple API calls may be issued in order to retrieve the entire data set of results. You can disable pagination by providing the <code class="docutils literal notranslate"><span class="pre">--no-paginate</span></code> argument.
+When using <code class="docutils literal notranslate"><span class="pre">--output</span> <span class="pre">text</span></code> and the <code class="docutils literal notranslate"><span class="pre">--query</span></code> argument on a paginated response, the <code class="docutils literal notranslate"><span class="pre">--query</span></code> argument must extract data from the results of the following query expressions: <code class="docutils literal notranslate"><span class="pre">Entities</span></code></p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">get</span><span class="o">-</span><span class="n">ops</span><span class="o">-</span><span class="n">summary</span>
+<span class="p">[</span><span class="o">--</span><span class="n">sync</span><span class="o">-</span><span class="n">name</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">filters</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">aggregators</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">result</span><span class="o">-</span><span class="n">attributes</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">starting</span><span class="o">-</span><span class="n">token</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">page</span><span class="o">-</span><span class="n">size</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="nb">max</span><span class="o">-</span><span class="n">items</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="n">json</span> <span class="o">|</span> <span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="n">yaml</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">generate</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">skeleton</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">debug</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">verify</span><span class="o">-</span><span class="n">ssl</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">paginate</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">output</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">query</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">profile</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">region</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">version</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">color</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">sign</span><span class="o">-</span><span class="n">request</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">ca</span><span class="o">-</span><span class="n">bundle</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">read</span><span class="o">-</span><span class="n">timeout</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">connect</span><span class="o">-</span><span class="n">timeout</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">binary</span><span class="o">-</span><span class="nb">format</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">pager</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">auto</span><span class="o">-</span><span class="n">prompt</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">auto</span><span class="o">-</span><span class="n">prompt</span><span class="p">]</span>
+<span class="p">[</span><span class="o">--</span><span class="n">cli</span><span class="o">-</span><span class="n">error</span><span class="o">-</span><span class="nb">format</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">--sync-name</span></code> (string)</p>
+<blockquote>
+<div><p>Specify the name of a resource data sync to get.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">64</span></code></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--filters</span></code> (list)</p>
+<blockquote>
+<div><p>Optional filters used to scope down the returned OpsData.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">5</span></code></li>
+</ul>
+<p>(structure)</p>
+<blockquote>
+<div><p>A filter for viewing OpsData summaries.</p>
+<p>Key -&gt; (string) [required]</p>
+<blockquote>
+<div><p>The name of the filter.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">200</span></code></li>
+</ul>
+</div></blockquote>
+<p>Values -&gt; (list) [required]</p>
+<blockquote>
+<div><p>The filter value.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">40</span></code></li>
+</ul>
+<p>(string)</p>
+<blockquote>
+<div><p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">256</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p>Type -&gt; (string)</p>
+<blockquote>
+<div><p>The type of filter.</p>
+<p>Possible values:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">Equal</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">NotEqual</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">BeginWith</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">LessThan</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">GreaterThan</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Exists</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>Shorthand Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Key</span><span class="o">=</span><span class="n">string</span><span class="p">,</span><span class="n">Values</span><span class="o">=</span><span class="n">string</span><span class="p">,</span><span class="n">string</span><span class="p">,</span><span class="n">Type</span><span class="o">=</span><span class="n">string</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>JSON Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;Key&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;Type&quot;</span><span class="p">:</span> <span class="s2">&quot;Equal&quot;</span><span class="o">|</span><span class="s2">&quot;NotEqual&quot;</span><span class="o">|</span><span class="s2">&quot;BeginWith&quot;</span><span class="o">|</span><span class="s2">&quot;LessThan&quot;</span><span class="o">|</span><span class="s2">&quot;GreaterThan&quot;</span><span class="o">|</span><span class="s2">&quot;Exists&quot;</span>
+  <span class="p">}</span>
+  <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--aggregators</span></code> (list)</p>
+<blockquote>
+<div><p>Optional aggregators that return counts of OpsData based on one or more expressions.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">12</span></code></li>
+</ul>
+<p>(structure)</p>
+<blockquote>
+<div><p>One or more aggregators for viewing counts of OpsData using different dimensions such as <code class="docutils literal notranslate"><span class="pre">Source</span></code> , <code class="docutils literal notranslate"><span class="pre">CreatedTime</span></code> , or <code class="docutils literal notranslate"><span class="pre">Source</span> <span class="pre">and</span> <span class="pre">CreatedTime</span></code> , to name a few.</p>
+<p>AggregatorType -&gt; (string)</p>
+<blockquote>
+<div><p>Either a <code class="docutils literal notranslate"><span class="pre">Range</span></code> or <code class="docutils literal notranslate"><span class="pre">Count</span></code> aggregator for limiting an OpsData summary.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">20</span></code></li>
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^(range|count|sum)</span></code></li>
+</ul>
+</div></blockquote>
+<p>TypeName -&gt; (string)</p>
+<blockquote>
+<div><p>The data type name to use for viewing counts of OpsData.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">100</span></code></li>
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^(AWS|Custom):.*$</span></code></li>
+</ul>
+</div></blockquote>
+<p>AttributeName -&gt; (string)</p>
+<blockquote>
+<div><p>The name of an OpsData attribute on which to limit the count of OpsData.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">128</span></code></li>
+</ul>
+</div></blockquote>
+<p>Values -&gt; (map)</p>
+<blockquote>
+<div><p>The aggregator value.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">5</span></code></li>
+</ul>
+<p>key -&gt; (string)</p>
+<blockquote>
+<div><p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">32</span></code></li>
+</ul>
+</div></blockquote>
+<p>value -&gt; (string)</p>
+<blockquote>
+<div><p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">2048</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p>Filters -&gt; (list)</p>
+<blockquote>
+<div><p>The aggregator filters.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">5</span></code></li>
+</ul>
+<p>(structure)</p>
+<blockquote>
+<div><p>A filter for viewing OpsData summaries.</p>
+<p>Key -&gt; (string) [required]</p>
+<blockquote>
+<div><p>The name of the filter.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">200</span></code></li>
+</ul>
+</div></blockquote>
+<p>Values -&gt; (list) [required]</p>
+<blockquote>
+<div><p>The filter value.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">40</span></code></li>
+</ul>
+<p>(string)</p>
+<blockquote>
+<div><p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">256</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p>Type -&gt; (string)</p>
+<blockquote>
+<div><p>The type of filter.</p>
+<p>Possible values:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">Equal</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">NotEqual</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">BeginWith</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">LessThan</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">GreaterThan</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Exists</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>Aggregators -&gt; (list)</p>
+<blockquote>
+<div><p>A nested aggregator for viewing counts of OpsData.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">12</span></code></li>
+</ul>
+<p>(structure)</p>
+<blockquote>
+<div><p>One or more aggregators for viewing counts of OpsData using different dimensions such as <code class="docutils literal notranslate"><span class="pre">Source</span></code> , <code class="docutils literal notranslate"><span class="pre">CreatedTime</span></code> , or <code class="docutils literal notranslate"><span class="pre">Source</span> <span class="pre">and</span> <span class="pre">CreatedTime</span></code> , to name a few.</p>
+<p>AggregatorType -&gt; (string)</p>
+<blockquote>
+<div><p>Either a <code class="docutils literal notranslate"><span class="pre">Range</span></code> or <code class="docutils literal notranslate"><span class="pre">Count</span></code> aggregator for limiting an OpsData summary.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">20</span></code></li>
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^(range|count|sum)</span></code></li>
+</ul>
+</div></blockquote>
+<p>TypeName -&gt; (string)</p>
+<blockquote>
+<div><p>The data type name to use for viewing counts of OpsData.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">100</span></code></li>
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^(AWS|Custom):.*$</span></code></li>
+</ul>
+</div></blockquote>
+<p>AttributeName -&gt; (string)</p>
+<blockquote>
+<div><p>The name of an OpsData attribute on which to limit the count of OpsData.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">128</span></code></li>
+</ul>
+</div></blockquote>
+<p>Values -&gt; (map)</p>
+<blockquote>
+<div><p>The aggregator value.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">5</span></code></li>
+</ul>
+<p>key -&gt; (string)</p>
+<blockquote>
+<div><p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">32</span></code></li>
+</ul>
+</div></blockquote>
+<p>value -&gt; (string)</p>
+<blockquote>
+<div><p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">2048</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p>Filters -&gt; (list)</p>
+<blockquote>
+<div><p>The aggregator filters.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">5</span></code></li>
+</ul>
+<p>(structure)</p>
+<blockquote>
+<div><p>A filter for viewing OpsData summaries.</p>
+<p>Key -&gt; (string) [required]</p>
+<blockquote>
+<div><p>The name of the filter.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">200</span></code></li>
+</ul>
+</div></blockquote>
+<p>Values -&gt; (list) [required]</p>
+<blockquote>
+<div><p>The filter value.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">40</span></code></li>
+</ul>
+<p>(string)</p>
+<blockquote>
+<div><p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">256</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p>Type -&gt; (string)</p>
+<blockquote>
+<div><p>The type of filter.</p>
+<p>Possible values:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">Equal</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">NotEqual</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">BeginWith</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">LessThan</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">GreaterThan</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Exists</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>JSON Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;AggregatorType&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;TypeName&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;AttributeName&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Values&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;string&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+      <span class="o">...</span><span class="p">},</span>
+    <span class="s2">&quot;Filters&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;Key&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+        <span class="s2">&quot;Type&quot;</span><span class="p">:</span> <span class="s2">&quot;Equal&quot;</span><span class="o">|</span><span class="s2">&quot;NotEqual&quot;</span><span class="o">|</span><span class="s2">&quot;BeginWith&quot;</span><span class="o">|</span><span class="s2">&quot;LessThan&quot;</span><span class="o">|</span><span class="s2">&quot;GreaterThan&quot;</span><span class="o">|</span><span class="s2">&quot;Exists&quot;</span>
+      <span class="p">}</span>
+      <span class="o">...</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;Aggregators&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;AggregatorType&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;TypeName&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;AttributeName&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Values&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;string&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+          <span class="o">...</span><span class="p">},</span>
+        <span class="s2">&quot;Filters&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;Key&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+            <span class="s2">&quot;Type&quot;</span><span class="p">:</span> <span class="s2">&quot;Equal&quot;</span><span class="o">|</span><span class="s2">&quot;NotEqual&quot;</span><span class="o">|</span><span class="s2">&quot;BeginWith&quot;</span><span class="o">|</span><span class="s2">&quot;LessThan&quot;</span><span class="o">|</span><span class="s2">&quot;GreaterThan&quot;</span><span class="o">|</span><span class="s2">&quot;Exists&quot;</span>
+          <span class="p">}</span>
+          <span class="o">...</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;Aggregators&quot;</span><span class="p">:</span>
+      <span class="p">}</span>
+      <span class="o">...</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+  <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--result-attributes</span></code> (list)</p>
+<blockquote>
+<div><p>The OpsData data type to return.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+</ul>
+<p>(structure)</p>
+<blockquote>
+<div><p>The OpsItem data type to return.</p>
+<p>TypeName -&gt; (string) [required]</p>
+<blockquote>
+<div><p>Name of the data type. Valid value: <code class="docutils literal notranslate"><span class="pre">AWS:OpsItem</span></code> , <code class="docutils literal notranslate"><span class="pre">AWS:EC2InstanceInformation</span></code> , <code class="docutils literal notranslate"><span class="pre">AWS:OpsItemTrendline</span></code> , or <code class="docutils literal notranslate"><span class="pre">AWS:ComplianceSummary</span></code> .</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">100</span></code></li>
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^(AWS|Custom):.*$</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>Shorthand Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TypeName</span><span class="o">=</span><span class="n">string</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>JSON Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;TypeName&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+  <span class="p">}</span>
+  <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--starting-token</span></code> (string)</p>
+<blockquote>
+<div><p>A token to specify where to start paginating. This is the <code class="docutils literal notranslate"><span class="pre">NextToken</span></code> from a previously truncated response.</p>
+<p>For usage examples, see <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/pagination.html">Pagination</a> in the <em>AWS Command Line Interface User Guide</em> .</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--page-size</span></code> (integer)</p>
+<blockquote>
+<div><p>The size of each page to get in the AWS service call. This does not affect the number of items returned in the command’s output. Setting a smaller page size results in more calls to the AWS service, retrieving fewer items in each call. This can help prevent the AWS service calls from timing out.</p>
+<p>For usage examples, see <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/pagination.html">Pagination</a> in the <em>AWS Command Line Interface User Guide</em> .</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">50</span></code></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--max-items</span></code> (integer)</p>
+<blockquote>
+<div><p>The total number of items to return in the command’s output. If the total number of items available is more than the value specified, a <code class="docutils literal notranslate"><span class="pre">NextToken</span></code> is provided in the command’s output. To resume pagination, provide the <code class="docutils literal notranslate"><span class="pre">NextToken</span></code> value in the <code class="docutils literal notranslate"><span class="pre">starting-token</span></code> argument of a subsequent command. <strong>Do not</strong> use the <code class="docutils literal notranslate"><span class="pre">NextToken</span></code> response element directly outside of the AWS CLI.</p>
+<p>For usage examples, see <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/pagination.html">Pagination</a> in the <em>AWS Command Line Interface User Guide</em> .</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-input-json</span></code> | <code class="docutils literal notranslate"><span class="pre">--cli-input-yaml</span></code> (string)
+Reads arguments from the JSON string provided. The JSON string follows the format provided by <code class="docutils literal notranslate"><span class="pre">--generate-cli-skeleton</span></code>. If other arguments are provided on the command line, those values will override the JSON-provided values. It is not possible to pass arbitrary binary values using a JSON-provided value as the string will be taken literally. This may not be specified along with <code class="docutils literal notranslate"><span class="pre">--cli-input-yaml</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--generate-cli-skeleton</span></code> (string)
+Prints a JSON skeleton to standard output without sending an API request. If provided with no value or the value <code class="docutils literal notranslate"><span class="pre">input</span></code>, prints a sample input JSON that can be used as an argument for <code class="docutils literal notranslate"><span class="pre">--cli-input-json</span></code>. Similarly, if provided <code class="docutils literal notranslate"><span class="pre">yaml-input</span></code> it will print a sample input YAML that can be used with <code class="docutils literal notranslate"><span class="pre">--cli-input-yaml</span></code>. If provided with the value <code class="docutils literal notranslate"><span class="pre">output</span></code>, it validates the command inputs and returns a sample output JSON for that command. The generated JSON skeleton is not stable between versions of the AWS CLI and there are no backwards compatibility guarantees in the JSON skeleton generated.</p>
+</div>
+<div class="section" id="global-options">
+<h2>Global Options<a class="headerlink" href="#global-options" title="Permalink to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">--debug</span></code> (boolean)</p>
+<p>Turn on debug logging.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--endpoint-url</span></code> (string)</p>
+<p>Override command’s default URL with the given URL.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--no-verify-ssl</span></code> (boolean)</p>
+<p>By default, the AWS CLI uses SSL when communicating with AWS services. For each SSL connection, the AWS CLI will verify SSL certificates. This option overrides the default behavior of verifying SSL certificates.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--no-paginate</span></code> (boolean)</p>
+<p>Disable automatic pagination. If automatic pagination is disabled, the AWS CLI will only make one call, for the first page of results.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--output</span></code> (string)</p>
+<p>The formatting style for command output.</p>
+<ul class="simple">
+<li>json</li>
+<li>text</li>
+<li>table</li>
+<li>yaml</li>
+<li>yaml-stream</li>
+<li>off</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">--query</span></code> (string)</p>
+<p>A JMESPath query to use in filtering the response data.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--profile</span></code> (string)</p>
+<p>Use a specific profile from your credential file.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--region</span></code> (string)</p>
+<p>The region to use. Overrides config/env settings.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--version</span></code> (string)</p>
+<p>Display the version of this tool.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--color</span></code> (string)</p>
+<p>Turn on/off color output.</p>
+<ul class="simple">
+<li>on</li>
+<li>off</li>
+<li>auto</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">--no-sign-request</span></code> (boolean)</p>
+<p>Do not sign requests. Credentials will not be loaded if this argument is provided.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--ca-bundle</span></code> (string)</p>
+<p>The CA certificate bundle to use when verifying SSL certificates. Overrides config/env settings.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-read-timeout</span></code> (int)</p>
+<p>The maximum socket read time in seconds. If the value is set to 0, the socket read will be blocking and not timeout. The default value is 60 seconds.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-connect-timeout</span></code> (int)</p>
+<p>The maximum socket connect time in seconds. If the value is set to 0, the socket connect will be blocking and not timeout. The default value is 60 seconds.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-binary-format</span></code> (string)</p>
+<p>The formatting style to be used for binary blobs. The default format is base64. The base64 format expects binary blobs to be provided as a base64 encoded string. The raw-in-base64-out format preserves compatibility with AWS CLI V1 behavior and binary values must be passed literally. When providing contents from a file that map to a binary blob <code class="docutils literal notranslate"><span class="pre">fileb://</span></code> will always be treated as binary and use the file contents directly regardless of the <code class="docutils literal notranslate"><span class="pre">cli-binary-format</span></code> setting. When using <code class="docutils literal notranslate"><span class="pre">file://</span></code> the file contents will need to properly formatted for the configured <code class="docutils literal notranslate"><span class="pre">cli-binary-format</span></code>.</p>
+<ul class="simple">
+<li>base64</li>
+<li>raw-in-base64-out</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">--no-cli-pager</span></code> (boolean)</p>
+<p>Disable cli pager for output.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-auto-prompt</span></code> (boolean)</p>
+<p>Automatically prompt for CLI input parameters.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--no-cli-auto-prompt</span></code> (boolean)</p>
+<p>Disable automatically prompt for CLI input parameters.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cli-error-format</span></code> (string)</p>
+<p>The formatting style for error output. By default, errors are displayed in enhanced format.</p>
+<ul class="simple">
+<li>legacy</li>
+<li>json</li>
+<li>yaml</li>
+<li>text</li>
+<li>table</li>
+<li>enhanced</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<div class="admonition note">
+<h3 class='admonition-title'>Note</h3><p class="first">To use the following examples, you must have the AWS CLI installed and configured. See the <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html">Getting started guide</a> in the <em>AWS CLI User Guide</em> for more information.</p>
+<p class="last">Unless otherwise stated, all examples have unix-like quotation rules. These examples will need to be adapted to your terminal’s quoting rules. See <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-quoting-strings.html">Using quotation marks with strings</a> in the <em>AWS CLI User Guide</em> .</p>
+</div>
+<p><strong>To view a summary of all OpsItems</strong></p>
+<p>The following <code class="docutils literal notranslate"><span class="pre">get-ops-summary</span></code> example displays a summary of all OpsItems in your AWS account.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aws</span> <span class="n">ssm</span> <span class="n">get</span><span class="o">-</span><span class="n">ops</span><span class="o">-</span><span class="n">summary</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Entities&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;oi-4309fEXAMPLE&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Data&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;AWS:OpsItem&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;CaptureTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-02-26T18:58:32.918Z&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Content&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;AccountId&quot;</span><span class="p">:</span> <span class="s2">&quot;123456789012&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Category&quot;</span><span class="p">:</span> <span class="s2">&quot;Availability&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;CreatedBy&quot;</span><span class="p">:</span> <span class="s2">&quot;arn:aws:sts::123456789012:assumed-role/OpsItem-CWE-Role/fbf77cbe264a33509569f23e4EXAMPLE&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;CreatedTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-02-26T19:10:44.149Z&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;CloudWatch Event Rule SSMOpsItems-EC2-instance-terminated was triggered. Your EC2 instance has terminated. See below for more details.&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;LastModifiedBy&quot;</span><span class="p">:</span> <span class="s2">&quot;arn:aws:sts::123456789012:assumed-role/OpsItem-CWE-Role/fbf77cbe264a33509569f23e4EXAMPLE&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;LastModifiedTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-02-26T19:10:44.149Z&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Notifications&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;OperationalData&quot;</span><span class="p">:</span> <span class="s2">&quot;{</span><span class="se">\&quot;</span><span class="s2">/aws/automations</span><span class="se">\&quot;</span><span class="s2">:{</span><span class="se">\&quot;</span><span class="s2">type</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">SearchableString</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">value</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">[ { </span><span class="se">\\\&quot;</span><span class="s2">automationType</span><span class="se">\\\&quot;</span><span class="s2">: </span><span class="se">\\\&quot;</span><span class="s2">AWS:SSM:Automation</span><span class="se">\\\&quot;</span><span class="s2">, </span><span class="se">\\\&quot;</span><span class="s2">automationId</span><span class="se">\\\&quot;</span><span class="s2">: </span><span class="se">\\\&quot;</span><span class="s2">AWS-CreateManagedWindowsInstance</span><span class="se">\\\&quot;</span><span class="s2"> }, { </span><span class="se">\\\&quot;</span><span class="s2">automationType</span><span class="se">\\\&quot;</span><span class="s2">: </span><span class="se">\\\&quot;</span><span class="s2">AWS:SSM:Automation</span><span class="se">\\\&quot;</span><span class="s2">, </span><span class="se">\\\&quot;</span><span class="s2">automationId</span><span class="se">\\\&quot;</span><span class="s2">: </span><span class="se">\\\&quot;</span><span class="s2">AWS-CreateManagedLinuxInstance</span><span class="se">\\\&quot;</span><span class="s2"> } ]</span><span class="se">\&quot;</span><span class="s2">},</span><span class="se">\&quot;</span><span class="s2">/aws/resources</span><span class="se">\&quot;</span><span class="s2">:{</span><span class="se">\&quot;</span><span class="s2">type</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">SearchableString</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">value</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">[{</span><span class="se">\\\&quot;</span><span class="s2">arn</span><span class="se">\\\&quot;</span><span class="s2">:</span><span class="se">\\\&quot;</span><span class="s2">arn:aws:ec2:us-west-2:123456789012:instance/i-0acbd0800fEXAMPLE</span><span class="se">\\\&quot;</span><span class="s2">}]</span><span class="se">\&quot;</span><span class="s2">},</span><span class="se">\&quot;</span><span class="s2">/aws/dedup</span><span class="se">\&quot;</span><span class="s2">:{</span><span class="se">\&quot;</span><span class="s2">type</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">SearchableString</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">value</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">{</span><span class="se">\\\&quot;</span><span class="s2">dedupString</span><span class="se">\\\&quot;</span><span class="s2">:</span><span class="se">\\\&quot;</span><span class="s2">SSMOpsItems-EC2-instance-terminated</span><span class="se">\\\&quot;</span><span class="s2">}</span><span class="se">\&quot;</span><span class="s2">}}&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;OpsItemId&quot;</span><span class="p">:</span> <span class="s2">&quot;oi-4309fEXAMPLE&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;RelatedItems&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Severity&quot;</span><span class="p">:</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Source&quot;</span><span class="p">:</span> <span class="s2">&quot;EC2&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Status&quot;</span><span class="p">:</span> <span class="s2">&quot;Open&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Title&quot;</span><span class="p">:</span> <span class="s2">&quot;EC2 instance terminated&quot;</span>
+                        <span class="p">}</span>
+                    <span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;oi-bb2a0e6a4541&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Data&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;AWS:OpsItem&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;CaptureTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-11-26T19:20:06.161Z&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Content&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;AccountId&quot;</span><span class="p">:</span> <span class="s2">&quot;123456789012&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Category&quot;</span><span class="p">:</span> <span class="s2">&quot;Availability&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;CreatedBy&quot;</span><span class="p">:</span> <span class="s2">&quot;arn:aws:sts::123456789012:assumed-role/OpsItem-CWE-Role/fbf77cbe264a33509569f23e4EXAMPLE&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;CreatedTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-11-26T20:00:07.237Z&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;CloudWatch Event Rule SSMOpsItems-SSM-maintenance-window-execution-failed was triggered. Your SSM Maintenance Window execution has failed. See below for more details.&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;LastModifiedBy&quot;</span><span class="p">:</span> <span class="s2">&quot;arn:aws:sts::123456789012:assumed-role/OpsItem-CWE-Role/fbf77cbe264a33509569f23e4EXAMPLE&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;LastModifiedTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-11-26T20:00:07.237Z&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Notifications&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;OperationalData&quot;</span><span class="p">:</span> <span class="s2">&quot;{</span><span class="se">\&quot;</span><span class="s2">/aws/resources</span><span class="se">\&quot;</span><span class="s2">:{</span><span class="se">\&quot;</span><span class="s2">type</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">SearchableString</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">value</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">[{</span><span class="se">\\\&quot;</span><span class="s2">arn</span><span class="se">\\\&quot;</span><span class="s2">:</span><span class="se">\\\&quot;</span><span class="s2">arn:aws:ssm:us-west-2:123456789012:maintenancewindow/mw-0e83ba440dEXAMPLE</span><span class="se">\\\&quot;</span><span class="s2">}]</span><span class="se">\&quot;</span><span class="s2">},</span><span class="se">\&quot;</span><span class="s2">/aws/dedup</span><span class="se">\&quot;</span><span class="s2">:{</span><span class="se">\&quot;</span><span class="s2">type</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">SearchableString</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">value</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">{</span><span class="se">\\\&quot;</span><span class="s2">dedupString</span><span class="se">\\\&quot;</span><span class="s2">:</span><span class="se">\\\&quot;</span><span class="s2">SSMOpsItems-SSM-maintenance-window-execution-failed</span><span class="se">\\\&quot;</span><span class="s2">}</span><span class="se">\&quot;</span><span class="s2">}}&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;OpsItemId&quot;</span><span class="p">:</span> <span class="s2">&quot;oi-bb2a0EXAMPLE&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;RelatedItems&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Severity&quot;</span><span class="p">:</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Source&quot;</span><span class="p">:</span> <span class="s2">&quot;SSM&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Status&quot;</span><span class="p">:</span> <span class="s2">&quot;Open&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Title&quot;</span><span class="p">:</span> <span class="s2">&quot;SSM Maintenance Window execution failed&quot;</span>
+                        <span class="p">}</span>
+                    <span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For more information, see <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-working-with-OpsItems.html">Working with OpsItems</a> in the <em>AWS Systems Manager User Guide</em>.</p>
+</div>
+<div class="section" id="output">
+<h2>Output<a class="headerlink" href="#output" title="Permalink to this heading">¶</a></h2>
+<p>Entities -&gt; (list)</p>
+<blockquote>
+<div><p>The list of aggregated details and filtered OpsData.</p>
+<p>(structure)</p>
+<blockquote>
+<div><p>The result of the query.</p>
+<p>Id -&gt; (string)</p>
+<blockquote>
+<div>The query ID.</div></blockquote>
+<p>Data -&gt; (map)</p>
+<blockquote>
+<div><p>The data returned by the query.</p>
+<p>key -&gt; (string)</p>
+<p>value -&gt; (structure)</p>
+<blockquote>
+<div><p>The OpsData summary.</p>
+<p>CaptureTime -&gt; (string)</p>
+<blockquote>
+<div><p>The time the OpsData was captured.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>pattern: <code class="docutils literal notranslate"><span class="pre">^(20)[0-9][0-9]-(0[1-9]|1[012])-([12][0-9]|3[01]|0[1-9])(T)(2[0-3]|[0-1][0-9])(:[0-5][0-9])(:[0-5][0-9])(Z)$</span></code></li>
+</ul>
+</div></blockquote>
+<p>Content -&gt; (list)</p>
+<blockquote>
+<div><p>The details of an OpsData summary.</p>
+<p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">10000</span></code></li>
+</ul>
+<p>(map)</p>
+<blockquote>
+<div><p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">50</span></code></li>
+</ul>
+<p>key -&gt; (string)</p>
+<blockquote>
+<div><p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">64</span></code></li>
+</ul>
+</div></blockquote>
+<p>value -&gt; (string)</p>
+<blockquote>
+<div><p>Constraints:</p>
+<ul class="simple">
+<li>min: <code class="docutils literal notranslate"><span class="pre">0</span></code></li>
+<li>max: <code class="docutils literal notranslate"><span class="pre">4096</span></code></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>NextToken -&gt; (string)</p>
+<blockquote>
+<div>The token for the next set of items to return. Use this token to get the next set of results.</div></blockquote>
+</div>
+</div>
+
+
+            </div>
+          <div class="clearfix"></div>
+        </div>
+        
+    <div class="footer-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="get-ops-metadata.html" title="previous chapter (use the left arrow)">&larr; get-ops-metadata</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="get-parameter.html" title="next chapter (use the right arrow)">get-parameter &rarr;</a></li>
+      </ul>
+    </div>
+  
+
+    </div>
+  <script type="text/javascript" src="https://media.amazonwebservices.com/js/sitecatalyst/s_code.min.js"></script>
+  <script type="text/javascript" src="../../_static/analytics.js"></script>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="get-parameter.html" title="get-parameter"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="get-ops-metadata.html" title="get-ops-metadata"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">AWS CLI 2.39.3 Command Reference</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >aws</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >ssm</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">get-ops-summary</a></li> 
+      </ul>
+    </div>
+  <div class="footer container">
+    &copy; Copyright 2026, Amazon Web Services. Created using <a href="https://www.sphinx-doc.org/">Sphinx</a>.
+  </div>
+
+
+
+  
+    
+  
+  </body>
+</html>

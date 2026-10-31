@@ -82,6 +82,9 @@ export async function roffToHtml(source: string): Promise<{ html: string; diagno
     'nx',
     'c2',
     'do',
+    'als',
+    'rn',
+    'rnn',
   ]);
   let control = '.';
   for (const line of source.split(/\r?\n/)) {
@@ -95,7 +98,9 @@ export async function roffToHtml(source: string): Promise<{ html: string; diagno
     );
     const requests = new RegExp(`(?:^|[ \\t])(?:${markers.join('|')})[ \\t]*([A-Za-z0-9]+)`, 'g');
     for (const match of line.matchAll(requests)) {
-      const request = match[1].toLowerCase();
+      // roff names are case-sensitive: mdoc .Sy is emphasis, not shell .sy.
+      // Reject request aliases/renames above so they cannot hide unsafe names.
+      const request = match[1];
       if (request === 'cc' && !change)
         throw new Error(
           'External roff inclusion, file access, shell and control-character requests are unsupported. Supply a self-contained source.',

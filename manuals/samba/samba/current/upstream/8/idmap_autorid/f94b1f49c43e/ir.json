@@ -1,0 +1,351 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "f94b1f49c43e49cf2df680bdf20c194d1120d2bdc28d56ade375233b3d1563b2",
+  "extraction": {
+    "selector": ".refentry",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "Name",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "idmap_autorid — Samba's idmap_autorid Backend for Winbind",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "The idmap_autorid backend provides a way to use an algorithmic mapping scheme to map UIDs/GIDs and SIDs that is more deterministic than idmap_tdb and easier to configure than idmap_rid.",
+      "protected": []
+    },
+    {
+      "id": "s0005",
+      "kind": "paragraph",
+      "text": "The module works similar to idmap_rid, but it automatically configures the range to be used for each domain, so there is no need to specify a specific range for each domain in the forest, the only configuration that is needed is the range of uid/gids that shall be used for user/group mappings and an optional size of the ranges to be used.",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "The mappings of which domain is mapped to which range is stored in autorid.tdb, thus you should backup this database regularly.",
+      "protected": []
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "Due to the algorithm being used, it is the module that is most easy to use as it only requires a minimal configuration.",
+      "protected": []
+    },
+    {
+      "id": "s0008",
+      "kind": "heading",
+      "text": "IDMAP OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0009",
+      "kind": "term",
+      "text": "range = low - high",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "Defines the available matching uid and gid range for which the backend is authoritative. Note that the range acts as a filter. If algorithmically determined UID or GID fall outside the range, they are ignored and the corresponding map is discarded. It is intended as a way to avoid accidental UID/GID overlaps between local and remotely defined IDs. Note that the range should be a multiple of the rangesize and needs to be at least twice as large in order to have sufficient id range space for the mandatory BUILTIN domain. With a default rangesize of 100000 the range needs to span at least 200000. This would be: range = 100000 - 299999.",
+      "protected": []
+    },
+    {
+      "id": "s0011",
+      "kind": "term",
+      "text": "rangesize = numberofidsperrange",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "paragraph",
+      "text": "Defines the number of uids/gids available per domain range. The minimum needed value is 2000. SIDs with RIDs larger than this value will be mapped into extension ranges depending upon number of available ranges. If the autorid backend runs out of available ranges, mapping requests for new domains (or new extension ranges for domains already known) are ignored and the corresponding map is discarded.",
+      "protected": []
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "Example: with rangesize set to 10000, users/groups with a RID up to 10000 will be put into the first range for the domain. When attempting to map the an object with a RID of 25000, an extension range will be allocated that will then be used to map all RIDs from 20000-29999.",
+      "protected": []
+    },
+    {
+      "id": "s0014",
+      "kind": "paragraph",
+      "text": "One range will be used for local users and groups and for non-domain well-known SIDs like Everyone (S-1-1-0) or Creator Owner (S-1-3-0). A chosen list of well-known SIDs will be preallocated on first start to create deterministic mappings for those.",
+      "protected": []
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "Thus the number of local users and groups that can be created is limited by this option as well. If you plan to create a large amount of local users or groups, you will need set this parameter accordingly.",
+      "protected": []
+    },
+    {
+      "id": "s0016",
+      "kind": "paragraph",
+      "text": "The default value is 100000.",
+      "protected": []
+    },
+    {
+      "id": "s0017",
+      "kind": "term",
+      "text": "read only = [ yes | no ]",
+      "protected": []
+    },
+    {
+      "id": "s0018",
+      "kind": "paragraph",
+      "text": "Turn the module into read-only mode. No new ranges will be allocated nor will new mappings be created in the idmap pool. Defaults to no.",
+      "protected": []
+    },
+    {
+      "id": "s0019",
+      "kind": "term",
+      "text": "ignore builtin = [ yes | no ]",
+      "protected": []
+    },
+    {
+      "id": "s0020",
+      "kind": "paragraph",
+      "text": "Ignore any mapping requests for the BUILTIN domain. Defaults to no.",
+      "protected": []
+    },
+    {
+      "id": "s0021",
+      "kind": "heading",
+      "text": "THE MAPPING FORMULAS",
+      "protected": []
+    },
+    {
+      "id": "s0022",
+      "kind": "paragraph",
+      "text": "The Unix ID for a RID is calculated this way:",
+      "protected": []
+    },
+    {
+      "id": "s0023",
+      "kind": "paragraph",
+      "text": "where REDUCED RID = RID % RANGE_SIZE and a DOMAIN RANGE INDEX = RID / RANGE_SIZE is used together with the domain sid to determine the RANGE NUMBER (stored in the database).",
+      "protected": []
+    },
+    {
+      "id": "s0024",
+      "kind": "paragraph",
+      "text": "Correspondingly, the formula for calculating the RID for a given Unix ID is this:",
+      "protected": []
+    },
+    {
+      "id": "s0025",
+      "kind": "paragraph",
+      "text": "Where the DOMAIN RANGE INDEX is retrieved from the database along with the domain sid by the RANGE NUMBER = (ID - LOW ID) / RANGE SIZE .",
+      "protected": []
+    },
+    {
+      "id": "s0026",
+      "kind": "heading",
+      "text": "EXAMPLES",
+      "protected": []
+    },
+    {
+      "id": "s0027",
+      "kind": "paragraph",
+      "text": "This example shows you the minimal configuration that will work for the principal domain and 19 trusted domains / range extensions.",
+      "protected": []
+    },
+    {
+      "id": "s0028",
+      "kind": "paragraph",
+      "text": "This example shows how to configure idmap_autorid as default for all domains with a potentially large amount of users plus a specific configuration for a trusted domain that uses the SFU mapping scheme. Please note that idmap ranges and sfu ranges are not allowed to overlap.",
+      "protected": []
+    },
+    {
+      "id": "s0029",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0030",
+      "kind": "paragraph",
+      "text": "The original Samba software and related utilities were created by Andrew Tridgell. Samba is now developed by the Samba Team as an Open Source project similar to the way the Linux kernel is developed.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Name",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "IDMAP-OPTIONS",
+      "segment": "s0008"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0009",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0010"
+            }
+          ]
+        },
+        {
+          "term": "s0011",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0012"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0013"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0014"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0015"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0016"
+            }
+          ]
+        },
+        {
+          "term": "s0017",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0018"
+            }
+          ]
+        },
+        {
+          "term": "s0019",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0020"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "THE-MAPPING-FORMULAS",
+      "segment": "s0021"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0022"
+    },
+    {
+      "type": "literal",
+      "text": "\t\t\tID =  REDUCED RID + IDMAP RANGE LOW VALUE + RANGE NUMBER * RANGE SIZE"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0023"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0024"
+    },
+    {
+      "type": "literal",
+      "text": "\t\t\tRID = (ID - LOW ID) % RANGE SIZE + DOMAIN RANGE INDEX * RANGE SIZE"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0025"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "EXAMPLES",
+      "segment": "s0026"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0027"
+    },
+    {
+      "type": "literal",
+      "text": "\t[global]\n\tsecurity = ads\n\tworkgroup = CUSTOMER\n\trealm = CUSTOMER.COM\n\n\tidmap config * : backend = autorid\n\tidmap config * : range = 1000000-1999999\n"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0028"
+    },
+    {
+      "type": "literal",
+      "text": "\t[global]\n\tsecurity = ads\n\tworkgroup = CUSTOMER\n\trealm = CUSTOMER.COM\n\n\tidmap config * : backend = autorid\n\tidmap config * : range = 1000000-19999999\n\tidmap config * : rangesize = 1000000\n\n\tidmap config TRUSTED : backend  = ad\n\tidmap config TRUSTED : range    = 50000 - 99999\n\tidmap config TRUSTED : schema_mode = sfu"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "AUTHOR",
+      "segment": "s0029"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0030"
+    }
+  ]
+}

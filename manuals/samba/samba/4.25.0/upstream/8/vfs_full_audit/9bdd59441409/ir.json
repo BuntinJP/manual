@@ -1,0 +1,2347 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "9bdd5944140987d4dd24d425b12d03ca638c21c07c82b5a48bb55d3bcfb9bd44",
+  "extraction": {
+    "selector": ".refentry",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "Name",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "vfs_full_audit — record Samba VFS operations in the system log",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "Synopsis",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs objects = full_audit"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "This VFS module is part of the [[p0]] suite.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "samba(7)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/samba.7.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "The [[p0]] VFS module records selected client operations to the system log using [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs_full_audit"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "syslog(3)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/syslog.3.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "paragraph",
+      "text": "[[p0]] is able to record the complete set of Samba VFS operations:",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs_full_audit"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "aio_force",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "brl_lock_windows",
+      "protected": []
+    },
+    {
+      "id": "s0011",
+      "kind": "paragraph",
+      "text": "brl_unlock_windows",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "paragraph",
+      "text": "chdir",
+      "protected": []
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "close",
+      "protected": []
+    },
+    {
+      "id": "s0014",
+      "kind": "paragraph",
+      "text": "closedir",
+      "protected": []
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "connect",
+      "protected": []
+    },
+    {
+      "id": "s0016",
+      "kind": "paragraph",
+      "text": "create_dfs_pathat",
+      "protected": []
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "create_file",
+      "protected": []
+    },
+    {
+      "id": "s0018",
+      "kind": "paragraph",
+      "text": "disconnect",
+      "protected": []
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "disk_free",
+      "protected": []
+    },
+    {
+      "id": "s0020",
+      "kind": "paragraph",
+      "text": "durable_cookie",
+      "protected": []
+    },
+    {
+      "id": "s0021",
+      "kind": "paragraph",
+      "text": "durable_disconnect",
+      "protected": []
+    },
+    {
+      "id": "s0022",
+      "kind": "paragraph",
+      "text": "durable_reconnect",
+      "protected": []
+    },
+    {
+      "id": "s0023",
+      "kind": "paragraph",
+      "text": "fallocate",
+      "protected": []
+    },
+    {
+      "id": "s0024",
+      "kind": "paragraph",
+      "text": "fchflags",
+      "protected": []
+    },
+    {
+      "id": "s0025",
+      "kind": "paragraph",
+      "text": "fchmod",
+      "protected": []
+    },
+    {
+      "id": "s0026",
+      "kind": "paragraph",
+      "text": "fchown",
+      "protected": []
+    },
+    {
+      "id": "s0027",
+      "kind": "paragraph",
+      "text": "fcntl",
+      "protected": []
+    },
+    {
+      "id": "s0028",
+      "kind": "paragraph",
+      "text": "fdopendir",
+      "protected": []
+    },
+    {
+      "id": "s0029",
+      "kind": "paragraph",
+      "text": "fget_compression",
+      "protected": []
+    },
+    {
+      "id": "s0030",
+      "kind": "paragraph",
+      "text": "fget_dos_attributes",
+      "protected": []
+    },
+    {
+      "id": "s0031",
+      "kind": "paragraph",
+      "text": "fget_nt_acl",
+      "protected": []
+    },
+    {
+      "id": "s0032",
+      "kind": "paragraph",
+      "text": "fgetxattr",
+      "protected": []
+    },
+    {
+      "id": "s0033",
+      "kind": "paragraph",
+      "text": "file_id_create",
+      "protected": []
+    },
+    {
+      "id": "s0034",
+      "kind": "paragraph",
+      "text": "filesystem_sharemode",
+      "protected": []
+    },
+    {
+      "id": "s0035",
+      "kind": "paragraph",
+      "text": "flistxattr",
+      "protected": []
+    },
+    {
+      "id": "s0036",
+      "kind": "paragraph",
+      "text": "fntimes",
+      "protected": []
+    },
+    {
+      "id": "s0037",
+      "kind": "paragraph",
+      "text": "freaddir_attr",
+      "protected": []
+    },
+    {
+      "id": "s0038",
+      "kind": "paragraph",
+      "text": "fremovexattr",
+      "protected": []
+    },
+    {
+      "id": "s0039",
+      "kind": "paragraph",
+      "text": "fs_capabilities",
+      "protected": []
+    },
+    {
+      "id": "s0040",
+      "kind": "paragraph",
+      "text": "fsctl",
+      "protected": []
+    },
+    {
+      "id": "s0041",
+      "kind": "paragraph",
+      "text": "fset_dos_attributes",
+      "protected": []
+    },
+    {
+      "id": "s0042",
+      "kind": "paragraph",
+      "text": "fset_nt_acl",
+      "protected": []
+    },
+    {
+      "id": "s0043",
+      "kind": "paragraph",
+      "text": "fsetxattr",
+      "protected": []
+    },
+    {
+      "id": "s0044",
+      "kind": "paragraph",
+      "text": "fs_file_id",
+      "protected": []
+    },
+    {
+      "id": "s0045",
+      "kind": "paragraph",
+      "text": "fstat",
+      "protected": []
+    },
+    {
+      "id": "s0046",
+      "kind": "paragraph",
+      "text": "fstatat",
+      "protected": []
+    },
+    {
+      "id": "s0047",
+      "kind": "paragraph",
+      "text": "fstreaminfo",
+      "protected": []
+    },
+    {
+      "id": "s0048",
+      "kind": "paragraph",
+      "text": "fsync_recv",
+      "protected": []
+    },
+    {
+      "id": "s0049",
+      "kind": "paragraph",
+      "text": "fsync_send",
+      "protected": []
+    },
+    {
+      "id": "s0050",
+      "kind": "paragraph",
+      "text": "ftruncate",
+      "protected": []
+    },
+    {
+      "id": "s0051",
+      "kind": "paragraph",
+      "text": "get_alloc_size",
+      "protected": []
+    },
+    {
+      "id": "s0052",
+      "kind": "paragraph",
+      "text": "get_dfs_referrals",
+      "protected": []
+    },
+    {
+      "id": "s0053",
+      "kind": "paragraph",
+      "text": "get_dos_attributes_recv",
+      "protected": []
+    },
+    {
+      "id": "s0054",
+      "kind": "paragraph",
+      "text": "get_dos_attributes_send",
+      "protected": []
+    },
+    {
+      "id": "s0055",
+      "kind": "paragraph",
+      "text": "getlock",
+      "protected": []
+    },
+    {
+      "id": "s0056",
+      "kind": "paragraph",
+      "text": "get_quota",
+      "protected": []
+    },
+    {
+      "id": "s0057",
+      "kind": "paragraph",
+      "text": "get_real_filename",
+      "protected": []
+    },
+    {
+      "id": "s0058",
+      "kind": "paragraph",
+      "text": "get_real_filename_at",
+      "protected": []
+    },
+    {
+      "id": "s0059",
+      "kind": "paragraph",
+      "text": "get_shadow_copy_data",
+      "protected": []
+    },
+    {
+      "id": "s0060",
+      "kind": "paragraph",
+      "text": "getxattrat_recv",
+      "protected": []
+    },
+    {
+      "id": "s0061",
+      "kind": "paragraph",
+      "text": "getxattrat_send",
+      "protected": []
+    },
+    {
+      "id": "s0062",
+      "kind": "paragraph",
+      "text": "is_offline",
+      "protected": []
+    },
+    {
+      "id": "s0063",
+      "kind": "paragraph",
+      "text": "lchown",
+      "protected": []
+    },
+    {
+      "id": "s0064",
+      "kind": "paragraph",
+      "text": "linkat",
+      "protected": []
+    },
+    {
+      "id": "s0065",
+      "kind": "paragraph",
+      "text": "linux_setlease",
+      "protected": []
+    },
+    {
+      "id": "s0066",
+      "kind": "paragraph",
+      "text": "lock",
+      "protected": []
+    },
+    {
+      "id": "s0067",
+      "kind": "paragraph",
+      "text": "lseek",
+      "protected": []
+    },
+    {
+      "id": "s0068",
+      "kind": "paragraph",
+      "text": "lstat",
+      "protected": []
+    },
+    {
+      "id": "s0069",
+      "kind": "paragraph",
+      "text": "mkdirat",
+      "protected": []
+    },
+    {
+      "id": "s0070",
+      "kind": "paragraph",
+      "text": "mknodat",
+      "protected": []
+    },
+    {
+      "id": "s0071",
+      "kind": "paragraph",
+      "text": "ntimes",
+      "protected": []
+    },
+    {
+      "id": "s0072",
+      "kind": "paragraph",
+      "text": "offload_read_recv",
+      "protected": []
+    },
+    {
+      "id": "s0073",
+      "kind": "paragraph",
+      "text": "offload_read_send",
+      "protected": []
+    },
+    {
+      "id": "s0074",
+      "kind": "paragraph",
+      "text": "offload_write_recv",
+      "protected": []
+    },
+    {
+      "id": "s0075",
+      "kind": "paragraph",
+      "text": "offload_write_send",
+      "protected": []
+    },
+    {
+      "id": "s0076",
+      "kind": "paragraph",
+      "text": "open",
+      "protected": []
+    },
+    {
+      "id": "s0077",
+      "kind": "paragraph",
+      "text": "openat",
+      "protected": []
+    },
+    {
+      "id": "s0078",
+      "kind": "paragraph",
+      "text": "open_share_root",
+      "protected": []
+    },
+    {
+      "id": "s0079",
+      "kind": "paragraph",
+      "text": "parent_pathname",
+      "protected": []
+    },
+    {
+      "id": "s0080",
+      "kind": "paragraph",
+      "text": "pread",
+      "protected": []
+    },
+    {
+      "id": "s0081",
+      "kind": "paragraph",
+      "text": "pread_recv",
+      "protected": []
+    },
+    {
+      "id": "s0082",
+      "kind": "paragraph",
+      "text": "pread_send",
+      "protected": []
+    },
+    {
+      "id": "s0083",
+      "kind": "paragraph",
+      "text": "pwrite",
+      "protected": []
+    },
+    {
+      "id": "s0084",
+      "kind": "paragraph",
+      "text": "pwrite_recv",
+      "protected": []
+    },
+    {
+      "id": "s0085",
+      "kind": "paragraph",
+      "text": "pwrite_send",
+      "protected": []
+    },
+    {
+      "id": "s0086",
+      "kind": "paragraph",
+      "text": "read",
+      "protected": []
+    },
+    {
+      "id": "s0087",
+      "kind": "paragraph",
+      "text": "read_dfs_pathat",
+      "protected": []
+    },
+    {
+      "id": "s0088",
+      "kind": "paragraph",
+      "text": "readdir",
+      "protected": []
+    },
+    {
+      "id": "s0089",
+      "kind": "paragraph",
+      "text": "readlinkat",
+      "protected": []
+    },
+    {
+      "id": "s0090",
+      "kind": "paragraph",
+      "text": "realpath",
+      "protected": []
+    },
+    {
+      "id": "s0091",
+      "kind": "paragraph",
+      "text": "recvfile",
+      "protected": []
+    },
+    {
+      "id": "s0092",
+      "kind": "paragraph",
+      "text": "removexattr",
+      "protected": []
+    },
+    {
+      "id": "s0093",
+      "kind": "paragraph",
+      "text": "renameat",
+      "protected": []
+    },
+    {
+      "id": "s0094",
+      "kind": "paragraph",
+      "text": "rewinddir",
+      "protected": []
+    },
+    {
+      "id": "s0095",
+      "kind": "paragraph",
+      "text": "sendfile",
+      "protected": []
+    },
+    {
+      "id": "s0096",
+      "kind": "paragraph",
+      "text": "set_compression",
+      "protected": []
+    },
+    {
+      "id": "s0097",
+      "kind": "paragraph",
+      "text": "set_offline",
+      "protected": []
+    },
+    {
+      "id": "s0098",
+      "kind": "paragraph",
+      "text": "set_quota",
+      "protected": []
+    },
+    {
+      "id": "s0099",
+      "kind": "paragraph",
+      "text": "snap_check_path",
+      "protected": []
+    },
+    {
+      "id": "s0100",
+      "kind": "paragraph",
+      "text": "snap_create",
+      "protected": []
+    },
+    {
+      "id": "s0101",
+      "kind": "paragraph",
+      "text": "snap_delete",
+      "protected": []
+    },
+    {
+      "id": "s0102",
+      "kind": "paragraph",
+      "text": "stat",
+      "protected": []
+    },
+    {
+      "id": "s0103",
+      "kind": "paragraph",
+      "text": "statvfs",
+      "protected": []
+    },
+    {
+      "id": "s0104",
+      "kind": "paragraph",
+      "text": "strict_lock_check",
+      "protected": []
+    },
+    {
+      "id": "s0105",
+      "kind": "paragraph",
+      "text": "symlinkat",
+      "protected": []
+    },
+    {
+      "id": "s0106",
+      "kind": "paragraph",
+      "text": "sys_acl_blob_get_fd",
+      "protected": []
+    },
+    {
+      "id": "s0107",
+      "kind": "paragraph",
+      "text": "sys_acl_delete_def_fd",
+      "protected": []
+    },
+    {
+      "id": "s0108",
+      "kind": "paragraph",
+      "text": "sys_acl_get_fd",
+      "protected": []
+    },
+    {
+      "id": "s0109",
+      "kind": "paragraph",
+      "text": "sys_acl_set_fd",
+      "protected": []
+    },
+    {
+      "id": "s0110",
+      "kind": "paragraph",
+      "text": "translate_name",
+      "protected": []
+    },
+    {
+      "id": "s0111",
+      "kind": "paragraph",
+      "text": "unlinkat",
+      "protected": []
+    },
+    {
+      "id": "s0112",
+      "kind": "paragraph",
+      "text": "write",
+      "protected": []
+    },
+    {
+      "id": "s0113",
+      "kind": "paragraph",
+      "text": "In addition to these operations, [[p0]] recognizes the special operation names \"all\" and \"none \", which refer to all the VFS operations and none of the VFS operations respectively.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs_full_audit"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0114",
+      "kind": "paragraph",
+      "text": "If an unknown operation name is used (for example an operation name is miss-spelled), the module will fail to load and clients will be refused connections to a share using this module.",
+      "protected": []
+    },
+    {
+      "id": "s0115",
+      "kind": "paragraph",
+      "text": "[[p0]] records operations in fixed format consisting of fields separated by '|' characters. The format is:",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs_full_audit"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0116",
+      "kind": "paragraph",
+      "text": "The record fields are:",
+      "protected": []
+    },
+    {
+      "id": "s0117",
+      "kind": "paragraph",
+      "text": "[[p0]] - the result of the full_audit:prefix string after variable substitutions",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "PREFIX"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0118",
+      "kind": "paragraph",
+      "text": "[[p0]] - the name of the VFS operation",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "OPERATION"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0119",
+      "kind": "paragraph",
+      "text": "[[p0]] - whether the operation succeeded or failed",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "RESULT"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0120",
+      "kind": "paragraph",
+      "text": "[[p0]] - the name of the file or directory the operation was performed on",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "FILE"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0121",
+      "kind": "paragraph",
+      "text": "This module is stackable.",
+      "protected": []
+    },
+    {
+      "id": "s0122",
+      "kind": "heading",
+      "text": "OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0123",
+      "kind": "term",
+      "text": "full_audit:prefix = STRING",
+      "protected": []
+    },
+    {
+      "id": "s0124",
+      "kind": "paragraph",
+      "text": "Prepend audit messages with STRING. STRING is processed for standard substitution variables listed in [[p0]]. The default prefix is \"[[p1]]|[[p2]]\".",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "smb.conf(5)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "%u"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "%I"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0125",
+      "kind": "term",
+      "text": "full_audit:success = LIST",
+      "protected": []
+    },
+    {
+      "id": "s0126",
+      "kind": "paragraph",
+      "text": "LIST is a list of VFS operations that should be recorded if they succeed. Operations are specified using the names listed above. Operations can be unset by prefixing the names with \"!\". The default is none operations.",
+      "protected": []
+    },
+    {
+      "id": "s0127",
+      "kind": "term",
+      "text": "full_audit:failure = LIST",
+      "protected": []
+    },
+    {
+      "id": "s0128",
+      "kind": "paragraph",
+      "text": "LIST is a list of VFS operations that should be recorded if they failed. Operations are specified using the names listed above. Operations can be unset by prefixing the names with \"!\". The default is none operations.",
+      "protected": []
+    },
+    {
+      "id": "s0129",
+      "kind": "term",
+      "text": "full_audit:facility = FACILITY",
+      "protected": []
+    },
+    {
+      "id": "s0130",
+      "kind": "paragraph",
+      "text": "Log messages to the named [[p0]] facility.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "syslog(3)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/syslog.3.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0131",
+      "kind": "term",
+      "text": "full_audit:priority = PRIORITY",
+      "protected": []
+    },
+    {
+      "id": "s0132",
+      "kind": "paragraph",
+      "text": "Log messages with the named [[p0]] priority.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "syslog(3)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/syslog.3.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0133",
+      "kind": "term",
+      "text": "full_audit:syslog = true/false",
+      "protected": []
+    },
+    {
+      "id": "s0134",
+      "kind": "paragraph",
+      "text": "Log messages to syslog (default) or as a debug level 1 message.",
+      "protected": []
+    },
+    {
+      "id": "s0135",
+      "kind": "term",
+      "text": "full_audit:log_secdesc = true/false",
+      "protected": []
+    },
+    {
+      "id": "s0136",
+      "kind": "paragraph",
+      "text": "Log an sddl form of the security descriptor coming in when a client sets an acl. Defaults to false.",
+      "protected": []
+    },
+    {
+      "id": "s0137",
+      "kind": "heading",
+      "text": "EXAMPLES",
+      "protected": []
+    },
+    {
+      "id": "s0138",
+      "kind": "paragraph",
+      "text": "Log file and directory open operations on the [records] share using the LOCAL7 facility and ALERT priority, including the username and IP address. Logging excludes the open VFS function on failures:",
+      "protected": []
+    },
+    {
+      "id": "s0139",
+      "kind": "heading",
+      "text": "VERSION",
+      "protected": []
+    },
+    {
+      "id": "s0140",
+      "kind": "paragraph",
+      "text": "This man page is part of version 4.25.0 of the Samba suite.",
+      "protected": []
+    },
+    {
+      "id": "s0141",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0142",
+      "kind": "paragraph",
+      "text": "The original Samba software and related utilities were created by Andrew Tridgell. Samba is now developed by the Samba Team as an Open Source project similar to the way the Linux kernel is developed.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Name",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Synopsis",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0008"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0009"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0010"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0011"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0012"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0013"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0014"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0015"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0016"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0017"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0018"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0019"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0020"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0021"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0022"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0023"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0024"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0025"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0026"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0027"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0028"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0029"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0030"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0031"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0032"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0033"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0034"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0035"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0036"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0037"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0038"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0039"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0040"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0041"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0042"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0043"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0044"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0045"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0046"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0047"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0048"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0049"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0050"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0051"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0052"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0053"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0054"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0055"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0056"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0057"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0058"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0059"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0060"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0061"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0062"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0063"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0064"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0065"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0066"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0067"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0068"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0069"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0070"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0071"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0072"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0073"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0074"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0075"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0076"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0077"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0078"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0079"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0080"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0081"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0082"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0083"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0084"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0085"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0086"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0087"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0088"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0089"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0090"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0091"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0092"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0093"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0094"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0095"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0096"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0097"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0098"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0099"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0100"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0101"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0102"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0103"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0104"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0105"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0106"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0107"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0108"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0109"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0110"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0111"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "segment": "s0112"
+            }
+          ]
+        ]
+      ],
+      "headers": [
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ],
+        [
+          false
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0113"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0114"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0115"
+    },
+    {
+      "type": "literal",
+      "text": "\t\tsmbd_audit: PREFIX|OPERATION|RESULT|FILE"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0116"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0117"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0118"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0119"
+          }
+        ],
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0120"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0121"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "OPTIONS",
+      "segment": "s0122"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0123",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0124"
+            }
+          ]
+        },
+        {
+          "term": "s0125",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0126"
+            }
+          ]
+        },
+        {
+          "term": "s0127",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0128"
+            }
+          ]
+        },
+        {
+          "term": "s0129",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0130"
+            }
+          ]
+        },
+        {
+          "term": "s0131",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0132"
+            }
+          ]
+        },
+        {
+          "term": "s0133",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0134"
+            }
+          ]
+        },
+        {
+          "term": "s0135",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0136"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "EXAMPLES",
+      "segment": "s0137"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0138"
+    },
+    {
+      "type": "literal",
+      "text": "        [records]\n\tpath = /data/records\n\tvfs objects = full_audit\n\tfull_audit:prefix = %u|%I\n\tfull_audit:success = open opendir\n\tfull_audit:failure = all !open\n\tfull_audit:facility = LOCAL7\n\tfull_audit:priority = ALERT"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "VERSION",
+      "segment": "s0139"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0140"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "AUTHOR",
+      "segment": "s0141"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0142"
+    }
+  ]
+}

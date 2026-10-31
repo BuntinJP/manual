@@ -1,0 +1,1616 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>net</title><link rel="stylesheet" type="text/css" href="../samba.css"><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="net.8"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>net &#8212; Tool for administration of Samba and remote
+	CIFS servers.
+	</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="literal">net</code> {&lt;ads|rap|rpc&gt;} [-h|--help] [-d|--debuglevel=DEBUGLEVEL] [--debug-stdout] [--configfile=CONFIGFILE] [--option=name=value] [-l|--log-basename=LOGFILEBASE] [--leak-report] [--leak-report-full] [-R|--name-resolve=NAME-RESOLVE-ORDER] [-O|--socket-options=SOCKETOPTIONS] [-m|--max-protocol=MAXPROTOCOL] [-n|--netbiosname=NETBIOSNAME] [--netbios-scope=SCOPE] [-W|--workgroup=WORKGROUP] [--realm=REALM] [-U|--user=[DOMAIN/]USERNAME[%PASSWORD]] [-N|--no-pass] [--password=STRING] [--pw-nt-hash] [-A|--authentication-file=FILE] [-P|--machine-pass] [--simple-bind-dn=DN] [--use-kerberos=desired|required|off] [--use-krb5-ccache=CCACHE] [--use-winbind-ccache] [--client-protection=sign|encrypt|off] [-V|--version] [-w|--target-workgroup workgroup] [-I|--ipaddress ip-address] [-p|--port port] [--myname] [-S|--server server] [--long] [-v|--verbose] [-f|--force] [--request-timeout seconds] [-t|--timeout seconds] [--dns-ttl TTL-IN-SECONDS] [-i|--stdin] [--witness-registration=REGISTRATION_UUID] [--witness-net-name=REGEX] [--witness-share-name=REGEX] [--witness-ip-address=REGEX] [--witness-client-computer-name=REGEX] [--witness-apply-to-all] [--witness-new-node=NODEID] [--witness-new-ip=IPADDRESS] [--witness-forced-response=JSON]</p></div></div><div class="refsect1"><a name="id1337"></a><h2>DESCRIPTION</h2><p>This tool is part of the <a class="citerefentry" href="samba.7.html"><span class="citerefentry"><span class="refentrytitle">samba</span>(7)</span></a> suite.</p><p>The Samba net utility is meant to work just like the net utility
+	available for windows and DOS. The first argument should be used
+	to specify the protocol to use when executing a certain command.
+	ADS is used for ActiveDirectory, RAP is using for old (Win9x/NT3)
+	clients and RPC can be used for NT4 and Windows 2000. If this
+	argument is omitted, net will try to determine it automatically.
+	Not all commands are available on all protocols.
+	</p></div><div class="refsect1"><a name="id1338"></a><h2>OPTIONS</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term">-w|--target-workgroup target-workgroup</span></dt><dd><p>
+		Sets target workgroup or domain. You have to specify
+		either this option or the IP address or the name of a server.
+		</p></dd><dt><span class="term">-I|--ipaddress ip-address</span></dt><dd><p>
+		IP address of target server to use. You have to
+		specify either this option or a target workgroup or
+		a target server.
+		</p></dd><dt><span class="term">-p|--port port</span></dt><dd><p>
+		Port on the target server to connect to (usually 139 or 445).
+		Defaults to trying 445 first, then 139.
+		</p></dd><dt><span class="term">-S|--server server</span></dt><dd><p>
+		Name of target server. You should specify either
+		this option or a target workgroup or a target IP address.
+		</p></dd><dt><span class="term">--long</span></dt><dd><p>
+		When listing data, give more information on each item.
+		</p></dd><dt><span class="term">-v|--verbose</span></dt><dd><p>
+		When listing data, give more verbose information on each item.
+		</p></dd><dt><span class="term">-f|--force</span></dt><dd><p>
+				Enforcing a net command.
+		</p></dd><dt><span class="term">--request-timeout 30</span></dt><dd><p>
+		Let client requests timeout after 30 seconds the default is 10
+		seconds.
+		</p></dd><dt><span class="term">-t|--timeout 30</span></dt><dd><p>
+				Set timeout for client operations to 30 seconds.
+		</p></dd><dt><span class="term">-i|--stdin</span></dt><dd><p>
+				Take input for net commands from standard input.
+		</p></dd><dt><span class="term">-T|--test</span></dt><dd><p>Only test command sequence, dry-run.
+		</p></dd><dt><span class="term">-F|--flags FLAGS</span></dt><dd><p>Pass down integer flags to a net subcommand.
+		</p></dd><dt><span class="term">-C|--comment COMMENT</span></dt><dd><p>Pass down a comment string to a net subcommand.
+		</p></dd><dt><span class="term">--myname MYNAME</span></dt><dd><p>Use MYNAME as a requester name for a net subcommand.
+		</p></dd><dt><span class="term">-c|--container CONTAINER</span></dt><dd><p>Use a specific AD container for net ads operations.
+		</p></dd><dt><span class="term">-M|--maxusers MAXUSERS</span></dt><dd><p>Fill in the maxusers field in net rpc share operations.
+		</p></dd><dt><span class="term">-r|--reboot</span></dt><dd><p>Reboot a remote machine after a command has been successfully executed (e.g. in remote join operations).
+		</p></dd><dt><span class="term">--force-full-repl</span></dt><dd><p>
+				When calling "net rpc vampire keytab" this option
+				enforces a full re-creation of the generated keytab file.
+		</p></dd><dt><span class="term">--single-obj-repl</span></dt><dd><p>
+				When calling "net rpc vampire keytab" this option
+				allows one to replicate just a single object to the generated keytab file.
+		</p></dd><dt><span class="term">--clean-old-entries</span></dt><dd><p>
+				When calling "net rpc vampire keytab" this option
+				allows one to cleanup old entries from the generated keytab file.
+		</p></dd><dt><span class="term">--db</span></dt><dd><p>Define dbfile for "net idmap" commands.
+		</p></dd><dt><span class="term">--lock</span></dt><dd><p>Activates locking of the dbfile for "net idmap check" command.
+		</p></dd><dt><span class="term">-a|--auto</span></dt><dd><p>Activates noninteractive mode in "net idmap check".
+		</p></dd><dt><span class="term">--repair</span></dt><dd><p>Activates repair mode in "net idmap check".
+		</p></dd><dt><span class="term">--acls</span></dt><dd><p>Includes ACLs to be copied in "net rpc share migrate".
+		</p></dd><dt><span class="term">--attrs</span></dt><dd><p>Includes file attributes to be copied in "net rpc share migrate".
+		</p></dd><dt><span class="term">--timestamps</span></dt><dd><p>Includes timestamps to be copied in "net rpc share migrate".
+		</p></dd><dt><span class="term">-X|--exclude DIRECTORY</span></dt><dd><p>Allows one to exclude directories when copying with "net rpc share migrate".
+		</p></dd><dt><span class="term">--destination SERVERNAME</span></dt><dd><p>Defines the target servername of migration process (defaults to localhost).
+		</p></dd><dt><span class="term">-L|--local</span></dt><dd><p>Sets the type of group mapping to local
+				(used in "net groupmap set").
+		</p></dd><dt><span class="term">-D|--domain</span></dt><dd><p>Sets the type of group mapping to domain
+				(used in "net groupmap set").
+		</p></dd><dt><span class="term">-N|--ntname NTNAME</span></dt><dd><p>Sets the ntname of a group mapping
+				(used in "net groupmap set").
+		</p></dd><dt><span class="term">--rid RID</span></dt><dd><p>Sets the rid of a group mapping
+				(used in "net groupmap set").
+		</p></dd><dt><span class="term">--reg-version REG_VERSION</span></dt><dd><p>Assume database version {n|1,2,3}
+				(used in "net registry check").
+		</p></dd><dt><span class="term">-o|--output FILENAME</span></dt><dd><p>Output database file
+				(used in "net registry check").
+		</p></dd><dt><span class="term">--wipe</span></dt><dd><p>Create a new database from scratch
+				(used in "net registry check").
+		</p></dd><dt><span class="term">--precheck PRECHECK_DB_FILENAME</span></dt><dd><p>Defines filename for database prechecking
+				(used in "net registry import").
+		</p></dd><dt><span class="term">--no-dns-updates</span></dt><dd><p>Do not perform DNS updates as part of
+		"net ads join".
+		</p></dd><dt><span class="term">--keep-account</span></dt><dd><p>Prevent the machine account removal as
+		part of "net ads leave".
+		</p></dd><dt><span class="term">--json</span></dt><dd><p>Report results in JSON format for
+		"net ads info" and "net ads lookup".
+		</p></dd><dt><span class="term">--recursive</span></dt><dd><p>Traverse a directory
+		hierarchy.</p></dd><dt><span class="term">--continue</span></dt><dd><p>Continue traversing a directory hierarchy in
+		case conversion of one file fails.</p></dd><dt><span class="term">--follow-symlinks</span></dt><dd><p>Follow symlinks encountered while traversing a
+		directory.</p></dd><dt><span class="term">--dns-ttl TTL-IN-SECONDS</span></dt><dd><p>
+		Specify the Time to Live (TTL) of DNS records.
+		DNS records will be created or updated with the given TTL.
+		The TTL is specified in seconds. Can be used with "net ads dns
+		register" and "net ads join".
+		The default is 3600 seconds.
+		</p></dd><dt><span class="term">--witness-registration=REGISTRATION_UUID</span></dt><dd><p>
+		This does a direct lookup for REGISTRATION_UUID
+		instead of doing a database traversal.
+		</p></dd><dt><span class="term">--witness-net-name=REGEX</span></dt><dd><p>
+		This specifies the 'server name' the client
+		registered for monitoring.
+		</p></dd><dt><span class="term">--witness-share-name=REGEX</span></dt><dd><p>
+		This specifies the 'share name' the client
+		registered for monitoring.
+		Note that the share name is optional in the
+		registration, otherwise an empty string is
+		matched.
+		</p></dd><dt><span class="term">--witness-ip-address=REGEX</span></dt><dd><p>
+		This specifies the ip address the client
+		registered for monitoring.
+		</p></dd><dt><span class="term">--witness-client-computer-name=REGEX</span></dt><dd><p>
+		This specifies the client computer name the client
+		specified in the registration.
+		Note it is just a string chosen by the client itself.
+		</p></dd><dt><span class="term">--witness-apply-to-all</span></dt><dd><p>
+		This selects all registrations.
+		</p></dd><dt><span class="term">--witness-new-node=NODEID</span></dt><dd><p>
+		By specifying a NODEID all ip addresses
+		currently available on the given node are
+		included in the response.
+		By specifying '-1' as NODEID all ip addresses
+		of the cluster are included in the response.
+		</p></dd><dt><span class="term">--witness-new-ip=IPADDRESS</span></dt><dd><p>
+		By specifying an IPADDRESS only the specified
+		ip address is included in the response.
+		</p></dd><dt><span class="term">--witness-forced-response=JSON</span></dt><dd><p>
+		This allows the generation of very complex
+		witness_notifyResponse structures.
+		</p></dd><dt><span class="term">-d|--debuglevel=level</span></dt><dd><p>
+			<em class="replaceable"><code>level</code></em> is an integer from 0
+			to 10. The default value if this parameter is not
+			specified is 1 for client applications.
+		</p><p>
+			The higher this value, the more detail will be logged
+			to the log files about the activities of the server. At
+			level 0, only critical errors and serious warnings will
+			be logged. Level 1 is a reasonable level for day-to-day
+			running - it generates a small amount of information
+			about operations carried out.
+		</p><p>
+			Levels above 1 will generate considerable amounts of
+			log data, and should only be used when investigating a
+			problem. Levels above 3 are designed for use only by
+			developers and generate HUGE amounts of log data, most
+			of which is extremely cryptic.
+			</p><p>
+			Note that specifying this parameter here will override
+			the <a class="link" href="smb.conf.5.html#LOGLEVEL" target="_top">log level</a> parameter in the
+			<code class="filename">${prefix}/etc/smb.conf</code> file.
+		</p></dd><dt><span class="term">--debug-stdout</span></dt><dd><p>
+			This will redirect debug output to STDOUT. By default
+			all clients are logging to STDERR.
+		</p></dd><dt><span class="term">--configfile=&lt;configuration file&gt;</span></dt><dd><p>
+			The file specified contains the configuration details
+			required by the client. The information in this file
+			can be general for client and server or only provide
+			client specific like options such as
+			<a class="link" href="smb.conf.5.html#CLIENTSMBENCRYPT" target="_top">client smb encrypt</a>. See
+			<code class="filename">${prefix}/etc/smb.conf</code> for more information.  The default
+			configuration file name is determined at compile time.
+		</p></dd><dt><span class="term">--option=&lt;name&gt;=&lt;value&gt;</span></dt><dd><p>
+			Set the
+			<a class="citerefentry" href="smb.conf.5.html"><span class="citerefentry"><span class="refentrytitle">smb.conf</span>(5)</span></a> option
+			"&lt;name&gt;" to value "&lt;value&gt;" from the
+			command line. This overrides compiled-in defaults and
+			options read from the configuration file. If a name or
+			a value includes a space, wrap whole
+			--option=name=value into quotes.
+		</p></dd><dt><span class="term">-l|--log-basename=logdirectory</span></dt><dd><p>
+			Base directory name for log/debug files. The extension
+			<code class="constant">".progname"</code> will be appended (e.g.
+			log.smbclient, log.smbd, etc...). The log file is never
+			removed by the client.
+		</p></dd><dt><span class="term">--leak-report</span></dt><dd><p>
+			Enable talloc leak reporting on exit.
+		</p></dd><dt><span class="term">--leak-report-full</span></dt><dd><p>
+			Enable full talloc leak reporting on exit.
+		</p></dd><dt><span class="term">-V|--version</span></dt><dd><p>
+			Prints the program version number.
+		</p></dd><dt><span class="term">-R|--name-resolve=NAME-RESOLVE-ORDER</span></dt><dd><p>
+			This option is used to determine what naming services
+			and in what order to resolve host names to IP
+			addresses. The option takes a space-separated string of
+			different name resolution options. The best is to wrap
+			the whole --name-resolve=NAME-RESOLVE-ORDER into
+			quotes.
+		</p><p>
+			The options are: "lmhosts", "host", "wins" and "bcast".
+			They cause names to be resolved as follows:
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+					<code class="constant">lmhosts</code>: Lookup an
+					IP address in the Samba lmhosts file.
+					If the line in lmhosts has no name type
+					attached to the NetBIOS name (see the
+					<a class="citerefentry" href="lmhosts.5.html"><span class="citerefentry"><span class="refentrytitle">lmhosts</span>(5)</span></a>
+					for details) then any name type matches
+					for lookup.
+				</p></li><li class="listitem"><p>
+					<code class="constant">host</code>: Do a
+					standard host name to IP address
+					resolution, using the system
+					<code class="filename">/etc/hosts</code>, NIS,
+					or DNS lookups. This method of name
+					resolution is operating system
+					dependent, for instance on IRIX or
+					Solaris this may be controlled by the
+					<code class="filename">/etc/nsswitch.conf
+					</code> file).  Note that this
+					method is only used if the NetBIOS name
+					type being queried is the 0x20 (server)
+					name type, otherwise it is ignored.
+				</p></li><li class="listitem"><p>
+					<code class="constant">wins</code>: Query a name
+					with the IP address listed in the
+					<em class="parameter"><code>wins server</code></em>
+					parameter.  If no WINS server has been
+					specified this method will be ignored.
+				</p></li><li class="listitem"><p>
+					<code class="constant">bcast</code>: Do a
+					broadcast on each of the known local
+					interfaces listed in the
+					<em class="parameter"><code>interfaces</code></em>
+					parameter. This is the least reliable
+					of the name resolution methods as it
+					depends on the target host being on a
+					locally connected subnet.
+				</p></li></ul></div><p>
+			If this parameter is not set then the name resolve
+			order defined in the <code class="filename">${prefix}/etc/smb.conf</code> file parameter
+			(<a class="link" href="smb.conf.5.html#NAMERESOLVEORDER" target="_top">name resolve order</a>) will be
+			used.
+		</p><p>
+			The default order is lmhosts, host, wins, bcast.
+			Without this parameter or any entry in the
+			<a class="link" href="smb.conf.5.html#NAMERESOLVEORDER" target="_top">name resolve order</a> parameter
+			of the <code class="filename">${prefix}/etc/smb.conf</code> file, the name resolution methods
+			will be attempted in this order.
+		</p></dd><dt><span class="term">-O|--socket-options=SOCKETOPTIONS</span></dt><dd><p>
+			TCP socket options to set on the client socket. See the
+			socket options parameter in the <code class="filename">${prefix}/etc/smb.conf</code> manual page
+			for the list of valid options.
+		</p></dd><dt><span class="term">-m|--max-protocol=MAXPROTOCOL</span></dt><dd><p>
+			The value of the parameter (a string) is the highest
+			protocol level that will be supported by the client.
+		</p><p>
+			Note that specifying this parameter here will override
+			the <a class="link" href="smb.conf.5.html#CLIENTMAXPROTOCOL" target="_top">client max protocol</a>
+			parameter in the <code class="filename">${prefix}/etc/smb.conf</code> file.
+		</p></dd><dt><span class="term">-n|--netbiosname=NETBIOSNAME</span></dt><dd><p>
+			This option allows you to override the NetBIOS name
+			that Samba uses for itself. This is identical to
+			setting the <a class="link" href="smb.conf.5.html#NETBIOSNAME" target="_top">netbios name</a>
+			parameter in the <code class="filename">${prefix}/etc/smb.conf</code> file.  However, a command
+			line setting will take precedence over settings in
+			<code class="filename">${prefix}/etc/smb.conf</code>.
+		</p></dd><dt><span class="term">--netbios-scope=SCOPE</span></dt><dd><p>
+			This specifies a NetBIOS scope that
+			<code class="literal">nmblookup</code> will use to communicate
+			with when generating NetBIOS names. For details on the
+			use of NetBIOS scopes, see rfc1001.txt and rfc1002.txt.
+			NetBIOS scopes are <span class="emphasis"><em>very</em></span> rarely
+			used, only set this parameter if you are the system
+			administrator in charge of all the NetBIOS systems you
+			communicate with.
+		</p></dd><dt><span class="term">-W|--workgroup=WORKGROUP</span></dt><dd><p>
+			Set the SMB domain of the username.   This overrides
+			the default domain which is the domain defined in
+			smb.conf.  If the domain specified is the same as the
+			servers NetBIOS name, it causes the client to log on
+			using the servers local SAM (as opposed to the Domain
+			SAM).
+		</p><p>
+			Note that specifying this parameter here will override
+			the <a class="link" href="smb.conf.5.html#WORKGROUP" target="_top">workgroup</a> parameter in the
+			<code class="filename">${prefix}/etc/smb.conf</code> file.
+		</p></dd><dt><span class="term">-r|--realm=REALM</span></dt><dd><p>
+			Set the realm for the domain.
+		</p><p>
+			Note that specifying this parameter here will override
+			the <a class="link" href="smb.conf.5.html#REALM" target="_top">realm</a> parameter in the
+			<code class="filename">${prefix}/etc/smb.conf</code> file.
+		</p></dd><dt><span class="term">-U|--user=[DOMAIN\]USERNAME[%PASSWORD]</span></dt><dd><p>
+			Sets the SMB username or username and password.
+		</p><p>
+			If %PASSWORD is not specified, the user will be
+			prompted. The client will first check the
+			<code class="envar">USER</code> environment variable
+			(which is also permitted to also contain the
+			password separated by a %), then the
+			<code class="envar">LOGNAME</code> variable (which is not
+			permitted to contain a password) and if either exists,
+			the value is used. If these environmental
+			variables are not found, the username
+			found in a Kerberos Credentials cache may be used.
+		</p><p>
+			A third option is to use a credentials file which
+			contains the plaintext of the username and password.
+			This option is mainly provided for scripts where the
+			admin does not wish to pass the credentials on the
+			command line or via environment variables. If this
+			method is used, make certain that the permissions on
+			the file restrict access from unwanted users.  See the
+			<em class="parameter"><code>-A</code></em> for more details.
+		</p><p>
+			Be cautious about including passwords in scripts
+			or passing user-supplied values onto the command line. For
+			security it is better to let the Samba client tool ask for the
+			password if needed, or obtain the password once with <code class="literal">kinit</code>.
+		</p><p>
+			While Samba will attempt to scrub the password
+			from the process title (as seen in ps), this
+			is after startup and so is subject to a race.
+		</p></dd><dt><span class="term">-N|--no-pass</span></dt><dd><p>
+			If specified, this parameter suppresses the normal
+			password prompt from the client to the user. This is
+			useful when accessing a service that does not require a
+			password.
+		</p><p>
+			Unless a password is specified on the command line or
+			this parameter is specified, the client will request a
+			password.
+		</p><p>
+			If a password is specified on the command line and this
+			option is also defined the password on the command line
+			will be silently ignored and no password will be
+			used.
+		</p></dd><dt><span class="term">--password</span></dt><dd><p>
+			Specify the password on the commandline.
+		</p><p> Be cautious about including passwords in
+			scripts or passing user-supplied values onto
+			the command line. For security it is better to
+			let the Samba client tool ask for the password
+			if needed, or obtain the password once with
+			<code class="literal">kinit</code>.
+		</p><p> If --password is not specified,
+		       the tool will check the <code class="envar">PASSWD</code>
+		       environment variable, followed by <code class="envar">PASSWD_FD</code>
+		       which is expected to contain an open
+		       file descriptor (FD) number.
+		</p><p>
+		       Finally it will check <code class="envar">PASSWD_FILE</code> (containing
+		       a file path to be opened). The file should only
+		       contain the password. Make certain that the
+		       permissions on the file restrict
+		       access from unwanted users!
+		</p><p>
+			While Samba will attempt to scrub the password
+			from the process title (as seen in ps), this
+			is after startup and so is subject to a race.
+		</p></dd><dt><span class="term">--pw-nt-hash</span></dt><dd><p>
+			The supplied password is the NT hash.
+		</p></dd><dt><span class="term">-A|--authentication-file=filename</span></dt><dd><p>
+			This option allows you to specify a file from which to
+			read the username and password used in the connection.
+			The format of the file is:
+		</p><p>
+			</p><pre class="programlisting">
+				username = &lt;value&gt;
+				password = &lt;value&gt;
+				domain   = &lt;value&gt;
+			</pre><p>
+		</p><p>
+			Make certain that the permissions on the file restrict
+			access from unwanted users!
+		</p></dd><dt><span class="term">-P|--machine-pass</span></dt><dd><p>
+			Use stored machine account password.
+		</p></dd><dt><span class="term">--simple-bind-dn=DN</span></dt><dd><p>
+			DN to use for a simple bind.
+		</p></dd><dt><span class="term">--use-kerberos=desired|required|off</span></dt><dd><p>
+			This parameter determines whether Samba client tools
+			will try to authenticate using Kerberos. For Kerberos
+			authentication you should use DNS names instead of IP
+			addresses when connecting to a service.
+
+			By default Samba client tools will try to use the
+			default Kerberos credential cache (ccache).
+			In case the ccache does not exist or -U|--user option
+			was specified, clients will ask to enter a password and
+			will obtain a Kerberos ticket (kinit) for you.
+
+			If you want to use an alternative Kerberos credentical
+			cache, use the --use-krb5-ccache option.
+		</p><p>
+			Note that specifying this parameter here will override
+			the <a class="link" href="smb.conf.5.html#CLIENTUSEKERBEROS" target="_top">client use kerberos</a>
+			parameter in the <code class="filename">${prefix}/etc/smb.conf</code> file.
+		</p></dd><dt><span class="term">--use-krb5-ccache=CCACHE</span></dt><dd><p>
+			Specifies the credential cache location for Kerberos
+			authentication.
+		</p><p>
+			This will enforce --use-kerberos=required.
+		</p></dd><dt><span class="term">--use-winbind-ccache</span></dt><dd><p>
+			Try to use the credential cache by winbind.
+		</p></dd><dt><span class="term">--client-protection=sign|encrypt|off</span></dt><dd><p>
+			Sets the connection protection the client tool should
+			use.
+		</p><p>
+			Note that specifying this parameter here will override
+			the <a class="link" href="smb.conf.5.html#CLIENTPROTECTION" target="_top">client protection</a>
+			parameter in the <code class="filename">${prefix}/etc/smb.conf</code> file.
+		</p><p>
+			In case you need more fine grained control you can use:
+			<code class="literal">--option=clientsmbencrypt=OPTION</code>,
+			<code class="literal">--option=clientipcsigning=OPTION</code>,
+			<code class="literal">--option=clientsigning=OPTION</code>.
+		</p></dd></dl></div></div><div class="refsect1"><a name="id1339"></a><h2>COMMANDS</h2><div class="refsect2"><a name="id1340"></a><h3>CHANGESECRETPW</h3><p>This command allows the Samba machine account password to be set from an external application
+to a machine account password that has already been stored in Active Directory. DO NOT USE this command
+unless you know exactly what you are doing. The use of this command requires that the force flag (-f)
+be used also. There will be NO command prompt. Whatever information is piped into stdin, either by
+typing at the command line or otherwise, will be stored as the literal machine password. Do NOT use
+this without care and attention as it will overwrite a legitimate machine password without warning.
+YOU HAVE BEEN WARNED.
+</p></div><div class="refsect2"><a name="id1341"></a><h3>TIME</h3><p>The <code class="literal">NET TIME</code> command allows you to view the time on a remote server
+	or synchronise the time on the local server with the time on the remote server.</p><div class="refsect3"><a name="id1342"></a><h4>TIME</h4><p>Without any options, the <code class="literal">NET TIME</code> command
+displays the time on the remote server. The remote server must be
+specified with the -S option.
+</p></div><div class="refsect3"><a name="id1343"></a><h4>TIME SYSTEM</h4><p>Displays the time on the remote server in a format ready for <code class="literal">/bin/date</code>.
+The remote server must be specified with the -S option.
+</p></div><div class="refsect3"><a name="id1344"></a><h4>TIME SET</h4><p>Tries to set the date and time of the local server to that on
+the remote server using <code class="literal">/bin/date</code>.
+The remote server must be specified with the -S option.
+</p></div><div class="refsect3"><a name="id1345"></a><h4>TIME ZONE</h4><p>Displays the timezone in hours from GMT on the remote server.
+The remote server must be specified with the -S option.
+</p></div></div><div class="refsect2"><a name="id1346"></a><h3>[RPC|ADS] JOIN [TYPE] [--no-dns-updates] [-U username[%password]]
+[dnshostname=FQDN] [createupn=UPN] [createcomputer=OU] [machinepass=PASS]
+[osName=string osVer=string] [DOMAIN] [options]</h3><p>
+Join a domain.  If the account already exists on the server, and
+[TYPE] is MEMBER, the machine will attempt to join automatically.
+(Assuming that the machine has been created in server manager)
+Otherwise, a password will be prompted for, and a new account may
+be created.</p><p>
+[TYPE] (RPC only) may be PDC, BDC or MEMBER to specify the type of server
+joining the domain.
+</p><p>
+[FQDN] (ADS only) set the dnsHostName attribute during the join.
+The default format is netbiosname.dnsdomain.
+</p><p>
+[UPN] (ADS only) set the principalname attribute during the join.  The default
+format is host/netbiosname@REALM.
+</p><p>
+[OU] (ADS only) Precreate the computer account in a specific OU.  The
+OU string reads from top to bottom without RDNs, and is delimited by
+a '/'.  Please note that '\' is used for escape by both the shell
+and ldap, so it may need to be doubled or quadrupled to pass through,
+and it is not used as a delimiter.
+</p><p>
+[PASS] (ADS only) Set a specific password on the computer account
+being created by the join.
+</p><p>
+[osName=string osVer=String] (ADS only) Set the operatingSystem and
+operatingSystemVersion attribute during the join.  Both parameters
+must be specified for either to take effect.
+</p><p>
+[DOMAIN] (ADS only) The optional domain to be joined, the default
+is taken from smb.conf.
+</p></div><div class="refsect2"><a name="id1347"></a><h3>[RPC] OLDJOIN [options]</h3><p>Join a domain. Use the OLDJOIN option to join the domain
+using the old style of domain joining - you need to create a trust
+account in server manager first.</p></div><div class="refsect2"><a name="id1348"></a><h3>[RPC|ADS] USER</h3><div class="refsect3"><a name="id1349"></a><h4>[RPC|ADS] USER</h4><p>List all users</p></div><div class="refsect3"><a name="id1350"></a><h4>[RPC|ADS] USER DELETE <em class="replaceable"><code>target</code></em></h4><p>Delete specified user</p></div><div class="refsect3"><a name="id1351"></a><h4>[RPC|ADS] USER INFO <em class="replaceable"><code>target</code></em></h4><p>List the domain groups of the specified user.</p></div><div class="refsect3"><a name="id1352"></a><h4>[RPC|ADS] USER RENAME <em class="replaceable"><code>oldname</code></em> <em class="replaceable"><code>newname</code></em></h4><p>Rename specified user.</p></div><div class="refsect3"><a name="id1353"></a><h4>[RPC|ADS] USER ADD <em class="replaceable"><code>name</code></em> [password] [-F user flags] [-C comment]</h4><p>Add specified user.</p></div></div><div class="refsect2"><a name="id1354"></a><h3>[RPC|ADS] GROUP</h3><div class="refsect3"><a name="id1355"></a><h4>[RPC|ADS] GROUP [misc options] [targets]</h4><p>List user groups.</p></div><div class="refsect3"><a name="id1356"></a><h4>[RPC|ADS] GROUP DELETE <em class="replaceable"><code>name</code></em> [misc. options]</h4><p>Delete specified group.</p></div><div class="refsect3"><a name="id1357"></a><h4>[RPC|ADS] GROUP ADD <em class="replaceable"><code>name</code></em> [-C comment]</h4><p>Create specified group.</p></div><div class="refsect3"><a name="id1358"></a><h4>[ADS] LOOKUP</h4><p>Lookup the closest Domain Controller in our domain and retrieve server information about it.</p></div></div><div class="refsect2"><a name="id1359"></a><h3>[RAP|RPC] SHARE</h3><div class="refsect3"><a name="id1360"></a><h4>[RAP|RPC] SHARE [misc. options] [targets]</h4><p>Enumerates all exported resources (network shares) on target server.</p></div><div class="refsect3"><a name="id1361"></a><h4>[RAP|RPC] SHARE ADD <em class="replaceable"><code>name=serverpath</code></em> [-C comment] [-M maxusers] [targets]</h4><p>Adds a share from a server (makes the export active). Maxusers
+specifies the number of users that can be connected to the
+share simultaneously.</p></div><div class="refsect3"><a name="id1362"></a><h4>SHARE DELETE <em class="replaceable"><code>sharename</code></em></h4><p>Delete specified share.</p></div></div><div class="refsect2"><a name="id1363"></a><h3>[RPC|RAP] FILE</h3><div class="refsect3"><a name="id1364"></a><h4>[RPC|RAP] FILE</h4><p>List all open files on remote server.</p></div><div class="refsect3"><a name="id1365"></a><h4>[RPC|RAP] FILE CLOSE <em class="replaceable"><code>fileid</code></em></h4><p>Close file with specified <em class="replaceable"><code>fileid</code></em> on
+remote server.</p></div><div class="refsect3"><a name="id1366"></a><h4>[RPC|RAP] FILE INFO <em class="replaceable"><code>fileid</code></em></h4><p>
+Print information on specified <em class="replaceable"><code>fileid</code></em>.
+Currently listed are: file-id, username, locks, path, permissions.
+</p></div><div class="refsect3"><a name="id1367"></a><h4>[RAP|RPC] FILE USER <em class="replaceable"><code>user</code></em></h4><p>
+List files opened by specified <em class="replaceable"><code>user</code></em>.
+Please note that <code class="literal">net rap file user</code> does not work
+against Samba servers.
+</p></div></div><div class="refsect2"><a name="id1368"></a><h3>SESSION</h3><div class="refsect3"><a name="id1369"></a><h4>RAP SESSION</h4><p>Without any other options, SESSION enumerates all active SMB/CIFS
+sessions on the target server.</p></div><div class="refsect3"><a name="id1370"></a><h4>RAP SESSION DELETE|CLOSE <em class="replaceable"><code>CLIENT_NAME</code></em></h4><p>Close the specified sessions.</p></div><div class="refsect3"><a name="id1371"></a><h4>RAP SESSION INFO <em class="replaceable"><code>CLIENT_NAME</code></em></h4><p>Give a list with all the open files in specified session.</p></div></div><div class="refsect2"><a name="id1372"></a><h3>RAP SERVER <em class="replaceable"><code>DOMAIN</code></em></h3><p>List all servers in specified domain or workgroup. Defaults
+to local domain.</p></div><div class="refsect2"><a name="id1373"></a><h3>RAP DOMAIN</h3><p>Lists all domains and workgroups visible on the
+current network.</p></div><div class="refsect2"><a name="id1374"></a><h3>RAP PRINTQ</h3><div class="refsect3"><a name="id1375"></a><h4>RAP PRINTQ INFO <em class="replaceable"><code>QUEUE_NAME</code></em></h4><p>Lists the specified print queue and print jobs on the server.
+If the <em class="replaceable"><code>QUEUE_NAME</code></em> is omitted, all
+queues are listed.</p></div><div class="refsect3"><a name="id1376"></a><h4>RAP PRINTQ DELETE <em class="replaceable"><code>JOBID</code></em></h4><p>Delete job with specified id.</p></div></div><div class="refsect2"><a name="id1377"></a><h3>RAP VALIDATE <em class="replaceable"><code>user</code></em> [<em class="replaceable"><code>password</code></em>]</h3><p>
+Validate whether the specified user can log in to the
+remote server. If the password is not specified on the commandline, it
+will be prompted.
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>Currently NOT implemented.</p></div></div><div class="refsect2"><a name="id1378"></a><h3>RAP GROUPMEMBER</h3><div class="refsect3"><a name="id1379"></a><h4>RAP GROUPMEMBER LIST <em class="replaceable"><code>GROUP</code></em></h4><p>List all members of the specified group.</p></div><div class="refsect3"><a name="id1380"></a><h4>RAP GROUPMEMBER DELETE <em class="replaceable"><code>GROUP</code></em> <em class="replaceable"><code>USER</code></em></h4><p>Delete member from group.</p></div><div class="refsect3"><a name="id1381"></a><h4>RAP GROUPMEMBER ADD <em class="replaceable"><code>GROUP</code></em> <em class="replaceable"><code>USER</code></em></h4><p>Add member to group.</p></div></div><div class="refsect2"><a name="id1382"></a><h3>RAP ADMIN <em class="replaceable"><code>command</code></em></h3><p>Execute the specified <em class="replaceable"><code>command</code></em> on
+the remote server. Only works with OS/2 servers.
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>Currently NOT implemented.</p></div></div><div class="refsect2"><a name="id1383"></a><h3>RAP SERVICE</h3><div class="refsect3"><a name="id1384"></a><h4>RAP SERVICE START <em class="replaceable"><code>NAME</code></em> [arguments...]</h4><p>Start the specified service on the remote server. Not implemented yet.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>Currently NOT implemented.</p></div></div><div class="refsect3"><a name="id1385"></a><h4>RAP SERVICE STOP</h4><p>Stop the specified service on the remote server.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>Currently NOT implemented.</p></div></div></div><div class="refsect2"><a name="id1386"></a><h3>RAP PASSWORD <em class="replaceable"><code>USER</code></em> <em class="replaceable"><code>OLDPASS</code></em> <em class="replaceable"><code>NEWPASS</code></em></h3><p>
+Change password of <em class="replaceable"><code>USER</code></em> from <em class="replaceable"><code>OLDPASS</code></em> to <em class="replaceable"><code>NEWPASS</code></em>.
+</p></div><div class="refsect2"><a name="id1387"></a><h3>LOOKUP</h3><div class="refsect3"><a name="id1388"></a><h4>LOOKUP HOST <em class="replaceable"><code>HOSTNAME</code></em> [<em class="replaceable"><code>TYPE</code></em>]</h4><p>
+Lookup the IP address of the given host with the specified type (netbios suffix).
+The type defaults to 0x20 (workstation).
+</p></div><div class="refsect3"><a name="id1389"></a><h4>LOOKUP LDAP [<em class="replaceable"><code>DOMAIN</code></em>]</h4><p>Give IP address of LDAP server of specified <em class="replaceable"><code>DOMAIN</code></em>. Defaults to local domain.</p></div><div class="refsect3"><a name="id1390"></a><h4>LOOKUP KDC [<em class="replaceable"><code>REALM</code></em>]</h4><p>Give IP address of KDC for the specified <em class="replaceable"><code>REALM</code></em>.
+Defaults to local realm.</p></div><div class="refsect3"><a name="id1391"></a><h4>LOOKUP DC [<em class="replaceable"><code>DOMAIN</code></em>]</h4><p>Give IP's of Domain Controllers for specified <em class="replaceable"><code>
+DOMAIN</code></em>. Defaults to local domain.</p></div><div class="refsect3"><a name="id1392"></a><h4>LOOKUP MASTER <em class="replaceable"><code>DOMAIN</code></em></h4><p>Give IP of master browser for specified <em class="replaceable"><code>DOMAIN</code></em>
+or workgroup. Defaults to local domain.</p></div><div class="refsect3"><a name="id1393"></a><h4>LOOKUP NAME [<em class="replaceable"><code>NAME</code></em>]</h4><p>Lookup username's sid and type for specified <em class="replaceable"><code>NAME</code></em>
+</p></div><div class="refsect3"><a name="id1394"></a><h4>LOOKUP SID [<em class="replaceable"><code>SID</code></em>]</h4><p>Give sid's name and type for specified <em class="replaceable"><code>SID</code></em>
+</p></div><div class="refsect3"><a name="id1395"></a><h4>LOOKUP DSGETDCNAME [<em class="replaceable"><code>NAME</code></em>] [<em class="replaceable"><code>FLAGS</code></em>] [<em class="replaceable"><code>SITENAME</code></em>]</h4><p>Give Domain Controller information for specified domain <em class="replaceable"><code>NAME</code></em>
+</p></div></div><div class="refsect2"><a name="id1396"></a><h3>CACHE</h3><p>Samba uses a general caching interface called 'gencache'. It
+can be controlled using 'NET CACHE'.</p><p>All the timeout parameters support the suffixes:
+
+</p><table border="0" summary="Simple list" class="simplelist"><tr><td>s - Seconds</td></tr><tr><td>m - Minutes</td></tr><tr><td>h - Hours</td></tr><tr><td>d - Days</td></tr><tr><td>w - Weeks</td></tr></table><p>
+
+</p><div class="refsect3"><a name="id1397"></a><h4>CACHE ADD <em class="replaceable"><code>key</code></em> <em class="replaceable"><code>data</code></em> <em class="replaceable"><code>time-out</code></em></h4><p>Add specified key+data to the cache with the given timeout.</p></div><div class="refsect3"><a name="id1398"></a><h4>CACHE DEL <em class="replaceable"><code>key</code></em></h4><p>Delete key from the cache.</p></div><div class="refsect3"><a name="id1399"></a><h4>CACHE SET <em class="replaceable"><code>key</code></em> <em class="replaceable"><code>data</code></em> <em class="replaceable"><code>time-out</code></em></h4><p>Update data of existing cache entry.</p></div><div class="refsect3"><a name="id1400"></a><h4>CACHE SEARCH <em class="replaceable"><code>PATTERN</code></em></h4><p>Search for the specified pattern in the cache data.</p></div><div class="refsect3"><a name="id1401"></a><h4>CACHE LIST</h4><p>
+List all current items in the cache.
+</p></div><div class="refsect3"><a name="id1402"></a><h4>CACHE FLUSH</h4><p>Remove all the current items from the cache.</p></div></div><div class="refsect2"><a name="id1403"></a><h3>GETLOCALSID [DOMAIN]</h3><p>Prints the SID of the specified domain, or if the parameter is
+omitted, the SID of the local server.</p></div><div class="refsect2"><a name="id1404"></a><h3>SETLOCALSID S-1-5-21-x-y-z</h3><p>Sets SID for the local server to the specified SID.</p></div><div class="refsect2"><a name="id1405"></a><h3>GETDOMAINSID</h3><p>Prints the local machine SID and the SID of the current
+domain.</p></div><div class="refsect2"><a name="id1406"></a><h3>SETDOMAINSID</h3><p>Sets the SID of the current domain.</p></div><div class="refsect2"><a name="id1407"></a><h3>GROUPMAP</h3><p>Manage the mappings between Windows group SIDs and UNIX groups.
+Common options include:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>unixgroup - Name of the UNIX group</p></li><li class="listitem"><p>ntgroup - Name of the Windows NT group (must be
+  resolvable to a SID</p></li><li class="listitem"><p>rid - Unsigned 32-bit integer</p></li><li class="listitem"><p>sid - Full SID in the form of "S-1-..."</p></li><li class="listitem"><p>type - Type of the group; either 'domain', 'local',
+  or 'builtin'</p></li><li class="listitem"><p>comment - Freeform text description of the group</p></li></ul></div><div class="refsect3"><a name="id1408"></a><h4>GROUPMAP ADD</h4><p>
+Add a new group mapping entry:
+</p><pre class="programlisting">
+net groupmap add {rid=int|sid=string} unixgroup=string \
+	[type={domain|local}] [ntgroup=string] [comment=string]
+</pre><p>
+</p></div><div class="refsect3"><a name="id1409"></a><h4>GROUPMAP DELETE</h4><p>Delete a group mapping entry. If more than one group name matches, the first entry found is deleted.</p><p>net groupmap delete {ntgroup=string|sid=SID}</p></div><div class="refsect3"><a name="id1410"></a><h4>GROUPMAP MODIFY</h4><p>Update an existing group entry.</p><p>
+</p><pre class="programlisting">
+net groupmap modify {ntgroup=string|sid=SID} [unixgroup=string] \
+       [comment=string] [type={domain|local}]
+</pre><p>
+</p></div><div class="refsect3"><a name="id1411"></a><h4>GROUPMAP LIST</h4><p>List existing group mapping entries.</p><p>net groupmap list [verbose] [ntgroup=string] [sid=SID]</p></div></div><div class="refsect2"><a name="id1412"></a><h3>MAXRID</h3><p>Prints out the highest RID currently in use on the local
+server (by the active 'passdb backend').
+</p></div><div class="refsect2"><a name="id1413"></a><h3>RPC INFO</h3><p>Print information about the domain of the remote server,
+such as domain name, domain sid and number of users and groups.
+</p></div><div class="refsect2"><a name="id1414"></a><h3>[RPC|ADS] TESTJOIN</h3><p>Check whether participation in a domain is still valid.</p></div><div class="refsect2"><a name="id1415"></a><h3>[RPC|ADS] CHANGETRUSTPW</h3><p>Force change of domain trust password.</p></div><div class="refsect2"><a name="id1416"></a><h3>RPC TRUSTDOM</h3><div class="refsect3"><a name="id1417"></a><h4>RPC TRUSTDOM ADD <em class="replaceable"><code>DOMAIN</code></em></h4><p>Add a interdomain trust account for <em class="replaceable"><code>DOMAIN</code></em>.
+This is in fact a Samba account named <em class="replaceable"><code>DOMAIN$</code></em>
+with the account flag <code class="constant">'I'</code> (interdomain trust account).
+This is required for incoming trusts to work. It makes Samba be a
+trusted domain of the foreign (trusting) domain.
+Users of the Samba domain will be made available in the foreign domain.
+If the command is used against localhost it has the same effect as
+<code class="literal">smbpasswd -a -i DOMAIN</code>. Please note that both commands
+expect a appropriate UNIX account.
+</p></div><div class="refsect3"><a name="id1418"></a><h4>RPC TRUSTDOM DEL <em class="replaceable"><code>DOMAIN</code></em></h4><p>Remove interdomain trust account for
+<em class="replaceable"><code>DOMAIN</code></em>. If it is used against localhost
+it has the same effect as <code class="literal">smbpasswd -x DOMAIN$</code>.
+</p></div><div class="refsect3"><a name="id1419"></a><h4>RPC TRUSTDOM ESTABLISH <em class="replaceable"><code>DOMAIN</code></em></h4><p>
+Establish a trust relationship to a trusted domain.
+Interdomain account must already be created on the remote PDC.
+This is required for outgoing trusts to work. It makes Samba be a
+trusting domain of a foreign (trusted) domain.
+Users of the foreign domain will be made available in our domain.
+You'll need winbind and a working idmap config to make them
+appear in your system.
+</p></div><div class="refsect3"><a name="id1420"></a><h4>RPC TRUSTDOM REVOKE <em class="replaceable"><code>DOMAIN</code></em></h4><p>Abandon relationship to trusted domain</p></div><div class="refsect3"><a name="id1421"></a><h4>RPC TRUSTDOM LIST</h4><p>List all interdomain trust relationships.</p></div></div><div class="refsect2"><a name="id1422"></a><h3>RPC TRUST</h3><div class="refsect3"><a name="id1423"></a><h4>RPC TRUST CREATE</h4><p>Create a trust object by calling lsaCreateTrustedDomainEx2.
+The can be done on a single server or on two servers at once with the
+possibility to use a random trust password.</p><div class="variablelist"><p class="title"><b>Options:</b></p><dl class="variablelist"><dt><span class="term">otherserver</span></dt><dd><p>Domain controller of the second domain</p></dd><dt><span class="term">otheruser</span></dt><dd><p>Admin user in the second domain</p></dd><dt><span class="term">otherdomainsid</span></dt><dd><p>SID of the second domain</p></dd><dt><span class="term">other_netbios_domain</span></dt><dd><p>NetBIOS (short) name of the second domain</p></dd><dt><span class="term">otherdomain</span></dt><dd><p>DNS (full) name of the second domain</p></dd><dt><span class="term">trustpw</span></dt><dd><p>Trust password</p></dd></dl></div><div class="variablelist"><p class="title"><b>Examples:</b></p><dl class="variablelist"><dt><span class="term">Create a trust object on srv1.dom1.dom for the domain dom2</span></dt><dd><div class="literallayout"><p><br>
+net rpc trust create \<br>
+    otherdomainsid=S-x-x-xx-xxxxxxxxxx-xxxxxxxxxx-xxxxxxxxx \<br>
+    other_netbios_domain=dom2 \<br>
+    otherdomain=dom2.dom \<br>
+    trustpw=12345678 \<br>
+    -S srv1.dom1.dom<br>
+</p></div></dd><dt><span class="term">Create a trust relationship between dom1 and dom2</span></dt><dd><div class="literallayout"><p><br>
+net rpc trust create \<br>
+    otherserver=srv2.dom2.test \<br>
+    otheruser=dom2adm \<br>
+    -S srv1.dom1.dom<br>
+</p></div></dd></dl></div></div><div class="refsect3"><a name="id1424"></a><h4>RPC TRUST DELETE</h4><p>Delete a trust object by calling lsaDeleteTrustedDomain.
+The can be done on a single server or on two servers at once.</p><div class="variablelist"><p class="title"><b>Options:</b></p><dl class="variablelist"><dt><span class="term">otherserver</span></dt><dd><p>Domain controller of the second domain</p></dd><dt><span class="term">otheruser</span></dt><dd><p>Admin user in the second domain</p></dd><dt><span class="term">otherdomainsid</span></dt><dd><p>SID of the second domain</p></dd></dl></div><div class="variablelist"><p class="title"><b>Examples:</b></p><dl class="variablelist"><dt><span class="term">Delete a trust object on srv1.dom1.dom for the domain dom2</span></dt><dd><div class="literallayout"><p><br>
+net rpc trust delete \<br>
+    otherdomainsid=S-x-x-xx-xxxxxxxxxx-xxxxxxxxxx-xxxxxxxxx \<br>
+    -S srv1.dom1.dom<br>
+</p></div></dd><dt><span class="term">Delete a trust relationship between dom1 and dom2</span></dt><dd><div class="literallayout"><p><br>
+net rpc trust delete \<br>
+    otherserver=srv2.dom2.test \<br>
+    otheruser=dom2adm \<br>
+    -S srv1.dom1.dom<br>
+</p></div></dd></dl></div></div></div><div class="refsect2"><a name="id1425"></a><div class="refsect3"><a name="id1426"></a><h4>RPC RIGHTS</h4><p>This subcommand is used to view and manage Samba's rights assignments (also
+referred to as privileges).  There are three options currently available:
+<em class="parameter"><code>list</code></em>, <em class="parameter"><code>grant</code></em>, and
+<em class="parameter"><code>revoke</code></em>.  More details on Samba's privilege model and its use
+can be found in the Samba-HOWTO-Collection.</p></div></div><div class="refsect2"><a name="id1427"></a><h3>RPC ABORTSHUTDOWN</h3><p>Abort the shutdown of a remote server.</p></div><div class="refsect2"><a name="id1428"></a><h3>RPC SHUTDOWN [-t timeout] [-r] [-f] [-C message]</h3><p>Shut down the remote server.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-r</span></dt><dd><p>
+Reboot after shutdown.
+</p></dd><dt><span class="term">-f</span></dt><dd><p>
+Force shutting down all applications.
+</p></dd><dt><span class="term">-t timeout</span></dt><dd><p>
+Timeout before system will be shut down. An interactive
+user of the system can use this time to cancel the shutdown.
+</p></dd><dt><span class="term">-C message</span></dt><dd><p>Display the specified message on the screen to
+announce the shutdown.</p></dd></dl></div></div><div class="refsect2"><a name="id1429"></a><h3>RPC SAMDUMP</h3><p>Print out sam database of remote server. You need
+to run this against the PDC, from a Samba machine joined as a BDC. </p></div><div class="refsect2"><a name="id1430"></a><h3>RPC VAMPIRE</h3><p>Export users, aliases and groups from remote server to
+local server.  You need to run this against the PDC, from a Samba machine joined as a BDC.
+This vampire command cannot be used against an Active Directory, only
+against an NT4 Domain Controller.
+</p></div><div class="refsect2"><a name="id1431"></a><h3>RPC VAMPIRE KEYTAB</h3><p>Dump remote SAM database to local Kerberos keytab file.
+</p></div><div class="refsect2"><a name="id1432"></a><h3>RPC VAMPIRE LDIF</h3><p>Dump remote SAM database to local LDIF file or standard output.
+</p></div><div class="refsect2"><a name="id1433"></a><h3>RPC GETSID</h3><p>Fetch domain SID and store it in the local <code class="filename">secrets.tdb</code>. </p></div><div class="refsect2"><a name="id1434"></a><h3>ADS GPO</h3><div class="refsect3"><a name="id1435"></a><h4>ADS GPO APPLY &lt;USERNAME|MACHINENAME&gt; </h4><p>Apply GPOs for a username or machine name. Either username or machine name should be provided to the command, not both. </p></div><div class="refsect3"><a name="id1436"></a><h4>ADS GPO GETGPO [<em class="replaceable"><code>GPO</code></em>]</h4><p>List specified GPO.</p></div><div class="refsect3"><a name="id1437"></a><h4>ADS GPO LINKADD [<em class="replaceable"><code>LINKDN</code></em>] [<em class="replaceable"><code>GPODN</code></em>]</h4><p>Link a container to a GPO. <em class="replaceable"><code>LINKDN</code></em> Container to link to a GPO. <em class="replaceable"><code>GPODN</code></em> GPO to link container to. DNs must be provided properly escaped. See RFC 4514 for details.</p></div><div class="refsect3"><a name="id1438"></a><h4>ADS GPO LINKGET [<em class="replaceable"><code>CONTAINER</code></em>]</h4><p>Lists gPLink of a container.</p></div><div class="refsect3"><a name="id1439"></a><h4>ADS GPO LIST &lt;USERNAME|MACHINENAME&gt; </h4><p>Lists all GPOs for a username or machine name. Either username or machine name should be provided to the command, not both. </p></div><div class="refsect3"><a name="id1440"></a><h4>ADS GPO LISTALL</h4><p>Lists all GPOs on a DC.</p></div><div class="refsect3"><a name="id1441"></a><h4>ADS GPO REFRESH [<em class="replaceable"><code>USERNAME</code></em>] [<em class="replaceable"><code>MACHINENAME</code></em>]</h4><p>Lists all GPOs assigned to an account and download them. <em class="replaceable"><code>USERNAME</code></em> User to refresh GPOs for. <em class="replaceable"><code>MACHINENAME</code></em> Machine to refresh GPOs for.</p></div></div><div class="refsect2"><a name="id1442"></a><h3>ADS DNS</h3><div class="refsect3"><a name="id1443"></a><h4>ADS DNS REGISTER [FQDN [IP [IP.....]]]</h4><p>Add dns record to Active Directory. If FQDN is missing, <a class="link" href="smb.conf.5.html#DNSHOSTNAME" target="_top">dns hostname</a> is used. If IP is missing, IPs from all network interfaces are added.</p></div><div class="refsect3"><a name="id1444"></a><h4>ADS DNS UNREGISTER &lt;FQDN&gt;</h4><p>Remove FQDN dns entry from Active Directory.</p></div></div><div class="refsect2"><a name="id1445"></a><h3>ADS LEAVE [--keep-account]</h3><p>Make the remote host leave the domain it is part of. </p></div><div class="refsect2"><a name="id1446"></a><h3>ADS STATUS</h3><p>Print out status of machine account of the local machine in ADS.
+Prints out quite some debug info. Aimed at developers, regular
+users should use <code class="literal">NET ADS TESTJOIN</code>.</p></div><div class="refsect2"><a name="id1447"></a><h3>ADS PRINTER</h3><div class="refsect3"><a name="id1448"></a><h4>ADS PRINTER INFO [<em class="replaceable"><code>PRINTER</code></em>] [<em class="replaceable"><code>SERVER</code></em>]</h4><p>
+Lookup info for <em class="replaceable"><code>PRINTER</code></em> on <em class="replaceable"><code>SERVER</code></em>. The printer name defaults to "*", the
+server name defaults to the local host.</p></div><div class="refsect3"><a name="id1449"></a><h4>ADS PRINTER PUBLISH <em class="replaceable"><code>PRINTER</code></em></h4><p>Publish specified printer using ADS.</p></div><div class="refsect3"><a name="id1450"></a><h4>ADS PRINTER REMOVE <em class="replaceable"><code>PRINTER</code></em></h4><p>Remove specified printer from ADS directory.</p></div></div><div class="refsect2"><a name="id1451"></a><h3>ADS SEARCH <em class="replaceable"><code>EXPRESSION</code></em> <em class="replaceable"><code>ATTRIBUTES...</code></em></h3><p>Perform a raw LDAP search on a ADS server and dump the results. The
+expression is a standard LDAP search expression, and the
+attributes are a list of LDAP fields to show in the results.</p><p>Example: <strong class="userinput"><code>net ads search '(objectCategory=group)' sAMAccountName</code></strong>
+</p></div><div class="refsect2"><a name="id1452"></a><h3>ADS DN <em class="replaceable"><code>DN</code></em> <em class="replaceable"><code>(attributes)</code></em></h3><p>
+Perform a raw LDAP search on a ADS server and dump the results. The
+DN standard LDAP DN, and the attributes are a list of LDAP fields
+to show in the result.
+</p><p>Example: <strong class="userinput"><code>net ads dn 'CN=administrator,CN=Users,DC=my,DC=domain' SAMAccountName</code></strong></p></div><div class="refsect2"><a name="id1453"></a><h3>ADS KEYTAB <em class="replaceable"><code>CREATE</code></em></h3><p>
+Since Samba 4.21.0, keytab file is created as specified in <a class="link" href="smb.conf.5.html#SYNCMACHINEPASSWORDTOKEYTAB" target="_top">sync machine password to keytab</a> . The keytab can be created only when
+machine password is available in secrets.tdb, i.e. only for
+<a class="link" href="smb.conf.5.html#KERBEROSMETHOD" target="_top">kerberos method = secrets only</a> and
+<a class="link" href="smb.conf.5.html#KERBEROSMETHOD" target="_top">kerberos method = secrets and keytab</a>. With
+the smb.conf default values for <a class="link" href="smb.conf.5.html#KERBEROSMETHOD" target="_top">kerberos method =  secrets
+only</a> and <a class="link" href="smb.conf.5.html#SYNCMACHINEPASSWORDTOKEYTAB" target="_top">sync machine password to keytab</a>
+(default is empty) the keytab is not generated at all.  Keytab with a default
+name containing: SPNs synced from AD, account name COMPUTER$ and principal
+host/dns_hostname is created for <a class="link" href="smb.conf.5.html#KERBEROSMETHOD" target="_top">kerberos method = secrets
+and keytab</a> if <a class="link" href="smb.conf.5.html#SYNCMACHINEPASSWORDTOKEYTAB" target="_top">sync machine password to keytab</a> is missing.
+</p><p>
+Till Samba 4.20, these entries were created by default: the account name
+COMPUTER$, 'host' principal and SPNs synced from AD. Example below generates
+such keytab:
+</p><pre class="programlisting">
+<a class="link" href="smb.conf.5.html#SYNCMACHINEPASSWORDTOKEYTAB" target="_top">sync machine password to keytab = /etc/krb5.keytab:spn_prefixes=host:account_name:sync_spns:sync_kvno:machine_password</a>
+</pre><p>
+No changes are made to the computer AD account.
+</p></div><div class="refsect2"><a name="id1454"></a><h3>(Removed!) ADS KEYTAB <em class="replaceable"><code>ADD</code></em> <em class="replaceable"><code>(principal | machine | serviceclass | windows SPN)</code></em></h3><p>
+This command is no longer available in Samba 4.21.0 and newer. See <a class="link" href="smb.conf.5.html#SYNCMACHINEPASSWORDTOKEYTAB" target="_top">sync machine password to keytab</a> for replacement.
+</p>
+
+To replace e.g. call of
+<pre class="programlisting">
+net ads keytab add wurst/brot@REALM
+</pre>
+Add to smb.conf:
+<pre class="programlisting">
+sync machine password to keytab = /path/to/keytab1:spns=wurst/brot@REALM:machine_password
+</pre>
+and run:
+<pre class="programlisting">
+net ads keytab create
+</pre><p>
+Original description of this command:
+</p><p>
+Adds a new keytab entry, the entry can be either;
+  </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">kerberos principal</span></dt><dd><p>
+      A kerberos principal (identified by the presence of '@') is just
+      added to the keytab file.
+    </p></dd><dt><span class="term">machinename</span></dt><dd><p>
+      A machinename (identified by the trailing '$') is used to create a
+      a kerberos principal 'machinename@realm' which is added to the
+      keytab file.
+    </p></dd><dt><span class="term">serviceclass</span></dt><dd><p>
+    A serviceclass (such as 'cifs', 'html' etc.) is used to create a pair
+    of kerberos principals 'serviceclass/fully_qualified_dns_name@realm' &amp;
+    'serviceclass/netbios_name@realm' which are added to the keytab file.
+    </p></dd><dt><span class="term">Windows SPN</span></dt><dd><p>
+    A Windows SPN is of the format 'serviceclass/host:port', it is used to
+    create a kerberos principal 'serviceclass/host@realm' which will
+    be written to the keytab file.
+    </p></dd></dl></div><p>
+</p><p>
+Unlike old versions no computer AD objects are modified by this command. To
+preserve the behaviour of older clients 'net ads keytab ad_update_ads' is
+available.
+</p></div><div class="refsect2"><a name="id1455"></a><h3>ADS KEYTAB <em class="replaceable"><code>LIST</code></em> <em class="replaceable"><code>[keytab]</code></em></h3><p>
+        The command will list the contents of a keytab. If no keytab is
+        specified it will display the default keytab configured by KRB5.
+    </p></div><div class="refsect2"><a name="id1456"></a><h3>(Removed!) ADS KEYTAB <em class="replaceable"><code>DELETE</code></em> <em class="replaceable"><code>(principal | machine | serviceclass | windows SPN)</code></em></h3><p>
+This command is no longer available in Samba 4.21.0 and newer. See <a class="link" href="smb.conf.5.html#SYNCMACHINEPASSWORDTOKEYTAB" target="_top">sync machine password to keytab</a> for replacement.
+</p><p>
+To replace e.g. call of
+</p><pre class="programlisting">
+net ads keytab delete wurst/brot@REALM
+</pre><p>
+Delete from <a class="link" href="smb.conf.5.html#SYNCMACHINEPASSWORDTOKEYTAB" target="_top">sync machine password to keytab</a> principal "wurst/brot@REALM" and run:
+</p><pre class="programlisting">
+net ads keytab create
+</pre><p>
+
+</p></div><div class="refsect2"><a name="id1457"></a><h3>(Removed!) ADS KEYTAB <em class="replaceable"><code>ADD_UPDATE_ADS</code></em> <em class="replaceable"><code>(principal | machine | serviceclass | windows SPN)</code></em></h3><p>
+This command is no longer available in Samba 4.21.0 and newer. See <a class="link" href="smb.conf.5.html#SYNCMACHINEPASSWORDTOKEYTAB" target="_top">sync machine password to keytab</a> for replacement.
+</p>
+
+To replace e.g. call of
+<pre class="programlisting">
+net ads keytab add_update_ads wurst/brot@REALM
+</pre>
+Add to smb.conf:
+<pre class="programlisting">
+sync machine password to keytab = /path/to/keytab2:sync_spns:machine_password
+</pre>
+and run:
+<pre class="programlisting">
+net ads setspn add wurst/brot@REALM
+net ads keytab create
+</pre><p>
+Original description of this command:
+</p><p>
+Adds a new keytab entry (see section for net ads keytab add). In addition to
+adding entries to the keytab file corresponding Windows SPNs are created
+from the entry passed to this command. These SPN(s) added to the AD computer
+account object associated with the client machine running this command for
+the following entry types;
+  </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">serviceclass</span></dt><dd><p>
+    A serviceclass (such as 'cifs', 'html' etc.) is used to create a
+    pair of Windows SPN(s) 'param/full_qualified_dns' &amp;
+    'param/netbios_name' which are added to the AD computer account object
+   for this client.
+    </p></dd><dt><span class="term">Windows SPN</span></dt><dd><p>
+    A Windows SPN is of the format 'serviceclass/host:port', it is
+    added as passed to the AD computer account object for this client.
+    </p></dd></dl></div><p>
+</p></div><div class="refsect2"><a name="id1458"></a><h3>ADS SETSPN LIST <em class="replaceable"><code>[machine]</code></em></h3><p>
+   Lists the Windows SPNs stored in the 'machine' Windows AD Computer object.
+   If 'machine' is not specified then computer account for this client is used
+   instead.
+</p><p>Example: <strong class="userinput"><code>net ads setspn list --machine-pass</code></strong></p></div><div class="refsect2"><a name="id1459"></a><h3>ADS SETSPN ADD <em class="replaceable"><code>[machine] SPN</code></em></h3><p>
+   Adds the specified Windows SPN to the 'machine' Windows AD Computer object.
+   If 'machine' is not specified then computer account for this client is used
+   instead.
+</p><p>Example: <strong class="userinput"><code>net ads setspn add computername host/computername.example.com -U Administrator%Passw0rd</code></strong></p></div><div class="refsect2"><a name="id1460"></a><h3>ADS SETSPN DELETE <em class="replaceable"><code>[machine] SPN</code></em></h3><p>
+   DELETE the specified Window SPN from the 'machine' Windows AD Computer
+   object. If 'machine' is not specified then computer account for this
+   client is used instead.
+</p><p>Example: <strong class="userinput"><code>net ads setspn delete computername host/computername.example.com -U Administrator%Passw0rd</code></strong></p></div><div class="refsect2"><a name="id1461"></a><h3>ADS WORKGROUP</h3><p>Print out workgroup name for specified kerberos realm.</p></div><div class="refsect2"><a name="id1462"></a><h3>ADS ENCTYPES</h3><p>
+	List, modify or delete the value of the "msDS-SupportedEncryptionTypes" attribute of an account in AD.
+</p><p>
+	This attribute allows one to control which Kerberos encryption types are used for the generation of initial and service tickets. The value consists of an integer bitmask with the following values:
+</p><p>0x00000001 DES-CBC-CRC</p><p>0x00000002 DES-CBC-MD5</p><p>0x00000004 RC4-HMAC</p><p>0x00000008 AES128-CTS-HMAC-SHA1-96</p><p>0x00000010 AES256-CTS-HMAC-SHA1-96</p><p>0x00000020 AES256-CTS-HMAC-SHA1-96-SK</p><p>0x00080000 RESOURCE-SID-COMPRESSION-DISABLED</p></div><div class="refsect2"><a name="id1463"></a><h3>ADS ENCTYPES LIST <em class="replaceable"><code>&lt;ACCOUNTNAME&gt;</code></em></h3><p>
+	List the value of the "msDS-SupportedEncryptionTypes" attribute of a given account. Computer account needs '$' at the end.
+</p><p>Example: <strong class="userinput"><code>net ads enctypes list Computername$ --machine-pass</code></strong></p></div><div class="refsect2"><a name="id1464"></a><h3>ADS ENCTYPES SET <em class="replaceable"><code>&lt;ACCOUNTNAME&gt;</code></em> <em class="replaceable"><code>[enctypes]</code></em></h3><p>
+	Set the value of the "msDS-SupportedEncryptionTypes" attribute of the LDAP object of ACCOUNTNAME to a given value. If the value is omitted, the value is set to 28 which enables RC4-HMAC, AES128-CTS-HMAC-SHA1-96 and AES256-CTS-HMAC-SHA1-96 encryption types.
+</p><p>Example: <strong class="userinput"><code>net ads enctypes set Computername$ 24 --machine-pass</code></strong></p></div><div class="refsect2"><a name="id1465"></a><h3>ADS ENCTYPES DELETE <em class="replaceable"><code>&lt;ACCOUNTNAME&gt;</code></em></h3><p>
+	Deletes the "msDS-SupportedEncryptionTypes" attribute of the LDAP object of ACCOUNTNAME.
+</p><p>Example: <strong class="userinput"><code>net ads enctypes delete Computername$ --machine-pass</code></strong></p></div><div class="refsect2"><a name="id1466"></a><h3>ADS KERBEROS</h3><p>
+	Issue Kerberos operations against an Active Directory KDC.
+</p></div><div class="refsect2"><a name="id1467"></a><h3>ADS KERBEROS KINIT</h3><p>
+	Issue a kinit request for a given user.  The following methods can be used
+	to specify where to store the ticket granting ticket (TGT) (in order of
+	precedence):
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>option <code class="option">--use-krb5-ccache</code></p></li><li class="listitem"><p><em class="replaceable"><code>KRB5CCNAME</code></em> environment variable</p></li><li class="listitem"><p><em class="parameter"><code>default_ccache_name</code></em> setting in <code class="filename">krb5.conf</code></p></li></ul></div><div class="variablelist"><p class="title"><b>Examples:</b></p><dl class="variablelist"><dt><span class="term">Use file based cache (FILE:/tmp/krb5cache)</span></dt><dd><div class="literallayout"><p><br>
+net ads kerberos kinit -P --use-krb5-ccache=/tmp/krb5cache<br>
+</p></div></dd><dt><span class="term">Use memory cache (MEMORY:net) to verify the authentication</span></dt><dd><div class="literallayout"><p><br>
+net ads kerberos kinit -P --use-krb5-ccache=MEMORY:net<br>
+</p></div></dd></dl></div></div><div class="refsect2"><a name="id1468"></a><h3>ADS KERBEROS RENEW</h3><p>
+	Renew an already acquired ticket granting ticket (TGT).
+</p><p>Example: <strong class="userinput"><code>net ads kerberos renew</code></strong></p></div><div class="refsect2"><a name="id1469"></a><h3>ADS KERBEROS PAC</h3><p>
+	Request a Kerberos PAC while authenticating to an Active Directory KDC.
+</p><p>
+	The following commands are provided:
+</p><table border="0" summary="Simple list" class="simplelist"><tr><td>net ads kerberos pac dump - Dump a PAC to stdout.</td></tr><tr><td>net ads kerneros pac save - Save a PAC to a file.</td></tr></table><p>
+	All commands allow to define an impersonation principal to do a Kerberos
+	Service for User (S4U2SELF) operation via
+	the <em class="replaceable"><code>impersonate=STRING</code></em> option.
+	The impersonation principal can have multiple different formats:
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><em class="replaceable"><code>user@MY.REALM</code></em></p><p>This is the default format.</p></li><li class="listitem"><p><em class="replaceable"><code>user@MY.REALM@MY.REALM</code></em></p><p>The Kerberos Service for User (S4U2SELF) also supports
+		Enterprise Principals.</p></li><li class="listitem"><p><em class="replaceable"><code>user@UPN.SUFFIX@MY.REALM</code></em></p><p>Enterprise Principal using a defined upn suffix.</p></li><li class="listitem"><p><em class="replaceable"><code>user@WORKGROUP@MY.REALM</code></em></p><p>Enterprise Principal with netbios domain name.
+		This format is currently not supported by Samba AD.</p></li></ul></div><p>
+	By default net will request a service ticket for the local service
+	of the joined machine. A different service can be defined via
+        <em class="replaceable"><code>local_service=STRING</code></em>.
+</p></div><div class="refsect2"><a name="id1470"></a><h3>ADS KERBEROS PAC DUMP [impersonate=string] [local_service=string] [pac_buffer_type=int]</h3><p>
+	Request a Kerberos PAC while authenticating to an Active Directory KDC.
+	The PAC will be printed on stdout.
+</p><p>
+	When no specific pac_buffer is selected, all buffers will be printed.
+	It is possible to select a specific one via
+	<em class="replaceable"><code>pac_buffer_type=INT</code></em> from this list:
+</p><table border="0" summary="Simple list" class="simplelist"><tr><td>1 PAC_TYPE_LOGON_INFO</td></tr><tr><td>2 PAC_TYPE_CREDENTIAL_INFO</td></tr><tr><td>6 PAC_TYPE_SRV_CHECKSUM</td></tr><tr><td>7 PAC_TYPE_KDC_CHECKSUM</td></tr><tr><td>10 PAC_TYPE_LOGON_NAME</td></tr><tr><td>11 PAC_TYPE_CONSTRAINED_DELEGATION</td></tr><tr><td>12 PAC_TYPE_UPN_DNS_INFO</td></tr><tr><td>13 PAC_TYPE_CLIENT_CLAIMS_INFO</td></tr><tr><td>14 PAC_TYPE_DEVICE_INFO</td></tr><tr><td>15 PAC_TYPE_DEVICE_CLAIMS_INFO</td></tr><tr><td>16 PAC_TYPE_TICKET_CHECKSUM</td></tr><tr><td>17 PAC_TYPE_ATTRIBUTES_INFO</td></tr><tr><td>18 PAC_TYPE_REQUESTER_SID</td></tr><tr><td>19 PAC_TYPE_FULL_CHECKSUM</td></tr></table><p>Example: <strong class="userinput"><code>net ads kerberos pac dump -P impersonate=anyuser@MY.REALM.COM</code></strong></p></div><div class="refsect2"><a name="id1471"></a><h3>ADS KERBEROS PAC SAVE [impersonate=string] [local_service=string] [filename=string]</h3><p>
+	Request a Kerberos PAC while authenticating to an Active Directory KDC.
+	The PAC will be saved in a file.
+</p><p>
+	The filename to store the PAC can be set via the
+	<em class="replaceable"><code>filename=STRING</code></em> option.
+</p><p>Example: <strong class="userinput"><code>net ads kerberos pac save -U user%password filename=/tmp/pacstore</code></strong></p></div><div class="refsect2"><a name="id1472"></a><h3>SAM CREATEBUILTINGROUP &lt;NAME&gt;</h3><p>
+(Re)Create a BUILTIN group.
+Only a wellknown set of BUILTIN groups can be created with this command.
+This is the list of currently recognized group names: Administrators,
+Users, Guests, Power Users, Account Operators, Server Operators, Print
+Operators, Backup Operators, Replicator, RAS Servers, Pre-Windows 2000
+compatible Access.
+
+This command requires a running Winbindd with idmap allocation properly
+configured. The group gid will be allocated out of the winbindd range.
+</p></div><div class="refsect2"><a name="id1473"></a><h3>SAM CREATELOCALGROUP &lt;NAME&gt;</h3><p>
+Create a LOCAL group (also known as Alias).
+
+This command requires a running Winbindd with idmap allocation properly
+configured. The group gid will be allocated out of the winbindd range.
+</p></div><div class="refsect2"><a name="id1474"></a><h3>SAM DELETELOCALGROUP &lt;NAME&gt;</h3><p>
+Delete an existing LOCAL group (also known as Alias).
+
+</p></div><div class="refsect2"><a name="id1475"></a><h3>SAM MAPUNIXGROUP &lt;NAME&gt;</h3><p>
+Map an existing Unix group and make it a Domain Group, the domain group
+will have the same name.
+</p></div><div class="refsect2"><a name="id1476"></a><h3>SAM UNMAPUNIXGROUP &lt;NAME&gt;</h3><p>
+Remove an existing group mapping entry.
+</p></div><div class="refsect2"><a name="id1477"></a><h3>SAM ADDMEM &lt;GROUP&gt; &lt;MEMBER&gt;</h3><p>
+Add a member to a Local group. The group can be specified only by name,
+the member can be specified by name or SID.
+</p></div><div class="refsect2"><a name="id1478"></a><h3>SAM DELMEM  &lt;GROUP&gt; &lt;MEMBER&gt;</h3><p>
+Remove a member from a Local group. The group and the member must be
+specified by name.
+</p></div><div class="refsect2"><a name="id1479"></a><h3>SAM LISTMEM &lt;GROUP&gt;</h3><p>
+List Local group members. The group must be specified by name.
+</p></div><div class="refsect2"><a name="id1480"></a><h3>SAM LIST &lt;users|groups|localgroups|builtin|workstations&gt; [verbose]</h3><p>
+List the specified set of accounts by name. If verbose is specified,
+the rid and description is also provided for each account.
+</p></div><div class="refsect2"><a name="id1481"></a><h3>SAM RIGHTS LIST</h3><p>
+List all available privileges.
+</p></div><div class="refsect2"><a name="id1482"></a><h3>SAM RIGHTS GRANT &lt;NAME&gt; &lt;PRIVILEGE&gt;</h3><p>
+Grant one or more privileges to a user.
+</p></div><div class="refsect2"><a name="id1483"></a><h3>SAM RIGHTS REVOKE &lt;NAME&gt; &lt;PRIVILEGE&gt;</h3><p>
+Revoke one or more privileges from a user.
+</p></div><div class="refsect2"><a name="id1484"></a><h3>SAM SHOW &lt;NAME&gt;</h3><p>
+Show the full DOMAIN\\NAME the SID and the type for the corresponding
+account.
+</p></div><div class="refsect2"><a name="id1485"></a><h3>SAM SET HOMEDIR &lt;NAME&gt; &lt;DIRECTORY&gt;</h3><p>
+Set the home directory for a user account.
+</p></div><div class="refsect2"><a name="id1486"></a><h3>SAM SET PROFILEPATH &lt;NAME&gt; &lt;PATH&gt;</h3><p>
+Set the profile path for a user account.
+</p></div><div class="refsect2"><a name="id1487"></a><h3>SAM SET COMMENT &lt;NAME&gt; &lt;COMMENT&gt;</h3><p>
+Set the comment for a user or group account.
+</p></div><div class="refsect2"><a name="id1488"></a><h3>SAM SET FULLNAME &lt;NAME&gt; &lt;FULL NAME&gt;</h3><p>
+Set the full name for a user account.
+</p></div><div class="refsect2"><a name="id1489"></a><h3>SAM SET LOGONSCRIPT &lt;NAME&gt; &lt;SCRIPT&gt;</h3><p>
+Set the logon script for a user account.
+</p></div><div class="refsect2"><a name="id1490"></a><h3>SAM SET HOMEDRIVE &lt;NAME&gt; &lt;DRIVE&gt;</h3><p>
+Set the home drive for a user account.
+</p></div><div class="refsect2"><a name="id1491"></a><h3>SAM SET WORKSTATIONS &lt;NAME&gt; &lt;WORKSTATIONS&gt;</h3><p>
+Set the workstations a user account is allowed to log in from.
+</p></div><div class="refsect2"><a name="id1492"></a><h3>SAM SET DISABLE &lt;NAME&gt;</h3><p>
+Set the "disabled" flag for a user account.
+</p></div><div class="refsect2"><a name="id1493"></a><h3>SAM SET PWNOTREQ &lt;NAME&gt;</h3><p>
+Set the "password not required" flag for a user account.
+</p></div><div class="refsect2"><a name="id1494"></a><h3>SAM SET AUTOLOCK &lt;NAME&gt;</h3><p>
+Set the "autolock" flag for a user account.
+</p></div><div class="refsect2"><a name="id1495"></a><h3>SAM SET PWNOEXP &lt;NAME&gt;</h3><p>
+Set the "password do not expire" flag for a user account.
+</p></div><div class="refsect2"><a name="id1496"></a><h3>SAM SET PWDMUSTCHANGENOW &lt;NAME&gt; [yes|no]</h3><p>
+Set or unset the "password must change" flag for a user account.
+</p></div><div class="refsect2"><a name="id1497"></a><h3>SAM POLICY LIST</h3><p>
+List the available account policies.
+</p></div><div class="refsect2"><a name="id1498"></a><h3>SAM POLICY SHOW &lt;account policy&gt;</h3><p>
+Show the account policy value.
+</p></div><div class="refsect2"><a name="id1499"></a><h3>SAM POLICY SET &lt;account policy&gt; &lt;value&gt;</h3><p>
+Set a value for the account policy.
+Valid values can be: "forever", "never", "off", or a number.
+</p></div><div class="refsect2"><a name="id1500"></a><h3>SAM PROVISION</h3><p>
+Only available if ldapsam:editposix is set and winbindd is running.
+Properly populates the ldap tree with the basic accounts (Administrator)
+and groups (Domain Users, Domain Admins, Domain Guests) on the ldap tree.
+</p></div><div class="refsect2"><a name="id1501"></a><h3>IDMAP DUMP &lt;local tdb file name&gt;</h3><p>
+Dumps the mappings contained in the local tdb file specified.
+This command is useful to dump only the mappings produced by the idmap_tdb backend.
+</p></div><div class="refsect2"><a name="id1502"></a><h3>IDMAP RESTORE [input file]</h3><p>
+Restore the mappings from the specified file or stdin.
+</p></div><div class="refsect2"><a name="id1503"></a><h3>IDMAP SET SECRET &lt;DOMAIN&gt; &lt;secret&gt;</h3><p>
+Store a secret for the specified domain, used primarily for domains
+that use idmap_ldap as a backend. In this case the secret is used
+as the password for the user DN used to bind to the ldap server.
+</p></div><div class="refsect2"><a name="id1504"></a><h3>IDMAP SET RANGE &lt;RANGE&gt; &lt;SID&gt; [index] [--db=&lt;DB&gt;]</h3><p>
+Store a domain-range mapping for a given domain (and index) in autorid database.
+</p></div><div class="refsect2"><a name="id1505"></a><h3>IDMAP SET CONFIG &lt;config&gt; [--db=&lt;DB&gt;]</h3><p>
+Update CONFIG entry in autorid database.
+</p></div><div class="refsect2"><a name="id1506"></a><h3>IDMAP GET RANGE &lt;SID&gt; [index] [--db=&lt;DB&gt;]</h3><p>
+Get the range for a given domain and index from autorid database.
+</p></div><div class="refsect2"><a name="id1507"></a><h3>IDMAP GET RANGES [&lt;SID&gt;] [--db=&lt;DB&gt;]</h3><p>
+Get ranges for all domains or for one identified by given SID.
+</p></div><div class="refsect2"><a name="id1508"></a><h3>IDMAP GET CONFIG [--db=&lt;DB&gt;]</h3><p>
+Get CONFIG entry from autorid database.
+</p></div><div class="refsect2"><a name="id1509"></a><h3>IDMAP DELETE MAPPING [-f] [--db=&lt;DB&gt;] &lt;ID&gt;</h3><p>
+Delete a mapping sid &lt;-&gt; gid or sid &lt;-&gt; uid from the IDMAP database.
+The mapping is given by &lt;ID&gt; which may either be a sid: S-x-..., a gid: "GID number" or a uid: "UID number".
+Use -f to delete an invalid partial mapping &lt;ID&gt; -&gt; xx
+</p><p>
+  Use "smbcontrol all idmap ..." to notify running smbd instances.
+  See the <a class="citerefentry" href="smbcontrol.1.html"><span class="citerefentry"><span class="refentrytitle">smbcontrol</span>(1)</span></a> manpage for details.
+</p></div><div class="refsect2"><a name="id1510"></a><h3>IDMAP DELETE RANGE [-f] [--db=&lt;TDB&gt;] &lt;RANGE&gt;|(&lt;SID&gt; [&lt;INDEX&gt;])</h3><p>
+Delete a domain range mapping identified by 'RANGE' or "domain SID and INDEX" from autorid database.
+Use -f to delete invalid mappings.
+</p></div><div class="refsect2"><a name="id1511"></a><h3>IDMAP DELETE RANGES [-f] [--db=&lt;TDB&gt;] &lt;SID&gt;</h3><p>
+Delete all domain range mappings for a domain identified by SID.
+Use -f to delete invalid mappings.
+</p></div><div class="refsect2"><a name="id1512"></a><h3>IDMAP CHECK [-v] [-r] [-a] [-T] [-f] [-l] [--db=&lt;DB&gt;]</h3><p>
+  Check and repair the IDMAP database. If no option is given a read only check
+  of the database is done. Among others an interactive or automatic repair mode
+  may be chosen with one of the following options:
+
+  </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-r|--repair</span></dt><dd><p>
+      Interactive repair mode, ask a lot of questions.
+    </p></dd><dt><span class="term">-a|--auto</span></dt><dd><p>
+      Noninteractive repair mode, use default answers.
+    </p></dd><dt><span class="term">-v|--verbose</span></dt><dd><p>
+	Produce more output.
+      </p></dd><dt><span class="term">-f|--force</span></dt><dd><p>
+	Try to apply changes, even if they do not apply cleanly.
+      </p></dd><dt><span class="term">-T|--test</span></dt><dd><p>
+	Dry run, show what changes would be made but don't touch anything.
+      </p></dd><dt><span class="term">-l|--lock</span></dt><dd><p>
+	Lock the database while doing the check.
+      </p></dd><dt><span class="term">--db &lt;DB&gt;</span></dt><dd><p>
+	Check the specified database.
+      </p></dd><dt><span class="term"></span></dt><dd><p>
+      </p></dd></dl></div><p>
+
+  It reports about the finding of the following errors:
+
+  </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">Missing reverse mapping:</span></dt><dd><p>
+      A record with mapping A-&gt;B where there is no B-&gt;A. Default action
+      in repair mode is to "fix" this by adding the reverse mapping.
+    </p></dd><dt><span class="term">Invalid mapping:</span></dt><dd><p>
+      A record with mapping A-&gt;B where B-&gt;C. Default action
+      is to "delete" this record.
+    </p></dd><dt><span class="term">Missing or invalid HWM:</span></dt><dd><p>
+      A high water mark is not at least equal to the largest ID in the
+      database. Default action is to "fix" this by setting it to the
+      largest ID found +1.
+    </p></dd><dt><span class="term">Invalid record:</span></dt><dd><p>
+      Something we failed to parse. Default action is to "edit" it
+      in interactive and "delete" it in automatic mode.
+    </p></dd></dl></div><p>
+</p></div><div class="refsect2"><a name="id1513"></a><h3>USERSHARE</h3><p>Starting with version 3.0.23, a Samba server now supports the ability for
+non-root users to add user defined shares to be exported using the "net usershare"
+commands.
+</p><p>
+To set this up, first set up your <code class="filename">${prefix}/etc/smb.conf</code> by adding to the [global] section:
+
+usershare path = /usr/local/samba/lib/usershares
+
+Next create the directory /usr/local/samba/lib/usershares, change the owner to root and
+set the group owner to the UNIX group who should have the ability to create usershares,
+for example a group called "serverops".
+
+Set the permissions on /usr/local/samba/lib/usershares to 01770.
+
+(Owner and group all access, no access for others, plus the sticky bit,
+which means that a file in that directory can be renamed or deleted only
+by the owner of the file).
+
+Finally, tell smbd how many usershares you will allow by adding to the [global]
+section of <code class="filename">${prefix}/etc/smb.conf</code> a line such as :
+
+usershare max shares = 100.
+
+To allow 100 usershare definitions. Now, members of the UNIX group "serverops"
+can create user defined shares on demand using the commands below.
+</p><p>The usershare commands are:
+
+</p><table border="0" summary="Simple list" class="simplelist"><tr><td>net usershare add sharename path [comment [acl] [guest_ok=[y|n]]] - to add or change a user defined share.</td></tr><tr><td>net usershare delete sharename - to delete a user defined share.</td></tr><tr><td>net usershare info [--long] [wildcard sharename] - to print info about a user defined share.</td></tr><tr><td>net usershare list [--long] [wildcard sharename] - to list user defined shares.</td></tr></table><p>
+
+</p><div class="refsect3"><a name="id1514"></a><h4>USERSHARE ADD <em class="replaceable"><code>sharename</code></em> <em class="replaceable"><code>path</code></em> <em class="replaceable"><code>[comment]</code></em> <em class="replaceable"><code>[acl]</code></em> <em class="replaceable"><code>[guest_ok=[y|n]]</code></em></h4><p>
+Add or replace a new user defined share, with name "sharename".
+</p><p>
+"path" specifies the absolute pathname on the system to be exported.
+Restrictions may be put on this, see the global <code class="filename">${prefix}/etc/smb.conf</code> parameters:
+"usershare owner only", "usershare prefix allow list", and
+"usershare prefix deny list".
+</p><p>
+The optional "comment" parameter is the comment that will appear
+on the share when browsed to by a client.
+</p><p>The optional "acl" field
+specifies which users have read and write access to the entire share.
+Note that guest connections are not allowed unless the <code class="filename">${prefix}/etc/smb.conf</code> parameter
+"usershare allow guests" has been set. The definition of a user
+defined share acl is: "user:permission", where user is a valid
+username on the system and permission can be "F", "R", or "D".
+"F" stands for "full permissions", ie. read and write permissions.
+"D" stands for "deny" for a user, ie. prevent this user from accessing
+this share.
+"R" stands for "read only", ie. only allow read access to this
+share (no creation of new files or directories or writing to files).
+</p><p>
+The default if no "acl" is given is "Everyone:R", which means any
+authenticated user has read-only access.
+</p><p>
+The optional "guest_ok" has the same effect as the parameter of the
+same name in <code class="filename">${prefix}/etc/smb.conf</code>, in that it allows guest access to this user
+defined share. This parameter is only allowed if the global parameter
+"usershare allow guests" has been set to true in the <code class="filename">${prefix}/etc/smb.conf</code>.
+</p><p>
+There is no separate command to modify an existing user defined share,
+just use the "net usershare add [sharename]" command using the same
+sharename as the one you wish to modify and specify the new options
+you wish. The Samba smbd daemon notices user defined share modifications
+at connect time so will see the change immediately, there is no need
+to restart smbd on adding, deleting or changing a user defined share.
+</p></div><div class="refsect3"><a name="id1515"></a><h4>USERSHARE DELETE <em class="replaceable"><code>sharename</code></em></h4><p>
+Deletes the user defined share by name. The Samba smbd daemon
+immediately notices this change, although it will not disconnect
+any users currently connected to the deleted share.
+</p></div><div class="refsect3"><a name="id1516"></a><h4>USERSHARE INFO <em class="replaceable"><code>[--long]</code></em> <em class="replaceable"><code>[wildcard sharename]</code></em></h4><p>
+Get info on user defined shares owned by the current user matching the given pattern, or all users.
+</p><p>
+net usershare info on its own dumps out info on the user defined shares that were
+created by the current user, or restricts them to share names that match the given
+wildcard pattern ('*' matches one or more characters, '?' matches only one character).
+If the '--long' option is also given, it prints out info on user defined
+shares created by other users.
+</p><p>
+The information given about a share looks like:
+
+[foobar]
+path=/home/jeremy
+comment=testme
+usershare_acl=Everyone:F
+guest_ok=n
+
+And is a list of the current settings of the user defined share that can be
+modified by the "net usershare add" command.
+</p></div><div class="refsect3"><a name="id1517"></a><h4>USERSHARE LIST <em class="replaceable"><code>[--long]</code></em> <em class="replaceable"><code>wildcard sharename</code></em></h4><p>
+List all the user defined shares owned by the current user matching the given pattern, or all users.
+</p><p>
+net usershare list on its own list out the names of the user defined shares that were
+created by the current user, or restricts the list to share names that match the given
+wildcard pattern ('*' matches one or more characters, '?' matches only one character).
+If the '--long' option is also given, it includes the names of user defined
+shares created by other users.
+</p></div></div><div class="refsect2"><a name="id1518"></a><h3>[RPC] CONF</h3><p>Starting with version 3.2.0, a Samba server can be configured by data
+stored in registry. This configuration data can be edited with the new "net
+conf" commands. There is also the possibility to configure a remote Samba server
+by enabling the RPC conf mode and specifying the address of the remote server.
+</p><p>
+The deployment of this configuration data can be activated in two levels from the
+<span class="emphasis"><em><code class="filename">${prefix}/etc/smb.conf</code></em></span> file: Share definitions from registry are
+activated by setting <em class="parameter"><code>registry shares</code></em> to
+<span class="quote">&#8220;<span class="quote">yes</span>&#8221;</span> in the [global] section and global configuration options are
+activated by setting <a class="link" href="smb.conf.5.html#INCLUDE" target="_top">include = registry</a> in
+the [global] section for a mixed configuration or by setting
+<a class="link" href="smb.conf.5.html#CONFIGBACKEND" target="_top">config backend = registry</a> in the [global]
+section for a registry-only configuration.
+See the <a class="citerefentry" href="smb.conf.5.html"><span class="citerefentry"><span class="refentrytitle">smb.conf</span>(5)</span></a> manpage for details.
+</p><p>The conf commands are:
+</p><table border="0" summary="Simple list" class="simplelist"><tr><td>net [rpc] conf list - Dump the complete configuration in smb.conf like
+format.</td></tr><tr><td>net [rpc] conf import - Import configuration from file in smb.conf
+format.</td></tr><tr><td>net [rpc] conf listshares - List the registry shares.</td></tr><tr><td>net [rpc] conf drop - Delete the complete configuration from
+registry.</td></tr><tr><td>net [rpc] conf showshare - Show the definition of a registry share.</td></tr><tr><td>net [rpc] conf addshare - Create a new registry share.</td></tr><tr><td>net [rpc] conf delshare - Delete a registry share.</td></tr><tr><td>net [rpc] conf setparm - Store a parameter.</td></tr><tr><td>net [rpc] conf getparm - Retrieve the value of a parameter.</td></tr><tr><td>net [rpc] conf delparm - Delete a parameter.</td></tr><tr><td>net [rpc] conf getincludes - Show the includes of a share definition.</td></tr><tr><td>net [rpc] conf setincludes - Set includes for a share.</td></tr><tr><td>net [rpc] conf delincludes - Delete includes from a share definition.</td></tr></table><p>
+</p><div class="refsect3"><a name="id1519"></a><h4>[RPC] CONF LIST</h4><p>
+Print the configuration data stored in the registry in a smb.conf-like format to
+standard output.
+</p></div><div class="refsect3"><a name="id1520"></a><h4>[RPC] CONF IMPORT <em class="replaceable"><code>[--test|-T]</code></em> <em class="replaceable"><code>filename</code></em> <em class="replaceable"><code>[section]</code></em></h4><p>
+This command imports configuration from a file in smb.conf format.
+If a section encountered in the input file is present in registry,
+its contents are replaced. However, when no section (share name)
+is specified on the command line, the existing registry configuration
+is first cleared and then re-populated entirely from the input file.
+Sections of registry configuration that have no counterpart in the
+input file are not retained in this case. If a section is specified
+on the command line, the import operation is limited to that specific
+section, and only that section is replaced. A test mode is enabled
+by specifying the parameter "-T" on the commandline. In test mode, no changes
+are made to the registry, and the resulting configuration is printed
+to standard output instead.
+</p></div><div class="refsect3"><a name="id1521"></a><h4>[RPC] CONF LISTSHARES</h4><p>
+List the names of the shares defined in registry.
+</p></div><div class="refsect3"><a name="id1522"></a><h4>[RPC] CONF DROP</h4><p>
+Delete the complete configuration data from registry.
+</p></div><div class="refsect3"><a name="id1523"></a><h4>[RPC] CONF SHOWSHARE <em class="replaceable"><code>sharename</code></em></h4><p>
+Show the definition of the share or section specified. It is valid to specify
+"global" as sharename to retrieve the global configuration options from
+registry.
+</p></div><div class="refsect3"><a name="id1524"></a><h4>[RPC] CONF ADDSHARE <em class="replaceable"><code>sharename</code></em> <em class="replaceable"><code>path</code></em> [<em class="replaceable"><code>writeable={y|N}</code></em> [<em class="replaceable"><code>guest_ok={y|N}</code></em> [<em class="replaceable"><code>comment</code></em>]]] </h4><p>Create a new share definition in registry.
+The sharename and path have to be given. The share name may
+<span class="emphasis"><em>not</em></span> be "global". Optionally, values for the very
+common options "writeable", "guest ok" and a "comment" may be specified.
+The same result may be obtained by a sequence of "net conf setparm"
+commands.
+</p></div><div class="refsect3"><a name="id1525"></a><h4>[RPC] CONF DELSHARE <em class="replaceable"><code>sharename</code></em></h4><p>
+Delete a share definition from registry.
+</p></div><div class="refsect3"><a name="id1526"></a><h4>[RPC] CONF SETPARM <em class="replaceable"><code>section</code></em> <em class="replaceable"><code>parameter</code></em> <em class="replaceable"><code>value</code></em></h4><p>
+Store a parameter in registry. The section may be global or a sharename.
+The section is created if it does not exist yet.
+</p></div><div class="refsect3"><a name="id1527"></a><h4>[RPC] CONF GETPARM <em class="replaceable"><code>section</code></em> <em class="replaceable"><code>parameter</code></em></h4><p>
+Show a parameter stored in registry.
+</p></div><div class="refsect3"><a name="id1528"></a><h4>[RPC] CONF DELPARM <em class="replaceable"><code>section</code></em> <em class="replaceable"><code>parameter</code></em></h4><p>
+Delete a parameter stored in registry.
+</p></div><div class="refsect3"><a name="id1529"></a><h4>[RPC] CONF GETINCLUDES <em class="replaceable"><code>section</code></em></h4><p>
+Get the list of includes for the provided section (global or share).
+</p><p>
+Note that due to the nature of the registry database and the nature of include directives,
+the includes need special treatment: Parameters are stored in registry by the parameter
+name as valuename, so there is only ever one instance of a parameter per share.
+Also, a specific order like in a text file is not guaranteed. For all real
+parameters, this is perfectly ok, but the include directive is rather a meta
+parameter, for which, in the smb.conf text file, the place where it is specified
+between the other parameters is very important. This can not be achieved by the
+simple registry smbconf data model, so there is one ordered list of includes
+per share, and this list is evaluated after all the parameters of the share.
+</p><p>
+Further note that currently, only files can be included from registry
+configuration. In the future, there will be the ability to include configuration
+data from other registry keys.
+</p></div><div class="refsect3"><a name="id1530"></a><h4>[RPC] CONF SETINCLUDES <em class="replaceable"><code>section</code></em> [<em class="replaceable"><code>filename</code></em>]+</h4><p>
+Set the list of includes for the provided section (global or share) to the given
+list of one or more filenames. The filenames may contain the usual smb.conf
+macros like %I.
+</p></div><div class="refsect3"><a name="id1531"></a><h4>[RPC] CONF DELINCLUDES <em class="replaceable"><code>section</code></em></h4><p>
+Delete the list of includes from the provided section (global or share).
+</p></div></div><div class="refsect2"><a name="id1532"></a><h3>REGISTRY</h3><p>
+Manipulate Samba's registry.
+</p><p>The registry commands are:
+</p><table border="0" summary="Simple list" class="simplelist"><tr><td>net registry enumerate   - Enumerate registry keys and values.</td></tr><tr><td>net registry enumerate_recursive - Enumerate registry key and its subkeys.</td></tr><tr><td>net registry createkey   - Create a new registry key.</td></tr><tr><td>net registry deletekey   - Delete a registry key.</td></tr><tr><td>net registry deletekey_recursive - Delete a registry key with subkeys.</td></tr><tr><td>net registry getvalue    - Print a registry value.</td></tr><tr><td>net registry getvalueraw - Print a registry value (raw format).</td></tr><tr><td>net registry setvalue    - Set a new registry value.</td></tr><tr><td>net registry increment   - Increment a DWORD registry value under a lock.
+</td></tr><tr><td>net registry deletevalue - Delete a registry value.</td></tr><tr><td>net registry getsd       - Get security descriptor.</td></tr><tr><td>net registry getsd_sdd1  - Get security descriptor in sddl format.
+</td></tr><tr><td>net registry setsd_sdd1  - Set security descriptor from sddl format
+string.</td></tr><tr><td>net registry import      - Import a registration entries (.reg) file.
+</td></tr><tr><td>net registry export      - Export a registration entries (.reg) file.
+</td></tr><tr><td>net registry convert     - Convert a registration entries (.reg) file.
+</td></tr><tr><td>net registry check       - Check and repair a registry database.
+</td></tr></table><p>
+</p><div class="refsect3"><a name="id1533"></a><h4>REGISTRY ENUMERATE <em class="replaceable"><code>key</code></em> </h4><p>Enumerate subkeys and values of <span class="emphasis"><em>key</em></span>.
+  </p></div><div class="refsect3"><a name="id1534"></a><h4>REGISTRY ENUMERATE_RECURSIVE <em class="replaceable"><code>key</code></em> </h4><p>Enumerate values of <span class="emphasis"><em>key</em></span> and its subkeys.
+  </p></div><div class="refsect3"><a name="id1535"></a><h4>REGISTRY CREATEKEY <em class="replaceable"><code>key</code></em> </h4><p>Create a new <span class="emphasis"><em>key</em></span> if not yet existing.
+  </p></div><div class="refsect3"><a name="id1536"></a><h4>REGISTRY DELETEKEY <em class="replaceable"><code>key</code></em> </h4><p>Delete the given <span class="emphasis"><em>key</em></span> and its
+  values from the registry, if it has no subkeys.
+  </p></div><div class="refsect3"><a name="id1537"></a><h4>REGISTRY DELETEKEY_RECURSIVE <em class="replaceable"><code>key</code></em> </h4><p>Delete the given <span class="emphasis"><em>key</em></span> and all of its
+  subkeys and values from the registry.
+  </p></div><div class="refsect3"><a name="id1538"></a><h4>REGISTRY GETVALUE <em class="replaceable"><code>key</code></em> <em class="replaceable"><code>name</code></em></h4><p>Output type and actual value of the value <span class="emphasis"><em>name</em></span>
+  of the given <span class="emphasis"><em>key</em></span>.
+  </p></div><div class="refsect3"><a name="id1539"></a><h4>REGISTRY GETVALUERAW <em class="replaceable"><code>key</code></em> <em class="replaceable"><code>name</code></em></h4><p>Output the actual value of the value <span class="emphasis"><em>name</em></span>
+  of the given <span class="emphasis"><em>key</em></span>.
+  </p></div><div class="refsect3"><a name="id1540"></a><h4>REGISTRY SETVALUE <em class="replaceable"><code>key</code></em> <em class="replaceable"><code>name</code></em> <em class="replaceable"><code>type</code></em> <em class="replaceable"><code>value</code></em> ...</h4><p>Set the value <span class="emphasis"><em>name</em></span>
+  of an existing <span class="emphasis"><em>key</em></span>.
+  <span class="emphasis"><em>type</em></span> may be one of
+  <span class="emphasis"><em>sz</em></span>, <span class="emphasis"><em>multi_sz</em></span> or
+  <span class="emphasis"><em>dword</em></span>.
+  In case of <span class="emphasis"><em>multi_sz</em></span> <em class="replaceable"><code>value</code></em> may
+  be given multiple times.
+  </p></div><div class="refsect3"><a name="id1541"></a><h4>REGISTRY INCREMENT <em class="replaceable"><code>key</code></em> <em class="replaceable"><code>name</code></em> <em class="replaceable"><code>[inc]</code></em></h4><p>Increment the DWORD value <span class="emphasis"><em>name</em></span>
+  of <span class="emphasis"><em>key</em></span> by <em class="replaceable"><code>inc</code></em>
+  while holding a g_lock.
+  <span class="emphasis"><em>inc</em></span> defaults to 1.
+  </p></div><div class="refsect3"><a name="id1542"></a><h4>REGISTRY DELETEVALUE <em class="replaceable"><code>key</code></em> <em class="replaceable"><code>name</code></em></h4><p>Delete the value <span class="emphasis"><em>name</em></span>
+  of the given <span class="emphasis"><em>key</em></span>.
+  </p></div><div class="refsect3"><a name="id1543"></a><h4>REGISTRY GETSD <em class="replaceable"><code>key</code></em></h4><p>Get the security descriptor of the given <span class="emphasis"><em>key</em></span>.
+  </p></div><div class="refsect3"><a name="id1544"></a><h4>REGISTRY GETSD_SDDL <em class="replaceable"><code>key</code></em></h4><p>Get the security descriptor of the given <span class="emphasis"><em>key</em></span> as a
+  Security Descriptor Definition Language (SDDL) string.
+  </p></div><div class="refsect3"><a name="id1545"></a><h4>REGISTRY SETSD_SDDL <em class="replaceable"><code>key</code></em><em class="replaceable"><code>sd</code></em></h4><p>Set the security descriptor of the given <span class="emphasis"><em>key</em></span> from a
+  Security Descriptor Definition Language (SDDL) string <span class="emphasis"><em>sd</em></span>.
+  </p></div><div class="refsect3"><a name="id1546"></a><h4>REGISTRY IMPORT <em class="replaceable"><code>file</code></em><em class="replaceable"><code> [--precheck &lt;check-file&gt;] [opt]</code></em></h4><p>Import a registration entries (.reg) <span class="emphasis"><em>file</em></span>.</p><p>The following options are available:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--precheck <em class="replaceable"><code>check-file</code></em></span></dt><dd><p>
+      This is a mechanism to check the existence or non-existence of
+      certain keys or values specified in a precheck file before applying
+      the import file.
+      The import file will only be applied if the precheck succeeds.
+    </p><p>
+      The check-file follows the normal registry file syntax with the
+      following semantics:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>&lt;value name&gt;=&lt;value&gt; checks whether the
+	  value exists and has the given value.</p></li><li class="listitem"><p>&lt;value name&gt;=- checks whether the value does
+	  not exist.</p></li><li class="listitem"><p>[key] checks whether the key exists.</p></li><li class="listitem"><p>[-key] checks whether the key does not exist.</p></li></ul></div></dd></dl></div></div><div class="refsect3"><a name="id1547"></a><h4>REGISTRY EXPORT <em class="replaceable"><code>key</code></em><em class="replaceable"><code>file</code></em><em class="replaceable"><code>[opt]</code></em></h4><p>Export a <span class="emphasis"><em>key</em></span> to a registration entries (.reg)
+  <span class="emphasis"><em>file</em></span>.
+  </p></div><div class="refsect3"><a name="id1548"></a><h4>REGISTRY CONVERT <em class="replaceable"><code>in</code></em> <em class="replaceable"><code>out</code></em> <em class="replaceable"><code>[[inopt] outopt]</code></em></h4><p>Convert a registration entries (.reg) file <span class="emphasis"><em>in</em></span>.
+  </p></div><div class="refsect3"><a name="id1549"></a><h4>REGISTRY CHECK [-ravTl] [-o &lt;ODB&gt;] [--wipe] [&lt;DB&gt;]</h4><p>Check and repair the registry database. If no option is given a read only check of the database is done. Among others an interactive or automatic repair mode may be chosen with one of the following options
+
+  </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-r|--repair</span></dt><dd><p>
+      Interactive repair mode, ask a lot of questions.
+    </p></dd><dt><span class="term">-a|--auto</span></dt><dd><p>
+      Noninteractive repair mode, use default answers.
+    </p></dd><dt><span class="term">-v|--verbose</span></dt><dd><p>
+	Produce more output.
+      </p></dd><dt><span class="term">-T|--test</span></dt><dd><p>
+	Dry run, show what changes would be made but don't touch anything.
+      </p></dd><dt><span class="term">-l|--lock</span></dt><dd><p>
+	Lock the database while doing the check.
+      </p></dd><dt><span class="term">--reg-version={1,2,3}</span></dt><dd><p>
+	Specify the format of the registry database. If not given it defaults to
+	the value of the binary or, if an registry.tdb is explicitly stated at
+	the commandline, to the value found in the INFO/version record.
+      </p></dd><dt><span class="term">[--db] &lt;DB&gt;</span></dt><dd><p>
+	Check the specified database.
+      </p></dd><dt><span class="term">-o|--output &lt;ODB&gt;</span></dt><dd><p>
+	Create a new registry database &lt;ODB&gt; instead of modifying the
+	input. If &lt;ODB&gt; is already existing --wipe may be used to
+	overwrite it.
+      </p></dd><dt><span class="term">--wipe</span></dt><dd><p>
+	Replace the registry database instead of modifying the input or
+	overwrite an existing output database.
+      </p></dd><dt><span class="term"></span></dt><dd><p>
+      </p></dd></dl></div><p>
+  </p></div></div><div class="refsect2"><a name="id1550"></a><h3>EVENTLOG</h3><p>Starting with version 3.4.0 net can read, dump, import and export native
+win32 eventlog files (usually *.evt). evt files are used by the native Windows eventviewer tools.
+</p><p>
+The import and export of evt files can only succeed when <em class="parameter"><code>eventlog list</code></em> is used in
+<span class="emphasis"><em><code class="filename">${prefix}/etc/smb.conf</code></em></span> file.
+See the <a class="citerefentry" href="smb.conf.5.html"><span class="citerefentry"><span class="refentrytitle">smb.conf</span>(5)</span></a> manpage for details.
+</p><p>The eventlog commands are:
+</p><table border="0" summary="Simple list" class="simplelist"><tr><td>net eventlog dump - Dump a eventlog *.evt file on the screen.</td></tr><tr><td>net eventlog import - Import a eventlog *.evt into the samba internal
+tdb based representation of eventlogs.</td></tr><tr><td>net eventlog export - Export the samba internal tdb based representation
+of eventlogs into an eventlog *.evt file.</td></tr></table><p>
+</p><div class="refsect3"><a name="id1551"></a><h4>EVENTLOG DUMP <em class="replaceable"><code>filename</code></em></h4><p>
+Prints a eventlog *.evt file to standard output.
+</p></div><div class="refsect3"><a name="id1552"></a><h4>EVENTLOG IMPORT <em class="replaceable"><code>filename</code></em> <em class="replaceable"><code>eventlog</code></em></h4><p>
+Imports a eventlog *.evt file defined by <em class="replaceable"><code>filename</code></em> into the
+samba internal tdb representation of eventlog defined by <em class="replaceable"><code>eventlog</code></em>.
+<em class="replaceable"><code>eventlog</code></em> needs to part of the <em class="parameter"><code>eventlog list</code></em>
+defined in <code class="filename">${prefix}/etc/smb.conf</code>.
+See the <a class="citerefentry" href="smb.conf.5.html"><span class="citerefentry"><span class="refentrytitle">smb.conf</span>(5)</span></a> manpage for details.
+</p></div><div class="refsect3"><a name="id1553"></a><h4>EVENTLOG EXPORT <em class="replaceable"><code>filename</code></em> <em class="replaceable"><code>eventlog</code></em></h4><p>
+Exports the samba internal tdb representation of eventlog defined by <em class="replaceable"><code>eventlog</code></em>
+to a eventlog *.evt file defined by <em class="replaceable"><code>filename</code></em>.
+<em class="replaceable"><code>eventlog</code></em> needs to part of the <em class="parameter"><code>eventlog list</code></em>
+defined in <code class="filename">${prefix}/etc/smb.conf</code>.
+See the <a class="citerefentry" href="smb.conf.5.html"><span class="citerefentry"><span class="refentrytitle">smb.conf</span>(5)</span></a> manpage for details.
+</p></div></div><div class="refsect2"><a name="id1554"></a><h3>DOM</h3><p>Starting with version 3.2.0 Samba has support for remote join and unjoin APIs, both client and server-side. Windows supports remote join capabilities since Windows 2000.
+</p><p>In order for Samba to be joined or unjoined remotely an account must be used that is either member of the Domain Admins group, a member of the local Administrators group or a user that is granted the SeMachineAccountPrivilege privilege.
+</p><p>The client side support for remote join is implemented in the net dom commands which are:
+</p><table border="0" summary="Simple list" class="simplelist"><tr><td>net dom join - Join a remote computer into a domain.</td></tr><tr><td>net dom unjoin - Unjoin a remote computer from a domain.</td></tr><tr><td>net dom renamecomputer - Renames a remote computer joined to a domain.</td></tr></table><p>
+</p><div class="refsect3"><a name="id1555"></a><h4>DOM JOIN	<em class="replaceable"><code>domain=DOMAIN</code></em> <em class="replaceable"><code>ou=OU</code></em> <em class="replaceable"><code>account=ACCOUNT</code></em> <em class="replaceable"><code>password=PASSWORD</code></em> <em class="replaceable"><code>reboot</code></em></h4><p>
+Joins a computer into a domain. This command supports the following additional parameters:
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><em class="replaceable"><code>DOMAIN</code></em> can be a NetBIOS domain name (also known as short domain name) or a DNS domain name for Active Directory Domains. As in Windows, it is also possible to control which Domain Controller to use. This can be achieved by appending the DC name using the \ separator character. Example: MYDOM\MYDC. The <em class="replaceable"><code>DOMAIN</code></em> parameter cannot be NULL.</p></li><li class="listitem"><p><em class="replaceable"><code>OU</code></em> can be set to a RFC 1779 LDAP DN, like <span class="emphasis"><em>ou=mymachines,cn=Users,dc=example,dc=com</em></span> in order to create the machine account in a non-default LDAP container. This optional parameter is only supported when joining Active Directory Domains.</p></li><li class="listitem"><p><em class="replaceable"><code>ACCOUNT</code></em> defines a domain account that will be used to join the machine to the domain. This domain account needs to have sufficient privileges to join machines.</p></li><li class="listitem"><p><em class="replaceable"><code>PASSWORD</code></em> defines the password for the domain account defined with <em class="replaceable"><code>ACCOUNT</code></em>.</p></li><li class="listitem"><p><em class="replaceable"><code>REBOOT</code></em> is an optional parameter that can be set to reboot the remote machine after successful join to the domain.</p></li></ul></div><p>
+Note that you also need to use standard net parameters to connect and authenticate to the remote machine that you want to join. These additional parameters include: -S computer and -U user.
+</p><p>
+	Example:
+	net dom join -S xp -U XP\\administrator%secret domain=MYDOM account=MYDOM\\administrator password=topsecret reboot.
+</p><p>
+This example would connect to a computer named XP as the local administrator using password secret, and join the computer into a domain called MYDOM using the MYDOM domain administrator account and password topsecret. After successful join, the computer would reboot.
+</p></div><div class="refsect3"><a name="id1556"></a><h4>DOM UNJOIN <em class="replaceable"><code>account=ACCOUNT</code></em> <em class="replaceable"><code>password=PASSWORD</code></em> <em class="replaceable"><code>reboot</code></em></h4><p>
+Unjoins a computer from a domain. This command supports the following additional parameters:
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><em class="replaceable"><code>ACCOUNT</code></em> defines a domain account that will be used to unjoin the machine from the domain. This domain account needs to have sufficient privileges to unjoin machines.</p></li><li class="listitem"><p><em class="replaceable"><code>PASSWORD</code></em> defines the password for the domain account defined with <em class="replaceable"><code>ACCOUNT</code></em>.</p></li><li class="listitem"><p><em class="replaceable"><code>REBOOT</code></em> is an optional parameter that can be set to reboot the remote machine after successful unjoin from the domain.</p></li></ul></div><p>
+Note that you also need to use standard net parameters to connect and authenticate to the remote machine that you want to unjoin. These additional parameters include: -S computer and -U user.
+</p><p>
+	Example:
+	net dom unjoin -S xp -U XP\\administrator%secret account=MYDOM\\administrator password=topsecret reboot.
+</p><p>
+This example would connect to a computer named XP as the local administrator using password secret, and unjoin the computer from the domain using the MYDOM domain administrator account and password topsecret. After successful unjoin, the computer would reboot.
+</p></div><div class="refsect3"><a name="id1557"></a><h4>DOM RENAMECOMPUTER <em class="replaceable"><code>newname=NEWNAME</code></em> <em class="replaceable"><code>account=ACCOUNT</code></em> <em class="replaceable"><code>password=PASSWORD</code></em> <em class="replaceable"><code>reboot</code></em></h4><p>
+Renames a computer that is joined to a domain. This command supports the following additional parameters:
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><em class="replaceable"><code>NEWNAME</code></em> defines the new name of the machine in the domain.</p></li><li class="listitem"><p><em class="replaceable"><code>ACCOUNT</code></em> defines a domain account that will be used to rename the machine in the domain. This domain account needs to have sufficient privileges to rename machines.</p></li><li class="listitem"><p><em class="replaceable"><code>PASSWORD</code></em> defines the password for the domain account defined with <em class="replaceable"><code>ACCOUNT</code></em>.</p></li><li class="listitem"><p><em class="replaceable"><code>REBOOT</code></em> is an optional parameter that can be set to reboot the remote machine after successful rename in the domain.</p></li></ul></div><p>
+Note that you also need to use standard net parameters to connect and authenticate to the remote machine that you want to rename in the domain. These additional parameters include: -S computer and -U user.
+</p><p>
+	Example:
+	net dom renamecomputer -S xp -U XP\\administrator%secret newname=XPNEW account=MYDOM\\administrator password=topsecret reboot.
+</p><p>
+This example would connect to a computer named XP as the local administrator using password secret, and rename the joined computer to XPNEW using the MYDOM domain administrator account and password topsecret. After successful rename, the computer would reboot.
+</p></div></div><div class="refsect2"><a name="id1558"></a><h3>G_LOCK</h3><p>Manage global locks.</p><div class="refsect3"><a name="id1559"></a><h4>G_LOCK DO <em class="replaceable"><code>lockname</code></em> <em class="replaceable"><code>timeout</code></em> <em class="replaceable"><code>command</code></em></h4><p>
+Execute a shell command under a global lock. This might be useful to define the
+order in which several shell commands will be executed. The locking information
+is stored in a file called <code class="filename">g_lock.tdb</code>. In setups with CTDB
+running, the locking information will be available on all cluster nodes.
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><em class="replaceable"><code>LOCKNAME</code></em> defines the name of the global lock.</p></li><li class="listitem"><p><em class="replaceable"><code>TIMEOUT</code></em> defines the timeout.</p></li><li class="listitem"><p><em class="replaceable"><code>COMMAND</code></em> defines the shell command to execute.</p></li></ul></div></div><div class="refsect3"><a name="id1560"></a><h4>G_LOCK LOCKS</h4><p>
+Print a list of all currently existing locknames.
+</p></div><div class="refsect3"><a name="id1561"></a><h4>G_LOCK DUMP <em class="replaceable"><code>lockname</code></em></h4><p>
+Dump the locking table of a certain global lock.
+</p></div></div><div class="refsect2"><a name="id1562"></a><h3>TDB</h3><p>Print information from tdb records.</p><div class="refsect3"><a name="id1563"></a><h4>TDB LOCKING <em class="replaceable"><code>key</code></em> [DUMP]</h4><p>List sharename, filename and number of share modes
+		for a record from locking.tdb. With the optional DUMP options,
+		dump the complete record.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><em class="replaceable"><code>KEY</code></em>
+				Key of the tdb record as hex string.</p></li></ul></div></div><div class="refsect3"><a name="id1564"></a><h4>tdb smbXsrv wipedbs</h4><p>Clean stale entries from smbXsrv databases.</p><p>An alias for <code class="literal">net serverid wipedbs</code>.
+		</p></div></div><div class="refsect2"><a name="id1565"></a><h3>vfs</h3><p>Access shared filesystem through the VFS.</p><div class="refsect3"><a name="id1566"></a><h4>vfs stream2abouble [--recursive] [--verbose] [--continue] [--follow-symlinks] <em class="replaceable"><code>share</code></em> <em class="replaceable"><code>path</code></em></h4><p>Convert file streams to AppleDouble files.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><em class="replaceable"><code>share</code></em>
+	A Samba share.</p></li></ul></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><em class="replaceable"><code>path</code></em> A relative path of something in
+	the Samba share. "." can be used for the root directory of the
+	share.</p></li></ul></div><p>Options:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--recursive</span></dt><dd><p>Traverse a directory hierarchy.</p></dd><dt><span class="term">--verbose</span></dt><dd><p>Verbose output.</p></dd><dt><span class="term">--continue</span></dt><dd><p>Continue traversing a directory hierarchy if a single
+	conversion fails.</p></dd><dt><span class="term">--follow-symlinks</span></dt><dd><p>Follow symlinks encountered while traversing a
+	directory.</p></dd></dl></div></div><div class="refsect3"><a name="id1567"></a><h4>vfs getntacl <em class="replaceable"><code>share</code></em> <em class="replaceable"><code>path</code></em></h4><p>Display the security descriptor of a file or directory.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><em class="replaceable"><code>share</code></em>
+	A Samba share.</p></li></ul></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><em class="replaceable"><code>path</code></em> A relative path of something in
+	the Samba share. "." can be used for the root directory of the
+	share.</p></li></ul></div></div></div><div class="refsect2"><a name="id1568"></a><h3>OFFLINEJOIN</h3><p>Starting with version 4.15 Samba has support for offline join APIs. Windows supports offline join capabilities since Windows 7 and Windows 2008 R2.
+</p><p>The following offline commands are implemented:
+</p><table border="0" summary="Simple list" class="simplelist"><tr><td>net offlinejoin provision - Provisions a machine account in AD.</td></tr><tr><td>net offlinejoin requestodj - Requests a domain offline join.</td></tr></table><p>
+</p><div class="refsect3"><a name="id1569"></a><h4>OFFLINEJOIN PROVISION <em class="replaceable"><code>domain=DOMAIN</code></em> <em class="replaceable"><code>machine_name=MACHINE_NAME</code></em> <em class="replaceable"><code>machine_account_ou=MACHINE_ACCOUNT_OU</code></em> <em class="replaceable"><code>dcname=DCNAME</code></em> <em class="replaceable"><code>defpwd</code></em> <em class="replaceable"><code>reuse</code></em> <em class="replaceable"><code>savefile=FILENAME</code></em> <em class="replaceable"><code>printblob</code></em></h4><p>
+Provisions a machine account in AD. This command needs network connectivity to the domain controller to succeed. This command supports the following additional parameters:
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><em class="replaceable"><code>DOMAIN</code></em> can be a NetBIOS domain name (also known as short domain name) or a DNS domain name for Active Directory Domains. The <em class="replaceable"><code>DOMAIN</code></em> parameter cannot be NULL.</p></li><li class="listitem"><p><em class="replaceable"><code>MACHINE_NAME</code></em> defines the machine account name that will be provisioned in AD. The <em class="replaceable"><code>MACHINE_NAME</code></em> parameter cannot be NULL.</p></li><li class="listitem"><p><em class="replaceable"><code>MACHINE_ACCOUNT_OU</code></em> can be set to a RFC 1779 LDAP DN, like <span class="emphasis"><em>ou=mymachines,cn=Users,dc=example,dc=com</em></span> in order to create the machine account in a non-default LDAP container. This optional parameter is only supported when joining Active Directory Domains.</p></li><li class="listitem"><p><em class="replaceable"><code>DCNAME</code></em> defines a specific domain controller for creating the machine account in AD.</p></li><li class="listitem"><p><em class="replaceable"><code>DEFPWD</code></em> is an optional parameter that can be set to enforce using the default machine account password. The use of this parameter is not recommended as the default machine account password can be easily guessed. </p></li><li class="listitem"><p><em class="replaceable"><code>REUSE</code></em> is an optional parameter that can be set to enforce reusing an existing machine account in AD.</p></li><li class="listitem"><p><em class="replaceable"><code>SAVEFILE</code></em> is an optional parameter to store the generated provisioning data on disk.</p></li><li class="listitem"><p><em class="replaceable"><code>PRINTBLOB</code></em> is an optional parameter to print the generated provisioning data on stdout.</p></li></ul></div><p>
+	Example:
+	net offlinejoin provision -U administrator%secret domain=MYDOM machine_name=MYHOST savefile=provisioning.txt
+</p></div><div class="refsect3"><a name="id1570"></a><h4>OFFLINEJOIN REQUESTODJ <em class="replaceable"><code>loadfile=FILENAME</code></em></h4><p>
+Requests an offline domain join by providing file-based provisioning data. This command supports the following additional parameters:
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><em class="replaceable"><code>LOADFILE</code></em> is a required parameter to load the provisioning from a file.</p></li></ul></div><p>
+	Example:
+	net offlinejoin requestodj loadfile=provisioning.txt
+</p></div></div><div class="refsect2"><a name="id1571"></a><h3>WITNESS</h3><p>Starting with version 4.20 Samba has support for the SMB Witness service in a cluster.
+</p><p>The following witness commands are implemented:
+</p><table border="0" summary="Simple list" class="simplelist"><tr><td>
+net witness list             List witness registrations from rpcd_witness_registration.tdb.
+</td></tr><tr><td>
+net witness client-move      Generate client move notifications for witness registrations to a new ip or node.
+</td></tr><tr><td>
+net witness share-move       Generate share move notifications for witness registrations to a new ip or node.
+</td></tr><tr><td>
+net witness force-unregister Force unregistrations for witness registrations.
+</td></tr><tr><td>
+net witness force-response   Force an AsyncNotify response based on json input (mostly for testing).
+</td></tr></table><p>
+</p><div class="refsect3"><a name="id1572"></a><h4>WITNESS LIST</h4><p>
+    List witness registrations from rpcd_witness_registration.tdb
+</p><p>
+    Note: Only supported with clustering=yes!
+</p><p>
+    Machine readable output can be generated with the following option:
+</p><p>
+        --json
+</p><p>
+    The selection of registrations can be limited by the following options:
+</p><p>
+        --witness-registration=REGISTRATION_UUID
+</p><p>
+          This does a direct lookup for REGISTRATION_UUID
+          instead of doing a database traversal.
+</p><p>
+    The following options all take a POSIX Extended Regular Expression,
+    which can further filter the selection of registrations.
+    These options are applied as logical AND, but each REGEX
+    allows specifying multiple strings using the pipe symbol.
+</p><p>
+        --witness-net-name=REGEX
+</p><p>
+          This specifies the 'server name' the client
+          registered for monitoring.
+</p><p>
+        --witness-share-name=REGEX
+</p><p>
+          This specifies the 'share name' the client
+          registered for monitoring.
+          Note that the share name is optional in the
+          registration, otherwise an empty string is
+          matched.
+</p><p>
+        --witness-ip-address=REGEX
+</p><p>
+          This specifies the ip address the client
+          registered for monitoring.
+</p><p>
+        --witness-client-computer-name=REGEX
+</p><p>
+          This specifies the client computer name the client
+          specified in the registration.
+          Note it is just a string chosen by the client itself.
+</p></div><div class="refsect3"><a name="id1573"></a><h4>WITNESS CLIENT-MOVE</h4><p>
+    Generate client move notifications for witness registrations to a new ip or node
+</p><p>
+    Note: Only supported with clustering=yes!
+</p><p>
+    Machine readable output can be generated with the following option:
+</p><p>
+        --json
+</p><p>
+    The selection of registrations can be limited by the following options:
+</p><p>
+        --witness-registration=REGISTRATION_UUID
+</p><p>
+          This does a direct lookup for REGISTRATION_UUID
+          instead of doing a database traversal.
+</p><p>
+    The following options all take a POSIX Extended Regular Expression,
+    which can further filter the selection of registrations.
+    These options are applied as logical AND, but each REGEX
+    allows specifying multiple strings using the pipe symbol.
+</p><p>
+        --witness-net-name=REGEX
+</p><p>
+          This specifies the 'server name' the client
+          registered for monitoring.
+</p><p>
+        --witness-share-name=REGEX
+</p><p>
+          This specifies the 'share name' the client
+          registered for monitoring.
+          Note that the share name is optional in the
+          registration, otherwise an empty string is
+          matched.
+</p><p>
+        --witness-ip-address=REGEX
+</p><p>
+          This specifies the ip address the client
+          registered for monitoring.
+</p><p>
+        --witness-client-computer-name=REGEX
+</p><p>
+          This specifies the client computer name the client
+          specified in the registration.
+          Note it is just a string chosen by the client itself.
+</p><p>
+    If the update should be applied to all registrations
+    it needs to be explicitly specified:
+</p><p>
+        --witness-apply-to-all
+</p><p>
+          This selects all registrations.
+          Note: This is mutual exclusive to the above options.
+</p><p>
+    The content of the CLIENT_MOVE notification contains ip addresses
+    specified by (exactly one) of the following options:
+</p><p>
+        --witness-new-node=NODEID
+</p><p>
+          By specifying a NODEID all ip addresses
+          currently available on the given node are
+          included in the response.
+          By specifying '-1' as NODEID all ip addresses
+          of the cluster are included in the response.
+</p><p>
+        --witness-new-ip=IPADDRESS
+</p><p>
+          By specifying an IPADDRESS only the specified
+          ip address is included in the response.
+</p></div><div class="refsect3"><a name="id1574"></a><h4>WITNESS SHARE-MOVE</h4><p>
+    Generate share move notifications for witness registrations to a new ip or node
+</p><p>
+    Note: Only supported with clustering=yes!
+</p><p>
+    Machine readable output can be generated with the following option:
+</p><p>
+        --json
+</p><p>
+    The selection of registrations can be limited by the following options:
+</p><p>
+        --witness-registration=REGISTRATION_UUID
+</p><p>
+          This does a direct lookup for REGISTRATION_UUID
+          instead of doing a database traversal.
+</p><p>
+    The following options all take a POSIX Extended Regular Expression,
+    which can further filter the selection of registrations.
+    These options are applied as logical AND, but each REGEX
+    allows specifying multiple strings using the pipe symbol.
+</p><p>
+        --witness-net-name=REGEX
+</p><p>
+          This specifies the 'server name' the client
+          registered for monitoring.
+</p><p>
+        --witness-share-name=REGEX
+</p><p>
+          This specifies the 'share name' the client
+          registered for monitoring.
+          Note that the share name is optional in the
+          registration, otherwise an empty string is
+          matched.
+</p><p>
+        --witness-ip-address=REGEX
+</p><p>
+          This specifies the ip address the client
+          registered for monitoring.
+</p><p>
+        --witness-client-computer-name=REGEX
+</p><p>
+          This specifies the client computer name the client
+          specified in the registration.
+          Note it is just a string chosen by the client itself.
+</p><p>
+    If the update should be applied to all registrations
+    it needs to be explicitly specified:
+</p><p>
+        --witness-apply-to-all
+</p><p>
+          This selects all registrations.
+          Note: This is mutual exclusive to the above options.
+</p><p>
+    Note: This only applies to registrations with a non empty share name!
+</p><p>
+    The content of the SHARE_MOVE notification contains ip addresses
+    specified by (exactly one) of the following options:
+</p><p>
+        --witness-new-node=NODEID
+</p><p>
+          By specifying a NODEID all ip addresses
+          currently available on the given node are
+          included in the response.
+          By specifying '-1' as NODEID all ip addresses
+          of the cluster are included in the response.
+</p><p>
+        --witness-new-ip=IPADDRESS
+</p><p>
+          By specifying an IPADDRESS only the specified
+          ip address is included in the response.
+</p></div><div class="refsect3"><a name="id1575"></a><h4>WITNESS FORCE-UNREGISTER</h4><p>
+    Force unregistrations for witness registrations
+</p><p>
+    Note: Only supported with clustering=yes!
+</p><p>
+    Machine readable output can be generated with the following option:
+</p><p>
+        --json
+</p><p>
+    The selection of registrations can be limited by the following options:
+</p><p>
+        --witness-registration=REGISTRATION_UUID
+</p><p>
+          This does a direct lookup for REGISTRATION_UUID
+          instead of doing a database traversal.
+</p><p>
+    The following options all take a POSIX Extended Regular Expression,
+    which can further filter the selection of registrations.
+    These options are applied as logical AND, but each REGEX
+    allows specifying multiple strings using the pipe symbol.
+</p><p>
+        --witness-net-name=REGEX
+</p><p>
+          This specifies the 'server name' the client
+          registered for monitoring.
+</p><p>
+        --witness-share-name=REGEX
+</p><p>
+          This specifies the 'share name' the client
+          registered for monitoring.
+          Note that the share name is optional in the
+          registration, otherwise an empty string is
+          matched.
+</p><p>
+        --witness-ip-address=REGEX
+</p><p>
+          This specifies the ip address the client
+          registered for monitoring.
+</p><p>
+        --witness-client-computer-name=REGEX
+</p><p>
+          This specifies the client computer name the client
+          specified in the registration.
+          Note it is just a string chosen by the client itself.
+</p><p>
+    If the update should be applied to all registrations
+    it needs to be explicitly specified:
+</p><p>
+        --witness-apply-to-all
+</p><p>
+          This selects all registrations.
+          Note: This is mutual exclusive to the above options.
+</p><p>
+    The selected registrations are removed on the server and
+    any pending AsyncNotify request will get a NOT_FOUND error.
+</p><p>
+    Typically this triggers a clean re-registration on the client.
+</p></div><div class="refsect3"><a name="id1576"></a><h4>WITNESS FORCE-RESPONSE</h4><p>
+    Force an AsyncNotify response based on json input (mostly for testing)
+</p><p>
+    Note: Only supported with clustering=yes!
+</p><p>
+    Machine readable output can be generated with the following option:
+</p><p>
+        --json
+</p><p>
+    The selection of registrations can be limited by the following options:
+</p><p>
+        --witness-registration=REGISTRATION_UUID
+</p><p>
+          This does a direct lookup for REGISTRATION_UUID
+          instead of doing a database traversal.
+</p><p>
+    The following options all take a POSIX Extended Regular Expression,
+    which can further filter the selection of registrations.
+    These options are applied as logical AND, but each REGEX
+    allows specifying multiple strings using the pipe symbol.
+</p><p>
+        --witness-net-name=REGEX
+</p><p>
+          This specifies the 'server name' the client
+          registered for monitoring.
+</p><p>
+        --witness-share-name=REGEX
+</p><p>
+          This specifies the 'share name' the client
+          registered for monitoring.
+          Note that the share name is optional in the
+          registration, otherwise an empty string is
+          matched.
+</p><p>
+        --witness-ip-address=REGEX
+</p><p>
+          This specifies the ip address the client
+          registered for monitoring.
+</p><p>
+        --witness-client-computer-name=REGEX
+</p><p>
+          This specifies the client computer name the client
+          specified in the registration.
+          Note it is just a string chosen by the client itself.
+</p><p>
+    If the update should be applied to all registrations
+    it needs to be explicitly specified:
+</p><p>
+        --witness-apply-to-all
+</p><p>
+          This selects all registrations.
+          Note: This is mutual exclusive to the above options.
+</p><p>
+    Note this is designed for testing and debugging!
+</p><p>
+    In short it is not designed to be used by administrators,
+    but developers and automated tests.
+</p><p>
+    By default an empty response with WERR_OK is generated,
+    but basically any valid response can be specified by a
+    specifying a JSON string:
+</p><p>
+        --witness-forced-response=JSON
+</p><p>
+          This allows the generation of very complex
+          witness_notifyResponse structures.
+</p><p>
+    As this is for developers, please read the code
+    in order to understand all possible values
+    of the JSON string format...
+</p><p>
+    See 'net help witness force-response' for further details.
+</p></div></div><div class="refsect2"><a name="id1577"></a><h3>CLUSTERLEVEL</h3><p>Starting with version 4.25 Samba has support for cluster functional levels.
+</p><p>The following CLUSTERLEVEL commands are implemented:
+</p><table border="0" summary="Simple list" class="simplelist"><tr><td>
+net clusterlevel features  List the supported features.
+</td></tr><tr><td>
+net clusterlevel show      Show the currently active cluster functional level.
+</td></tr><tr><td>
+net clusterlevel showall   Show details about the whole cluster.
+</td></tr><tr><td>
+net clusterlevel upgrade   Upgrade the cluster functional level to the highest supported level.
+</td></tr></table><p>
+</p><div class="refsect3"><a name="id1578"></a><h4>clusterlevel features</h4><p>
+    List the compile time supported cluster features.
+</p><p>
+    Note: Only supported with clustering=yes!
+</p></div><div class="refsect3"><a name="id1579"></a><h4>clusterlevel show</h4><p>
+    Show the currently active cluster functional level.
+</p><p>
+    Note: Only supported with clustering=yes!
+</p></div><div class="refsect3"><a name="id1580"></a><h4>clusterlevel showall</h4><p>
+    Show details about the whole cluster. It shows the supported
+    cluster functional level ranges for each node.
+    Together with the currently active cluster functional level
+    and highest supported level.
+</p><p>
+    Note: Only supported with clustering=yes!
+</p></div><div class="refsect3"><a name="id1581"></a><h4>clusterlevel upgrade [--test] [--apply]</h4><p>
+    Upgrade the cluster functional level to the highest supported level
+    all nodes agree. Currently the code is very strict and allows
+    an upgrade only if all nodes provide the exact same supported
+    level ranges.
+</p><p>Options for upgrade:</p><p>        --test</p><p>            Only check if the upgrade would be possible.</p><p>        --apply</p><p>            Do a real upgrade that's persistent without a way back.</p><p>
+    Note: --test is the default if no argument is given.
+</p><p>
+    Note: only one of --test or --apply is allowed.
+</p><p>
+    Note: Only supported with clustering=yes!
+</p></div></div><div class="refsect2"><a name="id1582"></a><h3>serverid</h3><p>Check existence of a serverid and clean stale entries from fileserver
+  state databases.</p><p>The following commands are implemented:
+  </p><table border="0" summary="Simple list" class="simplelist"><tr><td>net serverid exists          Check existence of a serverid</td></tr><tr><td>net serverid wipedbs         Clean stale entries from fileserver state databases</td></tr></table><p>
+  </p><div class="refsect3"><a name="id1583"></a><h4>serverid exists &lt;serverid&gt;</h4><p>Checks if a serverid exits.</p></div><div class="refsect3"><a name="id1584"></a><h4>serverid wipedbs</h4><p>Clean stale entries from fileserver state databases</p><p>Options for wipedbs:</p><p>        --test</p><p>            Only check for stale entries and log them</p><p>        --verbose</p><p>            Produce verbose logging</p><p>        --persistent</p><p>            Wipe persistent backup databases</p></div></div><div class="refsect2"><a name="id1585"></a><h3>HELP [COMMAND]</h3><p>Gives usage information for the specified command.</p></div></div><div class="refsect1"><a name="id1586"></a><h2>VERSION</h2><p>This man page is part of version 4.25.0
+	of the Samba suite.</p></div><div class="refsect1"><a name="id1587"></a><h2>AUTHOR</h2><p>The original Samba software and related utilities
+	were created by Andrew Tridgell. Samba is now developed
+	by the Samba Team as an Open Source project similar
+	to the way the Linux kernel is developed.</p><p>The net manpage was written by Jelmer Vernooij.</p></div></div></body></html>

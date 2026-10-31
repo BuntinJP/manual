@@ -1,0 +1,89 @@
+<!doctype html><html><head><meta charset="utf-8"><title>cifs.idmap</title></head><body><main>
+<section id="cifs-idmap">
+<h1>cifs.idmap</h1>
+<section id="userspace-helper-for-mapping-ids-for-common-internet-file-system-cifs">
+<h2>Userspace helper for mapping ids for Common Internet File System (CIFS)</h2>
+<dl class="field-list simple">
+<dt>Manual section<span class="colon">:</span></dt>
+<dd><p>8</p>
+</dd>
+</dl>
+<section id="synopsis">
+<h3>SYNOPSIS</h3>
+<blockquote>
+<p>cifs.idmap [--help|-h] [--timeout|-t] [--version|-v] {keyid}</p>
+</blockquote>
+</section>
+<section id="description">
+<h3>DESCRIPTION</h3>
+<p>This tool is part of the cifs-utils suite.</p>
+<p><span class="docutils literal">cifs.idmap</span>  is a userspace helper program for the linux CIFS client
+filesystem. There are a number of activities that the kernel cannot
+easily do itself. This program is a callout program that does these
+things for the kernel and then returns the result.</p>
+<p><span class="docutils literal">cifs.idmap</span>  is generally intended to be run when the kernel calls
+request-key(8) for a particular key type. While it can be run
+directly from the command-line, it is not generally intended to be run
+that way.</p>
+<p>This program is only called if a share is mounted with the <span class="docutils literal">cifsacl</span>
+mount option. The kernel will only upcall to do this conversion if
+that mount option is specified.</p>
+<p><span class="docutils literal">cifs.idmap</span>  relies on a plugin to handle the ID mapping. If it can't
+find the plugin then it will not work properly. The plugin (or a
+symlink to it) must be at &#64;pluginpath&#64;.</p>
+<p>In the case where <span class="docutils literal">cifs.idmap</span> or the plugin are unavailable, file
+objects in a mounted share are assigned uid and gid of the credentials
+of the process that mounted the share. It is strongly recomemended to
+use mount options of uid and gid to specify a default uid and gid to
+map owner SIDs and group SIDs in this situation.</p>
+</section>
+<section id="options">
+<h3>OPTIONS</h3>
+<dl class="simple">
+<dt>--help|-h</dt>
+<dd><p>Print the usage message and exit.</p>
+</dd>
+<dt>--timeout|-t</dt>
+<dd><p>Set the expiration timer, in seconds on the key. The default is 600
+seconds (10 minutes). Setting this to 0 will cause the key to never
+expire.</p>
+</dd>
+<dt>--version|-v</dt>
+<dd><p>Print version number and exit.</p>
+</dd>
+</dl>
+</section>
+<section id="configuration-for-keyctl">
+<h3>CONFIGURATION FOR KEYCTL</h3>
+<p><span class="docutils literal">cifs.idmap</span>  is designed to be called from the kernel via the
+request-key callout program. This requires that request-key be told
+where and how to call this program.  Currently <span class="docutils literal">cifs.idmap</span>  handles a
+key type of:</p>
+<pre class="literal-block">cifs.idmap</pre>
+<p>This keytype is for mapping a SID to either an uid or a gid.</p>
+<p>To make this program useful for CIFS, you will need to set up entry for it in
+request-key.conf(5). Here is an example of an entry for this key type:</p>
+<pre class="literal-block">#OPERATION  TYPE           D C PROGRAM ARG1 ARG2...
+#=========  =============  = = ================================
+create      cifs.idmap     * * &#64;sbindir&#64;/cifs.idmap %k</pre>
+<p>See request-key.conf(5) for more info on each field.</p>
+</section>
+<section id="notes">
+<h3>NOTES</h3>
+<p>Support for upcalls to cifs.idmap was initially introduced in the 3.0
+kernel.</p>
+</section>
+<section id="see-also">
+<h3>SEE ALSO</h3>
+<p>request-key.conf(5), mount.cifs(8)</p>
+</section>
+<section id="author">
+<h3>AUTHOR</h3>
+<p>Shirish Pargaonkar wrote the cifs.idmap program.</p>
+<p>The Linux CIFS Mailing list is the preferred place to ask questions
+regarding these programs.</p>
+</section>
+</section>
+</section>
+</main>
+</body></html>

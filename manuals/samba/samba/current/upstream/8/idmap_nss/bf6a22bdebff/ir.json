@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "bf6a22bdebff9a1a4ce2d762e369a795c15618c974589644c705cdc238b59416",
+  "extraction": {
+    "selector": ".refentry",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "Name",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "idmap_nss — Samba's idmap_nss Backend for Winbind",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "The idmap_nss plugin provides a means to map Unix users and groups to Windows accounts. This provides a simple means of ensuring that the SID for a Unix user named jsmith is reported as the one assigned to DOMAIN\\jsmith which is necessary for reporting ACLs on files and printers stored on a Samba member server.",
+      "protected": []
+    },
+    {
+      "id": "s0005",
+      "kind": "heading",
+      "text": "IDMAP OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "term",
+      "text": "range = low - high",
+      "protected": []
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "Defines the available matching UID and GID range for which the backend is authoritative. Note that the range acts as a filter. Returned UIDs or GIDs by NSS modules that fall outside the range are ignored and the corresponding maps discarded. It is intended as a way to avoid accidental UID/GID overlaps between local and remotely defined IDs.",
+      "protected": []
+    },
+    {
+      "id": "s0008",
+      "kind": "term",
+      "text": "use_upn = <yes | no>",
+      "protected": []
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "Some NSS modules can return and handle UPNs and/or down-level logon names (e.g., DOMAIN\\user or user@REALM).",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "If this parameter is enabled the returned names from NSS will be parsed and the resulting namespace will be used as the authoritative namespace instead of the IDMAP domain name. Also, down-level logon names will be sent to NSS instead of the plain username to give NSS modules a hint about the user's correct domain.",
+      "protected": []
+    },
+    {
+      "id": "s0011",
+      "kind": "paragraph",
+      "text": "Default: no",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "heading",
+      "text": "EXAMPLES",
+      "protected": []
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "This example shows how to use idmap_nss to obtain the local account ID's for its own domain (SAMBA) from NSS, whilst allocating new mappings for the default domain (*) and any trusted domains.",
+      "protected": []
+    },
+    {
+      "id": "s0014",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "The original Samba software and related utilities were created by Andrew Tridgell. Samba is now developed by the Samba Team as an Open Source project similar to the way the Linux kernel is developed.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Name",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "IDMAP-OPTIONS",
+      "segment": "s0005"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0006",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0007"
+            }
+          ]
+        },
+        {
+          "term": "s0008",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0009"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0010"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0011"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "EXAMPLES",
+      "segment": "s0012"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0013"
+    },
+    {
+      "type": "literal",
+      "text": "\t[global]\n\tidmap config * : backend = tdb\n\tidmap config * : range = 1000000-1999999\n\n\tidmap config SAMBA : backend  = nss\n\tidmap config SAMBA : range = 1000-999999"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "AUTHOR",
+      "segment": "s0014"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0015"
+    }
+  ]
+}

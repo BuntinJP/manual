@@ -1,0 +1,508 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "63d9fd72e4de55733612ecb445835b3fe6cad1e53b8300c603e8bd442122217b",
+  "extraction": {
+    "selector": ".refentry",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "heading",
+      "text": "Name",
+      "protected": []
+    },
+    {
+      "id": "s0002",
+      "kind": "paragraph",
+      "text": "vfs_glusterfs — Utilize features provided by GlusterFS",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "heading",
+      "text": "Synopsis",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs objects = glusterfs"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "This VFS module is part of the [[p0]] suite.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "samba(8)",
+            "href": "https://www.samba.org/samba/docs/current/man-html/samba.8.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "GlusterFS ([[p0]]) is an Open Source clustered file system capable of scaling to several peta-bytes. With its FUSE based native client, GlusterFS is available as a POSIX compliant file system and can hence be shared by Samba without additional steps.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "http://www.gluster.org",
+            "href": "http://www.gluster.org/"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "paragraph",
+      "text": "The [[p0]] VFS module provides an alternative, and superior way to access a Gluster filesystem from Samba for sharing. It does not require a Gluster FUSE mount but directly accesses the GlusterFS daemon through its library [[p1]], thereby omitting the expensive kernel-userspace context switches and taking advantage of some of the more advanced features of GlusterFS.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs_glusterfs"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "libgfapi"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "This module can be combined with other modules, but it should be the last module in the [[p0]] list. Modules added to this list to the right of the glusterfs entry may not have any effect at all.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs objects"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0010",
+      "kind": "heading",
+      "text": "CONFIGURATION",
+      "protected": []
+    },
+    {
+      "id": "s0011",
+      "kind": "paragraph",
+      "text": "A basic configuration looks like this.",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "paragraph",
+      "text": "Note that since [[p0]] does not require a Gluster mount, the share [[p1]] is treated differently than for other shares: It is interpreted as the base path of the share relative to the gluster volume used. Because this is usually not at the same time a system path, in a ctdb cluster setup where ctdb manages Samba, you need to set [[p2]] in ctdb's configuration file. Otherwise ctdb will not get healthy.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "vfs_glusterfs"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "path"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "CTDB_SAMBA_SKIP_SHARE_CHECK=yes"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "Note that currently kernel share modes have to be disabled in a share running with the glusterfs vfs module for file serving to work properly.",
+      "protected": []
+    },
+    {
+      "id": "s0014",
+      "kind": "heading",
+      "text": "OPTIONS",
+      "protected": []
+    },
+    {
+      "id": "s0015",
+      "kind": "term",
+      "text": "glusterfs:logfile = path",
+      "protected": []
+    },
+    {
+      "id": "s0016",
+      "kind": "paragraph",
+      "text": "Defines whether and where to store a vfs_glusterfs specific logfile. Client variable substitution is supported (i.e. [[p0]], [[p1]], [[p2]]), hence per client log file can be specified.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "%M"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "%m"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "%I"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "Example: glusterfs:logfile = /var/log/samba/glusterfs-vol2.[[p0]].log",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "%M"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0018",
+      "kind": "term",
+      "text": "glusterfs:loglevel = 0-9",
+      "protected": []
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "Defines the level of logging, with higher numbers corresponding to more verbosity. 0 - No logs; 9 - Trace log level; 7 being the info log level is preferred.",
+      "protected": []
+    },
+    {
+      "id": "s0020",
+      "kind": "paragraph",
+      "text": "If this option is not defined with an explicit loglevel, the glusterfs default is used (currently loglevel 7).",
+      "protected": []
+    },
+    {
+      "id": "s0021",
+      "kind": "term",
+      "text": "glusterfs:volfile_server = servername",
+      "protected": []
+    },
+    {
+      "id": "s0022",
+      "kind": "paragraph",
+      "text": "Defines which volfile server to use, defaults to localhost. It could be list of white space separated elements where each element could be",
+      "protected": []
+    },
+    {
+      "id": "s0023",
+      "kind": "paragraph",
+      "text": "1. unix+/path/to/socket/file",
+      "protected": []
+    },
+    {
+      "id": "s0024",
+      "kind": "paragraph",
+      "text": "2. [tcp+]IP|hostname|\\[IPv6\\][:port]",
+      "protected": []
+    },
+    {
+      "id": "s0025",
+      "kind": "paragraph",
+      "text": "Note the restriction on naming a IPv6 host, it follows the same restriction that is based on IPv6 naming in URL as per RFC 2732.",
+      "protected": []
+    },
+    {
+      "id": "s0026",
+      "kind": "term",
+      "text": "glusterfs:volume = volumename",
+      "protected": []
+    },
+    {
+      "id": "s0027",
+      "kind": "paragraph",
+      "text": "Defines the glusterfs volumename to use for this share.",
+      "protected": []
+    },
+    {
+      "id": "s0028",
+      "kind": "heading",
+      "text": "CAVEATS",
+      "protected": []
+    },
+    {
+      "id": "s0029",
+      "kind": "paragraph",
+      "text": "The GlusterFS write-behind performance translator, when used with Samba, could be a source of data corruption. The translator, while processing a write call, immediately returns success but continues writing the data to the server in the background. This can cause data corruption when two clients relying on Samba to provide data consistency are operating on the same file.",
+      "protected": []
+    },
+    {
+      "id": "s0030",
+      "kind": "paragraph",
+      "text": "The write-behind translator is enabled by default on GlusterFS. The vfs_glusterfs plugin will check for the presence of the translator and refuse to connect if detected. Please disable the write-behind translator for the GlusterFS volume to allow the plugin to connect to the volume. The write-behind translator can easily be disabled via calling",
+      "protected": []
+    },
+    {
+      "id": "s0031",
+      "kind": "paragraph",
+      "text": "on the commandline.",
+      "protected": []
+    },
+    {
+      "id": "s0032",
+      "kind": "paragraph",
+      "text": "With GlusterFS versions >= 9, we silently bypass write-behind translator during initial connect and failure is avoided.",
+      "protected": []
+    },
+    {
+      "id": "s0033",
+      "kind": "heading",
+      "text": "VERSION",
+      "protected": []
+    },
+    {
+      "id": "s0034",
+      "kind": "paragraph",
+      "text": "This man page is part of version 4.25.0 of the Samba suite.",
+      "protected": []
+    },
+    {
+      "id": "s0035",
+      "kind": "heading",
+      "text": "AUTHOR",
+      "protected": []
+    },
+    {
+      "id": "s0036",
+      "kind": "paragraph",
+      "text": "The original Samba software and related utilities were created by Andrew Tridgell. Samba is now developed by the Samba Team as an Open Source project similar to the way the Linux kernel is developed.",
+      "protected": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Name",
+      "segment": "s0001"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0002"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Synopsis",
+      "segment": "s0003"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "DESCRIPTION",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0008"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0009"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "CONFIGURATION",
+      "segment": "s0010"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0011"
+    },
+    {
+      "type": "literal",
+      "text": "\t\t[share]\n\t\tvfs objects = glusterfs\n\t\tpath = /relative/base/path\n\t\tglusterfs:volume = gv0\n\t\tkernel share modes = no"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0012"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0013"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "OPTIONS",
+      "segment": "s0014"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0015",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0016"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0017"
+            }
+          ]
+        },
+        {
+          "term": "s0018",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0019"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0020"
+            }
+          ]
+        },
+        {
+          "term": "s0021",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0022"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0023"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0024"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0025"
+            }
+          ]
+        },
+        {
+          "term": "s0026",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0027"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "CAVEATS",
+      "segment": "s0028"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0029"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0030"
+    },
+    {
+      "type": "literal",
+      "text": "                        gluster volume set <volumename> performance.write-behind off"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0031"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0032"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "VERSION",
+      "segment": "s0033"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0034"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "AUTHOR",
+      "segment": "s0035"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0036"
+    }
+  ]
+}
