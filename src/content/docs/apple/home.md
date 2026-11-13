@@ -14,7 +14,7 @@ macOS と Apple の開発ツールの日本語マニュアルです。対象の 
 
 [この提供元のマニュアルを検索する](/search/?provider=apple)
 
-収録済み: 8 件
+収録済み: 9 件
 
 ## macos / 26.6.2 / 25g83
 
@@ -26,3 +26,7 @@ macOS と Apple の開発ツールの日本語マニュアルです。対象の 
 - [swift(1)](/manuals/apple/macos/26.6.2/25g83/1/swift/28bbf6a0c380/)
 - [tar(1)](/manuals/apple/macos/26.6.2/25g83/1/tar/e7e0f61433da/)
 - [tclsh(1)](/manuals/apple/macos/26.6.2/25g83/1/tclsh/198e1ed330b7/)
+
+## macos / 27.2 / 26b123
+
+- [systemextensionsctl(8)](/manuals/apple/macos/27.2/26b123/8/systemextensionsctl/52e39211f048/)

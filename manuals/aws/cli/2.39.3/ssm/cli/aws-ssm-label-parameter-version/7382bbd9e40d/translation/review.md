@@ -1,0 +1,14 @@
+# 日本語訳レビュー 2026-11-13
+
+sourceSha256: 7382bbd9e40dfffffe2b3cc28b9c6b3214c594da73c32f6506920fded4e40744
+irSha256: 3d89d0d29584356a08bef6f62eb3172681e9951a4b07193e9e7654c887ff181b
+draftSha256: 143f0d1d03540432e3f1afd1a976bd2f7a52fda5d65454b2fb416a0204125d6b
+
+## 確認者と範囲
+翻訳担当とは独立したレビュー担当が原文と訳文を比較。実際の確認範囲: kind/text/protected/訳が完全一致する既確認対訳は再利用。新規非同一自然言語対訳を全確認（短文含む）。同一schema/code/tokenは保持判定。segment別証跡はaws-wave2-independent-evidence.json。重大誤訳なし。
+
+原文HTML div.body とIRの文書順テキストは空白を除き完全一致。独立監査でも15文字超本文ノードの欠落なし。短い断片/ブラウザDOM全体や実API実行の検証とは区別する。
+
+全ID、保護トークン、style入れ子、source/IR SHAを公式validateTranslationで確認し、公式IRから表・コードを保持して生成した。自動検証だけを意味レビューとみなしていない。
+
+重大な翻訳上の問題は確認されなかった。原文の版は固定し、最新サービス仕様を独自補正していない。公開前にサイト全体verifyとE2Eを別途実施する。Gitマージは運営者が行う。

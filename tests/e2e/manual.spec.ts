@@ -273,12 +273,12 @@ for (const query of ['find', 'シンボリックリンク']) {
 
 const appleManuals = (catalog as CatalogEntry[]).filter((entry) => entry.provider === 'apple');
 
-test('Apple collection contains exactly the eight requested commands', async ({ page }) => {
+test('Apple collection contains exactly the nine accepted commands', async ({ page }) => {
   expect(appleManuals.map((entry) => entry.name).sort()).toEqual(
-    ['find', 'osascript', 'osacompile', 'launchctl', 'tclsh', 'tar', 'swift', 'sqlite3'].sort(),
+    ['find', 'osascript', 'osacompile', 'launchctl', 'tclsh', 'tar', 'swift', 'sqlite3', 'systemextensionsctl'].sort(),
   );
   await page.goto('/search/?provider=apple');
-  await expect(page.locator('.catalog-results li:visible')).toHaveCount(8);
+  await expect(page.locator('.catalog-results li:visible')).toHaveCount(9);
   await page.goto('/search/?q=man%201%20find&provider=apple');
   await expect(page.locator('h1')).toHaveText('find(1)');
   await expect(page.locator('.manual-edition')).toContainText('Apple');
