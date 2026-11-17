@@ -1,10 +1,11 @@
 import { createHash } from 'node:crypto';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { satteri } from '@astrojs/markdown-satteri';
 import starlight from '@astrojs/starlight';
 import { defineConfig } from 'astro/config';
 import catalog from './src/data/manual-catalog.json';
 import type { CatalogEntry } from './src/lib/catalog';
+import { translatedManualCount } from './src/lib/manual-counts';
 import { activeProviders, manualProviders, providerHomeHref } from './src/lib/providers';
 
 const manuals = catalog as CatalogEntry[];
@@ -12,7 +13,7 @@ const manualGroups = activeProviders([
   ...manuals.map((entry) => entry.provider),
   ...manualProviders.filter((provider) => provider.legacyDirectory).map((provider) => provider.id),
 ]).map((provider) => ({
-  label: provider.label,
+  label: `${provider.label} (${translatedManualCount(provider.id, manuals, provider.legacyDirectory ? readdirSync(new URL(`./src/content/docs/${provider.legacyDirectory}/`, import.meta.url), { recursive: true }).map(String) : [])})`,
   collapsed: provider.collapsed ?? false,
   items: [
     ...(provider.legacyDirectory
@@ -82,7 +83,7 @@ export default defineConfig({
           link: '/',
         },
         ...manualGroups,
-        { label: 'このサイトについて', link: '/about/' },
+        { label: 'OS対応状況', link: '/os-support/' },
       ],
     }),
   ],

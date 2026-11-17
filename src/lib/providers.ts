@@ -16,7 +16,14 @@ export function activeProviders(ids: Iterable<string>): ManualProvider[] {
     if (!manualProviders.some((provider) => provider.id === id))
       throw new Error(`Unknown provider "${id}". Register it in src/data/manual-providers.json.`);
   }
-  return manualProviders.filter((provider) => present.has(provider.id));
+  const priority = ['apple', 'freebsd', 'aws'];
+  const rank = (id: string) => {
+    const index = priority.indexOf(id);
+    return index === -1 ? priority.length : index;
+  };
+  return manualProviders
+    .filter((provider) => present.has(provider.id))
+    .sort((a, b) => rank(a.id) - rank(b.id));
 }
 
 export const providerHomeHref = (id: string) => `/${id}/home/`;
