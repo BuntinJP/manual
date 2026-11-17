@@ -14,7 +14,7 @@ AWS CLI の Systems Manager（ssm）コマンド。
 
 [この提供元のマニュアルを検索する](/search/?provider=aws)
 
-収録済み: 155 件
+収録済み: 157 件
 
 ## cli / 2.39.3 / ssm
 
@@ -173,3 +173,8 @@ AWS CLI の Systems Manager（ssm）コマンド。
 - [aws-ssm-wait-command-executed(cli)](/manuals/aws/cli/2.39.3/ssm/cli/aws-ssm-wait-command-executed/c6f40d2d6a02/)
 - [aws-ssm-wait(cli)](/manuals/aws/cli/2.39.3/ssm/cli/aws-ssm-wait/aa3bcb2ff8ff/)
 - [aws-ssm(cli)](/manuals/aws/cli/2.39.3/ssm/cli/aws-ssm/0b89990ad81b/)
+
+## cli / 2.40.4 / reference
+
+- [aws-ssm-deregister-default-host-management-configuration(cli)](/manuals/aws/cli/2.40.4/reference/cli/aws-ssm-deregister-default-host-management-configuration/77d6bc633b99/)
+- [aws-ssm-register-default-host-management-configuration(cli)](/manuals/aws/cli/2.40.4/reference/cli/aws-ssm-register-default-host-management-configuration/941c70915f13/)

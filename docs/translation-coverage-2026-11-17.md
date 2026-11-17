@@ -2,7 +2,7 @@
 
 指定された翻訳対象一覧を2026-11-17に確認した。取り込みと翻訳完了は区別する。この報告はローカル受理・生成の状態であり、本番公開や全件完了を意味しない。
 
-最新集計: done307 / pending0、過去の誤抽出・誤識別の履歴14件はblockedで保持。今回新たに151文書28794セグメントを受理。登録済み有効307対象の翻訳・受理・生成が完了した。対象一覧外の文書、全製品資料、正式man未登録区分の網羅や本番公開の完了を意味しない。
+最新集計: done311 / pending0、過去の誤抽出・誤識別の履歴14件はblockedで保持。今回新たに155文書29198セグメントを受理。従来の登録済み有効307対象に、照合で検出/選定した4文書404セグメントを追加し、有効311対象の翻訳・受理・生成が完了した。対象一覧外の文書、全製品資料、正式man未登録区分の網羅や本番公開の完了を意味しない。
 
 ## 第1受理バッチ
 
@@ -20,11 +20,11 @@ blockedの旧IR・旧版識別ジョブを除く。保存済みセグメント�
 | --- | ---: | ---: | ---: | ---: |
 | apple/jq | 1 | 1 | 1096 | 1096 |
 | apple/macos | 6 | 6 | 206 | 206 |
-| aws/cli | 155 | 155 | 31504 | 31504 |
+| aws/cli | 157 | 157 | 31678 | 31678 |
 | convertx/convertx | 1 | 1 | 191 | 191 |
 | freebsd/base | 2 | 2 | 75 | 75 |
 | gnu/coreutils | 1 | 1 | 41 | 41 |
-| gnu/diffutils | 1 | 1 | 173 | 173 |
+| gnu/diffutils | 2 | 2 | 341 | 341 |
 | gnu/gnupg | 1 | 1 | 606 | 606 |
 | ietf/openpgp | 1 | 1 | 3079 | 3079 |
 | jqlang/jq | 1 | 1 | 1135 | 1135 |
@@ -38,6 +38,7 @@ blockedの旧IR・旧版識別ジョブを除く。保存済みセグメント�
 | samba/samba | 113 | 113 | 13005 | 13005 |
 | swaks/swaks | 1 | 1 | 546 | 546 |
 | tripwire/tripwire | 3 | 3 | 382 | 382 |
+| util-linux/bsd-utils | 1 | 1 | 62 | 62 |
 | wireguard/tools | 1 | 1 | 64 | 64 |
 
 ## 第2継続バッチ
@@ -51,9 +52,9 @@ blockedの旧IR・旧版識別ジョブを除く。保存済みセグメント�
 
 ## 残作業・再開方法
 
-1. 現在の有効キューは307件すべてdone。tmux・smb.confを重複予約しない。新たな取得/未登録区分は別の原文・版確認から開始する。
+1. 現在の有効キューは311件すべてdone。tmux・smb.confを重複予約しない。新たな取得/未登録区分は別の原文・版確認から開始する。
 2. `translation-queue/*.json` が受理状態の正本。過去の誤抽出14ジョブはblockedで履歴保持し、有効対象へ二重計上しない。
-3. 独立レビューはOpenBSD cut/paste、tmuxの450セグメント、smb.confの復旧追加1198セグメントで実施。それ以外は記録どおり翻訳担当による自己照合であり、ハッシュ検証を意味レビューの代わりとはしない。
+3. 独立レビューはOpenBSD cut/paste、tmuxの450セグメント、smb.confの復旧追加1198セグメント、新規正式man2件とAWS追加2件の全404セグメントで実施。その他は各記録の実施範囲に限り、ハッシュ検証を意味レビューの代わりとはしない。
 4. GNU/GFDL、FHS独自許諾、macOSの明示的再配布許諾を確認できない文書など、文書ごとの権利上の観察は原文とレビュー記録に保持。運営者の公開判断とは分離する。
 
 ## 検証
@@ -78,3 +79,22 @@ E2E登録時の同名別sectionをmanual.idで一意化。またjqの定義リ�
 PR #11のOS表・サイドバー件数は独立ブランチのまま保持し、この内容ブランチへ統合・マージしていない。失われた後続ローカル成果に含まれたLinux代表2ページはこの復元HEADに無く、正式man区分の追加・原文照合は別の残作業として扱う。Linux(GNU)/Linux(BSD)の原文未登録・未確認を、翻訳済みや不存在と断定しない。
 
 最終ローカル検証: Bun1.3.14 / Node24.22.0 / macOS mandoc。`bun run verify` は原文・queue・lint・型・44/44単体テスト・423ページbuildまで成功。実Google Chrome E2E192/192成功。CI結果とpreview URLはPR本文で対象SHAとともに追記する。
+
+
+## 元依頼との再照合と正式 man 追加
+
+ユーザー指定ObsidianノートはMCP timeout後、正規ローカルvaultの同名ノートを読んで照合した。同期サーバーの最新版と完全一致するとまでは確認していない。従来intake304件は現行doneの後継へ全件対応、指定OpenBSD tmux2823セグメントを含め保存範囲の漏れを検出しなかった。diff/FHS/colは現ノート本文にはなく、後続会話の追加依頼・新規選定として分ける。
+
+現在の公式AWS SSM CLI2.40.4索引は旧2.39.3保存版に対し register-default-host-management-configuration と deregister-default-host-management-configuration の2件が増えていた。無改変公式HTMLを取得し174セグメントを全件翻訳・自己/独立レビュー・受理。旧155ページは変更せず、AWSは計157ページとなる。現在のコマンドURL集合を表現できたことと、旧155本文がすべて2.40.4へ更新済みであることは別で、後者は主張しない。waitと子command-executedも照合した。
+
+新たに選んだGNU Diffutils3.12正式diff(1) roff168セグメントと、Linuxで配布されるBSD由来util-linux2.41 col(1) roff62セグメントを追加。旧GNU Texinfo diff章は保持し別variantへ保存。以前の未回収「Linux代表2ページ」の名前がこの2コマンドだったとは断定しない。colは4.4BSD-Lite系配布とBerkeley文書来歴を根拠に明示的bsd-utils/linux-upstream区分へ置き、他OSのmanやutil-linux全体をLinuxBSDと読み替えない。
+
+colの標準groff外部マクロ・未使用aliasを必要箇所だけ自己完結化し、原本と変換記録をハッシュ保持。本文/URLの一致を確認し、英語の元著作権・4条件・免責全文をliteral付録と資料へ保持。原署名bytesは保持したが暗号学的検証済みとはしない。各新文書は全件自己/独立意味レビュー、全原文→IR抽出監査済み。
+
+AIXは非公開とは扱わない。IBMはAIXのmanがKnowledge Centerと共通HTMLと説明している。一方、7.3個別原文の本文/版/sectionは今回の取得経路で未確定で、数字sectionを捏造せず原文未登録・確認待ちのまま。Bun/ElysiaをConvertX実装技術とした従来の解釈や、ノート内のBSD?がすべてのBSD派生を含むかなど、抽象的範囲まで全網羅したとは主張しない。
+
+詳細と取得索引: translation-queue/intakes/2026-11-17-expansion.json および同名ディレクトリ。PR11のOS表では明示的LinuxBSD来歴だけ分類し、正本内容PR12とは独立に保持する。マージ・本番配備は行わない。
+
+追加4文書の最終単独検証: Bun1.3.14 / Node24.22.0 / macOS mandoc、verify44/44・428ページbuild成功。新SSM2ページの狭幅確認を含むChrome E2E197/197成功。PR11単独はverify44/44・E2E27/27成功。両PRの組合せは未公開overlayとして別途検証し、マージは行わない。
+
+両PRを組み合わせた未公開overlay検証も完了: 別worktreeへUI差分を重ね、verify49/49・428ページbuild、実Chrome E2E200/200成功。新規GNU正式diffと明示来歴のcolがOS表の該当列へ正しくリンクし、GNU Texinfoや他OSを誤分類しないことを実データで確認。ブラウザ同梱版のローカル未導入による初回launch失敗と、その後成功したChrome実行は区別して記録。Gitマージ・本番配備はせず、詳細はintakeのcombined-verification.mdを参照。

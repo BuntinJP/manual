@@ -14,7 +14,7 @@ GNU のコマンドとツールの日本語マニュアルです。製品とバ�
 
 [この提供元のマニュアルを検索する](/search/?provider=gnu)
 
-収録済み: 3 件
+収録済み: 4 件
 
 ## coreutils / 9.12 / upstream
 
@@ -23,6 +23,10 @@ GNU のコマンドとツールの日本語マニュアルです。製品とバ�
 ## diffutils / 3.12 / online-manual
 
 - [diff(1)](/manuals/gnu/diffutils/3.12/online-manual/1/diff/c2d1884be144/)
+
+## diffutils / 3.12 / upstream-man
+
+- [diff(1)](/manuals/gnu/diffutils/3.12/upstream-man/1/diff/abd1e4feebc9/)
 
 ## gnupg / 2.4.4 / online-manual
 

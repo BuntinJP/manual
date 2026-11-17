@@ -352,3 +352,31 @@ test('Japanese full-text search can restrict results to Apple', async ({ page })
     ),
   ).toBe(true);
 });
+
+const newSsmCommands = (catalog as CatalogEntry[]).filter(
+  (entry) =>
+    entry.provider === 'aws' &&
+    entry.version === '2.40.4' &&
+    [
+      'aws-ssm-register-default-host-management-configuration',
+      'aws-ssm-deregister-default-host-management-configuration',
+    ].includes(entry.name),
+);
+for (const manual of newSsmCommands) {
+  test(`${manual.id} preserves the new SSM command reference on narrow screens`, async ({
+    page,
+  }) => {
+    await page.goto(manual.href);
+    await expect(page.locator('h1')).toHaveText(`${manual.name}(${manual.section})`);
+    await expect(page.locator('.manual-edition')).toContainText('2.40.4');
+    await expect(page.locator('.sl-markdown-content')).toContainText(/[ぁ-んァ-ヶ一-龠]/);
+    await expect(page.locator('.sl-markdown-content')).not.toContainText(/\[\[p\d+\]\]/);
+    expect(await page.locator('.sl-markdown-content pre').count()).toBeGreaterThan(0);
+    for (const width of [320, 390]) {
+      await page.setViewportSize({ width, height: 844 });
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+        true,
+      );
+    }
+  });
+}

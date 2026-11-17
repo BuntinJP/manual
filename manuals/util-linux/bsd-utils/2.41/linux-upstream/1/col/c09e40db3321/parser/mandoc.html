@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    table.head, table.foot { width: 100%; }
+    td.head-rtitle, td.foot-os { text-align: right; }
+    td.head-vol { text-align: center; }
+    .Nd, .Bf, .Op { display: inline; }
+    .Pa, .Ad { font-style: italic; }
+    .Ms { font-weight: bold; }
+    .Bl-diag > dt { font-weight: bold; }
+    code.Nm, .Fl, .Cm, .Ic, code.In, .Fd, .Fn, .Cd { font-weight: bold;
+      font-family: inherit; }
+  </style>
+  <title>COL(1)</title>
+</head>
+<!-- This is an automatically generated file.  Do not edit.
+   t
+       Title: col
+      Author: [see the "AUTHOR(S)" section]
+   Generator: Asciidoctor 2.0.20
+        Date: 2025-02-26
+      Manual: User Commands
+      Source: util-linux 2.41
+    Language: English
+   -->
+<body>
+<div class="head" role="doc-pageheader" aria-label="Manual header
+  line"><span class="head-ltitle">COL(1)</span> <span class="head-vol">User
+  Commands</span> <span class="head-rtitle">COL(1)</span></div>
+<main class="manual-text">
+<section class="Sh">
+<h2 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h2>
+<p class="Pp">col - filter reverse line feeds from input</p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h2>
+<p class="Pp"><b>col</b> <i>options</i></p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h2>
+<p class="Pp"><b>col</b> filters out reverse (and half-reverse) line feeds so
+    the output is in the correct order, with only forward and half-forward line
+    feeds. It also replaces any whitespace characters with tabs where possible.
+    This can be useful in processing the output of <b>nroff</b>(1) and
+    <b>tbl</b>(1).</p>
+<p class="Pp"><b>col</b> reads from standard input and writes to standard
+    output.</p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h2>
+<p class="Pp"><b>-b</b>, <b>--no-backspaces</b></p>
+<div class="Bd-indent">Do not output any backspaces, printing only the last
+  character written to each column position.</div>
+<p class="Pp"><b>-f</b>, <b>--fine</b></p>
+<div class="Bd-indent">Permit half-forward line feeds. Normally characters
+  destined for a half-line boundary are printed on the following line.</div>
+<p class="Pp"><b>-h</b>, <b>--tabs</b></p>
+<div class="Bd-indent">Output tabs instead of multiple spaces.</div>
+<p class="Pp"><b>-l</b>, <b>--lines</b> <i>number</i></p>
+<div class="Bd-indent">Buffer at least <i>number</i> lines in memory. By
+  default, 128 lines are buffered.</div>
+<p class="Pp"><b>-p</b>, <b>--pass</b></p>
+<div class="Bd-indent">Force unknown control sequences to be passed through
+  unchanged. Normally <b>col</b> will filter out any control sequences other
+  than those recognized and interpreted by itself, which are listed below.</div>
+<p class="Pp"><b>-x</b>, <b>--spaces</b></p>
+<div class="Bd-indent">Output multiple spaces instead of tabs.</div>
+<p class="Pp"><b>-H</b>, <b>--help</b></p>
+<div class="Bd-indent">Display help text and exit.</div>
+<p class="Pp"><b>-V</b>, <b>--version</b></p>
+<div class="Bd-indent">Display version and exit.</div>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="CONFORMING_TO"><a class="permalink" href="#CONFORMING_TO">CONFORMING
+  TO</a></h2>
+<p class="Pp">The <b>col</b> utility conforms to the Single UNIX Specification,
+    Version 2. The <b>-l</b> option is an extension to the standard.</p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="NOTES"><a class="permalink" href="#NOTES">NOTES</a></h2>
+<p class="Pp">The control sequences for carriage motion that <b>col</b>
+    understands and their decimal values are listed in the following table:</p>
+<p class="Pp"><b>ESC-7</b></p>
+<div class="Bd-indent">reverse line feed (escape then 7)</div>
+<p class="Pp"><b>ESC-8</b></p>
+<div class="Bd-indent">half reverse line feed (escape then 8)</div>
+<p class="Pp"><b>ESC-9</b></p>
+<div class="Bd-indent">half forward line feed (escape then 9)</div>
+<p class="Pp"><b>backspace</b></p>
+<div class="Bd-indent">moves back one column (8); ignored in the first
+  column</div>
+<p class="Pp"><b>newline</b></p>
+<div class="Bd-indent">forward line feed (10); also does carriage return</div>
+<p class="Pp"><b>carriage return</b></p>
+<div class="Bd-indent">(13)</div>
+<p class="Pp"><b>shift in</b></p>
+<div class="Bd-indent">shift to normal character set (15)</div>
+<p class="Pp"><b>shift out</b></p>
+<div class="Bd-indent">shift to alternate character set (14)</div>
+<p class="Pp"><b>space</b></p>
+<div class="Bd-indent">moves forward one column (32)</div>
+<p class="Pp"><b>tab</b></p>
+<div class="Bd-indent">moves forward to next tab stop (9)</div>
+<p class="Pp"><b>vertical tab</b></p>
+<div class="Bd-indent">reverse line feed (11)</div>
+<p class="Pp">All unrecognized control characters and escape sequences are
+    discarded.</p>
+<p class="Pp"><b>col</b> keeps track of the character set as characters are read
+    and makes sure the character set is correct when they are output.</p>
+<p class="Pp">If the input attempts to back up to the last flushed line,
+    <b>col</b> will display a warning message.</p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="HISTORY"><a class="permalink" href="#HISTORY">HISTORY</a></h2>
+<p class="Pp">A <b>col</b> command appeared in Version 6 AT&amp;T UNIX.</p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h2>
+<p class="Pp"><b>expand</b>(1), <b>nroff</b>(1), <b>tbl</b>(1)</p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="REPORTING_BUGS"><a class="permalink" href="#REPORTING_BUGS">REPORTING
+  BUGS</a></h2>
+<p class="Pp">For bug reports, use the <i>issue tracker</i>
+    &lt;https://github.com/util-linux/util-linux/issues&gt;.</p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="AVAILABILITY"><a class="permalink" href="#AVAILABILITY">AVAILABILITY</a></h2>
+<p class="Pp">The <b>col</b> command is part of the util-linux package which can
+    be downloaded from <i>Linux Kernel Archive</i>
+    &lt;https://www.kernel.org/pub/linux/utils/util-linux/&gt;.</p>
+</section>
+<section class="Sh">
+<h2 class="Sh" id="COPYRIGHT_AND_LICENSE_(ORIGINAL_ENGLISH)"><a class="permalink" href="#COPYRIGHT_AND_LICENSE_(ORIGINAL_ENGLISH)">COPYRIGHT
+  AND LICENSE (ORIGINAL ENGLISH)</a></h2>
+<pre>Copyright (c) 1990 The Regents of the University of California.
+All rights reserved.
+This code is derived from software contributed to Berkeley by
+Michael Rendell.
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+1. Redistributions of source code must retain the above copyright
+<br/>
+   notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+<br/>
+   notice, this list of conditions and the following disclaimer in the
+<br/>
+   documentation and/or other materials provided with the distribution.
+3. All advertising materials mentioning features or use of this software
+<br/>
+   must display the following acknowledgement:
+This product includes software developed by the University of
+California, Berkeley and its contributors.
+4. Neither the name of the University nor the names of its contributors
+<br/>
+   may be used to endorse or promote products derived from this software
+<br/>
+   without specific prior written permission.
+THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGE.</pre>
+</section>
+</main>
+<div class="foot" role="doc-pagefooter" aria-label="Manual footer
+  line"><span class="foot-left">util-linux 2.41</span>
+  <span class="foot-date">2025-02-26</span>
+  <span class="foot-right">COL(1)</span></div>
+</body>
+</html>
