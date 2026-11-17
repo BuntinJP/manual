@@ -85,6 +85,29 @@ describe('semantic import and literal preservation', () => {
     expect(ir.segments.some((s) => s.text === 'Display files.')).toBe(true);
     expect(ir.segments.some((s) => s.text.includes('Ignore site'))).toBe(false);
   });
+  test('preserves tables inside GitHub markdown accessibility wrappers without active content', () => {
+    const html =
+      '<article class="markdown-body"><p>Before.</p><markdown-accessiblity-table><table><thead><tr><th>Option</th><th>Default</th></tr></thead><tbody><tr><td><code>MODE</code></td><td>false</td></tr></tbody></table><script>DROP ME</script><pre>tool --flag\n  literal</pre></markdown-accessiblity-table><p>After.</p></article>';
+    const ir = parseManualHtml(
+      html,
+      manifest.source.sha256,
+      manifest.source.origin,
+      'article.markdown-body',
+    );
+    expect(ir.blocks.map((b) => b.type)).toEqual(['paragraph', 'table', 'literal', 'paragraph']);
+    const table = ir.blocks.find((b) => b.type === 'table');
+    expect(table?.type === 'table' ? table.headers : []).toEqual([
+      [true, true],
+      [false, false],
+    ]);
+    expect(ir.segments.some((s) => s.text.includes('DROP ME'))).toBe(false);
+    const output = renderMarkdown(manifest, ir, translation(ir));
+    expect(output).toContain('<th><p>Option</p></th>');
+    expect(output).toContain('<td><p>false</p></td>');
+    expect(output).toContain('tool --flag\n  literal');
+    expect(output).not.toContain('DROP ME');
+    expect(output).not.toContain('markdown-accessiblity-table');
+  });
   test('recognizes FreeBSD id-anchored preformatted headings outside site navigation', () => {
     const html =
       '<div id="contentwrap"><nav>Site navigation</nav></div><pre>DEMO(1)\n\n<a id="NAME" href="#end"><b>NAME</b></a>\n demo -- sample\n\n<a id="SYNOPSIS" href="#end"><b>SYNOPSIS</b></a>\n     <b>demo</b> [<b>-s</b>]\n\n<a id="DESCRIPTION" href="#end"><b>DESCRIPTION</b></a>\n Read input files.\n\n<a id="EXAMPLES" href="#end"><b>EXAMPLES</b></a>\n     <b>demo</b> <b>input</b>\n</pre>';

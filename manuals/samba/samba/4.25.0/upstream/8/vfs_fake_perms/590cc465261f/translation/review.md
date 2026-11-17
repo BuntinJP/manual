@@ -1,0 +1,26 @@
+# vfs_fake_perms 翻訳・自己照合
+
+確認者: EMMA Samba batch 1担当（翻訳者による自己照合。独立レビューではない）
+
+対象: manuals/samba/samba/4.25.0/upstream/8/vfs_fake_perms/590cc465261f
+版: 4.25.0。保存原文が番号付きリリースを示さない current は他文書の4.25.0で置き換えていない。
+
+保存source、IR、request、glossary、source-observationsを確認し、全13セグメントを翻訳・意味照合した。サーバー上は読取専用だがクライアントへ書込可を報告する逆説と、logout/shutdownで上書きされない条件を照合。Profiles例保持。
+
+全原文/IR/manifest材料のハッシュ、ID集合、非空訳、全保護トークン、style対応を既存validateTranslationで検証成功。IRセグメントのトークン展開テキストが原文本文に存在することも照合した。構文・識別子・コマンド/設定例は原形を維持。著者共通段落の再利用は原文・文脈が一致する場合に限定。
+
+ライセンス: 独立したライセンス資料はこの保存ページに添付されていない。提供元や版から他資料のライセンスを推定付与せず、この未確認事項を記録する。原文・著者・出典は保持。
+キュー保存・受理・生成・commitは未実施。統合担当による最終受理と検証が必要。
+
+sourceSha256: 590cc465261fe15ba1ca4d3b0c78ed3f1101e465aa9f293cd947e31d8772ddd4
+irSha256: 91dcb5cf45cf0c457ea4b7b3a98c153fdcb1363ce84c855d7bfb489792fa598c
+candidateFileSha256: ea6c26ebd5a1fcfaf2b2c6f3e82663a8f26dcdced4ddea31d93c1bc6aff5d61f
+
+
+## キュー受理の最終バインド
+
+sourceSha256: 590cc465261fe15ba1ca4d3b0c78ed3f1101e465aa9f293cd947e31d8772ddd4
+irSha256: 91dcb5cf45cf0c457ea4b7b3a98c153fdcb1363ce84c855d7bfb489792fa598c
+draftSha256: ea6c26ebd5a1fcfaf2b2c6f3e82663a8f26dcdced4ddea31d93c1bc6aff5d61f
+
+上の「未受理」等は候補作成時点の記録。全文保存と本ハッシュの照合後にcompleteを実行して受理・生成を検証する。公開判断とは別。

@@ -1,0 +1,26 @@
+# vfs_linux_xfs_sgid 翻訳・自己照合
+
+確認者: EMMA Samba batch 1担当（翻訳者による自己照合。独立レビューではない）
+
+対象: manuals/samba/samba/4.25.0/upstream/8/vfs_linux_xfs_sgid/adf96f40bd2f
+版: 4.25.0。保存原文が番号付きリリースを示さない current は他文書の4.25.0で置き換えていない。
+
+保存source、IR、request、glossary、source-observationsを確認し、全14セグメントを翻訳・意味照合した。Linux3.11修正済という歴史的文脈、default ACL時mkdirのSGID非継承、親SGIDありの場合だけ明示設定する条件と修正コミット参照を保持。
+
+全原文/IR/manifest材料のハッシュ、ID集合、非空訳、全保護トークン、style対応を既存validateTranslationで検証成功。IRセグメントのトークン展開テキストを原文本文と照合した。s0007だけはHTMLリンク前後の改行空白により単純な部分文字列照合が不一致となるが、原文を直接読んで同一内容・参照URLであることを確認した。構文・識別子・コマンド/設定例は原形を維持。著者共通段落の再利用は原文・文脈が一致する場合に限定。
+
+ライセンス: 独立したライセンス資料はこの保存ページに添付されていない。提供元や版から他資料のライセンスを推定付与せず、この未確認事項を記録する。原文・著者・出典は保持。
+キュー保存・受理・生成・commitは未実施。統合担当による最終受理と検証が必要。
+
+sourceSha256: adf96f40bd2f9f732f37baa2bed3a4551959dc4a060b625ac945571117c27a99
+irSha256: f62ec4f9e10537953be218d81380be436464112863bd627adaef4ff5366add02
+candidateFileSha256: 8a35cdda571487dfa9486959739e1763471a94070bca594bdf50e351e5f006f0
+
+
+## キュー受理の最終バインド
+
+sourceSha256: adf96f40bd2f9f732f37baa2bed3a4551959dc4a060b625ac945571117c27a99
+irSha256: f62ec4f9e10537953be218d81380be436464112863bd627adaef4ff5366add02
+draftSha256: 8a35cdda571487dfa9486959739e1763471a94070bca594bdf50e351e5f006f0
+
+上の「未受理」等は候補作成時点の記録。全文保存と本ハッシュの照合後にcompleteを実行して受理・生成を検証する。公開判断とは別。

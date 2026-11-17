@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "dc892cf03108271e",
   "manual": "manuals/samba/samba/4.25.0/upstream/8/vfs_worm/e41e142b6933",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.415Z",
   "segmentCount": 18,
   "draft": {
@@ -10,13 +10,52 @@
     "sourceSha256": "e41e142b6933424ff89323d9729135a3c0406d8e6b823ab95c18081b5f476f15",
     "irSha256": "913917989adfcc846dbd0fd77bbb16a0f4f3fa0f90896f7ba95b8d03ca2f68ee",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "vfs_worm — 古いファイルへの書き込みを禁止する",
+      "s0003": "書式",
+      "s0004": "[[p0]]",
+      "s0005": "説明",
+      "s0006": "このVFSモジュールは [[p0]] スイートの一部です。",
+      "s0007": "[[p0]] モジュールは、ファイルやフォルダーの変更時刻と、調整可能な猶予期間に基づいて、書き込み可能かどうかを制御します。",
+      "s0008": "ファイルまたはディレクトリの変更時刻から指定の猶予期間を超えて経過している場合、他のアクセス制御（ファイルシステムによるものなど）にかかわらず、書き込みアクセスを拒否します。",
+      "s0009": "猶予期間を超えていない場合、wormモジュールはアクセス制御に影響しません。",
+      "s0010": "オプション",
+      "s0011": "worm:grace_period = SECONDS",
+      "s0012": "書き込みアクセスを通常のアクセス制御に任せる時間を秒単位で定義します。この猶予期間が過ぎると、ファイルまたはディレクトリは読み取り専用になります。",
+      "s0013": "使用例",
+      "s0014": "変更時刻から5分（300秒）を超えて経過したファイルやフォルダーへの書き込みを拒否します。",
+      "s0015": "バージョン",
+      "s0016": "このマニュアルページはSambaスイートのバージョン4.25.0の一部です。",
+      "s0017": "著者",
+      "s0018": "オリジナルのSambaソフトウェアと関連ユーティリティはAndrew Tridgellが作成しました。現在Sambaは、Linuxカーネルと同様の方法で、Samba Teamによるオープンソースプロジェクトとして開発されています。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.415Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:18:33.003Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:18:33.106Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017, s0018; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:18:33.216Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:18:34.867Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

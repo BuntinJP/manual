@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "2b30baaf38a04061",
   "manual": "manuals/samba/samba/4.25.0/upstream/1/mvxattr/868a6cd2a757",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.103Z",
   "segmentCount": 26,
   "draft": {
@@ -10,13 +10,60 @@
     "sourceSha256": "868a6cd2a7579d0c990d19d1903edf95bab542c3cdcc78ac310dc327b3664622",
     "irSha256": "c521e586940a42df4ed63f4fd64bbfd049462418af89084dd5145c97abeaf68d",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "mvxattr — 拡張属性の名前を再帰的に変更する",
+      "s0003": "書式",
+      "s0004": "[[p0]] {[[p1]] STRING, [[p2]]=STRING} {[[p3]] STRING, [[p4]]=STRING} [[[p5]], [[p6]]] [[[p7]], [[p8]]] [[[p9]], [[p10]]] [[[p11]], [[p12]]] {PATH [PATH ...]}",
+      "s0005": "説明",
+      "s0006": "このツールは [[p0]] スイートの一部です。",
+      "s0007": "mvxattr は、拡張属性の名前を再帰的に変更する簡単なユーティリティです。",
+      "s0008": "既定ではすべてのシンボリックリンクを無視します。たどるには [[p0]] を使います。",
+      "s0009": "オプション",
+      "s0010": "[[p0]] STRING, [[p1]]=STRING",
+      "s0011": "変更元の xattr 名",
+      "s0012": "[[p0]] STRING, [[p1]]=STRING",
+      "s0013": "変更先の xattr 名",
+      "s0014": "[[p0]], [[p1]]",
+      "s0015": "シンボリックリンクをたどります。既定では無視します。",
+      "s0016": "[[p0]], [[p1]]",
+      "s0017": "xattr の名前を変更したファイルを表示します。",
+      "s0018": "[[p0]], [[p1]]",
+      "s0019": "確認するファイルを順に表示します。",
+      "s0020": "[[p0]], [[p1]]",
+      "s0021": "変更先の xattr を強制的に上書きします。",
+      "s0022": "バージョン",
+      "s0023": "このマニュアルページは Samba スイートのバージョン4.25.0の一部です。",
+      "s0024": "著者",
+      "s0025": "オリジナルの Samba ソフトウェアと関連ユーティリティは Andrew Tridgell が作成しました。現在、Samba は Linux カーネルと同様の方法で、Samba Team によるオープンソースプロジェクトとして開発されています。",
+      "s0026": "mvxattr のマニュアルページは Ralph Boehme が執筆しました。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.103Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:22:21.740Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:22:21.849Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017, s0018, s0019, s0020, s0021, s0022, s0023, s0024, s0025, s0026; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:22:21.964Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:22:23.704Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

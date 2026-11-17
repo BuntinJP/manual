@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "4be5d7ada2b1793b",
   "manual": "manuals/samba/samba/current/upstream/8/vfs_streams_xattr/0524f883cde6",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.395Z",
   "segmentCount": 25,
   "draft": {
@@ -10,13 +10,59 @@
     "sourceSha256": "0524f883cde688c57dd7857b9c6062bfbf596fe049e013cbb6a13f8a4010539d",
     "irSha256": "6e1bda5e6bd6c342016bfd6e5584b99bc5fb8e5cfccf4f66af029716444f50e1",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "vfs_streams_xattr — 代替データストリームを POSIX 拡張属性に保存する",
+      "s0003": "書式",
+      "s0004": "[[p0]]",
+      "s0005": "説明",
+      "s0006": "この VFS モジュールは [[p0]] スイートの一部です。",
+      "s0007": "[[p0]] は、NTFS の代替データストリームをファイルシステムに保存できるようにします。通常の POSIX ファイルシステムは1つのファイルに複数のデータストリームを持つ概念をサポートしないため、streams_xattr モジュールは POSIX 拡張属性（xattr）にデータを保存します。これらの属性名は既定で user.DosStream.\"ADS-NAME\" です。接頭辞 \"user.DosStream.\" は [[p1]] モジュールオプションで変更できますが、変更すると SMB 拡張属性インターフェース経由でも ADS が公開されることに注意してください。",
+      "s0008": "このモジュールを有効にして共有するファイルシステムは、xattr をサポートする必要があります。",
+      "s0009": "ほとんどのファイルシステムでは xattr のサイズに厳しい制限があることに注意してください。そのため、ストリームに小さなゾーン情報を保存する IE のようなアプリケーションでは動作しても、ADS に大量のデータを保存するアプリケーションでは失敗します。",
+      "s0010": "オプション",
+      "s0011": "streams_xattr:prefix = STRING",
+      "s0012": "ADS を xattr に保存するときに使う名前の接頭辞です。既定値は [[p0]] です。変更すると SMB 拡張属性インターフェース経由でも ADS が公開されます。",
+      "s0013": "streams_xattr:store_stream_type = [yes|no]",
+      "s0014": "タイプ \"$DATA\" の代替データストリームの xattr 名に、ストリームタイプ文字列 \":$DATA\" を接尾辞として付けるかどうかです。既定値は [[p0]] です。",
+      "s0015": "streams_xattr:max xattrs per stream = NUM",
+      "s0016": "単一 xattr のサイズ上限が inode ごとの xattr 合計サイズ上限より小さいファイルシステムでは、このパラメーターを2から16の値に設定すると、smbd は単一 xattr に収まらない大きさのストリームを保存できます。たとえば Linux の xattr ごとの上限は64kBですが、XFS は inode ごとにはそれ以上を保存できます。",
+      "s0017": "単一 xattr のサイズは smb.conf パラメーター [[p0]] で制限されます。",
+      "s0018": "代替データストリーム1つにつき最大16個の xattr に制限されます。",
+      "s0019": "既定値は [[p0]] で、この機能が導入される前の既定の動作と互換性があります。",
+      "s0020": "streams_xattr:ext_prefix = STRING",
+      "s0021": "ストリームのあふれた部分の xattr を保存する際に使う名前の接頭辞です。既定では [[p0]] に文字列 \"Ext\" を追加します。[[p1]] が \".\" で終わる場合は、\"Ext\" を \".\" の前に挿入します。",
+      "s0022": "あふれた部分の xattr は \"user.DosStreamExt.0.ADS-NAME\" というパターンに従って命名されます。",
+      "s0023": "例",
+      "s0024": "著者",
+      "s0025": "オリジナルの Samba ソフトウェアと関連ユーティリティは Andrew Tridgell が作成しました。現在、Samba は Linux カーネルと同様の方法で、Samba Team によるオープンソースプロジェクトとして開発されています。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.395Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:20:16.075Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:20:16.184Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017, s0018, s0019, s0020, s0021, s0022, s0023, s0024, s0025; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:20:16.292Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:20:17.893Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

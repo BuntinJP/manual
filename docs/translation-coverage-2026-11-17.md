@@ -12,14 +12,14 @@ Obsidian「メモ/manual 翻訳対象.md」版6を直接確認した。取り込
 
 ## 対象別の状態
 
-blockedの旧IRジョブ2件を除く。保存済みセグメントにはdoneの受理済み訳と途中訳の両方を含む。
+blockedの旧IR・旧版識別ジョブを除く。保存済みセグメントにはdoneの受理済み訳と途中訳の両方を含む。
 
 | 提供元 / 製品 | 文書数 | done | 全セグメント | 保存済み |
 | --- | ---: | ---: | ---: | ---: |
 | apple/jq | 1 | 0 | 1096 | 0 |
 | apple/macos | 6 | 6 | 206 | 206 |
 | aws/cli | 155 | 155 | 31504 | 31504 |
-| convertx/convertx | 1 | 0 | 41 | 0 |
+| convertx/convertx | 1 | 1 | 191 | 191 |
 | freebsd/base | 2 | 2 | 75 | 75 |
 | gnu/coreutils | 1 | 1 | 41 | 41 |
 | gnu/diffutils | 1 | 1 | 173 | 173 |
@@ -32,11 +32,20 @@ blockedの旧IRジョブ2件を除く。保存済みセグメントにはdoneの
 | openbsd/base | 3 | 3 | 2905 | 2905 |
 | openssl/openssl | 1 | 0 | 277 | 0 |
 | paru/paru | 2 | 0 | 533 | 0 |
-| samba/cifs-utils | 10 | 0 | 632 | 0 |
-| samba/samba | 113 | 0 | 12993 | 0 |
+| samba/cifs-utils | 10 | 4 | 632 | 86 |
+| samba/samba | 113 | 56 | 13005 | 1129 |
 | swaks/swaks | 1 | 0 | 546 | 0 |
-| tripwire/tripwire | 3 | 0 | 382 | 0 |
-| wireguard/tools | 1 | 0 | 64 | 0 |
+| tripwire/tripwire | 3 | 2 | 382 | 96 |
+| wireguard/tools | 1 | 1 | 64 | 64 |
+
+## 第2継続バッチ
+
+- Samba60文書、WireGuard wg、Tripwire twfiles/twconfig、ConvertXの計64文書1566セグメントを追加受理・生成。第1バッチと合わせて76文書4930セグメント。キューはdone232/pending75、過去の誤抽出・誤識別の履歴11件はblockedで保持。全対象の完了ではない。
+- Samba7文書は原文VERSION節に4.25.0と明記されていたため、currentから4.25.0の別leafへ訂正。旧原文・旧ジョブ・当時の観察を残し、訂正の根拠を追記した。対象はpam_winbind.conf、ntlm_auth、traffic_learner、traffic_replay、pam_winbind、samba-tool、samba_downgrade_db。
+- ntlm_authはさらに元HTMLの不正なdiv入れ子で4節が.refentry外へ移動していた。未受理の62segジョブを保留し、原文不変のまま当該ページだけbody selectorで74segへ再解析。新ジョブ0521c776d2fbc376で翻訳を継続する。
+- ConvertXはGitHubのmarkdown-accessiblity-table wrapperを安全なコンテナとして解析する回帰修正により、3表46行156セルと2コードブロックを保持。旧41segを保留して191segで全文翻訳・受理。同タグのAGPLv3原文も保存した。
+- Tripwire許諾文の翻訳には権利者承認の条件があるため、許諾と著作権の英語原文を生成本文にも保持し、日本語は非公式参考訳とした。
+- smbgetのUNC例1箇所を原文通りのバックスラッシュ4/2/2へ修正。旧受理訳とレビューはtranslation/revisions/に保持し、queueのamended履歴と新draftShaを記録して再生成・検証した。
 
 ## 残作業・再開方法
 

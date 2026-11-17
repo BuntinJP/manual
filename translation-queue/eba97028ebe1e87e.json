@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "eba97028ebe1e87e",
   "manual": "manuals/samba/samba/4.25.0/upstream/8/vfs_cap/dafc241f585b",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.314Z",
   "segmentCount": 15,
   "draft": {
@@ -10,13 +10,49 @@
     "sourceSha256": "dafc241f585ba2727579189776d12a36f2e00e77386f85122a5a14d40ec924f1",
     "irSha256": "efcbfe3f4408d32cd20c5c312d85128cda33f196fe3b719f4aba183ccae48dbf",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "vfs_cap — ファイル名を CAP エンコードする",
+      "s0003": "書式",
+      "s0004": "[[p0]]",
+      "s0005": "説明",
+      "s0006": "この VFS モジュールは [[p0]] スイートの一部です。",
+      "s0007": "CAP（Columbia Appletalk Protocol）エンコーディングは、非 ASCII のファイル名を ASCII で表現する手法です。[[p0]] VFS モジュールはファイル名を CAP 形式へ、または CAP 形式から変換し、ユーザーが自身の環境の文字エンコーディングでファイル名を付けられるようにします。",
+      "s0008": "CAP エンコーディングは、日本語環境で最もよく使われます。",
+      "s0009": "このモジュールは、他のモジュールと重ねて使用できます。",
+      "s0010": "使用例",
+      "s0011": "GNU libiconv を使用するシステムで、CAP エンコーディングにより Shift_JIS ロケールのユーザーをサポートします。",
+      "s0012": "バージョン",
+      "s0013": "このマニュアルページは、Samba スイートのバージョン 4.25.0 の一部です。",
+      "s0014": "著者",
+      "s0015": "元の Samba ソフトウェアと関連ユーティリティーは Andrew Tridgell が作成しました。現在、Samba は Linux カーネルと同様の開発方法で、Samba Team によるオープンソースプロジェクトとして開発されています。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.314Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:23:29.543Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:23:29.657Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:23:29.777Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:23:31.604Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

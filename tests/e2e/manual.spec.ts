@@ -76,7 +76,16 @@ test('font preload prevents duplicate fetches and visible font layout shifts on 
   }
 });
 
-for (const provider of ['apple', 'freebsd', 'gnu', 'openbsd']) {
+for (const provider of [
+  'apple',
+  'freebsd',
+  'gnu',
+  'openbsd',
+  'samba',
+  'wireguard',
+  'tripwire',
+  'convertx',
+]) {
   test(`${provider} HOME lists exactly its published manuals and works without JavaScript`, async ({
     browser,
     baseURL,
@@ -304,7 +313,9 @@ test('Apple collection contains exactly the fourteen accepted commands', async (
 });
 
 const reviewedManuals = (catalog as CatalogEntry[]).filter((entry) =>
-  ['apple', 'gnu', 'openbsd'].includes(entry.provider),
+  ['apple', 'gnu', 'openbsd', 'samba', 'wireguard', 'tripwire', 'convertx'].includes(
+    entry.provider,
+  ),
 );
 
 for (const manual of reviewedManuals) {

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "483acfa7d729a02f",
   "manual": "manuals/samba/samba/4.25.0/upstream/8/winbind_krb5_localauth/c7a3cbcf8697",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.427Z",
   "segmentCount": 14,
   "draft": {
@@ -10,13 +10,48 @@
     "sourceSha256": "c7a3cbcf86971aecfa371ea7fb323a1eb6d0751ee4558a07809615d61e8d32bb",
     "irSha256": "3ef36600a1aaff078142f74dcbcd96f1704a35150f3a7b31e04fcf0c9a2342d0",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "winbind_krb5_localauth — ユーザーアカウントを対応付ける MIT Kerberos 用プラグイン",
+      "s0003": "説明",
+      "s0004": "このプラグインは [[p0]] スイートの一部です。",
+      "s0005": "[[p0]] は、MIT Kerberos ライブラリーが Kerberos プリンシパルをローカルユーザーアカウントと照合して検証できるようにするプラグインです。",
+      "s0006": "前提条件",
+      "s0007": "MIT Kerberos のバージョン 1.12 以降が必要です。",
+      "s0008": "このプラグインは [[p0]] デーモンに問い合わせるため、このデーモンを別途設定して起動する必要があります。",
+      "s0009": "次のセクションを [[p0]] ファイルに追加する必要があります。",
+      "s0010": "バージョン",
+      "s0011": "このマニュアルページは、Samba スイートのバージョン 4.25.0 の一部です。",
+      "s0012": "著者",
+      "s0013": "元の Samba ソフトウェアと関連ユーティリティーは Andrew Tridgell が作成しました。現在、Samba は Linux カーネルと同様の開発方法で、Samba Team によるオープンソースプロジェクトとして開発されています。",
+      "s0014": "winbind_krb5_localauth のマニュアルページは Andreas Schneider が作成しました。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.427Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:20:13.884Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:20:13.995Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:20:14.111Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:20:15.955Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

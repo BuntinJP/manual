@@ -41,6 +41,8 @@ const blockTags = new Set([
   'OL',
   'DL',
   'TABLE',
+  // GitHub wraps rendered Markdown tables in this custom container (upstream spelling).
+  'MARKDOWN-ACCESSIBLITY-TABLE',
   'BLOCKQUOTE',
   'H1',
   'H2',

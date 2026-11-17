@@ -1,0 +1,26 @@
+# samba-bgqd 翻訳・自己照合
+
+確認者: EMMA Samba batch 1担当（翻訳者による自己照合。独立レビューではない）
+
+対象: manuals/samba/samba/current/upstream/8/samba-bgqd/307b8120fe72
+版: current。保存原文が番号付きリリースを示さない current は他文書の4.25.0で置き換えていない。
+
+保存source、IR、request、glossary、source-observationsを確認し、全12セグメントを翻訳・意味照合した。ユーザー/管理者による直接実行非推奨、多数のCUPSプリンター時のsystemdサービス推奨を区別。書式内の引数プレースホルダーはコードとして維持。
+
+全原文/IR/manifest材料のハッシュ、ID集合、非空訳、全保護トークン、style対応を既存validateTranslationで検証成功。IRセグメントのトークン展開テキストが原文本文に存在することも照合した。構文・識別子・コマンド/設定例は原形を維持。著者共通段落の再利用は原文・文脈が一致する場合に限定。
+
+ライセンス: 独立したライセンス資料はこの保存ページに添付されていない。提供元や版から他資料のライセンスを推定付与せず、この未確認事項を記録する。原文・著者・出典は保持。
+キュー保存・受理・生成・commitは未実施。統合担当による最終受理と検証が必要。
+
+sourceSha256: 307b8120fe72893317911dcf8e36e9f6ef89da9c34d2a26e45081299e0b48148
+irSha256: fd775d48f3d2e3c085137bf845b44f3c21393e43c25fb0c0c111495aee160583
+candidateFileSha256: bffa6f70484f1484fec2ab2fca0721ad7f87e507621ad30fb13d2354ca07fe3e
+
+
+## キュー受理の最終バインド
+
+sourceSha256: 307b8120fe72893317911dcf8e36e9f6ef89da9c34d2a26e45081299e0b48148
+irSha256: fd775d48f3d2e3c085137bf845b44f3c21393e43c25fb0c0c111495aee160583
+draftSha256: bffa6f70484f1484fec2ab2fca0721ad7f87e507621ad30fb13d2354ca07fe3e
+
+上の「未受理」等は候補作成時点の記録。全文保存と本ハッシュの照合後にcompleteを実行して受理・生成を検証する。公開判断とは別。

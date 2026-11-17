@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "dc3cfd1d24c704a8b4a5a9695c2a0bfbd2c16a5310d4cb4828efe36e9dc2880e",
+  "irSha256": "d830b982c133d6af14d839828a5aab89c0597b277f89045f2bc76c8453201fdc",
+  "locale": "ja",
+  "segments": {
+    "s0001": "smb2-quota",
+    "s0002": "Linux SMBクライアントファイルシステム（CIFS）のクォータ情報を表示するユーザー空間ヘルパー",
+    "s0003": "マニュアルのセクション:",
+    "s0004": "1",
+    "s0005": "書式",
+    "s0006": "smb2-quota [[[p0]]] {options} {file system object}",
+    "s0007": "説明",
+    "s0008": "このツールはcifs-utilsスイートの一部です。",
+    "s0009": "smb2-quotaは、Linux SMBクライアントファイルシステム（CIFS）用のユーザー空間ヘルパープログラムです。",
+    "s0010": "このツールは、Linux SMBクライアントにCIFS_QUERY_INFO IOCTLを呼び出します。クライアントがSMB Query Info要求を発行し、その結果を返します。",
+    "s0011": "オプション",
+    "s0012": "[[p0]]/[[p1]]: コマンドラインオプションを説明するヘルプを表示します。",
+    "s0013": "[[p0]]/[[p1]]: ボリュームのクォータ情報を表形式で表示します。\nAmount Used | Quota Limit | Warning Level | Percent Used | Status | SID\n（使用量 | クォータ上限 | 警告レベル | 使用率 | 状態 | SID）",
+    "s0014": "[[p0]]/[[p1]]: ボリュームのクォータ情報をCSV形式で表示します。\nSID,Amount Used,Quota Limit,Warning Level\n（SID、使用量、クォータ上限、警告レベル）",
+    "s0015": "[[p0]]/[[p1]]: ボリュームのクォータ情報を生の形式で表示します。\n- SID\n- Quota Used（クォータ使用量）\n- Quota Threshold（クォータしきい値）\n- Quota Limit（クォータ上限）",
+    "s0016": "何も指定しない場合の既定の動作は [[p0]]/[[p1]] です。",
+    "s0017": "注意",
+    "s0018": "カーネルでsmb2-quotaをサポートするにはCIFS_QUERY_INFO IOCTLが必要です。これはカーネル4.20で初めて導入され、SMB2以降を使用するマウントポイントに対してのみ実装されています（mount.cifs(8)のversオプションを参照）。",
+    "s0019": "関連項目",
+    "s0020": "smbinfo(1)",
+    "s0021": "著者",
+    "s0022": "Kenneth D'souza <kdsouza@redhat.com>",
+    "s0023": "これらのプログラムについての質問先としては、Linux CIFSメーリングリストが推奨されます。"
+  }
+}

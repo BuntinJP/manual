@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "c35e2f418ce9c0f4",
   "manual": "manuals/samba/samba/4.25.0/upstream/8/vfs_ceph_snapshots/7c7a0a2552b4",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.324Z",
   "segmentCount": 21,
   "draft": {
@@ -10,13 +10,55 @@
     "sourceSha256": "7c7a0a2552b413e8264fa5ae0bf177b2d996a7c164cd00d5df3c181eab1dba7f",
     "irSha256": "638a12a899b01890bcf95b932a549146fd25a0b14d79f31aef0ff97495ec0689",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "vfs_ceph_snapshots — CephFSスナップショットをシャドウコピーとして公開する",
+      "s0003": "書式",
+      "s0004": "[[p0]]",
+      "s0005": "説明",
+      "s0006": "このVFSモジュールは [[p0]] スイートの一部です。",
+      "s0007": "[[p0]] VFSモジュールは、Sambaで利用できるようCephFSスナップショットを公開します。有効にすると、Windowsエクスプローラーの「以前のバージョン」ダイアログなどのSMBクライアントは、スナップショットを列挙し、「timewarp」トークンを使ってアクセスできます。",
+      "s0008": "このモジュールは [[p0]] と組み合わせられますが、[[p2]] パラメーターのリストでは [[p1]] を先に記載する必要があります。",
+      "s0009": "このモジュールが正しく動作するには、CephFSがceph.snap.btime仮想拡張属性をサポートしている必要があります。このサポートは https://tracker.ceph.com/issues/38838 で追加されました。",
+      "s0010": "設定",
+      "s0011": "[[p0]] の上で使用する場合、[[p1]] はCephファイルシステム内の絶対パスを指し、ローカルにはマウントしないでください。",
+      "s0012": "[[p0]] は、[[p1]] を使わず、カーネルのCephFSでマウントした共有パスの上でも使用できます。この場合、Sambaの既定のVFSバックエンド [[p2]] を使用します。",
+      "s0013": "オプション",
+      "s0014": "ceph:snapdir = subdirectory",
+      "s0015": "CephFSの特別なスナップショットサブディレクトリ名を設定できます。このパラメーターを既定値「.snap」から変更してよいのは、ceph.confの [[p0]]、またはマウントオプション [[p1]] の設定を、対応する既定値「.snap」から変更した場合だけです。",
+      "s0016": "既定値: [[p0]]",
+      "s0017": "例: [[p0]]",
+      "s0018": "バージョン",
+      "s0019": "このマニュアルページはSambaスイートのバージョン4.25.0の一部です。",
+      "s0020": "著者",
+      "s0021": "オリジナルのSambaソフトウェアと関連ユーティリティはAndrew Tridgellが作成しました。現在Sambaは、Linuxカーネルと同様の方法で、Samba Teamによるオープンソースプロジェクトとして開発されています。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.324Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:26:42.206Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:26:42.328Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017, s0018, s0019, s0020, s0021; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:26:42.446Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:26:44.462Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

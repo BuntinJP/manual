@@ -1,0 +1,26 @@
+# smbspool_krb5_wrapper 翻訳・自己照合
+
+確認者: EMMA Samba batch 1担当（翻訳者による自己照合。独立レビューではない）
+
+対象: manuals/samba/samba/current/upstream/8/smbspool_krb5_wrapper/98e5a20fe35a
+版: current。保存原文が番号付きリリースを示さない current は他文書の4.25.0で置き換えていない。
+
+保存source、IR、request、glossary、source-observationsを確認し、全12セグメントを翻訳・意味照合した。Kerberos資格情報、CUPS smbバックエンド、root所有/0700、ユーザー切替後smbspool実行、直接呼出し禁止を照合。権限変更は資料の翻訳のみであり実操作なし。
+
+全原文/IR/manifest材料のハッシュ、ID集合、非空訳、全保護トークン、style対応を既存validateTranslationで検証成功。IRセグメントのトークン展開テキストが原文本文に存在することも照合した。構文・識別子・コマンド/設定例は原形を維持。著者共通段落の再利用は原文・文脈が一致する場合に限定。
+
+ライセンス: 独立したライセンス資料はこの保存ページに添付されていない。提供元や版から他資料のライセンスを推定付与せず、この未確認事項を記録する。原文・著者・出典は保持。
+キュー保存・受理・生成・commitは未実施。統合担当による最終受理と検証が必要。
+
+sourceSha256: 98e5a20fe35abe116ea7496b66733a328c6a2fff82f47bcdb9ccf69caea587a8
+irSha256: 09e9b5e69f008a75334b979532ceebeedaf8e032895e91ea014fb18f5c8d2085
+candidateFileSha256: 51fbcf6a83d79171b151fbe58f33655667fa2c28188a3435c86127ccb4099e81
+
+
+## キュー受理の最終バインド
+
+sourceSha256: 98e5a20fe35abe116ea7496b66733a328c6a2fff82f47bcdb9ccf69caea587a8
+irSha256: 09e9b5e69f008a75334b979532ceebeedaf8e032895e91ea014fb18f5c8d2085
+draftSha256: 51fbcf6a83d79171b151fbe58f33655667fa2c28188a3435c86127ccb4099e81
+
+上の「未受理」等は候補作成時点の記録。全文保存と本ハッシュの照合後にcompleteを実行して受理・生成を検証する。公開判断とは別。

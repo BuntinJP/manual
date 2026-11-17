@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "780e922e0dbdc0da",
   "manual": "manuals/samba/samba/4.25.0/upstream/8/vfs_btrfs/82bc47a323c5",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.304Z",
   "segmentCount": 22,
   "draft": {
@@ -10,13 +10,56 @@
     "sourceSha256": "82bc47a323c59f860df1a3adc0fb2f0e1d85f4a1deb7de9931cafacca2901891",
     "irSha256": "cc388e0a5b4cc7d26ce8fd44ecba8c2bfa2201bd765b9efb61f4b6be8eb73350",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "vfs_btrfs — Btrfsファイルシステムが提供する機能を利用する",
+      "s0003": "書式",
+      "s0004": "[[p0]]",
+      "s0005": "説明",
+      "s0006": "このVFSモジュールは [[p0]] スイートの一部です。",
+      "s0007": "[[p0]] VFSモジュールは、Sambaで利用できるようBtrfs固有の機能を公開します。",
+      "s0008": "Btrfsでは、クローンした範囲を使うことにより、複数のファイルがディスク上の同じデータを共有できます。SMBクライアントが（FSCTL_SRV_COPYCHUNK経由で）データの複製を要求すると、このモジュールは従来のコピーに必要な読み書きを行う代わりに、その要求をBtrfsの範囲クローンIOCTLへ対応付けます。これにより、ストレージ容量を節約し、ディスクI/Oを大幅に減らせます。",
+      "s0009": "このモジュールは、圧縮の取得/設定用fsctlを通じて、Btrfsのファイル単位の圧縮機能もSMBクライアントに公開します。",
+      "s0010": "BtrfsスナップショットはSambaのFSRVPサーバーで操作できます。このモジュールによるスナップショット操作は現在実験的とみなされているため、既定では無効です。この目的には、代わりに [[p0]] モジュールを推奨します。",
+      "s0011": "このモジュールは他のモジュールと積み重ねて使用できます。",
+      "s0012": "オプション",
+      "s0013": "btrfs: manipulate snapshots = [yes|no]",
+      "s0014": "[[p0]]yes[[p1]]に設定すると、対応するBtrfs IOCTLによるスナップショットの作成と削除を実験的にサポートします。既定値は [[p2]]no[[p3]] で、この場合、そうした要求は下位のVFSモジュールにそのまま渡されます。",
+      "s0015": "設定",
+      "s0016": "[[p0]] では、下位の共有パスがBtrfsサブボリュームである必要があります。",
+      "s0017": "このモジュールが提供する実験的なスナップショット操作機能を使用するには、明示的に有効にし、SambaのFSRVPサーバーを動作させる必要があります。",
+      "s0018": "[[p0]] モジュールを使うと、[[p1]] が作成したスナップショットを、ファイル/ディレクトリの「以前のバージョン」としてWindowsエクスプローラーに公開できます。",
+      "s0019": "バージョン",
+      "s0020": "このマニュアルページはSambaスイートのバージョン4.25.0の一部です。",
+      "s0021": "著者",
+      "s0022": "オリジナルのSambaソフトウェアと関連ユーティリティはAndrew Tridgellが作成しました。現在Sambaは、Linuxカーネルと同様の方法で、Samba Teamによるオープンソースプロジェクトとして開発されています。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.304Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:26:20.772Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:26:20.887Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017, s0018, s0019, s0020, s0021, s0022; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:26:21.021Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:26:23.989Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }
