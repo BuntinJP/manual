@@ -1,0 +1,24 @@
+# vfs_shadow_copy2 翻訳自己照合
+
+確認者: EMMA Samba batch 6担当。翻訳者による自己照合であり独立レビューではない。2026-11-17。
+対象: manuals/samba/samba/4.25.0/upstream/8/vfs_shadow_copy2/5ed87fa795b1
+全102セグメントの原文/IR/訳文を読み意味照合。kind/text/protectedが完全一致する受理済みSamba訳を21セグメント再利用し、周辺のオプション文脈と意味を今回も照合。再利用元は同ID-reuse.jsonに記録。
+絶対snapdirがsnapdirseverywhere/crossmountpointsを無効化する条件、basedir/snapsharepath非互換、desc既定/他値でsort無効、UTC/localtime、%lu/time_t、fixinodesと共有違反、BREのみを照合。バックアップ/アーカイブ/版管理の代替でない警告保持。
+
+source/manifest/request/glossary/source-observationsを確認。body全体からselectorの外に残るテキストを逆方向に調査した結果は空で、selector外節の欠落なし。本文の見出し・段落・例をIRと照合。原文pre 2、IR literal 2、原文table 0。原文全セグメントのトークン展開テキストがbodyに存在すること、全ID/非空訳/保護トークン/styleは既存validateTranslationで成功。原文と追加材料のSHA確認成功。
+版: 4.25.0。原文明記を尊重し別版仕様を補完しない。
+ライセンス: 独立したlicense資料なし。再配布許諾を推定付与せず未確認事項として記録。著者/出典は保持。
+sourceSha256: 5ed87fa795b175df332ea4feff174335a43c3e760fe7dbba983c455086da66f7
+irSha256: 5f6f300f0b1ed519f3d085205b5f4d9ebc250797dc7722844b8b5ffe4f821b6c
+candidateFileSha256: 9b62be5f0c08746504f60c4a267d7dee135e6bb22f0ef97946387005884e69a4
+
+queue/受理/生成/commit未実施。資料内のコマンドや認証操作は実行していない。
+
+
+## キュー受理の最終バインド
+
+sourceSha256: 5ed87fa795b175df332ea4feff174335a43c3e760fe7dbba983c455086da66f7
+irSha256: 5f6f300f0b1ed519f3d085205b5f4d9ebc250797dc7722844b8b5ffe4f821b6c
+draftSha256: 9b62be5f0c08746504f60c4a267d7dee135e6bb22f0ef97946387005884e69a4
+
+上の「未受理」等は候補作成時点の記録。全文保存と本ハッシュの照合後にcompleteを実行して受理・生成を検証する。公開判断とは別。

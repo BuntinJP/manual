@@ -1,0 +1,22 @@
+# 翻訳・原文自己照合
+
+EMMA diff-intake担当。2026-11-17。翻訳者による自己照合であり独立レビューではない。
+対象 manuals/openssl/openssl/4.1/online-series/1/openssl/fe0930677973
+全277セグメント。request/glossary/source/IRを全文照合。
+保存source.htmlのarticle全文と全277セグメント照合。ライセンスは本文末尾にApache-2.0許諾とURLあり、既存原文維持。リリースは4.1オンライン系列、パッチ版を推測しない。no-XXXはコマンド不在で成功0の逆転に注意して照合。TLS/DTLS条件、シード再利用禁止、プロバイダー初期化時に効く設定と後から効く設定の区別、廃止履歴を確認。DESCRIPTION用途一覧は原文pre/literalに保持、コマンド例もliteral維持。
+
+sourceSha256: fe09306779739f9220c1d8356abf9d6097c9604694ddf4e9d92f2ced16a6477a
+irSha256: 74411619d4274f60c8464b8ae55bee2161175442432465c05cac848adf081ffa
+
+queue/生成/commitなし。
+
+最終検証: validateTranslation全277セグメント成功。原文article選択による保護トークン復元照合は不一致0件。一般body選択ではarticle断片を読めないため、manifest指定のarticleへ合わせて再検証した。
+
+
+## キュー受理の最終バインド
+
+sourceSha256: fe09306779739f9220c1d8356abf9d6097c9604694ddf4e9d92f2ced16a6477a
+irSha256: 74411619d4274f60c8464b8ae55bee2161175442432465c05cac848adf081ffa
+draftSha256: 47d4945c0c0b900dc532be76eedd6c40adc7f3da56641b5859da777bef0415e9
+
+上の「未受理」等は候補作成時点の記録。全文保存と本ハッシュの照合後にcompleteを実行して受理・生成を検証する。公開判断とは別。

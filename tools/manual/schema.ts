@@ -87,14 +87,17 @@ export type Inline =
   | { tag: 'code' | 'em' | 'strong'; text: string }
   | { tag: 'link'; text: string; href: string }
   | { tag: 'br' }
-  | { tag: 'style-open' | 'style-close'; style: 'strong' | 'em' };
+  | { tag: 'style-open' | 'style-close'; style: 'strong' | 'em' | 'sup' | 'sub' };
 export const inlineSchema: z.ZodType<Inline> = z.discriminatedUnion('tag', [
   z.object({ tag: z.literal('text'), text: z.string() }).strict(),
   z.object({ tag: z.enum(['code', 'em', 'strong']), text: z.string() }).strict(),
   z.object({ tag: z.literal('link'), text: z.string(), href: z.string() }).strict(),
   z.object({ tag: z.literal('br') }).strict(),
   z
-    .object({ tag: z.enum(['style-open', 'style-close']), style: z.enum(['strong', 'em']) })
+    .object({
+      tag: z.enum(['style-open', 'style-close']),
+      style: z.enum(['strong', 'em', 'sup', 'sub']),
+    })
     .strict(),
 ]);
 export const segmentSchema = z

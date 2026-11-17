@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "dff4fbc58c2675a3",
   "manual": "manuals/samba/samba/current/upstream/8/cifsdd/7bf0c63b4e64",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.063Z",
   "segmentCount": 33,
   "draft": {
@@ -10,13 +10,67 @@
     "sourceSha256": "7bf0c63b4e6451d099c006320d2c478f7c614ab64d2050aa4e852bb9e6702071",
     "irSha256": "bddb388ae5659f66f5767a392919e504b0a58a5d7b028babac32b1a594d58a4c",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "cifsdd — SMB 経由でファイルを変換してコピーする",
+      "s0003": "書式",
+      "s0004": "[[p0]] [OPERAND]...",
+      "s0005": "[[p0]] OPTION",
+      "s0006": "説明",
+      "s0007": "このツールは [[p0]] スイートの一部です。",
+      "s0008": "オペランドに従って変換と整形を行いながら、ファイルをコピーします。",
+      "s0009": "bs=BYTES",
+      "s0010": "一度に最大 BYTES バイトを読み書きします（既定値: 4096）",
+      "s0011": "ibs=BYTES",
+      "s0012": "一度に最大 BYTES バイトを読み込みます（既定値: 4096）",
+      "s0013": "obs=BYTES",
+      "s0014": "一度に BYTES バイトを書き込みます（既定値: 4096）",
+      "s0015": "if=FILE",
+      "s0016": "標準入力の代わりに FILE から読み込みます",
+      "s0017": "of=FILE",
+      "s0018": "標準出力の代わりに FILE に書き込みます",
+      "s0019": "count=N",
+      "s0020": "入力ブロックを N 個だけコピーします",
+      "s0021": "seek=N",
+      "s0022": "出力の先頭で obs サイズのブロックを N 個飛ばします",
+      "s0023": "skip=N",
+      "s0024": "入力の先頭で ibs サイズのブロックを N 個読み飛ばします",
+      "s0025": "direct",
+      "s0026": "データに直接 I/O を使用します",
+      "s0027": "sync",
+      "s0028": "同期書き込みを使用します",
+      "s0029": "oplock",
+      "s0030": "入力ファイルと出力ファイルに oplock を取得します",
+      "s0031": "著者",
+      "s0032": "元の Samba ソフトウェアと関連ユーティリティーは Andrew Tridgell が作成しました。現在、Samba は Linux カーネルと同様の開発方法で、Samba Team によるオープンソースプロジェクトとして開発されています。",
+      "s0033": "cifsdd のマニュアルページは Andreas Schneider が作成しました。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.063Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:36:03.529Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:36:03.630Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017, s0018, s0019, s0020, s0021, s0022, s0023, s0024, s0025, s0026, s0027, s0028, s0029, s0030, s0031, s0032, s0033; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:36:03.737Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:36:05.614Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

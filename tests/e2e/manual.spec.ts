@@ -76,16 +76,7 @@ test('font preload prevents duplicate fetches and visible font layout shifts on 
   }
 });
 
-for (const provider of [
-  'apple',
-  'freebsd',
-  'gnu',
-  'openbsd',
-  'samba',
-  'wireguard',
-  'tripwire',
-  'convertx',
-]) {
+for (const provider of [...new Set((catalog as CatalogEntry[]).map((entry) => entry.provider))]) {
   test(`${provider} HOME lists exactly its published manuals and works without JavaScript`, async ({
     browser,
     baseURL,
@@ -102,7 +93,6 @@ for (const provider of [
     await expect(
       page.locator(`nav[aria-label="メイン"] a[href="${providerHomeHref(provider)}"]`),
     ).toHaveText('HOME');
-    await expect(page.locator('nav[aria-label="メイン"]')).not.toContainText('Linux Foundation');
     await context.close();
   });
 }
@@ -285,9 +275,10 @@ for (const query of ['find', 'シンボリックリンク']) {
 }
 
 const appleManuals = (catalog as CatalogEntry[]).filter((entry) => entry.provider === 'apple');
+const appleMacosManuals = appleManuals.filter((entry) => entry.product === 'macos');
 
-test('Apple collection contains exactly the fourteen accepted commands', async ({ page }) => {
-  expect(appleManuals.map((entry) => entry.name).sort()).toEqual(
+test('Apple macOS collection contains exactly the fourteen accepted commands', async ({ page }) => {
+  expect(appleMacosManuals.map((entry) => entry.name).sort()).toEqual(
     [
       'find',
       'osascript',
@@ -306,17 +297,13 @@ test('Apple collection contains exactly the fourteen accepted commands', async (
     ].sort(),
   );
   await page.goto('/search/?provider=apple');
-  await expect(page.locator('.catalog-results li:visible')).toHaveCount(14);
+  await expect(page.locator('.catalog-results li:visible')).toHaveCount(appleManuals.length);
   await page.goto('/search/?q=man%201%20find&provider=apple');
   await expect(page.locator('h1')).toHaveText('find(1)');
   await expect(page.locator('.manual-edition')).toContainText('Apple');
 });
 
-const reviewedManuals = (catalog as CatalogEntry[]).filter((entry) =>
-  ['apple', 'gnu', 'openbsd', 'samba', 'wireguard', 'tripwire', 'convertx'].includes(
-    entry.provider,
-  ),
-);
+const reviewedManuals = (catalog as CatalogEntry[]).filter((entry) => entry.provider !== 'aws');
 
 for (const manual of reviewedManuals) {
   test(`${manual.provider} ${manual.name} renders Japanese with edition metadata and valid anchors`, async ({

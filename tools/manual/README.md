@@ -79,6 +79,14 @@ all expected SHA-256 values, and run the pipeline checks before changing the pin
 Commands not listed in the snapshot require an explicit source decision rather
 than silent omission or reuse of an old public manual.
 
+Mathematical `<sup>` and `<sub>` structure is retained as balanced protected inline
+styles, including nested code identifiers; heading text uses explicit exponent/subscript
+notation rather than concatenating digits. Malformed HTML lists with meaningful
+non-`li` children retain those groups in document order as implicit items and emit
+an extraction warning. Always compare the entire original document backwards
+against the IR, not just the selected region: malformed source nesting can leave
+trailing sections outside an otherwise matching selector.
+
 Use `--origin URL` with a downloaded local file to retain its web provenance.
 Use `--selector '#content'` on ingest when automatic HTML extraction selects the
 wrong region. Automatic selection prefers `.manual-text`, preformatted man-page

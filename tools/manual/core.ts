@@ -398,6 +398,9 @@ export function renderMarkdown(manifest: Manifest, ir: ManualIR, translation: Tr
       return escapeHeading(
         text.replace(/\[\[p\d+\]\]/g, (token) => {
           const value = source.protected.find((item) => item.token === token)?.inline;
+          if (value?.tag === 'style-open' && value.style === 'sup') return '^(';
+          if (value?.tag === 'style-open' && value.style === 'sub') return '_(';
+          if (value?.tag === 'style-close' && ['sup', 'sub'].includes(value.style)) return ')';
           return value && 'text' in value ? value.text : ' ';
         }),
       );

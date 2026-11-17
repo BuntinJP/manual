@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "d5324645654d1ab4",
   "manual": "manuals/samba/samba/current/upstream/8/vfs_nfs4acl_xattr/1bf86d069286",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.365Z",
   "segmentCount": 37,
   "draft": {
@@ -10,13 +10,71 @@
     "sourceSha256": "1bf86d0692862240b51211a19767e1178bf0659faade16894abc1c5557bd3eef",
     "irSha256": "7a0f6d1c025f1d253abce25f0299aaa27d775733d8f6a636f3067059cae50e8e",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "vfs_nfs4acl_xattr — NTFS ACL を NFS4 エンコードの blob として拡張属性に保存する",
+      "s0003": "書式",
+      "s0004": "[[p0]]",
+      "s0005": "説明",
+      "s0006": "この VFS モジュールは [[p0]] スイートの一部です。",
+      "s0007": "[[p0]] VFS モジュールは、クライアントが期待する SMB ACL と、ファイルシステムが提供し得る NFSv4 ACL 実装との間の相互運用層を提供します。",
+      "s0008": "このモジュールはスタック可能です。",
+      "s0009": "オプション",
+      "s0010": "nfs4:mode = [ simple | special ] NFS4 ACL の特殊 ID (OWNER@ と GROUP@) の置換を制御します。simple モードの使用を推奨します。このモードでは、ファイル所有者とグループに関する継承しない ACL エントリーだけを特殊 ID に対応付けます。このモジュールは次の MODE を認識します。[[p0]] - 継承しない ACE に限って OWNER@ と GROUP@ の特殊 ID を使用します。[[p1]] - ファイル所有者とグループに関するすべての ACE で OWNER@ と GROUP@ の特殊 ID を使用します。nfs4:acedup = [dontcare|reject|ignore|merge] このパラメーターは、NFS4 ACL で重複する ACE が見つかった場合の Samba の処理を設定します。同じ ID に異なるビットを持つ重複 ACE を作成できるため、Windows クライアントが混乱することがあります。各値に対する Samba の動作は次のとおりです。[[p2]] - ACE をそのままコピーします。[[p3]] - ACL 設定操作を停止し、エラーで終了します。[[p4]] - 2 番目に一致する ACE を含めません。[[p5]] - 重複する 2 つの ACE の ace.flag フィールド同士、ace.mask フィールド同士のビット単位 OR を取り、1 つの ACE にまとめます。nfs4:chown = [yes|no] このパラメーターは、基盤ファイルシステムがサポートする chown を有効または無効にします。システムを安全でない状態にする可能性があるため、有効にする際は注意が必要です。ファイルシステムによっては chown を a) 譲渡、b) 奪取として許可します。危険とされるのは後者です。各値に対する Samba の動作は次のとおりです。[[p6]] - 基盤ファイルシステムがサポートする場合、chown を有効にします。[[p7]] - chown を無効にします。",
+      "s0011": "nfs4acl_xattr:encoding = [nfs|ndr|xdr]",
+      "s0012": "このパラメーターは、ACL blob で使用するマーシャリング形式と、その blob を保存する拡張属性の既定の名前を設定します。",
+      "s0013": "[[p0]]nfs[[p1]] に設定すると、NT ACL を NFS 4.0 または 4.1 互換の XDR エンコードで取得・保存します。既定では拡張属性 \"system.nfs4_acl\" を使用します。この設定は [[p2]]validate_mode[[p3]] も無効にします。",
+      "s0014": "[[p0]]ndr (default)[[p1]] に設定すると、NT ACL を POSIX 草案 NFSv4 互換の NDR エンコードで保存します。既定では拡張属性 \"security.nfs4acl_ndr\" を使用します。",
+      "s0015": "[[p0]]xdr[[p1]] に設定すると、NT ACL を NFS 4.1 RFC 5661 に似た形式で XDR エンコードして保存します。RFC 5661 との主な違いは、ユーザーとグループの識別子に文字列ではなく ID を使用することと、nfsace4 ごとに追加の属性があることです。このエンコードは既定で blob を拡張属性 \"security.nfs4acl_xdr\" に保存します。",
+      "s0016": "nfs4acl_xattr:version = [40|41]",
+      "s0017": "このパラメーターは NFS4 ACL のレベルを設定します。NT ACL の対応付けを完全にサポートするのは [[p0]]41[[p1]] のみであり、これを使用してください。既定値は [[p2]]41[[p3]] です。",
+      "s0018": "nfs4acl_xattr:default acl style = [posix|windows|everyone]",
+      "s0019": "このパラメーターは、ファイルまたはディレクトリーに ACL 拡張属性がない場合に合成する ACL の種類を決定します。",
+      "s0020": "[[p0]]posix[[p1]] に設定すると、ユーザー、グループ、その他の POSIX モード権限に基づいて ACL を合成し、完全な権限を持つ [[p2]]NT Authority\\SYSTEM[[p3]] の ACE を追加します。",
+      "s0021": "[[p0]]windows[[p1]] に設定すると、Windows と同じ方法で ACL を合成し、所有者と [[p2]]NT Authority\\SYSTEM[[p3]] の権限のみを含めます。",
+      "s0022": "[[p0]]everyone[[p1]] に設定すると、everyone (S-1-1-0) に完全な権限を付与する ACL を合成します。",
+      "s0023": "このオプションの既定値は [[p0]]everyone[[p1]] です。",
+      "s0024": "nfs4acl_xattr:xattr_name = STRING",
+      "s0025": "このパラメーターは、マーシャリングした ACL を保存する拡張属性の名前を設定します。",
+      "s0026": "既定値は [[p0]]nfs4acl_xattr:encoding[[p1]] の設定に依存します。",
+      "s0027": "nfs4acl_xattr:nfs4_id_numeric = yes|no (default: no)",
+      "s0028": "このパラメーターは、NFS4 サーバーがネットワーク上でユーザーとグループの識別子をどのようにエンコードするかをモジュールに伝えます。既定の設定では、モジュールは NFS4 RFC に従って user@domain としてエンコードされた識別子を想定します。",
+      "s0029": "[[p0]]yes[[p1]] に設定すると、モジュールは識別子を数値文字列として想定します。",
+      "s0030": "このオプションの既定値は [[p0]]no[[p1]] です。",
+      "s0031": "nfs4acl_xattr:validate_mode = yes|no",
+      "s0032": "このパラメーターは、ディレクトリーの POSIX モードを 0777、ファイルの POSIX モードを 0666 に設定することをモジュールが強制するかどうかを設定します。この制約を満たさない場合、ACL blob を含む xattr は破棄されます。",
+      "s0033": "既定値は [[p0]]nfs4acl_xattr:encoding[[p1]] の設定に依存します。[[p2]]nfs[[p3]] に設定されている場合、この設定は既定で無効、それ以外では有効です。",
+      "s0034": "使用例",
+      "s0035": "このモジュールを使用すると、次のように Samba 経由でディレクトリーを公開できます。",
+      "s0036": "著者",
+      "s0037": "元の Samba ソフトウェアと関連ユーティリティーは Andrew Tridgell が作成しました。現在、Samba は Linux カーネルと同様の開発方法で、Samba Team によるオープンソースプロジェクトとして開発されています。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.365Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:35:56.701Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:35:56.818Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017, s0018, s0019, s0020, s0021, s0022, s0023, s0024, s0025, s0026, s0027, s0028, s0029, s0030, s0031, s0032, s0033, s0034, s0035, s0036, s0037; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:35:56.995Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:35:59.103Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

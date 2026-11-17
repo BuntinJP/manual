@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "de5f29e3d939efd6",
   "manual": "manuals/paru/paru/2.2.0/upstream/8/paru/9d4b4a207db4",
-  "status": "pending",
+  "status": "blocked",
   "createdAt": "2026-10-31T17:22:41.748Z",
   "segmentCount": 352,
   "draft": {
@@ -17,6 +17,11 @@
       "at": "2026-10-31T17:22:41.748Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:37:54.129Z",
+      "action": "blocked",
+      "note": "operator: 原文roff78行目の先頭apostropheをmandocが制御行と解釈し説明が欠落。原文不変保存、欠落行を復元した派生HTML入力を別hash/leafとして登録する。"
     }
   ]
 }

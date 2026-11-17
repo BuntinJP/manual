@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "0ac3f4ecbd5ebd6a",
   "manual": "manuals/samba/samba/4.25.0/upstream/8/vfs_audit/2198df070351",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.302Z",
   "segmentCount": 31,
   "draft": {
@@ -10,13 +10,65 @@
     "sourceSha256": "2198df070351289937cc2bdf7f4ad2bcaf27b4584a8c176c83c28c05b38faeed",
     "irSha256": "caf194d1da142008488adf39ef0df4bb54604ba661f52e0d92e6f925ddbe2041",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "vfs_audit — 選択された Samba VFS 操作をシステムログに記録する",
+      "s0003": "書式",
+      "s0004": "[[p0]]",
+      "s0005": "説明",
+      "s0006": "この VFS モジュールは [[p0]] スイートの一部です。",
+      "s0007": "[[p0]] VFS モジュールは、[[p1]] を使用して選択されたクライアント操作をシステムログに記録します。",
+      "s0008": "次の Samba VFS 操作が記録されます。",
+      "s0009": "connect",
+      "s0010": "disconnect",
+      "s0011": "opendir",
+      "s0012": "mkdir",
+      "s0013": "rmdir",
+      "s0014": "open",
+      "s0015": "close",
+      "s0016": "rename",
+      "s0017": "unlink",
+      "s0018": "chmod",
+      "s0019": "fchmod",
+      "s0020": "このモジュールはスタック可能です。",
+      "s0021": "オプション",
+      "s0022": "audit:facility = FACILITY",
+      "s0023": "指定した [[p0]] ファシリティーにメッセージを記録します。",
+      "s0024": "audit:priority = PRIORITY",
+      "s0025": "指定した [[p0]] 優先度でメッセージを記録します。",
+      "s0026": "使用例",
+      "s0027": "LOCAL1 ファシリティーと NOTICE 優先度を使用して、すべての共有の操作を記録します。",
+      "s0028": "バージョン",
+      "s0029": "このマニュアルページは Samba スイートのバージョン 4.25.0 の一部です。",
+      "s0030": "著者",
+      "s0031": "元の Samba ソフトウェアと関連ユーティリティーは Andrew Tridgell が作成しました。現在、Samba は Linux カーネルと同様の開発方法で、Samba Team によるオープンソースプロジェクトとして開発されています。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.302Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:34:55.317Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:34:55.427Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017, s0018, s0019, s0020, s0021, s0022, s0023, s0024, s0025, s0026, s0027, s0028, s0029, s0030, s0031; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:34:55.548Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:34:57.337Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

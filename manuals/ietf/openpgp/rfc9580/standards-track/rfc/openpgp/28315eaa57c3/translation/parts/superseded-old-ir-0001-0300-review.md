@@ -1,0 +1,40 @@
+# RFC 9580 Japanese partial translation review: s0001–s0300
+
+Status: 300 requested segments translated; candidate only, not queue-accepted. Self-review by the translation worker, not independent review. Remaining s0301–s3079 are not translated by this artifact. LibreSSL was not started by this worker.
+
+## Actual review performed
+- Read repository AGENTS.md and tools/manual/README.md, source manifest, source-observations.md, request, glossary and relevant IR, plus preserved HTML source material. No additional provenance/licenses directory is present for this source. Identity is IETF OpenPGP RFC9580, Standards Track, July 2024, and is not a LibreSSL/OpenSSL document.
+- Translated and reread all 300 segment source/target pairs. Names, numeric-only entries, algorithm names, formulas, packet field identifiers, and protected-only entries remain literal where translation would change their identity; ordinary English prose was not left as placeholder translation.
+- Reviewed encryption/decryption/signature sequence, public versus secret key, per-message session keys, compression order, MPI zero/bit-length requirements, time epoch, S2K dictionary resistance, octet count versus iteration count, Argon2 constraints, v4/v6 generation/rejection distinctions, length boundaries (191/192/223/224/255/8383/512), legacy indeterminate-length rules, and critical versus non-critical packet rejection. MUST/SHOULD/MAY strengths and negations remain explicit.
+- The generic glossary entry primary=一次式 is not blindly applied to cryptographic key terminology. Code-like expressions are retained verbatim, including the encryption table.
+- Existing validateTranslation with IR segments sliced to 300 and full request IR hash succeeded. It checks coverage/token/style binding, not semantic accuracy.
+
+## Entire-source extraction audit (backwards, preliminary)
+A Python stdlib HTMLParser pass scanned all non-script/style/head source text nodes against the reconstructed complete IR segment text plus protected inline text and literal blocks. It found zero unmatched nonempty source text nodes. Source structure counts: 31 tables, 148 pre blocks, 2 h1, 25 h2, 97 h3, 87 h4, 93 h5, 3 h6, and 20 superscript elements. The unmatched-node result is retained in rfc9580-extraction-unmatched.json. This entire-source scan includes notes/tables/examples, not just the initial translated region, but text-node presence does not prove correct structure or semantics.
+
+**Extraction defect observed: superscripts are flattened without an exponent marker.** Direct HTML inspection confirms s0169 must denote 2^encoded_m and 2^31, not concatenated 2encoded_m or 231; s0172 must denote m=2^21, not 221. Candidate Japanese explicitly uses ^ notation to retain actual source semantics, while source and IR are untouched. All 20 source sup elements were listed and inspected: later areas include RSA m^e and m^d, Elgamal g^k and y^k, 2^32 modulo, DSA/Elgamal g^x, Curve25519Legacy bounds 2^254 and 2^255, chunk size 2^22, and algorithm-summary table formulas. Parent must ensure those later translations and/or extraction repair preserve powers before final acceptance. Source subscript log base 2 in the Argon2 formula flattens to log2, which is intelligible and preserved as log2.
+
+The complete document is NOT semantically reviewed or ready for acceptance. Remaining formula/structural inspection should accompany later translation ranges. If the parent repairs IR, these candidates require deliberate rebinding/revalidation, not blind acceptance against the old hash.
+
+## Rights observations
+The source copyright notice and BCP 78/IETF Trust provisions are translated in s0038–s0041, including code-component Revised BSD wording and the pre-2008 material qualification with its translation exception. These are observations, not a gate on local translation. Original source bytes, parser artifacts, and metadata were not edited.
+
+## Full-source superscript inventory (20 instances)
+
+- Source `section-3.7.1.4-5`; superscript content: `encoded_m`, `31`. Flattened paragraph/cell: The memory size m is 2encoded_m kibibytes (KiB) of RAM. The encoded memory size MUST be a value from 3+ceil(log2(p)) to 31, such that the decoded memory size m is a value from 8*p to 231. Note that memory-hardness size is indicated in KiB, not octets.¶
+- Source `section-3.7.1.4-8`; superscript content: `21`. Flattened paragraph/cell: As an example, with the first recommended option (t=1, p=4, m=221), the full S2K Specifier would be:¶
+- Source `section-5.1.3-1.1`; superscript content: `e`. Flattened paragraph/cell: MPI of RSA-encrypted value me mod n.¶
+- Source `section-5.1.4-1.1.1`; superscript content: `k`. Flattened paragraph/cell: MPI of Elgamal (Diffie-Hellman) value gk mod p.¶
+- Source `section-5.1.4-1.2.1`; superscript content: `k`. Flattened paragraph/cell: MPI of Elgamal (Diffie-Hellman) value m * yk mod p.¶
+- Source `section-5.2.2-5.1.1`; superscript content: `d`. Flattened paragraph/cell: MPI of RSA signature value md mod n.¶
+- Source `section-5.2.3.1-1.1.1`; superscript content: `d`. Flattened paragraph/cell: MPI of RSA signature value md mod n.¶
+- Source `section-5.2.4-9.2.2.9.1`; superscript content: `32`. Flattened paragraph/cell: a number representing the length (in octets) of the hashed data from the Signature packet through the hashed subpacket body. This a 4-octet big-endian unsigned integer of the length modulo 232.¶
+- Source `section-5.5.5.2-2.4.1`; superscript content: `x`. Flattened paragraph/cell: MPI of DSA public key value y (= gx mod p where x is secret).¶
+- Source `section-5.5.5.3-2.3.1`; superscript content: `x`. Flattened paragraph/cell: MPI of Elgamal public key value y (= gx mod p where x is secret).¶
+- Source `section-5.5.5.6.1.1-2`; superscript content: `254`, `255`. Flattened paragraph/cell: Note also that the integer for a Curve25519Legacy secret key for OpenPGP MUST have the appropriate form; that is, it MUST be divisible by 8, MUST be at least 2254, and MUST be less than 2255. The length of this MPI in bits is by definition always 255, so the two leading octets of the MPI will always be 00 FF, and reversing the following 32 octets from the wire will produce the "native" form.¶
+- Source `section-5.13.2-7`; superscript content: `22`. Flattened paragraph/cell: For each chunk, the AEAD construction is given the Packet Type ID encoded in OpenPGP format (bits 7 and 6 are set, and bits 5-0 carry the Packet Type ID), version number, cipher algorithm ID, AEAD algorithm ID, and chunk size octet as additional data. For example, the additional data of the first chunk using EAX and AES-128 with a chunk size of 222 octets consists of the octets 0xD2, 0x02, 0x07, 0x01, and 0x10.¶
+- Source `(table cell without id)`; superscript content: `d`. Flattened paragraph/cell: MPI(md mod n) [Section 5.2.3.1]
+- Source `(table cell without id)`; superscript content: `e`. Flattened paragraph/cell: MPI(me mod n) [Section 5.1.3]
+- Source `(table cell without id)`; superscript content: `e`. Flattened paragraph/cell: MPI(me mod n) [Section 5.1.3]
+- Source `(table cell without id)`; superscript content: `d`. Flattened paragraph/cell: MPI(md mod n) [Section 5.2.3.1]
+- Source `(table cell without id)`; superscript content: `k`, `k`. Flattened paragraph/cell: MPI(gk mod p), MPI(m * yk mod p) [Section 5.1.4]

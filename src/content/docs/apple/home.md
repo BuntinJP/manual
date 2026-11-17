@@ -14,7 +14,11 @@ macOS と Apple の開発ツールの日本語マニュアルです。対象の 
 
 [この提供元のマニュアルを検索する](/search/?provider=apple)
 
-収録済み: 14 件
+収録済み: 15 件
+
+## jq / 1.7.1-apple / macos-27.0.1-26a434
+
+- [jq(1)](/manuals/apple/jq/1.7.1-apple/macos-27.0.1-26a434/1/jq/db8f6cd37037/)
 
 ## macos / 26.6.2 / 25g83
 

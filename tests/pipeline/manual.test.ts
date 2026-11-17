@@ -85,6 +85,48 @@ describe('semantic import and literal preservation', () => {
     expect(ir.segments.some((s) => s.text === 'Display files.')).toBe(true);
     expect(ir.segments.some((s) => s.text.includes('Ignore site'))).toBe(false);
   });
+  test('keeps malformed list children and nested command menus instead of silently dropping them', () => {
+    const html =
+      '<main><ul><li><code>--edit-key</code> Open the menu.</li><ul><li><samp>uid n</samp> Toggle selection.</li></ul><samp>clean</samp> Compact signatures.<script>DROP ME</script><li>After menu.</li></ul></main>';
+    const ir = parseManualHtml(html, manifest.source.sha256, manifest.source.origin);
+    const output = renderMarkdown(manifest, ir, translation(ir));
+    expect(output).toContain('Toggle selection.');
+    expect(output).toContain('<code>uid n</code>');
+    expect(output).toContain('Compact signatures.');
+    expect(output).toContain('<code>clean</code>');
+    expect(output).toContain('After menu.');
+    expect(output).not.toContain('DROP ME');
+    expect(output.indexOf('Toggle selection.')).toBeLessThan(output.indexOf('Compact signatures.'));
+    expect(output.indexOf('Compact signatures.')).toBeLessThan(output.indexOf('After menu.'));
+    expect(ir.extraction.warnings).toEqual([
+      'Recovered 1 non-LI list-content groups in document order from malformed source HTML.',
+    ]);
+  });
+  test('preserves mathematical superscripts and subscripts without flattening exponents', () => {
+    const html =
+      '<main><h1>Limit 2<sup>31</sup></h1><p>m = 2<sup><code>encoded_m</code></sup>; 2<sup>31</sup>; log<sub>2</sub>(p); g<sup>x</sup>.</p></main>';
+    const ir = parseManualHtml(html, manifest.source.sha256, manifest.source.origin);
+    const prose = ir.segments[1];
+    expect(prose.text).not.toContain('231');
+    expect(prose.text).not.toContain('log2');
+    expect(prose.protected.filter((p) => p.inline.tag === 'style-open')).toHaveLength(4);
+    const candidate = validateTranslation(ir, 'b'.repeat(64), translation(ir));
+    const output = renderMarkdown(manifest, ir, candidate);
+    expect(output).toContain('Limit 2^\\(31\\)');
+    expect(output).toContain('2<sup><code>encoded_m</code></sup>');
+    expect(output).toContain('2<sup>31</sup>');
+    expect(output).toContain('log<sub>2</sub>(p)');
+    expect(output).toContain('g<sup>x</sup>');
+    const bad = structuredClone(candidate);
+    const closing = prose.protected.find((p) => p.inline.tag === 'style-close');
+    const opening = prose.protected.find((p) => p.inline.tag === 'style-open');
+    if (!closing || !opening) throw new Error('Missing math tokens');
+    bad.segments[prose.id] = bad.segments[prose.id]
+      .replace(opening.token, 'PLACEHOLDER')
+      .replace(closing.token, opening.token)
+      .replace('PLACEHOLDER', closing.token);
+    expect(() => validateTranslation(ir, 'b'.repeat(64), bad)).toThrow('Unbalanced inline style');
+  });
   test('preserves tables inside GitHub markdown accessibility wrappers without active content', () => {
     const html =
       '<article class="markdown-body"><p>Before.</p><markdown-accessiblity-table><table><thead><tr><th>Option</th><th>Default</th></tr></thead><tbody><tr><td><code>MODE</code></td><td>false</td></tr></tbody></table><script>DROP ME</script><pre>tool --flag\n  literal</pre></markdown-accessiblity-table><p>After.</p></article>';
