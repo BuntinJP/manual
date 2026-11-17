@@ -1,4 +1,10 @@
 import { expect, test } from '@playwright/test';
+import { readFileSync } from 'node:fs';
+import type { CatalogEntry } from '../../src/lib/catalog';
+import { isManPage } from '../../src/lib/os-coverage';
+const catalog = JSON.parse(
+  readFileSync(new URL('../../src/data/manual-catalog.json', import.meta.url), 'utf8'),
+);
 
 test('OS table filters, empty results and repeated reset preserve links and full table', async ({
   page,
@@ -40,4 +46,45 @@ test('OS table remains readable without JavaScript', async ({ browser, baseURL }
   await expect(page.locator('manual-os-coverage tbody tr').first()).toBeVisible();
   await expect(page.locator('manual-os-coverage td a').first()).toBeVisible();
   await context.close();
+});
+
+// Runs standalone with no imported Linux man pages and against the combined
+// content tree once those independent source additions are present.
+test('formal GNU and explicit Linux BSD lineage link exactly the imported man editions', async ({
+  page,
+}) => {
+  await page.goto('/os-support/');
+  const entries = (catalog as CatalogEntry[]).filter(isManPage);
+  const expected = [
+    ['gnu', entries.filter((entry) => entry.provider === 'gnu')],
+    [
+      'linux-bsd',
+      entries.filter(
+        (entry) =>
+          entry.provider === 'linux-bsd' ||
+          (entry.provider === 'util-linux' &&
+            entry.product === 'bsd-utils' &&
+            entry.variant === 'linux-upstream'),
+      ),
+    ],
+  ] as const;
+  for (const [column, manuals] of expected) {
+    const cells = page.locator(`manual-os-coverage td[data-os="${column}"]`);
+    await expect(cells.locator('a[href^="/manuals/"]')).toHaveCount(manuals.length);
+    for (const manual of manuals) {
+      await expect(cells.locator(`a[href="${manual.href}"]`)).toBeVisible();
+    }
+  }
+  await expect(
+    page.locator('manual-os-coverage td[data-os="aix"][data-status="translated"]'),
+  ).toHaveCount(
+    new Set(
+      entries
+        .filter(
+          (entry) =>
+            entry.provider === 'aix' || (entry.provider === 'ibm' && entry.product === 'aix'),
+        )
+        .map((entry) => entry.name),
+    ).size,
+  );
 });

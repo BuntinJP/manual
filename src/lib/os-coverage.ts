@@ -11,6 +11,7 @@ export const osColumns = [
 
 type Manual = Pick<CatalogEntry, 'provider' | 'name' | 'section' | 'sourceFormat' | 'sourceUrl'> & {
   product?: string;
+  variant?: string;
 };
 export function isManPage(entry: Manual): boolean {
   return (
@@ -40,6 +41,10 @@ export function buildOsCoverage(
     cells: osColumns.map(({ id }) => {
       const matchesColumn = (entry: Manual) =>
         entry.provider === id ||
+        (id === 'linux-bsd' &&
+          entry.provider === 'util-linux' &&
+          entry.product === 'bsd-utils' &&
+          entry.variant === 'linux-upstream') ||
         (id === 'aix' && entry.provider === 'ibm' && entry.product === 'aix');
       const translations = catalog
         .filter((entry) => isManPage(entry) && entry.name === name && matchesColumn(entry))

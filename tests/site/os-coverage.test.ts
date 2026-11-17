@@ -50,3 +50,29 @@ test('distinguishes translation, untranslated original and unregistered source w
     true,
   );
 });
+
+test('classifies only explicitly identified Linux BSD-derived formal manuals', () => {
+  const col = manual({
+    name: 'col',
+    provider: 'util-linux',
+    product: 'bsd-utils',
+    variant: 'linux-upstream',
+  });
+  const cell = (entries: CatalogEntry[], sources: CatalogEntry[] = []) =>
+    buildOsCoverage(entries, sources, ['col'])[0].cells.find((item) => item.id === 'linux-bsd');
+  expect(cell([col])?.translations).toEqual([col]);
+  expect(cell([], [col])?.sourcePresent).toBe(true);
+  for (const overrides of [
+    { product: 'util-linux' },
+    { variant: 'default' },
+    { provider: 'freebsd' },
+    { provider: 'openbsd' },
+    { provider: 'apple' },
+    { section: 'cli' },
+    { sourceFormat: 'html', sourceUrl: 'https://example.com/col-guide' },
+  ]) {
+    const other = { ...col, ...overrides } as CatalogEntry;
+    expect(cell([other], [other])?.translations).toHaveLength(0);
+    expect(cell([other], [other])?.sourcePresent).toBe(false);
+  }
+});
