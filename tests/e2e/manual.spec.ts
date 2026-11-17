@@ -303,8 +303,12 @@ test('Apple collection contains exactly the fourteen accepted commands', async (
   await expect(page.locator('.manual-edition')).toContainText('Apple');
 });
 
-for (const manual of appleManuals) {
-  test(`Apple ${manual.name} renders Japanese with edition metadata and valid anchors`, async ({
+const reviewedManuals = (catalog as CatalogEntry[]).filter((entry) =>
+  ['apple', 'gnu', 'openbsd'].includes(entry.provider),
+);
+
+for (const manual of reviewedManuals) {
+  test(`${manual.provider} ${manual.name} renders Japanese with edition metadata and valid anchors`, async ({
     page,
   }) => {
     await page.setViewportSize({ width: 390, height: 844 });

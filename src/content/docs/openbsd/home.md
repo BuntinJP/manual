@@ -14,9 +14,10 @@ OpenBSD の日本語マニュアルです。リリースと配布差分ごとに
 
 [この提供元のマニュアルを検索する](/search/?provider=openbsd)
 
-収録済み: 2 件
+収録済み: 3 件
 
 ## base / current / default
 
 - [cut(1)](/manuals/openbsd/base/current/default/1/cut/37a974b9d53e/)
 - [paste(1)](/manuals/openbsd/base/current/default/1/paste/e5ddcf0a7b1d/)
+- [tmux(1)](/manuals/openbsd/base/current/default/1/tmux/258757e0d0dc/)
