@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "36a621fda4aca048",
   "manual": "manuals/samba/samba/4.25.0/upstream/8/vfs_ceph_rgw/fa5e7078b301",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.319Z",
   "segmentCount": 51,
   "draft": {
@@ -10,13 +10,85 @@
     "sourceSha256": "fa5e7078b3015fab5e4fb6d352f8549210a401a0cb2c4d0d09bc2ec08880bd11",
     "irSha256": "7a557616299315fb53e99003270092659a0970da16f824ec0d79b59f1594fe10",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "vfs_ceph_rgw — ceph librgw が提供するオブジェクトストア上で SMB を使用する",
+      "s0003": "書式",
+      "s0004": "[[p0]]",
+      "s0005": "説明",
+      "s0006": "この VFS モジュールは [[p0]] スイートの一部です。",
+      "s0007": "[[p0]] VFS モジュールは、ceph-rgw がホストする S3 バケットをユーザーに公開します。",
+      "s0008": "Ceph は、優れた性能、信頼性、拡張性を提供するよう設計された分散ネットワークファイルシステムです。librgw は、アプリケーションが POSIX に似たインターフェースを通じてオブジェクトストア、すなわち S3 バケットにアクセスできる共有ライブラリーです。",
+      "s0009": "このモジュールは他のモジュールと組み合わせられません。librgw はディレクトリの名前変更をサポートしません。そのため、このモジュールは内部的に [[p0]] を設定し、Samba がディレクトリ作成時に一時的な名前を使ってから指定名へ変更することを防ぎます。librgw はランダム書き込みをサポートしないため、非同期 I/O 書き込みメソッドは実装していません。このため、内部的に [[p1]] を設定し、Samba が常に同期書き込みメソッドを使用するようにします。",
+      "s0010": "設定",
+      "s0011": "[[p0]] では、基となる共有パスが S3 バケット名である必要があります。",
+      "s0012": "[[p0]] はファイルシステムのマウントを必要としないため、共有の [[p1]] はバケットのルートとして扱われ、'/' に設定する必要があります。それ以外のパスは無視されます。ctdb が Samba を管理する ctdb クラスター環境では、[[p2]] を設定してローカル共有パスの検査を無効にしなければ、ctdb は正常な状態になりません。",
+      "s0013": "グローバルオプション",
+      "s0014": "次のオプションは smb.conf の global セクションに設定する必要があり、共有単位で設定しても効果がありません。librgw はプロセスごとに1回だけ初期化できるため、これらのパラメーターはすべての共有で共通です。",
+      "s0015": "ceph_rgw:id = name",
+      "s0016": "librgw が使う Ceph クライアント名のクライアントID部分です。（必須）",
+      "s0017": "例: ceph_rgw:id = admin",
+      "s0018": "ceph_rgw:config_file = path",
+      "s0019": "使用する Ceph 設定を指定できます。既定値: /etc/ceph/ceph.conf",
+      "s0020": "例: ceph_rgw:config_file = /etc/ceph/ceph.conf",
+      "s0021": "ceph_rgw:keyring_file = path",
+      "s0022": "使用する Ceph キーリングファイルを指定できます。（必須）",
+      "s0023": "例: ceph_rgw:keyring_file = /etc/ceph/ceph.client.admin.keyring",
+      "s0024": "ceph_rgw:debug = boolean",
+      "s0025": "librgw のデバッグログを制御します。既定値: off",
+      "s0026": "例: ceph_rgw:debug = on",
+      "s0027": "オプション",
+      "s0028": "次のオプションは共有単位で設定できます。",
+      "s0029": "ceph_rgw:user_id = name",
+      "s0030": "バケット所有者のユーザーIDです。（必須）",
+      "s0031": "例: ceph_rgw:user_id = samba",
+      "s0032": "ceph_rgw:access_key = key",
+      "s0033": "user_id オプションで指定したバケット所有者のアクセスキーです。（必須）",
+      "s0034": "例: ceph_rgw:access_key = samba-key",
+      "s0035": "ceph_rgw:secret_access_key = key",
+      "s0036": "user_id オプションで指定したバケット所有者のシークレットアクセスキーです。（必須）",
+      "s0037": "例: ceph_rgw:secret_access_key = samba-secret-key",
+      "s0038": "ceph_rgw:bucket = bucket name",
+      "s0039": "共有として公開するバケット名です。（必須）",
+      "s0040": "例: ceph_rgw:bucket = video4k",
+      "s0041": "設定例",
+      "s0042": "このモジュールを使うよう Samba を設定するには、動作する Ceph クラスターへのアクセスが必要です。次の例は、既存のユーザー、バケット、バケット内のオブジェクトを持つ既存の Ceph RGW オブジェクトストアに対する、動作可能な Samba 設定を示します。",
+      "s0043": "librgw-devel パッケージをインストールします。",
+      "s0044": "Samba のソースを複製します。",
+      "s0045": "通常の設定オプションに加え、\"[[p0]]\" オプションを使って Samba のビルドを設定し、コンパイルしてインストールします。",
+      "s0046": "smb.conf を編集して次の共有定義を追加します。注: path は '/' に設定する必要があり、それ以外のパスは無視されます。",
+      "s0047": "Samba サーバーを起動します。",
+      "s0048": "バージョン",
+      "s0049": "このマニュアルページは Samba スイートのバージョン4.25.0の一部です。",
+      "s0050": "著者",
+      "s0051": "オリジナルの Samba ソフトウェアと関連ユーティリティは Andrew Tridgell が作成しました。現在、Samba は Linux カーネルと同様の方法で、Samba Team によるオープンソースプロジェクトとして開発されています。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.319Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:35:11.303Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:35:11.405Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017, s0018, s0019, s0020, s0021, s0022, s0023, s0024, s0025, s0026, s0027, s0028, s0029, s0030, s0031, s0032, s0033, s0034, s0035, s0036, s0037, s0038, s0039, s0040, s0041, s0042, s0043, s0044, s0045, s0046, s0047, s0048, s0049, s0050, s0051; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:35:11.507Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:35:13.168Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

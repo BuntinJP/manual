@@ -14,7 +14,12 @@ FreeBSD の日本語マニュアルです。基本システムと Ports、リリ
 
 [この提供元のマニュアルを検索する](/search/?provider=freebsd)
 
-収録済み: 2 件
+収録済み: 4 件
+
+## base / 15.1-release / 15.1-release-and-ports.quarterly
+
+- [cut(1)](/manuals/freebsd/base/15.1-release/15.1-release-and-ports.quarterly/1/cut/4dde8d19c470/)
+- [paste(1)](/manuals/freebsd/base/15.1-release/15.1-release-and-ports.quarterly/1/paste/0dcb792cbc9f/)
 
 ## base / 15.1-release / default
 

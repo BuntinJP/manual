@@ -1,0 +1,26 @@
+# idmap_tdb 翻訳・自己照合
+
+確認者: EMMA Samba batch 1担当（翻訳者による自己照合。独立レビューではない）
+
+対象: manuals/samba/samba/current/upstream/8/idmap_tdb/9d9a4cee46f2
+版: current。保存原文が番号付きリリースを示さない current は他文書の4.25.0で置き換えていない。
+
+保存source、IR、request、glossary、source-observationsを確認し、全12セグメントを翻訳・意味照合した。既定tdb、読み取り専用バックエンドとの差、UID/GID新規割り当て、管理範囲と例を照合。
+
+全原文/IR/manifest材料のハッシュ、ID集合、非空訳、全保護トークン、style対応を既存validateTranslationで検証成功。IRセグメントのトークン展開テキストが原文本文に存在することも照合した。構文・識別子・コマンド/設定例は原形を維持。著者共通段落の再利用は原文・文脈が一致する場合に限定。
+
+ライセンス: 独立したライセンス資料はこの保存ページに添付されていない。提供元や版から他資料のライセンスを推定付与せず、この未確認事項を記録する。原文・著者・出典は保持。
+キュー保存・受理・生成・commitは未実施。統合担当による最終受理と検証が必要。
+
+sourceSha256: 9d9a4cee46f282ba969d8d2274bb79c521a24ec10ec12487b6513dd2433f9acc
+irSha256: dcced727abbdbdfdae6ef4c72dd0633529b45382fb0365facf02ca09f8b71d5c
+candidateFileSha256: cdaa6c1f6c69c08a8f1899d9dfdda6b88f17504c83bc15456da0ba36970adcc0
+
+
+## キュー受理の最終バインド
+
+sourceSha256: 9d9a4cee46f282ba969d8d2274bb79c521a24ec10ec12487b6513dd2433f9acc
+irSha256: dcced727abbdbdfdae6ef4c72dd0633529b45382fb0365facf02ca09f8b71d5c
+draftSha256: cdaa6c1f6c69c08a8f1899d9dfdda6b88f17504c83bc15456da0ba36970adcc0
+
+上の「未受理」等は候補作成時点の記録。全文保存と本ハッシュの照合後にcompleteを実行して受理・生成を検証する。公開判断とは別。

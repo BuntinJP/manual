@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "db66b553545ad91a",
   "manual": "manuals/samba/samba/current/upstream/8/vfs_streams_depot/e4e515360359",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.391Z",
   "segmentCount": 17,
   "draft": {
@@ -10,13 +10,51 @@
     "sourceSha256": "e4e515360359ec87d56a2d2b68a7b665da3bb58997332742b3a151585d13c32d",
     "irSha256": "e0360295e5fca1dadc0650d89c8afe6242aeb0d1a7993ad5069a85c9edcfca7b",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "vfs_streams_depot — 代替データストリームを中央ディレクトリーに保存する実験的モジュール",
+      "s0003": "書式",
+      "s0004": "[[p0]]",
+      "s0005": "説明",
+      "s0006": "この [[p0]]実験的[[p1]] VFS モジュールは [[p2]] スイートの一部です。",
+      "s0007": "[[p0]] は、NTFS の代替データストリームをファイルシステムに保存できるようにします。通常の POSIX ファイルシステムは、1 ファイルにつき複数のデータストリームを持つ概念をサポートしないため、streams_depot モジュールは別のディレクトリー内のファイルにデータを保存します。",
+      "s0008": "オプション",
+      "s0009": "streams_depot:directory = PATH",
+      "s0010": "代替データストリームを保存するディレクトリーのパスです。既定は sharepath/.streams です。",
+      "s0011": "streams_depot:delete_lost = [ yes | no ]",
+      "s0012": "新しく作成したファイルに対応するデータストリームディレクトリーがすでに存在する場合、そのストリームディレクトリーは random() を用いた \"lost-[[p0]]u\" という名前に変更されます。このオプションを有効にすると、失われたストリームディレクトリーは名前変更されずに削除されます。",
+      "s0013": "[[p0]] - 失われたストリームを、random() を用いた \"lost-[[p1]]u\" という名前に変更します。",
+      "s0014": "[[p0]] - 失われたストリームを削除します。",
+      "s0015": "使用例",
+      "s0016": "著者",
+      "s0017": "元の Samba ソフトウェアと関連ユーティリティーは Andrew Tridgell が作成しました。現在、Samba は Linux カーネルと同様の開発方法で、Samba Team によるオープンソースプロジェクトとして開発されています。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.391Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:23:24.959Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:23:25.069Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:23:25.185Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:23:27.057Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

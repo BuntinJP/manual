@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "b81a2a48846d8ca8",
   "manual": "manuals/samba/samba/current/upstream/8/smb_prometheus_endpoint/ba63648a7517",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.171Z",
   "segmentCount": 16,
   "draft": {
@@ -10,13 +10,50 @@
     "sourceSha256": "ba63648a7517bd1bf5f9d5e02fe8efb6e522cbff95499db1ac98927541f5c933",
     "irSha256": "8cbda2541853e2324d49c88b683dbe1922e5ffa3e523e5a4eba8e22332d475eb",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "smb_prometheus_endpoint — Samba のプロファイリング情報を Prometheus から利用できるようにする",
+      "s0003": "書式",
+      "s0004": "[[p0]] [[[p1]] ADDRESS] [[[p2]] PORT] [smbprofile.tdb]",
+      "s0005": "説明",
+      "s0006": "このツールは [[p0]] スイートの一部です。",
+      "s0007": "Samba のプロファイリング情報を HTTP 経由で Prometheus から利用できるようにします。",
+      "s0008": "オプション",
+      "s0009": "[[p0]] ADDRESS",
+      "s0010": "[[p0]] が待ち受けるアドレスです。既定は 127.0.0.1 です。",
+      "s0011": "[[p0]] PORT",
+      "s0012": "[[p0]] が待ち受けるポートです。既定のポートは 9922 です。",
+      "s0013": "smbprofile.tdb",
+      "s0014": "Samba が統計情報を保存する、システムの smbprofile.tdb のフルパスです。",
+      "s0015": "著者",
+      "s0016": "元の Samba ソフトウェアと関連ユーティリティーは Andrew Tridgell が作成しました。現在、Samba は Linux カーネルと同様の開発方法で、Samba Team によるオープンソースプロジェクトとして開発されています。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.171Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:23:17.825Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:23:17.937Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:23:18.103Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:23:20.188Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

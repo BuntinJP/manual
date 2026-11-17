@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "ddf0958babeacc07",
   "manual": "manuals/samba/cifs-utils/7.9/linux/1/getcifsacl/d40ac12d7598",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:22:41.489Z",
   "segmentCount": 25,
   "draft": {
@@ -10,13 +10,59 @@
     "sourceSha256": "d40ac12d7598d703d21f1748e963e0afdadaf0ab8d42a9bbda63534587d1bc7a",
     "irSha256": "0d8dbcac06050b207382d90dc433f7ebdea194ca6c707730b597852b1fe7253a",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "getcifsacl",
+      "s0002": "Common Internet File System（CIFS）のセキュリティ記述子内の ACL を表示するユーザー空間ヘルパー",
+      "s0003": "マニュアルのセクション:",
+      "s0004": "1",
+      "s0005": "書式",
+      "s0006": "getcifsacl [[[p0]]|[[p1]]] {ファイルシステムオブジェクト}",
+      "s0007": "説明",
+      "s0008": "このツールは cifs-utils スイートの一部です。",
+      "s0009": "getcifsacl は Linux CIFS クライアントファイルシステム用のユーザー空間ヘルパープログラムです。ファイルシステムオブジェクトの DACL と SACL を含むセキュリティ記述子を表示するためのものです。",
+      "s0010": "このプログラムはプラグインを使って SID をユーザー名とグループ名に対応付けます。[[p0]]@pluginpath@[[p1]] は、使用する正しいプラグインを指すシンボリックリンクである必要があります。",
+      "s0011": "ACE の SID、タイプ、フラグ、マスクなどのフィールドは / で区切って表示します。タイプ、フラグ、マスクの数値は16進数形式で表示します。",
+      "s0012": "オプション",
+      "s0013": "[[p0]]",
+      "s0014": "バージョン番号を表示して終了します。",
+      "s0015": "[[p0]]",
+      "s0016": "セキュリティ記述子を raw モードで表示します。タイプやフラグなどの値は16進数形式で表示し、SID は名前に変換しません。",
+      "s0017": "[[p0]]",
+      "s0018": "すべてのファイルとディレクトリの ACL を再帰的に一覧表示します。",
+      "s0019": "注記",
+      "s0020": "getcifsacl/setcifsacl ユーティリティへのカーネルの対応は、2.6.37 カーネルで初めて導入されました。",
+      "s0021": "関連項目",
+      "s0022": "mount.cifs(8), setcifsacl(1)",
+      "s0023": "著者",
+      "s0024": "getcifsacl プログラムは Shirish Pargaonkar が作成しました。",
+      "s0025": "これらのプログラムについての質問には、Linux CIFS メーリングリストが推奨されます。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:22:41.489Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:20:35.626Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:20:35.738Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017, s0018, s0019, s0020, s0021, s0022, s0023, s0024, s0025; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:20:35.839Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:20:37.386Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

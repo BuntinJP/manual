@@ -76,7 +76,7 @@ test('font preload prevents duplicate fetches and visible font layout shifts on 
   }
 });
 
-for (const provider of ['apple', 'freebsd']) {
+for (const provider of [...new Set((catalog as CatalogEntry[]).map((entry) => entry.provider))]) {
   test(`${provider} HOME lists exactly its published manuals and works without JavaScript`, async ({
     browser,
     baseURL,
@@ -91,9 +91,8 @@ for (const provider of ['apple', 'freebsd']) {
       await links.evaluateAll((items) => items.map((item) => item.getAttribute('href')).sort()),
     ).toEqual(expected.map((entry) => entry.href).sort());
     await expect(
-      page.locator('nav[aria-label="メイン"] a[href="' + providerHomeHref(provider) + '"]'),
+      page.locator(`nav[aria-label="メイン"] a[href="${providerHomeHref(provider)}"]`),
     ).toHaveText('HOME');
-    await expect(page.locator('nav[aria-label="メイン"]')).not.toContainText('OpenBSD');
     await context.close();
   });
 }
@@ -243,9 +242,13 @@ for (const query of ['find', 'シンボリックリンク']) {
     const results = page.locator('site-search .search-results li');
     await provider.selectOption('freebsd');
     await input.fill(query);
-    await expect(results).toHaveCount(1);
-    await expect(results.first()).toHaveAttribute('data-provider', 'freebsd');
-    await expect(results.first().locator('a')).toHaveText('find(1)');
+    await expect(results.getByRole('link', { name: 'find(1)', exact: true })).toHaveCount(1);
+    await expect(results.first()).toBeVisible();
+    expect(
+      await results.evaluateAll((items) =>
+        items.every((item) => item.getAttribute('data-provider') === 'freebsd'),
+      ),
+    ).toBe(true);
     await provider.selectOption('megacmd');
     await expect(results.first()).toHaveAttribute('data-provider', 'megacmd');
     expect(
@@ -254,7 +257,7 @@ for (const query of ['find', 'シンボリックリンク']) {
       ),
     ).toBe(true);
     await provider.selectOption('');
-    await expect(results.locator('[href*="/manuals/freebsd/"]')).toHaveCount(1);
+    await expect(results.locator('[href*="/manuals/freebsd/"][href*="/find/"]')).toHaveCount(1);
     if (query === 'シンボリックリンク') {
       await provider.selectOption('isync');
       await expect(results).toHaveCount(0);
@@ -272,20 +275,38 @@ for (const query of ['find', 'シンボリックリンク']) {
 }
 
 const appleManuals = (catalog as CatalogEntry[]).filter((entry) => entry.provider === 'apple');
+const appleMacosManuals = appleManuals.filter((entry) => entry.product === 'macos');
 
-test('Apple collection contains exactly the nine accepted commands', async ({ page }) => {
-  expect(appleManuals.map((entry) => entry.name).sort()).toEqual(
-    ['find', 'osascript', 'osacompile', 'launchctl', 'tclsh', 'tar', 'swift', 'sqlite3', 'systemextensionsctl'].sort(),
+test('Apple macOS collection contains exactly the fourteen accepted commands', async ({ page }) => {
+  expect(appleMacosManuals.map((entry) => entry.name).sort()).toEqual(
+    [
+      'find',
+      'osascript',
+      'osacompile',
+      'launchctl',
+      'tclsh',
+      'tar',
+      'swift',
+      'sqlite3',
+      'systemextensionsctl',
+      'cut',
+      'paste',
+      'pbcopy',
+      'pbpaste',
+      'xcode-select',
+    ].sort(),
   );
   await page.goto('/search/?provider=apple');
-  await expect(page.locator('.catalog-results li:visible')).toHaveCount(9);
+  await expect(page.locator('.catalog-results li:visible')).toHaveCount(appleManuals.length);
   await page.goto('/search/?q=man%201%20find&provider=apple');
   await expect(page.locator('h1')).toHaveText('find(1)');
   await expect(page.locator('.manual-edition')).toContainText('Apple');
 });
 
-for (const manual of appleManuals) {
-  test(`Apple ${manual.name} renders Japanese with edition metadata and valid anchors`, async ({
+const reviewedManuals = (catalog as CatalogEntry[]).filter((entry) => entry.provider !== 'aws');
+
+for (const manual of reviewedManuals) {
+  test(`${manual.id} renders Japanese with edition metadata and valid anchors`, async ({
     page,
   }) => {
     await page.setViewportSize({ width: 390, height: 844 });
@@ -331,3 +352,87 @@ test('Japanese full-text search can restrict results to Apple', async ({ page })
     ),
   ).toBe(true);
 });
+
+const newSsmCommands = (catalog as CatalogEntry[]).filter(
+  (entry) =>
+    entry.provider === 'aws' &&
+    entry.version === '2.40.4' &&
+    [
+      'aws-ssm-register-default-host-management-configuration',
+      'aws-ssm-deregister-default-host-management-configuration',
+    ].includes(entry.name),
+);
+for (const manual of newSsmCommands) {
+  test(`${manual.id} preserves the new SSM command reference on narrow screens`, async ({
+    page,
+  }) => {
+    await page.goto(manual.href);
+    await expect(page.locator('h1')).toHaveText(`${manual.name}(${manual.section})`);
+    await expect(page.locator('.manual-edition')).toContainText('2.40.4');
+    await expect(page.locator('.sl-markdown-content')).toContainText(/[ぁ-んァ-ヶ一-龠]/);
+    await expect(page.locator('.sl-markdown-content')).not.toContainText(/\[\[p\d+\]\]/);
+    expect(await page.locator('.sl-markdown-content pre').count()).toBeGreaterThan(0);
+    for (const width of [320, 390]) {
+      await page.setViewportSize({ width, height: 844 });
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+        true,
+      );
+    }
+  });
+}
+
+// Refresh snapshots are editions, not new commands. Keep the archived edition reachable.
+const currentSsm = (catalog as CatalogEntry[]).filter(
+  (entry) => entry.provider === 'aws' && entry.version === '2.40.4',
+);
+const archivedSsm = (catalog as CatalogEntry[]).filter(
+  (entry) => entry.provider === 'aws' && entry.version === '2.39.3',
+);
+test('SSM current edition covers the command inventory without replacing the archive', async ({
+  page,
+}) => {
+  expect(currentSsm).toHaveLength(157);
+  expect(archivedSsm).toHaveLength(155);
+  expect(new Set(currentSsm.map((entry) => entry.sourceUrl)).size).toBe(157);
+  const currentNames = new Set(currentSsm.map((entry) => entry.name));
+  expect(archivedSsm.every((entry) => currentNames.has(entry.name))).toBe(true);
+  for (const edition of ['2.39.3', '2.40.4']) {
+    const entry = (catalog as CatalogEntry[]).find(
+      (item) =>
+        item.provider === 'aws' &&
+        item.version === edition &&
+        item.name === 'aws-ssm-get-parameter',
+    );
+    if (!entry) throw new Error(`Missing SSM archive/current edition ${edition}`);
+    await page.goto(entry.href);
+    await expect(page.locator('.manual-edition')).toContainText(edition);
+    await expect(page.locator('.sl-markdown-content')).toContainText('GetParameter');
+  }
+});
+for (const manual of currentSsm) {
+  test(`${manual.id} preserves refreshed SSM content and anchors at mobile width`, async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 320, height: 844 });
+    await page.goto(manual.href);
+    await expect(page.locator('h1')).toHaveText(`${manual.name}(${manual.section})`);
+    await expect(page.locator('.manual-edition')).toContainText('2.40.4');
+    const body = page.locator('.sl-markdown-content');
+    await expect(body).toContainText(/[ぁ-んァ-ヶ一-龠]/);
+    await expect(body).not.toContainText(/\[\[p\d+\]\]/);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+    expect(
+      await page.locator('starlight-toc a').evaluateAll((links) =>
+        links.every((a) => {
+          const href = a.getAttribute('href');
+          return (
+            !href?.startsWith('#') ||
+            document.getElementById(decodeURIComponent(href.slice(1))) !== null
+          );
+        }),
+      ),
+    ).toBe(true);
+  });
+}

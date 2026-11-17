@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "cfe8aaf3a933f2c9",
   "manual": "manuals/samba/samba/4.25.0/upstream/8/vfs_zfsacl/1d3df0e575d6",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.417Z",
   "segmentCount": 35,
   "draft": {
@@ -10,13 +10,69 @@
     "sourceSha256": "1d3df0e575d6ac2998ed9b6bb257a727a07de52bc481100130db9dd63b13111b",
     "irSha256": "1e214b43217cdbdf914f0b0e60847d7369da0d99fe66a7128d95ee32f9dfb636",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "vfs_zfsacl — ZFS ACL 用 Samba モジュール",
+      "s0003": "書式",
+      "s0004": "[[p0]]",
+      "s0005": "説明",
+      "s0006": "この VFS モジュールは [[p0]] スイートの一部です。",
+      "s0007": "[[p0]] VFS モジュールには、Samba が ZFS と適切に統合するために必要なすべての ACL 拡張機能が含まれます。",
+      "s0008": "現在、zfsacl VFS モジュールは次の分野の拡張機能を提供します。",
+      "s0009": "ZFS 向けの設定可能なオプションを備えた NFSv4 ACL インターフェース",
+      "s0010": "[[p0]]このモジュールは posix-acl の動作に従うため、chown による権限の奪取を許します。将来、Samba がこのモジュールを介した chown の制限を可能にすることも考えられますが、そのような制限は Samba よりも基盤ファイルシステムが責任を負うものです。",
+      "s0011": "このモジュールは smb.conf パラメーター [[p0]] を使用します。yes（既定値）に設定すると、ディレクトリーではなくファイルについて返される ACE エントリーが、FILE_DELETE と FILE_DELETE_CHILD 以外のすべてのファイル権限を既に含む場合、そのエントリーに FILE_DELETE_CHILD ビットを追加します。これにより、NFSv4 互換 ACL を持つファイルシステムに対して動作する Windows アプリケーションが GENERIC_ALL アクセスを要求したときに、ACCESS_DENIED エラーが発生することを防げます。",
+      "s0012": "ZFS には ACL の動作を決める複数のデータセット設定パラメーターがあります。各パラメーターの細かな違いはこのマニュアルページの範囲外ですが、\"aclmode\" と \"aclinherit\" は Samba 共有にとって特に重要です。Samba 共有専用のデータセットでは、\"aclmode = restricted\" と \"aclinherit = passthrough\" によって NTFS ACL と最も整合性の高い継承動作を実現できます。\"restricted\" aclmode は、単純でない ACL（情報を失わずに POSIX モードで表現できない ACL）を持つファイルに対する chmod() を防ぎます。詳細については関連する ZFS マニュアルページを参照してください。",
+      "s0013": "このモジュールはスタック可能です。",
+      "s0014": "Samba 4.0 以降、すべてのオプションは共有ごとのオプションです。",
+      "s0015": "オプション",
+      "s0016": "nfs4:mode = [ simple | special ] NFS4 ACL の特殊 ID (OWNER@ と GROUP@) の置換を制御します。simple モードの使用を推奨します。このモードでは、ファイル所有者とグループに関する継承しない ACL エントリーだけを特殊 ID に対応付けます。このモジュールは次の MODE を認識します。[[p0]] - 継承しない ACE に限って OWNER@ と GROUP@ の特殊 ID を使用します。[[p1]] - ファイル所有者とグループに関するすべての ACE で OWNER@ と GROUP@ の特殊 ID を使用します。nfs4:acedup = [dontcare|reject|ignore|merge] このパラメーターは、NFS4 ACL で重複する ACE が見つかった場合の Samba の処理を設定します。同じ ID に異なるビットを持つ重複 ACE を作成できるため、Windows クライアントが混乱することがあります。各値に対する Samba の動作は次のとおりです。[[p2]] - ACE をそのままコピーします。[[p3]] - ACL 設定操作を停止し、エラーで終了します。[[p4]] - 2 番目に一致する ACE を含めません。[[p5]] - 重複する 2 つの ACE の ace.flag フィールド同士、ace.mask フィールド同士のビット単位 OR を取り、1 つの ACE にまとめます。nfs4:chown = [yes|no] このパラメーターは、基盤ファイルシステムがサポートする chown を有効または無効にします。システムを安全でない状態にする可能性があるため、有効にする際は注意が必要です。ファイルシステムによっては chown を a) 譲渡、b) 奪取として許可します。危険とされるのは後者です。各値に対する Samba の動作は次のとおりです。[[p6]] - 基盤ファイルシステムがサポートする場合、chown を有効にします。[[p7]] - chown を無効にします。",
+      "s0017": "zfsacl:denymissingspecial = [yes|no]",
+      "s0018": "NFSv4 の特殊エントリー (owner@, group@, everyone@) が欠けた ACL をユーザーが設定することを防ぎます。親ディレクトリーの ACL に継承可能な特殊エントリーがない場合、ZFS は新しいファイルの継承 ACL を計算するときにこれらのエントリーを自動生成します。その結果、継承 ACL の生成に伴いユーザーが混乱したり、ファイルやディレクトリーの権限が予期せず変わったりすることがあります。",
+      "s0019": "[[p0]]",
+      "s0020": "[[p0]]",
+      "s0021": "zfsacl:block_special = [yes|no]",
+      "s0022": "ZFS が NFSv4 の特殊エントリー (owner@, group@, everyone@) を自動追加することを防ぎます。親ディレクトリーの ACL に継承可能な特殊エントリーがない場合、ZFS は新しいファイルの継承 ACL を計算するときにこれらのエントリーを自動生成します。その結果、継承 ACL の生成に伴いユーザーが混乱したり、ファイルやディレクトリーの権限が予期せず変わったりすることがあります。この動作を阻止するには、権限を一切付与しない継承可能な everyone@ を設定し、そのエントリーをファイルのセキュリティ記述子に追加しないようにします。",
+      "s0023": "[[p0]]",
+      "s0024": "[[p0]]",
+      "s0025": "zfsacl:map_dacl_protected = [yes|no]",
+      "s0026": "有効な場合、基盤ファイルシステム上の ZFS ACL に継承されたアクセス制御エントリーが一つも含まれていなければ、SMB クライアントに返すセキュリティ記述子に SEC_DESC_DACL_PROTECTED フラグを設定します。これにより、ディレクトリーの継承を無効にするときの Windows クライアントの動作が正しくなります。",
+      "s0027": "各値に対する Samba の動作は次のとおりです。",
+      "s0028": "[[p0]] - SEC_DESC_DACL_PROTECTED への対応付けを有効にします。",
+      "s0029": "[[p0]]",
+      "s0030": "使用例",
+      "s0031": "ZFS マウントは、次のように Samba 経由で公開できます。",
+      "s0032": "バージョン",
+      "s0033": "このマニュアルページは Samba スイートのバージョン 4.25.0 の一部です。",
+      "s0034": "著者",
+      "s0035": "元の Samba ソフトウェアと関連ユーティリティーは Andrew Tridgell が作成しました。現在、Samba は Linux カーネルと同様の開発方法で、Samba Team によるオープンソースプロジェクトとして開発されています。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.417Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:35:54.414Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:35:54.520Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017, s0018, s0019, s0020, s0021, s0022, s0023, s0024, s0025, s0026, s0027, s0028, s0029, s0030, s0031, s0032, s0033, s0034, s0035; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:35:54.619Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:35:56.576Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

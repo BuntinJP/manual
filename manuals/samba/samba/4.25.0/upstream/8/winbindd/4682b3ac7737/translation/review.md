@@ -1,0 +1,24 @@
+# winbindd 翻訳自己照合
+
+確認者: EMMA Samba batch 6担当。翻訳者による自己照合であり独立レビューではない。2026-11-17。
+対象: manuals/samba/samba/4.25.0/upstream/8/winbindd/4682b3ac7737
+全121セグメントの原文/IR/訳文を読み意味照合。kind/text/protectedが完全一致する受理済みSamba訳を42セグメント再利用し、周辺のオプション文脈と意味を今回も照合。再利用元は同ID-reuse.jsonに記録。
+daemon/interactive/foregroundの違い、samlogonキャッシュは無効にしない、debug既定0、SID対応DB唯一/喪失警告、PAM誤設定でログイン不可、root所有条件とrootグループ権限の差を照合。hosts説明のUser information、古いRedHat/PAM/glibc手順、symlink方向、-Sや既定var/locks等は原文記述を保持し現行仕様に補正しない。pam_unixがpam_pwdbを置換した方向を確認。PAM編集/ドメイン参加/シグナル送信は実施なし。
+
+source/manifest/request/glossary/source-observationsを確認。body全体からselectorの外に残るテキストを逆方向に調査した結果は空で、selector外節の欠落なし。本文の見出し・段落・例をIRと照合。原文pre 5、IR literal 5、原文table 0。原文全セグメントのトークン展開テキストがbodyに存在すること、全ID/非空訳/保護トークン/styleは既存validateTranslationで成功。原文と追加材料のSHA確認成功。
+版: 4.25.0。原文明記を尊重し別版仕様を補完しない。
+ライセンス: 独立したlicense資料なし。再配布許諾を推定付与せず未確認事項として記録。著者/出典は保持。
+sourceSha256: 4682b3ac773710d63b85feb5cf5b6748f1c95256c8a5671666c7367788d6fb8f
+irSha256: 8f518b14e2d74980708d226f32b88ee424f3747b1abcebdeeff6db85dcdc233d
+candidateFileSha256: ec7680fea93e606557998e74e1bb1629bb506c2890f4220892b825f2f96cdfcd
+
+queue/受理/生成/commit未実施。資料内のコマンドや認証操作は実行していない。
+
+
+## キュー受理の最終バインド
+
+sourceSha256: 4682b3ac773710d63b85feb5cf5b6748f1c95256c8a5671666c7367788d6fb8f
+irSha256: 8f518b14e2d74980708d226f32b88ee424f3747b1abcebdeeff6db85dcdc233d
+draftSha256: ec7680fea93e606557998e74e1bb1629bb506c2890f4220892b825f2f96cdfcd
+
+上の「未受理」等は候補作成時点の記録。全文保存と本ハッシュの照合後にcompleteを実行して受理・生成を検証する。公開判断とは別。

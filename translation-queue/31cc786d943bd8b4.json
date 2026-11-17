@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "31cc786d943bd8b4",
   "manual": "manuals/samba/samba/4.25.0/upstream/8/vfs_time_audit/6427317106e6",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.401Z",
   "segmentCount": 19,
   "draft": {
@@ -10,13 +10,53 @@
     "sourceSha256": "6427317106e6fe963a0fc1738850d4b6d16e7dc7745f008369c6b4dc53c7eb89",
     "irSha256": "75dd7dcfc4a3d2c0363db03a77999b75a5e4c0af554bf8d79feaca1bae50a57b",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "vfs_time_audit — 遅いVFS操作を記録するSamba VFSモジュール",
+      "s0003": "書式",
+      "s0004": "[[p0]]",
+      "s0005": "説明",
+      "s0006": "このVFSモジュールは [[p0]] スイートの一部です。",
+      "s0007": "[[p0]] VFSモジュールは、変数 [[p1]] で定義したミリ秒数を超える時間がかかるシステムコールをログに記録します。呼び出しと、それに費やした時間を記録します。",
+      "s0008": "[[p0]] にある程度似ており、下位のファイルおよびストレージサブシステムの性能問題を明らかにするのに役立ちます。",
+      "s0009": "このモジュールは他のモジュールと積み重ねて使用できます。",
+      "s0010": "オプション",
+      "s0011": "time_audit:timeout = ミリ秒数",
+      "s0012": "指定したミリ秒数より長い時間がかかるVFS呼び出しをログに記録します。既定値は10000（10秒）です。",
+      "s0013": "使用例",
+      "s0014": "次の設定では、3秒を超える時間がかかるVFS呼び出しを記録します。",
+      "s0015": "バージョン",
+      "s0016": "このマニュアルページはSambaスイートのバージョン4.25.0の一部です。",
+      "s0017": "著者",
+      "s0018": "オリジナルのSambaソフトウェアと関連ユーティリティはAndrew Tridgellが作成しました。現在Sambaは、Linuxカーネルと同様の方法で、Samba Teamによるオープンソースプロジェクトとして開発されています。",
+      "s0019": "time_audit VFSモジュールは、Abhidnya Chirmuleの貢献により作成されました。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.401Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:18:11.537Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:18:11.770Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017, s0018, s0019; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:18:11.897Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:18:13.912Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

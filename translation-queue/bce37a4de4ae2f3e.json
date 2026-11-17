@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "bce37a4de4ae2f3e",
   "manual": "manuals/samba/samba/current/upstream/8/vfs_acl_tdb/d5ddac3acd49",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.288Z",
   "segmentCount": 32,
   "draft": {
@@ -10,13 +10,66 @@
     "sourceSha256": "d5ddac3acd49a8ab5b4a6dcd967cb04e330605fb42825918b6c8fc23d0b0f448",
     "irSha256": "a785db2eb4f36865ddd6b9435aa04a9260e911dba9f8fc216e2a30f2eedaf604",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "vfs_acl_tdb — NTFS ACL を tdb ファイルに保存する",
+      "s0003": "書式",
+      "s0004": "[[p0]]",
+      "s0005": "説明",
+      "s0006": "この VFS モジュールは [[p0]] スイートの一部です。",
+      "s0007": "[[p0]] VFS モジュールは NTFS アクセス制御リスト (ACL) を tdb ファイルに保存します。これにより、Samba サーバー上で Windows ACL を完全に対応付けることができます。",
+      "s0008": "ACL の設定は [[p0]] に保存されます。",
+      "s0009": "このモジュールは次のパラメーターを強制します。",
+      "s0010": "inherit acls = true",
+      "s0011": "dos filemode = true",
+      "s0012": "force unknown acl user = true",
+      "s0013": "このモジュールはスタック可能です。",
+      "s0014": "オプション",
+      "s0015": "acl_tdb:ignore system acls = [yes|no]",
+      "s0016": "[[p0]]yes[[p1]] に設定すると、このモジュールは POSIX ACL 層との間で可能な限りの対応付けを行い[[p2]]ません[[p3]]。既定値は [[p4]]no[[p5]] で、Samba はシステム ACL と NT ACL の両方を設定・評価し続けます。ローカルアクセスや NFS によるファイルアクセスのためにもシステム ACL を設定する必要がある場合には、こちらが適しています。Samba 経由でしかデータにアクセスしない場合は、yes に設定すると NT ACL との互換性を向上できる可能性があります。",
+      "s0017": "[[p0]]acl_tdb:ignore system acls[[p1]] を [[p2]]yes[[p3]] に設定すると、次の追加設定が強制されます。",
+      "s0018": "create mask = 0666",
+      "s0019": "directory mask = 0777",
+      "s0020": "map archive = no",
+      "s0021": "map hidden = no",
+      "s0022": "map readonly = no",
+      "s0023": "map system = no",
+      "s0024": "store dos attributes = yes",
+      "s0025": "acl_tdb:default acl style = [posix|windows|everyone]",
+      "s0026": "このパラメーターは、ファイルまたはディレクトリーに [[p0]]security.NTACL[[p1]] 拡張属性がない場合に合成する ACL の種類を決定します。",
+      "s0027": "[[p0]]posix[[p1]] に設定すると、ユーザー、グループ、その他の POSIX モード権限に基づいて ACL を合成し、完全な権限を持つ [[p2]]NT Authority\\SYSTEM[[p3]] の ACE を追加します。",
+      "s0028": "[[p0]]windows[[p1]] に設定すると、Windows と同じ方法で ACL を合成し、所有者と [[p2]]NT Authority\\SYSTEM[[p3]] の権限のみを含めます。",
+      "s0029": "[[p0]]everyone[[p1]] に設定すると、everyone (S-1-1-0) に完全な権限を付与する ACL を合成します。",
+      "s0030": "このオプションの既定値は [[p0]]posix[[p1]] です。",
+      "s0031": "著者",
+      "s0032": "元の Samba ソフトウェアと関連ユーティリティーは Andrew Tridgell が作成しました。現在、Samba は Linux カーネルと同様の開発方法で、Samba Team によるオープンソースプロジェクトとして開発されています。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.288Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:35:47.792Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:35:47.898Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017, s0018, s0019, s0020, s0021, s0022, s0023, s0024, s0025, s0026, s0027, s0028, s0029, s0030, s0031, s0032; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:35:48.085Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:35:49.880Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

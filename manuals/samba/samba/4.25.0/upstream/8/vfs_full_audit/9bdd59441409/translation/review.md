@@ -1,0 +1,24 @@
+# vfs_full_audit 翻訳自己照合
+
+確認者: EMMA Samba batch 6担当。翻訳者による自己照合であり独立レビューではない。2026-11-17。
+対象: manuals/samba/samba/4.25.0/upstream/8/vfs_full_audit/9bdd59441409
+全142セグメントの原文/IR/訳文を読み意味照合。kind/text/protectedが完全一致する受理済みSamba訳を18セグメント再利用し、周辺のオプション文脈と意味を今回も照合。再利用元は同ID-reuse.jsonに記録。
+104個のVFS操作識別子を原綴りで保持（翻訳すべき散文でない）。未知操作名でload失敗と共有接続拒否、success/failure双方の既定none、!で除外、syslog既定/代替debug1、log_secdesc既定falseを照合。2つのliteral（ログ形式/設定例）保持。原文例にあるopendirが操作一覧にはなく、none引用符内に末尾空白があるが独自修正せず記録。
+
+source/manifest/request/glossary/source-observationsを確認。body全体からselectorの外に残るテキストを逆方向に調査した結果は空で、selector外節の欠落なし。本文の見出し・段落・例をIRと照合。原文pre 2、IR literal 2、原文table 1。原文全セグメントのトークン展開テキストがbodyに存在すること、全ID/非空訳/保護トークン/styleは既存validateTranslationで成功。原文と追加材料のSHA確認成功。
+版: 4.25.0。原文明記を尊重し別版仕様を補完しない。
+ライセンス: 独立したlicense資料なし。再配布許諾を推定付与せず未確認事項として記録。著者/出典は保持。
+sourceSha256: 9bdd5944140987d4dd24d425b12d03ca638c21c07c82b5a48bb55d3bcfb9bd44
+irSha256: 90079492b847f731f2e6cacf7872d5616e8e092e3bdcf15c7b46682a7aed8c6c
+candidateFileSha256: 18936e76d6400648422292b3134af7098bc58b286817d95771e2c1af56ce39ca
+
+queue/受理/生成/commit未実施。資料内のコマンドや認証操作は実行していない。
+
+
+## キュー受理の最終バインド
+
+sourceSha256: 9bdd5944140987d4dd24d425b12d03ca638c21c07c82b5a48bb55d3bcfb9bd44
+irSha256: 90079492b847f731f2e6cacf7872d5616e8e092e3bdcf15c7b46682a7aed8c6c
+draftSha256: 18936e76d6400648422292b3134af7098bc58b286817d95771e2c1af56ce39ca
+
+上の「未受理」等は候補作成時点の記録。全文保存と本ハッシュの照合後にcompleteを実行して受理・生成を検証する。公開判断とは別。

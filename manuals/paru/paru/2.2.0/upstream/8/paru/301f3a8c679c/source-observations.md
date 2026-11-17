@@ -1,0 +1,7 @@
+# Paru parser-input recovery, 2026-11-17
+
+Product release identity 2.2.0 is the official acquisition tag. The unchanged original roff header says paru v1.10.0 / 2021-03-24; this is a document-header discrepancy, not a confirmed header-update error.
+
+source.html is a locally prepared parser input, NOT upstream HTML. It starts from the previously preserved mandoc HTML, then appends the exact raw source.roff line 78, '\'--search\' or \'-s\' flags.', to the paragraph ending 'when passing two'. Because a leading apostrophe is a roff control character, mandoc had silently omitted that prose line. The original roff bytes are retained as original-source, and the pre-recovery mandoc HTML is retained separately. Both Paru files were audited: this is the only apostrophe-starting line in paru(8), and paru.conf has none. No other HTML bytes are changed. New source/IR hashes and a separate queue job are used; the old source/IR/job remain as historical artifacts.
+
+The transformation is byte-reproducible: in provenance/mandoc-before-recovery.html, replace the single byte string 'Paru will also output a verbose search result when passing two\n' with itself followed by the raw line78 bytes and one LF. The original tool's mandoc version was not recorded; no version is invented. Normal parsing of this prepared HTML needs no external converter. Source redistribution/licence observations from the original leaf remain applicable only as observations, not inferred permissions.

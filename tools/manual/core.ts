@@ -398,6 +398,9 @@ export function renderMarkdown(manifest: Manifest, ir: ManualIR, translation: Tr
       return escapeHeading(
         text.replace(/\[\[p\d+\]\]/g, (token) => {
           const value = source.protected.find((item) => item.token === token)?.inline;
+          if (value?.tag === 'style-open' && value.style === 'sup') return '^(';
+          if (value?.tag === 'style-open' && value.style === 'sub') return '_(';
+          if (value?.tag === 'style-close' && ['sup', 'sub'].includes(value.style)) return ')';
           return value && 'text' in value ? value.text : ' ';
         }),
       );
@@ -420,7 +423,10 @@ export function renderMarkdown(manifest: Manifest, ir: ManualIR, translation: Tr
           case 'paragraph':
             return `<p>${segment(block.segment)}</p>`;
           case 'literal':
-            return `<pre><code>${escapeHtml(block.text)}</code></pre>`;
+            // A blank line ends a Markdown HTML block opened by a surrounding
+            // list/definition/table. Encode nested literal newlines so command
+            // comments such as "# foo" cannot become Markdown headings.
+            return `<pre><code>${nested ? escapeHtml(block.text).replace(/\r\n|\r|\n/g, '&#10;') : escapeHtml(block.text)}</code></pre>`;
           case 'list': {
             const tag = block.ordered ? 'ol' : 'ul';
             return `<${tag}>${block.items.map((item) => `<li>${render(item, true)}</li>`).join('')}</${tag}>`;

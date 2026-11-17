@@ -1,0 +1,3777 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": 1,
+  "sourceSha256": "c2d1884be14432ad07dc6aa45bd983c55371c5250a7d31a79c315534c9df1096",
+  "extraction": {
+    "selector": "#Invoking-diff",
+    "kind": "semantic-html",
+    "warnings": []
+  },
+  "segments": [
+    {
+      "id": "s0001",
+      "kind": "paragraph",
+      "text": "Next: [[p0]], Previous: [[p1]], Up: [[p2]] [[[p3]]][[[p4]]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Invoking diff3",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Invoking-diff3"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "Invoking cmp",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Invoking-cmp"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "link",
+            "text": "Comparing and Merging Files",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Top"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "link",
+            "text": "Contents",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#SEC_Contents"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "link",
+            "text": "Index",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Index"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0002",
+      "kind": "heading",
+      "text": "13 Invoking diff ¶",
+      "protected": []
+    },
+    {
+      "id": "s0003",
+      "kind": "paragraph",
+      "text": "The format for running the [[p0]] command is:",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "diff"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0004",
+      "kind": "paragraph",
+      "text": "In the simplest case, two file names [[p0]] and [[p1]] are given, and [[p2]] compares the contents of [[p3]] and [[p4]]. A file name of [[p5]] stands for the standard input.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "from-file"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "to-file"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "diff"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "em",
+            "text": "from-file"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "em",
+            "text": "to-file"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "-"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0005",
+      "kind": "paragraph",
+      "text": "If one file is a directory and the other is not, [[p0]] compares the file in the directory whose name is that of the non-directory. The non-directory file must not be [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "diff"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0006",
+      "kind": "paragraph",
+      "text": "If two file names are given and both are directories, [[p0]] compares corresponding files in both directories, in alphabetical order; this comparison is not recursive unless the [[p1]] ([[p2]]) option is given. [[p3]] never compares the actual contents of a directory as if it were a file. The file that is fully specified may not be standard input, because standard input is nameless and the notion of “file with the same name” does not apply.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "diff"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "--recursive"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "-r"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "diff"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "If the [[p0]] option is given, the number of file names is arbitrary, and [[p1]] is compared to each named file. Similarly, if the [[p2]] option is given, each named file is compared to [[p3]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--from-file=file"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "file"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--to-file=file"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "em",
+            "text": "file"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "paragraph",
+      "text": "[[p0]] options begin with ‘[[p1]]’, so normally file names may not begin with ‘[[p2]]’. However, [[p3]] as an argument by itself treats the remaining arguments as file names even if they begin with ‘[[p4]]’.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "diff"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "-"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "--"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "-"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "An exit status of 0 means no differences were found, 1 means some differences were found, and 2 means trouble.",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "paragraph",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Options to diff",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#diff-Options"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0011",
+      "kind": "paragraph",
+      "text": "Up: [[p0]] [[[p1]]][[[p2]]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Invoking diff",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Invoking-diff"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "Contents",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#SEC_Contents"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "link",
+            "text": "Index",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Index"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0012",
+      "kind": "heading",
+      "text": "13.1 Options to diff ¶",
+      "protected": []
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "Below is a summary of all of the options that GNU [[p0]] accepts. Most options have two equivalent names, one of which is a single letter preceded by ‘[[p1]]’, and the other of which is a long name preceded by ‘[[p2]]’. Multiple single letter options (unless they take an argument) can be combined into a single command line word: [[p3]] is equivalent to [[p4]]. Long named options can be abbreviated to any unique prefix of their name. Brackets ([ and ]) indicate that an option takes an optional argument.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "diff"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-ac"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "-a -c"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0014",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-a"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0015",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--text"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0016",
+      "kind": "paragraph",
+      "text": "Treat all files as text and compare them line-by-line, even if they do not seem to be text. See [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Binary Files and Forcing Text Comparisons",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Binary"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0017",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-b"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0018",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--ignore-space-change"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "Ignore changes in amount of white space. See [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Suppressing Differences in Blank and Tab Spacing",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#White-Space"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0020",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-B"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0021",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--ignore-blank-lines"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0022",
+      "kind": "paragraph",
+      "text": "Ignore changes that just insert or delete blank lines. See [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Suppressing Differences Whose Lines Are All Blank",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Blank-Lines"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0023",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--binary"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0024",
+      "kind": "paragraph",
+      "text": "Read and write data in binary mode. See [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Binary Files and Forcing Text Comparisons",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Binary"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0025",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-c"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0026",
+      "kind": "paragraph",
+      "text": "Use the context output format, showing three lines of context. See [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Context Format",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Context-Format"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0027",
+      "kind": "term",
+      "text": "[[p0]][[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--color [=when]"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "¶",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#index-color_002c-distinguishing-different-context"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0028",
+      "kind": "paragraph",
+      "text": "Specify whether to use color for distinguishing different contexts, like header, added or removed lines. [[p0]] may be omitted, or one of:",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "when"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0029",
+      "kind": "paragraph",
+      "text": "none Do not use color at all. This is the default when no –color option is specified.",
+      "protected": []
+    },
+    {
+      "id": "s0030",
+      "kind": "paragraph",
+      "text": "auto Use color only if standard output is a terminal.",
+      "protected": []
+    },
+    {
+      "id": "s0031",
+      "kind": "paragraph",
+      "text": "always Always use color.",
+      "protected": []
+    },
+    {
+      "id": "s0032",
+      "kind": "paragraph",
+      "text": "Specifying [[p0]] and no [[p1]] is equivalent to [[p2]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--color"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "when"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "--color=auto"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0033",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-C lines"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0034",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--context[=lines]"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0035",
+      "kind": "paragraph",
+      "text": "Use the context output format, showing [[p0]] (an integer) lines of context, or three if [[p1]] is not given. See [[p2]]. For proper operation, [[p3]] typically needs at least two lines of context.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "lines"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "lines"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "link",
+            "text": "Context Format",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Context-Format"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "patch"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0036",
+      "kind": "paragraph",
+      "text": "For compatibility [[p0]] also supports an obsolete option syntax [[p1]] that has effect when combined with [[p2]], [[p3]], or [[p4]]. New scripts should use [[p5]] ([[p6]]) instead.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "diff"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-lines"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "-c"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "-p"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "-u"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "-U lines"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "-C lines"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0037",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--changed-group-format=format"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0038",
+      "kind": "paragraph",
+      "text": "Use [[p0]] to output a line group containing differing lines from both files in if-then-else format. See [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "format"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "Line Group Formats",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Line-Group-Formats"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0039",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-d"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0040",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--minimal"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0041",
+      "kind": "paragraph",
+      "text": "Change the algorithm perhaps find a smaller set of changes. This makes [[p0]] slower (sometimes much slower). See [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "diff"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "diff Performance Tradeoffs",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#diff-Performance"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0042",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-D name"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0043",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--ifdef=name"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0044",
+      "kind": "paragraph",
+      "text": "Make merged ‘[[p0]]’ format output, conditional on the preprocessor macro [[p1]]. See [[p2]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "#ifdef"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "name"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "link",
+            "text": "Merging Files with If-then-else",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#If_002dthen_002delse"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0045",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-e"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0046",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--ed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0047",
+      "kind": "paragraph",
+      "text": "Make output that is a valid [[p0]] script. See [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "ed"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "ed Scripts",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#ed-Scripts"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0048",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-E"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0049",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--ignore-tab-expansion"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0050",
+      "kind": "paragraph",
+      "text": "Ignore changes due to tab expansion. See [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Suppressing Differences in Blank and Tab Spacing",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#White-Space"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0051",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-f"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0052",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--forward-ed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0053",
+      "kind": "paragraph",
+      "text": "Make output that looks vaguely like an [[p0]] script but has changes in the order they appear in the file. See [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "ed"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "Forward ed Scripts",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Forward-ed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0054",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-F regexp"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0055",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--show-function-line=regexp"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0056",
+      "kind": "paragraph",
+      "text": "In context and unified format, for each hunk of differences, show some of the last preceding line that matches [[p0]]. See [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "regexp"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "Showing Lines That Match Regular Expressions",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Specified-Headings"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0057",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--from-file=file"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0058",
+      "kind": "paragraph",
+      "text": "Compare [[p0]] to each operand; [[p1]] may be a directory.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "file"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "file"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0059",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--help"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0060",
+      "kind": "paragraph",
+      "text": "Output a summary of usage and then exit.",
+      "protected": []
+    },
+    {
+      "id": "s0061",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--horizon-lines=lines"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0062",
+      "kind": "paragraph",
+      "text": "Do not discard the last [[p0]] lines of the common prefix and the first [[p1]] lines of the common suffix. See [[p2]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "lines"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "lines"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "link",
+            "text": "diff Performance Tradeoffs",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#diff-Performance"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0063",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-i"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0064",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--ignore-case"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0065",
+      "kind": "paragraph",
+      "text": "Ignore changes in case; consider upper- and lower-case letters equivalent. See [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Suppressing Case Differences",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Case-Folding"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0066",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-I regexp"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0067",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--ignore-matching-lines=regexp"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0068",
+      "kind": "paragraph",
+      "text": "Ignore changes that just insert or delete lines that match [[p0]]. See [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "regexp"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "Suppressing Differences Whose Lines All Match a Regular Expression",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Specified-Lines"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0069",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--ignore-file-name-case"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0070",
+      "kind": "paragraph",
+      "text": "Ignore case when comparing file names. For example, recursive comparison of [[p0]] to [[p1]] might compare the contents of [[p2]] and [[p3]]. At the top level, ‘[[p4]]’ might compare the contents of [[p5]] and [[p6]]. See [[p7]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "d"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "e"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "d/Init"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "e/inIt"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "diff d inIt"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "code",
+            "text": "d/Init"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "code",
+            "text": "inIt"
+          }
+        },
+        {
+          "token": "[[p7]]",
+          "inline": {
+            "tag": "link",
+            "text": "Comparing Directories",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Comparing-Directories"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0071",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-l"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0072",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--paginate"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0073",
+      "kind": "paragraph",
+      "text": "Pass the output through [[p0]] to paginate it. See [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "pr"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "Paginating diff Output",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Pagination"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0074",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-L label"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0075",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--label=label"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0076",
+      "kind": "paragraph",
+      "text": "Use [[p0]] instead of the file name in the context format (see [[p1]]) and unified format (see [[p2]]) headers. See [[p3]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "label"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "Context Format",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Context-Format"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "link",
+            "text": "Unified Format",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Unified-Format"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "link",
+            "text": "RCS Scripts",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#RCS"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0077",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--left-column"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0078",
+      "kind": "paragraph",
+      "text": "Print only the left column of two common lines in side by side format. See [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Controlling Side by Side Format",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Side-by-Side-Format"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0079",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--line-format=format"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0080",
+      "kind": "paragraph",
+      "text": "Use [[p0]] to output all input lines in if-then-else format. See [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "format"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "Line Formats",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Line-Formats"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0081",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-n"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0082",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--rcs"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0083",
+      "kind": "paragraph",
+      "text": "Output RCS-format diffs; like [[p0]] except that each command specifies the number of lines affected. See [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-f"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "RCS Scripts",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#RCS"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0084",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-N"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0085",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--new-file"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0086",
+      "kind": "paragraph",
+      "text": "If one file is missing, treat it as present but empty. See [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Comparing Directories",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Comparing-Directories"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0087",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--new-group-format=format"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0088",
+      "kind": "paragraph",
+      "text": "Use [[p0]] to output a group of lines taken from just the second file in if-then-else format. See [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "format"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "Line Group Formats",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Line-Group-Formats"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0089",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--new-line-format=format"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0090",
+      "kind": "paragraph",
+      "text": "Use [[p0]] to output a line taken from just the second file in if-then-else format. See [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "format"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "Line Formats",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Line-Formats"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0091",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--no-dereference"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0092",
+      "kind": "paragraph",
+      "text": "Act on symbolic links themselves instead of what they point to. Two symbolic links are deemed equal only when each points to precisely the same name.",
+      "protected": []
+    },
+    {
+      "id": "s0093",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--old-group-format=format"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0094",
+      "kind": "paragraph",
+      "text": "Use [[p0]] to output a group of lines taken from just the first file in if-then-else format. See [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "format"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "Line Group Formats",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Line-Group-Formats"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0095",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--old-line-format=format"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0096",
+      "kind": "paragraph",
+      "text": "Use [[p0]] to output a line taken from just the first file in if-then-else format. See [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "format"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "Line Formats",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Line-Formats"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0097",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-p"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0098",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--show-c-function"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0099",
+      "kind": "paragraph",
+      "text": "Show which C function each change is in. See [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Showing C Function Headings",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#C-Function-Headings"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0100",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--palette=palette"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0101",
+      "kind": "paragraph",
+      "text": "Specify what color palette to use when colored output is enabled. It defaults to ‘[[p0]]’ for red deleted lines, green added lines, cyan line numbers, bold header.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "rs=0:hd=1:ad=32:de=31:ln=36"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0102",
+      "kind": "paragraph",
+      "text": "Supported capabilities are as follows.",
+      "protected": []
+    },
+    {
+      "id": "s0103",
+      "kind": "term",
+      "text": "[[p0]][[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "ad=32"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "¶",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#index-ad-capability"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0104",
+      "kind": "paragraph",
+      "text": "SGR substring for added lines. The default is green foreground.",
+      "protected": []
+    },
+    {
+      "id": "s0105",
+      "kind": "term",
+      "text": "[[p0]][[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "de=31"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "¶",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#index-de-capability"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0106",
+      "kind": "paragraph",
+      "text": "SGR substring for deleted lines. The default is red foreground.",
+      "protected": []
+    },
+    {
+      "id": "s0107",
+      "kind": "term",
+      "text": "[[p0]][[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "hd=1"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "¶",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#index-hd-capability"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0108",
+      "kind": "paragraph",
+      "text": "SGR substring for chunk header. The default is bold foreground.",
+      "protected": []
+    },
+    {
+      "id": "s0109",
+      "kind": "term",
+      "text": "[[p0]][[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "ln=36"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "¶",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#index-ln-capability"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0110",
+      "kind": "paragraph",
+      "text": "SGR substring for line numbers. The default is cyan foreground.",
+      "protected": []
+    },
+    {
+      "id": "s0111",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-q"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0112",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--brief"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0113",
+      "kind": "paragraph",
+      "text": "Report only whether the files differ, not the details of the differences. See [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Summarizing Which Files Differ",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Brief"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0114",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-r"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0115",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--recursive"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0116",
+      "kind": "paragraph",
+      "text": "When comparing directories, recursively compare any subdirectories found. See [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Comparing Directories",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Comparing-Directories"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0117",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-s"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0118",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--report-identical-files"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0119",
+      "kind": "paragraph",
+      "text": "Report when two files are the same. See [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Comparing Directories",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Comparing-Directories"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0120",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-S file"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0121",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--starting-file=file"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0122",
+      "kind": "paragraph",
+      "text": "When comparing directories, start with the file [[p0]]. This is used for resuming an aborted comparison. See [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "file"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "Comparing Directories",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Comparing-Directories"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0123",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--speed-large-files"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0124",
+      "kind": "paragraph",
+      "text": "Use heuristics to speed handling of large files that have numerous scattered small changes. See [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "diff Performance Tradeoffs",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#diff-Performance"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0125",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--strip-trailing-cr"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0126",
+      "kind": "paragraph",
+      "text": "Strip any trailing carriage return at the end of an input line. See [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Binary Files and Forcing Text Comparisons",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Binary"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0127",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--suppress-common-lines"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0128",
+      "kind": "paragraph",
+      "text": "Do not print common lines in side by side format. See [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Controlling Side by Side Format",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Side-by-Side-Format"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0129",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-t"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0130",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--expand-tabs"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0131",
+      "kind": "paragraph",
+      "text": "Expand tabs to spaces in the output, to preserve the alignment of tabs in the input files. See [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Preserving Tab Stop Alignment",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Tabs"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0132",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-T"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0133",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--initial-tab"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0134",
+      "kind": "paragraph",
+      "text": "Output a tab rather than a space before the text of a line in normal or context format. This causes the alignment of tabs in the line to look normal. See [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Preserving Tab Stop Alignment",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Tabs"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0135",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--tabsize=columns"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0136",
+      "kind": "paragraph",
+      "text": "Assume that tab stops are set every [[p0]] (default 8) print columns. See [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "columns"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "Preserving Tab Stop Alignment",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Tabs"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0137",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--suppress-blank-empty"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0138",
+      "kind": "paragraph",
+      "text": "Suppress any blanks before newlines when printing the representation of an empty line, when outputting normal, context, or unified format. See [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Omitting trailing blanks",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Trailing-Blanks"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0139",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--to-file=file"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0140",
+      "kind": "paragraph",
+      "text": "Compare each operand to [[p0]]; [[p1]] may be a directory.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "file"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "file"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0141",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-u"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0142",
+      "kind": "paragraph",
+      "text": "Use the unified output format, showing three lines of context. See [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Unified Format",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Unified-Format"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0143",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--unchanged-group-format=format"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0144",
+      "kind": "paragraph",
+      "text": "Use [[p0]] to output a group of common lines taken from both files in if-then-else format. See [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "format"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "Line Group Formats",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Line-Group-Formats"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0145",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--unchanged-line-format=format"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0146",
+      "kind": "paragraph",
+      "text": "Use [[p0]] to output a line common to both files in if-then-else format. See [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "format"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "Line Formats",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Line-Formats"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0147",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--unidirectional-new-file"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0148",
+      "kind": "paragraph",
+      "text": "If a first file is missing, treat it as present but empty. See [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Comparing Directories",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Comparing-Directories"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0149",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-U lines"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0150",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--unified[=lines]"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0151",
+      "kind": "paragraph",
+      "text": "Use the unified output format, showing [[p0]] (an integer) lines of context, or three if [[p1]] is not given. See [[p2]]. For proper operation, [[p3]] typically needs at least two lines of context.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "lines"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "lines"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "link",
+            "text": "Unified Format",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Unified-Format"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "code",
+            "text": "patch"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0152",
+      "kind": "paragraph",
+      "text": "On older systems, [[p0]] supports an obsolete option [[p1]] that has effect when combined with [[p2]]. POSIX 1003.1-2001 (see [[p3]]) does not allow this; use [[p4]] instead.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "diff"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "code",
+            "text": "-lines"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "code",
+            "text": "-u"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "link",
+            "text": "Standards conformance",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Standards-conformance"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "code",
+            "text": "-U lines"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0153",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-v"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0154",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--version"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0155",
+      "kind": "paragraph",
+      "text": "Output version information and then exit.",
+      "protected": []
+    },
+    {
+      "id": "s0156",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-w"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0157",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--ignore-all-space"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0158",
+      "kind": "paragraph",
+      "text": "Ignore white space when comparing lines. See [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Suppressing Differences in Blank and Tab Spacing",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#White-Space"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0159",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-W columns"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0160",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--width=columns"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0161",
+      "kind": "paragraph",
+      "text": "Output at most [[p0]] (default 130) print columns per line in side by side format. See [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "columns"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "Controlling Side by Side Format",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Side-by-Side-Format"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0162",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-x pattern"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0163",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--exclude=pattern"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0164",
+      "kind": "paragraph",
+      "text": "When comparing directories, ignore files and subdirectories whose basenames match [[p0]]. See [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "pattern"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "Comparing Directories",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Comparing-Directories"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0165",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-X file"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0166",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--exclude-from=file"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0167",
+      "kind": "paragraph",
+      "text": "When comparing directories, ignore files and subdirectories whose basenames match any pattern contained in [[p0]]. See [[p1]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "file"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "link",
+            "text": "Comparing Directories",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Comparing-Directories"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0168",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-y"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0169",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--side-by-side"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0170",
+      "kind": "paragraph",
+      "text": "Use the side by side output format. See [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Controlling Side by Side Format",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#Side-by-Side-Format"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0171",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "-Z"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0172",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "code",
+            "text": "--ignore-trailing-space"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0173",
+      "kind": "paragraph",
+      "text": "Ignore white space at line end. See [[p0]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "Suppressing Differences in Blank and Tab Spacing",
+            "href": "https://www.gnu.org/software/diffutils/manual/diffutils.html#White-Space"
+          }
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "segment": "s0001"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "anchor": "Invoking-diff-1",
+      "segment": "s0002"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0003"
+    },
+    {
+      "type": "literal",
+      "text": "diff options... files..."
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0004"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0008"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0009"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "paragraph",
+            "segment": "s0010"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0011"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "anchor": "Options-to-diff",
+      "segment": "s0012"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0013"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0014",
+          "body": []
+        },
+        {
+          "term": "s0015",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0016"
+            }
+          ]
+        },
+        {
+          "term": "s0017",
+          "body": []
+        },
+        {
+          "term": "s0018",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0019"
+            }
+          ]
+        },
+        {
+          "term": "s0020",
+          "body": []
+        },
+        {
+          "term": "s0021",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0022"
+            }
+          ]
+        },
+        {
+          "term": "s0023",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0024"
+            }
+          ]
+        },
+        {
+          "term": "s0025",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0026"
+            }
+          ]
+        },
+        {
+          "term": "s0027",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0028"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0029"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0030"
+                  }
+                ],
+                [
+                  {
+                    "type": "paragraph",
+                    "segment": "s0031"
+                  }
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0032"
+            }
+          ]
+        },
+        {
+          "term": "s0033",
+          "body": []
+        },
+        {
+          "term": "s0034",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0035"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0036"
+            }
+          ]
+        },
+        {
+          "term": "s0037",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0038"
+            }
+          ]
+        },
+        {
+          "term": "s0039",
+          "body": []
+        },
+        {
+          "term": "s0040",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0041"
+            }
+          ]
+        },
+        {
+          "term": "s0042",
+          "body": []
+        },
+        {
+          "term": "s0043",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0044"
+            }
+          ]
+        },
+        {
+          "term": "s0045",
+          "body": []
+        },
+        {
+          "term": "s0046",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0047"
+            }
+          ]
+        },
+        {
+          "term": "s0048",
+          "body": []
+        },
+        {
+          "term": "s0049",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0050"
+            }
+          ]
+        },
+        {
+          "term": "s0051",
+          "body": []
+        },
+        {
+          "term": "s0052",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0053"
+            }
+          ]
+        },
+        {
+          "term": "s0054",
+          "body": []
+        },
+        {
+          "term": "s0055",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0056"
+            }
+          ]
+        },
+        {
+          "term": "s0057",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0058"
+            }
+          ]
+        },
+        {
+          "term": "s0059",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0060"
+            }
+          ]
+        },
+        {
+          "term": "s0061",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0062"
+            }
+          ]
+        },
+        {
+          "term": "s0063",
+          "body": []
+        },
+        {
+          "term": "s0064",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0065"
+            }
+          ]
+        },
+        {
+          "term": "s0066",
+          "body": []
+        },
+        {
+          "term": "s0067",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0068"
+            }
+          ]
+        },
+        {
+          "term": "s0069",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0070"
+            }
+          ]
+        },
+        {
+          "term": "s0071",
+          "body": []
+        },
+        {
+          "term": "s0072",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0073"
+            }
+          ]
+        },
+        {
+          "term": "s0074",
+          "body": []
+        },
+        {
+          "term": "s0075",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0076"
+            }
+          ]
+        },
+        {
+          "term": "s0077",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0078"
+            }
+          ]
+        },
+        {
+          "term": "s0079",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0080"
+            }
+          ]
+        },
+        {
+          "term": "s0081",
+          "body": []
+        },
+        {
+          "term": "s0082",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0083"
+            }
+          ]
+        },
+        {
+          "term": "s0084",
+          "body": []
+        },
+        {
+          "term": "s0085",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0086"
+            }
+          ]
+        },
+        {
+          "term": "s0087",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0088"
+            }
+          ]
+        },
+        {
+          "term": "s0089",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0090"
+            }
+          ]
+        },
+        {
+          "term": "s0091",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0092"
+            }
+          ]
+        },
+        {
+          "term": "s0093",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0094"
+            }
+          ]
+        },
+        {
+          "term": "s0095",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0096"
+            }
+          ]
+        },
+        {
+          "term": "s0097",
+          "body": []
+        },
+        {
+          "term": "s0098",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0099"
+            }
+          ]
+        },
+        {
+          "term": "s0100",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0101"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0102"
+            },
+            {
+              "type": "definition",
+              "entries": [
+                {
+                  "term": "s0103",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0104"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0105",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0106"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0107",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0108"
+                    }
+                  ]
+                },
+                {
+                  "term": "s0109",
+                  "body": [
+                    {
+                      "type": "paragraph",
+                      "segment": "s0110"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "s0111",
+          "body": []
+        },
+        {
+          "term": "s0112",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0113"
+            }
+          ]
+        },
+        {
+          "term": "s0114",
+          "body": []
+        },
+        {
+          "term": "s0115",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0116"
+            }
+          ]
+        },
+        {
+          "term": "s0117",
+          "body": []
+        },
+        {
+          "term": "s0118",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0119"
+            }
+          ]
+        },
+        {
+          "term": "s0120",
+          "body": []
+        },
+        {
+          "term": "s0121",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0122"
+            }
+          ]
+        },
+        {
+          "term": "s0123",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0124"
+            }
+          ]
+        },
+        {
+          "term": "s0125",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0126"
+            }
+          ]
+        },
+        {
+          "term": "s0127",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0128"
+            }
+          ]
+        },
+        {
+          "term": "s0129",
+          "body": []
+        },
+        {
+          "term": "s0130",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0131"
+            }
+          ]
+        },
+        {
+          "term": "s0132",
+          "body": []
+        },
+        {
+          "term": "s0133",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0134"
+            }
+          ]
+        },
+        {
+          "term": "s0135",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0136"
+            }
+          ]
+        },
+        {
+          "term": "s0137",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0138"
+            }
+          ]
+        },
+        {
+          "term": "s0139",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0140"
+            }
+          ]
+        },
+        {
+          "term": "s0141",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0142"
+            }
+          ]
+        },
+        {
+          "term": "s0143",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0144"
+            }
+          ]
+        },
+        {
+          "term": "s0145",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0146"
+            }
+          ]
+        },
+        {
+          "term": "s0147",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0148"
+            }
+          ]
+        },
+        {
+          "term": "s0149",
+          "body": []
+        },
+        {
+          "term": "s0150",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0151"
+            },
+            {
+              "type": "paragraph",
+              "segment": "s0152"
+            }
+          ]
+        },
+        {
+          "term": "s0153",
+          "body": []
+        },
+        {
+          "term": "s0154",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0155"
+            }
+          ]
+        },
+        {
+          "term": "s0156",
+          "body": []
+        },
+        {
+          "term": "s0157",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0158"
+            }
+          ]
+        },
+        {
+          "term": "s0159",
+          "body": []
+        },
+        {
+          "term": "s0160",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0161"
+            }
+          ]
+        },
+        {
+          "term": "s0162",
+          "body": []
+        },
+        {
+          "term": "s0163",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0164"
+            }
+          ]
+        },
+        {
+          "term": "s0165",
+          "body": []
+        },
+        {
+          "term": "s0166",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0167"
+            }
+          ]
+        },
+        {
+          "term": "s0168",
+          "body": []
+        },
+        {
+          "term": "s0169",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0170"
+            }
+          ]
+        },
+        {
+          "term": "s0171",
+          "body": []
+        },
+        {
+          "term": "s0172",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0173"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

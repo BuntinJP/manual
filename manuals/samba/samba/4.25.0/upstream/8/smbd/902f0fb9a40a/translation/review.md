@@ -1,0 +1,24 @@
+# smbd 翻訳自己照合
+
+確認者: EMMA Samba batch 6担当。翻訳者による自己照合であり独立レビューではない。2026-11-17。
+対象: manuals/samba/samba/4.25.0/upstream/8/smbd/902f0fb9a40a
+全131セグメントの原文/IR/訳文を読み意味照合。kind/text/protectedが完全一致する受理済みSamba訳を57セグメント再利用し、周辺のオプション文脈と意味を今回も照合。再利用元は同ID-reuse.jsonに記録。
+3分再読込と既存接続には反映されない条件、interactiveは1接続/foregroundは子を生成する差、profiling 0/1/2/3、debug既定0を照合。PAMの共有レベル例外と暗号化ログイン対象、trapdoor uidの制約、TDB表全21組を照合。SIGKILLを最終手段以外使わない警告/SIGTERM -15を保持。原文には古いOS列挙、interactiveの-S参照、portsパラメーター名、リエントラント説明があり現在仕様で無断修正しない。
+
+source/manifest/request/glossary/source-observationsを確認。body全体からselectorの外に残るテキストを逆方向に調査した結果は空で、selector外節の欠落なし。本文の見出し・段落・例をIRと照合。原文pre 0、IR literal 0、原文table 0。原文全セグメントのトークン展開テキストがbodyに存在すること、全ID/非空訳/保護トークン/styleは既存validateTranslationで成功。原文と追加材料のSHA確認成功。
+版: 4.25.0。原文明記を尊重し別版仕様を補完しない。
+ライセンス: 独立したlicense資料なし。再配布許諾を推定付与せず未確認事項として記録。著者/出典は保持。
+sourceSha256: 902f0fb9a40a0207a2ceb48a622dc3cc40d7facafd1fb731939abefb908affe5
+irSha256: c1806177d9b12e056f106840d2b5ddec06253659e2311ca01a7dcadbd7d24e65
+candidateFileSha256: 35ac0955143ef9f66ad12de9f3d20f7b8b7d0c8c4083d8f6885b9b6a140b94ac
+
+queue/受理/生成/commit未実施。資料内のコマンドや認証操作は実行していない。
+
+
+## キュー受理の最終バインド
+
+sourceSha256: 902f0fb9a40a0207a2ceb48a622dc3cc40d7facafd1fb731939abefb908affe5
+irSha256: c1806177d9b12e056f106840d2b5ddec06253659e2311ca01a7dcadbd7d24e65
+draftSha256: 35ac0955143ef9f66ad12de9f3d20f7b8b7d0c8c4083d8f6885b9b6a140b94ac
+
+上の「未受理」等は候補作成時点の記録。全文保存と本ハッシュの照合後にcompleteを実行して受理・生成を検証する。公開判断とは別。

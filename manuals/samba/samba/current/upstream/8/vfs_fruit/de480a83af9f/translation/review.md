@@ -1,0 +1,24 @@
+# vfs_fruit 翻訳自己照合
+
+確認者: EMMA Samba batch 6担当。翻訳者による自己照合であり独立レビューではない。2026-11-17。
+対象: manuals/samba/samba/current/upstream/8/vfs_fruit/de480a83af9f
+全113セグメントの原文/IR/訳文を読み意味照合。kind/text/protectedが完全一致する受理済みSamba訳を9セグメント再利用し、周辺のオプション文脈と意味を今回も照合。再利用元は同ID-reuse.jsonに記録。
+番号付き版は原文にないためcurrentを保持。global専用と共有可を区別、AAPL最初tconによる全体無効、streams_xattr必須/catia条件、resource=streamのxattrサイズ警告、TimeMachine他内容保存禁止、286byte/0byte、先頭8byte検証と一時無効条件、zero ACE拒否による回避を照合。default/experimentalは保護コードで保持。原文の最新macOS表現は採取時の原文記述であり現在の検証済み事実として補強しない。
+
+source/manifest/request/glossary/source-observationsを確認。body全体からselectorの外に残るテキストを逆方向に調査した結果は空で、selector外節の欠落なし。本文の見出し・段落・例をIRと照合。原文pre 1、IR literal 1、原文table 0。原文全セグメントのトークン展開テキストがbodyに存在すること、全ID/非空訳/保護トークン/styleは既存validateTranslationで成功。原文と追加材料のSHA確認成功。
+版: current。原文明記を尊重し別版仕様を補完しない。
+ライセンス: 独立したlicense資料なし。再配布許諾を推定付与せず未確認事項として記録。著者/出典は保持。
+sourceSha256: de480a83af9fdf0a3b9d67a18ef3da3082a59832b378a6fccfbdca003ed98aa8
+irSha256: e4c55f3213bf37a188edde5f0eae1f2636a2c669c35157ca68867086f8285f0f
+candidateFileSha256: ff9dda420eae8f122e01dd55a78ebc8d9f1972ba3301d5f89867635181dfa938
+
+queue/受理/生成/commit未実施。資料内のコマンドや認証操作は実行していない。
+
+
+## キュー受理の最終バインド
+
+sourceSha256: de480a83af9fdf0a3b9d67a18ef3da3082a59832b378a6fccfbdca003ed98aa8
+irSha256: e4c55f3213bf37a188edde5f0eae1f2636a2c669c35157ca68867086f8285f0f
+draftSha256: ff9dda420eae8f122e01dd55a78ebc8d9f1972ba3301d5f89867635181dfa938
+
+上の「未受理」等は候補作成時点の記録。全文保存と本ハッシュの照合後にcompleteを実行して受理・生成を検証する。公開判断とは別。

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "f39573eff07b0684",
   "manual": "manuals/samba/samba/4.25.0/upstream/8/vfs_media_harmony/de90689583ff",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.367Z",
   "segmentCount": 26,
   "draft": {
@@ -10,13 +10,60 @@
     "sourceSha256": "de90689583ff754e11616c7832a4eae0948f9f5001840369386d2650bc8d4016",
     "irSha256": "bc12cdf40404df18a23b32b9b89151cb393e0724ec34106d1ab70d3438dea830",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "vfs_media_harmony — 複数の Avid クライアントによるネットワークドライブの共有を可能にする",
+      "s0003": "書式",
+      "s0004": "[[p0]]",
+      "s0005": "説明",
+      "s0006": "この VFS モジュールは [[p0]] スイートの一部です。",
+      "s0007": "[[p0]] VFS モジュールは、Avid 編集ワークステーションによるネットワークドライブの共有を可能にします。次の方法で実現します。",
+      "s0008": "各クライアントに、Avid の msmMMOB.mdb と msmFMID.pmr ファイル、および Creating ディレクトリの専用コピーを与えます。",
+      "s0009": "各クライアントが、Avid アプリケーションから見える Avid メディアディレクトリの書き込み時刻を明示的に制御できるようにします。",
+      "s0010": "このモジュールは他のモジュールと積み重ねて使用できます。",
+      "s0011": "設定",
+      "s0012": "[[p0]] は、Avid データベースファイルまたは Avid の Creating ディレクトリに対するクライアントの要求を、クライアント固有のファイルへ自動的に転送します。この機能にはモジュールを有効にする以外の設定は不要です。",
+      "s0013": "Mac と Windows の Avid クライアントが同じフォルダーにアクセスする場合、別々の共有定義を与え、Windows 共有では Mac の隠しファイルを veto により除外する必要があります。「例」を参照してください。",
+      "s0014": "各クライアントが Avid アプリケーションによるデータベース更新の時期を制御できるようにするには、各クライアントと各 Avid メディアディレクトリについて、[avid_dir_name]_[client_ip_address]_[client_username] という名前のファイルを作成します。これらのファイルの書き込み時刻を更新すると、Avid データベースの更新を促します。「例」を参照してください。",
+      "s0015": "クライアントが Avid メディアフォルダーの書き込み時刻を制御するには、[[p0]] オプションも設定する必要があります。",
+      "s0016": "例",
+      "s0017": "Mac と Windows クライアント向けに media_harmony を有効にします。",
+      "s0018": "ユーザー david と susan が各自の Avid データベース更新を制御できるようにするファイルを作成します。",
+      "s0019": "ユーザー david の Avid データベース更新を促します。",
+      "s0020": "多数の Avid メディアフォルダーを管理する場合は、examples/scripts/vfs/media_harmony/trigger_avid_update.py を適切に修正して各編集者に渡し、これらのファイルを作成・更新させることができます。",
+      "s0021": "注意事項",
+      "s0022": "[[p0]] は、Avid MediaFiles または OMFI MediaFiles ディレクトリ内のメディアを探す Avid 編集アプリケーション向けに設計されています。汎用の用途であらゆる状況において期待どおりに動作するようには設計されていません。たとえば、msmMMOB.mdb_192.168.1.10_userx のようなクライアント固有のファイルは、ディレクトリ一覧に表示されなくても開くことができます。",
+      "s0023": "バージョン",
+      "s0024": "このマニュアルページは Samba スイートのバージョン4.25.0の一部です。",
+      "s0025": "著者",
+      "s0026": "オリジナルの Samba ソフトウェアと関連ユーティリティは Andrew Tridgell が作成しました。現在、Samba は Linux カーネルと同様の方法で、Samba Team によるオープンソースプロジェクトとして開発されています。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.367Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:20:39.441Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:20:39.545Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017, s0018, s0019, s0020, s0021, s0022, s0023, s0024, s0025, s0026; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:20:39.650Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:20:41.178Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

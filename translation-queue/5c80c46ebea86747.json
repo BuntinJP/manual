@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "5c80c46ebea86747",
   "manual": "manuals/samba/samba/current/upstream/8/smbspool_krb5_wrapper/98e5a20fe35a",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.281Z",
   "segmentCount": 12,
   "draft": {
@@ -10,13 +10,46 @@
     "sourceSha256": "98e5a20fe35abe116ea7496b66733a328c6a2fff82f47bcdb9ccf69caea587a8",
     "irSha256": "09e9b5e69f008a75334b979532ceebeedaf8e032895e91ea014fb18f5c8d2085",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "smbspool_krb5_wrapper — smbspool を呼び出す CUPS 印刷バックエンド",
+      "s0003": "書式",
+      "s0004": "[[p0]] {job} {user} {title} {copies} {options} [filename]",
+      "s0005": "説明",
+      "s0006": "このツールは [[p0]] スイートの一部です。",
+      "s0007": "smbspool_krb5_wrapper は、Kerberos 資格情報を使って印刷するためのツールです。動作させるには、smbspool_krb5_wrapper を CUPS の smb バックエンドにする必要があります。所有者は root でなければならず、バイナリーのアクセス権は 0700 にする必要があります。smbspool_krb5_wrapper は、印刷しようとしているユーザーに切り替えた後、smbspool を実行します。ユーザーが直接呼び出すべきではありません。",
+      "s0008": "関連項目",
+      "s0009": "[[p0]]。",
+      "s0010": "著者",
+      "s0011": "元の Samba ソフトウェアと関連ユーティリティーは Andrew Tridgell が作成しました。現在、Samba は Linux カーネルと同様の開発方法で、Samba Team によるオープンソースプロジェクトとして開発されています。",
+      "s0012": "smbspool_krb5_wrapper のマニュアルページは Andreas Schneider が作成しました。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.281Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:18:16.056Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:18:16.162Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:18:16.281Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:18:18.042Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

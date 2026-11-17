@@ -1,0 +1,24 @@
+# smbcontrol 翻訳自己照合
+
+確認者: EMMA Samba batch 6担当。翻訳者による自己照合であり独立レビューではない。2026-11-17。
+対象: manuals/samba/samba/4.25.0/upstream/1/smbcontrol/204fd4f0c019
+全113セグメントの原文/IR/訳文を読み意味照合。kind/text/protectedが完全一致する受理済みSamba訳を34セグメント再利用し、周辺のオプション文脈と意味を今回も照合。再利用元は同ID-reuse.jsonに記録。
+all宛先Samba3.3変更、close-share/close-denied-shareの切断対象差、各送信可能daemon、printnotifyは通知だけで実操作しない点、dmallocビルド条件、idmap winbindd未実装、kill使用中のみsmbd終了、reload-certs ldap_server限定を照合。コマンド実行やメッセージ送信なし。
+
+source/manifest/request/glossary/source-observationsを確認。body全体からselectorの外に残るテキストを逆方向に調査した結果は空で、selector外節の欠落なし。本文の見出し・段落・例をIRと照合。原文pre 0、IR literal 0、原文table 0。原文全セグメントのトークン展開テキストがbodyに存在すること、全ID/非空訳/保護トークン/styleは既存validateTranslationで成功。原文と追加材料のSHA確認成功。
+版: 4.25.0。原文明記を尊重し別版仕様を補完しない。
+ライセンス: 独立したlicense資料なし。再配布許諾を推定付与せず未確認事項として記録。著者/出典は保持。
+sourceSha256: 204fd4f0c019be559e1dc43230e419dff6e1ef36e4203484063da2fb05bc9d9f
+irSha256: 7613e681af8eb3cf6a8a2b6ebc782f91e8cef3656c66a50f870321da431b6aae
+candidateFileSha256: c4ff9bf00824acdb1ae7a17862b62eaa92da72f8c4ebe8296a84071eaaad324b
+
+queue/受理/生成/commit未実施。資料内のコマンドや認証操作は実行していない。
+
+
+## キュー受理の最終バインド
+
+sourceSha256: 204fd4f0c019be559e1dc43230e419dff6e1ef36e4203484063da2fb05bc9d9f
+irSha256: 7613e681af8eb3cf6a8a2b6ebc782f91e8cef3656c66a50f870321da431b6aae
+draftSha256: c4ff9bf00824acdb1ae7a17862b62eaa92da72f8c4ebe8296a84071eaaad324b
+
+上の「未受理」等は候補作成時点の記録。全文保存と本ハッシュの照合後にcompleteを実行して受理・生成を検証する。公開判断とは別。

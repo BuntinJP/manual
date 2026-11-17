@@ -1993,17 +1993,59 @@
     {
       "id": "s0169",
       "kind": "paragraph",
-      "text": "The memory size m is 2[[p0]] kibibytes (KiB) of RAM. The encoded memory size MUST be a value from 3+ceil(log2(p)) to 31, such that the decoded memory size m is a value from 8*p to 231. Note that memory-hardness size is indicated in KiB, not octets.[[p1]]",
+      "text": "The memory size m is 2[[p0]][[p1]][[p2]] kibibytes (KiB) of RAM. The encoded memory size MUST be a value from 3+ceil(log[[p3]]2[[p4]](p)) to 31, such that the decoded memory size m is a value from 8*p to 2[[p5]]31[[p6]]. Note that memory-hardness size is indicated in KiB, not octets.[[p7]]",
       "protected": [
         {
           "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p1]]",
           "inline": {
             "tag": "code",
             "text": "encoded_m"
           }
         },
         {
-          "token": "[[p1]]",
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "sub"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "sub"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p7]]",
           "inline": {
             "tag": "link",
             "text": "¶",
@@ -2061,10 +2103,24 @@
     {
       "id": "s0172",
       "kind": "paragraph",
-      "text": "As an example, with the first recommended option (t=1, p=4, m=221), the full S2K Specifier would be:[[p0]]",
+      "text": "As an example, with the first recommended option (t=1, p=4, m=2[[p0]]21[[p1]]), the full S2K Specifier would be:[[p2]]",
       "protected": [
         {
           "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p2]]",
           "inline": {
             "tag": "link",
             "text": "¶",
@@ -4876,10 +4932,24 @@
     {
       "id": "s0424",
       "kind": "paragraph",
-      "text": "MPI of RSA-encrypted value me mod n.[[p0]]",
+      "text": "MPI of RSA-encrypted value m[[p0]]e[[p1]] mod n.[[p2]]",
       "protected": [
         {
           "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p2]]",
           "inline": {
             "tag": "link",
             "text": "¶",
@@ -5043,10 +5113,24 @@
     {
       "id": "s0432",
       "kind": "paragraph",
-      "text": "MPI of Elgamal (Diffie-Hellman) value gk mod p.[[p0]]",
+      "text": "MPI of Elgamal (Diffie-Hellman) value g[[p0]]k[[p1]] mod p.[[p2]]",
       "protected": [
         {
           "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p2]]",
           "inline": {
             "tag": "link",
             "text": "¶",
@@ -5058,10 +5142,24 @@
     {
       "id": "s0433",
       "kind": "paragraph",
-      "text": "MPI of Elgamal (Diffie-Hellman) value m * yk mod p.[[p0]]",
+      "text": "MPI of Elgamal (Diffie-Hellman) value m * y[[p0]]k[[p1]] mod p.[[p2]]",
       "protected": [
         {
           "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p2]]",
           "inline": {
             "tag": "link",
             "text": "¶",
@@ -6843,10 +6941,24 @@
     {
       "id": "s0574",
       "kind": "paragraph",
-      "text": "MPI of RSA signature value md mod n.[[p0]]",
+      "text": "MPI of RSA signature value m[[p0]]d[[p1]] mod n.[[p2]]",
       "protected": [
         {
           "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p2]]",
           "inline": {
             "tag": "link",
             "text": "¶",
@@ -7164,10 +7276,24 @@
     {
       "id": "s0595",
       "kind": "paragraph",
-      "text": "MPI of RSA signature value md mod n.[[p0]]",
+      "text": "MPI of RSA signature value m[[p0]]d[[p1]] mod n.[[p2]]",
       "protected": [
         {
           "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p2]]",
           "inline": {
             "tag": "link",
             "text": "¶",
@@ -11796,10 +11922,24 @@
     {
       "id": "s0982",
       "kind": "paragraph",
-      "text": "a number representing the length (in octets) of the hashed data from the Signature packet through the hashed subpacket body. This a 4-octet big-endian unsigned integer of the length modulo 232.[[p0]]",
+      "text": "a number representing the length (in octets) of the hashed data from the Signature packet through the hashed subpacket body. This a 4-octet big-endian unsigned integer of the length modulo 2[[p0]]32[[p1]].[[p2]]",
       "protected": [
         {
           "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p2]]",
           "inline": {
             "tag": "link",
             "text": "¶",
@@ -14790,10 +14930,24 @@
     {
       "id": "s1193",
       "kind": "paragraph",
-      "text": "MPI of DSA public key value y (= gx mod p where x is secret).[[p0]]",
+      "text": "MPI of DSA public key value y (= g[[p0]]x[[p1]] mod p where x is secret).[[p2]]",
       "protected": [
         {
           "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p2]]",
           "inline": {
             "tag": "link",
             "text": "¶",
@@ -14886,10 +15040,24 @@
     {
       "id": "s1200",
       "kind": "paragraph",
-      "text": "MPI of Elgamal public key value y (= gx mod p where x is secret).[[p0]]",
+      "text": "MPI of Elgamal public key value y (= g[[p0]]x[[p1]] mod p where x is secret).[[p2]]",
       "protected": [
         {
           "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p2]]",
           "inline": {
             "tag": "link",
             "text": "¶",
@@ -15507,17 +15675,45 @@
     {
       "id": "s1238",
       "kind": "paragraph",
-      "text": "Note also that the integer for a Curve25519Legacy secret key for OpenPGP MUST have the appropriate form; that is, it MUST be divisible by 8, MUST be at least 2254, and MUST be less than 2255. The length of this MPI in bits is by definition always 255, so the two leading octets of the MPI will always be [[p0]], and reversing the following 32 octets from the wire will produce the \"native\" form.[[p1]]",
+      "text": "Note also that the integer for a Curve25519Legacy secret key for OpenPGP MUST have the appropriate form; that is, it MUST be divisible by 8, MUST be at least 2[[p0]]254[[p1]], and MUST be less than 2[[p2]]255[[p3]]. The length of this MPI in bits is by definition always 255, so the two leading octets of the MPI will always be [[p4]], and reversing the following 32 octets from the wire will produce the \"native\" form.[[p5]]",
       "protected": [
         {
           "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p4]]",
           "inline": {
             "tag": "code",
             "text": "00 FF"
           }
         },
         {
-          "token": "[[p1]]",
+          "token": "[[p5]]",
           "inline": {
             "tag": "link",
             "text": "¶",
@@ -17923,10 +18119,24 @@
     {
       "id": "s1392",
       "kind": "paragraph",
-      "text": "For each chunk, the AEAD construction is given the Packet Type ID encoded in OpenPGP format (bits 7 and 6 are set, and bits 5-0 carry the Packet Type ID), version number, cipher algorithm ID, AEAD algorithm ID, and chunk size octet as additional data. For example, the additional data of the first chunk using EAX and AES-128 with a chunk size of 222 octets consists of the octets 0xD2, 0x02, 0x07, 0x01, and 0x10.[[p0]]",
+      "text": "For each chunk, the AEAD construction is given the Packet Type ID encoded in OpenPGP format (bits 7 and 6 are set, and bits 5-0 carry the Packet Type ID), version number, cipher algorithm ID, AEAD algorithm ID, and chunk size octet as additional data. For example, the additional data of the first chunk using EAX and AES-128 with a chunk size of 2[[p0]]22[[p1]] octets consists of the octets 0xD2, 0x02, 0x07, 0x01, and 0x10.[[p2]]",
       "protected": [
         {
           "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p2]]",
           "inline": {
             "tag": "link",
             "text": "¶",
@@ -20322,10 +20532,24 @@
     {
       "id": "s1547",
       "kind": "paragraph",
-      "text": "MPI(md mod n) [[[p0]]]",
+      "text": "MPI(m[[p0]]d[[p1]] mod n) [[[p2]]]",
       "protected": [
         {
           "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p2]]",
           "inline": {
             "tag": "link",
             "text": "Section 5.2.3.1",
@@ -20337,10 +20561,24 @@
     {
       "id": "s1548",
       "kind": "paragraph",
-      "text": "MPI(me mod n) [[[p0]]]",
+      "text": "MPI(m[[p0]]e[[p1]] mod n) [[[p2]]]",
       "protected": [
         {
           "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p2]]",
           "inline": {
             "tag": "link",
             "text": "Section 5.1.3",
@@ -20400,10 +20638,24 @@
     {
       "id": "s1554",
       "kind": "paragraph",
-      "text": "MPI(me mod n) [[[p0]]]",
+      "text": "MPI(m[[p0]]e[[p1]] mod n) [[[p2]]]",
       "protected": [
         {
           "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p2]]",
           "inline": {
             "tag": "link",
             "text": "Section 5.1.3",
@@ -20457,10 +20709,24 @@
     {
       "id": "s1559",
       "kind": "paragraph",
-      "text": "MPI(md mod n) [[[p0]]]",
+      "text": "MPI(m[[p0]]d[[p1]] mod n) [[[p2]]]",
       "protected": [
         {
           "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p2]]",
           "inline": {
             "tag": "link",
             "text": "Section 5.2.3.1",
@@ -20526,10 +20792,38 @@
     {
       "id": "s1566",
       "kind": "paragraph",
-      "text": "MPI(gk mod p), MPI(m * yk mod p) [[[p0]]]",
+      "text": "MPI(g[[p0]]k[[p1]] mod p), MPI(m * y[[p2]]k[[p3]] mod p) [[[p4]]]",
       "protected": [
         {
           "token": "[[p0]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "style-open",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "style-close",
+            "style": "sup"
+          }
+        },
+        {
+          "token": "[[p4]]",
           "inline": {
             "tag": "link",
             "text": "Section 5.1.4",

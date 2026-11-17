@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "a8c47dad5b96d6f1",
   "manual": "manuals/samba/samba/4.25.0/upstream/8/vfs_prealloc/14cd049a05b9",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.372Z",
   "segmentCount": 23,
   "draft": {
@@ -10,13 +10,57 @@
     "sourceSha256": "14cd049a05b9ec00cd30562ec9169a5f5f20f447905a7fce605f6d0d69978768",
     "irSha256": "2b3e374b0dab10e914c21ddeec332d7505426eb1a0f0fefe6cf1f735f4be1d49",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "vfs_prealloc — 一致するファイルに所定サイズの領域を事前割り当てする",
+      "s0003": "書式",
+      "s0004": "[[p0]]",
+      "s0005": "説明",
+      "s0006": "このVFSモジュールは [[p0]] スイートの一部です。",
+      "s0007": "[[p0]] VFSモジュールは、新しいファイルを作成するたびに、指定サイズの領域を事前割り当てします。ファイルに割り当てる領域の拡張にコストがかかるディスクサブシステムへ、サイズがあらかじめ決まっているファイルを書き込む環境で便利です。",
+      "s0008": "このモジュールは他のモジュールと積み重ねて使用できます。",
+      "s0009": "オプション",
+      "s0010": "prealloc:EXT = BYTES",
+      "s0011": "拡張子EXTを持つすべてのファイルに、BYTESで指定したサイズの領域を事前割り当てします。",
+      "s0012": "BYTESには次の接尾辞を付けられます。",
+      "s0013": "[[p0]] - BYTESはキロバイト数です。",
+      "s0014": "[[p0]] - BYTESはメガバイト数です。",
+      "s0015": "[[p0]] - BYTESはギガバイト数です。",
+      "s0016": "使用例",
+      "s0017": "あるプロセスがSamba共有にTIFFファイルを書き込み、そのファイルがほぼ常に4メガバイト（4194304バイト）程度になることがわかっている場合の例です。",
+      "s0018": "注意事項",
+      "s0019": "[[p0]] は、すべてのプラットフォームとファイルシステムでサポートされているわけではありません。現在サポートされているのは、LinuxとIRIX上のXFSファイルシステムだけです。",
+      "s0020": "バージョン",
+      "s0021": "このマニュアルページはSambaスイートのバージョン4.25.0の一部です。",
+      "s0022": "著者",
+      "s0023": "オリジナルのSambaソフトウェアと関連ユーティリティはAndrew Tridgellが作成しました。現在Sambaは、Linuxカーネルと同様の方法で、Samba Teamによるオープンソースプロジェクトとして開発されています。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.372Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:26:34.591Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:26:34.707Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017, s0018, s0019, s0020, s0021, s0022, s0023; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:26:34.830Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:26:36.847Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

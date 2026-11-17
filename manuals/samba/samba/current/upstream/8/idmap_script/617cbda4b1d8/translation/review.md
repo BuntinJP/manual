@@ -1,0 +1,26 @@
+# idmap_script 翻訳自己照合
+
+確認者: EMMA diff-intake担当（翻訳者による自己照合、独立レビューではない）。2026-11-17。
+
+対象: manuals/samba/samba/current/upstream/8/idmap_script/617cbda4b1d8
+全23セグメントをrequest/glossary・保存原文・IRと照合。manifestの版を維持。原文/IR/queueを変更せず、候補のみ保存。
+
+原文のcurrent維持。readonlyとキャッシュ保存の役割分離、XIDは両方の要求だが片方の返却も可能、_NO_WINBINDDの解除/復元のタイミングを照合。提示スクリプトが不完全な例という注意を保持。literalコードは実行せず原文維持。文書ライセンス明記なし。
+
+共通文の再利用は、文脈が同じで原文・保護トークンが完全同一の段落のみ。構文・設定例・識別子を維持し、説明文は日本語化。保護トークンとIDの全出現一致検査済み。既存validateTranslationとsource/IR照合の結果は後述の検証記録を参照。
+
+sourceSha256: 617cbda4b1d80063899447d874e488decae66db03f11528d3ff7baa82e22033e
+irSha256: e314cf10e7164d56afe2057c3ebb74961deca7da92255c0582250348a1ab1be8
+
+queue保存・受理・生成・commitは未実施。
+
+検証記録: validateTranslation全文成功。保護トークン復元後の全原文セグメントを保存HTML本文と照合し不一致0件。
+
+
+## キュー受理の最終バインド
+
+sourceSha256: 617cbda4b1d80063899447d874e488decae66db03f11528d3ff7baa82e22033e
+irSha256: e314cf10e7164d56afe2057c3ebb74961deca7da92255c0582250348a1ab1be8
+draftSha256: 4aec7e53ee378b23f498dcdc942a2c3e663e32e07b67339856e8914e6e0b403f
+
+上の「未受理」等は候補作成時点の記録。全文保存と本ハッシュの照合後にcompleteを実行して受理・生成を検証する。公開判断とは別。

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "79b35b43db656ea7",
   "manual": "manuals/samba/samba/4.25.0/upstream/8/vfs_ceph/01bc9008d494",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.316Z",
   "segmentCount": 28,
   "draft": {
@@ -10,13 +10,62 @@
     "sourceSha256": "01bc9008d494e6f8f0c31976fd9734521628fa663b0d50ccba5d690e61204dc7",
     "irSha256": "2f9b1ac1eed26e5f97257ff18595582b7582ccb5b0048d93aaef75589098782e",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "vfs_ceph — CephFS が提供する機能を利用する",
+      "s0003": "書式",
+      "s0004": "[[p0]]",
+      "s0005": "説明",
+      "s0006": "この VFS モジュールは [[p0]] スイートの一部です。",
+      "s0007": "[[p0]] VFS モジュールは、Samba が使えるように CephFS 固有の機能を公開します。",
+      "s0008": "Ceph は優れた性能、信頼性、拡張性を提供するよう設計された分散ネットワークファイルシステムです。これは、アプリケーションが POSIX に似たインターフェースで Ceph 分散ファイルシステムへアクセスできるようにする共有ライブラリーです。",
+      "s0009": "このモジュールは他のモジュールと組み合わせられますが、[[p0]] 一覧の最後に置く必要があります。ceph エントリーの右側に追加したモジュールは、まったく効果がない場合があります。",
+      "s0010": "[[p0]] は Windows と POSIX のアクセス制御リスト（ACL）を対応付けます。POSIX ACL の正しい処理と適用を保証するため、次の Ceph 設定パラメーターを自動的に適用します。",
+      "s0011": "設定",
+      "s0012": "[[p0]] では、共有の基礎となるパスが Ceph ファイルシステムである必要があります。",
+      "s0013": "[[p0]] はファイルシステムのマウントを必要としないため、共有の [[p1]] は異なる扱いになります。接続した Ceph クラスターの Ceph ファイルシステム内の絶対パスとして解釈します。ctdb が Samba を管理するクラスター環境では、[[p2]] を設定してローカルの共有パス検査を無効にする必要があります。そうしないと ctdb は正常状態になりません。",
+      "s0014": "現在、CephFS VFS モジュールで動作する共有でファイル提供を正常に行うには、[[p0]] を無効にする必要があります。",
+      "s0015": "オプション",
+      "s0016": "ceph:config_file = path",
+      "s0017": "使用する Ceph 設定ファイルを指定できます。既定では空です。",
+      "s0018": "例: ceph:config_file = /etc/ceph/ceph.conf",
+      "s0019": "ceph:user_id = name",
+      "s0020": "CephFS マウントハンドルに使うクライアントIDを明示的に設定できます。既定では空です（libcephfs クライアントの既定値を使います）。",
+      "s0021": "例: ceph:user_id = samba",
+      "s0022": "ceph:filesystem = fs_name",
+      "s0023": "Ceph クラスターが複数のファイルシステムをサポートする場合、使用する CephFS ファイルシステムを明示的に選べます。既定では空です（Ceph クラスターの既定ファイルシステムを使います）。",
+      "s0024": "例: ceph:filesystem = myfs2",
+      "s0025": "バージョン",
+      "s0026": "このマニュアルページは Samba スイートのバージョン4.25.0の一部です。",
+      "s0027": "著者",
+      "s0028": "オリジナルの Samba ソフトウェアと関連ユーティリティは Andrew Tridgell が作成しました。現在、Samba は Linux カーネルと同様の方法で、Samba Team によるオープンソースプロジェクトとして開発されています。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.316Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:22:36.846Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:22:36.954Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017, s0018, s0019, s0020, s0021, s0022, s0023, s0024, s0025, s0026, s0027, s0028; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:22:37.072Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:22:38.958Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

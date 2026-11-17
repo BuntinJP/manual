@@ -1,0 +1,28 @@
+# 翻訳・原文自己照合
+
+EMMA diff-intake担当。2026-11-17。翻訳者による自己照合であり独立レビューではない。
+対象 manuals/paru/paru/2.2.0/upstream/8/paru/301f3a8c679c
+全352セグメント。request/glossary/source/IRを全文照合。
+原文roff全文と352セグメントを照合。公式配布タグ製品版2.2.0と文書THのv1.10.0/2021-03-24を区別。ヘッダー更新漏れは未確定の推測。保存原文にライセンス文/別ライセンスなし。共通訳はparu.confと原文/トークンが完全同一かつ同じ意味の場合のみ再利用。s0033は原文次行先頭のアポストロフィがroff制御行扱いになりIRから消えるため、原文の--search/-s二回指定を訳で復元。s0109は原文通りAURだけと訳し、paru.confのPKGBUILDだけとの矛盾を勝手に修正しない。s0110 repositoryi誤字はrepositoryとして訳出、s0250 confinedは文脈上confirmedとして訳出。詳細検索例後のs0122は原文にも孤立しているが省略しない。削除範囲/二回指定/依存解決/正規表現範囲/デバッグパッケージ/開発版比較/署名と検証スキップの区別を最終照合。
+
+sourceSha256: 301f3a8c679c2500e8b8fb9f7115de60a88723970177ab85fdbe0cbdc5325833
+irSha256: e2ab2630540580f8fb7457fd7589feff6f6d6548e17f2971a3213c741897b9ec
+
+queue/生成/commitなし。
+
+最終検証: validateTranslation全文成功。保護トークン復元後の原文を保存HTML/mandocと照合。不一致0件: 。
+
+新IR再発行: 新旧request全352件を比較し、s0033以外の351件は完全同一。s0033の復元英語と原文roff78行を照合し、新保護トークン2つを使用して訳出。原文不変/変換前HTML保存/別葉の準備HTMLという来歴を確認。旧候補は受理不可、新候補d10e784a03df3376を使用。
+sourceSha256: 301f3a8c679c11e7019eb8f0af34a94ea5b56f309b175205e8a384731bfa62dc
+irSha256: 57231c6fad35cbf8107d10cdbaeb967f7f5377cd6f3b14e0336b0c55304cbe87
+
+最終検証: validateTranslation全文成功。保護トークン復元後の原文を保存HTML/mandocと照合。不一致0件: 。
+
+
+## キュー受理の最終バインド
+
+sourceSha256: 301f3a8c679c11e7019eb8f0af34a94ea5b56f309b175205e8a384731bfa62dc
+irSha256: 57231c6fad35cbf8107d10cdbaeb967f7f5377cd6f3b14e0336b0c55304cbe87
+draftSha256: dc4893710650e502472952d7a8ee1f1b88c20858534498598c03fae499196e45
+
+上の「未受理」等は候補作成時点の記録。全文保存と本ハッシュの照合後にcompleteを実行して受理・生成を検証する。公開判断とは別。

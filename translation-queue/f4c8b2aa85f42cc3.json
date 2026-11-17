@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "f4c8b2aa85f42cc3",
   "manual": "manuals/samba/samba/4.25.0/upstream/8/vfs_glusterfs_fuse/78b2d047a6d9",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.355Z",
   "segmentCount": 19,
   "draft": {
@@ -10,13 +10,53 @@
     "sourceSha256": "78b2d047a6d9b6f12aa6bedaa5c062f7a3aacdf278808f417323cd17802eb2ec",
     "irSha256": "802edec54fe632e0314f261fb77be7bf7ef465092b0c9203eae05a8ae8d5a709",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "vfs_glusterfs_fuse — GlusterFSが提供する機能を利用する",
+      "s0003": "書式",
+      "s0004": "[[p0]]",
+      "s0005": "説明",
+      "s0006": "このVFSモジュールは [[p0]] スイートの一部です。",
+      "s0007": "GlusterFS（[[p0]]）は、数ペタバイトまで拡張可能なオープンソースのクラスタファイルシステムです。FUSEベースのネイティブクライアントにより、GlusterFSをPOSIX準拠のファイルシステムとして利用できるため、追加の手順なしにSambaで共有できます。",
+      "s0008": "[[p0]] VFSモジュールは、Gluster FUSEマウントを使ってGlusterファイルシステムへアクセスする機能を強化します。[[p1]] VFS呼び出しをサポートし、既存のファイル名の正しい大文字・小文字表記を検出するための、負荷の高いcase folding検索呼び出しを何度も行わずに済むようにして、ファイルアクセス性能を向上させます。",
+      "s0009": "さらに、このモジュールは代替のfile-id機構を実装します。既定のfile-id機構は、gluster fuseマウントの再公開では正しく動作しません。そのため、データ損失を避けるために、Sambaでgluster fuseマウントを公開するユーザーは、このモジュールを有効にしてください。",
+      "s0010": "このモジュールは他のモジュールと組み合わせられますが、[[p0]] リストの最後に置いてください。このリストでglusterfsエントリーの右側に追加したモジュールは、まったく効果がない場合があります。",
+      "s0011": "設定",
+      "s0012": "基本的な設定は次のようになります。",
+      "s0013": "[[p0]] にはGlusterマウントが必要です。GFAPIライブラリ経由でglusterfsへ直接アクセスするには、[[p1]] モジュールを使用してください。",
+      "s0014": "オプション",
+      "s0015": "このモジュールには、現時点で追加のオプションはありません。",
+      "s0016": "バージョン",
+      "s0017": "このマニュアルページはSambaスイートのバージョン4.25.0の一部です。",
+      "s0018": "著者",
+      "s0019": "オリジナルのSambaソフトウェアと関連ユーティリティはAndrew Tridgellが作成しました。現在Sambaは、Linuxカーネルと同様の方法で、Samba Teamによるオープンソースプロジェクトとして開発されています。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.355Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:18:34.989Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:18:35.097Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017, s0018, s0019; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:18:35.208Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:18:36.851Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

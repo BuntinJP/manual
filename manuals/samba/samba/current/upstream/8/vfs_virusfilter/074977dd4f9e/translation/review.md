@@ -1,0 +1,24 @@
+# vfs_virusfilter 翻訳自己照合
+
+確認者: EMMA Samba batch 6担当。翻訳者による自己照合であり独立レビューではない。2026-11-17。
+対象: manuals/samba/samba/current/upstream/8/vfs_virusfilter/074977dd4f9e
+全117セグメントの原文/IR/訳文を読み意味照合。kind/text/protectedが完全一致する受理済みSamba訳を8セグメント再利用し、周辺のオプション文脈と意味を今回も照合。再利用元は同ID-reuse.jsonに記録。
+current維持。30000/60000ミリ秒、100000000 bytes/100MB、最小10、EACCES/0、キャッシュ-1時間無制限と0無効を区別。quarantine directoryは絶対パス必須説明と相対既定.quarantineが併存する原文通り。scan archive/mimeの見出しtrueと本文既定falseも原文通りで補正しない。keep name説明のrename prefix/suffix参照を維持。0755全員read/search注意、streams_depot先行、多層防御でクライアント保護の代替でない警告を保持。外部通知コマンドは資料であり送信/実行していない。
+
+source/manifest/request/glossary/source-observationsを確認。body全体からselectorの外に残るテキストを逆方向に調査した結果は空で、selector外節の欠落なし。本文の見出し・段落・例をIRと照合。原文pre 0、IR literal 0、原文table 0。原文全セグメントのトークン展開テキストがbodyに存在すること、全ID/非空訳/保護トークン/styleは既存validateTranslationで成功。原文と追加材料のSHA確認成功。
+版: current。原文明記を尊重し別版仕様を補完しない。
+ライセンス: 独立したlicense資料なし。再配布許諾を推定付与せず未確認事項として記録。著者/出典は保持。
+sourceSha256: 074977dd4f9e4363da74eea302efc399d76312a119ea14bd6f11f2e664715d5e
+irSha256: f5d310f912a3dfbf0e908df267d40252fe3491f4cb91c1c8f04696251622b206
+candidateFileSha256: 4ecd0c35ab91ea9914ba12a4df4cf4a230d9cb1352c73f558be6c249433871d9
+
+queue/受理/生成/commit未実施。資料内のコマンドや認証操作は実行していない。
+
+
+## キュー受理の最終バインド
+
+sourceSha256: 074977dd4f9e4363da74eea302efc399d76312a119ea14bd6f11f2e664715d5e
+irSha256: f5d310f912a3dfbf0e908df267d40252fe3491f4cb91c1c8f04696251622b206
+draftSha256: 4ecd0c35ab91ea9914ba12a4df4cf4a230d9cb1352c73f558be6c249433871d9
+
+上の「未受理」等は候補作成時点の記録。全文保存と本ハッシュの照合後にcompleteを実行して受理・生成を検証する。公開判断とは別。

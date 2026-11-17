@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "79f0a7ae9480818b",
   "manual": "manuals/samba/samba/4.25.0/upstream/8/vfs_readahead/f388a9c9e8ed",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.374Z",
   "segmentCount": 25,
   "draft": {
@@ -10,13 +10,59 @@
     "sourceSha256": "f388a9c9e8ed7da39ec6117beac004206d12716f3eb2ad11004f565316598faa",
     "irSha256": "98cef74f07800d6701bc0209dd44811f0c536ab6ebd21bcd642b9c0668edd7d8",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "vfs_readahead — カーネルのバッファーキャッシュに事前読み込みする",
+      "s0003": "書式",
+      "s0004": "[[p0]]",
+      "s0005": "説明",
+      "s0006": "この VFS モジュールは [[p0]] スイートの一部です。",
+      "s0007": "この [[p0]] VFS モジュールは、指定したオフセット（既定は16進数0x80000）の倍数の位置での読み取り要求を検出し、readahead システムコール（Linux）または posix_fadvise システムコールを通じて、そのデータをバッファーキャッシュに先読みするようカーネルに指示します。",
+      "s0008": "このモジュールは、Windows Explorer でデータを読み取る Windows Vista クライアントに役立ちます。Explorer は0x80000バイト境界で複数のファイル読み取り要求を非同期に行います。",
+      "s0009": "オフセットの倍数の基準値は readahead:offset オプションで指定し、既定値は0x80000です。",
+      "s0010": "[[p0]] が行うディスク読み取りのサイズは readahead:length オプションで決まります。既定では readahead:offset と同じ値で、明示的に設定しなければ readahead:offset の現在の値を使います。",
+      "s0011": "このモジュールは他のモジュールと積み重ねて使用できます。",
+      "s0012": "オプション",
+      "s0013": "BYTES には次の接尾辞を付けられます。",
+      "s0014": "[[p0]] - BYTES はキロバイト数です。",
+      "s0015": "[[p0]] - BYTES はメガバイト数です。",
+      "s0016": "[[p0]] - BYTES はギガバイト数です。",
+      "s0017": "readahead:offset = BYTES",
+      "s0018": "カーネルのバッファーキャッシュへの先読み要求を発生させるオフセットの倍数の基準値です。",
+      "s0019": "readahead:length = BYTES",
+      "s0020": "各 readahead 呼び出しで、カーネルのバッファーキャッシュへ読み込むよう要求するバイト数です。",
+      "s0021": "例",
+      "s0022": "バージョン",
+      "s0023": "このマニュアルページは Samba スイートのバージョン4.25.0の一部です。",
+      "s0024": "著者",
+      "s0025": "オリジナルの Samba ソフトウェアと関連ユーティリティは Andrew Tridgell が作成しました。現在、Samba は Linux カーネルと同様の方法で、Samba Team によるオープンソースプロジェクトとして開発されています。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.374Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:20:23.745Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:20:23.925Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017, s0018, s0019, s0020, s0021, s0022, s0023, s0024, s0025; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:20:24.039Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:20:25.605Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

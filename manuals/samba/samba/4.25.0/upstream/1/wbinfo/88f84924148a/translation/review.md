@@ -1,0 +1,24 @@
+# wbinfo 翻訳自己照合
+
+確認者: EMMA Samba batch 6担当。翻訳者による自己照合であり独立レビューではない。2026-11-17。
+対象: manuals/samba/samba/4.25.0/upstream/1/wbinfo/88f84924148a
+全152セグメントの原文/IR/訳文を読み意味照合。kind/text/protectedが完全一致する受理済みSamba訳を22セグメント再利用し、周辺のオプション文脈と意味を今回も照合。再利用元は同ID-reuse.jsonに記録。
+認証機能を他アプリ認証に使わずntlm_authを使う警告、get-auth-userはroot限定かつパスワード表示、未認証のuser-groups結果は不完全/誤り得る条件と認証済みキャッシュ陳腐化、列挙では新規IDを割り当てない点を照合。UID/GID/SIDの変換方向、ID範囲外失敗、DC接続とデーモン生存の違い、終了0/1を保持。SID長数値/DOMAIN\username/NTLMv2既定、旧Windows2000説明を無断補完しない。
+
+source/manifest/request/glossary/source-observationsを確認。body全体からselectorの外に残るテキストを逆方向に調査した結果は空で、selector外節の欠落なし。本文の見出し・段落・例をIRと照合。原文pre 0、IR literal 0、原文table 0。原文全セグメントのトークン展開テキストがbodyに存在すること、全ID/非空訳/保護トークン/styleは既存validateTranslationで成功。原文と追加材料のSHA確認成功。
+版: 4.25.0。原文明記を尊重し別版仕様を補完しない。
+ライセンス: 独立したlicense資料なし。再配布許諾を推定付与せず未確認事項として記録。著者/出典は保持。
+sourceSha256: 88f84924148a7d2262c5fd74d80481852f6842b8aede9f723f55ad9b35a74835
+irSha256: b3e1d6788b6feb0aa488a7d041d9b41547f83ef00a7ef0170759b785fa8a05b9
+candidateFileSha256: 33c9b6f96d24d6d7adc62e03f37ffdb17832eeb0ae3e7f4973b91fc30e0b4b56
+
+queue/受理/生成/commit未実施。資料内のコマンドや認証操作は実行していない。
+
+
+## キュー受理の最終バインド
+
+sourceSha256: 88f84924148a7d2262c5fd74d80481852f6842b8aede9f723f55ad9b35a74835
+irSha256: b3e1d6788b6feb0aa488a7d041d9b41547f83ef00a7ef0170759b785fa8a05b9
+draftSha256: 33c9b6f96d24d6d7adc62e03f37ffdb17832eeb0ae3e7f4973b91fc30e0b4b56
+
+上の「未受理」等は候補作成時点の記録。全文保存と本ハッシュの照合後にcompleteを実行して受理・生成を検証する。公開判断とは別。

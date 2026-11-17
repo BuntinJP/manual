@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "6fb818f9bf6dd4cb",
   "manual": "manuals/samba/cifs-utils/7.9/linux/8/pam_cifscreds/2d51b7caee05",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:22:41.498Z",
   "segmentCount": 26,
   "draft": {
@@ -10,13 +10,60 @@
     "sourceSha256": "2d51b7caee052d3a4244064f4ae72518c0b599ea585bd3f6df9bf1096699780a",
     "irSha256": "f251bd987b88793b59ab0d36ad40dcf370b0236eed4e7e76ccb9d5c8ca72882e",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "pam_cifscreds",
+      "s0002": "カーネルキーリング内の NTLM 資格情報を管理する PAM モジュール",
+      "s0003": "マニュアルのセクション:",
+      "s0004": "8",
+      "s0005": "書式",
+      "s0006": "NTLM 資格情報を自動登録するシステムの PAM 設定ファイル（[[p0]]/etc/pam.d/login[[p1]] など）を編集し、次のように変更します。",
+      "s0007": "DOMAIN を Windows ドメイン名に置き換えるか、後述の host= を使います。",
+      "s0008": "説明",
+      "s0009": "pam_cifscreds PAM モジュールは、マルチユーザーマウントでセッションを確立するための資格情報（ユーザー名とパスワード）を自動追加するツールです。",
+      "s0010": "cifs ファイルシステムを \"multiuser\" オプションでマウントし、krb5 認証を使わない場合は、各ユーザーの資格情報をどこかから取得できる必要があります。pam_cifscreds モジュールを使うと、ログイン時にこれらの資格情報をカーネルへ自動的に提供できます。",
+      "s0011": "PAM 設定ファイルの session セクションでは、モジュールに NT ドメイン名、またはホスト名やアドレスの一覧を指定できます。",
+      "s0012": "オプション",
+      "s0013": "pam_cifscreds は PAM 設定ファイルで設定できるいくつかのオプションをサポートします。domain= または host= のいずれか一方だけを必ず指定します。",
+      "s0014": "debug",
+      "s0015": "追加のデバッグログを有効にします。",
+      "s0016": "domain=<NT ドメイン名>",
+      "s0017": "指定した NT ドメイン名の資格情報を追加します。",
+      "s0018": "host=<ホスト名または IP アドレス>[,...]",
+      "s0019": "指定したホスト名または IP アドレスの資格情報を追加します。",
+      "s0020": "注記",
+      "s0021": "pam_cifscreds PAM モジュールには、login キータイプをサポートしてビルドされたカーネルが必要です。このキータイプはメインライン Linux カーネルの v3.3 で追加されました。",
+      "s0022": "pam_cifscreds はセッションキーリングにキーを追加するため、ログイン時にセッションキーリングが確立されるよう pam_keyinit を使うことを強く推奨します。",
+      "s0023": "関連項目",
+      "s0024": "cifscreds(1), pam_keyinit(8)",
+      "s0025": "著者",
+      "s0026": "pam_cifscreds PAM モジュールは Orion Poplawski <orion@nwra.com> が開発しました。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:22:41.498Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:22:34.651Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:22:34.754Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017, s0018, s0019, s0020, s0021, s0022, s0023, s0024, s0025, s0026; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:22:34.868Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:22:36.737Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

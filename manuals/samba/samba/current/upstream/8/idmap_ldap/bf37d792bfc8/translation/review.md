@@ -1,0 +1,26 @@
+# idmap_ldap 翻訳自己照合
+
+確認者: EMMA diff-intake担当（翻訳者による自己照合、独立レビューではない）。2026-11-17。
+
+対象: manuals/samba/samba/current/upstream/8/idmap_ldap/bf37d792bfc8
+全21セグメントをrequest/glossary・保存原文・IRと照合。manifestの版を維持。原文/IR/queueを変更せず、候補のみ保存。
+
+current維持。資格情報のフォールバック順序と匿名バインド、既定localhost、互いに重ならない範囲を照合。設定例はliteral保持。文書ライセンス明記なし。
+
+共通文の再利用は、文脈が同じで原文・保護トークンが完全同一の段落のみ。構文・設定例・識別子を維持し、説明文は日本語化。保護トークンとIDの全出現一致検査済み。既存validateTranslationとsource/IR照合の結果は後述の検証記録を参照。
+
+sourceSha256: bf37d792bfc8be01536ed75fde997aae92806a8583e76379a5075631d860e9a3
+irSha256: 7aa9ec2cecf835d47de76867a99dddf350579838d9b5f93f2d7836b2b46462ef
+
+queue保存・受理・生成・commitは未実施。
+
+検証記録: validateTranslation全文成功。保護トークン復元後の全原文セグメントを保存HTML本文と照合し不一致0件。
+
+
+## キュー受理の最終バインド
+
+sourceSha256: bf37d792bfc8be01536ed75fde997aae92806a8583e76379a5075631d860e9a3
+irSha256: 7aa9ec2cecf835d47de76867a99dddf350579838d9b5f93f2d7836b2b46462ef
+draftSha256: 44bae0e8af903435ddf8aa09d16a68700f405abacbfe9675b94705416a951420
+
+上の「未受理」等は候補作成時点の記録。全文保存と本ハッシュの照合後にcompleteを実行して受理・生成を検証する。公開判断とは別。

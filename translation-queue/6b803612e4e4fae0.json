@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "6b803612e4e4fae0",
   "manual": "manuals/samba/samba/4.25.0/upstream/8/vfs_tsmsm/cbf8cdf87d1e",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.405Z",
   "segmentCount": 24,
   "draft": {
@@ -10,13 +10,58 @@
     "sourceSha256": "cbf8cdf87d1e5d6e9482d56155f6ec0abd4bef17859a9505bb7aaa33536d2fe5",
     "irSha256": "3b729144b2498abce07b8824426fea58c29e7cd3817cf908b2653d9aaea367a5",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "vfs_tsmsm — Tivoli Storage Manager Space Management でオフラインファイルを扱う VFS モジュール",
+      "s0003": "書式",
+      "s0004": "[[p0]]",
+      "s0005": "説明",
+      "s0006": "この VFS モジュールは [[p0]] スイートの一部です。",
+      "s0007": "[[p0]] VFS モジュールは、Tivoli Storage Manager Space Management でオフラインファイルを扱う拡張です。",
+      "s0008": "オンライン（移行されていない）ファイルでは、報告されるブロック数に512を掛けた値が、実際のサイズに「online ratio」を掛けた値より大きくなるという事実に基づくヒューリスティックにより、高コストな DMAPI 呼び出しを避けようとします。この判定が失敗すると、モジュールは DMAPI を呼び出し、オフライン（移行済み）ファイルに存在する特定の属性を問い合わせます。その属性があれば、ファイルをオフラインとみなします。",
+      "s0009": "このモジュールは他のモジュールと積み重ねて使用できません。",
+      "s0010": "オプション",
+      "s0011": "tsmsm:hsm script = [ hsm スクリプトへのパス ]",
+      "s0012": "hsm script には、操作とファイルパスの2つの引数を受け取るシェルスクリプトを指定します。tsmsm モジュールは操作として「offline」だけを使い、指定パスのファイルをオフラインにします。",
+      "s0013": "tsmsm:online ratio = [ 数値 ]",
+      "s0014": "報告されたサイズを実際のファイルサイズと比較する比率です。既定値は0.5です。",
+      "s0015": "tsmsm:dmapi attribute = [ 属性名 ]",
+      "s0016": "ファイルがオフラインの場合に存在する DMAPI 属性の名前です。既定値は「IBMobj」（GPFS が使う属性）です。",
+      "s0017": "tsmsm:dmapi value = [ DMAPI 属性の値 ]",
+      "s0018": "ファイルをオフラインとみなすために DMAPI 属性が持つべき値です。既定値は空で、値を要求しません。",
+      "s0019": "例",
+      "s0020": "TSM 対応の GPFS マウントは、次のように Samba 経由で公開できます。",
+      "s0021": "バージョン",
+      "s0022": "このマニュアルページは Samba スイートのバージョン4.25.0の一部です。",
+      "s0023": "著者",
+      "s0024": "オリジナルの Samba ソフトウェアと関連ユーティリティは Andrew Tridgell が作成しました。現在、Samba は Linux カーネルと同様の方法で、Samba Team によるオープンソースプロジェクトとして開発されています。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.405Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:18:20.127Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:18:20.234Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017, s0018, s0019, s0020, s0021, s0022, s0023, s0024; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:18:20.344Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:18:22.028Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

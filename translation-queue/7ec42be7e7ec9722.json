@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "7ec42be7e7ec9722",
   "manual": "manuals/samba/samba/4.25.0/upstream/8/vfs_readonly/494a4b9bfc4f",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.381Z",
   "segmentCount": 18,
   "draft": {
@@ -10,13 +10,52 @@
     "sourceSha256": "494a4b9bfc4f0149cbd26ee221aaa1038a4f2a9b70802f754e05b8e794950d92",
     "irSha256": "ef9c813908b3890232b96228b42c95145d4c01cc9d7d55990958ac5e87532967",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "vfs_readonly — 指定した期間にSamba共有を読み取り専用にする",
+      "s0003": "書式",
+      "s0004": "[[p0]]",
+      "s0005": "説明",
+      "s0006": "このVFSモジュールは [[p0]] スイートの一部です。",
+      "s0007": "[[p0]] VFSモジュールは、設定された期間内に接続するすべてのクライアントに対して、共有を読み取り専用として扱います。その期間中に接続したクライアントは、実際のアクセス権限にかかわらず、共有内のすべてのファイルへの書き込みアクセスを拒否されます。",
+      "s0008": "このモジュールは他のモジュールと積み重ねて使用できます。",
+      "s0009": "オプション",
+      "s0010": "readonly:period = BEGIN, END",
+      "s0011": "クライアントの接続が、BEGINとENDの日付指定子が示す時刻の間に行われた場合にのみ、共有を読み取り専用として扱います。これらの日付指定子の構文は、GNU [[p1]] の [[p0]] オプションが受け付けるものと同じです。",
+      "s0012": "使用例",
+      "s0013": "すべての共有を読み取り専用にします。",
+      "s0014": "営業時間中は[backup]共有を読み取り専用として扱います。",
+      "s0015": "バージョン",
+      "s0016": "このマニュアルページはSambaスイートのバージョン4.25.0の一部です。",
+      "s0017": "著者",
+      "s0018": "オリジナルのSambaソフトウェアと関連ユーティリティはAndrew Tridgellが作成しました。現在Sambaは、Linuxカーネルと同様の方法で、Samba Teamによるオープンソースプロジェクトとして開発されています。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.381Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:18:24.098Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:18:24.228Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017, s0018; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:18:24.409Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:18:26.475Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "e96413d879631986",
   "manual": "manuals/samba/samba/current/upstream/8/idmap_script/617cbda4b1d8",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.089Z",
   "segmentCount": 23,
   "draft": {
@@ -10,13 +10,57 @@
     "sourceSha256": "617cbda4b1d80063899447d874e488decae66db03f11528d3ff7baa82e22033e",
     "irSha256": "e314cf10e7164d56afe2057c3ebb74961deca7da92255c0582250348a1ab1be8",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "idmap_script — Winbind用のSamba idmap_scriptバックエンド",
+      "s0003": "説明",
+      "s0004": "idmap_scriptプラグインは、SambaとCTDBを使用するクラスタ環境でSID/uid/gidの対応表を保存するためにwinbinddが使用する、idmap_tdb2バックエンドの代替です。スクリプトで対応付けを行う、読み取り専用バックエンドです。",
+      "s0005": "idmap_tdb2バックエンドから派生して開発されました。提供された対応はwinbind_cache tdbに保存されるため、このバックエンド自体はSID/uid/gidの対応をTDBに保存しません。",
+      "s0006": "IDMAPオプション",
+      "s0007": "range = low - high",
+      "s0008": "このバックエンドが管理する、対応付けに使用可能なuidとgidの範囲を定義します。",
+      "s0009": "script",
+      "s0010": "IDの対応付けを行う外部プログラムを、このオプションで設定できます。",
+      "s0011": "IDMAPスクリプト",
+      "s0012": "script idmapバックエンドは、[[p0]] の [[p1]][[p2]][[p3]] オプション、または非推奨の旧形式 [[p4]][[p5]][[p6]] により、IDの対応付けを行う外部プログラムをサポートします。",
+      "s0013": "スクリプトは、次のコマンドラインオプションを受け付ける必要があります。",
+      "s0014": "また、次の応答のいずれかを、1行のテキストとして返す必要があります。",
+      "s0015": "XIDは、返されるIDがUIDとGIDの両方であるべきことを示します。つまり、ID_TYPE_BOTHを要求しますが、その要求に応えられるかどうかは、最終的にはスクリプト次第です。UIDまたはGIDのどちらか一方の対応だけを返すこともできます。",
+      "s0016": "使用例",
+      "s0017": "次の例は、scriptパラメーター経由で外部プログラムを使用し、scriptを既定のidmapバックエンドとする方法を示します。",
+      "s0018": "次に、処理の一部を行う単純なスクリプトを示します。",
+      "s0019": "もちろん、このスクリプトだけでは不十分です。おそらくwbinfoを使って入力されたSIDがユーザーのSIDかグループのSIDかを判定し、対応表を検索するか、別の仕組みを使ってSIDをUIDなどに対応付ける必要があります。",
+      "s0020": "スクリプトは、環境変数_NO_WINBINDDを1に設定して呼び出される点に注意してください。これにより、wbinfoの明示的な呼び出しと、nss_winbind経由の暗黙的な呼び出しの両方について、スクリプトからwinbindへの再帰呼び出しを防ぎます。たとえば [[p0]] の呼び出しでも、そのような無限再帰を引き起こす可能性があります。",
+      "s0021": "idmapスクリプト内から [[p0]] と [[p1]] を呼び出すことは安全です。その際、再帰を防ぐため、スクリプトは [[p2]] 呼び出しの直前に環境変数_NO_WINBINDDを解除し、[[p3]] から戻った直後に再び1に設定しなければなりません。",
+      "s0022": "著者",
+      "s0023": "オリジナルのSambaソフトウェアと関連ユーティリティはAndrew Tridgellが作成しました。現在Sambaは、Linuxカーネルと同様の方法で、Samba Teamによるオープンソースプロジェクトとして開発されています。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.089Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:26:44.605Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:26:44.737Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017, s0018, s0019, s0020, s0021, s0022, s0023; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:26:44.873Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:26:46.921Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

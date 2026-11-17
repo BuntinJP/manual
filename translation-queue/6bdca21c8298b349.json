@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "6bdca21c8298b349",
   "manual": "manuals/samba/samba/4.25.0/upstream/8/vfs_widelinks/94a99c598f92",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.410Z",
   "segmentCount": 16,
   "draft": {
@@ -10,13 +10,50 @@
     "sourceSha256": "94a99c598f92af59f445f29b0e189b471f0d058cabfe7b6dfb73becd6fbf8c73",
     "irSha256": "dbb39cf8de470720cec6fdabdfce706b56a36df482dda2ee2486beecefc1ec6b",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "vfs_widelinks — Samba 共有で共有内のファイルシステムのシンボリックリンクを無視する",
+      "s0003": "書式",
+      "s0004": "[[p0]]",
+      "s0005": "説明",
+      "s0006": "この VFS モジュールは [[p0]] スイートの一部です。",
+      "s0007": "[[p0]] VFS モジュールは、共有内のファイルシステムに存在するシンボリックリンクを隠します。Samba バージョン 4.13 以降で、以前は smbd 本体のコード内にあった [[p1]] の \"wide links = yes\" 機能を実装するために使用されます。このモジュールは、smb.conf の \"vfs objects =\" パラメーターで明示的に読み込むべきではなく、\"wide links = yes\" を有効にすると暗黙に読み込まれます。これは、共有で既存の安全でない \"wide links\" 機能を維持するために、既存の smb.conf ファイルを変更する必要がないようにするためです。",
+      "s0008": "\"wide links = yes\" は意図的に安全性を欠くオプションであり、Samba 環境で決して使用すべきではない点に注意してください。Linux では、\"wide links = yes\" で可能になることはすべて、代わりにバインドマウントで実現できます。このモジュールは、既存の \"wide links = yes\" 環境の利用者との後方互換性を提供するために作成されましたが、この使用方法は推奨できず、Samba 開発者も支持していません。",
+      "s0009": "この暗黙の読み込みは、将来の Samba リリースで明示的な読み込みになる可能性があります。安全でない \"wide links\" 機能を維持したい管理者は、\"vfs objects =\" のモジュール一覧にこのモジュールを追加する必要が生じるかもしれません。この変更が行われる際には、Samba プロジェクトのリリースノートとこのマニュアルページが更新されます。",
+      "s0010": "このモジュールは、他のモジュールと重ねて使用できます。",
+      "s0011": "使用例",
+      "s0012": "例は掲載していません。このモジュールは、必要に応じて smbd が暗黙に読み込みます。",
+      "s0013": "バージョン",
+      "s0014": "このマニュアルページは、Samba スイートのバージョン 4.25.0 の一部です。",
+      "s0015": "著者",
+      "s0016": "元の Samba ソフトウェアと関連ユーティリティーは Andrew Tridgell が作成しました。現在、Samba は Linux カーネルと同様の開発方法で、Samba Team によるオープンソースプロジェクトとして開発されています。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.410Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:22:32.618Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:22:32.724Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:22:32.843Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:22:34.530Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "ab1dffee91cf2f8d",
   "manual": "manuals/ietf/openpgp/rfc9580/standards-track/rfc/openpgp/28315eaa57c3",
-  "status": "pending",
+  "status": "blocked",
   "createdAt": "2026-10-31T17:22:41.704Z",
   "segmentCount": 3079,
   "draft": {
@@ -17,6 +17,11 @@
       "at": "2026-10-31T17:22:41.704Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:47:48.233Z",
+      "action": "blocked",
+      "note": "operator: SUP/SUBを平坦化した旧IRでは2^31を231として保持する等の数式意味欠落。パーサー/型/heading-renderにsup/subの安全なstyle保持と回帰テスト追加後、同原文から正式再parseし新jobへ。旧300seg候補は未受理でpartsに保持。"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "dfd724753920a6de",
   "manual": "manuals/samba/samba/4.25.0/upstream/8/vfs_default_quota/ac182405ffb6",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.331Z",
   "segmentCount": 24,
   "draft": {
@@ -10,13 +10,58 @@
     "sourceSha256": "ac182405ffb681791ba1294095f122502584556833e9f6c34ecad2a7be5fec59",
     "irSha256": "b1db739bbff70b64f1725482022a67afad1fcf6bffab31d8cca5e9cb7a1b75bf",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "vfs_default_quota — Windows クライアント用の既定クォータレコードを保存する",
+      "s0003": "書式",
+      "s0004": "[[p0]]",
+      "s0005": "説明",
+      "s0006": "この VFS モジュールは [[p0]] スイートの一部です。",
+      "s0007": "一般的なクォータ実装の多くはユーザーとグループのクォータだけを保存し、既定クォータは保存しません。[[p0]] モジュールを使うと、Windows Explorer のインターフェースで確認できる既定クォータ値を Samba が保存できます。",
+      "s0008": "既定では、Samba は既定クォータとして NO_LIMIT を返し、その更新を拒否します。[[p0]] は既定クォータをユーザーのクォータレコードに対応付けます。通常 root にはクォータ制限が適用されないため、既定では root ユーザーを使います。",
+      "s0009": "このモジュールは他のモジュールと積み重ねて使用できます。",
+      "s0010": "オプション",
+      "s0011": "default_quota:uid = UID",
+      "s0012": "UID は、既定のユーザークォータ値を保存するクォータレコードのユーザーIDを指定します。",
+      "s0013": "default_quota:gid = GID",
+      "s0014": "GID は、既定のグループクォータ値を保存するクォータレコードのグループIDを指定します。",
+      "s0015": "default_quota:uid nolimit = BOOL",
+      "s0016": "このパラメーターが True の場合、既定のユーザークォータをレコードに保存しているユーザーのクォータは NO_LIMIT と報告されます。それ以外では保存されている値を報告します。",
+      "s0017": "default_quota:gid nolimit = BOOL",
+      "s0018": "このパラメーターが True の場合、既定のグループクォータをレコードに保存しているグループのクォータは NO_LIMIT と報告されます。それ以外では保存されている値を報告します。",
+      "s0019": "例",
+      "s0020": "ID 65535 のユーザーのクォータレコードに既定クォータを保存し、そのユーザーにはクォータ制限がないと報告します。",
+      "s0021": "バージョン",
+      "s0022": "このマニュアルページは Samba スイートのバージョン4.25.0の一部です。",
+      "s0023": "著者",
+      "s0024": "オリジナルの Samba ソフトウェアと関連ユーティリティは Andrew Tridgell が作成しました。現在、Samba は Linux カーネルと同様の方法で、Samba Team によるオープンソースプロジェクトとして開発されています。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.331Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:20:37.500Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:20:37.597Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017, s0018, s0019, s0020, s0021, s0022, s0023, s0024; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:20:37.699Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:20:39.302Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

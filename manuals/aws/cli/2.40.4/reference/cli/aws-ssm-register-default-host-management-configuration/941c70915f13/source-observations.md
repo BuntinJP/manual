@@ -1,0 +1,1 @@
+New AWS SSM command present in latest index CLI2.40.4, absent from preserved2.39.3 index. Exact unmodified official HTML SHA 941c70915f132d6718f976d8ee0e4f284675e6cf3a61d5cb0ec1f1daab7c4a44. This does not update/relabel old155 pages; their source snapshots are preserved.

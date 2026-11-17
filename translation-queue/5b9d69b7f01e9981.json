@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "5b9d69b7f01e9981",
   "manual": "manuals/samba/cifs-utils/7.9/linux/1/smbinfo/f19ec80b5bbb",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:22:41.503Z",
   "segmentCount": 48,
   "draft": {
@@ -10,13 +10,82 @@
     "sourceSha256": "f19ec80b5bbb378d76c7a1b7e57d871b84622acc64e96d13ec88fda37268fbea",
     "irSha256": "36b3d00b4d89aade76b8c013fb847d30bc5b9a84009b120fa63fece296375d92",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "smbinfo",
+      "s0002": "Linux SMB クライアントファイルシステム (CIFS) 向けに SMB 固有のファイル情報を表示するユーザー空間ヘルパー",
+      "s0003": "マニュアルセクション:",
+      "s0004": "1",
+      "s0005": "書式",
+      "s0006": "smbinfo [[[p0]]] [[[p1]]] [[[p2]]] {command} {file system object}",
+      "s0007": "説明",
+      "s0008": "このツールは cifs-utils スイートの一部です。",
+      "s0009": "smbinfo は Linux SMB クライアントファイルシステム (CIFS) 用のユーザー空間ヘルパープログラムです。セキュリティ記述子やクォータなど、SMB 固有のファイル情報を表示するためのものです。",
+      "s0010": "このツールは Linux SMB クライアントに CIFS_QUERY_INFO IOCTL を呼び出し、クライアントが SMB Query Info 要求を発行して結果を返すことで動作します。拡張ファイル属性を使用する getcifsacl とは異なります。",
+      "s0011": "オプション",
+      "s0012": "[[p0]]",
+      "s0013": "バージョン番号を表示して終了します。",
+      "s0014": "[[p0]]",
+      "s0015": "詳細な出力。",
+      "s0016": "[[p0]]",
+      "s0017": "コマンドラインオプションを説明するヘルプを表示します。",
+      "s0018": "コマンド",
+      "s0019": "fileaccessinfo: FileAccessInformation クラスを表示します",
+      "s0020": "filealigninfo: FileAlignmentInformation クラスを表示します",
+      "s0021": "fileallinfo: FileAllInformation クラスを表示します",
+      "s0022": "filealternatenameinfo: FileAlternateNameInformation クラスを表示します",
+      "s0023": "filebasicinfo: FileBasicInformation クラスを表示します",
+      "s0024": "fileeainfo: FileEaInformation クラスを表示します",
+      "s0025": "filefsfullsizeinfo: FileFsFullSizeInformation クラスを表示します",
+      "s0026": "fileinternalinfo: FileInternalInformation クラスを表示します",
+      "s0027": "filemodeinfo: FileModeInformation クラスを表示します",
+      "s0028": "filenormalizednameinfo: FileNormalizedNameInformation クラスを表示します",
+      "s0029": "filepositioninfo: FilePositionInformation クラスを表示します",
+      "s0030": "filestandardinfo: FileStandardInformation クラスを表示します",
+      "s0031": "filestreaminfo: FileStreamInformation クラスを表示します",
+      "s0032": "filecompressioninfo: FileCompressionInformation クラスを表示します",
+      "s0033": "fsctl-getobjid: ObjectID を表示します",
+      "s0034": "getcompression: ファイルの圧縮設定を表示します。",
+      "s0035": "setcompression [[p0]] <no|default|lznt1>: ファイルの圧縮設定を設定します。",
+      "s0036": "list-snapshots: このファイルを格納するボリュームの以前のバージョンを一覧表示します",
+      "s0037": "quota: ボリュームのクォータを、SID の長さ - 変更時刻 - 使用クォータ - クォータしきい値 - クォータ上限 - SID の形式で表示します",
+      "s0038": "secdesc: セキュリティ記述子を、リビジョン - 制御 - 所有者 SID - グループ SID - ACL - ファイルの種類 - ファイルフラグの形式で表示します",
+      "s0039": "keys: このマウントの SMB3 トラフィックを、たとえば Wireshark で復号できるように、セッション ID、暗号化キー、復号キーをダンプします（root が必要）。",
+      "s0040": "gettconinfo: cifs ファイルの TCON Id と Session Id の両方を表示します。",
+      "s0041": "notify: ディレクトリーの変更通知を照会します。",
+      "s0042": "注記",
+      "s0043": "smbinfo ユーティリティーのカーネルサポートには、カーネル 4.20 で初めて導入された CIFS_QUERY_INFO IOCTL が必要です。これは SMB2 以降を使用するマウントポイントにのみ実装されています（mount.cifs(8) の vers オプションを参照）。",
+      "s0044": "関連項目",
+      "s0045": "mount.cifs(8), getcifsacl(1)",
+      "s0046": "著者",
+      "s0047": "smbinfo プログラムは Ronnie Sahlberg が作成しました。",
+      "s0048": "これらのプログラムについての質問先としては、Linux CIFS メーリングリストを推奨します。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:22:41.503Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:40:59.258Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:40:59.364Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017, s0018, s0019, s0020, s0021, s0022, s0023, s0024, s0025, s0026, s0027, s0028, s0029, s0030, s0031, s0032, s0033, s0034, s0035, s0036, s0037, s0038, s0039, s0040, s0041, s0042, s0043, s0044, s0045, s0046, s0047, s0048; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:40:59.473Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:41:01.291Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

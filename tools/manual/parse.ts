@@ -41,6 +41,8 @@ const blockTags = new Set([
   'OL',
   'DL',
   'TABLE',
+  // GitHub wraps rendered Markdown tables in this custom container (upstream spelling).
+  'MARKDOWN-ACCESSIBLITY-TABLE',
   'BLOCKQUOTE',
   'H1',
   'H2',
@@ -159,7 +161,7 @@ export function parseManualHtml(
       ) ?? []
     ).length >= 2;
   const legacy = Array.from(document.querySelectorAll('pre')).find(
-    (node) => node.querySelector('a[name]') || hasLegacyHeadings(node),
+    (node) => node.querySelector('a[name], a[id]') || hasLegacyHeadings(node),
   );
   const selected = selector
     ? document.querySelector(selector)
@@ -172,7 +174,7 @@ export function parseManualHtml(
   const selectedName =
     selector ??
     (selected === legacy
-      ? 'pre:has(a[name])'
+      ? 'pre:has(a[name], a[id])'
       : selected.classList.contains('manual-text')
         ? '.manual-text'
         : selected.tagName.toLowerCase());
@@ -204,12 +206,13 @@ export function parseManualHtml(
         return [{ tag: 'code', text }];
     }
     if (
-      !heading &&
-      (['STRONG', 'EM'].includes(tag) ||
+      (!heading || ['SUP', 'SUB'].includes(tag)) &&
+      (['STRONG', 'EM', 'SUP', 'SUB'].includes(tag) ||
         (selected.tagName !== 'PRE' && ['B', 'I'].includes(tag) && /\s/.test(text))) &&
       text
     ) {
-      const style = ['EM', 'I'].includes(tag) ? 'em' : 'strong';
+      const style =
+        tag === 'SUP' ? 'sup' : tag === 'SUB' ? 'sub' : ['EM', 'I'].includes(tag) ? 'em' : 'strong';
       return [
         { tag: 'style-open', style },
         ...Array.from(node.childNodes).flatMap((child) => inline(child)),
@@ -254,6 +257,7 @@ export function parseManualHtml(
     segments.push({ id, kind, text: normalize(value), protected: tokens });
     return id;
   };
+  let recoveredListGroups = 0;
   const children = (node: NodeLike): Block[] => {
     const result: Block[] = [];
     let pending: NodeLike[] = [];
@@ -286,16 +290,28 @@ export function parseManualHtml(
       ];
     if (tag === 'PRE')
       return [{ type: 'literal', text: (node.textContent ?? '').replace(/^\n|\n$/g, '') }];
-    if (tag === 'UL' || tag === 'OL')
-      return [
-        {
-          type: 'list',
-          ordered: tag === 'OL',
-          items: Array.from(node.childNodes)
-            .filter((item) => item.tagName === 'LI')
-            .map(children),
-        },
-      ];
+    if (tag === 'UL' || tag === 'OL') {
+      const items: Block[][] = [];
+      let loose: NodeLike[] = [];
+      const flushLoose = () => {
+        const blocks = children({ nodeType: 1, textContent: null, childNodes: loose });
+        if (blocks.length) {
+          // Preserve malformed upstream list content in order instead of discarding it.
+          // An implicit item does not guess which neighbouring item it belonged to.
+          items.push(blocks);
+          recoveredListGroups++;
+        }
+        loose = [];
+      };
+      for (const item of Array.from(node.childNodes)) {
+        if (item.tagName === 'LI') {
+          flushLoose();
+          items.push(children(item));
+        } else loose.push(item);
+      }
+      flushLoose();
+      return [{ type: 'list', ordered: tag === 'OL', items }];
+    }
     if (tag === 'DL') {
       const entries: { term: string; body: Block[] }[] = [];
       for (const item of Array.from(node.childNodes)) {
@@ -329,7 +345,7 @@ export function parseManualHtml(
   let blocks: Block[];
   if (
     selected.tagName === 'PRE' &&
-    (selected.querySelector('a[name]') || hasLegacyHeadings(selected))
+    (selected.querySelector('a[name], a[id]') || hasLegacyHeadings(selected))
   ) {
     warnings.push(
       'Legacy preformatted HTML: visual line wrapping is normalized in prose. Original HTML remains available for fidelity review.',
@@ -347,10 +363,10 @@ export function parseManualHtml(
       /(?:^|\n)[ \t]*<(b|strong)(?:\s[^>]*)?>([A-Z][A-Z0-9 _-]+)<\/\1>[ \t]*(?=\n|$)/g,
       (_, tag, title) => `\n<a name="${title.replace(/ /g, '_')}"><${tag}>${title}</${tag}></a>`,
     );
-    const chunks = legacyMarkup.split(/(<a\s+[^>]*name=["'][^"']+["'][^>]*>[\s\S]*?<\/a>)/i);
+    const chunks = legacyMarkup.split(/(<a\s+[^>]*(?:name|id)=["'][^"']+["'][^>]*>[\s\S]*?<\/a>)/i);
     for (const chunk of chunks) {
       if (!chunk.trim()) continue;
-      const heading = /^<a\s+[^>]*name=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>$/i.exec(chunk);
+      const heading = /^<a\s+[^>]*(?:name|id)=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>$/i.exec(chunk);
       if (heading) {
         section = heading[1];
         const element = fragment(heading[2]);
@@ -453,6 +469,10 @@ export function parseManualHtml(
       }
     }
   } else blocks = convert(selected);
+  if (recoveredListGroups)
+    warnings.push(
+      `Recovered ${recoveredListGroups} non-LI list-content groups in document order from malformed source HTML.`,
+    );
   if (!blocks.length || !segments.some((segment) => segment.text))
     throw new Error(
       'The selected document contains no translatable manual text. Specify --selector.',
@@ -465,7 +485,7 @@ export function parseManualHtml(
       selector: selectedName,
       kind:
         selected.tagName === 'PRE' &&
-        (selected.querySelector('a[name]') || hasLegacyHeadings(selected))
+        (selected.querySelector('a[name], a[id]') || hasLegacyHeadings(selected))
           ? 'preformatted-manual'
           : 'semantic-html',
       warnings,

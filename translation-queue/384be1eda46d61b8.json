@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "384be1eda46d61b8",
   "manual": "manuals/samba/samba/current/upstream/8/idmap_rid/4dd9be620d5a",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:16:38.085Z",
   "segmentCount": 19,
   "draft": {
@@ -10,13 +10,53 @@
     "sourceSha256": "4dd9be620d5a0108f4367b434def6f6cb6d1acce22ac93069bb20ee5eb5f3859",
     "irSha256": "cf99a67711bef60c1a1bfc2abe3ad4a7e1fc8c7f18484345ed53899e8d4e2682",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "idmap_rid — Winbind用のSamba idmap_ridバックエンド",
+      "s0003": "説明",
+      "s0004": "idmap_ridバックエンドは、アルゴリズムによるマッピング方式でUID/GIDとSIDを対応付ける方法を提供します。マッピングは決定的であるため、この場合はデータベースが不要です。",
+      "s0005": "現在、idmap_ridバックエンドを使用する各ドメインについて、互いに重ならない範囲を使った明示的なidmap設定が必要です。",
+      "s0006": "注意: idmap_ridバックエンドは既定のバックエンドとして使用できません。通常は、BUILTINのSIDやその他のドメインをマッピングし、グループマッピングも作成できるように、Unix IDを生成できる [[p0]][[p1]][[p2]] や [[p3]][[p4]][[p5]] などのバックエンドを使い、書き込み可能な既定のidmap範囲を定義する必要があります。以下の例を参照してください。",
+      "s0007": "IDMAPオプション",
+      "s0008": "range = low - high",
+      "s0009": "このバックエンドが管理する、対応付け可能なUIDとGIDの範囲を定義します。この範囲はフィルターとして機能します。アルゴリズムで決定したUIDまたはGIDが範囲外の場合、それらは無視され、対応するマッピングは破棄されます。これは、ローカルで定義したIDとリモートで定義したIDの間で、UID/GIDが意図せず重複するのを防ぐためのものです。",
+      "s0010": "base_rid = INTEGER",
+      "s0011": "UIDまたはGIDからSIDを構築し、SIDから取得するUIDまたはGIDの基準を調整するための基準整数を定義します。したがって、RIDがこの基準RIDより小さいSIDは除外されます。既定では許可するRIDを一切制限せず、base_ridの値は0です。",
+      "s0012": "このパラメーターの使用は非推奨です。",
+      "s0013": "マッピング式",
+      "s0014": "RIDに対応するUnix IDは、次のように計算します。",
+      "s0015": "逆に、指定したUnix IDからRIDを計算する式は次のとおりです。",
+      "s0016": "使用例",
+      "s0017": "この例は、既定のIDマッピング方式をtdbのままとし、主要ドメインと信頼されたドメインの2つをidmap_ridで設定する方法を示します。また、信頼されたドメインにbase_ridパラメーターを使用する例も示しています。",
+      "s0018": "著者",
+      "s0019": "オリジナルのSambaソフトウェアと関連ユーティリティはAndrew Tridgellが作成しました。現在Sambaは、Linuxカーネルと同様の方法で、Samba Teamによるオープンソースプロジェクトとして開発されています。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:16:38.085Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T09:20:09.382Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:20:09.617Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017, s0018, s0019; Sol翻訳担当が全文の原文/IR/条件/否定/数値/トークンを照合。候補review参照。"
+    },
+    {
+      "at": "2026-11-17T09:20:09.756Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T09:20:11.701Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }
