@@ -380,3 +380,59 @@ for (const manual of newSsmCommands) {
     }
   });
 }
+
+// Refresh snapshots are editions, not new commands. Keep the archived edition reachable.
+const currentSsm = (catalog as CatalogEntry[]).filter(
+  (entry) => entry.provider === 'aws' && entry.version === '2.40.4',
+);
+const archivedSsm = (catalog as CatalogEntry[]).filter(
+  (entry) => entry.provider === 'aws' && entry.version === '2.39.3',
+);
+test('SSM current edition covers the command inventory without replacing the archive', async ({
+  page,
+}) => {
+  expect(currentSsm).toHaveLength(157);
+  expect(archivedSsm).toHaveLength(155);
+  expect(new Set(currentSsm.map((entry) => entry.sourceUrl)).size).toBe(157);
+  const currentNames = new Set(currentSsm.map((entry) => entry.name));
+  expect(archivedSsm.every((entry) => currentNames.has(entry.name))).toBe(true);
+  for (const edition of ['2.39.3', '2.40.4']) {
+    const entry = (catalog as CatalogEntry[]).find(
+      (item) =>
+        item.provider === 'aws' &&
+        item.version === edition &&
+        item.name === 'aws-ssm-get-parameter',
+    );
+    if (!entry) throw new Error(`Missing SSM archive/current edition ${edition}`);
+    await page.goto(entry.href);
+    await expect(page.locator('.manual-edition')).toContainText(edition);
+    await expect(page.locator('.sl-markdown-content')).toContainText('GetParameter');
+  }
+});
+for (const manual of currentSsm) {
+  test(`${manual.id} preserves refreshed SSM content and anchors at mobile width`, async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 320, height: 844 });
+    await page.goto(manual.href);
+    await expect(page.locator('h1')).toHaveText(`${manual.name}(${manual.section})`);
+    await expect(page.locator('.manual-edition')).toContainText('2.40.4');
+    const body = page.locator('.sl-markdown-content');
+    await expect(body).toContainText(/[ぁ-んァ-ヶ一-龠]/);
+    await expect(body).not.toContainText(/\[\[p\d+\]\]/);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+    expect(
+      await page.locator('starlight-toc a').evaluateAll((links) =>
+        links.every((a) => {
+          const href = a.getAttribute('href');
+          return (
+            !href?.startsWith('#') ||
+            document.getElementById(decodeURIComponent(href.slice(1))) !== null
+          );
+        }),
+      ),
+    ).toBe(true);
+  });
+}

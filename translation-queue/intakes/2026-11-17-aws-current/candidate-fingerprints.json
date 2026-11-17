@@ -1,0 +1,639 @@
+{
+  "planSha256": "441f84ace14e81bc82c860b16bf6a66294473314b9bba0dc21a6ca8c50e4edaa",
+  "inputs": [
+    {
+      "file": "recovery-work/aws-current-body-audit/new-translations-part1.json",
+      "sha256": "423acf05af8d4945cd1e208884aa840eaad4a91b2e2efe3fe55fef8391de2808"
+    },
+    {
+      "file": "recovery-work/aws-current-body-audit/new-translations-part2.json",
+      "sha256": "9f11a7987088ea8be12d98f03b6309d5de38e673825b1bffa06243710f5c3cfb"
+    },
+    {
+      "file": "recovery-work/aws-current-body-audit/cross-page-review.json",
+      "sha256": "86f0bc7ae193d63f4d17839d6fbde02bd60d96821227007a3fd507ddc3164df5"
+    }
+  ],
+  "candidates": [
+    {
+      "name": "aws-ssm-add-tags-to-resource",
+      "sha256": "ff751b55566fc13b8ce08e7225e7588a27dee386c0a31e0c593b289ab451191c"
+    },
+    {
+      "name": "aws-ssm-list-tags-for-resource",
+      "sha256": "70bf423492746f278ae47ce3a03df55752091c99484259ffd9714a2e3004ffc7"
+    },
+    {
+      "name": "aws-ssm-register-target-with-maintenance-window",
+      "sha256": "adcd769fc3bdfd28fc225dd89b7c06a9f5760643f11afc70a6c9c8b26402898e"
+    },
+    {
+      "name": "aws-ssm-list-inventory-entries",
+      "sha256": "8245d1489b07f19d16d88d579fb1ed2bc72d069d57cd601fd0048df2d013faed"
+    },
+    {
+      "name": "aws-ssm-get-maintenance-window-task",
+      "sha256": "c7795252e8e794c1b446a435c88103f4b490f0c41724962016876cf7f2f250f3"
+    },
+    {
+      "name": "aws-ssm-describe-document",
+      "sha256": "9c0466fc7937912c7d2dbb32df6f5e47f0361575bf8595a480a077760b55553c"
+    },
+    {
+      "name": "aws-ssm-describe-association",
+      "sha256": "22b1c2a197f418cace32f9ad7a263520d3aeddbecb1856ff131bc6c11fe2b5a7"
+    },
+    {
+      "name": "aws-ssm-describe-effective-patches-for-patch-baseline",
+      "sha256": "05f90719986b6153e722bf67f2bbe166ff1f0b9892bdacea7756d09845b40376"
+    },
+    {
+      "name": "aws-ssm-describe-activations",
+      "sha256": "2580146cb15b78b0d745ea9baeabe410b0462f2b7f16fcdc74ab3efd925fd5a8"
+    },
+    {
+      "name": "aws-ssm-create-patch-baseline",
+      "sha256": "be4189f005088b0b8b1649790502618b61ee886463621a5c2766f3bde54faa7c"
+    },
+    {
+      "name": "aws-ssm-update-cloud-connector",
+      "sha256": "dcffb2271c3daae7de01aeb0c108123aed40dd515c3d34435f5c8e764611fca2"
+    },
+    {
+      "name": "aws-ssm-describe-maintenance-window-schedule",
+      "sha256": "44aab996da3be32196d3e64cf8b80b88bc4a31f4bd7b0dc8da957ff7d6cd5d87"
+    },
+    {
+      "name": "aws-ssm-get-calendar-state",
+      "sha256": "7f8579f067be6b29903a2b230f8c1b87e4395f837131bf99f97054e8624c87ee"
+    },
+    {
+      "name": "aws-ssm-describe-document-permission",
+      "sha256": "0c0db7294508c08b6f7acac2132c82704de29a619e3baad5658cd75b9cbcedb2"
+    },
+    {
+      "name": "aws-ssm-list-nodes-summary",
+      "sha256": "dd911644a91c3c2b995757d768e280705890aaa9c96b7c69e09f86bae11e966f"
+    },
+    {
+      "name": "aws-ssm-describe-maintenance-windows",
+      "sha256": "5b8b3b7a5099aa6e628ac29e0b6630003e87e4893a493a0be75368aa3bb2297f"
+    },
+    {
+      "name": "aws-ssm-create-activation",
+      "sha256": "d5bbddfa1851d6cb56b4833c13b773b53b996294f74923a6aacb74d08c7c08a7"
+    },
+    {
+      "name": "aws-ssm-modify-document-permission",
+      "sha256": "47f7da0470415026d66d5f28c837a8a2d5d165e09442725a55be7169028c83b1"
+    },
+    {
+      "name": "aws-ssm-deregister-patch-baseline-for-patch-group",
+      "sha256": "9a90c1bf6394abec4337c7b29fd7d1fee06a5ea2563ca9ce7be364f75e566085"
+    },
+    {
+      "name": "aws-ssm-describe-instance-properties",
+      "sha256": "6c8cb40d56d6af8dba558f28f677aab9dc98b39490cdfb1b054bbd977b7c1fdf"
+    },
+    {
+      "name": "aws-ssm-delete-activation",
+      "sha256": "1f5c5c029603ccc98180e8bf50c3ad23873432dada5c52603845126accd41e3a"
+    },
+    {
+      "name": "aws-ssm-label-parameter-version",
+      "sha256": "680bdae29be86f766eb706d648ac16e329fe8617777a928506830b4ce105196e"
+    },
+    {
+      "name": "aws-ssm-get-document",
+      "sha256": "ad08aaa6e7f71163d1df0f0ac8a404f36b140c84ce8e818fba250c45200615b8"
+    },
+    {
+      "name": "aws-ssm-start-associations-once",
+      "sha256": "f5c97ea66c62692dd1580d9e139d03db5d91c920b0c75f6b74444c6da9f07b0b"
+    },
+    {
+      "name": "aws-ssm-deregister-managed-instance",
+      "sha256": "d8c4634aefaa18441446738ecb9aaef8ece3ceaa99afad7e7dd830d79207376a"
+    },
+    {
+      "name": "aws-ssm-delete-ops-metadata",
+      "sha256": "fb44ff8a9a89b2a3bdefad86bc4d85846a0d4ad6714e107597602d738f074a0d"
+    },
+    {
+      "name": "aws-ssm-get-inventory",
+      "sha256": "9a1a249ace6342bdb0d527c544b837184612af4d177a75aff847a4bd25d28d9e"
+    },
+    {
+      "name": "aws-ssm-list-command-invocations",
+      "sha256": "b2e1e65ac390f06e4735f54fd6beee1a36abbcafcdd965bea8858ae6fe1d13e8"
+    },
+    {
+      "name": "aws-ssm-get-connection-status",
+      "sha256": "60e44061b6c8bcaf683739826e07d6b37f47278826fd00d8f840d4be8ea98c45"
+    },
+    {
+      "name": "aws-ssm-describe-available-patches",
+      "sha256": "577ffa866896e701e3e03cf6129da64a036dfef23f5560f93d2448dc9bdd9d16"
+    },
+    {
+      "name": "aws-ssm",
+      "sha256": "297eb2d4d5c9203bfd40c412ea656892cf0f5a209c2bef9c2e5b074c1284e9bb"
+    },
+    {
+      "name": "aws-ssm-update-ops-item",
+      "sha256": "7aee10daa02025bcb2e91b6acd99b45e54cc60d9ad0d6799fb76714c0983babe"
+    },
+    {
+      "name": "aws-ssm-get-resource-policies",
+      "sha256": "4803a4a9ab44f4ec86612c11bb49fa6bfdec942eb46f69165deb14436403728f"
+    },
+    {
+      "name": "aws-ssm-get-parameter",
+      "sha256": "e0a0b8218ce29006237f0a893ee6d39107536ae95e3f8e3c60831eb1e46f05fd"
+    },
+    {
+      "name": "aws-ssm-get-inventory-schema",
+      "sha256": "1325f0351ccf0c69162c0b6a5c07589b9719c6a970945ba5b5c917ccd3ff189d"
+    },
+    {
+      "name": "aws-ssm-describe-instance-associations-status",
+      "sha256": "a0cfcda6a460e0be9dfd04a83549b5713d0921f9296511c9e3b0cc7cf01844cb"
+    },
+    {
+      "name": "aws-ssm-create-ops-item",
+      "sha256": "268c062e814cfad592d525a75e9ed2070bd82e8c71571e6c3cdf522b22846c90"
+    },
+    {
+      "name": "aws-ssm-delete-maintenance-window",
+      "sha256": "90994a6a22d42590d5873c553a3b938f31880b2611f99b4f36ff88e9ab380ce3"
+    },
+    {
+      "name": "aws-ssm-describe-maintenance-window-executions",
+      "sha256": "c5fcd7c8e3ef0e1aaab23b1997eae850168902153408ac52388afde0528e1c10"
+    },
+    {
+      "name": "aws-ssm-disassociate-ops-item-related-item",
+      "sha256": "1d1086a10fef99d9751127ac1c4bdc937598ef628b5e71ec08e9519f49f9ac57"
+    },
+    {
+      "name": "aws-ssm-update-service-setting",
+      "sha256": "d353aabb07c62878dd9835c2f913cbc7b0e5059d1aaec816dc4b5c06d4889ab6"
+    },
+    {
+      "name": "aws-ssm-update-association-status",
+      "sha256": "4c4facff1e8acab297b82ffcc2e03114c642e4d1ac98424de5dd1c823599e389"
+    },
+    {
+      "name": "aws-ssm-create-maintenance-window",
+      "sha256": "10feb795605b801e6c520ff4e553169671be7ef46c16f40a4986e024e16a6ca6"
+    },
+    {
+      "name": "aws-ssm-create-association-batch",
+      "sha256": "a886dd8a532047159ed0b7f7c5c42a067e9b464831a5e88cd5054682d471c7d3"
+    },
+    {
+      "name": "aws-ssm-update-managed-instance-role",
+      "sha256": "0a61f84ea4a658e72ee0734729e7d03deb540bd698f930fc3dab8e181d31a890"
+    },
+    {
+      "name": "aws-ssm-list-document-versions",
+      "sha256": "bd4ad6593af6054b99aaafb128a4eff6e0e5f4c60c79e2c1fe84b8ff0d88f1b5"
+    },
+    {
+      "name": "aws-ssm-get-default-patch-baseline",
+      "sha256": "865b3735d8116ed09c0dc8e69f0b895431592b020440f9963c7bd76679d6e2a1"
+    },
+    {
+      "name": "aws-ssm-get-ops-summary",
+      "sha256": "20ed7baa6fb0a000d8fcf8a9fcd6b9c4cf986179970004f69fe49511426c15af"
+    },
+    {
+      "name": "aws-ssm-describe-maintenance-window-execution-tasks",
+      "sha256": "99e54415f1ef4c593a737717e4ca5a411b1b0eed015fc5a9edb544510a7fcee0"
+    },
+    {
+      "name": "aws-ssm-get-command-invocation",
+      "sha256": "4e9098e808290643f31bf88f91e292614251e939c63f76b8aa6d5e4bf84ac4b8"
+    },
+    {
+      "name": "aws-ssm-start-automation-execution",
+      "sha256": "044137e1bdd08c4d097e50fd8ccff6bd57b29450ff79606877e32c273af8a078"
+    },
+    {
+      "name": "aws-ssm-wait-command-executed",
+      "sha256": "ba83283c2f50d0fe39520eb0abe185f037ebb9fdd2a81397f9b336751cea4370"
+    },
+    {
+      "name": "aws-ssm-get-ops-metadata",
+      "sha256": "487b4ecb838a3ab0f61330bae76ce753fb982b685071e3d4b04b87d00ff1db3c"
+    },
+    {
+      "name": "aws-ssm-get-maintenance-window-execution-task-invocation",
+      "sha256": "8b9d79215bca7d9945bdf735f696381e81ed14dbbc54984d0e6480fe3432813a"
+    },
+    {
+      "name": "aws-ssm-cancel-maintenance-window-execution",
+      "sha256": "2d131eeaafb683de63c6874a50001a32b46a929a3f18a51afdced2f20677f21c"
+    },
+    {
+      "name": "aws-ssm-validate-cloud-connector",
+      "sha256": "ce87997740ec3b17f503af3097327a2a556206c857442d2ce93bd8b275ff78c4"
+    },
+    {
+      "name": "aws-ssm-put-parameter",
+      "sha256": "bcb5fee9f762ece6a973ac6fb342efa37551742c147659fe6270b111eb33bf13"
+    },
+    {
+      "name": "aws-ssm-start-change-request-execution",
+      "sha256": "f32924cdf732613e1784553e3d4b28f2d667b6d53ed3f5531bd6c9491e85c123"
+    },
+    {
+      "name": "aws-ssm-get-execution-preview",
+      "sha256": "a76e70e78c12a267570153d2f73392d13aad4f6d237e14bf4b0c528323ff4303"
+    },
+    {
+      "name": "aws-ssm-describe-automation-step-executions",
+      "sha256": "e9865445cd6a26f531569f33c33063af92663779fbc8c285147376f1465cfe41"
+    },
+    {
+      "name": "aws-ssm-resume-session",
+      "sha256": "aa121b2e0ff0c50405a531c65229295e3da5a584ca8719120de4bbd8ec396282"
+    },
+    {
+      "name": "aws-ssm-describe-maintenance-window-execution-task-invocations",
+      "sha256": "d53cbd917a3bd753144354c91b19278f307c08ae6926489f0feb8fd0dacfdcef"
+    },
+    {
+      "name": "aws-ssm-list-resource-data-sync",
+      "sha256": "ad53e1e63e761ff0c77202002f97a99158466570deea519f09968f49ee8d5cd7"
+    },
+    {
+      "name": "aws-ssm-describe-association-execution-targets",
+      "sha256": "3a9ceb1d8c3bbacc64f1cbe5386705fa2a45630207ec5337b68a5545049f8a81"
+    },
+    {
+      "name": "aws-ssm-create-cloud-connector",
+      "sha256": "87c4e197ec1b4a359c1e4abf4cc6433e99cc2b259bac70f78e37dfa6a06812f1"
+    },
+    {
+      "name": "aws-ssm-delete-cloud-connector",
+      "sha256": "9f1e87c6c00e3597f7400e02bb2463586dd888c9705edd461bf4989033b01adf"
+    },
+    {
+      "name": "aws-ssm-list-association-versions",
+      "sha256": "b276c8c485e6b227a934eae02202a7ad0fa54d3bc69c6781febb2a411fbcebc0"
+    },
+    {
+      "name": "aws-ssm-start-access-request",
+      "sha256": "c6b40011a4b4bdab41870229455eb30c800bc4da35c1e9a3de18c038e5a1140f"
+    },
+    {
+      "name": "aws-ssm-describe-patch-baselines",
+      "sha256": "95f6d99546f774d56ca47c07e8df916bc86aac655857733fdac85f6f9739f784"
+    },
+    {
+      "name": "aws-ssm-delete-ops-item",
+      "sha256": "79736f6f81c06ebb57a818550d9338b781cde570b4f773b39ae4be7b3d505d48"
+    },
+    {
+      "name": "aws-ssm-stop-automation-execution",
+      "sha256": "5645c52539ea23e36f249c474741ce8d4b63e01b581ab356e68ec5d3f8477359"
+    },
+    {
+      "name": "aws-ssm-describe-effective-instance-associations",
+      "sha256": "2e0799d977ff57eee5a543e7891f872a278f9d938455c0969a545b6145823b13"
+    },
+    {
+      "name": "aws-ssm-list-compliance-items",
+      "sha256": "247ca9b30ddeeadcfec74c7086ead4f5c4f925da37e32ebd8a31a859d6b343f7"
+    },
+    {
+      "name": "aws-ssm-send-command",
+      "sha256": "d630d92e981f97d318ac0245d50787dca7e68bae617aecff6a2b5eb157cd3b2a"
+    },
+    {
+      "name": "aws-ssm-create-resource-data-sync",
+      "sha256": "3e2b8d657a94b1f4387a6f3569223497736eccc3b248a5431ddcef3771195072"
+    },
+    {
+      "name": "aws-ssm-delete-resource-data-sync",
+      "sha256": "0e2fbcff497711cd9b64622d2aa13ce573945dec2f6ee59a28e5110ea1c2c067"
+    },
+    {
+      "name": "aws-ssm-put-compliance-items",
+      "sha256": "2a59e99d84c1565149a5867a5406a2f9e07633bd6108f86fdf6f341517dfe2e4"
+    },
+    {
+      "name": "aws-ssm-put-inventory",
+      "sha256": "e254789609192d443efcbbeaf561ec88f011a8e55dd5c830af5e48b3aabd4d00"
+    },
+    {
+      "name": "aws-ssm-list-documents",
+      "sha256": "af81e9df56355e11f2db24b475c10888bc63bd9bc4b75493abadaac3f17ae89a"
+    },
+    {
+      "name": "aws-ssm-get-ops-item",
+      "sha256": "f45e7703f056d583d40df73958cb0c5246aa4e80ccca03504a588f1192af3cb7"
+    },
+    {
+      "name": "aws-ssm-get-automation-execution",
+      "sha256": "30036db03f9a1a4766d7640a785e3b416a71c4eab19b5ba760761b6066eb50cf"
+    },
+    {
+      "name": "aws-ssm-deregister-target-from-maintenance-window",
+      "sha256": "a9a239f6bb21ed597f6d83331b2712cee7c7ba3f4eb95559d3c61b078c3ab366"
+    },
+    {
+      "name": "aws-ssm-deregister-task-from-maintenance-window",
+      "sha256": "53f89148e01b0408aeed546ab36e251b5c5874f7340b490fcf8f8f17360a4494"
+    },
+    {
+      "name": "aws-ssm-describe-maintenance-window-tasks",
+      "sha256": "8b700f7bdbb38340c805a4584d0afb04d75f816163ecb303c50a8a176b9feaf4"
+    },
+    {
+      "name": "aws-ssm-list-ops-item-events",
+      "sha256": "b52cc8591393ea76a393fca9dcb9def7125743c7b1e4cde073a3b8cde27f67c5"
+    },
+    {
+      "name": "aws-ssm-describe-parameters",
+      "sha256": "ef468a3da717c8befb943106fce6f8f2fe80a3ddf6a33d84d742f0065b8f0e22"
+    },
+    {
+      "name": "aws-ssm-start-session",
+      "sha256": "f0ca16f9d8b57e23d1ae067909575444f0eb40930c8c19b95650cb269e7bdac5"
+    },
+    {
+      "name": "aws-ssm-get-maintenance-window-execution",
+      "sha256": "ba107db573cce0629f8f2dc258df96191f245f299a4d15a78549ba91b7f1c6ff"
+    },
+    {
+      "name": "aws-ssm-delete-resource-policy",
+      "sha256": "236ae81306b76922c7cab05fc7e50f934dd80125acf9c96de8d7203ee9ab4630"
+    },
+    {
+      "name": "aws-ssm-update-ops-metadata",
+      "sha256": "a19c9594c2adc4be711e731e5a8466221135574a6f24921817afb1ab3fbf4090"
+    },
+    {
+      "name": "aws-ssm-update-document",
+      "sha256": "0467b74ecee89746c2bb66642fc5cde49d761766e714fd6a3ac616f068d12df3"
+    },
+    {
+      "name": "aws-ssm-register-patch-baseline-for-patch-group",
+      "sha256": "ec2769c39234ba220707099951b4d44856c48174941c79a6981e96c558380c49"
+    },
+    {
+      "name": "aws-ssm-update-document-default-version",
+      "sha256": "5eef873037d0e6a110e30f75f78170ad8f2e9c9aeeeeec0faf5087cf225b7b02"
+    },
+    {
+      "name": "aws-ssm-put-resource-policy",
+      "sha256": "cef2eb68a7a4b3928b5b289ae283d11541f0c1d259f47f9a466ea3c1b02e4d2c"
+    },
+    {
+      "name": "aws-ssm-wait",
+      "sha256": "0d74e4f7ea59b1b469c6b7665f68a13f40cbd62d79b15361b6fd59c6be844340"
+    },
+    {
+      "name": "aws-ssm-register-default-patch-baseline",
+      "sha256": "17a1abdf0d19d5bde2d6589c0a8d08d4ef3ccc92cc1a62f6d3be65e5500a1efc"
+    },
+    {
+      "name": "aws-ssm-get-maintenance-window",
+      "sha256": "931e1a7d663bfe24e5f4d5fe03f2e025384406390ca15c2c09ebc2bbc4a7dffb"
+    },
+    {
+      "name": "aws-ssm-update-maintenance-window-target",
+      "sha256": "f6b526289d1b07e52b47202442faf867cbeb5a8788e002eb588be6af49a9d20a"
+    },
+    {
+      "name": "aws-ssm-register-task-with-maintenance-window",
+      "sha256": "a447c2c098d6d7aee3d8291d4578765c8592dd6c1ab4e6b019d79e47db1fd56a"
+    },
+    {
+      "name": "aws-ssm-list-document-metadata-history",
+      "sha256": "4c5fd9d07a6ddd8b1d92efef25451446ec5b9015a0f3c9ae34ee5bdbd5dc696c"
+    },
+    {
+      "name": "aws-ssm-create-ops-metadata",
+      "sha256": "046eb49e1f829bf1673db43c3b2990639775f712512707beb616b4edae3aac39"
+    },
+    {
+      "name": "aws-ssm-describe-instance-patch-states",
+      "sha256": "db9b6f71b406159e4ef719b7637aaf0a00ef4ade224db32b7d9c81c0f215f892"
+    },
+    {
+      "name": "aws-ssm-update-document-metadata",
+      "sha256": "95033797cb4d3048955560b9c94538a2920e7970135e73b20409407047b7baa5"
+    },
+    {
+      "name": "aws-ssm-list-nodes",
+      "sha256": "97f3beadbab546e259f74736ca613bb296cc2fc3f7f653173d0555088c4580a3"
+    },
+    {
+      "name": "aws-ssm-list-ops-metadata",
+      "sha256": "a3f4e59820c0f571a2f33261b3ba04bade2e5e794d337c4e2fccfcb9d05f2467"
+    },
+    {
+      "name": "aws-ssm-terminate-session",
+      "sha256": "82ee1a604c0a4ce2c6efb62b2bce6f128c3e453156674206cb8849cbb00f5d4f"
+    },
+    {
+      "name": "aws-ssm-get-maintenance-window-execution-task",
+      "sha256": "df87696424fc252e11056c600ed60a8d6f014cc0a6478b4c72184bf0b75992cc"
+    },
+    {
+      "name": "aws-ssm-get-cloud-connector",
+      "sha256": "5f31cbea533a7dd2049ef6a0579cc2d97529e19d0a9630919687adf6f28eb7b3"
+    },
+    {
+      "name": "aws-ssm-update-association",
+      "sha256": "0cecd222b3fed583c794a291acd42fa29709bd9d0b37853bd5869b81afb8e4e5"
+    },
+    {
+      "name": "aws-ssm-reset-service-setting",
+      "sha256": "787b33f53c607c2dc3cf9b655cb5feb0036a82d1d79a781580ea41da902567dd"
+    },
+    {
+      "name": "aws-ssm-describe-patch-groups",
+      "sha256": "a8ae38cbd1fe72df4a746ae2cfb257424433a02ce8c4932baebfde4f7847e15b"
+    },
+    {
+      "name": "aws-ssm-get-patch-baseline",
+      "sha256": "e7a8ef40698133f97f74362da0d4a16ab71d79f25730e7ef99b94ea3f5fcf62a"
+    },
+    {
+      "name": "aws-ssm-list-associations",
+      "sha256": "95f25734b964f403c43eda17bca63bc5859d8db51404d342cdb287c86dc44543"
+    },
+    {
+      "name": "aws-ssm-delete-association",
+      "sha256": "4fd3d87110f32c38d72154434b49866093a1bee81cd54da43cc991f42e350a8d"
+    },
+    {
+      "name": "aws-ssm-delete-inventory",
+      "sha256": "f768e5786857b69505c4a694be4e92e0ede6236c636af24115a76fca190a303d"
+    },
+    {
+      "name": "aws-ssm-get-parameters",
+      "sha256": "52f6546b2aba20cb1eb5dc7206c3a66bbd0183846b1827f0a385529b3bd896eb"
+    },
+    {
+      "name": "aws-ssm-send-automation-signal",
+      "sha256": "617b0a5754bc71c7215693b98c08ce27b50b6945b9c51ca060a34789118fc54a"
+    },
+    {
+      "name": "aws-ssm-list-resource-compliance-summaries",
+      "sha256": "b466be6c62b8418e6e4878e2379a4697c388bc00a17efef35e4355c8a3e6579f"
+    },
+    {
+      "name": "aws-ssm-associate-ops-item-related-item",
+      "sha256": "81309e6def0f7492ecd69d94ef459d773067d831064bbdaefd057cf1b4c54c2f"
+    },
+    {
+      "name": "aws-ssm-list-commands",
+      "sha256": "08a5248b9a076e130ec16510113c5c177fed1f68a0676389b444fbe9b46a5ba3"
+    },
+    {
+      "name": "aws-ssm-get-deployable-patch-snapshot-for-instance",
+      "sha256": "2e757aa43abde47eee04f452b211532d6e9448577af1e59406cae4595e433743"
+    },
+    {
+      "name": "aws-ssm-describe-inventory-deletions",
+      "sha256": "12efe5a596cc7cfcc5dfa08a7170bead240f8629eca78180df4435bb68948fa3"
+    },
+    {
+      "name": "aws-ssm-get-access-token",
+      "sha256": "b14b25e09dee4ef65f401c3a4cffc9fa54b6d145948957c2d6f562c0fb194ec9"
+    },
+    {
+      "name": "aws-ssm-create-association",
+      "sha256": "8df9b096580bb34211e78b54c5162684f1311e0a94a1fbf1eced14512837d1ed"
+    },
+    {
+      "name": "aws-ssm-describe-instance-information",
+      "sha256": "9aa029d350d7782881c5b769e303bf84a9b12a574a3e9801bc1ae33dda4c8808"
+    },
+    {
+      "name": "aws-ssm-describe-maintenance-window-targets",
+      "sha256": "f5b539a4f52d0fa9b99d01afe811846ff64f554cdd68aac031c4444c02bb9a9e"
+    },
+    {
+      "name": "aws-ssm-delete-document",
+      "sha256": "d32f8974d4bdb49caf442c0651149e9cae00da348da6819e110356c1916788cd"
+    },
+    {
+      "name": "aws-ssm-describe-maintenance-windows-for-target",
+      "sha256": "c99f537ff4b6e657b36ac64bfd70f3187cb52631230ae694a238646b6f4d807c"
+    },
+    {
+      "name": "aws-ssm-describe-instance-patch-states-for-patch-group",
+      "sha256": "742247fcab75c386c66570ee9a5874a194e18a7f6eec7639d344e2a209594af7"
+    },
+    {
+      "name": "aws-ssm-get-parameters-by-path",
+      "sha256": "c00534df86d14e37171afa489cdb002d58e6e4cc31066d6bd42dc0abfafe164a"
+    },
+    {
+      "name": "aws-ssm-update-patch-baseline",
+      "sha256": "32b19bfafb3fa57836cbca2a2da9b08488ed43caed91d566190a995d10672946"
+    },
+    {
+      "name": "aws-ssm-delete-parameter",
+      "sha256": "d0767f9c52b63e7b1fb1aca664f69660d0237fbf811fe0c8246d90d82eee1a04"
+    },
+    {
+      "name": "aws-ssm-update-maintenance-window",
+      "sha256": "1d7f2144b9f8104cd2ef8cb82457d68bb6b9247e281b225797f147dfe2b26976"
+    },
+    {
+      "name": "aws-ssm-update-resource-data-sync",
+      "sha256": "83ccb4e9b350a8679c4592ec220aa52f6d8f26f330c42802800827fbad66a4bb"
+    },
+    {
+      "name": "aws-ssm-start-execution-preview",
+      "sha256": "d7acea404e21bf31117d9a78fb253ddf7361608b688327de14921419bc7d8403"
+    },
+    {
+      "name": "aws-ssm-create-document",
+      "sha256": "644ce8f1227cfb10d43021290ea465a1dea849366578d725ac64bfc5993d6054"
+    },
+    {
+      "name": "aws-ssm-describe-patch-properties",
+      "sha256": "13ded53d33d29604b1d80f529a8d0a62c551da113b1ffe2d8d4b5f3345da4ba1"
+    },
+    {
+      "name": "aws-ssm-get-patch-baseline-for-patch-group",
+      "sha256": "1ca7939812b8fa4be99f83724f54c327e2bf9bf770c650961f389391cf60964a"
+    },
+    {
+      "name": "aws-ssm-describe-association-executions",
+      "sha256": "98d47fcc49a1a00ff51d52327d583b99e8e9dc237d9f11239c6679d8e289b5a3"
+    },
+    {
+      "name": "aws-ssm-delete-patch-baseline",
+      "sha256": "ede4b05dacd951e2251dc4abd8e3c1b922ab3b44ce928bc508ca23502a80fc89"
+    },
+    {
+      "name": "aws-ssm-get-parameter-history",
+      "sha256": "18772636c5e2095639e19d61956b1b768501dbefc5c9a72e078dc6680a23bcc7"
+    },
+    {
+      "name": "aws-ssm-list-cloud-connectors",
+      "sha256": "3c76e45f0b77ba69f2266944d4e74e097c157501fb9fab223573a7866e79dbcf"
+    },
+    {
+      "name": "aws-ssm-get-service-setting",
+      "sha256": "ee96999fde012c639bc25ef9e7c1c26fc4a1da6fdeb523a2c05bec35b05781a5"
+    },
+    {
+      "name": "aws-ssm-describe-sessions",
+      "sha256": "85f05463221b6af8d4dc19b00144e89a97b3b38d43864edacdbbf93507e60c34"
+    },
+    {
+      "name": "aws-ssm-cancel-command",
+      "sha256": "cb015e27731c4918c60cc4e5c9d6b842bc65eaf54c76b051de303d1dd6a33595"
+    },
+    {
+      "name": "aws-ssm-list-ops-item-related-items",
+      "sha256": "d3ce8e0e0de6688448afe13d34d90463340804222883ff8e9f4d54aaa005f614"
+    },
+    {
+      "name": "aws-ssm-delete-parameters",
+      "sha256": "b615fc1a34ea7c0c8bf26ce1823275ecc76eb0c2b85002133ca6807963b9f6dd"
+    },
+    {
+      "name": "aws-ssm-unlabel-parameter-version",
+      "sha256": "3ad5517e9d48b68d43bdb0f53e84e98d2f4bd832a6d4a1d236fe31a90cc9cc56"
+    },
+    {
+      "name": "aws-ssm-describe-automation-executions",
+      "sha256": "44def2b11937a1c7c647d98dd3324ff285ef767d76fe563ad4bd9e83ca66e8e6"
+    },
+    {
+      "name": "aws-ssm-remove-tags-from-resource",
+      "sha256": "22c60c5dac74f17fc61f01a32705fb13e3320a171d23af513c78cd77177e7884"
+    },
+    {
+      "name": "aws-ssm-update-maintenance-window-task",
+      "sha256": "b94de3fe6cad8934ac4df7b3a9715c1adb5bfb5485594383f1d6e9b8e439483a"
+    },
+    {
+      "name": "aws-ssm-describe-ops-items",
+      "sha256": "0bea3a04a9b1b8963ee86bd25101281ae5b3da73dfe11a6b205ddf1e92f6f65b"
+    },
+    {
+      "name": "aws-ssm-list-compliance-summaries",
+      "sha256": "f78a873ccc9d7284ae1f287666354fa2c2f9e88c05c0a820867df780a4c08bf2"
+    },
+    {
+      "name": "aws-ssm-describe-instance-patches",
+      "sha256": "5b48c65c73f11a21a58a1f7a76f9ea60105539149139c384d5b74ede3c9a6376"
+    },
+    {
+      "name": "aws-ssm-describe-patch-group-state",
+      "sha256": "5cc3e393a72c72e39abea3baf53d860d682e33bdff8f7d4b8504c5689a671614"
+    }
+  ]
+}
