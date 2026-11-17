@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "5f602dacb9c0a9af",
   "manual": "manuals/apple/macos/27.0.1/26a434/1/pbpaste/b2a70eec58e3",
-  "status": "pending",
+  "status": "done",
   "createdAt": "2026-10-31T17:22:41.524Z",
   "segmentCount": 19,
   "draft": {
@@ -10,13 +10,53 @@
     "sourceSha256": "b2a70eec58e3cc7ae85a6cdc80e0627c4b481973664acc407e9a580ee0bcdf27",
     "irSha256": "cb44ff49a5381821233ab50136b984c341d65ffd62c949aa18e5ecad5aa276e8",
     "locale": "ja",
-    "segments": {}
+    "segments": {
+      "s0001": "名前",
+      "s0002": "[[p0]]、[[p1]] - コマンドラインからペーストボード（クリップボード）へのコピーと貼り付けを行う",
+      "s0003": "書式",
+      "s0004": "[[p0]] [[[p1]]] [[[p2]] {[[p3]] | [[p4]] | [[p5]] | [[p6]]}]",
+      "s0005": "[[p0]] [[[p1]]] [[[p2]] {[[p3]] | [[p4]] | [[p5]] | [[p6]]}] [[[p7]] {[[p8]] | [[p9]] | [[p10]]}]",
+      "s0006": "説明",
+      "s0007": "[[p0]] は標準入力を受け取り、指定されたペーストボードに格納します。ペーストボードを指定しない場合、既定ではgeneralペーストボードを使用します。入力は通常プレーンテキストデータとして格納されます。ただし、Encapsulated PostScript（EPS）またはRich Text Format（RTF）のファイルヘッダーで始まる場合は、対応するデータ型としてペーストボードに格納されます。",
+      "s0008": "[[p0]] はペーストボードからデータを取り出して標準出力に書き出します。通常は最初にペーストボード内のプレーンテキストデータを探し、それを標準出力に書き出します。プレーンテキストデータがなければEncapsulated PostScriptを探し、EPSもなければRich Textを探します。これらの型のいずれもペーストボードに存在しない場合、[[p1]] は何も出力しません。",
+      "s0009": "* エンコーディング:",
+      "s0010": "[[p0]] と [[p1]] は、ロケール環境変数を使って入出力に使用するエンコーディングを決定します。たとえば、他のロケール設定がない場合、環境変数 LANG=en_US.UTF-8 を設定すると、[[p2]] と [[p3]] は入出力にUTF-8を使用します。ロケールからエンコーディングを決定できない場合は、標準のCエンコーディングを使用します。UTF-8の使用を推奨します。なお、Terminalアプリケーションは既定でUTF-8エンコーディングを使用し、適切なロケール環境変数を自動的に設定します。",
+      "s0011": "オプション",
+      "s0012": "[[p0]][[p1]] {general | ruler | find | font}[[p2]]",
+      "s0013": "コピー先または貼り付け元のペーストボードを指定します。ペーストボードを指定しない場合、既定ではgeneralペーストボードを使用します。",
+      "s0014": "[[p0]][[p1]] {txt | rtf | ps}[[p2]]",
+      "s0015": "ペーストボードで最初に探すデータの型を [[p0]] に指示します。前述のとおり、[[p1]] は通常、最初にプレーンテキストデータを探します。ただし、[[p2]][[p3]] ps[[p4]] を指定すると、[[p5]] に最初にEncapsulated PostScriptを探すよう指示できます。[[p6]][[p7]] rtf[[p8]] を指定すると、[[p9]] は最初にRich Text形式を探します。いずれの場合も、優先する形式が見つからなければ、[[p10]] は他の形式を探します。txtオプションは非推奨のasciiオプションを置き換えるものですが、asciiも従来どおり動作します。どちらもプレーンテキストを優先する指定です。",
+      "s0016": "関連項目",
+      "s0017": "[[p0]]ADC Reference Library:[[p1]] [[p2]] Cocoa > Interapplication Communication > Copying and Pasting（コピーと貼り付け） [[p3]] Carbon > Interapplication Communication > Pasteboard Manager Programming Guide（Pasteboard Managerプログラミングガイド） [[p4]] Carbon > Interapplication Communication > Pasteboard Manager Reference（Pasteboard Managerリファレンス）",
+      "s0018": "不具合",
+      "s0019": "[[p0]] に、指定したデータ型だけ（[[p1]]）を取得するよう指示する方法はありません。"
+    }
   },
   "history": [
     {
       "at": "2026-10-31T17:22:41.524Z",
       "action": "enqueued",
       "note": "Preserved source, IR, glossary and translation request."
+    },
+    {
+      "at": "2026-11-17T08:49:25.717Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T08:49:25.824Z",
+      "action": "saved",
+      "note": "sol-content: s0001, s0002, s0003, s0004, s0005, s0006, s0007, s0008, s0009, s0010, s0011, s0012, s0013, s0014, s0015, s0016, s0017, s0018, s0019; macOS 27.0.1同梱原文roff全量とIR/保護トークンを翻訳担当が自己照合。"
+    },
+    {
+      "at": "2026-11-17T08:49:25.925Z",
+      "action": "claimed",
+      "note": "sol-content"
+    },
+    {
+      "at": "2026-11-17T08:49:27.747Z",
+      "action": "completed",
+      "note": "sol-content: reviewed, accepted, verified and rendered locally."
     }
   ]
 }

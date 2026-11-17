@@ -85,6 +85,20 @@ describe('semantic import and literal preservation', () => {
     expect(ir.segments.some((s) => s.text === 'Display files.')).toBe(true);
     expect(ir.segments.some((s) => s.text.includes('Ignore site'))).toBe(false);
   });
+  test('recognizes FreeBSD id-anchored preformatted headings outside site navigation', () => {
+    const html =
+      '<div id="contentwrap"><nav>Site navigation</nav></div><pre>DEMO(1)\n\n<a id="NAME" href="#end"><b>NAME</b></a>\n demo -- sample\n\n<a id="SYNOPSIS" href="#end"><b>SYNOPSIS</b></a>\n     <b>demo</b> [<b>-s</b>]\n\n<a id="DESCRIPTION" href="#end"><b>DESCRIPTION</b></a>\n Read input files.\n\n<a id="EXAMPLES" href="#end"><b>EXAMPLES</b></a>\n     <b>demo</b> <b>input</b>\n</pre>';
+    for (const selector of [undefined, 'pre']) {
+      const ir = parseManualHtml(html, manifest.source.sha256, manifest.source.origin, selector);
+      expect(ir.extraction.kind).toBe('preformatted-manual');
+      expect(ir.segments.some((s) => s.text === 'Read input files.')).toBe(true);
+      expect(ir.segments.some((s) => s.text.includes('Site navigation'))).toBe(false);
+      expect(ir.blocks.filter((b) => b.type === 'literal').map((b) => b.text)).toEqual([
+        'demo [-s]',
+        'demo input',
+      ]);
+    }
+  });
   test('recognizes unanchored preformatted man-page headings', () => {
     const ir = parseManualHtml(
       '<h1>demo(1)</h1><pre><b>NAME</b>\n demo -- example\n\n<b>DESCRIPTION</b>\n This utility displays files.\n</pre>',

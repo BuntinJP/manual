@@ -159,7 +159,7 @@ export function parseManualHtml(
       ) ?? []
     ).length >= 2;
   const legacy = Array.from(document.querySelectorAll('pre')).find(
-    (node) => node.querySelector('a[name]') || hasLegacyHeadings(node),
+    (node) => node.querySelector('a[name], a[id]') || hasLegacyHeadings(node),
   );
   const selected = selector
     ? document.querySelector(selector)
@@ -172,7 +172,7 @@ export function parseManualHtml(
   const selectedName =
     selector ??
     (selected === legacy
-      ? 'pre:has(a[name])'
+      ? 'pre:has(a[name], a[id])'
       : selected.classList.contains('manual-text')
         ? '.manual-text'
         : selected.tagName.toLowerCase());
@@ -329,7 +329,7 @@ export function parseManualHtml(
   let blocks: Block[];
   if (
     selected.tagName === 'PRE' &&
-    (selected.querySelector('a[name]') || hasLegacyHeadings(selected))
+    (selected.querySelector('a[name], a[id]') || hasLegacyHeadings(selected))
   ) {
     warnings.push(
       'Legacy preformatted HTML: visual line wrapping is normalized in prose. Original HTML remains available for fidelity review.',
@@ -347,10 +347,10 @@ export function parseManualHtml(
       /(?:^|\n)[ \t]*<(b|strong)(?:\s[^>]*)?>([A-Z][A-Z0-9 _-]+)<\/\1>[ \t]*(?=\n|$)/g,
       (_, tag, title) => `\n<a name="${title.replace(/ /g, '_')}"><${tag}>${title}</${tag}></a>`,
     );
-    const chunks = legacyMarkup.split(/(<a\s+[^>]*name=["'][^"']+["'][^>]*>[\s\S]*?<\/a>)/i);
+    const chunks = legacyMarkup.split(/(<a\s+[^>]*(?:name|id)=["'][^"']+["'][^>]*>[\s\S]*?<\/a>)/i);
     for (const chunk of chunks) {
       if (!chunk.trim()) continue;
-      const heading = /^<a\s+[^>]*name=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>$/i.exec(chunk);
+      const heading = /^<a\s+[^>]*(?:name|id)=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>$/i.exec(chunk);
       if (heading) {
         section = heading[1];
         const element = fragment(heading[2]);
@@ -465,7 +465,7 @@ export function parseManualHtml(
       selector: selectedName,
       kind:
         selected.tagName === 'PRE' &&
-        (selected.querySelector('a[name]') || hasLegacyHeadings(selected))
+        (selected.querySelector('a[name], a[id]') || hasLegacyHeadings(selected))
           ? 'preformatted-manual'
           : 'semantic-html',
       warnings,

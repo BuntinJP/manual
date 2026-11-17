@@ -76,7 +76,7 @@ test('font preload prevents duplicate fetches and visible font layout shifts on 
   }
 });
 
-for (const provider of ['apple', 'freebsd']) {
+for (const provider of ['apple', 'freebsd', 'gnu', 'openbsd']) {
   test(`${provider} HOME lists exactly its published manuals and works without JavaScript`, async ({
     browser,
     baseURL,
@@ -91,9 +91,9 @@ for (const provider of ['apple', 'freebsd']) {
       await links.evaluateAll((items) => items.map((item) => item.getAttribute('href')).sort()),
     ).toEqual(expected.map((entry) => entry.href).sort());
     await expect(
-      page.locator('nav[aria-label="メイン"] a[href="' + providerHomeHref(provider) + '"]'),
+      page.locator(`nav[aria-label="メイン"] a[href="${providerHomeHref(provider)}"]`),
     ).toHaveText('HOME');
-    await expect(page.locator('nav[aria-label="メイン"]')).not.toContainText('OpenBSD');
+    await expect(page.locator('nav[aria-label="メイン"]')).not.toContainText('Linux Foundation');
     await context.close();
   });
 }
@@ -273,12 +273,27 @@ for (const query of ['find', 'シンボリックリンク']) {
 
 const appleManuals = (catalog as CatalogEntry[]).filter((entry) => entry.provider === 'apple');
 
-test('Apple collection contains exactly the nine accepted commands', async ({ page }) => {
+test('Apple collection contains exactly the fourteen accepted commands', async ({ page }) => {
   expect(appleManuals.map((entry) => entry.name).sort()).toEqual(
-    ['find', 'osascript', 'osacompile', 'launchctl', 'tclsh', 'tar', 'swift', 'sqlite3', 'systemextensionsctl'].sort(),
+    [
+      'find',
+      'osascript',
+      'osacompile',
+      'launchctl',
+      'tclsh',
+      'tar',
+      'swift',
+      'sqlite3',
+      'systemextensionsctl',
+      'cut',
+      'paste',
+      'pbcopy',
+      'pbpaste',
+      'xcode-select',
+    ].sort(),
   );
   await page.goto('/search/?provider=apple');
-  await expect(page.locator('.catalog-results li:visible')).toHaveCount(9);
+  await expect(page.locator('.catalog-results li:visible')).toHaveCount(14);
   await page.goto('/search/?q=man%201%20find&provider=apple');
   await expect(page.locator('h1')).toHaveText('find(1)');
   await expect(page.locator('.manual-edition')).toContainText('Apple');

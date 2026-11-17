@@ -3,161 +3,529 @@
   "parserVersion": 1,
   "sourceSha256": "4dde8d19c470449c1ee77965585c135ecd0deb49b4bec8cb7bf6c62769745d58",
   "extraction": {
-    "selector": "#contentwrap",
-    "kind": "semantic-html",
-    "warnings": []
+    "selector": "pre",
+    "kind": "preformatted-manual",
+    "warnings": [
+      "Legacy preformatted HTML: visual line wrapping is normalized in prose. Original HTML remains available for fidelity review."
+    ]
   },
   "segments": [
     {
       "id": "s0001",
-      "kind": "paragraph",
-      "text": "[[p0]] | [[p1]]",
-      "protected": [
-        {
-          "token": "[[p0]]",
-          "inline": {
-            "tag": "link",
-            "text": "home",
-            "href": "https://man.freebsd.org/cgi/man.cgi"
-          }
-        },
-        {
-          "token": "[[p1]]",
-          "inline": {
-            "tag": "link",
-            "text": "help",
-            "href": "https://man.freebsd.org/cgi/man.cgi/help.html"
-          }
-        }
-      ]
+      "kind": "heading",
+      "text": "NAME",
+      "protected": []
     },
     {
       "id": "s0002",
       "kind": "paragraph",
-      "text": "[[p0]] | [[p1]] | [[p2]] | [[p3]] | [[p4]] | [[p5]] | [[p6]] | [[p7]] | [[p8]] | [[p9]]",
+      "text": "[[p0]] -- cut out selected portions of each line of a file",
       "protected": [
         {
           "token": "[[p0]]",
           "inline": {
-            "tag": "link",
-            "text": "NAME",
-            "href": "#NAME"
-          }
-        },
-        {
-          "token": "[[p1]]",
-          "inline": {
-            "tag": "link",
-            "text": "SYNOPSIS",
-            "href": "#SYNOPSIS"
-          }
-        },
-        {
-          "token": "[[p2]]",
-          "inline": {
-            "tag": "link",
-            "text": "DESCRIPTION",
-            "href": "#DESCRIPTION"
-          }
-        },
-        {
-          "token": "[[p3]]",
-          "inline": {
-            "tag": "link",
-            "text": "ENVIRONMENT",
-            "href": "#ENVIRONMENT"
-          }
-        },
-        {
-          "token": "[[p4]]",
-          "inline": {
-            "tag": "link",
-            "text": "EXIT STATUS",
-            "href": "#EXIT_STATUS"
-          }
-        },
-        {
-          "token": "[[p5]]",
-          "inline": {
-            "tag": "link",
-            "text": "EXAMPLES",
-            "href": "#EXAMPLES"
-          }
-        },
-        {
-          "token": "[[p6]]",
-          "inline": {
-            "tag": "link",
-            "text": "SEE ALSO",
-            "href": "#SEE_ALSO"
-          }
-        },
-        {
-          "token": "[[p7]]",
-          "inline": {
-            "tag": "link",
-            "text": "STANDARDS",
-            "href": "#STANDARDS"
-          }
-        },
-        {
-          "token": "[[p8]]",
-          "inline": {
-            "tag": "link",
-            "text": "HISTORY",
-            "href": "#HISTORY"
-          }
-        },
-        {
-          "token": "[[p9]]",
-          "inline": {
-            "tag": "link",
-            "text": "AUTHORS",
-            "href": "#AUTHORS"
+            "tag": "strong",
+            "text": "cut"
           }
         }
       ]
     },
     {
       "id": "s0003",
+      "kind": "heading",
+      "text": "SYNOPSIS",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0005",
       "kind": "paragraph",
-      "text": "Want to link to this manual page? Use this URL:[[p0]]<[[p1]]>",
+      "text": "The [[p0]] utility cuts out selected portions of each line (as specified by [[p1]]) from each [[p2]] and writes them to the standard output. If no [[p3]] arguments are specified, or a file argument is a single dash (`[[p4]]'), [[p5]] reads from the standard input. The items specified by [[p6]] can be in terms of column position or in terms of fields delimited by a special character. Column and field numbering start from 1.",
       "protected": [
         {
           "token": "[[p0]]",
           "inline": {
-            "tag": "br"
+            "tag": "strong",
+            "text": "cut"
           }
         },
         {
           "token": "[[p1]]",
           "inline": {
-            "tag": "link",
-            "text": "https://man.FreeBSD.org/cgi/man.cgi?query=cut&sektion=1&manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly",
-            "href": "https://man.freebsd.org/cgi/man.cgi?query=cut&sektion=1&manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"
+            "tag": "em",
+            "text": "list"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "file"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "em",
+            "text": "file"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "strong",
+            "text": "-"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "strong",
+            "text": "cut"
+          }
+        },
+        {
+          "token": "[[p6]]",
+          "inline": {
+            "tag": "em",
+            "text": "list"
           }
         }
       ]
     },
     {
-      "id": "s0004",
+      "id": "s0006",
       "kind": "paragraph",
-      "text": "[[p0]] | [[p1]]",
+      "text": "The [[p0]] option argument is a comma or whitespace separated set of increas- ing numbers and/or number ranges. Number ranges consist of a number, a dash (`-'), and a second number and select the columns or fields from the first number to the second, inclusive. Numbers or number ranges may be preceded by a dash, which selects all columns or fields from 1 to the last number. Numbers or number ranges may be followed by a dash, which selects all columns or fields from the last number to the end of the line. Numbers and number ranges may be repeated, overlapping, and in any order. It is not an error to select columns or fields not present in the input line.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "list"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0007",
+      "kind": "paragraph",
+      "text": "The options are as follows:",
+      "protected": []
+    },
+    {
+      "id": "s0008",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "-b"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "list"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "The [[p0]] specifies byte positions.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "list"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0010",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "-c"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "list"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0011",
+      "kind": "paragraph",
+      "text": "The [[p0]] specifies character positions.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "list"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0012",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "-d"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "delim"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "Use [[p0]] as the field delimiter character instead of the tab character.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "delim"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0014",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "-f"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "list"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "The [[p0]] specifies fields, separated in the input by the field delimiter character (see the [[p1]] option). Output fields are sepa- rated by a single occurrence of the field delimiter character.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "list"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "-d"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0016",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "-n"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "Do not split multi-byte characters. Characters will only be out- put if at least one byte is selected, and, after a prefix of zero or more unselected bytes, the rest of the bytes that form the character are selected.",
+      "protected": []
+    },
+    {
+      "id": "s0018",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "-s"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0019",
+      "kind": "paragraph",
+      "text": "Suppress lines with no field delimiter characters. Unless speci- fied, lines with no delimiters are passed through unmodified.",
+      "protected": []
+    },
+    {
+      "id": "s0020",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "-w"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0021",
+      "kind": "paragraph",
+      "text": "Use whitespace (spaces and tabs) as the delimiter. Consecutive spaces and tabs count as one single field separator.",
+      "protected": []
+    },
+    {
+      "id": "s0022",
+      "kind": "heading",
+      "text": "ENVIRONMENT",
+      "protected": []
+    },
+    {
+      "id": "s0023",
+      "kind": "paragraph",
+      "text": "The [[p0]], [[p1]] and [[p2]] environment variables affect the execution of [[p3]] as described in [[p4]].",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "LANG"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "LC_ALL"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "LC_CTYPE"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "strong",
+            "text": "cut"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "link",
+            "text": "environ(7)",
+            "href": "https://man.freebsd.org/cgi/man.cgi?query=environ&sektion=7&apropos=0&manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0024",
+      "kind": "heading",
+      "text": "EXIT STATUS",
+      "protected": []
+    },
+    {
+      "id": "s0025",
+      "kind": "paragraph",
+      "text": "The [[p0]] utility exits 0 on success, and >0 if an error occurs.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "cut"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0026",
+      "kind": "heading",
+      "text": "EXAMPLES",
+      "protected": []
+    },
+    {
+      "id": "s0027",
+      "kind": "paragraph",
+      "text": "Extract users' login names and shells from the system [[p0]] file as \"name:shell\" pairs:",
       "protected": [
         {
           "token": "[[p0]]",
           "inline": {
             "tag": "link",
-            "text": "home",
-            "href": "https://man.freebsd.org/cgi/man.cgi"
+            "text": "passwd(5)",
+            "href": "https://man.freebsd.org/cgi/man.cgi?query=passwd&sektion=5&apropos=0&manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0028",
+      "kind": "paragraph",
+      "text": "Show the names and login times of the currently logged in users:",
+      "protected": []
+    },
+    {
+      "id": "s0029",
+      "kind": "heading",
+      "text": "SEE ALSO",
+      "protected": []
+    },
+    {
+      "id": "s0030",
+      "kind": "paragraph",
+      "text": "[[p0]], [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "colrm(1)",
+            "href": "https://man.freebsd.org/cgi/man.cgi?query=colrm&sektion=1&apropos=0&manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"
           }
         },
         {
           "token": "[[p1]]",
           "inline": {
             "tag": "link",
-            "text": "help",
-            "href": "https://man.freebsd.org/cgi/man.cgi/help.html"
+            "text": "paste(1)",
+            "href": "https://man.freebsd.org/cgi/man.cgi?query=paste&sektion=1&apropos=0&manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0031",
+      "kind": "heading",
+      "text": "STANDARDS",
+      "protected": []
+    },
+    {
+      "id": "s0032",
+      "kind": "paragraph",
+      "text": "The [[p0]] utility conforms to IEEE Std 1003.2-1992 (\"POSIX.2\").",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "cut"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0033",
+      "kind": "paragraph",
+      "text": "The [[p0]] flag is an extension to the specification.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "-w"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0034",
+      "kind": "heading",
+      "text": "HISTORY",
+      "protected": []
+    },
+    {
+      "id": "s0035",
+      "kind": "paragraph",
+      "text": "A [[p0]] command first appeared in 4.3BSD-Reno.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "cut"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0036",
+      "kind": "heading",
+      "text": "AUTHORS",
+      "protected": []
+    },
+    {
+      "id": "s0037",
+      "kind": "paragraph",
+      "text": "The original Bell Labs version was written by Gottfried W. R. Luderer and the BSD version by Adam S. Moskowitz.",
+      "protected": []
+    },
+    {
+      "id": "s0038",
+      "kind": "paragraph",
+      "text": "FreeBSD 15.1 November 6, 2022 [[p0]](1)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "CUT"
           }
         }
       ]
@@ -165,24 +533,230 @@
   ],
   "blocks": [
     {
-      "type": "paragraph",
+      "type": "heading",
+      "level": 2,
+      "anchor": "NAME",
       "segment": "s0001"
-    },
-    {
-      "type": "literal",
-      "text": "CUT(1)\t\t\t     General Commands Manual\t\t\t  CUT(1)\n\nNAME\n     cut -- cut out selected portions of each line of a file\n\nSYNOPSIS\n     cut -b list [-n] [file ...]\n     cut -c list [file ...]\n     cut -f list [-w | -d delim] [-s] [file ...]\n\nDESCRIPTION\n     The  cut  utility\tcuts out selected portions of each line (as specified by\n     list) from each file and writes them to the standard output.   If\tno  file\n     arguments\tare  specified,  or  a file argument is a single dash (`-'), cut\n     reads from the standard input.  The items specified by list can be in terms\n     of column position or in terms of fields delimited by a special  character.\n     Column and field numbering start from 1.\n\n     The list option argument is a comma or whitespace separated set of increas-\n     ing  numbers  and/or  number  ranges.  Number ranges consist of a number, a\n     dash (`-'), and a second number and select the columns or fields  from  the\n     first  number  to\tthe  second, inclusive.  Numbers or number ranges may be\n     preceded by a dash, which selects all columns or fields from 1 to the  last\n     number.   Numbers or number ranges may be followed by a dash, which selects\n     all columns or fields from the last number to the end of the line.  Numbers\n     and number ranges may be repeated, overlapping, and in any  order.   It  is\n     not an error to select columns or fields not present in the input line.\n\n     The options are as follows:\n\n     -b list   The list specifies byte positions.\n\n     -c list   The list specifies character positions.\n\n     -d delim  Use  delim  as  the  field delimiter character instead of the tab\n\t       character.\n\n     -f list   The list specifies fields, separated in the input  by  the  field\n\t       delimiter character (see the -d option).  Output fields are sepa-\n\t       rated by a single occurrence of the field delimiter character.\n\n     -n        Do not split multi-byte characters.  Characters will only be out-\n\t       put if at least one byte is selected, and, after a prefix of zero\n\t       or  more  unselected  bytes,  the rest of the bytes that form the\n\t       character are selected.\n\n     -s        Suppress lines with no field delimiter characters.  Unless speci-\n\t       fied, lines with no delimiters are passed through unmodified.\n\n     -w        Use whitespace (spaces and tabs) as the\tdelimiter.   Consecutive\n\t       spaces and tabs count as one single field separator.\n\nENVIRONMENT\n     The LANG, LC_ALL and LC_CTYPE environment variables affect the execution of\n     cut as described in environ(7).\n\nEXIT STATUS\n     The cut utility exits 0 on success, and >0 if an error occurs.\n\nEXAMPLES\n     Extract  users'  login  names  and shells from the system passwd(5) file as\n     \"name:shell\" pairs:\n\n\t   cut -d : -f 1,7 /etc/passwd\n\n     Show the names and login times of the currently logged in users:\n\n\t   who | cut -c 1-16,26-38\n\nSEE ALSO\n     colrm(1), paste(1)\n\nSTANDARDS\n     The cut utility conforms to IEEE Std 1003.2-1992 (\"POSIX.2\").\n\n     The -w flag is an extension to the specification.\n\nHISTORY\n     A cut command first appeared in 4.3BSD-Reno.\n\nAUTHORS\n     The original Bell Labs version was written by Gottfried W. R.  Luderer  and\n     the BSD version by Adam S. Moskowitz.\n\nFreeBSD 15.1\t\t\tNovember 6, 2022\t\t\t  CUT(1)"
     },
     {
       "type": "paragraph",
       "segment": "s0002"
     },
     {
-      "type": "paragraph",
+      "type": "heading",
+      "level": 2,
+      "anchor": "SYNOPSIS",
       "segment": "s0003"
     },
     {
-      "type": "paragraph",
+      "type": "literal",
+      "text": "cut -b list [-n] [file ...]\ncut -c list [file ...]\ncut -f list [-w | -d delim] [-s] [file ...]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "DESCRIPTION",
       "segment": "s0004"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0007"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0008",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0009"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0010",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0011"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0012",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0013"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0014",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0015"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0016",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0017"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0018",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0019"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0020",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0021"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "ENVIRONMENT",
+      "segment": "s0022"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0023"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "EXIT_STATUS",
+      "segment": "s0024"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0025"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "EXAMPLES",
+      "segment": "s0026"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0027"
+    },
+    {
+      "type": "literal",
+      "text": "cut -d : -f 1,7 /etc/passwd"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0028"
+    },
+    {
+      "type": "literal",
+      "text": "who | cut -c 1-16,26-38"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "SEE_ALSO",
+      "segment": "s0029"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0030"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "STANDARDS",
+      "segment": "s0031"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0032"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0033"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "HISTORY",
+      "segment": "s0034"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0035"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "AUTHORS",
+      "segment": "s0036"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0037"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0038"
     }
   ]
 }

@@ -3,153 +3,441 @@
   "parserVersion": 1,
   "sourceSha256": "0dcb792cbc9fab9539c3d7d560e0b9441bbba819335feed32fe46fe994f56dd7",
   "extraction": {
-    "selector": "#contentwrap",
-    "kind": "semantic-html",
-    "warnings": []
+    "selector": "pre",
+    "kind": "preformatted-manual",
+    "warnings": [
+      "Legacy preformatted HTML: visual line wrapping is normalized in prose. Original HTML remains available for fidelity review."
+    ]
   },
   "segments": [
     {
       "id": "s0001",
-      "kind": "paragraph",
-      "text": "[[p0]] | [[p1]]",
-      "protected": [
-        {
-          "token": "[[p0]]",
-          "inline": {
-            "tag": "link",
-            "text": "home",
-            "href": "https://man.freebsd.org/cgi/man.cgi"
-          }
-        },
-        {
-          "token": "[[p1]]",
-          "inline": {
-            "tag": "link",
-            "text": "help",
-            "href": "https://man.freebsd.org/cgi/man.cgi/help.html"
-          }
-        }
-      ]
+      "kind": "heading",
+      "text": "NAME",
+      "protected": []
     },
     {
       "id": "s0002",
       "kind": "paragraph",
-      "text": "[[p0]] | [[p1]] | [[p2]] | [[p3]] | [[p4]] | [[p5]] | [[p6]] | [[p7]] | [[p8]]",
+      "text": "[[p0]] -- merge corresponding or subsequent lines of files",
       "protected": [
         {
           "token": "[[p0]]",
           "inline": {
-            "tag": "link",
-            "text": "NAME",
-            "href": "#NAME"
-          }
-        },
-        {
-          "token": "[[p1]]",
-          "inline": {
-            "tag": "link",
-            "text": "SYNOPSIS",
-            "href": "#SYNOPSIS"
-          }
-        },
-        {
-          "token": "[[p2]]",
-          "inline": {
-            "tag": "link",
-            "text": "DESCRIPTION",
-            "href": "#DESCRIPTION"
-          }
-        },
-        {
-          "token": "[[p3]]",
-          "inline": {
-            "tag": "link",
-            "text": "EXIT STATUS",
-            "href": "#EXIT_STATUS"
-          }
-        },
-        {
-          "token": "[[p4]]",
-          "inline": {
-            "tag": "link",
-            "text": "EXAMPLES",
-            "href": "#EXAMPLES"
-          }
-        },
-        {
-          "token": "[[p5]]",
-          "inline": {
-            "tag": "link",
-            "text": "SEE ALSO",
-            "href": "#SEE_ALSO"
-          }
-        },
-        {
-          "token": "[[p6]]",
-          "inline": {
-            "tag": "link",
-            "text": "STANDARDS",
-            "href": "#STANDARDS"
-          }
-        },
-        {
-          "token": "[[p7]]",
-          "inline": {
-            "tag": "link",
-            "text": "HISTORY",
-            "href": "#HISTORY"
-          }
-        },
-        {
-          "token": "[[p8]]",
-          "inline": {
-            "tag": "link",
-            "text": "AUTHORS",
-            "href": "#AUTHORS"
+            "tag": "strong",
+            "text": "paste"
           }
         }
       ]
     },
     {
       "id": "s0003",
+      "kind": "heading",
+      "text": "SYNOPSIS",
+      "protected": []
+    },
+    {
+      "id": "s0004",
+      "kind": "heading",
+      "text": "DESCRIPTION",
+      "protected": []
+    },
+    {
+      "id": "s0005",
       "kind": "paragraph",
-      "text": "Want to link to this manual page? Use this URL:[[p0]]<[[p1]]>",
+      "text": "The [[p0]] utility concatenates the corresponding lines of the given input files, replacing all but the last file's newline characters with a single tab character, and writes the resulting lines to standard output. If end- of-file is reached on an input file while other input files still contain data, the file is treated as if it were an endless source of empty lines.",
       "protected": [
         {
           "token": "[[p0]]",
           "inline": {
-            "tag": "br"
-          }
-        },
-        {
-          "token": "[[p1]]",
-          "inline": {
-            "tag": "link",
-            "text": "https://man.FreeBSD.org/cgi/man.cgi?query=paste&sektion=1&manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly",
-            "href": "https://man.freebsd.org/cgi/man.cgi?query=paste&sektion=1&manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"
+            "tag": "strong",
+            "text": "paste"
           }
         }
       ]
     },
     {
-      "id": "s0004",
+      "id": "s0006",
       "kind": "paragraph",
-      "text": "[[p0]] | [[p1]]",
+      "text": "The options are as follows:",
+      "protected": []
+    },
+    {
+      "id": "s0007",
+      "kind": "term",
+      "text": "[[p0]] [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "-d"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "list"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0008",
+      "kind": "paragraph",
+      "text": "Use one or more of the provided characters to replace the new- line characters instead of the default tab. The characters in [[p0]] are used circularly, i.e., when [[p1]] is exhausted the first character from [[p2]] is reused. This continues until a line from the last input file (in default operation) or the last line in each file (using the [[p3]] option) is displayed, at which time [[p4]] begins selecting characters from the beginning of [[p5]] again.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "list"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "list"
+          }
+        },
+        {
+          "token": "[[p2]]",
+          "inline": {
+            "tag": "em",
+            "text": "list"
+          }
+        },
+        {
+          "token": "[[p3]]",
+          "inline": {
+            "tag": "strong",
+            "text": "-s"
+          }
+        },
+        {
+          "token": "[[p4]]",
+          "inline": {
+            "tag": "strong",
+            "text": "paste"
+          }
+        },
+        {
+          "token": "[[p5]]",
+          "inline": {
+            "tag": "em",
+            "text": "list"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0009",
+      "kind": "paragraph",
+      "text": "The following special characters can also be used in list:",
+      "protected": []
+    },
+    {
+      "id": "s0010",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "\\n"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0011",
+      "kind": "paragraph",
+      "text": "newline character",
+      "protected": []
+    },
+    {
+      "id": "s0012",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "\\t"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0013",
+      "kind": "paragraph",
+      "text": "tab character",
+      "protected": []
+    },
+    {
+      "id": "s0014",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "\\\\"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0015",
+      "kind": "paragraph",
+      "text": "backslash character",
+      "protected": []
+    },
+    {
+      "id": "s0016",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "\\0"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0017",
+      "kind": "paragraph",
+      "text": "Empty string (not a null character).",
+      "protected": []
+    },
+    {
+      "id": "s0018",
+      "kind": "paragraph",
+      "text": "Any other character preceded by a backslash is equivalent to the character itself.",
+      "protected": []
+    },
+    {
+      "id": "s0019",
+      "kind": "term",
+      "text": "[[p0]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "-s"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0020",
+      "kind": "paragraph",
+      "text": "Concatenate all of the lines of each separate input file in command line order. The newline character of every line except the last line in each input file is replaced with the tab char- acter, unless otherwise specified by the [[p0]] option.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "-d"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0021",
+      "kind": "paragraph",
+      "text": "If `[[p0]]' is specified for one or more of the input files, the standard input is used; standard input is read one line at a time, circularly, for each instance of `[[p1]]'.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "-"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "strong",
+            "text": "-"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0022",
+      "kind": "heading",
+      "text": "EXIT STATUS",
+      "protected": []
+    },
+    {
+      "id": "s0023",
+      "kind": "paragraph",
+      "text": "The [[p0]] utility exits 0 on success, and >0 if an error occurs.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "paste"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0024",
+      "kind": "heading",
+      "text": "EXAMPLES",
+      "protected": []
+    },
+    {
+      "id": "s0025",
+      "kind": "paragraph",
+      "text": "List the files in the current directory in three columns:",
+      "protected": []
+    },
+    {
+      "id": "s0026",
+      "kind": "paragraph",
+      "text": "Combine pairs of lines from a file into single lines:",
+      "protected": []
+    },
+    {
+      "id": "s0027",
+      "kind": "paragraph",
+      "text": "Number the lines in a file, similar to [[p0]]:",
       "protected": [
         {
           "token": "[[p0]]",
           "inline": {
             "tag": "link",
-            "text": "home",
-            "href": "https://man.freebsd.org/cgi/man.cgi"
+            "text": "nl(1)",
+            "href": "https://man.freebsd.org/cgi/man.cgi?query=nl&sektion=1&apropos=0&manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0028",
+      "kind": "paragraph",
+      "text": "Create a colon-separated list of directories named [[p0]], suitable for use in the [[p1]] environment variable:",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "bin"
+          }
+        },
+        {
+          "token": "[[p1]]",
+          "inline": {
+            "tag": "em",
+            "text": "PATH"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0029",
+      "kind": "heading",
+      "text": "SEE ALSO",
+      "protected": []
+    },
+    {
+      "id": "s0030",
+      "kind": "paragraph",
+      "text": "[[p0]], [[p1]]",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "link",
+            "text": "cut(1)",
+            "href": "https://man.freebsd.org/cgi/man.cgi?query=cut&sektion=1&apropos=0&manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"
           }
         },
         {
           "token": "[[p1]]",
           "inline": {
             "tag": "link",
-            "text": "help",
-            "href": "https://man.freebsd.org/cgi/man.cgi/help.html"
+            "text": "lam(1)",
+            "href": "https://man.freebsd.org/cgi/man.cgi?query=lam&sektion=1&apropos=0&manpath=FreeBSD+15.1-RELEASE+and+Ports.quarterly"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0031",
+      "kind": "heading",
+      "text": "STANDARDS",
+      "protected": []
+    },
+    {
+      "id": "s0032",
+      "kind": "paragraph",
+      "text": "The [[p0]] utility is expected to be IEEE Std 1003.2 (\"POSIX.2\") compatible.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "paste"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0033",
+      "kind": "heading",
+      "text": "HISTORY",
+      "protected": []
+    },
+    {
+      "id": "s0034",
+      "kind": "paragraph",
+      "text": "A [[p0]] command first appeared in AT&T System III UNIX and has been avail- able since 4.3BSD-Reno.",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "strong",
+            "text": "paste"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s0035",
+      "kind": "heading",
+      "text": "AUTHORS",
+      "protected": []
+    },
+    {
+      "id": "s0036",
+      "kind": "paragraph",
+      "text": "The original Bell Labs version was written by Gottfried W. R. Luderer and the BSD version by Adam S. Moskowitz and Marciano Pitargue.",
+      "protected": []
+    },
+    {
+      "id": "s0037",
+      "kind": "paragraph",
+      "text": "FreeBSD 15.1 November 6, 2022 [[p0]](1)",
+      "protected": [
+        {
+          "token": "[[p0]]",
+          "inline": {
+            "tag": "em",
+            "text": "PASTE"
           }
         }
       ]
@@ -157,24 +445,211 @@
   ],
   "blocks": [
     {
-      "type": "paragraph",
+      "type": "heading",
+      "level": 2,
+      "anchor": "NAME",
       "segment": "s0001"
-    },
-    {
-      "type": "literal",
-      "text": "PASTE(1)\t\t     General Commands Manual\t\t\tPASTE(1)\n\nNAME\n     paste -- merge corresponding or subsequent lines of files\n\nSYNOPSIS\n     paste [-s] [-d list] file ...\n\nDESCRIPTION\n     The  paste  utility concatenates the corresponding lines of the given input\n     files, replacing all but the last file's newline characters with  a  single\n     tab  character, and writes the resulting lines to standard output.  If end-\n     of-file is reached on an input file while other input files  still  contain\n     data, the file is treated as if it were an endless source of empty lines.\n\n     The options are as follows:\n\n     -d list\t Use  one or more of the provided characters to replace the new-\n\t\t line characters instead of the default tab.  The characters  in\n\t\t list  are  used  circularly,  i.e.,  when list is exhausted the\n\t\t first character from list is reused.  This  continues\tuntil  a\n\t\t line  from  the  last\tinput file (in default operation) or the\n\t\t last line in each file (using the -s option) is  displayed,  at\n\t\t which time paste begins selecting characters from the beginning\n\t\t of list again.\n\n\t\t The following special characters can also be used in list:\n\n\t\t \\n    newline character\n\t\t \\t    tab character\n\t\t \\\\    backslash character\n\t\t \\0    Empty string (not a null character).\n\n\t\t Any  other  character\tpreceded by a backslash is equivalent to\n\t\t the character itself.\n\n     -s \t Concatenate all of the lines of each  separate  input\tfile  in\n\t\t command line order.  The newline character of every line except\n\t\t the last line in each input file is replaced with the tab char-\n\t\t acter, unless otherwise specified by the -d option.\n\n     If  `-' is specified for one or more of the input files, the standard input\n     is used; standard input is read one line at a time,  circularly,  for  each\n     instance of `-'.\n\nEXIT STATUS\n     The paste utility exits 0 on success, and >0 if an error occurs.\n\nEXAMPLES\n     List the files in the current directory in three columns:\n\n\t   ls | paste - - -\n\n     Combine pairs of lines from a file into single lines:\n\n\t   paste -s -d '\\t\\n' myfile\n\n     Number the lines in a file, similar to nl(1):\n\n\t   sed = myfile | paste - -\n\n     Create a colon-separated list of directories named bin, suitable for use in\n     the PATH environment variable:\n\n\t   find / -name bin -type d | paste -s -d : -\n\nSEE ALSO\n     cut(1), lam(1)\n\nSTANDARDS\n     The paste utility is expected to be IEEE Std 1003.2 (\"POSIX.2\") compatible.\n\nHISTORY\n     A\tpaste command first appeared in AT&T System III UNIX and has been avail-\n     able since 4.3BSD-Reno.\n\nAUTHORS\n     The original Bell Labs version was written by Gottfried W. R.  Luderer  and\n     the BSD version by Adam S. Moskowitz and Marciano Pitargue.\n\nFreeBSD 15.1\t\t\tNovember 6, 2022\t\t\tPASTE(1)"
     },
     {
       "type": "paragraph",
       "segment": "s0002"
     },
     {
-      "type": "paragraph",
+      "type": "heading",
+      "level": 2,
+      "anchor": "SYNOPSIS",
       "segment": "s0003"
     },
     {
-      "type": "paragraph",
+      "type": "literal",
+      "text": "paste [-s] [-d list] file ..."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "DESCRIPTION",
       "segment": "s0004"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0005"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0006"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0007",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0008"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0009"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0010",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0011"
+            }
+          ]
+        },
+        {
+          "term": "s0012",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0013"
+            }
+          ]
+        },
+        {
+          "term": "s0014",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0015"
+            }
+          ]
+        },
+        {
+          "term": "s0016",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0017"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0018"
+    },
+    {
+      "type": "definition",
+      "entries": [
+        {
+          "term": "s0019",
+          "body": [
+            {
+              "type": "paragraph",
+              "segment": "s0020"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0021"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "EXIT_STATUS",
+      "segment": "s0022"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0023"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "EXAMPLES",
+      "segment": "s0024"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0025"
+    },
+    {
+      "type": "literal",
+      "text": "ls | paste - - -"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0026"
+    },
+    {
+      "type": "literal",
+      "text": "paste -s -d '\\t\\n' myfile"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0027"
+    },
+    {
+      "type": "literal",
+      "text": "sed = myfile | paste - -"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0028"
+    },
+    {
+      "type": "literal",
+      "text": "find / -name bin -type d | paste -s -d : -"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "SEE_ALSO",
+      "segment": "s0029"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0030"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "STANDARDS",
+      "segment": "s0031"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0032"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "HISTORY",
+      "segment": "s0033"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0034"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "anchor": "AUTHORS",
+      "segment": "s0035"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0036"
+    },
+    {
+      "type": "paragraph",
+      "segment": "s0037"
     }
   ]
 }
