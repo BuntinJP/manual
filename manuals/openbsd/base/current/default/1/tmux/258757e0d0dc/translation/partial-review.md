@@ -37,3 +37,35 @@ candidateFileSha256: a2183c4e308829cfb9ac17d133ebf12e7c1332e17a4e4579faf4d013942
 
 
 Solによるs0001–s0250、s0551–s0650の途中訳をキューへ追加保存。現時点でs0001–s0650の650/2823。全文照合・受理・生成は未実施。
+
+
+# tmux s0651–s0950 翻訳・自己照合
+
+確認者: EMMA FreeBSD/FHS 担当（翻訳者による自己照合。独立レビューではない）
+
+## 完了範囲
+
+対象300セグメントをすべて翻訳。レイアウトの説明から break-pane / capture-pane / choose-client / choose-tree / customize-mode / switch-mode / display-panes / find-window / join-pane / kill-pane / kill-window / last-pane / last-window / link-window / list-panes / list-windows / move-pane の位置表途中（backward-loop のトークン、s0950）まで。
+
+原文は保存済み OpenBSD-current tmux の source.html。部分 request の全 ID/text を全体 IR と照合し、各保護トークンを原文に戻した全300セグメントが原文本文中に存在することを確認した。原文/IRハッシュ一致も確認。コマンド構文、キー表記、トークンのみの行は保持し、説明と alias ラベルを翻訳した。
+
+## 意味照合
+
+- レイアウトの左右/上下、反転、均等分割、元より多いペイン数の制限を保持。
+- フローティングペインの幅1/2・高さ1/4、列/行単位、位置と百分率、復元する未指定値、ズーム/非表示の禁止条件を保持。
+- capture-pane の標準出力/バッファー分岐、代替画面と履歴、存在しない場合のエラー、末尾空白と折り返し連結、未完エスケープ、行番号/時刻/フラグ、ハイパーリンク、負の履歴番号と既定表示範囲を保持。非保護表記の8進数エスケープ `\xxx` も原文と一致。
+- 選択中とタグ付きの操作、全タグ解除、方向、HUP、一時停止、確定と選択移動、確認無効化を区別。
+- フィルター評価0/それ以外、空になる場合の無視、各行1回評価、プレビューなし/2回指定の大きい表示、モード終了時のペイン終了条件を保持。
+- %% の最初の出現と %1 の全出現の置換、switch-mode の表示テキストでのあいまい一致と元の行の置換を保持。
+- display-panes のミリ秒、0の無期限、キー例外、ズームの既定と解除、ペインIDへの置換を保持。
+- find-window は表示内容だけで履歴は対象外。kill操作の例外とフィルター、リンク時の既存窓、入力有効/無効、並べ替えの時刻/面積、浮動ペインの重なり順を保持。
+
+## 検証・未実施
+
+全体IRから対象300セグメントを取り出し、既存 validateTranslation によりID・非空・保護トークン・インライン書式を検証、成功。source text の機械照合で不一致0件。キュー save/complete、受理、生成、commit は行っていない。本文全体の最終レビューは統合担当で必要。
+
+sourceSha256: 258757e0d0dc43e54bac92b73975030433ce50fbba745bbb26b7968de09a389b
+irSha256: 08f6cba91091932eaf0fb312c491b94d28b3412498cc34dca435e57de933bcf7
+candidateFileSha256: a70cacbc32fc9a03a8c2fec4f7aa1742038f2dd30d644cabffccc8b9c2ed9b63
+
+Solがs1251–s1350を部分保存。オプションの数値/時間単位/条件/否定をIRと照合。全文未完。

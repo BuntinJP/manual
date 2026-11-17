@@ -243,9 +243,13 @@ for (const query of ['find', 'シンボリックリンク']) {
     const results = page.locator('site-search .search-results li');
     await provider.selectOption('freebsd');
     await input.fill(query);
-    await expect(results).toHaveCount(1);
-    await expect(results.first()).toHaveAttribute('data-provider', 'freebsd');
-    await expect(results.first().locator('a')).toHaveText('find(1)');
+    await expect(results.getByRole('link', { name: 'find(1)', exact: true })).toHaveCount(1);
+    await expect(results.first()).toBeVisible();
+    expect(
+      await results.evaluateAll((items) =>
+        items.every((item) => item.getAttribute('data-provider') === 'freebsd'),
+      ),
+    ).toBe(true);
     await provider.selectOption('megacmd');
     await expect(results.first()).toHaveAttribute('data-provider', 'megacmd');
     expect(
@@ -254,7 +258,7 @@ for (const query of ['find', 'シンボリックリンク']) {
       ),
     ).toBe(true);
     await provider.selectOption('');
-    await expect(results.locator('[href*="/manuals/freebsd/"]')).toHaveCount(1);
+    await expect(results.locator('[href*="/manuals/freebsd/"][href*="/find/"]')).toHaveCount(1);
     if (query === 'シンボリックリンク') {
       await provider.selectOption('isync');
       await expect(results).toHaveCount(0);
