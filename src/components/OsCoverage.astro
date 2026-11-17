@@ -1,0 +1,109 @@
+---
+import { readdirSync, readFileSync } from 'node:fs';
+import catalog from '../data/manual-catalog.json';
+import type { CatalogEntry } from '../lib/catalog';
+import { buildOsCoverage, osColumns } from '../lib/os-coverage';
+const root = new URL('../../manuals/', import.meta.url);
+const sources = readdirSync(root, { recursive: true })
+  .map(String)
+  .filter((path) => path.endsWith('/manifest.json'))
+  .map((path) => {
+    const manifest = JSON.parse(readFileSync(new URL(path, root), 'utf8'));
+    return {
+      ...manifest.identity,
+      sourceFormat: manifest.source.format,
+      sourceUrl: manifest.source.origin,
+    };
+  });
+const rows = buildOsCoverage(catalog as CatalogEntry[], sources, [
+  'cut',
+  'diff',
+  'jq',
+  'pbcopy',
+  'pbpaste',
+  'paste',
+  'wg',
+  'xcode-select',
+  'gpg',
+  'tmux',
+  'tripwire',
+  'twconfig',
+  'twfile',
+  'samba',
+  'smb',
+  'swaks',
+  'openssl',
+  'libressl',
+  'mutt',
+  'paru',
+  'systemextensionsctl',
+]);
+---
+<p>この表は、当サイトに収録した翻訳ページの有無を示します。コマンドが各 OS で動作するかを示す表ではありません。</p>
+<p>man セクションを持つ roff または man 由来の HTML が対象です。<code>--help</code>、AWS CLI の参照資料、RFC、一般的な Web ドキュメントは含みません。Linux (GNU) は GNU 上流版、Linux (BSD) は Linux 上で配布される BSD 由来実装の資料を区別します。FreeBSD・OpenBSD・Apple の資料を Linux (BSD) へ流用しません。</p>
+<p>「あり」は収録済み翻訳へのリンク、「未翻訳」は原文取得済み・翻訳未収録、「原文未登録 · 未確認」はこの区分の原文も翻訳も未登録で、正式 man の有無を確認できていないことを示します。未収録はコマンド自体の不存在を意味しません。収録済みでも品質保証を意味せず、各ページの版・原文・レビュー記録を確認してください。</p>
+<p>AIX の公式 man は <a href="https://www.ibm.com/support/pages/why-local-man-page-different-knowledge-center-command-reference">IBM Knowledge Center と共通の HTML</a> でも提供されます。当サイトでは個別原文・版・セクションの照合がまだ済んでいないため、AIX 欄は原文未登録・確認待ちです。未登録を非公開やコマンドの不存在とは解釈しません。</p>
+<manual-os-coverage>
+<form class="coverage-controls" role="search" aria-label="OS対応状況を絞り込む">
+<label>コマンド検索<input name="query" type="search" placeholder="diff、tmux…" autocomplete="off" /></label>
+<label>OS・実装<select name="os"><option value="">すべて</option>{osColumns.map((c) => <option value={c.id}>{c.label}</option>)}</select></label>
+<label>状態<select name="status" aria-label="状態"><option value="">すべて</option><option value="translated">翻訳済み</option><option value="pending">未翻訳</option><option value="missing">原文未登録 · 未確認</option></select></label>
+<button type="reset">リセット</button>
+</form>
+<p class="coverage-result" role="status" aria-live="polite">{rows.length} コマンド</p>
+<div class="coverage-scroll" tabindex="0" role="region" aria-label="OS 別の翻訳収録表（横スクロール可能）">
+<table>
+  <caption>正式 man の翻訳収録状況（{rows.length} コマンド）</caption>
+  <thead><tr><th scope="col">コマンド</th>{osColumns.map((column) => <th scope="col">{column.label}</th>)}</tr></thead>
+  <tbody>{rows.map((row) => <tr data-command={row.name}><th scope="row"><code>{row.name}</code></th>{row.cells.map((cell) => <td data-os={cell.id} data-status={cell.translations.length ? 'translated' : cell.sourcePresent ? 'pending' : 'missing'}>{cell.translations.length ? <ul>{cell.translations.map((entry) => <li><a href={entry.href}>あり · {entry.section} / {entry.version} / {entry.variant}</a></li>)}</ul> : cell.sourcePresent ? <ul>{cell.originals.map((entry) => <li>{entry.sourceUrl ? <a href={entry.sourceUrl}>未翻訳 · 原文 ({entry.section})</a> : <span>未翻訳 ({entry.section})</span>}</li>)}</ul> : <span>原文未登録 · 未確認</span>}</td>)}</tr>)}</tbody>
+</table>
+</div>
+<p class="coverage-empty" hidden>一致するコマンドはありません。検索条件を変えてください。</p>
+<noscript>JavaScript が無効でも表全体と翻訳リンクを利用できます。</noscript>
+</manual-os-coverage>
+<script>
+class ManualOsCoverage extends HTMLElement {
+  connectedCallback() {
+    const form = this.querySelector<HTMLFormElement>('form');
+    if (!form) return;
+    const update = () => {
+      const data = new FormData(form);
+      const query = String(data.get('query') ?? '').trim().toLowerCase();
+      const os = String(data.get('os') ?? '');
+      const status = String(data.get('status') ?? '');
+      let count = 0;
+      this.querySelectorAll<HTMLTableRowElement>('tr[data-command]').forEach((row) => {
+        const cells = [...row.querySelectorAll<HTMLElement>('td[data-os]')];
+        const match = row.dataset.command?.toLowerCase().includes(query) && cells.some((cell) => (!os || cell.dataset.os === os) && (!status || cell.dataset.status === status));
+        row.hidden = !match;
+        if (match) count++;
+      });
+      const result = this.querySelector('.coverage-result');
+      if (result) result.textContent = `${count} コマンド`;
+      const empty = this.querySelector<HTMLElement>('.coverage-empty');
+      if (empty) empty.hidden = count > 0;
+    };
+    form.addEventListener('submit', (event) => event.preventDefault());
+    form.addEventListener('input', update);
+    form.addEventListener('change', update);
+    form.addEventListener('reset', () => setTimeout(update));
+  }
+}
+if (!customElements.get('manual-os-coverage')) customElements.define('manual-os-coverage', ManualOsCoverage);
+</script>
+<style>
+.coverage-controls { display: flex; flex-wrap: wrap; gap: 1rem; align-items: end; margin-block: 1.5rem; }
+label { display: flex; flex-direction: column; gap: .35rem; }
+input, select, button { font: inherit; padding: .5rem; background: #151915; color: #d5dfd0; border: 1px solid #53614e; }
+tr[hidden], .coverage-empty[hidden] { display: none; }
+td[data-status="translated"] { background: #202b20; }
+.coverage-scroll { max-width: 100%; overflow-x: auto; }
+table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: .875rem; }
+thead th { background: #1b201c; }
+th, td { padding: .8rem; border-bottom: 1px solid var(--sl-color-hairline); }
+tbody th { position: sticky; left: 0; z-index: 1; background: var(--sl-color-bg); }
+.coverage-scroll:focus-visible { outline-offset: 2px; }
+th, td { min-width: 8rem; vertical-align: top; }
+ul { margin: 0; padding-left: 1rem; }
+caption { text-align: left; margin-bottom: 1rem; }
+</style>
