@@ -14,7 +14,7 @@ Samba 一式と Linux の CIFS クライアント。
 
 [この提供元のマニュアルを検索する](/search/?provider=samba)
 
-収録済み: 122 件
+収録済み: 123 件
 
 ## cifs-utils / 7.9 / linux
 
@@ -54,6 +54,7 @@ Samba 一式と Linux の CIFS クライアント。
 - [samba(7)](/manuals/samba/samba/4.25.0/upstream/7/samba/1f46633ccddb/)
 - [samba(8)](/manuals/samba/samba/4.25.0/upstream/8/samba/579d0c3e14d9/)
 - [sharesec(1)](/manuals/samba/samba/4.25.0/upstream/1/sharesec/3ae27318f73b/)
+- [smb.conf(5)](/manuals/samba/samba/4.25.0/upstream/5/smb.conf/04dcc678b4e4/)
 - [smbcacls(1)](/manuals/samba/samba/4.25.0/upstream/1/smbcacls/2ad05f5489dd/)
 - [smbclient(1)](/manuals/samba/samba/4.25.0/upstream/1/smbclient/84aeb1965235/)
 - [smbcontrol(1)](/manuals/samba/samba/4.25.0/upstream/1/smbcontrol/204fd4f0c019/)
