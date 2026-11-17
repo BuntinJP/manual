@@ -64,19 +64,7 @@ LOCALKEYFILE    Default = /etc/tripwire/$(HOSTNAME)-local.key</code></pre>
 <p>次の変数は <em>Tripwire</em> の実行に必須ではありませんが、設定しないとプログラムの一部の機能が使えなくなります。インストール中に割り当てられる値を示します。</p>
 
 <dl><dt>EDITOR</dt><dd><p>対話モードで使うエディターを指定します。<em>EDITOR</em> が未定義で、コマンドラインでもエディターを指定しない場合、対話モードを使うとエラーになります。<br> 初期値: <em>/bin/vi</em></p></dd><dt>TEMPDIRECTORY</dt><dd><p>tripwire が一時ファイルを書き込む場所をこの変数で指定できます。既定値は /tmp ですが、既定のアクセス権限のため、非常に安全性が低い場合があります。この設定変数を使い、tripwire に安全な一時ファイルの書き込み先を与えることを推奨します。使用するディレクトリの権限は、所有するプロセスだけが読み書きできるように設定する必要があります。すなわち &quot;chmod 700&quot; です。<br> 初期値: <em>/tmp</em></p></dd><dt>GLOBALEMAIL</dt><dd><p>メールアドレスをコンマ &quot;,&quot; またはセミコロン &quot;;&quot; で区切った一覧を設定します。通常レポートが送信される場合は、この一覧の受信者にも送信します。<br> 初期値: <em>none</em></p></dd><dt>LATEPROMPTING</dt><dd><p>パスフレーズがメモリーに保存される時間を最小限にするため、できるだけ遅い時点でパスフレーズの入力を求めます。値が <em>true</em>（大文字・小文字を区別）の場合、この遅延プロンプトを有効にします。それ以外の値、または設定ファイルから変数を削除した場合は、無効にします。<br> 初期値: <em>false</em></p></dd><dt>LOOSEDIRECTORYCHECKING</dt><dd><p>ディレクトリにファイルを追加または削除すると、<em>Tripwire</em> はファイル自体の変更と、ディレクトリの変更（サイズ、リンク数など）の両方を報告します。このため、<em>Tripwire</em> のレポートに冗長なエントリーが生じることがあります。緩やかなディレクトリチェックでは、ファイルの追加や削除によって変わるプロパティーについて、Tripwire はディレクトリをチェックしません。これには、サイズ、リンク数、アクセス時刻、状態変更時刻、更新時刻、ブロック数、ファイルの増大、すべてのハッシュが含まれます。</p></dd><dt></dt><dd><p>この変数の値が <em>true</em>（大文字・小文字を区別）の場合、緩やかなディレクトリチェックを有効にし、すべてのディレクトリでこれらのプロパティーを無視します。それ以外の値、または設定ファイルから変数を削除した場合は、無効にします。緩やかなディレクトリチェックを有効にすることは、すべてのディレクトリ inode のルールに次のプロパティーマスクを追加することと同じです。‐snacmblCMSH <br> 初期値: <em>false</em></p></dd><dt>SYSLOGREPORTING</dt><dd><p>この変数を <em>true</em> に設定すると、データベースの初期化、整合性チェックの完了、データベースの更新、ポリシーの更新という4つのイベントについて、syslog にメッセージを送ります。メッセージには &quot;user&quot; ファシリティーと &quot;notice&quot; レベルを使います。詳しくは <strong>syslogd</strong>(1) のマニュアルページと <em>syslog.conf</em> ファイルを参照してください。4つのイベントそれぞれについて syslog に記録する情報を次に示します。<br></p>
-<pre><code>
-Jun 18 14:09:42 lighthouse tripwire[9444]: Database initialized:
-/var/lib/tripwire/test.twd
-Jun 18 14:10:57 lighthouse tripwire[9671]: Integrity Check Complete:
-TWReport lighthouse 20000618141057 V:2 S:90 A:1 R:0 C:1
-
-  
-Jun 18 14:11:19 lighthouse tripwire[9672]: Database Update Complete:
-/var/lib/tripwire/test.twd 
-Jun 18 14:18:26 lighthouse tripwire[9683]: Policy Update Complete:
-/var/lib/tripwire/test.twd 
-
- </code></pre>
+<pre><code>&#10;Jun 18 14:09:42 lighthouse tripwire[9444]: Database initialized:&#10;/var/lib/tripwire/test.twd&#10;Jun 18 14:10:57 lighthouse tripwire[9671]: Integrity Check Complete:&#10;TWReport lighthouse 20000618141057 V:2 S:90 A:1 R:0 C:1&#10;&#10;  &#10;Jun 18 14:11:19 lighthouse tripwire[9672]: Database Update Complete:&#10;/var/lib/tripwire/test.twd &#10;Jun 18 14:18:26 lighthouse tripwire[9683]: Policy Update Complete:&#10;/var/lib/tripwire/test.twd &#10;&#10; </code></pre>
 <p><br> <br> 整合性チェックのログの各文字は、順に違反数、最大重大度、追加・削除・変更されたファイルの数を表します。<em>true</em> 以外の値、または設定ファイルから変数を削除した場合は、syslog への報告を無効にします。<br> 初期値: <em>true</em></p></dd><dt>REPORTLEVEL</dt><dd><p><strong>twprint</strong> <strong>‐‐print‐report</strong> モードで生成するレポートの既定レベルを指定します。有効な値は0から4です。コマンドラインの（<strong>‐t</strong> または <strong>‐‐report‐level</strong>）オプションで、このレベルを上書きできます。設定ファイルにこの変数がない場合、既定のレポートレベルは3です。このパラメーターが影響するのは <strong>twprint ‐‐print‐report</strong> モードで出力するレポートだけであり、他のモードや他のコマンドで表示するレポートには影響しません。<br> 初期値: <em>3</em></p></dd><dt>DBPRINTLEVEL</dt><dd><p><strong>twprint</strong> <strong>‐‐print‐dbfile</strong> モードで生成するレポートの既定レベルを指定します。有効な値は0から2です。コマンドラインの（<strong>‐t</strong> または <strong>‐‐output‐level</strong>）オプションで、この出力レベルを上書きできます。設定ファイルにこの変数がない場合、既定の出力レベルは2です。<br> 初期値: <em>2</em></p></dd><dt>HASH_DIRECT_IO</dt><dd><p>ファイルのハッシュ計算にダイレクト I/O を使います。（OST 2.4.3.2 時点では Linux のみ。）<br> 初期値: <em>false</em></p></dd><dt>RESOLVE_IDS_TO_NAMES</dt><dd><p>uid/gid の値をユーザー名・グループ名に解決するかどうかを指定します。一部の nsswitch.conf 設定では、静的リンクのバイナリーが getpwuid/getgrgid の呼び出し中にセグメンテーション違反を起こすことがあります。この値を false にすると名前解決を省略し、そのセグメンテーション違反を防げます。<br> 初期値: <em>true</em></p></dd></dl>
 
 #### メール通知の変数 {#Email_Notification_Variables}

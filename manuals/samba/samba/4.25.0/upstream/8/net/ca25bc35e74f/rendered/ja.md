@@ -49,10 +49,7 @@ manual: {"id":"samba/samba/4.25.0/upstream/8/net/ca25bc35e74f","href":"/manuals/
 <p><code>--password</code> を指定しない場合、ツールは <code>PASSWD</code> 環境変数を調べ、次に、開いたファイル記述子（FD）の番号を含むはずの <code>PASSWD_FD</code> を調べます。</p>
 <p>最後に、開くファイルのパスを含む <code>PASSWD_FILE</code> を調べます。そのファイルにはパスワードだけを含めてください。ファイルのアクセス権で、意図しないユーザーからのアクセスを確実に制限してください。</p>
 <p>Samba はプロセスタイトル（ps に表示されるもの）からパスワードを消去しようとしますが、起動後に行うため競合状態が生じます。</p></dd><dt><code>--pw-nt-hash</code></dt><dd><p>指定したパスワードは NT ハッシュです。</p></dd><dt><code>-A</code>|<code>--authentication-file</code>=filename</dt><dd><p>接続に使うユーザー名とパスワードを読み取るファイルを指定できます。ファイルの形式は次のとおりです。</p>
-<pre><code>				username = &lt;value&gt;
-				password = &lt;value&gt;
-				domain   = &lt;value&gt;
-			</code></pre>
+<pre><code>				username = &lt;value&gt;&#10;				password = &lt;value&gt;&#10;				domain   = &lt;value&gt;&#10;			</code></pre>
 <p>ファイルのアクセス権で、意図しないユーザーからのアクセスを確実に制限してください。</p></dd><dt><code>-P</code>|<code>--machine-pass</code></dt><dd><p>保存済みのマシンアカウントのパスワードを使います。</p></dd><dt><code>--simple-bind-dn</code>=DN</dt><dd><p>単純バインドに使う DN です。</p></dd><dt><code>--use-kerberos</code>=desired|required|off</dt><dd><p>Samba クライアントツールが Kerberos 認証を試みるかどうかを指定します。Kerberos 認証では、サービスへの接続時に IP アドレスではなく DNS 名を使ってください。既定では、Samba クライアントツールは既定の Kerberos 資格情報キャッシュ（ccache）を使おうとします。ccache がない場合、または <code>-U</code>|<code>--user</code> オプションを指定した場合、クライアントはパスワード入力を求め、Kerberos チケットを取得します（kinit）。別の Kerberos 資格情報キャッシュを使う場合は <code>--use-krb5-ccache</code> オプションを指定してください。</p>
 <p>ここでこのパラメーターを指定すると、<code>${prefix}/etc/smb.conf</code> ファイルの <a href="https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#CLIENTUSEKERBEROS">client use kerberos</a> パラメーターを上書きします。</p></dd><dt><code>--use-krb5-ccache</code>=CCACHE</dt><dd><p>Kerberos 認証の資格情報キャッシュの場所を指定します。</p>
 <p><code>--use-kerberos</code>=required を強制します。</p></dd><dt><code>--use-winbind-ccache</code></dt><dd><p>winbind の資格情報キャッシュを使おうとします。</p></dd><dt><code>--client-protection</code>=sign|encrypt|off</dt><dd><p>クライアントツールが使う接続保護を設定します。</p>

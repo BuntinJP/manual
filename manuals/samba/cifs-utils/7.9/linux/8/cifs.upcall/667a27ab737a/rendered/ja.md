@@ -51,10 +51,7 @@ manual: {"id":"samba/cifs-utils/7.9/linux/8/cifs.upcall/667a27ab737a","href":"/m
 
 <dl><dt>cifs.spnego</dt><dd><p>このキータイプは Kerberos セッションキーの取得用です。</p></dd><dt>dns_resolver</dt><dd><p>このキータイプはホスト名を IP アドレスへ解決するためのものです。このキータイプへの対応は将来非推奨になる可能性があります（後述）。</p>
 <p>このプログラムを CIFS で利用するには、request-key.conf(5) にこれらのエントリーを設定する必要があります。各キータイプのエントリー例を示します。</p>
-<pre><code>#OPERATION  TYPE           D C PROGRAM ARG1 ARG2...
-#=========  =============  = = ================================
-create      cifs.spnego    * * @sbindir@/cifs.upcall %k
-create      dns_resolver   * * @sbindir@/cifs.upcall %k</code></pre>
+<pre><code>#OPERATION  TYPE           D C PROGRAM ARG1 ARG2...&#10;#=========  =============  = = ================================&#10;create      cifs.spnego    * * @sbindir@/cifs.upcall %k&#10;create      dns_resolver   * * @sbindir@/cifs.upcall %k</code></pre>
 <p>各フィールドの詳細は request-key.conf(5) を参照してください。</p>
 <p>keyutils パッケージにも dns_resolver を処理するプログラムが含まれるようになり、cifs.upcall のものより優先されます。keyutils のバージョン1.5以降を使用する場合は、dns_resolver キータイプの処理に cifs.upcall ではなく key.dns_resolver を使用してください。詳細は key.dns_resolver(8) を参照してください。</p></dd></dl>
 

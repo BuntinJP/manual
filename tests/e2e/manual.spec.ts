@@ -306,7 +306,7 @@ test('Apple macOS collection contains exactly the fourteen accepted commands', a
 const reviewedManuals = (catalog as CatalogEntry[]).filter((entry) => entry.provider !== 'aws');
 
 for (const manual of reviewedManuals) {
-  test(`${manual.provider} ${manual.name} renders Japanese with edition metadata and valid anchors`, async ({
+  test(`${manual.id} renders Japanese with edition metadata and valid anchors`, async ({
     page,
   }) => {
     await page.setViewportSize({ width: 390, height: 844 });

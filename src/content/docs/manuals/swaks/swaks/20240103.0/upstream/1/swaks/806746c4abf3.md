@@ -80,16 +80,10 @@ manual: {"id":"swaks/swaks/20240103.0/upstream/1/swaks/806746c4abf3","href":"/ma
 <p>設定ファイルでは、ハッシュ記号（<code>#</code>）で始まる行を無視します。それ以外の各行はSwaksのオプションとみなし、先頭のダッシュは省略できます。オプション行の最初の空白より後はすべて引数とみなし、シェルによる処理はしません。このため、通常は引用符は不要で、付けると引数にそのまま含まれます。</p>
 <p>引数なしのオプションと、空の引数を持つオプションには微妙な違いがあります。オプション行に空白がなければ、行全体をオプションとして扱い、引数はありません。末尾に空白が1つある場合、空の引数を持つオプションとして処理します。したがって、<code>apt</code>は<code>--apt</code>として、<code>apt</code>は<code>--apt &#39;&#39;</code>として扱います。</p>
 <p>設定ファイルの内容例を示します。</p>
-<pre><code># always use this sender, no matter server or logged in user
---from fred@example.com
-# I prefer my test emails have a pretty from header.  Note
-# the lack of dashes on option and lack of quotes around
-# entire argument.
-h-From: &quot;Fred Example&quot; &lt;fred@example.com&gt;</code></pre>
+<pre><code># always use this sender, no matter server or logged in user&#10;--from fred@example.com&#10;# I prefer my test emails have a pretty from header.  Note&#10;# the lack of dashes on option and lack of quotes around&#10;# entire argument.&#10;h-From: &quot;Fred Example&quot; &lt;fred@example.com&gt;</code></pre>
 <p>設定ファイルに固有のオプション:</p>
 <dl><dt><code>--config</code> [&lt;config-file&gt;]</dt><dd><p>使用する特定の設定ファイルへのパスを指定します。引数なしで指定すると、<code>$HOME</code>などや<code>__END__</code>から自動検出した設定ファイルを処理しません。引数が有効なファイルなら、<code>__END__</code>の設定の後で、そのファイルを設定ファイルとして使用します。有効で読み取り可能なファイルでなければ、エラーで終了します。このオプションは複数回指定できますが、環境変数、コマンドラインという探索順で最初に見つかった指定だけを使用します。（Arg-Optional）</p></dd></dl></dd><dt>設定用の環境変数</dt><dd><p>環境変数でもオプションを指定できます。変数は<code>$SWAKS_OPT_name</code>という形式で、<code>name</code>はコマンドラインで指定するオプション名です。ほとんどのUNIX系シェルでは環境変数名にダッシュを使えないため、先頭のダッシュは付けず、名前の途中のダッシュはアンダースコアに置き換えてください。次の例は、設定ファイルの例と同じオプションを設定します。</p>
-<pre><code>$ SWAKS_OPT_from=&#39;fred@example.com&#39;
-$ SWAKS_OPT_h_From=&#39;&quot;Fred Example&quot; &lt;fred@example.com&gt;&#39;</code></pre>
+<pre><code>$ SWAKS_OPT_from=&#39;fred@example.com&#39;&#10;$ SWAKS_OPT_h_From=&#39;&quot;Fred Example&quot; &lt;fred@example.com&gt;&#39;</code></pre>
 <p>変数を空の値にすることは、コマンドラインで引数なしで指定することと同じです。たとえば&lt;SWAKS_OPT_server=&quot;&quot;&gt;を設定すると、実行のたびに接続先サーバーの入力を求めます。Windowsでは空の環境変数を設定できませんが、代わりに<code>&lt;&gt;</code>を設定して同じ動作を模倣できます。また、Windowsでは環境変数経由のヘッダーオプションにヘッダー名を埋め込めません（たとえば<code>SWAKS_OPT_header_Foo=bar</code>はエラーになりますが、<code>SWAKS_OPT_header=&quot;Foo: bar&quot;</code>は機能します）。</p>
 <p>環境変数で指定するオプションには本来順序がないため、処理前に並べ替えます。最善の解決法ではありませんが、未定義になる動作を少なくとも定義できます。たとえば<code>$SWAKS_OPT_from</code>と<code>$SWAKS_OPT_f</code>が両方設定されていると、<code>$SWAKS_OPT_f</code>より後に並ぶ<code>$SWAKS_OPT_from</code>の値を使用します。また、本来順序がないため、<code>no-</code>接頭辞による設定解除は確実ではありません。解除対象が<code>no-</code>より前に並べば機能し、後なら失敗します。<code>no-</code>は主に異なる設定方法の間で使うもの（設定ファイルで指定したオプションをコマンドラインから解除するなど）なので、問題になることは少ないでしょう。</p>
 <p>コマンドライン相当のオプションのほかに、使用する既定の<em>.swaksrc</em>を含むディレクトリを<code>$SWAKS_HOME</code>で設定できます。</p></dd><dt>コマンドラインオプション</dt><dd><p>Swaksへオプションを渡す最後の方法がコマンドラインです。ほとんどのUNIX系コマンドラインプログラムと同様に動作します。多くのオプションに短い形式と長い形式があります（<code>-s</code>と<code>--server</code>など）。慣例では、短い形式にダッシュ1つ、長い形式にダッシュ2つを付けます。ただしこれは慣例にすぎず、どちらの形式にもどちらの接頭辞を使えます。</p>

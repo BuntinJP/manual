@@ -204,30 +204,7 @@ manual: {"id":"apple/jq/1.7.1-apple/macos-27.0.1-26a434/1/jq/db8f6cd37037","href
 
 <p>(4) 以下の例の1つが示すように、利用可能なら、切り詰めていない多倍長10進表現を使って数値を比較します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´.´
-
-   &quot;Hello, world!&quot;
-=&gt; &quot;Hello, world!&quot;
-jq ´.´
-
-   0.12345678901234567890123456789
-=&gt; 0.12345678901234567890123456789
-jq ´[., tojson]´
-
-   12345678909876543212345
-=&gt; [12345678909876543212345,&quot;12345678909876543212345&quot;]
-jq ´. &lt; 0.12345678901234567890123456788´
-
-   0.12345678901234567890123456789
-=&gt; false
-jq ´map([., . == 1]) | tojson´
-
-   [1, 1.000, 1.0, 100e-2]
-=&gt; &quot;[[1,true],[1.000,true],[1.0,true],[1.00,true]]&quot;
-jq ´. as $big | [$big, $big + 1] | map(. &gt; 10000000000000000000000000000000)´
-
-   10000000000000000000000000000001
-=&gt; [true, false]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´.´&#10;&#10;   &quot;Hello, world!&quot;&#10;=&gt; &quot;Hello, world!&quot;&#10;jq ´.´&#10;&#10;   0.12345678901234567890123456789&#10;=&gt; 0.12345678901234567890123456789&#10;jq ´[., tojson]´&#10;&#10;   12345678909876543212345&#10;=&gt; [12345678909876543212345,&quot;12345678909876543212345&quot;]&#10;jq ´. &lt; 0.12345678901234567890123456788´&#10;&#10;   0.12345678901234567890123456789&#10;=&gt; false&#10;jq ´map([., . == 1]) | tojson´&#10;&#10;   [1, 1.000, 1.0, 100e-2]&#10;=&gt; &quot;[[1,true],[1.000,true],[1.0,true],[1.00,true]]&quot;&#10;jq ´. as $big | [$big, $big + 1] | map(. &gt; 10000000000000000000000000000000)´&#10;&#10;   10000000000000000000000000000001&#10;=&gt; [true, false]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### オブジェクトの識別子インデックス: \.foo, \.foo\.bar {#Object_Identifier-Index-_}
 
@@ -242,40 +219,14 @@ jq ´. as $big | [$big, $big + 1] | map(. &gt; 10000000000000000000000000000000)
 
 <p>たとえば <strong>.[&quot;foo::bar&quot;]</strong> と <strong>.[&quot;foo.bar&quot;]</strong> は動作しますが、<strong>.foo::bar</strong> は動作しません。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´.foo´
-
-   {&quot;foo&quot;: 42, &quot;bar&quot;: &quot;less interesting data&quot;}
-=&gt; 42
-jq ´.foo´
-
-   {&quot;notfoo&quot;: true, &quot;alsonotfoo&quot;: false}
-=&gt; null
-jq ´.[&quot;foo&quot;]´
-
-   {&quot;foo&quot;: 42}
-=&gt; 42</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´.foo´&#10;&#10;   {&quot;foo&quot;: 42, &quot;bar&quot;: &quot;less interesting data&quot;}&#10;=&gt; 42&#10;jq ´.foo´&#10;&#10;   {&quot;notfoo&quot;: true, &quot;alsonotfoo&quot;: false}&#10;=&gt; null&#10;jq ´.[&quot;foo&quot;]´&#10;&#10;   {&quot;foo&quot;: 42}&#10;=&gt; 42</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### 任意のオブジェクト識別子インデックス: \.foo? {#Optional_Object_Identifier-Index-_}
 
 
 <p><strong>.foo</strong> と同様ですが、<strong>.</strong> がオブジェクトでなくてもエラーを出力しません。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´.foo?´
-
-   {&quot;foo&quot;: 42, &quot;bar&quot;: &quot;less interesting data&quot;}
-=&gt; 42
-jq ´.foo?´
-
-   {&quot;notfoo&quot;: true, &quot;alsonotfoo&quot;: false}
-=&gt; null
-jq ´.[&quot;foo&quot;]?´
-
-   {&quot;foo&quot;: 42}
-=&gt; 42
-jq ´[.foo?]´
-
-   [1,2]
-=&gt; []</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´.foo?´&#10;&#10;   {&quot;foo&quot;: 42, &quot;bar&quot;: &quot;less interesting data&quot;}&#10;=&gt; 42&#10;jq ´.foo?´&#10;&#10;   {&quot;notfoo&quot;: true, &quot;alsonotfoo&quot;: false}&#10;=&gt; null&#10;jq ´.[&quot;foo&quot;]?´&#10;&#10;   {&quot;foo&quot;: 42}&#10;=&gt; 42&#10;jq ´[.foo?]´&#10;&#10;   [1,2]&#10;=&gt; []</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### オブジェクトのインデックス: \.\[&lt;string&gt;\] {#Object_Index-_}
 
@@ -289,40 +240,14 @@ jq ´[.foo?]´
 
 <p>負のインデックスも使えます。-1は末尾、-2は末尾から2番目の要素を表し、以下同様です。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´.[0]´
-
-   [{&quot;name&quot;:&quot;JSON&quot;, &quot;good&quot;:true}, {&quot;name&quot;:&quot;XML&quot;, &quot;good&quot;:false}]
-=&gt; {&quot;name&quot;:&quot;JSON&quot;, &quot;good&quot;:true}
-jq ´.[2]´
-
-   [{&quot;name&quot;:&quot;JSON&quot;, &quot;good&quot;:true}, {&quot;name&quot;:&quot;XML&quot;, &quot;good&quot;:false}]
-=&gt; null
-jq ´.[-2]´
-
-   [1,2,3]
-=&gt; 2</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´.[0]´&#10;&#10;   [{&quot;name&quot;:&quot;JSON&quot;, &quot;good&quot;:true}, {&quot;name&quot;:&quot;XML&quot;, &quot;good&quot;:false}]&#10;=&gt; {&quot;name&quot;:&quot;JSON&quot;, &quot;good&quot;:true}&#10;jq ´.[2]´&#10;&#10;   [{&quot;name&quot;:&quot;JSON&quot;, &quot;good&quot;:true}, {&quot;name&quot;:&quot;XML&quot;, &quot;good&quot;:false}]&#10;=&gt; null&#10;jq ´.[-2]´&#10;&#10;   [1,2,3]&#10;=&gt; 2</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### 配列/文字列のスライス: \.\[&lt;number&gt;:&lt;number&gt;\] {#Array-String_Slice-_}
 
 
 <p><strong>.[&lt;number&gt;:&lt;number&gt;]</strong> 構文は、配列の部分配列や文字列の部分文字列を返すために使えます。<strong>.[10:15]</strong> が返す配列は長さ5で、インデックス10を含み、15を含まない範囲の要素を格納します。どちらのインデックスも負の値（末尾から逆に数える）または省略（配列の先頭または末尾を表す）にできます。インデックスは0始まりです。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´.[2:4]´
-
-   [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;e&quot;]
-=&gt; [&quot;c&quot;, &quot;d&quot;]
-jq ´.[2:4]´
-
-   &quot;abcdefghi&quot;
-=&gt; &quot;cd&quot;
-jq ´.[:3]´
-
-   [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;e&quot;]
-=&gt; [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
-jq ´.[-2:]´
-
-   [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;e&quot;]
-=&gt; [&quot;d&quot;, &quot;e&quot;]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´.[2:4]´&#10;&#10;   [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;e&quot;]&#10;=&gt; [&quot;c&quot;, &quot;d&quot;]&#10;jq ´.[2:4]´&#10;&#10;   &quot;abcdefghi&quot;&#10;=&gt; &quot;cd&quot;&#10;jq ´.[:3]´&#10;&#10;   [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;e&quot;]&#10;=&gt; [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]&#10;jq ´.[-2:]´&#10;&#10;   [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;e&quot;]&#10;=&gt; [&quot;d&quot;, &quot;e&quot;]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### 配列/オブジェクト値のイテレーター: \.\[\] {#Array-Object_Value_Iterator-_}
 
@@ -333,22 +258,7 @@ jq ´.[-2:]´
 
 <p>イテレーター演算子は値のジェネレーターです。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´.[]´
-
-   [{&quot;name&quot;:&quot;JSON&quot;, &quot;good&quot;:true}, {&quot;name&quot;:&quot;XML&quot;, &quot;good&quot;:false}]
-=&gt; {&quot;name&quot;:&quot;JSON&quot;, &quot;good&quot;:true}, {&quot;name&quot;:&quot;XML&quot;, &quot;good&quot;:false}
-jq ´.[]´
-
-   []
-=&gt; 
-jq ´.foo[]´
-
-   {&quot;foo&quot;:[1,2,3]}
-=&gt; 1, 2, 3
-jq ´.[]´
-
-   {&quot;a&quot;: 1, &quot;b&quot;: 1}
-=&gt; 1, 1</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´.[]´&#10;&#10;   [{&quot;name&quot;:&quot;JSON&quot;, &quot;good&quot;:true}, {&quot;name&quot;:&quot;XML&quot;, &quot;good&quot;:false}]&#10;=&gt; {&quot;name&quot;:&quot;JSON&quot;, &quot;good&quot;:true}, {&quot;name&quot;:&quot;XML&quot;, &quot;good&quot;:false}&#10;jq ´.[]´&#10;&#10;   []&#10;=&gt; &#10;jq ´.foo[]´&#10;&#10;   {&quot;foo&quot;:[1,2,3]}&#10;=&gt; 1, 2, 3&#10;jq ´.[]´&#10;&#10;   {&quot;a&quot;: 1, &quot;b&quot;: 1}&#10;=&gt; 1, 1</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### \.\[\]? {#section-13}
 
@@ -362,18 +272,7 @@ jq ´.[]´
 
 <p><strong>,</strong> 演算子は、ジェネレーターを構築する方法の1つです。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´.foo, .bar´
-
-   {&quot;foo&quot;: 42, &quot;bar&quot;: &quot;something else&quot;, &quot;baz&quot;: true}
-=&gt; 42, &quot;something else&quot;
-jq ´.user, .projects[]´
-
-   {&quot;user&quot;:&quot;stedolan&quot;, &quot;projects&quot;: [&quot;jq&quot;, &quot;wikiflow&quot;]}
-=&gt; &quot;stedolan&quot;, &quot;jq&quot;, &quot;wikiflow&quot;
-jq ´.[4,2]´
-
-   [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;e&quot;]
-=&gt; &quot;e&quot;, &quot;c&quot;</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´.foo, .bar´&#10;&#10;   {&quot;foo&quot;: 42, &quot;bar&quot;: &quot;something else&quot;, &quot;baz&quot;: true}&#10;=&gt; 42, &quot;something else&quot;&#10;jq ´.user, .projects[]´&#10;&#10;   {&quot;user&quot;:&quot;stedolan&quot;, &quot;projects&quot;: [&quot;jq&quot;, &quot;wikiflow&quot;]}&#10;=&gt; &quot;stedolan&quot;, &quot;jq&quot;, &quot;wikiflow&quot;&#10;jq ´.[4,2]´&#10;&#10;   [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;e&quot;]&#10;=&gt; &quot;e&quot;, &quot;c&quot;</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### パイプ: \| {#Pipe-__}
 
@@ -386,20 +285,14 @@ jq ´.[4,2]´
 
 <p><strong>.</strong> は、パイプラインのその段階、具体的には <strong>.</strong> 式が現れる位置での入力値です。そのため <strong>.a | . | .b</strong> は <strong>.a.b</strong> と同じです。中央の <strong>.</strong> は、<strong>.a</strong> が生成した値を表します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´.[] | .name´
-
-   [{&quot;name&quot;:&quot;JSON&quot;, &quot;good&quot;:true}, {&quot;name&quot;:&quot;XML&quot;, &quot;good&quot;:false}]
-=&gt; &quot;JSON&quot;, &quot;XML&quot;</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´.[] | .name´&#10;&#10;   [{&quot;name&quot;:&quot;JSON&quot;, &quot;good&quot;:true}, {&quot;name&quot;:&quot;XML&quot;, &quot;good&quot;:false}]&#10;=&gt; &quot;JSON&quot;, &quot;XML&quot;</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### 括弧 {#Parenthesis}
 
 
 <p>括弧は、一般的なプログラミング言語と同様に、グループ化の演算子として機能します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´(. + 2) * 5´
-
-   1
-=&gt; 15</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´(. + 2) * 5´&#10;&#10;   1&#10;=&gt; 15</code></pre></dd><dt></dt><dd></dd></dl>
 
 ### 型と値 {#TYPES_AND_VALUES}
 
@@ -421,14 +314,7 @@ jq ´.[4,2]´
 
 <p>4つの結果を生成するフィルター <strong>X</strong> があるとき、<strong>[X]</strong> は要素4個の配列という単一の結果を生成します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´[.user, .projects[]]´
-
-   {&quot;user&quot;:&quot;stedolan&quot;, &quot;projects&quot;: [&quot;jq&quot;, &quot;wikiflow&quot;]}
-=&gt; [&quot;stedolan&quot;, &quot;jq&quot;, &quot;wikiflow&quot;]
-jq ´[ .[] | . * 2]´
-
-   [1, 2, 3]
-=&gt; [2, 4, 6]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´[.user, .projects[]]´&#10;&#10;   {&quot;user&quot;:&quot;stedolan&quot;, &quot;projects&quot;: [&quot;jq&quot;, &quot;wikiflow&quot;]}&#10;=&gt; [&quot;stedolan&quot;, &quot;jq&quot;, &quot;wikiflow&quot;]&#10;jq ´[ .[] | . * 2]´&#10;&#10;   [1, 2, 3]&#10;=&gt; [2, 4, 6]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### オブジェクトの構築: \{\} {#Object_Construction-___}
 
@@ -457,8 +343,7 @@ jq ´[ .[] | . * 2]´
 
 <p>次の2つの出力を生成します。</p>
 
-<dl><dt></dt><dd><pre><code>{&quot;user&quot;:&quot;stedolan&quot;, &quot;title&quot;: &quot;JQ Primer&quot;}
-{&quot;user&quot;:&quot;stedolan&quot;, &quot;title&quot;: &quot;More JQ&quot;}</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>{&quot;user&quot;:&quot;stedolan&quot;, &quot;title&quot;: &quot;JQ Primer&quot;}&#10;{&quot;user&quot;:&quot;stedolan&quot;, &quot;title&quot;: &quot;More JQ&quot;}</code></pre></dd><dt></dt><dd></dd></dl>
 
 <p>キーを括弧で囲むと、式として評価します。上と同じ入力に対して:</p>
 
@@ -474,15 +359,7 @@ jq ´[ .[] | . * 2]´
 
 <p>は、次を生成します。</p>
 
-<dl><dt></dt><dd><pre><code>{&quot;foo&quot;:&quot;f o o&quot;,&quot;b a r&quot;:&quot;f o o&quot;}
-jq ´{user, title: .titles[]}´
-
-   {&quot;user&quot;:&quot;stedolan&quot;,&quot;titles&quot;:[&quot;JQ Primer&quot;, &quot;More JQ&quot;]}
-=&gt; {&quot;user&quot;:&quot;stedolan&quot;, &quot;title&quot;: &quot;JQ Primer&quot;}, {&quot;user&quot;:&quot;stedolan&quot;, &quot;title&quot;: &quot;More JQ&quot;}
-jq ´{(.user): .titles}´
-
-   {&quot;user&quot;:&quot;stedolan&quot;,&quot;titles&quot;:[&quot;JQ Primer&quot;, &quot;More JQ&quot;]}
-=&gt; {&quot;stedolan&quot;: [&quot;JQ Primer&quot;, &quot;More JQ&quot;]}</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>{&quot;foo&quot;:&quot;f o o&quot;,&quot;b a r&quot;:&quot;f o o&quot;}&#10;jq ´{user, title: .titles[]}´&#10;&#10;   {&quot;user&quot;:&quot;stedolan&quot;,&quot;titles&quot;:[&quot;JQ Primer&quot;, &quot;More JQ&quot;]}&#10;=&gt; {&quot;user&quot;:&quot;stedolan&quot;, &quot;title&quot;: &quot;JQ Primer&quot;}, {&quot;user&quot;:&quot;stedolan&quot;, &quot;title&quot;: &quot;More JQ&quot;}&#10;jq ´{(.user): .titles}´&#10;&#10;   {&quot;user&quot;:&quot;stedolan&quot;,&quot;titles&quot;:[&quot;JQ Primer&quot;, &quot;More JQ&quot;]}&#10;=&gt; {&quot;stedolan&quot;: [&quot;JQ Primer&quot;, &quot;More JQ&quot;]}</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### 再帰下降: \.\. {#Recursive_Descent-_}
 
@@ -491,10 +368,7 @@ jq ´{(.user): .titles}´
 
 <p><strong>path(EXP)</strong>（後述）と <strong>?</strong> 演算子との組み合わせが特に便利です。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´.. | .a?´
-
-   [[{&quot;a&quot;:1}]]
-=&gt; 1</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´.. | .a?´&#10;&#10;   [[{&quot;a&quot;:1}]]&#10;=&gt; 1</code></pre></dd><dt></dt><dd></dd></dl>
 
 ### 組み込み演算子と関数 {#BUILTIN_OPERATORS_AND_FUNCTIONS}
 
@@ -516,40 +390,14 @@ jq ´{(.user): .titles}´
 
 <p><strong>null</strong> はどの値にも加えることができ、相手の値を変更せずに返します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´.a + 1´
-
-   {&quot;a&quot;: 7}
-=&gt; 8
-jq ´.a + .b´
-
-   {&quot;a&quot;: [1,2], &quot;b&quot;: [3,4]}
-=&gt; [1,2,3,4]
-jq ´.a + null´
-
-   {&quot;a&quot;: 1}
-=&gt; 1
-jq ´.a + 1´
-
-   {}
-=&gt; 1
-jq ´{a: 1} + {b: 2} + {c: 3} + {a: 42}´
-
-   null
-=&gt; {&quot;a&quot;: 42, &quot;b&quot;: 2, &quot;c&quot;: 3}</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´.a + 1´&#10;&#10;   {&quot;a&quot;: 7}&#10;=&gt; 8&#10;jq ´.a + .b´&#10;&#10;   {&quot;a&quot;: [1,2], &quot;b&quot;: [3,4]}&#10;=&gt; [1,2,3,4]&#10;jq ´.a + null´&#10;&#10;   {&quot;a&quot;: 1}&#10;=&gt; 1&#10;jq ´.a + 1´&#10;&#10;   {}&#10;=&gt; 1&#10;jq ´{a: 1} + {b: 2} + {c: 3} + {a: 42}´&#10;&#10;   null&#10;=&gt; {&quot;a&quot;: 42, &quot;b&quot;: 2, &quot;c&quot;: 3}</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### 減算: - {#Subtraction-_}
 
 
 <p><strong>-</strong> 演算子は、数値の通常の減算に加え、配列に使って、第2の配列の各要素を第1の配列からすべて取り除くこともできます。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´4 - .a´
-
-   {&quot;a&quot;:3}
-=&gt; 1
-jq ´. - [&quot;xml&quot;, &quot;yaml&quot;]´
-
-   [&quot;xml&quot;, &quot;yaml&quot;, &quot;json&quot;]
-=&gt; [&quot;json&quot;]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´4 - .a´&#10;&#10;   {&quot;a&quot;:3}&#10;=&gt; 1&#10;jq ´. - [&quot;xml&quot;, &quot;yaml&quot;]´&#10;&#10;   [&quot;xml&quot;, &quot;yaml&quot;, &quot;json&quot;]&#10;=&gt; [&quot;json&quot;]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### 乗算、除算、剰余: \*, /, % {#Multiplication-_division-_modulo-_--_--__}
 
@@ -562,22 +410,7 @@ jq ´. - [&quot;xml&quot;, &quot;yaml&quot;]´
 
 <p>2つのオブジェクトの乗算は、再帰的にマージします。加算と同様ですが、同じキーの値が両方にあり、両方の値がオブジェクトなら、その2つも同じ方法でマージします。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´10 / . * 3´
-
-   5
-=&gt; 6
-jq ´. / &quot;, &quot;´
-
-   &quot;a, b,c,d, e&quot;
-=&gt; [&quot;a&quot;,&quot;b,c,d&quot;,&quot;e&quot;]
-jq ´{&quot;k&quot;: {&quot;a&quot;: 1, &quot;b&quot;: 2}} * {&quot;k&quot;: {&quot;a&quot;: 0,&quot;c&quot;: 3}}´
-
-   null
-=&gt; {&quot;k&quot;: {&quot;a&quot;: 0, &quot;b&quot;: 2, &quot;c&quot;: 3}}
-jq ´.[] | (1 / .)?´
-
-   [1,0,-1]
-=&gt; 1, -1</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´10 / . * 3´&#10;&#10;   5&#10;=&gt; 6&#10;jq ´. / &quot;, &quot;´&#10;&#10;   &quot;a, b,c,d, e&quot;&#10;=&gt; [&quot;a&quot;,&quot;b,c,d&quot;,&quot;e&quot;]&#10;jq ´{&quot;k&quot;: {&quot;a&quot;: 1, &quot;b&quot;: 2}} * {&quot;k&quot;: {&quot;a&quot;: 0,&quot;c&quot;: 3}}´&#10;&#10;   null&#10;=&gt; {&quot;k&quot;: {&quot;a&quot;: 0, &quot;b&quot;: 2, &quot;c&quot;: 3}}&#10;jq ´.[] | (1 / .)?´&#10;&#10;   [1,0,-1]&#10;=&gt; 1, -1</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### abs {#abs}
 
@@ -588,10 +421,7 @@ jq ´.[] | (1 / .)?´
 
 <p>数値の絶対値を浮動小数点数として計算するには、<strong>fabs</strong> を使うとよいでしょう。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´map(abs)´
-
-   [-10, -1.1, -1e-1]
-=&gt; [10,1.1,1e-1]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´map(abs)´&#10;&#10;   [-10, -1.1, -1e-1]&#10;=&gt; [10,1.1,1e-1]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### length {#length}
 
@@ -600,20 +430,14 @@ jq ´.[] | (1 / .)?´
 
 <ul><li><p><strong>string</strong>（文字列）の長さは、含まれる Unicode コードポイント数です。純粋な ASCII なら、JSON 符号化した長さのバイト数と同じです。</p></li><li><p><strong>number</strong>（数値）の長さは、その絶対値です。</p></li><li><p><strong>array</strong>（配列）の長さは、要素数です。</p></li><li><p><strong>object</strong>（オブジェクト）の長さは、キーと値の組の数です。</p></li><li><p><strong>null</strong> の長さは0です。</p></li><li><p><strong>boolean</strong>（真偽値）に <strong>length</strong> を使うとエラーになります。</p></li></ul>
 
-<dl><dt></dt><dd><pre><code>jq ´.[] | length´
-
-   [[1,2], &quot;string&quot;, {&quot;a&quot;:2}, null, -5]
-=&gt; 2, 6, 1, 0, 5</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´.[] | length´&#10;&#10;   [[1,2], &quot;string&quot;, {&quot;a&quot;:2}, null, -5]&#10;=&gt; 2, 6, 1, 0, 5</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### utf8bytelength {#utf8bytelength}
 
 
 <p>組み込み関数 <strong>utf8bytelength</strong> は、文字列の UTF-8 符号化に使うバイト数を出力します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´utf8bytelength´
-
-   &quot;\u03bc&quot;
-=&gt; 2</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´utf8bytelength´&#10;&#10;   &quot;\u03bc&quot;&#10;=&gt; 2</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### keys, keys\_unsorted {#keys-_keys_unsorted}
 
@@ -626,14 +450,7 @@ jq ´.[] | (1 / .)?´
 
 <p><strong>keys_unsorted</strong> は <strong>keys</strong> と同様ですが、入力がオブジェクトの場合はソートせず、おおむね挿入順でキーを返します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´keys´
-
-   {&quot;abc&quot;: 1, &quot;abcd&quot;: 2, &quot;Foo&quot;: 3}
-=&gt; [&quot;Foo&quot;, &quot;abc&quot;, &quot;abcd&quot;]
-jq ´keys´
-
-   [42,3,35]
-=&gt; [0,1,2]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´keys´&#10;&#10;   {&quot;abc&quot;: 1, &quot;abcd&quot;: 2, &quot;Foo&quot;: 3}&#10;=&gt; [&quot;Foo&quot;, &quot;abc&quot;, &quot;abcd&quot;]&#10;jq ´keys´&#10;&#10;   [42,3,35]&#10;=&gt; [0,1,2]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### has\(key\) {#has-key}
 
@@ -642,28 +459,14 @@ jq ´keys´
 
 <p><strong>has($key)</strong> は、<strong>keys</strong> が返す配列に <strong>$key</strong> が含まれるかの検査と同じ効果ですが、<strong>has</strong> の方が高速です。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´map(has(&quot;foo&quot;))´
-
-   [{&quot;foo&quot;: 42}, {}]
-=&gt; [true, false]
-jq ´map(has(2))´
-
-   [[0,1], [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;]]
-=&gt; [false, true]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´map(has(&quot;foo&quot;))´&#10;&#10;   [{&quot;foo&quot;: 42}, {}]&#10;=&gt; [true, false]&#10;jq ´map(has(2))´&#10;&#10;   [[0,1], [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;]]&#10;=&gt; [false, true]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### in {#in}
 
 
 <p>組み込み関数 <strong>in</strong> は、入力キーが指定オブジェクトにあるか、または入力インデックスが指定配列の要素に対応するかを返します。本質的には <strong>has</strong> の逆向きの版です。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´.[] | in({&quot;foo&quot;: 42})´
-
-   [&quot;foo&quot;, &quot;bar&quot;]
-=&gt; true, false
-jq ´map(in([0,1]))´
-
-   [2, 0]
-=&gt; [false, true]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´.[] | in({&quot;foo&quot;: 42})´&#10;&#10;   [&quot;foo&quot;, &quot;bar&quot;]&#10;=&gt; true, false&#10;jq ´map(in([0,1]))´&#10;&#10;   [2, 0]&#10;=&gt; [false, true]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### map\(f\), map\_values\(f\) {#map-f--_map_values-f}
 
@@ -680,47 +483,20 @@ jq ´map(in([0,1]))´
 
 <p>配列に適用した <strong>map</strong> と <strong>map_values</strong> の動作を明確にする例を示します。以下ではすべて入力を <strong>[1]</strong> とします。</p>
 
-<dl><dt></dt><dd><pre><code>map(.+1)          #=&gt;  [2]
-map(., .)         #=&gt;  [1,1]
-map(empty)        #=&gt;  []
-map_values(.+1)   #=&gt;  [2]
-map_values(., .)  #=&gt;  [1]
-map_values(empty) #=&gt;  []</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>map(.+1)          #=&gt;  [2]&#10;map(., .)         #=&gt;  [1,1]&#10;map(empty)        #=&gt;  []&#10;map_values(.+1)   #=&gt;  [2]&#10;map_values(., .)  #=&gt;  [1]&#10;map_values(empty) #=&gt;  []</code></pre></dd><dt></dt><dd></dd></dl>
 
 <p><strong>map(f)</strong> は <strong>[.[] | f]</strong> と同等で、<strong>map_values(f)</strong> は <strong>.[] |= f</strong> と同等です。</p>
 
 <p>実際、これらがその実装です。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´map(.+1)´
-
-   [1,2,3]
-=&gt; [2,3,4]
-jq ´map_values(.+1)´
-
-   {&quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: 3}
-=&gt; {&quot;a&quot;: 2, &quot;b&quot;: 3, &quot;c&quot;: 4}
-jq ´map(., .)´
-
-   [1,2]
-=&gt; [1,1,2,2]
-jq ´map_values(. // empty)´
-
-   {&quot;a&quot;: null, &quot;b&quot;: true, &quot;c&quot;: false}
-=&gt; {&quot;b&quot;:true}</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´map(.+1)´&#10;&#10;   [1,2,3]&#10;=&gt; [2,3,4]&#10;jq ´map_values(.+1)´&#10;&#10;   {&quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: 3}&#10;=&gt; {&quot;a&quot;: 2, &quot;b&quot;: 3, &quot;c&quot;: 4}&#10;jq ´map(., .)´&#10;&#10;   [1,2]&#10;=&gt; [1,1,2,2]&#10;jq ´map_values(. // empty)´&#10;&#10;   {&quot;a&quot;: null, &quot;b&quot;: true, &quot;c&quot;: false}&#10;=&gt; {&quot;b&quot;:true}</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### pick\(pathexps\) {#pick-pathexps}
 
 
 <p>指定した一連のパス式で定義される、入力オブジェクトまたは配列の射影を出力します。指定のいずれかを <strong>p</strong> とすると、<strong>(. | p)</strong> と <strong>(. | pick(pathexps) | p)</strong> が同じ値に評価されるようにします。配列では、負のインデックスと <strong>.[m:n]</strong> の指定を使うべきではありません。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´pick(.a, .b.c, .x)´
-
-   {&quot;a&quot;: 1, &quot;b&quot;: {&quot;c&quot;: 2, &quot;d&quot;: 3}, &quot;e&quot;: 4}
-=&gt; {&quot;a&quot;:1,&quot;b&quot;:{&quot;c&quot;:2},&quot;x&quot;:null}
-jq ´pick(.[2], .[0], .[0])´
-
-   [1,2,3,4]
-=&gt; [1,null,3]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´pick(.a, .b.c, .x)´&#10;&#10;   {&quot;a&quot;: 1, &quot;b&quot;: {&quot;c&quot;: 2, &quot;d&quot;: 3}, &quot;e&quot;: 4}&#10;=&gt; {&quot;a&quot;:1,&quot;b&quot;:{&quot;c&quot;:2},&quot;x&quot;:null}&#10;jq ´pick(.[2], .[0], .[0])´&#10;&#10;   [1,2,3,4]&#10;=&gt; [1,null,3]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### path\(path\_expression\) {#path-path_expression}
 
@@ -735,70 +511,35 @@ jq ´pick(.[2], .[0], .[0])´
 
 <p>パス式は通常の式と異なるものではありません。<strong>path(..|select(type==&quot;boolean&quot;))</strong> は、<strong>.</strong> 内の真偽値へのすべてのパスだけを出力します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´path(.a[0].b)´
-
-   null
-=&gt; [&quot;a&quot;,0,&quot;b&quot;]
-jq ´[path(..)]´
-
-   {&quot;a&quot;:[{&quot;b&quot;:1}]}
-=&gt; [[],[&quot;a&quot;],[&quot;a&quot;,0],[&quot;a&quot;,0,&quot;b&quot;]]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´path(.a[0].b)´&#10;&#10;   null&#10;=&gt; [&quot;a&quot;,0,&quot;b&quot;]&#10;jq ´[path(..)]´&#10;&#10;   {&quot;a&quot;:[{&quot;b&quot;:1}]}&#10;=&gt; [[],[&quot;a&quot;],[&quot;a&quot;,0],[&quot;a&quot;,0,&quot;b&quot;]]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### del\(path\_expression\) {#del-path_expression}
 
 
 <p>組み込み関数 <strong>del</strong> は、オブジェクトからキーと対応する値を削除します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´del(.foo)´
-
-   {&quot;foo&quot;: 42, &quot;bar&quot;: 9001, &quot;baz&quot;: 42}
-=&gt; {&quot;bar&quot;: 9001, &quot;baz&quot;: 42}
-jq ´del(.[1, 2])´
-
-   [&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;]
-=&gt; [&quot;foo&quot;]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´del(.foo)´&#10;&#10;   {&quot;foo&quot;: 42, &quot;bar&quot;: 9001, &quot;baz&quot;: 42}&#10;=&gt; {&quot;bar&quot;: 9001, &quot;baz&quot;: 42}&#10;jq ´del(.[1, 2])´&#10;&#10;   [&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;]&#10;=&gt; [&quot;foo&quot;]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### getpath\(PATHS\) {#getpath-PATHS}
 
 
 <p>組み込み関数 <strong>getpath</strong> は、<strong>.</strong> の中で <strong>PATHS</strong> の各パスに見つかる値を出力します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´getpath([&quot;a&quot;,&quot;b&quot;])´
-
-   null
-=&gt; null
-jq ´[getpath([&quot;a&quot;,&quot;b&quot;], [&quot;a&quot;,&quot;c&quot;])]´
-
-   {&quot;a&quot;:{&quot;b&quot;:0, &quot;c&quot;:1}}
-=&gt; [0, 1]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´getpath([&quot;a&quot;,&quot;b&quot;])´&#10;&#10;   null&#10;=&gt; null&#10;jq ´[getpath([&quot;a&quot;,&quot;b&quot;], [&quot;a&quot;,&quot;c&quot;])]´&#10;&#10;   {&quot;a&quot;:{&quot;b&quot;:0, &quot;c&quot;:1}}&#10;=&gt; [0, 1]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### setpath\(PATHS; VALUE\) {#setpath-PATHS-_VALUE}
 
 
 <p>組み込み関数 <strong>setpath</strong> は、<strong>.</strong> 内の <strong>PATHS</strong> を <strong>VALUE</strong> に設定します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´setpath([&quot;a&quot;,&quot;b&quot;]; 1)´
-
-   null
-=&gt; {&quot;a&quot;: {&quot;b&quot;: 1}}
-jq ´setpath([&quot;a&quot;,&quot;b&quot;]; 1)´
-
-   {&quot;a&quot;:{&quot;b&quot;:0}}
-=&gt; {&quot;a&quot;: {&quot;b&quot;: 1}}
-jq ´setpath([0,&quot;a&quot;]; 1)´
-
-   null
-=&gt; [{&quot;a&quot;:1}]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´setpath([&quot;a&quot;,&quot;b&quot;]; 1)´&#10;&#10;   null&#10;=&gt; {&quot;a&quot;: {&quot;b&quot;: 1}}&#10;jq ´setpath([&quot;a&quot;,&quot;b&quot;]; 1)´&#10;&#10;   {&quot;a&quot;:{&quot;b&quot;:0}}&#10;=&gt; {&quot;a&quot;: {&quot;b&quot;: 1}}&#10;jq ´setpath([0,&quot;a&quot;]; 1)´&#10;&#10;   null&#10;=&gt; [{&quot;a&quot;:1}]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### delpaths\(PATHS\) {#delpaths-PATHS}
 
 
 <p>組み込み関数 <strong>delpaths</strong> は、<strong>.</strong> 内の <strong>PATHS</strong> を削除します。<strong>PATHS</strong> はパスの配列でなければならず、各パスは文字列と数値の配列です。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´delpaths([[&quot;a&quot;,&quot;b&quot;]])´
-
-   {&quot;a&quot;:{&quot;b&quot;:1},&quot;x&quot;:{&quot;y&quot;:2}}
-=&gt; {&quot;a&quot;:{},&quot;x&quot;:{&quot;y&quot;:2}}</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´delpaths([[&quot;a&quot;,&quot;b&quot;]])´&#10;&#10;   {&quot;a&quot;:{&quot;b&quot;:1},&quot;x&quot;:{&quot;y&quot;:2}}&#10;=&gt; {&quot;a&quot;:{},&quot;x&quot;:{&quot;y&quot;:2}}</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### to\_entries, from\_entries, with\_entries\(f\) {#to_entries-_from_entries-_with_entries-f}
 
@@ -807,18 +548,7 @@ jq ´setpath([0,&quot;a&quot;]; 1)´
 
 <p><strong>from_entries</strong> は逆の変換をします。<strong>with_entries(f)</strong> は <strong>to_entries | map(f) | from_entries</strong> の短縮形で、オブジェクトのすべてのキーと値に処理を行うのに便利です。<strong>from_entries</strong> はキーとして <strong>&quot;key&quot;</strong>、<strong>&quot;Key&quot;</strong>、<strong>&quot;name&quot;</strong>、<strong>&quot;Name&quot;</strong>、<strong>&quot;value&quot;</strong>、<strong>&quot;Value&quot;</strong> を受け付けます。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´to_entries´
-
-   {&quot;a&quot;: 1, &quot;b&quot;: 2}
-=&gt; [{&quot;key&quot;:&quot;a&quot;, &quot;value&quot;:1}, {&quot;key&quot;:&quot;b&quot;, &quot;value&quot;:2}]
-jq ´from_entries´
-
-   [{&quot;key&quot;:&quot;a&quot;, &quot;value&quot;:1}, {&quot;key&quot;:&quot;b&quot;, &quot;value&quot;:2}]
-=&gt; {&quot;a&quot;: 1, &quot;b&quot;: 2}
-jq ´with_entries(.key |= &quot;KEY_&quot; + .)´
-
-   {&quot;a&quot;: 1, &quot;b&quot;: 2}
-=&gt; {&quot;KEY_a&quot;: 1, &quot;KEY_b&quot;: 2}</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´to_entries´&#10;&#10;   {&quot;a&quot;: 1, &quot;b&quot;: 2}&#10;=&gt; [{&quot;key&quot;:&quot;a&quot;, &quot;value&quot;:1}, {&quot;key&quot;:&quot;b&quot;, &quot;value&quot;:2}]&#10;jq ´from_entries´&#10;&#10;   [{&quot;key&quot;:&quot;a&quot;, &quot;value&quot;:1}, {&quot;key&quot;:&quot;b&quot;, &quot;value&quot;:2}]&#10;=&gt; {&quot;a&quot;: 1, &quot;b&quot;: 2}&#10;jq ´with_entries(.key |= &quot;KEY_&quot; + .)´&#10;&#10;   {&quot;a&quot;: 1, &quot;b&quot;: 2}&#10;=&gt; {&quot;KEY_a&quot;: 1, &quot;KEY_b&quot;: 2}</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### select\(boolean\_expression\) {#select-boolean_expression}
 
@@ -827,24 +557,14 @@ jq ´with_entries(.key |= &quot;KEY_&quot; + .)´
 
 <p>リストの絞り込みに便利です。<strong>[1,2,3] | map(select(. &gt;= 2))</strong> は <strong>[2,3]</strong> を返します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´map(select(. &gt;= 2))´
-
-   [1,5,3,0,7]
-=&gt; [5,3,7]
-jq ´.[] | select(.id == &quot;second&quot;)´
-
-   [{&quot;id&quot;: &quot;first&quot;, &quot;val&quot;: 1}, {&quot;id&quot;: &quot;second&quot;, &quot;val&quot;: 2}]
-=&gt; {&quot;id&quot;: &quot;second&quot;, &quot;val&quot;: 2}</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´map(select(. &gt;= 2))´&#10;&#10;   [1,5,3,0,7]&#10;=&gt; [5,3,7]&#10;jq ´.[] | select(.id == &quot;second&quot;)´&#10;&#10;   [{&quot;id&quot;: &quot;first&quot;, &quot;val&quot;: 1}, {&quot;id&quot;: &quot;second&quot;, &quot;val&quot;: 2}]&#10;=&gt; {&quot;id&quot;: &quot;second&quot;, &quot;val&quot;: 2}</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### arrays, objects, iterables, booleans, numbers, normals, finites, strings, nulls, values, scalars {#arrays-_objects-_iterables-_booleans-_numbers-_normals-_finites-_strings-_nulls-_values-_scalars}
 
 
 <p>これらの組み込み関数は、順に、配列、オブジェクト、反復可能な値（配列またはオブジェクト）、真偽値、数値、正規化数、有限数、文字列、null、null 以外の値、反復不可能な値である入力だけを選びます。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´.[]|numbers´
-
-   [[],{},1,&quot;foo&quot;,null,true,false]
-=&gt; 1</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´.[]|numbers´&#10;&#10;   [[],{},1,&quot;foo&quot;,null,true,false]&#10;=&gt; 1</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### empty {#empty}
 
@@ -853,28 +573,14 @@ jq ´.[] | select(.id == &quot;second&quot;)´
 
 <p>ときには役立ちます。必要になれば分かるでしょう。:)</p>
 
-<dl><dt></dt><dd><pre><code>jq ´1, empty, 2´
-
-   null
-=&gt; 1, 2
-jq ´[1,2,empty,3]´
-
-   null
-=&gt; [1,2,3]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´1, empty, 2´&#10;&#10;   null&#10;=&gt; 1, 2&#10;jq ´[1,2,empty,3]´&#10;&#10;   null&#10;=&gt; [1,2,3]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### error, error\(message\) {#error-_error-message}
 
 
 <p>入力値、または引数で指定したメッセージによるエラーを生成します。try/catch で捕捉できます。後述を参照してください。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´try error catch .´
-
-   &quot;error message&quot;
-=&gt; &quot;error message&quot;
-jq ´try error(&quot;invalid value: \(.)&quot;) catch .´
-
-   42
-=&gt; &quot;invalid value: 42&quot;</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´try error catch .´&#10;&#10;   &quot;error message&quot;&#10;=&gt; &quot;error message&quot;&#10;jq ´try error(&quot;invalid value: \(.)&quot;) catch .´&#10;&#10;   42&#10;=&gt; &quot;invalid value: 42&quot;</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### halt {#halt}
 
@@ -895,10 +601,7 @@ jq ´try error(&quot;invalid value: \(.)&quot;) catch .´
 
 <p><strong>$__loc__</strong> が現れるファイル名と行番号を、それぞれ &quot;file&quot; と &quot;line&quot; キーの値とするオブジェクトを生成します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´try error(&quot;\($__loc__)&quot;) catch .´
-
-   null
-=&gt; &quot;{\&quot;file\&quot;:\&quot;&lt;top-level&gt;\&quot;,\&quot;line\&quot;:1}&quot;</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´try error(&quot;\($__loc__)&quot;) catch .´&#10;&#10;   null&#10;=&gt; &quot;{\&quot;file\&quot;:\&quot;&lt;top-level&gt;\&quot;,\&quot;line\&quot;:1}&quot;</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### paths, paths\(node\_filter\) {#paths-_paths-node_filter}
 
@@ -907,14 +610,7 @@ jq ´try error(&quot;invalid value: \(.)&quot;) catch .´
 
 <p><strong>paths(f)</strong> は、<strong>f</strong> が <strong>true</strong> になる値へのパスを出力します。つまり <strong>paths(type == &quot;number&quot;)</strong> は、すべての数値へのパスを出力します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´[paths]´
-
-   [1,[[],{&quot;a&quot;:2}]]
-=&gt; [[0],[1],[1,0],[1,1],[1,1,&quot;a&quot;]]
-jq ´[paths(type == &quot;number&quot;)]´
-
-   [1,[[],{&quot;a&quot;:2}]]
-=&gt; [[0],[1,1,&quot;a&quot;]]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´[paths]´&#10;&#10;   [1,[[],{&quot;a&quot;:2}]]&#10;=&gt; [[0],[1],[1,0],[1,1],[1,1,&quot;a&quot;]]&#10;jq ´[paths(type == &quot;number&quot;)]´&#10;&#10;   [1,[[],{&quot;a&quot;:2}]]&#10;=&gt; [[0],[1,1,&quot;a&quot;]]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### add {#add}
 
@@ -923,18 +619,7 @@ jq ´[paths(type == &quot;number&quot;)]´
 
 <p>入力が空の配列なら、<strong>add</strong> は <strong>null</strong> を返します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´add´
-
-   [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;]
-=&gt; &quot;abc&quot;
-jq ´add´
-
-   [1, 2, 3]
-=&gt; 6
-jq ´add´
-
-   []
-=&gt; null</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´add´&#10;&#10;   [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;]&#10;=&gt; &quot;abc&quot;&#10;jq ´add´&#10;&#10;   [1, 2, 3]&#10;=&gt; 6&#10;jq ´add´&#10;&#10;   []&#10;=&gt; null</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### any, any\(condition\), any\(generator; condition\) {#any-_any-condition--_any-generator-_condition}
 
@@ -947,18 +632,7 @@ jq ´add´
 
 <p><strong>any(generator; condition)</strong> 形式は、指定したジェネレーターのすべての出力に条件を適用します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´any´
-
-   [true, false]
-=&gt; true
-jq ´any´
-
-   [false, false]
-=&gt; false
-jq ´any´
-
-   []
-=&gt; false</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´any´&#10;&#10;   [true, false]&#10;=&gt; true&#10;jq ´any´&#10;&#10;   [false, false]&#10;=&gt; false&#10;jq ´any´&#10;&#10;   []&#10;=&gt; false</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### all, all\(condition\), all\(generator; condition\) {#all-_all-condition--_all-generator-_condition}
 
@@ -971,18 +645,7 @@ jq ´any´
 
 <p>入力が空の配列なら、<strong>all</strong> は <strong>true</strong> を返します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´all´
-
-   [true, false]
-=&gt; false
-jq ´all´
-
-   [true, true]
-=&gt; true
-jq ´all´
-
-   []
-=&gt; true</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´all´&#10;&#10;   [true, false]&#10;=&gt; false&#10;jq ´all´&#10;&#10;   [true, true]&#10;=&gt; true&#10;jq ´all´&#10;&#10;   []&#10;=&gt; true</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### flatten, flatten\(depth\) {#flatten-_flatten-depth}
 
@@ -991,22 +654,7 @@ jq ´all´
 
 <p><strong>flatten(2)</strong> は <strong>flatten</strong> と似ていますが、深さ2段階までしか処理しません。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´flatten´
-
-   [1, [2], [[3]]]
-=&gt; [1, 2, 3]
-jq ´flatten(1)´
-
-   [1, [2], [[3]]]
-=&gt; [1, 2, [3]]
-jq ´flatten´
-
-   [[]]
-=&gt; []
-jq ´flatten´
-
-   [{&quot;foo&quot;: &quot;bar&quot;}, [{&quot;foo&quot;: &quot;baz&quot;}]]
-=&gt; [{&quot;foo&quot;: &quot;bar&quot;}, {&quot;foo&quot;: &quot;baz&quot;}]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´flatten´&#10;&#10;   [1, [2], [[3]]]&#10;=&gt; [1, 2, 3]&#10;jq ´flatten(1)´&#10;&#10;   [1, [2], [[3]]]&#10;=&gt; [1, 2, [3]]&#10;jq ´flatten´&#10;&#10;   [[]]&#10;=&gt; []&#10;jq ´flatten´&#10;&#10;   [{&quot;foo&quot;: &quot;bar&quot;}, [{&quot;foo&quot;: &quot;baz&quot;}]]&#10;=&gt; [{&quot;foo&quot;: &quot;bar&quot;}, {&quot;foo&quot;: &quot;baz&quot;}]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### range\(upto\), range\(from; upto\), range\(from; upto; by\) {#range-upto--_range-from-_upto--_range-from-_upto-_by}
 
@@ -1019,80 +667,42 @@ jq ´flatten´
 
 <p>引数3つの形式は、<strong>from</strong> から <strong>upto</strong> まで、<strong>by</strong> 刻みで数値を生成します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´range(2; 4)´
-
-   null
-=&gt; 2, 3
-jq ´[range(2; 4)]´
-
-   null
-=&gt; [2,3]
-jq ´[range(4)]´
-
-   null
-=&gt; [0,1,2,3]
-jq ´[range(0; 10; 3)]´
-
-   null
-=&gt; [0,3,6,9]
-jq ´[range(0; 10; -1)]´
-
-   null
-=&gt; []
-jq ´[range(0; -5; -1)]´
-
-   null
-=&gt; [0,-1,-2,-3,-4]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´range(2; 4)´&#10;&#10;   null&#10;=&gt; 2, 3&#10;jq ´[range(2; 4)]´&#10;&#10;   null&#10;=&gt; [2,3]&#10;jq ´[range(4)]´&#10;&#10;   null&#10;=&gt; [0,1,2,3]&#10;jq ´[range(0; 10; 3)]´&#10;&#10;   null&#10;=&gt; [0,3,6,9]&#10;jq ´[range(0; 10; -1)]´&#10;&#10;   null&#10;=&gt; []&#10;jq ´[range(0; -5; -1)]´&#10;&#10;   null&#10;=&gt; [0,-1,-2,-3,-4]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### floor {#floor}
 
 
 <p><strong>floor</strong> 関数は、数値入力の床関数の値を返します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´floor´
-
-   3.14159
-=&gt; 3</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´floor´&#10;&#10;   3.14159&#10;=&gt; 3</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### sqrt {#sqrt}
 
 
 <p><strong>sqrt</strong> 関数は、数値入力の平方根を返します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´sqrt´
-
-   9
-=&gt; 3</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´sqrt´&#10;&#10;   9&#10;=&gt; 3</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### tonumber {#tonumber}
 
 
 <p><strong>tonumber</strong> 関数は入力を数値として解析します。正しい形式の文字列を対応する数値に変換し、数値は変更せず、それ以外の入力ではすべてエラーになります。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´.[] | tonumber´
-
-   [1, &quot;1&quot;]
-=&gt; 1, 1</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´.[] | tonumber´&#10;&#10;   [1, &quot;1&quot;]&#10;=&gt; 1, 1</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### tostring {#tostring}
 
 
 <p><strong>tostring</strong> 関数は入力を文字列として出力します。文字列は変更せず、それ以外の値はすべて JSON エンコードします。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´.[] | tostring´
-
-   [1, &quot;1&quot;, [1]]
-=&gt; &quot;1&quot;, &quot;1&quot;, &quot;[1]&quot;</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´.[] | tostring´&#10;&#10;   [1, &quot;1&quot;, [1]]&#10;=&gt; &quot;1&quot;, &quot;1&quot;, &quot;[1]&quot;</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### type {#type}
 
 
 <p><strong>type</strong> 関数は引数の型を文字列で返します。null、boolean、number、string、array、object のいずれかです。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´map(type)´
-
-   [0, false, [], {}, null, &quot;hello&quot;]
-=&gt; [&quot;number&quot;, &quot;boolean&quot;, &quot;array&quot;, &quot;object&quot;, &quot;null&quot;, &quot;string&quot;]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´map(type)´&#10;&#10;   [0, false, [], {}, null, &quot;hello&quot;]&#10;=&gt; [&quot;number&quot;, &quot;boolean&quot;, &quot;array&quot;, &quot;object&quot;, &quot;null&quot;, &quot;string&quot;]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### infinite, nan, isinfinite, isnan, isfinite, isnormal {#infinite-_nan-_isinfinite-_isnan-_isfinite-_isnormal}
 
@@ -1103,14 +713,7 @@ jq ´[range(0; -5; -1)]´
 
 <p>現在、無限大、NaN、非正規化数に対するほとんどの算術演算はエラーを発生させません。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´.[] | (infinite * .) &lt; 0´
-
-   [-1, 1]
-=&gt; true, false
-jq ´infinite, nan | type´
-
-   null
-=&gt; &quot;number&quot;, &quot;number&quot;</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´.[] | (infinite * .) &lt; 0´&#10;&#10;   [-1, 1]&#10;=&gt; true, false&#10;jq ´infinite, nan | type´&#10;&#10;   null&#10;=&gt; &quot;number&quot;, &quot;number&quot;</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### sort, sort\_by\(path\_expression\) {#sort-_sort_by-path_expression}
 
@@ -1125,18 +728,7 @@ jq ´infinite, nan | type´
 
 <p><strong>sort_by</strong> は、オブジェクトの特定のフィールドや、任意の jq フィルターを適用した結果でソートするために使えます。<strong>sort_by(f)</strong> は、各要素に対する <strong>f</strong> の結果を比較して2つの要素を比較します。<strong>f</strong> が複数の値を生成する場合は、まず最初の値を比較し、等しければ2番目の値を比較する、というように進みます。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´sort´
-
-   [8,3,null,6]
-=&gt; [null,3,6,8]
-jq ´sort_by(.foo)´
-
-   [{&quot;foo&quot;:4, &quot;bar&quot;:10}, {&quot;foo&quot;:3, &quot;bar&quot;:10}, {&quot;foo&quot;:2, &quot;bar&quot;:1}]
-=&gt; [{&quot;foo&quot;:2, &quot;bar&quot;:1}, {&quot;foo&quot;:3, &quot;bar&quot;:10}, {&quot;foo&quot;:4, &quot;bar&quot;:10}]
-jq ´sort_by(.foo, .bar)´
-
-   [{&quot;foo&quot;:4, &quot;bar&quot;:10}, {&quot;foo&quot;:3, &quot;bar&quot;:20}, {&quot;foo&quot;:2, &quot;bar&quot;:1}, {&quot;foo&quot;:3, &quot;bar&quot;:10}]
-=&gt; [{&quot;foo&quot;:2, &quot;bar&quot;:1}, {&quot;foo&quot;:3, &quot;bar&quot;:10}, {&quot;foo&quot;:3, &quot;bar&quot;:20}, {&quot;foo&quot;:4, &quot;bar&quot;:10}]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´sort´&#10;&#10;   [8,3,null,6]&#10;=&gt; [null,3,6,8]&#10;jq ´sort_by(.foo)´&#10;&#10;   [{&quot;foo&quot;:4, &quot;bar&quot;:10}, {&quot;foo&quot;:3, &quot;bar&quot;:10}, {&quot;foo&quot;:2, &quot;bar&quot;:1}]&#10;=&gt; [{&quot;foo&quot;:2, &quot;bar&quot;:1}, {&quot;foo&quot;:3, &quot;bar&quot;:10}, {&quot;foo&quot;:4, &quot;bar&quot;:10}]&#10;jq ´sort_by(.foo, .bar)´&#10;&#10;   [{&quot;foo&quot;:4, &quot;bar&quot;:10}, {&quot;foo&quot;:3, &quot;bar&quot;:20}, {&quot;foo&quot;:2, &quot;bar&quot;:1}, {&quot;foo&quot;:3, &quot;bar&quot;:10}]&#10;=&gt; [{&quot;foo&quot;:2, &quot;bar&quot;:1}, {&quot;foo&quot;:3, &quot;bar&quot;:10}, {&quot;foo&quot;:3, &quot;bar&quot;:20}, {&quot;foo&quot;:4, &quot;bar&quot;:10}]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### group\_by\(path\_expression\) {#group_by-path_expression}
 
@@ -1145,10 +737,7 @@ jq ´sort_by(.foo, .bar)´
 
 <p><strong>.foo</strong> の代わりには、フィールドアクセスだけでなく任意の jq 式を使えます。ソート順序は、前述の <strong>sort</strong> 関数で説明したものと同じです。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´group_by(.foo)´
-
-   [{&quot;foo&quot;:1, &quot;bar&quot;:10}, {&quot;foo&quot;:3, &quot;bar&quot;:100}, {&quot;foo&quot;:1, &quot;bar&quot;:1}]
-=&gt; [[{&quot;foo&quot;:1, &quot;bar&quot;:10}, {&quot;foo&quot;:1, &quot;bar&quot;:1}], [{&quot;foo&quot;:3, &quot;bar&quot;:100}]]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´group_by(.foo)´&#10;&#10;   [{&quot;foo&quot;:1, &quot;bar&quot;:10}, {&quot;foo&quot;:3, &quot;bar&quot;:100}, {&quot;foo&quot;:1, &quot;bar&quot;:1}]&#10;=&gt; [[{&quot;foo&quot;:1, &quot;bar&quot;:10}, {&quot;foo&quot;:1, &quot;bar&quot;:1}], [{&quot;foo&quot;:3, &quot;bar&quot;:100}]]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### min, max, min\_by\(path\_exp\), max\_by\(path\_exp\) {#min-_max-_min_by-path_exp--_max_by-path_exp}
 
@@ -1157,14 +746,7 @@ jq ´sort_by(.foo, .bar)´
 
 <p><strong>min_by(path_exp)</strong> 関数と <strong>max_by(path_exp)</strong> 関数では、調べる特定のフィールドやプロパティを指定できます。たとえば <strong>min_by(.foo)</strong> は、<strong>foo</strong> フィールドが最小のオブジェクトを見つけます。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´min´
-
-   [5,4,2,7]
-=&gt; 2
-jq ´max_by(.foo)´
-
-   [{&quot;foo&quot;:1, &quot;bar&quot;:14}, {&quot;foo&quot;:2, &quot;bar&quot;:3}]
-=&gt; {&quot;foo&quot;:2, &quot;bar&quot;:3}</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´min´&#10;&#10;   [5,4,2,7]&#10;=&gt; 2&#10;jq ´max_by(.foo)´&#10;&#10;   [{&quot;foo&quot;:1, &quot;bar&quot;:14}, {&quot;foo&quot;:2, &quot;bar&quot;:3}]&#10;=&gt; {&quot;foo&quot;:2, &quot;bar&quot;:3}</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### unique, unique\_by\(path\_exp\) {#unique-_unique_by-path_exp}
 
@@ -1173,202 +755,91 @@ jq ´max_by(.foo)´
 
 <p><strong>unique_by(path_exp)</strong> 関数は、引数を適用して得た値ごとに要素を1つだけ残します。<strong>group</strong> が生成する各グループから1要素を取り出して配列を作るものと考えてください。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´unique´
-
-   [1,2,5,3,5,3,1,3]
-=&gt; [1,2,3,5]
-jq ´unique_by(.foo)´
-
-   [{&quot;foo&quot;: 1, &quot;bar&quot;: 2}, {&quot;foo&quot;: 1, &quot;bar&quot;: 3}, {&quot;foo&quot;: 4, &quot;bar&quot;: 5}]
-=&gt; [{&quot;foo&quot;: 1, &quot;bar&quot;: 2}, {&quot;foo&quot;: 4, &quot;bar&quot;: 5}]
-jq ´unique_by(length)´
-
-   [&quot;chunky&quot;, &quot;bacon&quot;, &quot;kitten&quot;, &quot;cicada&quot;, &quot;asparagus&quot;]
-=&gt; [&quot;bacon&quot;, &quot;chunky&quot;, &quot;asparagus&quot;]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´unique´&#10;&#10;   [1,2,5,3,5,3,1,3]&#10;=&gt; [1,2,3,5]&#10;jq ´unique_by(.foo)´&#10;&#10;   [{&quot;foo&quot;: 1, &quot;bar&quot;: 2}, {&quot;foo&quot;: 1, &quot;bar&quot;: 3}, {&quot;foo&quot;: 4, &quot;bar&quot;: 5}]&#10;=&gt; [{&quot;foo&quot;: 1, &quot;bar&quot;: 2}, {&quot;foo&quot;: 4, &quot;bar&quot;: 5}]&#10;jq ´unique_by(length)´&#10;&#10;   [&quot;chunky&quot;, &quot;bacon&quot;, &quot;kitten&quot;, &quot;cicada&quot;, &quot;asparagus&quot;]&#10;=&gt; [&quot;bacon&quot;, &quot;chunky&quot;, &quot;asparagus&quot;]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### reverse {#reverse}
 
 
 <p>この関数は配列を逆順にします。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´reverse´
-
-   [1,2,3,4]
-=&gt; [4,3,2,1]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´reverse´&#10;&#10;   [1,2,3,4]&#10;=&gt; [4,3,2,1]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### contains\(element\) {#contains-element}
 
 
 <p>フィルター <strong>contains(b)</strong> は、b が入力に完全に含まれていれば true を生成します。文字列 B が文字列 A に含まれるのは、B が A の部分文字列の場合です。配列 B が配列 A に含まれるのは、B のすべての要素が A のいずれかの要素に含まれる場合です。オブジェクト B がオブジェクト A に含まれるのは、B のすべての値が、同じキーを持つ A の値に含まれる場合です。それ以外の型はすべて、互いに等しければ含まれているとみなします。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´contains(&quot;bar&quot;)´
-
-   &quot;foobar&quot;
-=&gt; true
-jq ´contains([&quot;baz&quot;, &quot;bar&quot;])´
-
-   [&quot;foobar&quot;, &quot;foobaz&quot;, &quot;blarp&quot;]
-=&gt; true
-jq ´contains([&quot;bazzzzz&quot;, &quot;bar&quot;])´
-
-   [&quot;foobar&quot;, &quot;foobaz&quot;, &quot;blarp&quot;]
-=&gt; false
-jq ´contains({foo: 12, bar: [{barp: 12}]})´
-
-   {&quot;foo&quot;: 12, &quot;bar&quot;:[1,2,{&quot;barp&quot;:12, &quot;blip&quot;:13}]}
-=&gt; true
-jq ´contains({foo: 12, bar: [{barp: 15}]})´
-
-   {&quot;foo&quot;: 12, &quot;bar&quot;:[1,2,{&quot;barp&quot;:12, &quot;blip&quot;:13}]}
-=&gt; false</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´contains(&quot;bar&quot;)´&#10;&#10;   &quot;foobar&quot;&#10;=&gt; true&#10;jq ´contains([&quot;baz&quot;, &quot;bar&quot;])´&#10;&#10;   [&quot;foobar&quot;, &quot;foobaz&quot;, &quot;blarp&quot;]&#10;=&gt; true&#10;jq ´contains([&quot;bazzzzz&quot;, &quot;bar&quot;])´&#10;&#10;   [&quot;foobar&quot;, &quot;foobaz&quot;, &quot;blarp&quot;]&#10;=&gt; false&#10;jq ´contains({foo: 12, bar: [{barp: 12}]})´&#10;&#10;   {&quot;foo&quot;: 12, &quot;bar&quot;:[1,2,{&quot;barp&quot;:12, &quot;blip&quot;:13}]}&#10;=&gt; true&#10;jq ´contains({foo: 12, bar: [{barp: 15}]})´&#10;&#10;   {&quot;foo&quot;: 12, &quot;bar&quot;:[1,2,{&quot;barp&quot;:12, &quot;blip&quot;:13}]}&#10;=&gt; false</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### indices\(s\) {#indices-s}
 
 
 <p><strong>.</strong> 内で <strong>s</strong> が現れるインデックスを含む配列を出力します。入力は配列でもかまいません。その場合、<strong>s</strong> が配列なら、<strong>.</strong> のすべての要素が <strong>s</strong> の要素と一致する位置のインデックスを出力します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´indices(&quot;, &quot;)´
-
-   &quot;a,b, cd, efg, hijk&quot;
-=&gt; [3,7,12]
-jq ´indices(1)´
-
-   [0,1,2,1,3,1,4]
-=&gt; [1,3,5]
-jq ´indices([1,2])´
-
-   [0,1,2,3,1,4,2,5,1,2,6,7]
-=&gt; [1,8]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´indices(&quot;, &quot;)´&#10;&#10;   &quot;a,b, cd, efg, hijk&quot;&#10;=&gt; [3,7,12]&#10;jq ´indices(1)´&#10;&#10;   [0,1,2,1,3,1,4]&#10;=&gt; [1,3,5]&#10;jq ´indices([1,2])´&#10;&#10;   [0,1,2,3,1,4,2,5,1,2,6,7]&#10;=&gt; [1,8]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### index\(s\), rindex\(s\) {#index-s--_rindex-s}
 
 
 <p>入力で <strong>s</strong> が最初（<strong>index</strong>）または最後（<strong>rindex</strong>）に現れるインデックスを出力します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´index(&quot;, &quot;)´
-
-   &quot;a,b, cd, efg, hijk&quot;
-=&gt; 3
-jq ´index(1)´
-
-   [0,1,2,1,3,1,4]
-=&gt; 1
-jq ´index([1,2])´
-
-   [0,1,2,3,1,4,2,5,1,2,6,7]
-=&gt; 1
-jq ´rindex(&quot;, &quot;)´
-
-   &quot;a,b, cd, efg, hijk&quot;
-=&gt; 12
-jq ´rindex(1)´
-
-   [0,1,2,1,3,1,4]
-=&gt; 5
-jq ´rindex([1,2])´
-
-   [0,1,2,3,1,4,2,5,1,2,6,7]
-=&gt; 8</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´index(&quot;, &quot;)´&#10;&#10;   &quot;a,b, cd, efg, hijk&quot;&#10;=&gt; 3&#10;jq ´index(1)´&#10;&#10;   [0,1,2,1,3,1,4]&#10;=&gt; 1&#10;jq ´index([1,2])´&#10;&#10;   [0,1,2,3,1,4,2,5,1,2,6,7]&#10;=&gt; 1&#10;jq ´rindex(&quot;, &quot;)´&#10;&#10;   &quot;a,b, cd, efg, hijk&quot;&#10;=&gt; 12&#10;jq ´rindex(1)´&#10;&#10;   [0,1,2,1,3,1,4]&#10;=&gt; 5&#10;jq ´rindex([1,2])´&#10;&#10;   [0,1,2,3,1,4,2,5,1,2,6,7]&#10;=&gt; 8</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### inside {#inside}
 
 
 <p>フィルター <strong>inside(b)</strong> は、入力が b に完全に含まれていれば true を生成します。基本的には <strong>contains</strong> の逆です。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´inside(&quot;foobar&quot;)´
-
-   &quot;bar&quot;
-=&gt; true
-jq ´inside([&quot;foobar&quot;, &quot;foobaz&quot;, &quot;blarp&quot;])´
-
-   [&quot;baz&quot;, &quot;bar&quot;]
-=&gt; true
-jq ´inside([&quot;foobar&quot;, &quot;foobaz&quot;, &quot;blarp&quot;])´
-
-   [&quot;bazzzzz&quot;, &quot;bar&quot;]
-=&gt; false
-jq ´inside({&quot;foo&quot;: 12, &quot;bar&quot;:[1,2,{&quot;barp&quot;:12, &quot;blip&quot;:13}]})´
-
-   {&quot;foo&quot;: 12, &quot;bar&quot;: [{&quot;barp&quot;: 12}]}
-=&gt; true
-jq ´inside({&quot;foo&quot;: 12, &quot;bar&quot;:[1,2,{&quot;barp&quot;:12, &quot;blip&quot;:13}]})´
-
-   {&quot;foo&quot;: 12, &quot;bar&quot;: [{&quot;barp&quot;: 15}]}
-=&gt; false</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´inside(&quot;foobar&quot;)´&#10;&#10;   &quot;bar&quot;&#10;=&gt; true&#10;jq ´inside([&quot;foobar&quot;, &quot;foobaz&quot;, &quot;blarp&quot;])´&#10;&#10;   [&quot;baz&quot;, &quot;bar&quot;]&#10;=&gt; true&#10;jq ´inside([&quot;foobar&quot;, &quot;foobaz&quot;, &quot;blarp&quot;])´&#10;&#10;   [&quot;bazzzzz&quot;, &quot;bar&quot;]&#10;=&gt; false&#10;jq ´inside({&quot;foo&quot;: 12, &quot;bar&quot;:[1,2,{&quot;barp&quot;:12, &quot;blip&quot;:13}]})´&#10;&#10;   {&quot;foo&quot;: 12, &quot;bar&quot;: [{&quot;barp&quot;: 12}]}&#10;=&gt; true&#10;jq ´inside({&quot;foo&quot;: 12, &quot;bar&quot;:[1,2,{&quot;barp&quot;:12, &quot;blip&quot;:13}]})´&#10;&#10;   {&quot;foo&quot;: 12, &quot;bar&quot;: [{&quot;barp&quot;: 15}]}&#10;=&gt; false</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### startswith\(str\) {#startswith-str}
 
 
 <p>. が指定した文字列引数で始まる場合に <strong>true</strong> を出力します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´[.[]|startswith(&quot;foo&quot;)]´
-
-   [&quot;fo&quot;, &quot;foo&quot;, &quot;barfoo&quot;, &quot;foobar&quot;, &quot;barfoob&quot;]
-=&gt; [false, true, false, true, false]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´[.[]|startswith(&quot;foo&quot;)]´&#10;&#10;   [&quot;fo&quot;, &quot;foo&quot;, &quot;barfoo&quot;, &quot;foobar&quot;, &quot;barfoob&quot;]&#10;=&gt; [false, true, false, true, false]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### endswith\(str\) {#endswith-str}
 
 
 <p>. が指定した文字列引数で終わる場合に <strong>true</strong> を出力します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´[.[]|endswith(&quot;foo&quot;)]´
-
-   [&quot;foobar&quot;, &quot;barfoo&quot;]
-=&gt; [false, true]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´[.[]|endswith(&quot;foo&quot;)]´&#10;&#10;   [&quot;foobar&quot;, &quot;barfoo&quot;]&#10;=&gt; [false, true]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### combinations, combinations\(n\) {#combinations-_combinations-n}
 
 
 <p>入力配列内の配列の要素について、すべての組み合わせを出力します。引数 <strong>n</strong> を指定した場合は、入力配列を <strong>n</strong> 回繰り返したすべての組み合わせを出力します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´combinations´
-
-   [[1,2], [3, 4]]
-=&gt; [1, 3], [1, 4], [2, 3], [2, 4]
-jq ´combinations(2)´
-
-   [0, 1]
-=&gt; [0, 0], [0, 1], [1, 0], [1, 1]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´combinations´&#10;&#10;   [[1,2], [3, 4]]&#10;=&gt; [1, 3], [1, 4], [2, 3], [2, 4]&#10;jq ´combinations(2)´&#10;&#10;   [0, 1]&#10;=&gt; [0, 0], [0, 1], [1, 0], [1, 1]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### ltrimstr\(str\) {#ltrimstr-str}
 
 
 <p>入力が指定した接頭辞文字列で始まる場合、その接頭辞を削除して出力します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´[.[]|ltrimstr(&quot;foo&quot;)]´
-
-   [&quot;fo&quot;, &quot;foo&quot;, &quot;barfoo&quot;, &quot;foobar&quot;, &quot;afoo&quot;]
-=&gt; [&quot;fo&quot;,&quot;&quot;,&quot;barfoo&quot;,&quot;bar&quot;,&quot;afoo&quot;]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´[.[]|ltrimstr(&quot;foo&quot;)]´&#10;&#10;   [&quot;fo&quot;, &quot;foo&quot;, &quot;barfoo&quot;, &quot;foobar&quot;, &quot;afoo&quot;]&#10;=&gt; [&quot;fo&quot;,&quot;&quot;,&quot;barfoo&quot;,&quot;bar&quot;,&quot;afoo&quot;]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### rtrimstr\(str\) {#rtrimstr-str}
 
 
 <p>入力が指定した接尾辞文字列で終わる場合、その接尾辞を削除して出力します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´[.[]|rtrimstr(&quot;foo&quot;)]´
-
-   [&quot;fo&quot;, &quot;foo&quot;, &quot;barfoo&quot;, &quot;foobar&quot;, &quot;foob&quot;]
-=&gt; [&quot;fo&quot;,&quot;&quot;,&quot;bar&quot;,&quot;foobar&quot;,&quot;foob&quot;]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´[.[]|rtrimstr(&quot;foo&quot;)]´&#10;&#10;   [&quot;fo&quot;, &quot;foo&quot;, &quot;barfoo&quot;, &quot;foobar&quot;, &quot;foob&quot;]&#10;=&gt; [&quot;fo&quot;,&quot;&quot;,&quot;bar&quot;,&quot;foobar&quot;,&quot;foob&quot;]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### explode {#explode}
 
 
 <p>入力文字列を、その文字列のコードポイント番号の配列に変換します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´explode´
-
-   &quot;foobar&quot;
-=&gt; [102,111,111,98,97,114]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´explode´&#10;&#10;   &quot;foobar&quot;&#10;=&gt; [102,111,111,98,97,114]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### implode {#implode}
 
 
 <p>explode の逆です。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´implode´
-
-   [65, 66, 67]
-=&gt; &quot;ABC&quot;</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´implode´&#10;&#10;   [65, 66, 67]&#10;=&gt; &quot;ABC&quot;</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### split\(str\) {#split-str}
 
@@ -1377,10 +848,7 @@ jq ´combinations(2)´
 
 <p><strong>split</strong> は引数2つで呼び出すと、正規表現の一致箇所でも分割できます（後述の正規表現の節を参照）。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´split(&quot;, &quot;)´
-
-   &quot;a, b,c,d, e, &quot;
-=&gt; [&quot;a&quot;,&quot;b,c,d&quot;,&quot;e&quot;,&quot;&quot;]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´split(&quot;, &quot;)´&#10;&#10;   &quot;a, b,c,d, e, &quot;&#10;=&gt; [&quot;a&quot;,&quot;b,c,d&quot;,&quot;e&quot;,&quot;&quot;]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### join\(str\) {#join-str}
 
@@ -1389,24 +857,14 @@ jq ´combinations(2)´
 
 <p>入力の数値と真偽値は文字列に変換します。null 値は空文字列として扱います。入力内の配列とオブジェクトには対応していません。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´join(&quot;, &quot;)´
-
-   [&quot;a&quot;,&quot;b,c,d&quot;,&quot;e&quot;]
-=&gt; &quot;a, b,c,d, e&quot;
-jq ´join(&quot; &quot;)´
-
-   [&quot;a&quot;,1,2.3,true,null,false]
-=&gt; &quot;a 1 2.3 true  false&quot;</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´join(&quot;, &quot;)´&#10;&#10;   [&quot;a&quot;,&quot;b,c,d&quot;,&quot;e&quot;]&#10;=&gt; &quot;a, b,c,d, e&quot;&#10;jq ´join(&quot; &quot;)´&#10;&#10;   [&quot;a&quot;,1,2.3,true,null,false]&#10;=&gt; &quot;a 1 2.3 true  false&quot;</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### ascii\_downcase, ascii\_upcase {#ascii_downcase-_ascii_upcase}
 
 
 <p>入力文字列の英字（a-z と A-Z）を指定した大文字・小文字に変換したコピーを出力します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´ascii_upcase´
-
-   &quot;useful but not for é&quot;
-=&gt; &quot;USEFUL BUT NOT FOR é&quot;</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´ascii_upcase´&#10;&#10;   &quot;useful but not for é&quot;&#10;=&gt; &quot;USEFUL BUT NOT FOR é&quot;</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### while\(cond; update\) {#while-cond-_update}
 
@@ -1415,10 +873,7 @@ jq ´join(&quot; &quot;)´
 
 <p><strong>while(cond; update)</strong> は、内部では再帰的な jq 関数として定義されています。<strong>update</strong> が入力ごとに高々1つの出力を生成する場合、<strong>while</strong> 内の再帰呼び出しは追加のメモリーを消費しません。後述の高度な話題を参照してください。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´[while(.&lt;100; .*2)]´
-
-   1
-=&gt; [1,2,4,8,16,32,64]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´[while(.&lt;100; .*2)]´&#10;&#10;   1&#10;=&gt; [1,2,4,8,16,32,64]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### repeat\(exp\) {#repeat-exp}
 
@@ -1427,10 +882,7 @@ jq ´join(&quot; &quot;)´
 
 <p><strong>repeat(exp)</strong> は、内部では再帰的な jq 関数として定義されています。<strong>exp</strong> が入力ごとに高々1つの出力を生成する場合、<strong>repeat</strong> 内の再帰呼び出しは追加のメモリーを消費しません。後述の高度な話題を参照してください。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´[repeat(.*2, error)?]´
-
-   1
-=&gt; [2]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´[repeat(.*2, error)?]´&#10;&#10;   1&#10;=&gt; [2]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### until\(cond; next\) {#until-cond-_next}
 
@@ -1439,29 +891,14 @@ jq ´join(&quot; &quot;)´
 
 <p><strong>until(cond; next)</strong> は、内部では再帰的な jq 関数として定義されています。<strong>next</strong> が入力ごとに高々1つの出力を生成する場合、<strong>until()</strong> 内の再帰呼び出しは追加のメモリーを消費しません。後述の高度な話題を参照してください。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´[.,1]|until(.[0] &lt; 1; [.[0] - 1, .[1] * .[0]])|.[1]´
-
-   4
-=&gt; 24</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´[.,1]|until(.[0] &lt; 1; [.[0] - 1, .[1] * .[0]])|.[1]´&#10;&#10;   4&#10;=&gt; 24</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### recurse\(f\), recurse, recurse\(f; condition\) {#recurse-f--_recurse-_recurse-f-_condition}
 
 
 <p><strong>recurse(f)</strong> 関数は、再帰的な構造を検索し、すべての階層から必要なデータを抽出できます。入力が次のようなファイルシステムを表すとします。</p>
 
-<dl><dt></dt><dd><pre><code>{&quot;name&quot;: &quot;/&quot;, &quot;children&quot;: [
-
-  {&quot;name&quot;: &quot;/bin&quot;, &quot;children&quot;: [
-
-    {&quot;name&quot;: &quot;/bin/ls&quot;, &quot;children&quot;: []},
-
-    {&quot;name&quot;: &quot;/bin/sh&quot;, &quot;children&quot;: []}]},
-
-  {&quot;name&quot;: &quot;/home&quot;, &quot;children&quot;: [
-
-    {&quot;name&quot;: &quot;/home/stephen&quot;, &quot;children&quot;: [
-
-      {&quot;name&quot;: &quot;/home/stephen/jq&quot;, &quot;children&quot;: []}]}]}]}</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>{&quot;name&quot;: &quot;/&quot;, &quot;children&quot;: [&#10;&#10;  {&quot;name&quot;: &quot;/bin&quot;, &quot;children&quot;: [&#10;&#10;    {&quot;name&quot;: &quot;/bin/ls&quot;, &quot;children&quot;: []},&#10;&#10;    {&quot;name&quot;: &quot;/bin/sh&quot;, &quot;children&quot;: []}]},&#10;&#10;  {&quot;name&quot;: &quot;/home&quot;, &quot;children&quot;: [&#10;&#10;    {&quot;name&quot;: &quot;/home/stephen&quot;, &quot;children&quot;: [&#10;&#10;      {&quot;name&quot;: &quot;/home/stephen/jq&quot;, &quot;children&quot;: []}]}]}]}</code></pre></dd><dt></dt><dd></dd></dl>
 
 <p>ここで、すべてのファイル名を抽出するとします。<strong>.name</strong>、<strong>.children[].name</strong>、<strong>.children[].children[].name</strong> などを取得する必要があります。次のようにできます。</p>
 
@@ -1475,32 +912,14 @@ jq ´join(&quot; &quot;)´
 
 <p><strong>f</strong> が入力ごとに高々1つの出力を生成する場合、<strong>recurse</strong> 内の再帰呼び出しは追加のメモリーを消費しません。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´recurse(.foo[])´
-
-   {&quot;foo&quot;:[{&quot;foo&quot;: []}, {&quot;foo&quot;:[{&quot;foo&quot;:[]}]}]}
-=&gt; {&quot;foo&quot;:[{&quot;foo&quot;:[]},{&quot;foo&quot;:[{&quot;foo&quot;:[]}]}]}, {&quot;foo&quot;:[]}, {&quot;foo&quot;:[{&quot;foo&quot;:[]}]}, {&quot;foo&quot;:[]}
-jq ´recurse´
-
-   {&quot;a&quot;:0,&quot;b&quot;:[1]}
-=&gt; {&quot;a&quot;:0,&quot;b&quot;:[1]}, 0, [1], 1
-jq ´recurse(. * .; . &lt; 20)´
-
-   2
-=&gt; 2, 4, 16</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´recurse(.foo[])´&#10;&#10;   {&quot;foo&quot;:[{&quot;foo&quot;: []}, {&quot;foo&quot;:[{&quot;foo&quot;:[]}]}]}&#10;=&gt; {&quot;foo&quot;:[{&quot;foo&quot;:[]},{&quot;foo&quot;:[{&quot;foo&quot;:[]}]}]}, {&quot;foo&quot;:[]}, {&quot;foo&quot;:[{&quot;foo&quot;:[]}]}, {&quot;foo&quot;:[]}&#10;jq ´recurse´&#10;&#10;   {&quot;a&quot;:0,&quot;b&quot;:[1]}&#10;=&gt; {&quot;a&quot;:0,&quot;b&quot;:[1]}, 0, [1], 1&#10;jq ´recurse(. * .; . &lt; 20)´&#10;&#10;   2&#10;=&gt; 2, 4, 16</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### walk\(f\) {#walk-f}
 
 
 <p><strong>walk(f)</strong> 関数は、入力のすべての構成要素に f を再帰的に適用します。配列の場合、まず各要素に、次に配列自体に f を適用します。オブジェクトの場合、まずすべての値に、次にオブジェクトに f を適用します。実際には、以下の例のように、通常 f は入力の型を調べます。最初の例は、配列の配列について、配列自体を処理する前に各要素を処理する利点を示します。2番目の例は、入力内のすべてのオブジェクトのすべてのキーを変更対象にできることを示します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´walk(if type == &quot;array&quot; then sort else . end)´
-
-   [[4, 1, 7], [8, 5, 2], [3, 6, 9]]
-=&gt; [[1,4,7],[2,5,8],[3,6,9]]
-jq ´walk( if type == &quot;object&quot; then with_entries( .key |= sub( &quot;^_+&quot;; &quot;&quot;) ) else . end )´
-
-   [ { &quot;_a&quot;: { &quot;__b&quot;: 2 } } ]
-=&gt; [{&quot;a&quot;:{&quot;b&quot;:2}}]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´walk(if type == &quot;array&quot; then sort else . end)´&#10;&#10;   [[4, 1, 7], [8, 5, 2], [3, 6, 9]]&#10;=&gt; [[1,4,7],[2,5,8],[3,6,9]]&#10;jq ´walk( if type == &quot;object&quot; then with_entries( .key |= sub( &quot;^_+&quot;; &quot;&quot;) ) else . end )´&#10;&#10;   [ { &quot;_a&quot;: { &quot;__b&quot;: 2 } } ]&#10;=&gt; [{&quot;a&quot;:{&quot;b&quot;:2}}]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### $JQ\_BUILD\_CONFIGURATION {#JQ_BUILD_CONFIGURATION}
 
@@ -1518,70 +937,35 @@ jq ´walk( if type == &quot;object&quot; then with_entries( .key |= sub( &quot;^
 
 <p>現時点では環境変数を設定する組み込み関数はありません。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´$ENV.PAGER´
-
-   null
-=&gt; &quot;less&quot;
-jq ´env.PAGER´
-
-   null
-=&gt; &quot;less&quot;</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´$ENV.PAGER´&#10;&#10;   null&#10;=&gt; &quot;less&quot;&#10;jq ´env.PAGER´&#10;&#10;   null&#10;=&gt; &quot;less&quot;</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### transpose {#transpose}
 
 
 <p>不揃いな行を持ちうる行列（配列の配列）を転置します。結果が必ず長方形になるよう、行を null で埋めます。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´transpose´
-
-   [[1], [2,3]]
-=&gt; [[1,2],[null,3]]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´transpose´&#10;&#10;   [[1], [2,3]]&#10;=&gt; [[1,2],[null,3]]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### bsearch\(x\) {#bsearch-x}
 
 
 <p><strong>bsearch(x)</strong> は入力配列から x を二分探索します。入力がソート済みで x を含む場合、<strong>bsearch(x)</strong> は配列内のそのインデックスを返します。それ以外で配列がソート済みの場合は、(-1 - ix) を返します。ここで ix は、その位置に x を挿入しても配列がソート済みのままとなる挿入位置です。配列がソートされていない場合、<strong>bsearch(x)</strong> はおそらく役に立たない整数を返します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´bsearch(0)´
-
-   [0,1]
-=&gt; 0
-jq ´bsearch(0)´
-
-   [1,2,3]
-=&gt; -1
-jq ´bsearch(4) as $ix | if $ix &lt; 0 then .[-(1+$ix)] = 4 else . end´
-
-   [1,2,3]
-=&gt; [1,2,3,4]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´bsearch(0)´&#10;&#10;   [0,1]&#10;=&gt; 0&#10;jq ´bsearch(0)´&#10;&#10;   [1,2,3]&#10;=&gt; -1&#10;jq ´bsearch(4) as $ix | if $ix &lt; 0 then .[-(1+$ix)] = 4 else . end´&#10;&#10;   [1,2,3]&#10;=&gt; [1,2,3,4]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### 文字列補間: \\\(exp\) {#String_interpolation-_}
 
 
 <p>文字列内では、バックスラッシュに続く括弧内に式を書けます。式が返すものが、そのまま文字列に補間されます。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´&quot;The input was \(.), which is one less than \(.+1)&quot;´
-
-   42
-=&gt; &quot;The input was 42, which is one less than 43&quot;</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´&quot;The input was \(.), which is one less than \(.+1)&quot;´&#10;&#10;   42&#10;=&gt; &quot;The input was 42, which is one less than 43&quot;</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### JSON への変換と JSON からの変換 {#Convert_to-from_JSON}
 
 
 <p>組み込み関数 <strong>tojson</strong> と <strong>fromjson</strong> は、それぞれ値を JSON テキストとして出力する処理と、JSON テキストを解析して値にする処理を行います。<strong>tojson</strong> と <strong>tostring</strong> の違いは、<strong>tostring</strong> が文字列を変更せずに返す一方、<strong>tojson</strong> は文字列を JSON 文字列としてエンコードする点です。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´[.[]|tostring]´
-
-   [1, &quot;foo&quot;, [&quot;foo&quot;]]
-=&gt; [&quot;1&quot;,&quot;foo&quot;,&quot;[\&quot;foo\&quot;]&quot;]
-jq ´[.[]|tojson]´
-
-   [1, &quot;foo&quot;, [&quot;foo&quot;]]
-=&gt; [&quot;1&quot;,&quot;\&quot;foo\&quot;&quot;,&quot;[\&quot;foo\&quot;]&quot;]
-jq ´[.[]|tojson|fromjson]´
-
-   [1, &quot;foo&quot;, [&quot;foo&quot;]]
-=&gt; [1,&quot;foo&quot;,[&quot;foo&quot;]]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´[.[]|tostring]´&#10;&#10;   [1, &quot;foo&quot;, [&quot;foo&quot;]]&#10;=&gt; [&quot;1&quot;,&quot;foo&quot;,&quot;[\&quot;foo\&quot;]&quot;]&#10;jq ´[.[]|tojson]´&#10;&#10;   [1, &quot;foo&quot;, [&quot;foo&quot;]]&#10;=&gt; [&quot;1&quot;,&quot;\&quot;foo\&quot;&quot;,&quot;[\&quot;foo\&quot;]&quot;]&#10;jq ´[.[]|tojson|fromjson]´&#10;&#10;   [1, &quot;foo&quot;, [&quot;foo&quot;]]&#10;=&gt; [1,&quot;foo&quot;,[&quot;foo&quot;]]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### 文字列の整形とエスケープ {#Format_strings_and_escaping}
 
@@ -1634,22 +1018,7 @@ jq ´[.[]|tojson|fromjson]´
 
 <p>URL のスラッシュや疑問符などは文字列リテラルの一部なので、エスケープされないことに注意してください。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´@html´
-
-   &quot;This works if x &lt; y&quot;
-=&gt; &quot;This works if x &amp;lt; y&quot;
-jq ´@sh &quot;echo \(.)&quot;´
-
-   &quot;O´Hara´s Ale&quot;
-=&gt; &quot;echo ´O´\\´´Hara´\\´´s Ale´&quot;
-jq ´@base64´
-
-   &quot;This is a message&quot;
-=&gt; &quot;VGhpcyBpcyBhIG1lc3NhZ2U=&quot;
-jq ´@base64d´
-
-   &quot;VGhpcyBpcyBhIG1lc3NhZ2U=&quot;
-=&gt; &quot;This is a message&quot;</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´@html´&#10;&#10;   &quot;This works if x &lt; y&quot;&#10;=&gt; &quot;This works if x &amp;lt; y&quot;&#10;jq ´@sh &quot;echo \(.)&quot;´&#10;&#10;   &quot;O´Hara´s Ale&quot;&#10;=&gt; &quot;echo ´O´\\´´Hara´\\´´s Ale´&quot;&#10;jq ´@base64´&#10;&#10;   &quot;This is a message&quot;&#10;=&gt; &quot;VGhpcyBpcyBhIG1lc3NhZ2U=&quot;&#10;jq ´@base64d´&#10;&#10;   &quot;VGhpcyBpcyBhIG1lc3NhZ2U=&quot;&#10;=&gt; &quot;This is a message&quot;</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### 日時 {#Dates}
 
@@ -1680,18 +1049,7 @@ jq ´@base64d´
 
 <p>一部のシステムでは、jq はこれらの日時機能の一部または全部に対応していない場合があります。特に macOS では <strong>strptime(fmt)</strong> の指定子 <strong>%u</strong> と <strong>%j</strong> に対応していません。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´fromdate´
-
-   &quot;2015-03-05T23:51:47Z&quot;
-=&gt; 1425599507
-jq ´strptime(&quot;%Y-%m-%dT%H:%M:%SZ&quot;)´
-
-   &quot;2015-03-05T23:51:47Z&quot;
-=&gt; [2015,2,5,23,51,47,4,63]
-jq ´strptime(&quot;%Y-%m-%dT%H:%M:%SZ&quot;)|mktime´
-
-   &quot;2015-03-05T23:51:47Z&quot;
-=&gt; 1425599507</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´fromdate´&#10;&#10;   &quot;2015-03-05T23:51:47Z&quot;&#10;=&gt; 1425599507&#10;jq ´strptime(&quot;%Y-%m-%dT%H:%M:%SZ&quot;)´&#10;&#10;   &quot;2015-03-05T23:51:47Z&quot;&#10;=&gt; [2015,2,5,23,51,47,4,63]&#10;jq ´strptime(&quot;%Y-%m-%dT%H:%M:%SZ&quot;)|mktime´&#10;&#10;   &quot;2015-03-05T23:51:47Z&quot;&#10;=&gt; 1425599507</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### SQL 形式の演算子 {#SQL-Style_Operators}
 
@@ -1737,18 +1095,7 @@ jq ´strptime(&quot;%Y-%m-%dT%H:%M:%SZ&quot;)|mktime´
 
 <p>!= は「等しくない」を意味し、´a != b´ は ´a == b´ と逆の値を返します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´. == false´
-
-   null
-=&gt; false
-jq ´. == {&quot;b&quot;: {&quot;d&quot;: (4 + 1e-20), &quot;c&quot;: 3}, &quot;a&quot;:1}´
-
-   {&quot;a&quot;:1, &quot;b&quot;: {&quot;c&quot;: 3, &quot;d&quot;: 4}}
-=&gt; true
-jq ´.[] == 1´
-
-   [1, 1.0, &quot;1&quot;, &quot;banana&quot;]
-=&gt; true, true, false, false</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´. == false´&#10;&#10;   null&#10;=&gt; false&#10;jq ´. == {&quot;b&quot;: {&quot;d&quot;: (4 + 1e-20), &quot;c&quot;: 3}, &quot;a&quot;:1}´&#10;&#10;   {&quot;a&quot;:1, &quot;b&quot;: {&quot;c&quot;: 3, &quot;d&quot;: 4}}&#10;=&gt; true&#10;jq ´.[] == 1´&#10;&#10;   [1, 1.0, &quot;1&quot;, &quot;banana&quot;]&#10;=&gt; true, true, false, false</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### if-then-else-end {#if-then-else-end}
 
@@ -1763,19 +1110,7 @@ jq ´.[] == 1´
 
 <p><strong>elif A then B</strong> 構文で if にさらに条件を追加できます。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´if . == 0 then
-
-  &quot;zero&quot;
-elif . == 1 then
-
-  &quot;one&quot;
-else
-
-  &quot;many&quot;
-end´
-
-   2
-=&gt; &quot;many&quot;</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´if . == 0 then&#10;&#10;  &quot;zero&quot;&#10;elif . == 1 then&#10;&#10;  &quot;one&quot;&#10;else&#10;&#10;  &quot;many&quot;&#10;end´&#10;&#10;   2&#10;=&gt; &quot;many&quot;</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### &gt;, &gt;=, &lt;=, &lt; {#_-__--__--__}
 
@@ -1784,10 +1119,7 @@ end´
 
 <p>順序は前述の <strong>sort</strong> で説明したものと同じです。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´. &lt; 5´
-
-   2
-=&gt; true</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´. &lt; 5´&#10;&#10;   2&#10;=&gt; true</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### and, or, not {#and-_or-_not}
 
@@ -1800,22 +1132,7 @@ end´
 
 <p>この3つは <strong>true</strong> と <strong>false</strong> だけを生成するため、純粋な論理演算にのみ使えます。Perl/Python/Ruby でよく使う &quot;value_that_may_be_null or default&quot; という慣用法には使えません。条件を評価するのでなく2つの値から選ぶ、この形の「or」を使いたい場合は、後述の <strong>//</strong> 演算子を参照してください。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´42 and &quot;a string&quot;´
-
-   null
-=&gt; true
-jq ´(true, false) or false´
-
-   null
-=&gt; true, false
-jq ´(true, true) and (true, false)´
-
-   null
-=&gt; true, false, true, false
-jq ´[true, false | not]´
-
-   null
-=&gt; [false, true]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´42 and &quot;a string&quot;´&#10;&#10;   null&#10;=&gt; true&#10;jq ´(true, false) or false´&#10;&#10;   null&#10;=&gt; true, false&#10;jq ´(true, true) and (true, false)´&#10;&#10;   null&#10;=&gt; true, false, true, false&#10;jq ´[true, false | not]´&#10;&#10;   null&#10;=&gt; [false, true]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### 代替演算子: // {#Alternative_operator-_}
 
@@ -1828,26 +1145,7 @@ jq ´[true, false | not]´
 
 <p>注意: <strong>some_generator // defaults_here</strong> は <strong>some_generator | . // defaults_here</strong> と同じではありません。後者は左辺の <strong>false</strong> でも <strong>null</strong> でもないすべての値に対して既定値を生成しますが、前者はそうしません。優先順位の規則によって混乱することがあります。たとえば <strong>false, 1 // 2</strong> では、<strong>//</strong> の左辺は <strong>1</strong> であり <strong>false, 1</strong> ではありません。<strong>false, 1 // 2</strong> は <strong>false, (1 // 2)</strong> と同じように解析されます。<strong>(false, null, 1) | . // 42</strong> では、<strong>//</strong> の左辺は <strong>.</strong> で、常に値を1つだけ生成します。一方、<strong>(false, null, 1) // 42</strong> の左辺は3つの値のジェネレーターで、<strong>false</strong> と <strong>null</strong> 以外の値を生成するため、既定値 <strong>42</strong> は生成しません。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´empty // 42´
-
-   null
-=&gt; 42
-jq ´.foo // 42´
-
-   {&quot;foo&quot;: 19}
-=&gt; 19
-jq ´.foo // 42´
-
-   {}
-=&gt; 42
-jq ´(false, null, 1) // 42´
-
-   null
-=&gt; 1
-jq ´(false, null, 1) | . // 42´
-
-   null
-=&gt; 42, 42, 1</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´empty // 42´&#10;&#10;   null&#10;=&gt; 42&#10;jq ´.foo // 42´&#10;&#10;   {&quot;foo&quot;: 19}&#10;=&gt; 19&#10;jq ´.foo // 42´&#10;&#10;   {}&#10;=&gt; 42&#10;jq ´(false, null, 1) // 42´&#10;&#10;   null&#10;=&gt; 1&#10;jq ´(false, null, 1) | . // 42´&#10;&#10;   null&#10;=&gt; 42, 42, 1</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### try-catch {#try-catch}
 
@@ -1856,18 +1154,7 @@ jq ´(false, null, 1) | . // 42´
 
 <p><strong>try EXP</strong> 形式では、例外ハンドラーとして <strong>empty</strong> を使います。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´try .a catch &quot;. is not an object&quot;´
-
-   true
-=&gt; &quot;. is not an object&quot;
-jq ´[.[]|try .a]´
-
-   [{}, true, {&quot;a&quot;:1}]
-=&gt; [null, 1]
-jq ´try error(&quot;some exception&quot;) catch .´
-
-   true
-=&gt; &quot;some exception&quot;</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´try .a catch &quot;. is not an object&quot;´&#10;&#10;   true&#10;=&gt; &quot;. is not an object&quot;&#10;jq ´[.[]|try .a]´&#10;&#10;   [{}, true, {&quot;a&quot;:1}]&#10;=&gt; [null, 1]&#10;jq ´try error(&quot;some exception&quot;) catch .´&#10;&#10;   true&#10;=&gt; &quot;some exception&quot;</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### 制御構造からの脱出 {#Breaking_out_of_control_structures}
 
@@ -1876,10 +1163,7 @@ jq ´try error(&quot;some exception&quot;) catch .´
 
 <p>例:</p>
 
-<dl><dt></dt><dd><pre><code># Repeat an expression until it raises &quot;break&quot; as an
-# error, then stop repeating without re-raising the error.
-# But if the error caught is not &quot;break&quot; then re-raise it.
-try repeat(exp) catch if .==&quot;break&quot; then empty else error</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code># Repeat an expression until it raises &quot;break&quot; as an&#10;# error, then stop repeating without re-raising the error.&#10;# But if the error caught is not &quot;break&quot; then re-raise it.&#10;try repeat(exp) catch if .==&quot;break&quot; then empty else error</code></pre></dd><dt></dt><dd></dd></dl>
 
 <p>jq には、「脱出する」または「（戻って）移動する」ための、名前付き字句ラベルの構文があります。</p>
 
@@ -1904,14 +1188,7 @@ try repeat(exp) catch if .==&quot;break&quot; then empty else error</code></pre>
 
 <p><strong>EXP?</strong> の形で使う <strong>?</strong> 演算子は、<strong>try EXP</strong> の短縮形です。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´[.[] | .a?]´
-
-   [{}, true, {&quot;a&quot;:1}]
-=&gt; [null, 1]
-jq ´[.[] | tonumber?]´
-
-   [&quot;1&quot;, &quot;invalid&quot;, &quot;3&quot;, 4]
-=&gt; [1, 3, 4]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´[.[] | .a?]´&#10;&#10;   [{}, true, {&quot;a&quot;:1}]&#10;=&gt; [null, 1]&#10;jq ´[.[] | tonumber?]´&#10;&#10;   [&quot;1&quot;, &quot;invalid&quot;, &quot;3&quot;, 4]&#10;=&gt; [1, 3, 4]</code></pre></dd><dt></dt><dd></dd></dl>
 
 ### 正規表現 {#REGULAR_EXPRESSIONS}
 
@@ -1922,10 +1199,7 @@ jq ´[.[] | tonumber?]´
 
 <p>jq の正規表現フィルターは、次のいずれかのパターンで使えるように定義されています。</p>
 
-<dl><dt></dt><dd><pre><code>STRING | FILTER(REGEX)
-STRING | FILTER(REGEX; FLAGS)
-STRING | FILTER([REGEX])
-STRING | FILTER([REGEX, FLAGS])</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>STRING | FILTER(REGEX)&#10;STRING | FILTER(REGEX; FLAGS)&#10;STRING | FILTER([REGEX])&#10;STRING | FILTER([REGEX, FLAGS])</code></pre></dd><dt></dt><dd></dd></dl>
 
 <p>ここで:</p>
 
@@ -1956,14 +1230,7 @@ STRING | FILTER([REGEX, FLAGS])</code></pre></dd><dt></dt><dd></dd></dl>
 
 <p><strong>match</strong> に似ていますが、一致オブジェクトではなく、正規表現が入力に一致するかどうかを <strong>true</strong> または <strong>false</strong> だけで返します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´test(&quot;foo&quot;)´
-
-   &quot;foo&quot;
-=&gt; true
-jq ´.[] | test(&quot;a b c # spaces are ignored&quot;; &quot;ix&quot;)´
-
-   [&quot;xabcd&quot;, &quot;ABC&quot;]
-=&gt; true, true</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´test(&quot;foo&quot;)´&#10;&#10;   &quot;foo&quot;&#10;=&gt; true&#10;jq ´.[] | test(&quot;a b c # spaces are ignored&quot;; &quot;ix&quot;)´&#10;&#10;   [&quot;xabcd&quot;, &quot;ABC&quot;]&#10;=&gt; true, true</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### match\(val\), match\(regex; flags\) {#match-val--_match-regex-_flags}
 
@@ -1982,46 +1249,21 @@ jq ´.[] | test(&quot;a b c # spaces are ignored&quot;; &quot;ix&quot;)´
 
 <p>何にも一致しなかった捕捉グループは、オフセット -1 を返します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´match(&quot;(abc)+&quot;; &quot;g&quot;)´
-
-   &quot;abc abc&quot;
-=&gt; {&quot;offset&quot;: 0, &quot;length&quot;: 3, &quot;string&quot;: &quot;abc&quot;, &quot;captures&quot;: [{&quot;offset&quot;: 0, &quot;length&quot;: 3, &quot;string&quot;: &quot;abc&quot;, &quot;name&quot;: null}]}, {&quot;offset&quot;: 4, &quot;length&quot;: 3, &quot;string&quot;: &quot;abc&quot;, &quot;captures&quot;: [{&quot;offset&quot;: 4, &quot;length&quot;: 3, &quot;string&quot;: &quot;abc&quot;, &quot;name&quot;: null}]}
-jq ´match(&quot;foo&quot;)´
-
-   &quot;foo bar foo&quot;
-=&gt; {&quot;offset&quot;: 0, &quot;length&quot;: 3, &quot;string&quot;: &quot;foo&quot;, &quot;captures&quot;: []}
-jq ´match([&quot;foo&quot;, &quot;ig&quot;])´
-
-   &quot;foo bar FOO&quot;
-=&gt; {&quot;offset&quot;: 0, &quot;length&quot;: 3, &quot;string&quot;: &quot;foo&quot;, &quot;captures&quot;: []}, {&quot;offset&quot;: 8, &quot;length&quot;: 3, &quot;string&quot;: &quot;FOO&quot;, &quot;captures&quot;: []}
-jq ´match(&quot;foo (?&lt;bar123&gt;bar)? foo&quot;; &quot;ig&quot;)´
-
-   &quot;foo bar foo foo  foo&quot;
-=&gt; {&quot;offset&quot;: 0, &quot;length&quot;: 11, &quot;string&quot;: &quot;foo bar foo&quot;, &quot;captures&quot;: [{&quot;offset&quot;: 4, &quot;length&quot;: 3, &quot;string&quot;: &quot;bar&quot;, &quot;name&quot;: &quot;bar123&quot;}]}, {&quot;offset&quot;: 12, &quot;length&quot;: 8, &quot;string&quot;: &quot;foo  foo&quot;, &quot;captures&quot;: [{&quot;offset&quot;: -1, &quot;length&quot;: 0, &quot;string&quot;: null, &quot;name&quot;: &quot;bar123&quot;}]}
-jq ´[ match(&quot;.&quot;; &quot;g&quot;)] | length´
-
-   &quot;abc&quot;
-=&gt; 3</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´match(&quot;(abc)+&quot;; &quot;g&quot;)´&#10;&#10;   &quot;abc abc&quot;&#10;=&gt; {&quot;offset&quot;: 0, &quot;length&quot;: 3, &quot;string&quot;: &quot;abc&quot;, &quot;captures&quot;: [{&quot;offset&quot;: 0, &quot;length&quot;: 3, &quot;string&quot;: &quot;abc&quot;, &quot;name&quot;: null}]}, {&quot;offset&quot;: 4, &quot;length&quot;: 3, &quot;string&quot;: &quot;abc&quot;, &quot;captures&quot;: [{&quot;offset&quot;: 4, &quot;length&quot;: 3, &quot;string&quot;: &quot;abc&quot;, &quot;name&quot;: null}]}&#10;jq ´match(&quot;foo&quot;)´&#10;&#10;   &quot;foo bar foo&quot;&#10;=&gt; {&quot;offset&quot;: 0, &quot;length&quot;: 3, &quot;string&quot;: &quot;foo&quot;, &quot;captures&quot;: []}&#10;jq ´match([&quot;foo&quot;, &quot;ig&quot;])´&#10;&#10;   &quot;foo bar FOO&quot;&#10;=&gt; {&quot;offset&quot;: 0, &quot;length&quot;: 3, &quot;string&quot;: &quot;foo&quot;, &quot;captures&quot;: []}, {&quot;offset&quot;: 8, &quot;length&quot;: 3, &quot;string&quot;: &quot;FOO&quot;, &quot;captures&quot;: []}&#10;jq ´match(&quot;foo (?&lt;bar123&gt;bar)? foo&quot;; &quot;ig&quot;)´&#10;&#10;   &quot;foo bar foo foo  foo&quot;&#10;=&gt; {&quot;offset&quot;: 0, &quot;length&quot;: 11, &quot;string&quot;: &quot;foo bar foo&quot;, &quot;captures&quot;: [{&quot;offset&quot;: 4, &quot;length&quot;: 3, &quot;string&quot;: &quot;bar&quot;, &quot;name&quot;: &quot;bar123&quot;}]}, {&quot;offset&quot;: 12, &quot;length&quot;: 8, &quot;string&quot;: &quot;foo  foo&quot;, &quot;captures&quot;: [{&quot;offset&quot;: -1, &quot;length&quot;: 0, &quot;string&quot;: null, &quot;name&quot;: &quot;bar123&quot;}]}&#10;jq ´[ match(&quot;.&quot;; &quot;g&quot;)] | length´&#10;&#10;   &quot;abc&quot;&#10;=&gt; 3</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### capture\(val\), capture\(regex; flags\) {#capture-val--_capture-regex-_flags}
 
 
 <p>名前付き捕捉を JSON オブジェクトに集めます。各捕捉の名前をキーとし、一致した文字列を対応する値にします。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´capture(&quot;(?&lt;a&gt;[a-z]+)-(?&lt;n&gt;[0-9]+)&quot;)´
-
-   &quot;xyzzy-14&quot;
-=&gt; { &quot;a&quot;: &quot;xyzzy&quot;, &quot;n&quot;: &quot;14&quot; }</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´capture(&quot;(?&lt;a&gt;[a-z]+)-(?&lt;n&gt;[0-9]+)&quot;)´&#10;&#10;   &quot;xyzzy-14&quot;&#10;=&gt; { &quot;a&quot;: &quot;xyzzy&quot;, &quot;n&quot;: &quot;14&quot; }</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### scan\(regex\), scan\(regex; flags\) {#scan-regex--_scan-regex-_flags}
 
 
 <p>指定されていればそのフラグに従い、正規表現に一致する入力の重ならない部分文字列をストリームとして出力します。一致がなければ空のストリームになります。各入力文字列のすべての一致を捕捉するには、<strong>[ expr ]</strong> という慣用法を使います。例: <strong>[ scan(regex) ]</strong>。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´scan(&quot;c&quot;)´
-
-   &quot;abcdefabc&quot;
-=&gt; &quot;c&quot;, &quot;c&quot;</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´scan(&quot;c&quot;)´&#10;&#10;   &quot;abcdefabc&quot;&#10;=&gt; &quot;c&quot;, &quot;c&quot;</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### split\(regex; flags\) {#split-regex-_flags}
 
@@ -2030,48 +1272,28 @@ jq ´[ match(&quot;.&quot;; &quot;g&quot;)] | length´
 
 <p>後方互換性のため、引数1つで呼び出した <strong>split</strong> は正規表現でなく文字列で分割します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´split(&quot;, *&quot;; null)´
-
-   &quot;ab,cd, ef&quot;
-=&gt; [&quot;ab&quot;,&quot;cd&quot;,&quot;ef&quot;]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´split(&quot;, *&quot;; null)´&#10;&#10;   &quot;ab,cd, ef&quot;&#10;=&gt; [&quot;ab&quot;,&quot;cd&quot;,&quot;ef&quot;]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### splits\(regex\), splits\(regex; flags\) {#splits-regex--_splits-regex-_flags}
 
 
 <p>対応する <strong>split</strong> と同じ結果を、配列でなくストリームとして提供します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´splits(&quot;, *&quot;)´
-
-   &quot;ab,cd,   ef, gh&quot;
-=&gt; &quot;ab&quot;, &quot;cd&quot;, &quot;ef&quot;, &quot;gh&quot;</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´splits(&quot;, *&quot;)´&#10;&#10;   &quot;ab,cd,   ef, gh&quot;&#10;=&gt; &quot;ab&quot;, &quot;cd&quot;, &quot;ef&quot;, &quot;gh&quot;</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### sub\(regex; tostring\), sub\(regex; tostring; flags\) {#sub-regex-_tostring--_sub-regex-_tostring-_flags}
 
 
 <p>入力文字列で正規表現に最初に一致した部分を、補間後の <strong>tostring</strong> で置き換えた文字列を出力します。<strong>tostring</strong> は jq 文字列、またはそのストリームである必要があり、各文字列には名前付き捕捉への参照を含められます。名前付き捕捉は、実質的に（<strong>capture</strong> が構築するような）JSON オブジェクトとして <strong>tostring</strong> に渡されるため、名前 &quot;x&quot; の捕捉変数への参照は <strong>&quot;\(.x)&quot;</strong> という形になります。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´sub(&quot;[^a-z]*(?&lt;x&gt;[a-z]+)&quot;; &quot;Z\(.x)&quot;; &quot;g&quot;)´
-
-   &quot;123abc456def&quot;
-=&gt; &quot;ZabcZdef&quot;
-jq ´[sub(&quot;(?&lt;a&gt;.)&quot;; &quot;\(.a|ascii_upcase)&quot;, &quot;\(.a|ascii_downcase)&quot;)]´
-
-   &quot;aB&quot;
-=&gt; [&quot;AB&quot;,&quot;aB&quot;]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´sub(&quot;[^a-z]*(?&lt;x&gt;[a-z]+)&quot;; &quot;Z\(.x)&quot;; &quot;g&quot;)´&#10;&#10;   &quot;123abc456def&quot;&#10;=&gt; &quot;ZabcZdef&quot;&#10;jq ´[sub(&quot;(?&lt;a&gt;.)&quot;; &quot;\(.a|ascii_upcase)&quot;, &quot;\(.a|ascii_downcase)&quot;)]´&#10;&#10;   &quot;aB&quot;&#10;=&gt; [&quot;AB&quot;,&quot;aB&quot;]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### gsub\(regex; tostring\), gsub\(regex; tostring; flags\) {#gsub-regex-_tostring--_gsub-regex-_tostring-_flags}
 
 
 <p><strong>gsub</strong> は <strong>sub</strong> に似ていますが、正規表現に一致する重ならない箇所をすべて、補間後の <strong>tostring</strong> で置き換えます。第2引数が jq 文字列のストリームなら、<strong>gsub</strong> は対応する JSON 文字列のストリームを生成します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´gsub(&quot;(?&lt;x&gt;.)[^a]*&quot;; &quot;+\(.x)-&quot;)´
-
-   &quot;Abcabc&quot;
-=&gt; &quot;+A-+a-&quot;
-jq ´[gsub(&quot;p&quot;; &quot;a&quot;, &quot;b&quot;)]´
-
-   &quot;p&quot;
-=&gt; [&quot;a&quot;,&quot;b&quot;]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´gsub(&quot;(?&lt;x&gt;.)[^a]*&quot;; &quot;+\(.x)-&quot;)´&#10;&#10;   &quot;Abcabc&quot;&#10;=&gt; &quot;+A-+a-&quot;&#10;jq ´[gsub(&quot;p&quot;; &quot;a&quot;, &quot;b&quot;)]´&#10;&#10;   &quot;p&quot;&#10;=&gt; [&quot;a&quot;,&quot;b&quot;]</code></pre></dd><dt></dt><dd></dd></dl>
 
 ### 高度な機能 {#ADVANCED_FEATURES}
 
@@ -2105,18 +1327,11 @@ jq ´[gsub(&quot;p&quot;; &quot;a&quot;, &quot;b&quot;)]´
 
 <p>&quot;author&quot; と &quot;title&quot; フィールドを持つブログ投稿の配列と、著者のユーザー名を実名に対応付ける別のオブジェクトがあるとします。入力は次のようになります。</p>
 
-<dl><dt></dt><dd><pre><code>{&quot;posts&quot;: [{&quot;title&quot;: &quot;First post&quot;, &quot;author&quot;: &quot;anon&quot;},
-
-           {&quot;title&quot;: &quot;A well-written article&quot;, &quot;author&quot;: &quot;person1&quot;}],
-
- &quot;realnames&quot;: {&quot;anon&quot;: &quot;Anonymous Coward&quot;,
-
-               &quot;person1&quot;: &quot;Person McPherson&quot;}}</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>{&quot;posts&quot;: [{&quot;title&quot;: &quot;First post&quot;, &quot;author&quot;: &quot;anon&quot;},&#10;&#10;           {&quot;title&quot;: &quot;A well-written article&quot;, &quot;author&quot;: &quot;person1&quot;}],&#10;&#10; &quot;realnames&quot;: {&quot;anon&quot;: &quot;Anonymous Coward&quot;,&#10;&#10;               &quot;person1&quot;: &quot;Person McPherson&quot;}}</code></pre></dd><dt></dt><dd></dd></dl>
 
 <p>次のように、author フィールドに実名を入れた投稿を生成したいとします。</p>
 
-<dl><dt></dt><dd><pre><code>{&quot;title&quot;: &quot;First post&quot;, &quot;author&quot;: &quot;Anonymous Coward&quot;}
-{&quot;title&quot;: &quot;A well-written article&quot;, &quot;author&quot;: &quot;Person McPherson&quot;}</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>{&quot;title&quot;: &quot;First post&quot;, &quot;author&quot;: &quot;Anonymous Coward&quot;}&#10;{&quot;title&quot;: &quot;A well-written article&quot;, &quot;author&quot;: &quot;Person McPherson&quot;}</code></pre></dd><dt></dt><dd></dd></dl>
 
 <p>後で著者のユーザー名を検索するときに参照できるよう、変数 $names に realnames オブジェクトを保存します。</p>
 
@@ -2144,22 +1359,7 @@ jq ´[gsub(&quot;p&quot;; &quot;a&quot;, &quot;b&quot;)]´
 
 <p>プログラミング言語理論の立場では、jq の変数は字句スコープの束縛と言う方が正確です。特に、束縛の値を変更する方法はありません。同名の新しい束縛を設定することはできますが、古い束縛が見えていた場所からは、その新しい束縛は見えません。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´.bar as $x | .foo | . + $x´
-
-   {&quot;foo&quot;:10, &quot;bar&quot;:200}
-=&gt; 210
-jq ´. as $i|[(.*2|. as $i| $i), $i]´
-
-   5
-=&gt; [10,5]
-jq ´. as [$a, $b, {c: $c}] | $a + $b + $c´
-
-   [2, 3, {&quot;c&quot;: 4, &quot;d&quot;: 5}]
-=&gt; 9
-jq ´.[] as [$a, $b] | {a: $a, b: $b}´
-
-   [[0], [0, 1], [2, 1, 0]]
-=&gt; {&quot;a&quot;:0,&quot;b&quot;:null}, {&quot;a&quot;:0,&quot;b&quot;:1}, {&quot;a&quot;:2,&quot;b&quot;:1}</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´.bar as $x | .foo | . + $x´&#10;&#10;   {&quot;foo&quot;:10, &quot;bar&quot;:200}&#10;=&gt; 210&#10;jq ´. as $i|[(.*2|. as $i| $i), $i]´&#10;&#10;   5&#10;=&gt; [10,5]&#10;jq ´. as [$a, $b, {c: $c}] | $a + $b + $c´&#10;&#10;   [2, 3, {&quot;c&quot;: 4, &quot;d&quot;: 5}]&#10;=&gt; 9&#10;jq ´.[] as [$a, $b] | {a: $a, b: $b}´&#10;&#10;   [[0], [0, 1], [2, 1, 0]]&#10;=&gt; {&quot;a&quot;:0,&quot;b&quot;:null}, {&quot;a&quot;:0,&quot;b&quot;:1}, {&quot;a&quot;:2,&quot;b&quot;:1}</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### 分解の代替演算子: ?// {#Destructuring_Alternative_Operator-_}
 
@@ -2168,9 +1368,7 @@ jq ´.[] as [$a, $b] | {a: $a, b: $b}´
 
 <p>リソースと関連イベントの一覧を返す API があり、各リソースの最初のイベントの user_id と timestamp を取得したいとします。この API は XML から不器用に変換されており、リソースに複数のイベントがあるときだけイベントを配列に包みます。</p>
 
-<dl><dt></dt><dd><pre><code>{&quot;resources&quot;: [{&quot;id&quot;: 1, &quot;kind&quot;: &quot;widget&quot;, &quot;events&quot;: {&quot;action&quot;: &quot;create&quot;, &quot;user_id&quot;: 1, &quot;ts&quot;: 13}},
-
-               {&quot;id&quot;: 2, &quot;kind&quot;: &quot;widget&quot;, &quot;events&quot;: [{&quot;action&quot;: &quot;create&quot;, &quot;user_id&quot;: 1, &quot;ts&quot;: 14}, {&quot;action&quot;: &quot;destroy&quot;, &quot;user_id&quot;: 1, &quot;ts&quot;: 15}]}]}</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>{&quot;resources&quot;: [{&quot;id&quot;: 1, &quot;kind&quot;: &quot;widget&quot;, &quot;events&quot;: {&quot;action&quot;: &quot;create&quot;, &quot;user_id&quot;: 1, &quot;ts&quot;: 13}},&#10;&#10;               {&quot;id&quot;: 2, &quot;kind&quot;: &quot;widget&quot;, &quot;events&quot;: [{&quot;action&quot;: &quot;create&quot;, &quot;user_id&quot;: 1, &quot;ts&quot;: 14}, {&quot;action&quot;: &quot;destroy&quot;, &quot;user_id&quot;: 1, &quot;ts&quot;: 15}]}]}</code></pre></dd><dt></dt><dd></dd></dl>
 
 <p>分解の代替演算子を使うと、この構造の変化を簡単に扱えます。</p>
 
@@ -2186,19 +1384,7 @@ jq ´.[] as [$a, $b] | {a: $a, b: $b}´
 
 <p>さらに、後続の式がエラーを返すと、代替演算子は次の束縛を試みます。最後の代替パターンで発生したエラーは、そのまま伝播します。</p>
 
-<dl><dt></dt><dd><pre><code>[[3]] | .[] as [$a] ?// [$b] | if $a != null then error(&quot;err: \($a)&quot;) else {$a,$b} end
-jq ´.[] as {$a, $b, c: {$d, $e}} ?// {$a, $b, c: [{$d, $e}]} | {$a, $b, $d, $e}´
-
-   [{&quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: {&quot;d&quot;: 3, &quot;e&quot;: 4}}, {&quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: [{&quot;d&quot;: 3, &quot;e&quot;: 4}]}]
-=&gt; {&quot;a&quot;:1,&quot;b&quot;:2,&quot;d&quot;:3,&quot;e&quot;:4}, {&quot;a&quot;:1,&quot;b&quot;:2,&quot;d&quot;:3,&quot;e&quot;:4}
-jq ´.[] as {$a, $b, c: {$d}} ?// {$a, $b, c: [{$e}]} | {$a, $b, $d, $e}´
-
-   [{&quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: {&quot;d&quot;: 3, &quot;e&quot;: 4}}, {&quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: [{&quot;d&quot;: 3, &quot;e&quot;: 4}]}]
-=&gt; {&quot;a&quot;:1,&quot;b&quot;:2,&quot;d&quot;:3,&quot;e&quot;:null}, {&quot;a&quot;:1,&quot;b&quot;:2,&quot;d&quot;:null,&quot;e&quot;:4}
-jq ´.[] as [$a] ?// [$b] | if $a != null then error(&quot;err: \($a)&quot;) else {$a,$b} end´
-
-   [[3]]
-=&gt; {&quot;a&quot;:null,&quot;b&quot;:3}</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>[[3]] | .[] as [$a] ?// [$b] | if $a != null then error(&quot;err: \($a)&quot;) else {$a,$b} end&#10;jq ´.[] as {$a, $b, c: {$d, $e}} ?// {$a, $b, c: [{$d, $e}]} | {$a, $b, $d, $e}´&#10;&#10;   [{&quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: {&quot;d&quot;: 3, &quot;e&quot;: 4}}, {&quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: [{&quot;d&quot;: 3, &quot;e&quot;: 4}]}]&#10;=&gt; {&quot;a&quot;:1,&quot;b&quot;:2,&quot;d&quot;:3,&quot;e&quot;:4}, {&quot;a&quot;:1,&quot;b&quot;:2,&quot;d&quot;:3,&quot;e&quot;:4}&#10;jq ´.[] as {$a, $b, c: {$d}} ?// {$a, $b, c: [{$e}]} | {$a, $b, $d, $e}´&#10;&#10;   [{&quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: {&quot;d&quot;: 3, &quot;e&quot;: 4}}, {&quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: [{&quot;d&quot;: 3, &quot;e&quot;: 4}]}]&#10;=&gt; {&quot;a&quot;:1,&quot;b&quot;:2,&quot;d&quot;:3,&quot;e&quot;:null}, {&quot;a&quot;:1,&quot;b&quot;:2,&quot;d&quot;:null,&quot;e&quot;:4}&#10;jq ´.[] as [$a] ?// [$b] | if $a != null then error(&quot;err: \($a)&quot;) else {$a,$b} end´&#10;&#10;   [[3]]&#10;=&gt; {&quot;a&quot;:null,&quot;b&quot;:3}</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### 関数の定義 {#Defining_Functions}
 
@@ -2213,8 +1399,7 @@ jq ´.[] as [$a] ?// [$b] | if $a != null then error(&quot;err: \($a)&quot;) els
 
 <p>引数は値としてではなく（<em>not</em>）、<em>filters</em>（フィルター、引数なしの関数）として渡されます。同じ引数を、異なる入力で複数回参照できます（ここでは入力配列の各要素に対して <strong>f</strong> を実行します）。関数の引数は、値の引数というよりコールバックとして動作します。この点を理解することが重要です。次を考えてください。</p>
 
-<dl><dt></dt><dd><pre><code>def foo(f): f|f;
-5|foo(.*2)</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>def foo(f): f|f;&#10;5|foo(.*2)</code></pre></dd><dt></dt><dd></dd></dl>
 
 <p>結果は20になります。<strong>f</strong> は <strong>.*2</strong> で、最初の <strong>f</strong> の呼び出しでは <strong>.</strong> が5、2回目では10（5 * 2）なので、結果は20です。関数の引数はフィルターであり、フィルターは呼び出されるときに入力を必要とします。</p>
 
@@ -2230,14 +1415,7 @@ jq ´.[] as [$a] ?// [$b] | if $a != null then error(&quot;err: \($a)&quot;) els
 
 <p>同じ関数名で複数の定義が可能です。各再定義は、関数引数の数が同じ以前の定義を置き換えますが、再定義より後の関数（またはメインプログラム）からの参照に限ります。後述のスコープの節も参照してください。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´def addvalue(f): . + [f]; map(addvalue(.[0]))´
-
-   [[1,2],[10,20]]
-=&gt; [[1,2,1], [10,20,10]]
-jq ´def addvalue(f): f as $x | map(. + $x); addvalue(.[0])´
-
-   [[1,2],[10,20]]
-=&gt; [[1,2,1,2], [10,20,1,2]]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´def addvalue(f): . + [f]; map(addvalue(.[0]))´&#10;&#10;   [[1,2],[10,20]]&#10;=&gt; [[1,2,1], [10,20,10]]&#10;jq ´def addvalue(f): f as $x | map(. + $x); addvalue(.[0])´&#10;&#10;   [[1,2],[10,20]]&#10;=&gt; [[1,2,1,2], [10,20,1,2]]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### スコープ {#Scoping}
 
@@ -2251,28 +1429,14 @@ jq ´def addvalue(f): f as $x | map(. + $x); addvalue(.[0])´
 
 <p><strong>exp</strong> が何も出力しなければ true、それ以外は false を返します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´isempty(empty)´
-
-   null
-=&gt; true
-jq ´isempty(.[])´
-
-   []
-=&gt; true
-jq ´isempty(.[])´
-
-   [1,2,3]
-=&gt; false</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´isempty(empty)´&#10;&#10;   null&#10;=&gt; true&#10;jq ´isempty(.[])´&#10;&#10;   []&#10;=&gt; true&#10;jq ´isempty(.[])´&#10;&#10;   [1,2,3]&#10;=&gt; false</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### limit\(n; exp\) {#limit-n-_exp}
 
 
 <p><strong>limit</strong> 関数は、<strong>exp</strong> から最大 <strong>n</strong> 個の出力を取り出します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´[limit(3;.[])]´
-
-   [0,1,2,3,4,5,6,7,8,9]
-=&gt; [0,1,2]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´[limit(3;.[])]´&#10;&#10;   [0,1,2,3,4,5,6,7,8,9]&#10;=&gt; [0,1,2]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### first\(expr\), last\(expr\), nth\(n; expr\) {#first-expr--_last-expr--_nth-n-_expr}
 
@@ -2281,10 +1445,7 @@ jq ´isempty(.[])´
 
 <p><strong>nth(n; expr)</strong> 関数は、<strong>expr</strong> が出力する n 番目の値を取り出します。<strong>nth(n; expr)</strong> は負の <strong>n</strong> に対応していないことに注意してください。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´[first(range(.)), last(range(.)), nth(./2; range(.))]´
-
-   10
-=&gt; [0,9,5]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´[first(range(.)), last(range(.)), nth(./2; range(.))]´&#10;&#10;   10&#10;=&gt; [0,9,5]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### first, last, nth\(n\) {#first-_last-_nth-n}
 
@@ -2293,10 +1454,7 @@ jq ´isempty(.[])´
 
 <p><strong>nth(n)</strong> 関数は、<strong>.</strong> の配列から n 番目の値を取り出します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´[range(.)]|[first, last, nth(5)]´
-
-   10
-=&gt; [0,9,5]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´[range(.)]|[first, last, nth(5)]´&#10;&#10;   10&#10;=&gt; [0,9,5]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### reduce {#reduce}
 
@@ -2307,23 +1465,7 @@ jq ´isempty(.[])´
 
 <p><strong>.[]</strong> が生成する結果ごとに <strong>. + $item</strong> を実行し、入力値0から累計を求めます。この例では <strong>.[]</strong> が結果 <strong>1</strong>、<strong>2</strong>、<strong>3</strong> を生成するため、次のような処理を実行するのと同じ効果があります。</p>
 
-<dl><dt></dt><dd><pre><code>0 | 1 as $item | . + $item |
-
-    2 as $item | . + $item |
-
-    3 as $item | . + $item
-jq ´reduce .[] as $item (0; . + $item)´
-
-   [1,2,3,4,5]
-=&gt; 15
-jq ´reduce .[] as [$i,$j] (0; . + $i * $j)´
-
-   [[1,2],[3,4],[5,6]]
-=&gt; 44
-jq ´reduce .[] as {$x,$y} (null; .x += $x | .y += [$y])´
-
-   [{&quot;x&quot;:&quot;a&quot;,&quot;y&quot;:1},{&quot;x&quot;:&quot;b&quot;,&quot;y&quot;:2},{&quot;x&quot;:&quot;c&quot;,&quot;y&quot;:3}]
-=&gt; {&quot;x&quot;:&quot;abc&quot;,&quot;y&quot;:[1,2,3]}</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>0 | 1 as $item | . + $item |&#10;&#10;    2 as $item | . + $item |&#10;&#10;    3 as $item | . + $item&#10;jq ´reduce .[] as $item (0; . + $item)´&#10;&#10;   [1,2,3,4,5]&#10;=&gt; 15&#10;jq ´reduce .[] as [$i,$j] (0; . + $i * $j)´&#10;&#10;   [[1,2],[3,4],[5,6]]&#10;=&gt; 44&#10;jq ´reduce .[] as {$x,$y} (null; .x += $x | .y += [$y])´&#10;&#10;   [{&quot;x&quot;:&quot;a&quot;,&quot;y&quot;:1},{&quot;x&quot;:&quot;b&quot;,&quot;y&quot;:2},{&quot;x&quot;:&quot;c&quot;,&quot;y&quot;:3}]&#10;=&gt; {&quot;x&quot;:&quot;abc&quot;,&quot;y&quot;:[1,2,3]}</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### foreach {#foreach}
 
@@ -2336,26 +1478,11 @@ jq ´reduce .[] as {$x,$y} (null; .x += $x | .y += [$y])´
 
 <p><strong>reduce</strong> 構文と同様、<strong>.[]</strong> が生成する結果ごとに <strong>. + $item</strong> を実行しますが、中間値ごとに <strong>[$item, . * 2]</strong> を実行します。この例では中間値が <strong>1</strong>、<strong>3</strong>、<strong>6</strong> なので、式 <strong>foreach</strong> は <strong>[1,2]</strong>、<strong>[2,6]</strong>、<strong>[3,12]</strong> を生成します。したがって次のような処理を実行するのと同じ効果があります。</p>
 
-<dl><dt></dt><dd><pre><code>0 | 1 as $item | . + $item | [$item, . * 2],
-
-    2 as $item | . + $item | [$item, . * 2],
-
-    3 as $item | . + $item | [$item, . * 2]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>0 | 1 as $item | . + $item | [$item, . * 2],&#10;&#10;    2 as $item | . + $item | [$item, . * 2],&#10;&#10;    3 as $item | . + $item | [$item, . * 2]</code></pre></dd><dt></dt><dd></dd></dl>
 
 <p><strong>EXTRACT</strong> を省略すると恒等フィルターを使います。つまり中間値をそのまま出力します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´foreach .[] as $item (0; . + $item)´
-
-   [1,2,3,4,5]
-=&gt; 1, 3, 6, 10, 15
-jq ´foreach .[] as $item (0; . + $item; [$item, . * 2])´
-
-   [1,2,3,4,5]
-=&gt; [1,2], [2,6], [3,12], [4,20], [5,30]
-jq ´foreach .[] as $item (0; . + 1; {index: ., $item})´
-
-   [&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;]
-=&gt; {&quot;index&quot;:1,&quot;item&quot;:&quot;foo&quot;}, {&quot;index&quot;:2,&quot;item&quot;:&quot;bar&quot;}, {&quot;index&quot;:3,&quot;item&quot;:&quot;baz&quot;}</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´foreach .[] as $item (0; . + $item)´&#10;&#10;   [1,2,3,4,5]&#10;=&gt; 1, 3, 6, 10, 15&#10;jq ´foreach .[] as $item (0; . + $item; [$item, . * 2])´&#10;&#10;   [1,2,3,4,5]&#10;=&gt; [1,2], [2,6], [3,12], [4,20], [5,30]&#10;jq ´foreach .[] as $item (0; . + 1; {index: ., $item})´&#10;&#10;   [&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;]&#10;=&gt; {&quot;index&quot;:1,&quot;item&quot;:&quot;foo&quot;}, {&quot;index&quot;:2,&quot;item&quot;:&quot;bar&quot;}, {&quot;index&quot;:3,&quot;item&quot;:&quot;baz&quot;}</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### 再帰 {#Recursion}
 
@@ -2366,21 +1493,7 @@ jq ´foreach .[] as $item (0; . + 1; {index: ., $item})´
 
 <p>例:</p>
 
-<dl><dt></dt><dd><pre><code>def recurse(f): def r: ., (f | select(. != null) | r); r;
-def while(cond; update):
-
-  def _while:
-
-    if cond then ., (update | _while) else empty end;
-
-  _while;
-def repeat(exp):
-
-  def _repeat:
-
-    exp, _repeat;
-
-  _repeat;</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>def recurse(f): def r: ., (f | select(. != null) | r); r;&#10;def while(cond; update):&#10;&#10;  def _while:&#10;&#10;    if cond then ., (update | _while) else empty end;&#10;&#10;  _while;&#10;def repeat(exp):&#10;&#10;  def _repeat:&#10;&#10;    exp, _repeat;&#10;&#10;  _repeat;</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### ジェネレーターとイテレーター {#Generators_and_iterators}
 
@@ -2393,14 +1506,7 @@ def repeat(exp):
 
 <p>すべての jq 関数は、組み込みジェネレーターを使うだけでジェネレーターになれます。再帰とカンマ演算子だけで、新しいジェネレーターを構築することもできます。再帰呼び出しが「末尾位置」にあれば、効率的なジェネレーターになります。以下の例では、<strong>_range</strong> による自身への再帰呼び出しは末尾位置にあります。この例は、末尾再帰、ジェネレーターの構築、内部関数という3つの高度な話題を示します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´def range(init; upto; by): def _range: if (by &gt; 0 and . &lt; upto) or (by &lt; 0 and . &gt; upto) then ., ((.+by)|_range) else . end; if by == 0 then init else init|_range end | select((by &gt; 0 and . &lt; upto) or (by &lt; 0 and . &gt; upto)); range(0; 10; 3)´
-
-   null
-=&gt; 0, 3, 6, 9
-jq ´def while(cond; update): def _while: if cond then ., (update | _while) else empty end; _while; [while(.&lt;100; .*2)]´
-
-   1
-=&gt; [1,2,4,8,16,32,64]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´def range(init; upto; by): def _range: if (by &gt; 0 and . &lt; upto) or (by &lt; 0 and . &gt; upto) then ., ((.+by)|_range) else . end; if by == 0 then init else init|_range end | select((by &gt; 0 and . &lt; upto) or (by &lt; 0 and . &gt; upto)); range(0; 10; 3)´&#10;&#10;   null&#10;=&gt; 0, 3, 6, 9&#10;jq ´def while(cond; update): def _while: if cond then ., (update | _while) else empty end; _while; [while(.&lt;100; .*2)]´&#10;&#10;   1&#10;=&gt; [1,2,4,8,16,32,64]</code></pre></dd><dt></dt><dd></dd></dl>
 
 ### 数学 {#MATH}
 
@@ -2465,8 +1571,7 @@ jq ´def while(cond; update): def _while: if cond then ., (update | _while) else
 
 <p>値3を生成しますが、stderr には次の2行を書き出します。</p>
 
-<dl><dt></dt><dd><pre><code>[&quot;DEBUG:&quot;,&quot;Entering function foo with $x == 1&quot;]
-[&quot;DEBUG:&quot;,2]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>[&quot;DEBUG:&quot;,&quot;Entering function foo with $x == 1&quot;]&#10;[&quot;DEBUG:&quot;,2]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### stderr {#stderr}
 
@@ -2501,30 +1606,21 @@ jq ´def while(cond; update): def _while: if cond then ., (update | _while) else
 
 <p>数値を入力に取り、指定したストリーミング式の出力から、対応する数だけ左側のパス要素を切り落とします。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´truncate_stream([[0],1],[[1,0],2],[[1,0]],[[1]])´
-
-   1
-=&gt; [[0],2], [[0]]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´truncate_stream([[0],1],[[1,0],2],[[1,0]],[[1]])´&#10;&#10;   1&#10;=&gt; [[0],2], [[0]]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### fromstream\(stream\_expression\) {#fromstream-stream_expression}
 
 
 <p>ストリーム式の出力に対応する値を出力します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´fromstream(1|truncate_stream([[0],1],[[1,0],2],[[1,0]],[[1]]))´
-
-   null
-=&gt; [2]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´fromstream(1|truncate_stream([[0],1],[[1,0],2],[[1,0]],[[1]]))´&#10;&#10;   null&#10;=&gt; [2]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### tostream {#tostream}
 
 
 <p>組み込み関数 <strong>tostream</strong> は、入力のストリーミング形式を出力します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´. as $dot|fromstream($dot|tostream)|.==$dot´
-
-   [0,[1,{&quot;a&quot;:1},{&quot;b&quot;:2}]]
-=&gt; true</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´. as $dot|fromstream($dot|tostream)|.==$dot´&#10;&#10;   [0,[1,{&quot;a&quot;:1},{&quot;b&quot;:2}]]&#10;=&gt; true</code></pre></dd><dt></dt><dd></dd></dl>
 
 ### 代入 {#ASSIGNMENT}
 
@@ -2558,20 +1654,14 @@ jq ´def while(cond; update): def _while: if cond then ., (update | _while) else
 
 <p>右辺が複数の値を出力した場合は、最初の値だけを使います（互換性に関する注意: jq 1.5 以前のリリースでは、最後の値だけを使っていました）。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´(..|select(type==&quot;boolean&quot;)) |= if . then 1 else 0 end´
-
-   [true,false,[5,true,[true,[false]],false]]
-=&gt; [1,0,[5,1,[1,[0]],0]]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´(..|select(type==&quot;boolean&quot;)) |= if . then 1 else 0 end´&#10;&#10;   [true,false,[5,true,[true,[false]],false]]&#10;=&gt; [1,0,[5,1,[1,[0]],0]]</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### 算術更新代入: \+=, -=, \*=, /=, %=, //= {#Arithmetic_update-assignment-_---_---_---_---__--_}
 
 
 <p>jq には <strong>a op= b</strong> 形式の演算子がいくつかあり、すべて <strong>a |= . op b</strong> と等価です。したがって <strong>+= 1</strong> は値の増分に使え、<strong>|= . + 1</strong> と同じです。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´.foo += 1´
-
-   {&quot;foo&quot;: 42}
-=&gt; {&quot;foo&quot;: 43}</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´.foo += 1´&#10;&#10;   {&quot;foo&quot;: 42}&#10;=&gt; {&quot;foo&quot;: 43}</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### 単純代入: = {#Plain_assignment-_}
 
@@ -2592,22 +1682,7 @@ jq ´def while(cond; update): def _while: if cond then ., (update | _while) else
 
 <p>前者は入力の <strong>a</strong> フィールドを入力の <strong>b</strong> フィールドに設定し、<strong>{&quot;a&quot;: 20, &quot;b&quot;: 20}</strong> を出力します。後者は入力の <strong>a</strong> フィールドを <strong>a</strong> フィールドの <strong>b</strong> フィールドに設定し、<strong>{&quot;a&quot;: 10, &quot;b&quot;: 20}</strong> を生成します。</p>
 
-<dl><dt></dt><dd><pre><code>jq ´.a = .b´
-
-   {&quot;a&quot;: {&quot;b&quot;: 10}, &quot;b&quot;: 20}
-=&gt; {&quot;a&quot;:20,&quot;b&quot;:20}
-jq ´.a |= .b´
-
-   {&quot;a&quot;: {&quot;b&quot;: 10}, &quot;b&quot;: 20}
-=&gt; {&quot;a&quot;:10,&quot;b&quot;:20}
-jq ´(.a, .b) = range(3)´
-
-   null
-=&gt; {&quot;a&quot;:0,&quot;b&quot;:0}, {&quot;a&quot;:1,&quot;b&quot;:1}, {&quot;a&quot;:2,&quot;b&quot;:2}
-jq ´(.a, .b) |= range(3)´
-
-   null
-=&gt; {&quot;a&quot;:0,&quot;b&quot;:0}</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>jq ´.a = .b´&#10;&#10;   {&quot;a&quot;: {&quot;b&quot;: 10}, &quot;b&quot;: 20}&#10;=&gt; {&quot;a&quot;:20,&quot;b&quot;:20}&#10;jq ´.a |= .b´&#10;&#10;   {&quot;a&quot;: {&quot;b&quot;: 10}, &quot;b&quot;: 20}&#10;=&gt; {&quot;a&quot;:10,&quot;b&quot;:20}&#10;jq ´(.a, .b) = range(3)´&#10;&#10;   null&#10;=&gt; {&quot;a&quot;:0,&quot;b&quot;:0}, {&quot;a&quot;:1,&quot;b&quot;:1}, {&quot;a&quot;:2,&quot;b&quot;:2}&#10;jq ´(.a, .b) |= range(3)´&#10;&#10;   null&#10;=&gt; {&quot;a&quot;:0,&quot;b&quot;:0}</code></pre></dd><dt></dt><dd></dd></dl>
 
 #### 複雑な代入 {#Complex_assignments}
 
@@ -2630,9 +1705,7 @@ jq ´(.a, .b) |= range(3)´
 
 <p>この操作が提供するパスは、&quot;stedolan&quot; が書いた各投稿を指します。先ほどと同じ方法で、それぞれにコメントできます。</p>
 
-<dl><dt></dt><dd><pre><code>(.posts[] | select(.author == &quot;stedolan&quot;) | .comments) |=
-
-    . + [&quot;terrible.&quot;]</code></pre></dd><dt></dt><dd></dd></dl>
+<dl><dt></dt><dd><pre><code>(.posts[] | select(.author == &quot;stedolan&quot;) | .comments) |=&#10;&#10;    . + [&quot;terrible.&quot;]</code></pre></dd><dt></dt><dd></dd></dl>
 
 ### モジュール {#MODULES}
 

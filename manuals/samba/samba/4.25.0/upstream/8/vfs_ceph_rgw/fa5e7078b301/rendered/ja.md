@@ -69,22 +69,7 @@ manual: {"id":"samba/samba/4.25.0/upstream/8/vfs_ceph_rgw/fa5e7078b301","href":"
 <p>このモジュールを使うよう Samba を設定するには、動作する Ceph クラスターへのアクセスが必要です。次の例は、既存のユーザー、バケット、バケット内のオブジェクトを持つ既存の Ceph RGW オブジェクトストアに対する、動作可能な Samba 設定を示します。</p>
 
 <ol><li><p>librgw-devel パッケージをインストールします。</p></li><li><p>Samba のソースを複製します。</p></li><li><p>通常の設定オプションに加え、&quot;<code>--enable-cephrgw</code>&quot; オプションを使って Samba のビルドを設定し、コンパイルしてインストールします。</p></li><li><p>smb.conf を編集して次の共有定義を追加します。注: path は &#39;/&#39; に設定する必要があり、それ以外のパスは無視されます。</p>
-<pre><code>			[global]
-			ceph_rgw:id = admin
-			ceph_rgw:config_file = /etc/ceph/ceph.conf
-			ceph_rgw:keyring_file = /etc/ceph/ceph.client.admin.keyring
-
-			[share]
-			comment = rgw bucket
-			path = /
-			read only = no
-			inherit permissions = yes
-			vfs objects = ceph_rgw
-			ceph_rgw:bucket = my-bucket
-			ceph_rgw:user_id = user1
-			ceph_rgw:access_key = user1passwd
-			ceph_rgw:secret_access_key = user1passwd
-			</code></pre></li><li><p>Samba サーバーを起動します。</p></li></ol>
+<pre><code>			[global]&#10;			ceph_rgw:id = admin&#10;			ceph_rgw:config_file = /etc/ceph/ceph.conf&#10;			ceph_rgw:keyring_file = /etc/ceph/ceph.client.admin.keyring&#10;&#10;			[share]&#10;			comment = rgw bucket&#10;			path = /&#10;			read only = no&#10;			inherit permissions = yes&#10;			vfs objects = ceph_rgw&#10;			ceph_rgw:bucket = my-bucket&#10;			ceph_rgw:user_id = user1&#10;			ceph_rgw:access_key = user1passwd&#10;			ceph_rgw:secret_access_key = user1passwd&#10;			</code></pre></li><li><p>Samba サーバーを起動します。</p></li></ol>
 
 ### バージョン {#VERSION}
 

@@ -2,6 +2,7 @@ import { afterEach, describe, expect, test } from 'bun:test';
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { parseHTML } from 'linkedom';
 import {
   acceptTranslation,
   ingest,
@@ -84,6 +85,19 @@ describe('semantic import and literal preservation', () => {
     ]);
     expect(ir.segments.some((s) => s.text === 'Display files.')).toBe(true);
     expect(ir.segments.some((s) => s.text.includes('Ignore site'))).toBe(false);
+  });
+  test('keeps blank-line-separated comments literal inside definition code examples', () => {
+    const code = '[\n\n  # foo \\\n\n  # bar\n]';
+    const ir = parseManualHtml(
+      `<main><p>Example.</p><dl><dt></dt><dd><pre>${code}</pre></dd></dl></main>`,
+      manifest.source.sha256,
+      manifest.source.origin,
+    );
+    const output = renderMarkdown(manifest, ir, translation(ir));
+    expect(output).toContain('<pre><code>[&#10;&#10;  # foo');
+    expect(output).toContain('&#10;&#10;  # bar&#10;]</code></pre>');
+    expect(output).not.toContain('\n\n  # foo');
+    expect(parseHTML(output).document.querySelector('pre code')?.textContent).toBe(code);
   });
   test('keeps malformed list children and nested command menus instead of silently dropping them', () => {
     const html =

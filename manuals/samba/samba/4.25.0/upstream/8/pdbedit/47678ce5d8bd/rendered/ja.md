@@ -34,34 +34,11 @@ manual: {"id":"samba/samba/4.25.0/upstream/8/pdbedit/47678ce5d8bd","href":"/manu
 
 <dl><dt><code>-L</code>|<code>--list</code></dt><dd><p>ユーザーデータベースに存在するすべてのユーザーアカウントを一覧表示します。ユーザーと uid の組を &#39;:&#39; 文字で区切って表示します。</p>
 <p>例: <code>pdbedit -L</code></p>
-<pre><code>sorce:500:Simo Sorce
-samba:45:Test User</code></pre></dd><dt><code>-v</code>|<code>--verbose</code></dt><dd><p>詳細な一覧表示形式を有効にします。pdbedit は、データベース内のユーザーを一覧表示し、アカウントの各フィールドを説明的な形式で出力します。<code>-w</code> と併用するとパスワードハッシュも表示します。</p>
+<pre><code>sorce:500:Simo Sorce&#10;samba:45:Test User</code></pre></dd><dt><code>-v</code>|<code>--verbose</code></dt><dd><p>詳細な一覧表示形式を有効にします。pdbedit は、データベース内のユーザーを一覧表示し、アカウントの各フィールドを説明的な形式で出力します。<code>-w</code> と併用するとパスワードハッシュも表示します。</p>
 <p>例: <code>pdbedit -L -v</code></p>
-<pre><code>---------------
-username:       sorce
-user ID/Group:  500/500
-user RID/GRID:  2000/2001
-Full Name:      Simo Sorce
-Home Directory: \\BERSERKER\sorce
-HomeDir Drive:  H:
-Logon Script:   \\BERSERKER\netlogon\sorce.bat
-Profile Path:   \\BERSERKER\profile
----------------
-username:       samba
-user ID/Group:  45/45
-user RID/GRID:  1090/1091
-Full Name:      Test User
-Home Directory: \\BERSERKER\samba
-HomeDir Drive:  
-Logon Script:   
-Profile Path:   \\BERSERKER\profile</code></pre></dd><dt><code>-w</code>|<code>--smbpasswd-style</code></dt><dd><p>一覧表示形式を &quot;smbpasswd&quot; に設定します。pdbedit は、データベース内のユーザーを一覧表示し、<code>smbpasswd</code> ファイル形式と互換性のある形式でアカウントの各フィールドを出力します（詳細は <a href="https://www.samba.org/samba/docs/current/man-html/smbpasswd.5.html">smbpasswd(5)</a> を参照）。一方、（<code>-v</code>）と併用すると、詳細出力にパスワードハッシュを表示します。</p>
+<pre><code>---------------&#10;username:       sorce&#10;user ID/Group:  500/500&#10;user RID/GRID:  2000/2001&#10;Full Name:      Simo Sorce&#10;Home Directory: \\BERSERKER\sorce&#10;HomeDir Drive:  H:&#10;Logon Script:   \\BERSERKER\netlogon\sorce.bat&#10;Profile Path:   \\BERSERKER\profile&#10;---------------&#10;username:       samba&#10;user ID/Group:  45/45&#10;user RID/GRID:  1090/1091&#10;Full Name:      Test User&#10;Home Directory: \\BERSERKER\samba&#10;HomeDir Drive:  &#10;Logon Script:   &#10;Profile Path:   \\BERSERKER\profile</code></pre></dd><dt><code>-w</code>|<code>--smbpasswd-style</code></dt><dd><p>一覧表示形式を &quot;smbpasswd&quot; に設定します。pdbedit は、データベース内のユーザーを一覧表示し、<code>smbpasswd</code> ファイル形式と互換性のある形式でアカウントの各フィールドを出力します（詳細は <a href="https://www.samba.org/samba/docs/current/man-html/smbpasswd.5.html">smbpasswd(5)</a> を参照）。一方、（<code>-v</code>）と併用すると、詳細出力にパスワードハッシュを表示します。</p>
 <p>例: <code>pdbedit -L -w</code></p>
-<pre><code>sorce:500:508818B733CE64BEAAD3B435B51404EE:
-          D2A2418EFC466A8A0F6B1DBB5C3DB80C:
-          [UX         ]:LCT-00000000:
-samba:45:0F2B255F7B67A7A9AAD3B435B51404EE:
-          BC281CE3F53B6A5146629CD4751D3490:
-          [UX         ]:LCT-3BFA1E8D:</code></pre></dd><dt><code>-u</code>|<code>--user</code> username</dt><dd><p>要求した操作（一覧表示、追加、削除）に使うユーザー名を指定します。追加、削除、変更では<em>必須</em>で、一覧表示では<em>任意</em>です。</p></dd><dt><code>-f</code>|<code>--fullname</code> fullname</dt><dd><p>ユーザーアカウントの追加または変更時に使えます。ユーザーのフルネームを指定します。</p>
+<pre><code>sorce:500:508818B733CE64BEAAD3B435B51404EE:&#10;          D2A2418EFC466A8A0F6B1DBB5C3DB80C:&#10;          [UX         ]:LCT-00000000:&#10;samba:45:0F2B255F7B67A7A9AAD3B435B51404EE:&#10;          BC281CE3F53B6A5146629CD4751D3490:&#10;          [UX         ]:LCT-3BFA1E8D:</code></pre></dd><dt><code>-u</code>|<code>--user</code> username</dt><dd><p>要求した操作（一覧表示、追加、削除）に使うユーザー名を指定します。追加、削除、変更では<em>必須</em>で、一覧表示では<em>任意</em>です。</p></dd><dt><code>-f</code>|<code>--fullname</code> fullname</dt><dd><p>ユーザーアカウントの追加または変更時に使えます。ユーザーのフルネームを指定します。</p>
 <p>例: <code>-f &quot;Simo Sorce&quot;</code></p></dd><dt><code>-h</code>|<code>--homedir</code> homedir</dt><dd><p>ユーザーアカウントの追加または変更時に使えます。ユーザーのホームディレクトリのネットワークパスを指定します。</p>
 <p>例: <code>-h &quot;\\\\BERSERKER\\sorce&quot;</code></p></dd><dt><code>-D</code>|<code>--drive</code> drive</dt><dd><p>ユーザーアカウントの追加または変更時に使えます。ホームディレクトリの割り当てに使う Windows のドライブ文字を指定します。</p>
 <p>例: <code>-D &quot;H:&quot;</code></p></dd><dt><code>-S</code>|<code>--script</code> script</dt><dd><p>ユーザーアカウントの追加または変更時に使えます。ユーザーのログオンスクリプトのパスを指定します。</p>
@@ -77,8 +54,7 @@ samba:45:0F2B255F7B67A7A9AAD3B435B51404EE:
 <p>例: <code>-c &quot;[X ]&quot;</code></p></dd><dt><code>-K</code>|<code>--kickoff-time</code></dt><dd><p>特定のユーザーの切断時刻を変更します。切断時刻を無制限にするには、引数に &quot;never&quot; を使います。</p>
 <p>例: <code>pdbedit -K never user</code></p></dd><dt><code>-a</code>|<code>--create</code></dt><dd><p>データベースにユーザーを追加します。<code>-u</code> スイッチでユーザー名を指定する必要があります。新しいユーザーを追加するときは、pdbedit が使用するパスワードの入力も求めます。</p>
 <p>例: <code>pdbedit -a -u sorce</code></p>
-<pre><code>new password:
-retype new password</code></pre>
+<pre><code>new password:&#10;retype new password</code></pre>
 <h4 id="Note">注</h4>
 <p><a href="https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#UNIXPASSWORDSYNC">unix password sync</a> が設定されていても、pdbedit は UNIX パスワード同期スクリプトを呼び出しません。Samba ユーザーデータベース内のデータだけを更新します。</p>
 <p>ユーザーを追加して直ちにパスワードを同期するには、<code>smbpasswd</code> の <code>-a</code> オプションを使ってください。</p></dd><dt><code>-t</code>|<code>--password-from-stdin</code></dt><dd><p>pdbedit は、（<code>passwd(1)</code> プログラムのように）/dev/tty からではなく、標準入力からパスワードを読み取ります。パスワードは2回渡す必要があり、それぞれ改行で終える必要があります。</p></dd><dt><code>-r</code>|<code>--modify</code></dt><dd><p>データベース内の既存ユーザーを変更します。<code>-u</code> スイッチでユーザー名を指定する必要があります。他のオプションを指定して、そのユーザーのプロパティーを変更できます。このフラグは後方互換性のために維持されていますが、現在は指定する必要はありません。</p></dd><dt><code>-m</code>|<code>--machine</code></dt><dd><p><em><code>-a</code></em> オプションとの併用時だけ使えます。pdbedit は、ユーザーアカウントではなくマシン信頼アカウントを追加します（<code>-u</code> username でマシン名を指定します）。</p>
@@ -94,8 +70,7 @@ retype new password</code></pre>
 <p>例: <code>pdbedit -P &quot;bad lockout attempt&quot;</code></p>
 <pre><code>account policy value for bad lockout attempt is 0</code></pre></dd><dt><code>-C</code>|<code>--value</code> account-policy-value</dt><dd><p>アカウントポリシーを指定した値に設定します。<em><code>-P</code></em> オプションとの併用時だけ使えます。</p>
 <p>例: <code>pdbedit -P &quot;bad lockout attempt&quot; -C 3</code></p>
-<pre><code>account policy value for bad lockout attempt was 0
-account policy value for bad lockout attempt is now 3</code></pre></dd><dt><code>-y</code>|<code>--policies</code></dt><dd><p><em><code>-y</code></em> を指定すると、<em><code>-i in-backend -e out-backend</code></em> は、ユーザーデータベースではなくアカウントポリシーに適用されます。</p>
+<pre><code>account policy value for bad lockout attempt was 0&#10;account policy value for bad lockout attempt is now 3</code></pre></dd><dt><code>-y</code>|<code>--policies</code></dt><dd><p><em><code>-y</code></em> を指定すると、<em><code>-i in-backend -e out-backend</code></em> は、ユーザーデータベースではなくアカウントポリシーに適用されます。</p>
 <p>アカウントポリシーを、既定の TDB ストアから、LDAP ディレクトリサーバーなどの passdb バックエンドへ移行できます。</p>
 <p>例: <code>pdbedit -y -i tdbsam: -e ldapsam:ldap://my.ldap.host</code></p></dd><dt><code>--force-initialized-passwords</code></dt><dd><p>すべてのユーザーに、次回ログイン時のパスワード変更を強制します。</p></dd><dt><code>-N</code>|<code>--account-desc</code> description</dt><dd><p>ユーザーアカウントの追加または変更時に使えます。ユーザーの説明フィールドを指定します。</p>
 <p>例: <code>-N &quot;test description&quot;</code></p></dd><dt><code>-Z</code>|<code>--logon-hours-reset</code></dt><dd><p>ユーザーアカウントの追加または変更時に使えます。ユーザーのログオン可能時間をリセットします。その後、ユーザーはいつでもログインできるようになります。</p>
